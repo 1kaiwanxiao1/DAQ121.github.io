@@ -1546,7 +1546,7 @@ pre .javascript .function {
   }
 }
 .post-button {
-  margin-top: 40px;
+  margin-top: 15px;
 }
 .posts-expand .post-tags {
   margin-top: 40px;
@@ -1609,7 +1609,7 @@ pre .javascript .function {
 }
 .posts-expand .post-eof {
   display: block;
-  margin: 80px auto 60px;
+  margin: 10px auto 10px;
   width: 8%;
   height: 1px;
   background: #ccc;
@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #2a5b2b;
+  background: #01ff94;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2599,7 +2599,7 @@ pre .javascript .function {
 .header {
   position: relative;
   margin: 0 auto;
-  width: 1080px;
+  width: 80%;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .header {
@@ -2617,7 +2617,7 @@ pre .javascript .function {
   overflow: hidden;
   padding: 0;
   width: 240px;
-  background: #fff;
+  background: rgba(255,255,255,0.8);
   box-shadow: initial;
   border-radius: initial;
 }
@@ -2659,7 +2659,7 @@ pre .javascript .function {
   }
 }
 .container .main-inner {
-  width: 1080px;
+  width: 80%;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .container .main-inner {
@@ -2675,7 +2675,7 @@ pre .javascript .function {
   float: right;
   box-sizing: border-box;
   padding: 40px;
-  width: 810px;
+  width: calc(100% - 260px);
   background: #fff;
   min-height: 700px;
   box-shadow: initial;
@@ -2718,7 +2718,6 @@ pre .javascript .function {
   display: none;
 }
 .footer-inner {
-  width: 1080px;
   padding-left: 260px;
 }
 @media (min-width: 768px) and (max-width: 991px) {
