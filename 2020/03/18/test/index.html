@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="MySql,DBUtils," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -83,16 +83,15 @@
 
 
 
-<meta name="description" content="DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。并且简化了增删改查的操作。">
+<meta name="description" content="测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DBUtils学习笔记">
-<meta property="og:url" content="http://yoursite.com/2020/02/06/DBUtils%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="test">
+<meta property="og:url" content="http://yoursite.com/2020/03/18/test/index.html">
 <meta property="og:site_name" content="代澳旗&#39;s Blog">
-<meta property="og:description" content="DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。并且简化了增删改查的操作。">
-<meta property="article:published_time" content="2020-02-06T12:05:03.000Z">
-<meta property="article:modified_time" content="2020-03-07T07:45:05.167Z">
+<meta property="og:description" content="测试">
+<meta property="article:published_time" content="2020-03-18T03:57:51.000Z">
+<meta property="article:modified_time" content="2020-03-18T04:01:55.592Z">
 <meta property="article:author" content="代澳旗">
-<meta property="article:tag" content="MySql,DBUtils">
 <meta name="twitter:card" content="summary">
 
 
@@ -123,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/06/DBUtils学习笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/03/18/test/"/>
 
 
 
 
 
-  <title>DBUtils学习笔记 | 代澳旗's Blog</title>
+  <title>test | 代澳旗's Blog</title>
   
 
 
@@ -268,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/DBUtils%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="代澳旗">
@@ -285,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">DBUtils学习笔记</h1>
+          <h1 class="post-title" itemprop="name headline">test</h1>
         
 
         <div class="post-meta">
@@ -297,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-06T20:05:03+08:00">
-                2020-02-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-18T11:57:51+08:00">
+                2020-03-18
               </time>
             
 
@@ -307,28 +306,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -356,7 +333,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  536
+                  2
                 </span>
               
 
@@ -372,7 +349,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  1
                 </span>
               
             </div>
@@ -393,43 +370,7 @@
       
 
       
-        <p>DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。并且简化了增删改查的操作。</p>
-<a id="more"></a>
-<h1 id="使用开源的DBUtils"><a href="#使用开源的DBUtils" class="headerlink" title="使用开源的DBUtils"></a>使用开源的DBUtils</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
-<li>Commons DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。</li>
-<li>简化了增删改查的操作。</li>
-</ul>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><ul>
-<li>增删改</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1.导入jar包  commons-dbutils-1.4.jar</span><br><span class="line">public class TestDBUtils &#123;</span><br><span class="line">	@Test</span><br><span class="line">	public void testInsert() throws SQLException &#123;</span><br><span class="line">		ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">		// dbutils 只是帮我们简化了CRUD 的代码， 但是连接的创建以及获取工作。 不在他的考虑范围</span><br><span class="line">		QueryRunner queryRunner = new QueryRunner(dataSource);</span><br><span class="line">		// 增加</span><br><span class="line">		queryRunner.update(<span class="string">"insert into category values (null , ? , ? )"</span>, <span class="string">"a"</span>, 1000);</span><br><span class="line">		// 删除</span><br><span class="line">		queryRunner.update(<span class="string">"delete from account where id = ?"</span>, 5);</span><br><span class="line">		// 更新</span><br><span class="line">		queryRunner.update(<span class="string">"update account set money = ? where id = ?"</span>, 10000000, 6);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>查</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">1.直接new接口的匿名实现类</span><br><span class="line">QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());</span><br><span class="line">	Account  account =  queryRunner.query(<span class="string">"select * from account where id = ?"</span>, new ResultSetHandler&lt;Account&gt;()&#123;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public Account handle(ResultSet rs) throws SQLException &#123;</span><br><span class="line">			Account account  =  new Account();</span><br><span class="line">			<span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">				String name = rs.getString(<span class="string">"name"</span>);</span><br><span class="line">				int money = rs.getInt(<span class="string">"money"</span>);</span><br><span class="line">					</span><br><span class="line">				account.setName(name);</span><br><span class="line">				account.setMoney(money);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> account;</span><br><span class="line">		&#125; </span><br><span class="line">	 &#125;, 6);</span><br><span class="line">	System.out.println(account.toString());</span><br><span class="line"></span><br><span class="line">2. 直接使用框架已经写好的实现类。（最常用）</span><br><span class="line">	QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());</span><br><span class="line">	//查询单个对象</span><br><span class="line">Account account = queryRunner.query(<span class="string">"select * from account where id = ?"</span>, </span><br><span class="line">			new BeanHandler&lt;Account&gt;(Account.class), 8);</span><br><span class="line">	System.out.println(category.toString());</span><br><span class="line">	</span><br><span class="line">	* 查询多个对象</span><br><span class="line">List&lt;Category&gt; list = queryRunner.query(<span class="string">"select * from category"</span>, new BeanListHandler&lt;Category&gt;(Category.class));</span><br><span class="line">	<span class="keyword">for</span> (Category category : list) &#123;</span><br><span class="line">		System.out.println(category.toString());</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="ResultSetHandler-常用的实现类"><a href="#ResultSetHandler-常用的实现类" class="headerlink" title="ResultSetHandler 常用的实现类"></a>ResultSetHandler 常用的实现类</h1><ul>
-<li>以下两个是使用频率最高的</li>
-</ul>
-<ol>
-<li><p>BeanHandler          查询到的<strong>单个</strong>数据封装成一个对象</p>
-</li>
-<li><p>BeanListHandler    查询到的<strong>多个</strong>数据封装 成一个List&lt;对象&gt;</p>
-</li>
-<li><p>ArrayHandler,  查询到的单个数据封装成一个数组。</p>
-</li>
-<li><p>ArrayListHandler,  查询到的多个数据封装成一个集合 ，集合里面的元素是数组。 </p>
-</li>
-<li><p>MapHandler,  查询到的单个数据封装成一个map</p>
-</li>
-<li><p>MapListHandler,查询到的多个数据封装成一个集合 ，集合里面的元素是map。 </p>
-</li>
-<li><p>ColumnListHandler</p>
-</li>
-<li><p>KeyedHandler</p>
-</li>
-<li><p>ScalarHandler</p>
-</li>
-</ol>
+        <p>测试</p>
 
       
     </div>
@@ -455,12 +396,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/MySql-DBUtils/" rel="tag"><i class="fa fa-tag"></i> MySql,DBUtils</a>
-          
-        </div>
-      
 
       
       
@@ -470,8 +405,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/05/%E4%BA%8B%E5%8A%A1/" rel="next" title="事务-学习笔记">
-                <i class="fa fa-chevron-left"></i> 事务-学习笔记
+              <a href="/2020/03/15/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" rel="next" title="TCP三次握手和四次挥手">
+                <i class="fa fa-chevron-left"></i> TCP三次握手和四次挥手
               </a>
             
           </div>
@@ -479,10 +414,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/07/%E8%AE%A4%E8%AF%86web%E6%9C%8D%E5%8A%A1%E5%99%A8-Eclipse%E9%85%8D%E7%BD%AE%E9%83%A8%E7%BD%B2Tomcat/" rel="prev" title="认识web服务器&Eclipse配置部署Tomcat">
-                认识web服务器&Eclipse配置部署Tomcat <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -573,17 +504,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -691,22 +613,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用开源的DBUtils"><span class="nav-number">1.</span> <span class="nav-text">使用开源的DBUtils</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用法"><span class="nav-number">1.2.</span> <span class="nav-text">用法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ResultSetHandler-常用的实现类"><span class="nav-number">2.</span> <span class="nav-text">ResultSetHandler 常用的实现类</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
