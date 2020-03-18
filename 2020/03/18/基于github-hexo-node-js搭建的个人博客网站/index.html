@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="web,Tomcat," />
+  <meta name="keywords" content="hexo," />
 
 
 
@@ -83,21 +83,30 @@
 
 
 
-<meta name="description" content="本文介绍Tomcat发布项目到服务器上的三种方式">
+<meta name="description" content="日常在网上找答案的时候，发现了一种干干净净的，类似于个人主页的网站，就很好奇，后来深入了解了一下，原来这是基于hexo博客框架搭建起来的网站，用github的page服务托管博文，于是我也想上手整一个，于是乎，就花了前前后后大概半个月的时间，搭建起来网站，并买了域名部署到了服务器上面，此时怀着欣慰的心情，写下了这个系列！！！！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tomcat发布项目的三种方式">
-<meta property="og:url" content="http://yoursite.com/2020/02/07/Tomcat%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:title" content="建站系列之---基于github搭建hexo网站">
+<meta property="og:url" content="http://yoursite.com/2020/03/18/%E5%9F%BA%E4%BA%8Egithub-hexo-node-js%E6%90%AD%E5%BB%BA%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/index.html">
 <meta property="og:site_name" content="代澳旗&#39;s Blog">
-<meta property="og:description" content="本文介绍Tomcat发布项目到服务器上的三种方式">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200225123552708.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200225124622947.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70">
-<meta property="article:published_time" content="2020-02-07T05:01:53.000Z">
-<meta property="article:modified_time" content="2020-03-07T07:50:43.658Z">
+<meta property="og:description" content="日常在网上找答案的时候，发现了一种干干净净的，类似于个人主页的网站，就很好奇，后来深入了解了一下，原来这是基于hexo博客框架搭建起来的网站，用github的page服务托管博文，于是我也想上手整一个，于是乎，就花了前前后后大概半个月的时间，搭建起来网站，并买了域名部署到了服务器上面，此时怀着欣慰的心情，写下了这个系列！！！！">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200305155050299.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200305135143147.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200305155919286.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200305135917128.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200305154439378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200305161344694.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200305161705454.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200305163101123.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200305163539152.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200305163544455.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200305164627522.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020030516473779.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-03-18T08:11:58.000Z">
+<meta property="article:modified_time" content="2020-03-18T08:41:38.063Z">
 <meta property="article:author" content="代澳旗">
-<meta property="article:tag" content="web">
-<meta property="article:tag" content="Tomcat">
+<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200225123552708.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200305155050299.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70">
 
 
 
@@ -127,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/07/Tomcat发布项目的三种方式/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/03/18/基于github-hexo-node-js搭建的个人博客网站/"/>
 
 
 
 
 
-  <title>Tomcat发布项目的三种方式 | 代澳旗's Blog</title>
+  <title>建站系列之---基于github搭建hexo网站 | 代澳旗's Blog</title>
   
 
 
@@ -272,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/07/Tomcat%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/%E5%9F%BA%E4%BA%8Egithub-hexo-node-js%E6%90%AD%E5%BB%BA%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="代澳旗">
@@ -289,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Tomcat发布项目的三种方式</h1>
+          <h1 class="post-title" itemprop="name headline">建站系列之---基于github搭建hexo网站</h1>
         
 
         <div class="post-meta">
@@ -301,8 +310,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-07T13:01:53+08:00">
-                2020-02-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-18T16:11:58+08:00">
+                2020-03-18
               </time>
             
 
@@ -324,8 +333,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
-                    <span itemprop="name">Java Web</span>
+                  <a href="/categories/Hexo%E5%BB%BA%E7%AB%99%E7%B3%BB%E5%88%97/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo建站系列</span>
                   </a>
                 </span>
 
@@ -360,7 +369,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  278
+                  1.1k
                 </span>
               
 
@@ -376,7 +385,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -397,42 +406,102 @@
       
 
       
-        <p>本文介绍Tomcat发布项目到服务器上的三种方式</p>
+        <p>日常在网上找答案的时候，发现了一种干干净净的，类似于个人主页的网站，就很好奇，后来深入了解了一下，原来这是基于hexo博客框架搭建起来的网站，用github的page服务托管博文，于是我也想上手整一个，于是乎，就花了前前后后大概半个月的时间，搭建起来网站，并买了域名部署到了服务器上面，此时怀着欣慰的心情，写下了这个系列！！！！</p>
 <a id="more"></a>
-<h2 id="一、拷贝这个文件到webapps-ROOT底下，-在浏览器里面访问。"><a href="#一、拷贝这个文件到webapps-ROOT底下，-在浏览器里面访问。" class="headerlink" title="一、拷贝这个文件到webapps/ROOT底下， 在浏览器里面访问。"></a>一、拷贝这个文件到webapps/ROOT底下， 在浏览器里面访问。</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8080/stu.xml</span><br></pre></td></tr></table></figure>
+
+<p><strong>概述：</strong> 本文主要讲的是基于github，利用hexo博客框架搭建网站。购买域名（9块）并绑定。实现效果：可以看到网站首页。</p>
+<h2 id="一、下载安装Git"><a href="#一、下载安装Git" class="headerlink" title="一、下载安装Git"></a>一、下载安装Git</h2><p>下载地址：<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">https://git-scm.com/download/win</a><br>安装过程就不赘述了！</p>
+<h2 id="二、下载安装Node-js"><a href="#二、下载安装Node-js" class="headerlink" title="二、下载安装Node.js"></a>二、下载安装Node.js</h2><p>下载地址：<a href="http://nodejs.org/download/" target="_blank" rel="noopener">http://nodejs.org/download/</a><br>安装的时候，选择<code>add to path</code>，他会自动配置环境变量。</p>
+<ul>
+<li>换镜像（亲身体验，可以省去以后好多麻烦）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、安装Hexo"><a href="#三、安装Hexo" class="headerlink" title="三、安装Hexo"></a>三、安装Hexo</h2><ul>
+<li>用cnpm全局安装，在桌面右键打开<code>Git bash here</code>输入：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>在webaps下面新建一个文件夹xml  , 然后拷贝文件放置到这个文件夹中</li>
-<li><a href="http://localhost:8080/xml/stu.xml" target="_blank" rel="noopener">http://localhost:8080/xml/stu.xml</a></li>
-<li><a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> ： 对应的是到webapps/root</li>
-<li><a href="http://localhost:8080/xml/" target="_blank" rel="noopener">http://localhost:8080/xml/</a> : 对应是 webapps/xml</li>
-<li>使用IP地址访问：http://本机ip:8080/xml/stu.xml</li>
+<li>安装完成后，在命令行里输入<code>hexo -v</code>检查是否安装成功。</li>
 </ul>
-<h2 id="二、配置虚拟路径"><a href="#二、配置虚拟路径" class="headerlink" title="二、配置虚拟路径"></a>二、配置虚拟路径</h2><p> 使用localhost：8080 打开tomcat首页， 找到Tomcat 8.5 Documentation,进入Reference，点击configuration ，找到左边的context，点击进入，复制此页面路径：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8080/docs/config/context.html</span><br></pre></td></tr></table></figure>
+<p> <img src="https://img-blog.csdnimg.cn/20200305155050299.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="四、配置hexo"><a href="#四、配置hexo" class="headerlink" title="四、配置hexo"></a>四、配置hexo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">基本命令了解：</span><br><span class="line">	1. hexo -v			//查看版本		</span><br><span class="line">	2. hexo init		//初始化一个项目</span><br><span class="line">	3. cnpm install		</span><br><span class="line">	4. hexo clean		//清理生成的文件</span><br><span class="line">	5. hexo g			//生成静态网页文件，g是generate的缩写</span><br><span class="line">	6. hexo s			//运行到服务器端，s是server的缩写</span><br><span class="line">	7. hexo d			//部署到远端GitHub, d是deploy的缩写</span><br><span class="line">	8. hexo s -p 5000	//在4000端口被占用的时候，修改指定端口</span><br><span class="line">	9. cnpm uninstall hexo-cli -g       //卸载hexo</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img-blog.csdnimg.cn/20200225123552708.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
-<li>在conf/server.xml 找到host元素节点。加入以下内容。</li>
+<li>在本地新建一个文件夹，我命名它为blog</li>
+<li>在这个文件夹下，右键打开<code>Git Bash here</code>，输入<code>hexo init</code>，我在这个地方出现了一个<code>WARN</code>，暂时不用管它。</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/20200225124622947.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200305135143147.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
-<li>在浏览器地址栏上输入： <a href="http://localhost:8080/daq/person.xml" target="_blank" rel="noopener">http://localhost:8080/daq/person.xml</a></li>
+<li>继续输入<code>cnpm install</code>可以看到blog文件夹里出现：</li>
 </ul>
-<h2 id="配置虚拟路径2"><a href="#配置虚拟路径2" class="headerlink" title="配置虚拟路径2"></a>配置虚拟路径2</h2><ol>
-<li><p>在<code>tomcat/conf/catalina/localhost/</code> 文件夹下新建一个xml文件，名字可以自己定义。 <code>person.xml</code></p>
-</li>
-<li><p>在这个文件里面写入以下内容</p>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">'1.0'</span> encoding=<span class="string">'utf-8'</span>?&gt;</span><br><span class="line">&lt;Context docBase=<span class="string">"F：\XML2"</span>&gt;&lt;/Context&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200305155919286.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">目录介绍：</span><br><span class="line">	1. node_modules <span class="comment">#本地依赖模块</span></span><br><span class="line">	2. public <span class="comment">#hexo g生成的目录，包含静态网页文件，就是看到的博客</span></span><br><span class="line">	2. <span class="built_in">source</span> <span class="comment">#源文件，用来存放我们的写好的博客源文件</span></span><br><span class="line">	3. themes <span class="comment">#主题文件夹，里面存放主题</span></span><br><span class="line">	4. _config.yml <span class="comment">#站点配置文件，用来配置博客具体的显示内容等</span></span><br><span class="line">	5. db.json <span class="comment">#存储一些用到的数据</span></span><br><span class="line">	6.package.json <span class="comment">#依赖配置</span></span><br><span class="line"></span><br><span class="line">	.deploy_git <span class="comment">#hexo s部署到远端的时候会生成的文件夹，是根据public文件夹生成的，内容是差不多的</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>输入：<code>hexo g</code></li>
+<li>输入：<code>hexo s</code> </li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305135917128.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>打开浏览器输入<code>localhost：4000</code>，可以看到部署好了，有一篇<code>hello World</code>的博客</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305154439378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>到这一步，本地部署就已经成功了！！</li>
+</ul>
+<h2 id="五、连接到远端Github"><a href="#五、连接到远端Github" class="headerlink" title="五、连接到远端Github"></a>五、连接到远端Github</h2><ul>
+<li>安装 <code>deployer</code> 插件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<ul>
+<li>打开<code>F:\blog\_config.yml</code>,找到 <code>deploy</code>。修改如下，其中<code>repo</code>填写你自己的仓库名字。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305161344694.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>生成公私钥</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"注册git使用的邮箱"</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20200305161705454.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>找到生成的 <code>id_rsa.pub</code> 公钥文件（在<code>C:\Users\pc\.ssh</code>下），复制公钥内容。</li>
+<li>到Github你的网站仓库界面：<code>Setting -&gt; Deploy keys -&gt; add deploy key -&gt; Add
+key</code>，选择<code>Allow write access</code>（允许推送），这样方便以后推送的时候，不用每次都输入密码。</li>
+<li>开始推送</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<p>这样在博客和github都可以看到推送的内容。</p>
+<h2 id="六、购买绑定域名"><a href="#六、购买绑定域名" class="headerlink" title="六、购买绑定域名"></a>六、购买绑定域名</h2><p>阿里云：<a href="https://wanwang.aliyun.com/domain/" target="_blank" rel="noopener">https://wanwang.aliyun.com/domain/</a></p>
+<ul>
+<li>在阿里云或者腾讯云购买一个域名，我买的是阿里云的<code>.top</code>后缀名的，后缀名不同，价格不同，top最便宜，一年只要九块。</li>
+<li>如何买域名以及解析域名不做描述，注意要是实名认证，解析域名的意思就是，把ip地址和域名做一个映射，它让你填的<code>ip地址</code>就是你github网站仓库的<code>ip</code>。如何得到这个<code>ip</code>：</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305163101123.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>填入<code>ip</code>，完成解析。</li>
+<li>在<code>F:\blog\source</code>下新建一个<code>CNAME.txt</code>,在里面写入你的域名，不要前缀，如：</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305163539152.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>去掉<code>.txt</code>后缀</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305163544455.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>绑定域名，到github，找到你的仓库，找到<code>Setting</code>，一直拉到最先面下面。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305164627522.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/2020030516473779.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>这样就绑定好了。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">每次部署的执行次序</span><br><span class="line">	1. hexo clean</span><br><span class="line"> 	2. hexo g</span><br><span class="line">	3. hexo d</span><br></pre></td></tr></table></figure>
 
 
-<ol start="3">
-<li>在浏览器上面访问:</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8080/person/xml的名字即可</span><br></pre></td></tr></table></figure>
-
+<ul>
+<li>执行一次，查看效果。</li>
+</ul>
 
       
     </div>
@@ -460,9 +529,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/web/" rel="tag"><i class="fa fa-tag"></i> web</a>
-          
-            <a href="/tags/Tomcat/" rel="tag"><i class="fa fa-tag"></i> Tomcat</a>
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
           
         </div>
       
@@ -475,8 +542,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/07/%E8%AE%A4%E8%AF%86web%E6%9C%8D%E5%8A%A1%E5%99%A8-Eclipse%E9%85%8D%E7%BD%AE%E9%83%A8%E7%BD%B2Tomcat/" rel="next" title="认识web服务器&Eclipse配置部署Tomcat">
-                <i class="fa fa-chevron-left"></i> 认识web服务器&Eclipse配置部署Tomcat
+              <a href="/2020/03/15/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" rel="next" title="TCP三次握手和四次挥手">
+                <i class="fa fa-chevron-left"></i> TCP三次握手和四次挥手
               </a>
             
           </div>
@@ -484,10 +551,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/08/XML%E5%AD%A6%E4%B9%A0/" rel="prev" title="XML学习">
-                XML学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -706,7 +769,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、拷贝这个文件到webapps-ROOT底下，-在浏览器里面访问。"><span class="nav-number">1.</span> <span class="nav-text">一、拷贝这个文件到webapps&#x2F;ROOT底下， 在浏览器里面访问。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、配置虚拟路径"><span class="nav-number">2.</span> <span class="nav-text">二、配置虚拟路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置虚拟路径2"><span class="nav-number">3.</span> <span class="nav-text">配置虚拟路径2</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、下载安装Git"><span class="nav-number">1.</span> <span class="nav-text">一、下载安装Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、下载安装Node-js"><span class="nav-number">2.</span> <span class="nav-text">二、下载安装Node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、安装Hexo"><span class="nav-number">3.</span> <span class="nav-text">三、安装Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、配置hexo"><span class="nav-number">4.</span> <span class="nav-text">四、配置hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、连接到远端Github"><span class="nav-number">5.</span> <span class="nav-text">五、连接到远端Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、购买绑定域名"><span class="nav-number">6.</span> <span class="nav-text">六、购买绑定域名</span></a></li></ol></div>
             
 
           </div>
