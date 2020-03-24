@@ -866,22 +866,28 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
-    <title>数字货币的种类</title>
-    <url>/2020/02/11/%E6%95%B0%E5%AD%97%E8%B4%A7%E5%B8%81%E7%9A%84%E7%A7%8D%E7%B1%BB/</url>
-    <content><![CDATA[<p>当前的数字货币大致有以下几种。</p>
+    <title>区块链简单理解</title>
+    <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>对近年来很火的区块链的简单了解</p>
 <a id="more"></a>
-<p><img src="https://img-blog.csdnimg.cn/20200204160645330.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><strong>BTC：</strong> 比特币</li>
-<li><strong>ETH：</strong> 以太币</li>
-<li><strong>USDT：</strong> 泰达币（与同数量的美元是等值的）</li>
-<li><strong>EOS：</strong> 为商用分布式应用设计的一款区块链操作系统。EOS是引入的一种新的区块链架构，旨在实现分布式应用的性能扩展。注意，它并不是像比特币和以太坊那样的货币，而是基于EOS软件项目之上发布的代币，被称为区块链3.0 。</li>
-<li><strong>XRP：</strong> 瑞波币。它是基于Ripple协议的虚拟货币，主要功能有二：1.防止恶意攻击；2.桥梁货币。</li>
-<li><strong>LTC：</strong> 莱特币。<img src="https://img-blog.csdnimg.cn/20200204161448813.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li><strong>HT：</strong> 火币<br><img src="https://img-blog.csdnimg.cn/20200204161631662.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li><strong>HUSD：</strong> 稳定币<img src="https://img-blog.csdnimg.cn/20200204162140418.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li><strong>BCH：</strong><img src="https://img-blog.csdnimg.cn/20200204162243770.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<h2 id="区块链是什么："><a href="#区块链是什么：" class="headerlink" title="区块链是什么："></a>区块链是什么：</h2><p>区块链是分布式数据存储、点对点传输、共识机制、加密算法等计算机技术的新型应用模式。区块链（Blockchain），是比特币的一个重要概念，它本质上是一个<strong>去中心化的数据库</strong>，同时作为比特币的底层技术，是一串使用密码学方法相关联产生的数据块，每一个数据块中包含了一批次比特币网络交易的信息，用于验证其信息的有效性（防伪）和生成下一个区块。</p>
+<h2 id="起源："><a href="#起源：" class="headerlink" title="起源："></a>起源：</h2><p>区块链起源于比特币，2008年11月1日，一位自称<strong>中本聪</strong>(Satoshi Nakamoto)的人发表了《比特币:一种点对点的电子现金系统》，阐述了<strong>基于P2P网络技术、加密技术、时间戳技术、区块链技术等的电子现金系统的构架理念</strong>，这标志着比特币的诞生。两个月后理论步入实践，2009年1月3日第一个序号为0的创世区块诞生。几天后2009年1月9日出现序号为1的区块，并与序号为0的创世区块相连接形成了链，标志着区块链的诞生。<br>近年来，世界对比特币的态度起起落落，但作为比特币底层技术之一的区块链技术日益受到重视。在比特币形成过程中，区块是一个一个的存储单元，记录了一定时间内各个区块节点全部的交流信息。各个区块之间通过<strong>随机散列(也称哈希算法)</strong> 实现链接，后一个区块包含前一个区块的哈希值，随着信息交流的扩大，一个区块与一个区块相继接续，形成的结果就叫区块链 。</p>
+<h2 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h2><ul>
+<li><strong>从科技层面来看：</strong> 区块链涉及数学、密码学、互联网和计算机编程等很多科学技术问题。</li>
+<li><strong>从应用视角来看：</strong> 区块链是一个分布式的共享账本和数据库，具有去中心化、不可篡改、全程留痕、可以追溯、集体维护、公开透明等特点。这些特点保证了区块链的 <strong>“诚实”</strong> 与 <strong>“透明”</strong> ，为区块链创造信任奠定基础。而区块链丰富的应用场景，基本上都基于区块链能够解决信息不对称问题，实现多个主体之间的协作信任与一致行动。</li>
 </ul>
+<h2 id="类型："><a href="#类型：" class="headerlink" title="类型："></a>类型：</h2><ol>
+<li><strong><em>公有区块链</em></strong>（Public Block Chains)：世界上任何个体或者团体都可以发送交易，且交易能够获得该区块链的有效确认，任何人都可以参与其共识过程。公有区块链是最早的区块链，也是应用最广泛的区块链，各大bitcoins系列的虚拟数字货币均基于公有区块链，世界上<strong>有且仅有一条</strong>该币种对应的区块链。</li>
+<li><strong><em>行业区块链</em></strong>（Consortium Block Chains)：由某个群体<strong>内部指定</strong>多个预选的节点为记账人，每个块的生成由所有的预选节点共同决定（预选节点参与共识过程），其他接入节点可以参与交易，但不过问记账过程(本质上还是托管记账，只是变成分布式记账，预选节点的多少，如何决定每个块的记账者成为该区块链的主要风险点），其他任何人可以通过该区块链开放的API进行限定查询。</li>
+<li><strong><em>私有区块链</em></strong>（Private Block Chains)：仅仅使用区块链的总账技术进行记账，可以是一个公司，也可以是个人，独享该区块链的写入权限，本链与其他的分布式存储方案没有太大区别。传统金融都是想实验尝试私有区块链，而公链的应用例如bitcoin已经工业化，私链的应用产品还在摸索当中。</li>
+</ol>
+<h2 id="特性："><a href="#特性：" class="headerlink" title="特性："></a>特性：</h2><ol>
+<li>去中心化。区块链技术不依赖额外的第三方管理机构或硬件设施，没有中心管制，除了自成一体的区块链本身，通过分布式核算和存储，各个节点实现了信息自我验证、传递和管理。去中心化是区块链最突出最本质的特征。</li>
+<li>开放性。区块链技术基础是<strong>开源的</strong>，除了交易各方的私有信息被加密外，区块链的数据对所有人开放，任何人都可以通过公开的接口查询区块链数据和开发相关应用，因此整个系统信息高度透明。</li>
+<li>独立性。基于协商一致的规范和协议(类似比特币采用的哈希算法等各种数学算法)，整个区块链系统不依赖其他第三方，所有节点能够在系统内自动安全地验证、交换数据，不需要任何人为的干预。</li>
+<li>安全性。只要不能掌控全部数据节点的51%，就无法肆意操控修改网络数据，这使区块链本身变得相对安全，避免了主观人为的数据变更。</li>
+<li>匿名性。除非有法律规范要求，单从技术上来讲，各区块节点的身份信息不需要公开或验证，信息传递可以<strong>匿名进行</strong>。</li>
+</ol>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>
@@ -916,6 +922,42 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
+    <title>火币网--币币交易图解</title>
+    <url>/2020/02/11/%E7%81%AB%E5%B8%81%E7%BD%91-%E5%B8%81%E5%B8%81%E4%BA%A4%E6%98%93%E5%9B%BE%E8%A7%A3/</url>
+    <content><![CDATA[<p>如何在火币网上执行币币交易</p>
+<a id="more"></a>
+<p><img src="https://img-blog.csdnimg.cn/20200205111557755.png" alt="在这里插入图片描述"></p>
+<ul>
+<li><p>BTC/USDT：BTC对USDT的交易对，相当于平均1个BTC当前需要9211.76个USDT来购买，后面的64574.43CNY是说9211.76个USDT约等于64574.43人民币。</p>
+</li>
+<li><p>涨幅+0.01%是今天此时此刻比特币的价格相对于昨天的这个时候价格涨了0.01%，如果是红色的-0.01%就代表跌了0.01%。</p>
+</li>
+<li><p>高9320.00 低9100.00是<strong>过去24小时</strong>最高9320.00USDT最低9100.00USDT。</p>
+</li>
+<li><p>24H量：是过去24小时火币网交易了28878个比特币。这只是在火币网交易的数量。<br><img src="https://img-blog.csdnimg.cn/2020020511252911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+<li><p>上面一排时间是，选择显示这个时间段的数据，比如我选择的是1min，那么k线图中每一个红色或者绿色的柱就代表这一分钟内的走势。</p>
+</li>
+<li><p>时间下面的一排：11：24这个时间点的开盘价，最高价，最低价，收盘价，成交量。</p>
+</li>
+<li><p>MA均线：<strong>（MA）理论是股市最常见的一种技术分析方法，它对股市操作具有神奇的指导作用。</strong></p>
+</li>
+<li><p>绿色柱状：柱底代表开盘价，柱顶代表收盘价，红色则相反。</p>
+</li>
+<li><p>柱上下的细线：上影线，下影线，分别代表在这一分钟内的最高价和最低价。</p>
+</li>
+<li><p>图中标有今日最高，和今日最低。严谨理解为：从今日凌晨到目前为止的最高价与最低价。</p>
+<h2 id="均线分析方法："><a href="#均线分析方法：" class="headerlink" title="均线分析方法："></a>均线分析方法：</h2></li>
+</ul>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>比特币的价格是怎么算出来的</title>
     <url>/2020/02/11/%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E4%BB%B7%E6%A0%BC%E6%98%AF%E6%80%8E%E4%B9%88%E7%AE%97%E5%87%BA%E6%9D%A5%E7%9A%84/</url>
     <content><![CDATA[<p>-</p>
@@ -931,6 +973,31 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
 <li>止盈止损：止盈止损即是<strong>带有预期</strong>的未来买入或者卖出行为，比如当价格跌破某一价位时进行止损（你预期跌破此价格可能还会继续跌），或者当价格突破某一价位时进行买入（你预期价格一旦突破该价位时将会继续上涨）。</li>
 </ul>
 <h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>如果你是买方，想要<strong>尽快</strong>购入比特币，当然是设置买入价格与当前最低卖出价格一致，这样双方就可以达成交易了，想要尽快卖出比特币，那就设置卖出价格与当前最高买入价格一致。但是市场上的人并不是都急切的想要卖出或者买入，会带有预期的进行买入卖出报价。</p>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数字货币的种类</title>
+    <url>/2020/02/11/%E6%95%B0%E5%AD%97%E8%B4%A7%E5%B8%81%E7%9A%84%E7%A7%8D%E7%B1%BB/</url>
+    <content><![CDATA[<p>当前的数字货币大致有以下几种。</p>
+<a id="more"></a>
+<p><img src="https://img-blog.csdnimg.cn/20200204160645330.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>BTC：</strong> 比特币</li>
+<li><strong>ETH：</strong> 以太币</li>
+<li><strong>USDT：</strong> 泰达币（与同数量的美元是等值的）</li>
+<li><strong>EOS：</strong> 为商用分布式应用设计的一款区块链操作系统。EOS是引入的一种新的区块链架构，旨在实现分布式应用的性能扩展。注意，它并不是像比特币和以太坊那样的货币，而是基于EOS软件项目之上发布的代币，被称为区块链3.0 。</li>
+<li><strong>XRP：</strong> 瑞波币。它是基于Ripple协议的虚拟货币，主要功能有二：1.防止恶意攻击；2.桥梁货币。</li>
+<li><strong>LTC：</strong> 莱特币。<img src="https://img-blog.csdnimg.cn/20200204161448813.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li><strong>HT：</strong> 火币<br><img src="https://img-blog.csdnimg.cn/20200204161631662.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li><strong>HUSD：</strong> 稳定币<img src="https://img-blog.csdnimg.cn/20200204162140418.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li><strong>BCH：</strong><img src="https://img-blog.csdnimg.cn/20200204162243770.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>
@@ -1043,73 +1110,6 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
 <li>在股票名称前冠以“ST”的股票表示该上市公司最近两年连续亏损，或亏损一年，但净资产跌破面值、公司经营过程中出现重大违法行为等情况之一，交易所对该公司股票交易进行特别处理。股票交易日涨跌幅限制5%。</li>
 <li><strong>F10：</strong> 股票非行情类的基本面资料统称为股票F10。在各种金融行情终端软件中，用户通过键盘上的F10快捷键，可迅速查看上市公司的非行情信息，诸如：公司概况、财务数据、公司公告、公司新闻、经营分析等等信息数据。</li>
 </ul>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>火币网--币币交易图解</title>
-    <url>/2020/02/11/%E7%81%AB%E5%B8%81%E7%BD%91-%E5%B8%81%E5%B8%81%E4%BA%A4%E6%98%93%E5%9B%BE%E8%A7%A3/</url>
-    <content><![CDATA[<p>如何在火币网上执行币币交易</p>
-<a id="more"></a>
-<p><img src="https://img-blog.csdnimg.cn/20200205111557755.png" alt="在这里插入图片描述"></p>
-<ul>
-<li><p>BTC/USDT：BTC对USDT的交易对，相当于平均1个BTC当前需要9211.76个USDT来购买，后面的64574.43CNY是说9211.76个USDT约等于64574.43人民币。</p>
-</li>
-<li><p>涨幅+0.01%是今天此时此刻比特币的价格相对于昨天的这个时候价格涨了0.01%，如果是红色的-0.01%就代表跌了0.01%。</p>
-</li>
-<li><p>高9320.00 低9100.00是<strong>过去24小时</strong>最高9320.00USDT最低9100.00USDT。</p>
-</li>
-<li><p>24H量：是过去24小时火币网交易了28878个比特币。这只是在火币网交易的数量。<br><img src="https://img-blog.csdnimg.cn/2020020511252911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-</li>
-<li><p>上面一排时间是，选择显示这个时间段的数据，比如我选择的是1min，那么k线图中每一个红色或者绿色的柱就代表这一分钟内的走势。</p>
-</li>
-<li><p>时间下面的一排：11：24这个时间点的开盘价，最高价，最低价，收盘价，成交量。</p>
-</li>
-<li><p>MA均线：<strong>（MA）理论是股市最常见的一种技术分析方法，它对股市操作具有神奇的指导作用。</strong></p>
-</li>
-<li><p>绿色柱状：柱底代表开盘价，柱顶代表收盘价，红色则相反。</p>
-</li>
-<li><p>柱上下的细线：上影线，下影线，分别代表在这一分钟内的最高价和最低价。</p>
-</li>
-<li><p>图中标有今日最高，和今日最低。严谨理解为：从今日凌晨到目前为止的最高价与最低价。</p>
-<h2 id="均线分析方法："><a href="#均线分析方法：" class="headerlink" title="均线分析方法："></a>均线分析方法：</h2></li>
-</ul>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>区块链简单理解</title>
-    <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<p>对近年来很火的区块链的简单了解</p>
-<a id="more"></a>
-<h2 id="区块链是什么："><a href="#区块链是什么：" class="headerlink" title="区块链是什么："></a>区块链是什么：</h2><p>区块链是分布式数据存储、点对点传输、共识机制、加密算法等计算机技术的新型应用模式。区块链（Blockchain），是比特币的一个重要概念，它本质上是一个<strong>去中心化的数据库</strong>，同时作为比特币的底层技术，是一串使用密码学方法相关联产生的数据块，每一个数据块中包含了一批次比特币网络交易的信息，用于验证其信息的有效性（防伪）和生成下一个区块。</p>
-<h2 id="起源："><a href="#起源：" class="headerlink" title="起源："></a>起源：</h2><p>区块链起源于比特币，2008年11月1日，一位自称<strong>中本聪</strong>(Satoshi Nakamoto)的人发表了《比特币:一种点对点的电子现金系统》，阐述了<strong>基于P2P网络技术、加密技术、时间戳技术、区块链技术等的电子现金系统的构架理念</strong>，这标志着比特币的诞生。两个月后理论步入实践，2009年1月3日第一个序号为0的创世区块诞生。几天后2009年1月9日出现序号为1的区块，并与序号为0的创世区块相连接形成了链，标志着区块链的诞生。<br>近年来，世界对比特币的态度起起落落，但作为比特币底层技术之一的区块链技术日益受到重视。在比特币形成过程中，区块是一个一个的存储单元，记录了一定时间内各个区块节点全部的交流信息。各个区块之间通过<strong>随机散列(也称哈希算法)</strong> 实现链接，后一个区块包含前一个区块的哈希值，随着信息交流的扩大，一个区块与一个区块相继接续，形成的结果就叫区块链 。</p>
-<h2 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h2><ul>
-<li><strong>从科技层面来看：</strong> 区块链涉及数学、密码学、互联网和计算机编程等很多科学技术问题。</li>
-<li><strong>从应用视角来看：</strong> 区块链是一个分布式的共享账本和数据库，具有去中心化、不可篡改、全程留痕、可以追溯、集体维护、公开透明等特点。这些特点保证了区块链的 <strong>“诚实”</strong> 与 <strong>“透明”</strong> ，为区块链创造信任奠定基础。而区块链丰富的应用场景，基本上都基于区块链能够解决信息不对称问题，实现多个主体之间的协作信任与一致行动。</li>
-</ul>
-<h2 id="类型："><a href="#类型：" class="headerlink" title="类型："></a>类型：</h2><ol>
-<li><strong><em>公有区块链</em></strong>（Public Block Chains)：世界上任何个体或者团体都可以发送交易，且交易能够获得该区块链的有效确认，任何人都可以参与其共识过程。公有区块链是最早的区块链，也是应用最广泛的区块链，各大bitcoins系列的虚拟数字货币均基于公有区块链，世界上<strong>有且仅有一条</strong>该币种对应的区块链。</li>
-<li><strong><em>行业区块链</em></strong>（Consortium Block Chains)：由某个群体<strong>内部指定</strong>多个预选的节点为记账人，每个块的生成由所有的预选节点共同决定（预选节点参与共识过程），其他接入节点可以参与交易，但不过问记账过程(本质上还是托管记账，只是变成分布式记账，预选节点的多少，如何决定每个块的记账者成为该区块链的主要风险点），其他任何人可以通过该区块链开放的API进行限定查询。</li>
-<li><strong><em>私有区块链</em></strong>（Private Block Chains)：仅仅使用区块链的总账技术进行记账，可以是一个公司，也可以是个人，独享该区块链的写入权限，本链与其他的分布式存储方案没有太大区别。传统金融都是想实验尝试私有区块链，而公链的应用例如bitcoin已经工业化，私链的应用产品还在摸索当中。</li>
-</ol>
-<h2 id="特性："><a href="#特性：" class="headerlink" title="特性："></a>特性：</h2><ol>
-<li>去中心化。区块链技术不依赖额外的第三方管理机构或硬件设施，没有中心管制，除了自成一体的区块链本身，通过分布式核算和存储，各个节点实现了信息自我验证、传递和管理。去中心化是区块链最突出最本质的特征。</li>
-<li>开放性。区块链技术基础是<strong>开源的</strong>，除了交易各方的私有信息被加密外，区块链的数据对所有人开放，任何人都可以通过公开的接口查询区块链数据和开发相关应用，因此整个系统信息高度透明。</li>
-<li>独立性。基于协商一致的规范和协议(类似比特币采用的哈希算法等各种数学算法)，整个区块链系统不依赖其他第三方，所有节点能够在系统内自动安全地验证、交换数据，不需要任何人为的干预。</li>
-<li>安全性。只要不能掌控全部数据节点的51%，就无法肆意操控修改网络数据，这使区块链本身变得相对安全，避免了主观人为的数据变更。</li>
-<li>匿名性。除非有法律规范要求，单从技术上来讲，各区块节点的身份信息不需要公开或验证，信息传递可以<strong>匿名进行</strong>。</li>
-</ol>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>
