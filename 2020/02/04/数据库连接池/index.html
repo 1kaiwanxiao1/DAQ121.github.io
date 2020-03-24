@@ -292,24 +292,144 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://daqwt.top/2020/02/04/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="代澳旗">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DAQ's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">数据库连接池</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>数据库连接池负责分配、管理和释放数据库连接，它允许应用程序重复使用一个现有的数据库连接，而不是再重新建立一个；释放空闲时间超过最大空闲时间的数据库连接来避免因为没有释放数据库连接而引起的数据库连接遗漏。这项技术能明显提高对数据库操作的性能。</p>
+          <h1 class="post-title" itemprop="name headline">数据库连接池</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-04T20:05:03+08:00">
+                2020-02-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数 <i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>数据库连接池负责分配、管理和释放数据库连接，它允许应用程序重复使用一个现有的数据库连接，而不是再重新建立一个；释放空闲时间超过最大空闲时间的数据库连接来避免因为没有释放数据库连接而引起的数据库连接遗漏。这项技术能明显提高对数据库操作的性能。</p>
 <a id="more"></a>
 <h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><ul>
 <li><strong>数据库的连接对象创建工作，比较消耗性能。</strong> </li>
@@ -357,15 +477,145 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">1. 拷贝jar 文件   c3p0-0.9.1.2.jar</span><br><span class="line">2. 不使用配置文件方式（开发的时候不会用）</span><br><span class="line">		//默认会找 xml 中的 default-config 分支。 </span><br><span class="line">		ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">		//2. 设置连接数据的信息</span><br><span class="line">		dataSource.setDriverClass(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		dataSource.setJdbcUrl(<span class="string">"jdbc:mysql://localhost/users"</span>);</span><br><span class="line">		dataSource.setUser(<span class="string">"root"</span>);</span><br><span class="line">		dataSource.setPassword(<span class="string">"daq"</span>);</span><br><span class="line">		//3. 获取连接对象</span><br><span class="line">		conn = dataSource.getConnection();</span><br><span class="line">		String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">		ps.setInt(2,23);</span><br><span class="line"></span><br><span class="line">		ps.executeUpdate();</span><br><span class="line">		...</span><br><span class="line">		</span><br><span class="line">3. 使用配置文件方式。（开发常用）</span><br><span class="line">c3p0的配置文件 支持 properties , 也支持 xml 方式。 不过开发中，一般使用xml方式来配置</span><br><span class="line"></span><br><span class="line">	1.  src下， 创建xml文件，名为：c3p0-config.xml 　注意此处，名字需要固定了。</span><br><span class="line">	&lt;c3p0-config&gt;</span><br><span class="line">  		&lt;default-config&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"driverClass"</span>&gt;com.mysql.jdbc.Driver&lt;/property&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"jdbcUrl"</span>&gt;jdbc:mysql://localhost/user&lt;/property&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"user"</span>&gt;root&lt;/property&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"password"</span>&gt;daq&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">  			&lt;!-- 可选配置 --&gt;</span><br><span class="line">			&lt;property name=<span class="string">"initialPoolSize"</span>&gt;10&lt;/property&gt;   //初始容量</span><br><span class="line">			&lt;property name=<span class="string">"maxIdleTime"</span>&gt;30&lt;/property&gt;		 //</span><br><span class="line">			&lt;property name=<span class="string">"maxPoolSize"</span>&gt;100&lt;/property&gt;		 //最大容量</span><br><span class="line">			&lt;property name=<span class="string">"minPoolSize"</span>&gt;10&lt;/property&gt;		 //最小容量</span><br><span class="line">			&lt;property name=<span class="string">"maxStatement"</span>&gt;200&lt;/property&gt;	 //</span><br><span class="line">  		&lt;/default-config&gt;</span><br><span class="line">	&lt;/c3p0-config&gt;</span><br><span class="line"></span><br><span class="line">		//1. 代码中获取连接dataSource对象</span><br><span class="line">		ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">		//2. 获取连接对象</span><br><span class="line">		conn = dataSource.getConnection();</span><br><span class="line">		String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">		ps.setInt(2,23);</span><br><span class="line">		</span><br><span class="line">		ps.executeUpdate();</span><br></pre></td></tr></table></figure>
 
-        
-      </div>
-      
-      
       
     </div>
     
     
     
+
+      <div>
+    
+         <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------结束啦<i class="fa fa-paw"></i>感谢阅读-------------</div>
+    
+</div>
+    
+      </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持就是给我最大的鼓励，有钱的捧个钱场啦！！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="代澳旗 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="代澳旗 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySql-%E8%BF%9E%E6%8E%A5%E6%B1%A0/" rel="tag"><i class="fa fa-tag"></i> MySql,连接池</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/03/JDBC%E5%AD%A6%E4%B9%A0/" rel="next" title="JDBC学习">
+                <i class="fa fa-chevron-left"></i> JDBC学习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/05/%E4%BA%8B%E5%8A%A1/" rel="prev" title="事务-学习笔记">
+                事务-学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+
+</script>
+
+      
+    </div>
   </div>
 
 
@@ -625,9 +875,6 @@
 
   </div>
 
-  <!--share.js-->
-<link rel="stylesheet" href="/dist/css/share.min.css">
-<script src="/dist/js/social-share.min.js"></script>
 
   
 
