@@ -728,6 +728,153 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
+    <title>git命令大全</title>
+    <url>/2020/02/27/git%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<p>git分布式版本控制工具，在日常的开发中起到了非常重要的作用，掌握一些基本的命令也对工作效率的提高有很大的帮助，下面介绍一些基本的git操作。</p>
+<a id="more"></a>
+<h2 id="一、配置相关"><a href="#一、配置相关" class="headerlink" title="一、配置相关"></a>一、配置相关</h2><ul>
+<li>配置全局帐户，该账户对所有git仓库都有效</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">'你的账户名称'</span></span><br><span class="line">git config --global user.email <span class="string">'你的email'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置局部账户，该账户只对当前Git仓库有效</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --<span class="built_in">local</span> user.name <span class="string">'你的账户名称'</span></span><br><span class="line">git config --<span class="built_in">local</span> user.email <span class="string">'你的email'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看配置情况</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global --list</span><br><span class="line">git config --<span class="built_in">local</span> --list</span><br></pre></td></tr></table></figure>
+<h2 id="二、本地操作"><a href="#二、本地操作" class="headerlink" title="二、本地操作"></a>二、本地操作</h2><h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><p>1.查看变更情况</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p>2.查看当前工作在那个分支上</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -v</span><br></pre></td></tr></table></figure>
+<p>3.切换到指定分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout 指定分支名称</span><br></pre></td></tr></table></figure>
+<p>4.把当前目录及子目录下所有变更都加入到<code>暂存区</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<p>5.把仓库内所有变更都加入到暂存区</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add -A</span><br></pre></td></tr></table></figure>
+<p>6.把指定文件添加到暂存区</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add 文件1 文件2 ... 文件n</span><br></pre></td></tr></table></figure>
+<p>7.创建正式的<code>commit</code>，也就是把当前更改提交，并附加描述</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">"本次提交的描述"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="比较差异"><a href="#比较差异" class="headerlink" title="比较差异"></a>比较差异</h3><p>1.比较某文件工作区和暂存区的差异</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git diff 某文件</span><br></pre></td></tr></table></figure>
+
+<p>2.比较某文件暂存区和HEAD的差异</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git diff --cache 某文件</span><br></pre></td></tr></table></figure>
+<p>3.比较工作区和暂存区的所欲差异</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+<p>4.比较暂存区和HEAD的所有差异</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git diff --cache</span><br></pre></td></tr></table></figure>
+<h3 id="暂存区与工作区之间回滚"><a href="#暂存区与工作区之间回滚" class="headerlink" title="暂存区与工作区之间回滚"></a>暂存区与工作区之间回滚</h3><p>1.把工作区指定文件恢复和暂存区一样</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout 文件1 文件2... 文件n</span><br></pre></td></tr></table></figure>
+<p>2.把暂存区指定文件恢复和HEAD一样</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reset 文件1 文件2 ... 文件n</span><br></pre></td></tr></table></figure>
+<p>3.把暂存区和工作区所有文件恢复和HEAD一样</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reaet --head</span><br></pre></td></tr></table></figure>
+<p>4.用<code>difftool</code>比较两个<code>commit</code>的差异</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git difftool commit1 commit2</span><br></pre></td></tr></table></figure>
+<p>5.查看哪些文件没有被<code>git</code>管控</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git ls-files --others</span><br></pre></td></tr></table></figure>
+
+<p>6.补充：从工作区回滚到暂存区用<code>checkout</code>， 否则用reset</p>
+<h2 id="三、-加塞临时任务处理"><a href="#三、-加塞临时任务处理" class="headerlink" title="三、 加塞临时任务处理"></a>三、 加塞临时任务处理</h2><p>1.把未处理完的变更先保存到<code>stash</code>中</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git stash</span><br></pre></td></tr></table></figure>
+<p>2.临时任务处理处理完之后继续之前的工作</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git stash pop //pop相当于出栈和入栈一样，把之前的任务弹出来</span><br><span class="line">或者</span><br><span class="line">git stash apply //与pop不同的是，apply相当于从栈顶把任务取出来，但是不会从栈中把任务移除</span><br></pre></td></tr></table></figure>
+<p>3.查看所有<code>stash</code>的变更</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git stash list</span><br></pre></td></tr></table></figure>
+<p>4.取回某次<code>stash</code>的变更</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git stash pop stash @｛n｝</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、修改个人分支历史"><a href="#四、修改个人分支历史" class="headerlink" title="四、修改个人分支历史"></a>四、修改个人分支历史</h2><ul>
+<li>仓库在每次变更执行commit的时候，会生成一个新的commit，有时候不想生成新的，只是修改一下之前的，该如何操作呢？</li>
+</ul>
+<p>1.修改最后一次<code>commit</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">在工作区中修改文件 </span><br><span class="line">git add</span><br><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+<p>2.修改第（N）次的<code>commit</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git rebase -i N前面一个commit的id</span><br><span class="line">在工作区修改文件</span><br><span class="line">git add</span><br><span class="line">git rebase --contiue</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、查看变更日志"><a href="#五、查看变更日志" class="headerlink" title="五、查看变更日志"></a>五、查看变更日志</h2><p>1.当前分支的各个commit</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> --online</span><br></pre></td></tr></table></figure>
+<p>2.显示最近n个commit</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> -n</span><br></pre></td></tr></table></figure>
+<p>3.用图示显示所有的历史分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> --online --graph --all</span><br></pre></td></tr></table></figure>
+<p>4.查看涉及到某文件变更的所有commit</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> 某文件</span><br></pre></td></tr></table></figure>
+<p>5.某文件各行最后修改对应的commit以及作者</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git blame 文件名</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、分支与标签"><a href="#六、分支与标签" class="headerlink" title="六、分支与标签"></a>六、分支与标签</h2><h3 id="①创建新分支"><a href="#①创建新分支" class="headerlink" title="①创建新分支"></a>①创建新分支</h3><p>1.基于当前分支创建新分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch 新分支</span><br></pre></td></tr></table></figure>
+<p>2.基于指定分支创建新分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch 新分支 已有分支</span><br></pre></td></tr></table></figure>
+<p>3.基于某个commit创建分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch 新分支 某个commit 的id</span><br></pre></td></tr></table></figure>
+<p>4.创建分支并切换到该分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git cheakout -b 新分支</span><br></pre></td></tr></table></figure>
+<h3 id="②列出分支"><a href="#②列出分支" class="headerlink" title="②列出分支"></a>②列出分支</h3><p>1.列出本地分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -v</span><br></pre></td></tr></table></figure>
+<p>2.列出本地和远端分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -av</span><br></pre></td></tr></table></figure>
+<p>3.列出远端所有分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -rv</span><br></pre></td></tr></table></figure>
+<p>4.列出名称符合某样式的远端分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -rv -l <span class="string">'某样式'</span></span><br></pre></td></tr></table></figure>
+<h3 id="③删除分支"><a href="#③删除分支" class="headerlink" title="③删除分支"></a>③删除分支</h3><p>1.安全删除本地分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -d 要删除的分支</span><br></pre></td></tr></table></figure>
+<p>2.强制删除本地分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -D 分支</span><br></pre></td></tr></table></figure>
+<p>3.删除已经合并到master分支的所有本地分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch --merged master | grep -v <span class="string">'^\*\| master'</span> | xargs -n 1 git branch -d</span><br></pre></td></tr></table></figure>
+<p>4.删除远端origin已不存在的所有本地分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote prune origin</span><br></pre></td></tr></table></figure>
+<p>5.打标签：从commit上打标签</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git tag 标签名 commit 的id</span><br></pre></td></tr></table></figure>
+
+<h2 id="七、两分支之间的集成"><a href="#七、两分支之间的集成" class="headerlink" title="七、两分支之间的集成"></a>七、两分支之间的集成</h2><p>1.把A分支合入到当前分支，且为merge创建commit</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git merge A分支</span><br></pre></td></tr></table></figure>
+<p>2.把A分支和入到B分支，且为Merge创建commit</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git merge A分支 B分支</span><br></pre></td></tr></table></figure>
+<p>3.把当前分支基于B分支作为rebase，以便B分支合入到当前分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git rebase B分支</span><br></pre></td></tr></table></figure>
+<p>4.把A分支基于B分支做rebase，以便B分支合入到A分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git rebase B分支 A分支</span><br></pre></td></tr></table></figure>
+<h2 id="八、和远端交互"><a href="#八、和远端交互" class="headerlink" title="八、和远端交互"></a>八、和远端交互</h2><p>1.列出所有的remote</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<p>2.增加remote</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add URL地址</span><br></pre></td></tr></table></figure>
+<p>3.删除remote </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote remove remote的名称</span><br></pre></td></tr></table></figure>
+<p>4.改变remote的名称</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote rname 旧名称 新名称</span><br></pre></td></tr></table></figure>
+<p>5.把远端所有分支和标签的变更都拉到本地</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git fetch remote</span><br></pre></td></tr></table></figure>
+<p>6.把远端分支变更拉到本地，且merge到本地分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull remote名称 分支名</span><br></pre></td></tr></table></figure>
+<p>7.把本地分支push到远端</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push remote名称 分支名</span><br></pre></td></tr></table></figure>
+<p>8.删除远端分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push remote --delete 远端分支名</span><br><span class="line">或者</span><br><span class="line">git push remote：远端分支名</span><br></pre></td></tr></table></figure>
+<p>9.向远端提交指定标签</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push remote 标签名</span><br></pre></td></tr></table></figure>
+<p>10.向远端提交所有标签</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push remote --tags</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>git+github</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>手写链表</title>
     <url>/2020/02/26/%E6%89%8B%E5%86%99%E9%93%BE%E8%A1%A8/</url>
     <content><![CDATA[<p>看过很多面经，看得出来，数据结构和算法在面试中是很重要的，在之前也听说过，面试过程中，出现手撕代码的场景，而我刚好又看到链表这一章，顺便对链表做一下巩固，也打个预防针，万一真遇到要手写代码的时候，也有了一手准备。</p>

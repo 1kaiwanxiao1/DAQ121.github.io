@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Cookie," />
+  <meta name="keywords" content="git," />
 
 
 
@@ -83,21 +83,17 @@
 
 
 
-<meta name="description" content="类型为“小型文本文件”，是某些网站为了辨别用户身份，进行Session跟踪而储存在用户本地终端上的数据（通常经过加密），由客户端计算机暂时或永久保存的信息。">
+<meta name="description" content="git分布式版本控制工具，在日常的开发中起到了非常重要的作用，掌握一些基本的命令也对工作效率的提高有很大的帮助，下面介绍一些基本的git操作。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="客户端会话技术：Cookie">
-<meta property="og:url" content="http://daqwt.top/2020/02/09/%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ACookie/index.html">
+<meta property="og:title" content="git命令大全">
+<meta property="og:url" content="http://daqwt.top/2020/02/27/git%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/index.html">
 <meta property="og:site_name" content="DAQ&#39;s Blog">
-<meta property="og:description" content="类型为“小型文本文件”，是某些网站为了辨别用户身份，进行Session跟踪而储存在用户本地终端上的数据（通常经过加密），由客户端计算机暂时或永久保存的信息。">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200228143218378.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200228173445822.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020022818005011.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70">
-<meta property="article:published_time" content="2020-02-09T05:01:53.000Z">
-<meta property="article:modified_time" content="2020-03-07T07:54:01.144Z">
+<meta property="og:description" content="git分布式版本控制工具，在日常的开发中起到了非常重要的作用，掌握一些基本的命令也对工作效率的提高有很大的帮助，下面介绍一些基本的git操作。">
+<meta property="article:published_time" content="2020-02-27T07:25:31.000Z">
+<meta property="article:modified_time" content="2020-03-25T08:09:21.158Z">
 <meta property="article:author" content="代澳旗">
-<meta property="article:tag" content="Cookie">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200228143218378.png">
 
 
 
@@ -127,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://daqwt.top/2020/02/09/客户端会话技术：Cookie/"/>
+  <link rel="canonical" href="http://daqwt.top/2020/02/27/git命令大全/"/>
 
 
 
 
 
-  <title>客户端会话技术：Cookie | DAQ's Blog</title>
+  <title>git命令大全 | DAQ's Blog</title>
   
 
 
@@ -306,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://daqwt.top/2020/02/09/%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ACookie/">
+    <link itemprop="mainEntityOfPage" href="http://daqwt.top/2020/02/27/git%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="代澳旗">
@@ -323,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">客户端会话技术：Cookie</h1>
+          <h1 class="post-title" itemprop="name headline">git命令大全</h1>
         
 
         <div class="post-meta">
@@ -335,8 +331,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-09T13:01:53+08:00">
-                2020-02-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-27T15:25:31+08:00">
+                2020-02-27
               </time>
             
 
@@ -358,8 +354,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
-                    <span itemprop="name">Java Web</span>
+                  <a href="/categories/git-github/" itemprop="url" rel="index">
+                    <span itemprop="name">git+github</span>
                   </a>
                 </span>
 
@@ -394,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  1.4k
                 </span>
               
 
@@ -410,7 +406,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  5
                 </span>
               
             </div>
@@ -431,42 +427,142 @@
       
 
       
-        <p>类型为“小型文本文件”，是某些网站为了辨别用户身份，进行Session跟踪而储存在用户本地终端上的数据（通常经过加密），由客户端计算机暂时或永久保存的信息。</p>
+        <p>git分布式版本控制工具，在日常的开发中起到了非常重要的作用，掌握一些基本的命令也对工作效率的提高有很大的帮助，下面介绍一些基本的git操作。</p>
 <a id="more"></a>
-<h2 id="Cookie概述"><a href="#Cookie概述" class="headerlink" title="Cookie概述"></a>Cookie概述</h2><ul>
-<li><strong>概述：</strong> 一份小数据， 是服务器给客户端，并且存储在客户端上的一份小数据</li>
-<li><strong>应用场景：</strong> 自动登录、浏览记录、购物车。</li>
-<li><strong>为什么要有这个Cookie：</strong>  http的请求是无状态。 客户端与服务器在通讯的时候，是无状态的，其实就是客户端在第二次来访的时候，服务器根本就不知道这个客户端以前有没有来访问过。 为了更好的用户体验，更好的交互 <strong>[自动登录]</strong>，其实从公司层面讲，就是为了更好的收集用户习惯 <strong>[大数据]</strong>。</li>
+<h2 id="一、配置相关"><a href="#一、配置相关" class="headerlink" title="一、配置相关"></a>一、配置相关</h2><ul>
+<li>配置全局帐户，该账户对所有git仓库都有效</li>
 </ul>
-<h2 id="如何使用Cookie"><a href="#如何使用Cookie" class="headerlink" title="如何使用Cookie"></a>如何使用Cookie</h2><h3 id="发送Cookie给客户端"><a href="#发送Cookie给客户端" class="headerlink" title="发送Cookie给客户端"></a>发送Cookie给客户端</h3><ol>
-<li>在响应的时候，添加cookie</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Cookie cookie = new Cookie(<span class="string">"aa"</span>, <span class="string">"bb"</span>);</span><br><span class="line"></span><br><span class="line">	//给响应，添加一个cookie</span><br><span class="line">	response.addCookie(cookie);</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>客户端收到的信息里面，响应头中多了一个字段 Set-Cookie</li>
-</ol>
-<p><img src="https://img-blog.csdnimg.cn/20200228143218378.png" alt="在这里插入图片描述"></p>
-<h3 id="获取客户端带过来的Cookie"><a href="#获取客户端带过来的Cookie" class="headerlink" title="获取客户端带过来的Cookie"></a>获取客户端带过来的Cookie</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//获取客户端带过来的cookie</span><br><span class="line">Cookie[] cookies = request.getCookies();</span><br><span class="line">	<span class="keyword">if</span>(cookies != null)&#123;</span><br><span class="line">		<span class="keyword">for</span> (Cookie c : cookies) &#123;</span><br><span class="line">			String cookieName = c.getName();</span><br><span class="line">			String cookieValue = c.getValue();</span><br><span class="line">			System.out.println(cookieName + <span class="string">" = "</span>+ cookieValue);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//关闭浏览器后，cookie就没有了。 ---&gt; 针对没有设置cookie的有效期。</span><br><span class="line">//	expiry： 有效 以秒计算。</span><br><span class="line">//正值： 表示 在这个数字过后，cookie将会失效。</span><br><span class="line">//负值： 关闭浏览器，那么cookie就失效， 默认值是 -1</span><br><span class="line">cookie.setMaxAge(60 * 60 * 24 * 7);</span><br><span class="line">		</span><br><span class="line">//赋值新的值</span><br><span class="line">cookie.setValue(newValue);</span><br><span class="line">		</span><br><span class="line">//用于指定只有请求了指定的域名，才会带上该cookie</span><br><span class="line">cookie.setDomain(<span class="string">".itheima.com"</span>);</span><br><span class="line">		</span><br><span class="line">//只有访问该域名下的cookieDemo的这个路径地址才会带cookie</span><br><span class="line">cookie.setPath(<span class="string">"/CookieDemo"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="典型案例："><a href="#典型案例：" class="headerlink" title="典型案例："></a>典型案例：</h2><h3 id="显示最近访问的时间"><a href="#显示最近访问的时间" class="headerlink" title="显示最近访问的时间"></a>显示最近访问的时间</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">1. 判断账号是否正确</span><br><span class="line">2. 如果正确，则获取cookie。 但是得到的cookie是一个数组， 我们要从数组里面找到我们想要的对象。</span><br><span class="line">3. 如果找到的对象为空，表明是第一次登录。那么要添加cookie</span><br><span class="line">4. 如果找到的对象不为空， 表明不是第一次登录。 </span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(<span class="string">"admin"</span>.equals(userName) &amp;&amp; <span class="string">"123"</span>.equals(password))&#123;</span><br><span class="line">		//获取cookie last-name --- &gt;</span><br><span class="line">		Cookie [] cookies = request.getCookies();</span><br><span class="line">			</span><br><span class="line">		//从数组里面找出我们想要的cookie</span><br><span class="line">		Cookie cookie = CookieUtil.findCookie(cookies, <span class="string">"last"</span>);</span><br><span class="line">			</span><br><span class="line">		//是第一次登录，没有cookie</span><br><span class="line">		<span class="keyword">if</span>(cookie == null)&#123;</span><br><span class="line">				</span><br><span class="line">			Cookie c = new Cookie(<span class="string">"last"</span>, System.currentTimeMillis()+<span class="string">""</span>);</span><br><span class="line">			c.setMaxAge(60*60); //一个小时</span><br><span class="line">			response.addCookie(c);</span><br><span class="line">				</span><br><span class="line">			response.getWriter().write(<span class="string">"欢迎您, "</span>+userName);</span><br><span class="line">				</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			//1. 去以前的cookie第二次登录，有cookie</span><br><span class="line">			long lastVisitTime = Long.parseLong(cookie.getValue());</span><br><span class="line">				</span><br><span class="line">			//2. 输出到界面，</span><br><span class="line">			response.getWriter().write(<span class="string">"欢迎您, "</span>+userName +<span class="string">",上次来访时间是："</span>+new Date(lastVisitTime));</span><br><span class="line">				</span><br><span class="line">			//3. 重置登录的时间</span><br><span class="line">			cookie.setValue(System.currentTimeMillis()+<span class="string">""</span>);</span><br><span class="line">			response.addCookie(cookie);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		response.getWriter().write(<span class="string">"登陆失败 "</span>);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="显示商品浏览记录"><a href="#显示商品浏览记录" class="headerlink" title="显示商品浏览记录"></a>显示商品浏览记录</h3><p><img src="https://img-blog.csdnimg.cn/20200228173445822.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">'你的账户名称'</span></span><br><span class="line">git config --global user.email <span class="string">'你的email'</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li><strong>jsp</strong><br>Java Server Pager —&gt; 最终会翻译成一个类， 就是一个Servlet</li>
+<li>配置局部账户，该账户只对当前Git仓库有效</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">jsp中写java代码：</span><br><span class="line">	&lt;%</span><br><span class="line">		只能写java代码</span><br><span class="line">	%&gt;</span><br><span class="line">定义全局变量:</span><br><span class="line">	&lt;%! int a = 99; %&gt;</span><br><span class="line"></span><br><span class="line">定义局部变量:</span><br><span class="line">	&lt;% int b = 999; %&gt;</span><br><span class="line"></span><br><span class="line">在jsp页面上，显示 a 和 b的值:</span><br><span class="line">	&lt;%=a %&gt; </span><br><span class="line">	&lt;%=b %&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>删除浏览记录</strong><br><img src="https://img-blog.csdnimg.cn/2020022818005011.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>清除浏览记录</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="built_in">local</span> user.name <span class="string">'你的账户名称'</span></span><br><span class="line">git config --<span class="built_in">local</span> user.email <span class="string">'你的email'</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>其实就是清除Cookie， 删除cookie是没有什么delete方法的。只有设置maxAge 为0 。</li>
+<li>查看配置情况</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Cookie cookie = new Cookie(<span class="string">"history"</span>,<span class="string">""</span>);</span><br><span class="line">cookie.setMaxAge(0); //设置立即删除</span><br><span class="line">cookie.setPath(<span class="string">"/CookieDemo02"</span>);</span><br><span class="line">response.addCookie(cookie);</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --list</span><br><span class="line">git config --<span class="built_in">local</span> --list</span><br></pre></td></tr></table></figure>
+<h2 id="二、本地操作"><a href="#二、本地操作" class="headerlink" title="二、本地操作"></a>二、本地操作</h2><h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><p>1.查看变更情况</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p>2.查看当前工作在那个分支上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -v</span><br></pre></td></tr></table></figure>
+<p>3.切换到指定分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 指定分支名称</span><br></pre></td></tr></table></figure>
+<p>4.把当前目录及子目录下所有变更都加入到<code>暂存区</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<p>5.把仓库内所有变更都加入到暂存区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add -A</span><br></pre></td></tr></table></figure>
+<p>6.把指定文件添加到暂存区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add 文件1 文件2 ... 文件n</span><br></pre></td></tr></table></figure>
+<p>7.创建正式的<code>commit</code>，也就是把当前更改提交，并附加描述</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">"本次提交的描述"</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.服务器给客户端发送过来的一小份数据，并且存放在客户端上。</p>
-<p>2.获取cookie， 添加cookie</p>
-<pre><code>request.getCookie();
+<h3 id="比较差异"><a href="#比较差异" class="headerlink" title="比较差异"></a>比较差异</h3><p>1.比较某文件工作区和暂存区的差异</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff 某文件</span><br></pre></td></tr></table></figure>
 
-response.addCookie();</code></pre><p>3.Cookie分类</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">会话Cookie</span><br><span class="line">	默认情况下，关闭了浏览器，那么cookie就会消失。</span><br><span class="line"></span><br><span class="line">持久Cookie</span><br><span class="line">	在一定时间内，都有效，并且会保存在客户端上。 </span><br><span class="line">		cookie.setMaxAge(0); //设置立即删除</span><br><span class="line">		cookie.setMaxAge(100); //100 秒</span><br></pre></td></tr></table></figure>
-<p>4.Cookie的安全问题。<br>由于Cookie会保存在客户端上，所以有安全隐患问题。  还有一个问题， Cookie的大小与个数有限制。 为了解决这个问题 —&gt; <strong>Session .</strong></p>
+<p>2.比较某文件暂存区和HEAD的差异</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --cache 某文件</span><br></pre></td></tr></table></figure>
+<p>3.比较工作区和暂存区的所欲差异</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+<p>4.比较暂存区和HEAD的所有差异</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --cache</span><br></pre></td></tr></table></figure>
+<h3 id="暂存区与工作区之间回滚"><a href="#暂存区与工作区之间回滚" class="headerlink" title="暂存区与工作区之间回滚"></a>暂存区与工作区之间回滚</h3><p>1.把工作区指定文件恢复和暂存区一样</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 文件1 文件2... 文件n</span><br></pre></td></tr></table></figure>
+<p>2.把暂存区指定文件恢复和HEAD一样</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset 文件1 文件2 ... 文件n</span><br></pre></td></tr></table></figure>
+<p>3.把暂存区和工作区所有文件恢复和HEAD一样</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reaet --head</span><br></pre></td></tr></table></figure>
+<p>4.用<code>difftool</code>比较两个<code>commit</code>的差异</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git difftool commit1 commit2</span><br></pre></td></tr></table></figure>
+<p>5.查看哪些文件没有被<code>git</code>管控</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git ls-files --others</span><br></pre></td></tr></table></figure>
+
+<p>6.补充：从工作区回滚到暂存区用<code>checkout</code>， 否则用reset</p>
+<h2 id="三、-加塞临时任务处理"><a href="#三、-加塞临时任务处理" class="headerlink" title="三、 加塞临时任务处理"></a>三、 加塞临时任务处理</h2><p>1.把未处理完的变更先保存到<code>stash</code>中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br></pre></td></tr></table></figure>
+<p>2.临时任务处理处理完之后继续之前的工作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash pop //pop相当于出栈和入栈一样，把之前的任务弹出来</span><br><span class="line">或者</span><br><span class="line">git stash apply //与pop不同的是，apply相当于从栈顶把任务取出来，但是不会从栈中把任务移除</span><br></pre></td></tr></table></figure>
+<p>3.查看所有<code>stash</code>的变更</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash list</span><br></pre></td></tr></table></figure>
+<p>4.取回某次<code>stash</code>的变更</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash pop stash @｛n｝</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、修改个人分支历史"><a href="#四、修改个人分支历史" class="headerlink" title="四、修改个人分支历史"></a>四、修改个人分支历史</h2><ul>
+<li>仓库在每次变更执行commit的时候，会生成一个新的commit，有时候不想生成新的，只是修改一下之前的，该如何操作呢？</li>
+</ul>
+<p>1.修改最后一次<code>commit</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在工作区中修改文件 </span><br><span class="line">git add</span><br><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+<p>2.修改第（N）次的<code>commit</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i N前面一个commit的id</span><br><span class="line">在工作区修改文件</span><br><span class="line">git add</span><br><span class="line">git rebase --contiue</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、查看变更日志"><a href="#五、查看变更日志" class="headerlink" title="五、查看变更日志"></a>五、查看变更日志</h2><p>1.当前分支的各个commit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --online</span><br></pre></td></tr></table></figure>
+<p>2.显示最近n个commit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> -n</span><br></pre></td></tr></table></figure>
+<p>3.用图示显示所有的历史分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --online --graph --all</span><br></pre></td></tr></table></figure>
+<p>4.查看涉及到某文件变更的所有commit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> 某文件</span><br></pre></td></tr></table></figure>
+<p>5.某文件各行最后修改对应的commit以及作者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git blame 文件名</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、分支与标签"><a href="#六、分支与标签" class="headerlink" title="六、分支与标签"></a>六、分支与标签</h2><h3 id="①创建新分支"><a href="#①创建新分支" class="headerlink" title="①创建新分支"></a>①创建新分支</h3><p>1.基于当前分支创建新分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 新分支</span><br></pre></td></tr></table></figure>
+<p>2.基于指定分支创建新分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 新分支 已有分支</span><br></pre></td></tr></table></figure>
+<p>3.基于某个commit创建分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 新分支 某个commit 的id</span><br></pre></td></tr></table></figure>
+<p>4.创建分支并切换到该分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cheakout -b 新分支</span><br></pre></td></tr></table></figure>
+<h3 id="②列出分支"><a href="#②列出分支" class="headerlink" title="②列出分支"></a>②列出分支</h3><p>1.列出本地分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -v</span><br></pre></td></tr></table></figure>
+<p>2.列出本地和远端分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -av</span><br></pre></td></tr></table></figure>
+<p>3.列出远端所有分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -rv</span><br></pre></td></tr></table></figure>
+<p>4.列出名称符合某样式的远端分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -rv -l <span class="string">'某样式'</span></span><br></pre></td></tr></table></figure>
+<h3 id="③删除分支"><a href="#③删除分支" class="headerlink" title="③删除分支"></a>③删除分支</h3><p>1.安全删除本地分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d 要删除的分支</span><br></pre></td></tr></table></figure>
+<p>2.强制删除本地分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -D 分支</span><br></pre></td></tr></table></figure>
+<p>3.删除已经合并到master分支的所有本地分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --merged master | grep -v <span class="string">'^\*\| master'</span> | xargs -n 1 git branch -d</span><br></pre></td></tr></table></figure>
+<p>4.删除远端origin已不存在的所有本地分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote prune origin</span><br></pre></td></tr></table></figure>
+<p>5.打标签：从commit上打标签</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag 标签名 commit 的id</span><br></pre></td></tr></table></figure>
+
+<h2 id="七、两分支之间的集成"><a href="#七、两分支之间的集成" class="headerlink" title="七、两分支之间的集成"></a>七、两分支之间的集成</h2><p>1.把A分支合入到当前分支，且为merge创建commit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge A分支</span><br></pre></td></tr></table></figure>
+<p>2.把A分支和入到B分支，且为Merge创建commit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge A分支 B分支</span><br></pre></td></tr></table></figure>
+<p>3.把当前分支基于B分支作为rebase，以便B分支合入到当前分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase B分支</span><br></pre></td></tr></table></figure>
+<p>4.把A分支基于B分支做rebase，以便B分支合入到A分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase B分支 A分支</span><br></pre></td></tr></table></figure>
+<h2 id="八、和远端交互"><a href="#八、和远端交互" class="headerlink" title="八、和远端交互"></a>八、和远端交互</h2><p>1.列出所有的remote</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<p>2.增加remote</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add URL地址</span><br></pre></td></tr></table></figure>
+<p>3.删除remote </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote remove remote的名称</span><br></pre></td></tr></table></figure>
+<p>4.改变remote的名称</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rname 旧名称 新名称</span><br></pre></td></tr></table></figure>
+<p>5.把远端所有分支和标签的变更都拉到本地</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch remote</span><br></pre></td></tr></table></figure>
+<p>6.把远端分支变更拉到本地，且merge到本地分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull remote名称 分支名</span><br></pre></td></tr></table></figure>
+<p>7.把本地分支push到远端</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push remote名称 分支名</span><br></pre></td></tr></table></figure>
+<p>8.删除远端分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push remote --delete 远端分支名</span><br><span class="line">或者</span><br><span class="line">git push remote：远端分支名</span><br></pre></td></tr></table></figure>
+<p>9.向远端提交指定标签</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push remote 标签名</span><br></pre></td></tr></table></figure>
+<p>10.向远端提交所有标签</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push remote --tags</span><br></pre></td></tr></table></figure>
+
+
+
 
       
     </div>
@@ -523,7 +619,7 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       
         <div class="post-tags">
           
-            <a href="/tags/Cookie/" rel="tag"><i class="fa fa-tag"></i> Cookie</a>
+            <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
           
         </div>
       
@@ -536,8 +632,8 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/09/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ASession/" rel="next" title="服务器端会话技术：Session">
-                <i class="fa fa-chevron-left"></i> 服务器端会话技术：Session
+              <a href="/2020/02/26/%E6%89%8B%E5%86%99%E9%93%BE%E8%A1%A8/" rel="next" title="手写链表">
+                <i class="fa fa-chevron-left"></i> 手写链表
               </a>
             
           </div>
@@ -546,8 +642,8 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/02/11/%E8%82%A1%E7%A5%A8%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD/" rel="prev" title="股票基本术语">
-                股票基本术语 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/10/JSP-MVC/" rel="prev" title="JSP模式&&MVC模式">
+                JSP模式&&MVC模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -797,7 +893,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie概述"><span class="nav-number">1.</span> <span class="nav-text">Cookie概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用Cookie"><span class="nav-number">2.</span> <span class="nav-text">如何使用Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#发送Cookie给客户端"><span class="nav-number">2.1.</span> <span class="nav-text">发送Cookie给客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取客户端带过来的Cookie"><span class="nav-number">2.2.</span> <span class="nav-text">获取客户端带过来的Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用方法"><span class="nav-number">2.3.</span> <span class="nav-text">常用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#典型案例："><span class="nav-number">3.</span> <span class="nav-text">典型案例：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#显示最近访问的时间"><span class="nav-number">3.1.</span> <span class="nav-text">显示最近访问的时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示商品浏览记录"><span class="nav-number">3.2.</span> <span class="nav-text">显示商品浏览记录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、配置相关"><span class="nav-number">1.</span> <span class="nav-text">一、配置相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、本地操作"><span class="nav-number">2.</span> <span class="nav-text">二、本地操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础操作"><span class="nav-number">2.1.</span> <span class="nav-text">基础操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较差异"><span class="nav-number">2.2.</span> <span class="nav-text">比较差异</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#暂存区与工作区之间回滚"><span class="nav-number">2.3.</span> <span class="nav-text">暂存区与工作区之间回滚</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、-加塞临时任务处理"><span class="nav-number">3.</span> <span class="nav-text">三、 加塞临时任务处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、修改个人分支历史"><span class="nav-number">4.</span> <span class="nav-text">四、修改个人分支历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、查看变更日志"><span class="nav-number">5.</span> <span class="nav-text">五、查看变更日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、分支与标签"><span class="nav-number">6.</span> <span class="nav-text">六、分支与标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#①创建新分支"><span class="nav-number">6.1.</span> <span class="nav-text">①创建新分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#②列出分支"><span class="nav-number">6.2.</span> <span class="nav-text">②列出分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#③删除分支"><span class="nav-number">6.3.</span> <span class="nav-text">③删除分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、两分支之间的集成"><span class="nav-number">7.</span> <span class="nav-text">七、两分支之间的集成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、和远端交互"><span class="nav-number">8.</span> <span class="nav-text">八、和远端交互</span></a></li></ol></div>
             
 
           </div>
