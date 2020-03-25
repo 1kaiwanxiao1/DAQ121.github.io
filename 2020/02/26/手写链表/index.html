@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Http协议," />
+  <meta name="keywords" content="链表," />
 
 
 
@@ -83,17 +83,25 @@
 
 
 
-<meta name="description" content="http协议：针对网络上的客户端 与 服务器端在执行http请求的时候，遵守的一种规范。 规定了客户端在访问服务器端的时候,服务器端返回数据的时候，要带上什么东西。">
+<meta name="description" content="看过很多面经，看得出来，数据结构和算法在面试中是很重要的，在之前也听说过，面试过程中，出现手撕代码的场景，而我刚好又看到链表这一章，顺便对链表做一下巩固，也打个预防针，万一真遇到要手写代码的时候，也有了一手准备。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Http协议&amp;C&#x2F;S通讯抓包">
-<meta property="og:url" content="http://daqwt.top/2020/02/08/Http%E5%8D%8F%E8%AE%AE-C-S%E9%80%9A%E8%AE%AF%E6%8A%93%E5%8C%85/index.html">
+<meta property="og:title" content="手写链表">
+<meta property="og:url" content="http://daqwt.top/2020/02/26/%E6%89%8B%E5%86%99%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="DAQ&#39;s Blog">
-<meta property="og:description" content="http协议：针对网络上的客户端 与 服务器端在执行http请求的时候，遵守的一种规范。 规定了客户端在访问服务器端的时候,服务器端返回数据的时候，要带上什么东西。">
-<meta property="article:published_time" content="2020-02-08T05:01:53.000Z">
-<meta property="article:modified_time" content="2020-03-07T07:40:10.565Z">
+<meta property="og:description" content="看过很多面经，看得出来，数据结构和算法在面试中是很重要的，在之前也听说过，面试过程中，出现手撕代码的场景，而我刚好又看到链表这一章，顺便对链表做一下巩固，也打个预防针，万一真遇到要手写代码的时候，也有了一手准备。">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200325114240567.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200325114318953.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200325115953914.gif">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200325120116456.gif">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200325120224691.gif">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200325120407492.gif">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200325120504135.gif">
+<meta property="article:published_time" content="2020-02-26T04:15:26.000Z">
+<meta property="article:modified_time" content="2020-03-25T04:20:45.106Z">
 <meta property="article:author" content="代澳旗">
-<meta property="article:tag" content="Http协议">
+<meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200325114240567.png">
 
 
 
@@ -123,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://daqwt.top/2020/02/08/Http协议-C-S通讯抓包/"/>
+  <link rel="canonical" href="http://daqwt.top/2020/02/26/手写链表/"/>
 
 
 
 
 
-  <title>Http协议&C/S通讯抓包 | DAQ's Blog</title>
+  <title>手写链表 | DAQ's Blog</title>
   
 
 
@@ -302,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://daqwt.top/2020/02/08/Http%E5%8D%8F%E8%AE%AE-C-S%E9%80%9A%E8%AE%AF%E6%8A%93%E5%8C%85/">
+    <link itemprop="mainEntityOfPage" href="http://daqwt.top/2020/02/26/%E6%89%8B%E5%86%99%E9%93%BE%E8%A1%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="代澳旗">
@@ -319,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Http协议&C/S通讯抓包</h1>
+          <h1 class="post-title" itemprop="name headline">手写链表</h1>
         
 
         <div class="post-meta">
@@ -331,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-08T13:01:53+08:00">
-                2020-02-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-26T12:15:26+08:00">
+                2020-02-26
               </time>
             
 
@@ -354,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
-                    <span itemprop="name">Java Web</span>
+                  <a href="/categories/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index">
+                    <span itemprop="name">每天一道面试题</span>
                   </a>
                 </span>
 
@@ -390,7 +398,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
+                  1.2k
                 </span>
               
 
@@ -427,69 +435,56 @@
       
 
       
-        <p>http协议：针对网络上的客户端 与 服务器端在执行http请求的时候，遵守的一种规范。 规定了客户端在访问服务器端的时候,服务器端返回数据的时候，要带上什么东西。</p>
+        <p>看过很多面经，看得出来，数据结构和算法在面试中是很重要的，在之前也听说过，面试过程中，出现手撕代码的场景，而我刚好又看到链表这一章，顺便对链表做一下巩固，也打个预防针，万一真遇到要手写代码的时候，也有了一手准备。</p>
 <a id="more"></a>
-<h1 id="一、Http协议"><a href="#一、Http协议" class="headerlink" title="一、Http协议"></a>一、Http协议</h1><ul>
-<li>什么是协议？<br>双方在交互、通讯的时候， 遵守的一种规范、规则。</li>
-<li>http协议概述<br>针对网络上的客户端 与 服务器端在执行http请求的时候，遵守的一种规范。 其实就是规定了客户端在访问服务器端的时候，要带上哪些东西， 服务器端返回数据的时候，也要带上什么东西。 </li>
-<li>版本<br> 1.0：请求数据，服务器返回后， 将会断开连接。<br> 1.1：请求数据，服务器返回后， 连接还会保持着。 除非服务器 | 客户端 关掉。 有一定的时间限制，如果都空着这个连接，那么后面会自己断掉。</li>
-</ul>
-<h1 id="二、演示客户端-如何-与服务器端通讯。"><a href="#二、演示客户端-如何-与服务器端通讯。" class="headerlink" title="二、演示客户端 如何 与服务器端通讯。"></a>二、演示客户端 如何 与服务器端通讯。</h1><p>问题： 在地址栏中键入网络地址 回车  或者是平常注册的时候，点击了注册按钮 ， 浏览器都能显示出来一些东西。那么背地里到底浏览器和服务器是怎么通讯。 它们都传输了哪些数据？</p>
-<ul>
-<li><p>安装抓包工具 HttpWatch (IE插件)</p>
-</li>
-<li><p>打开tomcat. 输入localhost:8080 打开首页</p>
-</li>
-<li><p>在首页上找到Example—&gt;选择 Servlet Examples—&gt; Request Parameter</p>
-</li>
-<li><p>接着点击Request  Parameters 的 Execute超链接，会出现请求参数示例</p>
-</li>
-<li><p>执行tomcat的例子，然后查看浏览器和 tomcat服务器的对接细节</p>
-</li>
-</ul>
-<h1 id="三、Http请求数据解释"><a href="#三、Http请求数据解释" class="headerlink" title="三、Http请求数据解释"></a>三、Http请求数据解释</h1><ul>
-<li><strong>请求的数据里面包含三个部分内容 ： 请求行 、 请求头 、请求体</strong></li>
-<li>请求行：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">POST /examples/servlets/servlet/RequestParamExample HTTP/1.1 </span><br><span class="line"></span><br><span class="line">		POST ： 请求方式 ，以post去提交数据</span><br><span class="line">			</span><br><span class="line">		/examples/servlets/servlet/RequestParamExample</span><br><span class="line">		请求的地址路径 ， 就是要访问哪个地方。</span><br><span class="line">	</span><br><span class="line">		HTTP/1.1 协议版本</span><br></pre></td></tr></table></figure>
 
+<h2 id="一、链表结构"><a href="#一、链表结构" class="headerlink" title="一、链表结构"></a>一、链表结构</h2><p><img src="https://img-blog.csdnimg.cn/20200325114240567.png" alt="在这里插入图片描述"></p>
 <ul>
-<li>请求头：</li>
+<li>每个节点结构是由数据域和指针域组成，数据域是存放数据的，而指针域存放下一结点的地址。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Accept: application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, */*</span><br><span class="line">		Referer: http://localhost:8080/examples/servlets/servlet/RequestParamExample</span><br><span class="line">		Accept-Language: zh-CN</span><br><span class="line">		User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)</span><br><span class="line">		Content-Type: application/x-www-form-urlencoded</span><br><span class="line">		Accept-Encoding: gzip, deflate</span><br><span class="line">		Host: localhost:8080</span><br><span class="line">		Content-Length: 31</span><br><span class="line">		Connection: Keep-Alive</span><br><span class="line">		Cache-Control: no-cache</span><br><span class="line"></span><br><span class="line">		Accept: 客户端向服务器端表示，我能支持什么类型的数据。 </span><br><span class="line">		Referer ： 真正请求的地址路径，全路径</span><br><span class="line">		Accept-Language: 支持语言格式</span><br><span class="line">		User-Agent: 用户代理 向服务器表明，当前来访的客户端信息。 </span><br><span class="line">		Content-Type： 提交的数据类型。经过urlencoding编码的form表单的数据</span><br><span class="line">		Accept-Encoding： gzip, deflate ： 压缩算法 。 </span><br><span class="line">		Host ： 主机地址</span><br><span class="line">		Content-Length： 数据长度</span><br><span class="line">		Connection : Keep-Alive 保持连接</span><br><span class="line">		Cache-Control ： 对缓存的操作</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200325114318953.png" alt="在这里插入图片描述"></p>
 <ul>
-<li>请求体：</li>
+<li>但是不可能只有一个节点呀，这时候就使用 Class 来声明一个类，为类添加两个属性，一个属性是存放数据的属性data，另一个属性是存放指向下一个结点的指针属性next。这样就可以创造出多个结点实例。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">浏览器真正发送给服务器的数据 </span><br><span class="line">	</span><br><span class="line">	发送的数据呈现的是key=value ,如果存在多个数据，那么使用 &amp;</span><br><span class="line"></span><br><span class="line">	firstname=zhang&amp;lastname=sansan</span><br></pre></td></tr></table></figure>
-<h1 id="四、Http响应数据解析"><a href="#四、Http响应数据解析" class="headerlink" title="四、Http响应数据解析"></a>四、Http响应数据解析</h1><ul>
-<li><strong>请求的数据里面包含三个部分内容 ： 响应行 、 响应头 、响应体</strong></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: Apache-Coyote/1.1</span><br><span class="line">Content-Type: text/html;charset=ISO-8859-1</span><br><span class="line">Content-Length: 673</span><br><span class="line">Date: Fri, 17 Feb 2017 02:53:02 GMT</span><br><span class="line"></span><br><span class="line">...这里还有很多数据...</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Node&#123;</span><br><span class="line">   constructor(data)&#123;</span><br><span class="line">        this.data = data;</span><br><span class="line">        this.next = null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>响应行：第一行</li>
+<h2 id="二、插入删除"><a href="#二、插入删除" class="headerlink" title="二、插入删除"></a>二、插入删除</h2><ul>
+<li>插入到单链表的头部</li>
+<li>插入到中间</li>
+<li>插入到尾部</li>
+<li>删除头部节点</li>
+<li>删除中间节点</li>
+<li>删除尾部节点</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line"></span><br><span class="line">		协议版本  </span><br><span class="line">		状态码 </span><br><span class="line">			咱们这次交互到底是什么样结果的一个code. </span><br><span class="line">			200 : 成功，正常处理，得到数据。</span><br><span class="line">			403  : <span class="keyword">for</span> bidden  拒绝</span><br><span class="line">			404 ： Not Found</span><br><span class="line">			500 ： 服务器异常</span><br><span class="line">		OK</span><br><span class="line">			对应前面的状态码</span><br></pre></td></tr></table></figure>
+<h2 id="三、边界条件"><a href="#三、边界条件" class="headerlink" title="三、边界条件"></a>三、边界条件</h2><ul>
+<li><p><strong>输入边界：</strong><br>先考虑用户输入的参数，比如传入一个链表，我们首先要判断链表是否为空，如果为空我们就不能让它执行下边的程序。再比如插入一个结点到指定结点的后边，那么你也要判断输入的结点是否为空，而且还要判断该结点是否存在该链表中。对于这些输入值的判断，就叫做输入边界。</p>
+</li>
+<li><p><strong>特殊边界：</strong><br>考虑到一些特殊情况，比如插入数据，我们插入数据一般考虑到插入尾部，但要是插入到头部，插入尾部的代码并不适用于插入到头部，所以呢需要考虑这种情况，删除节点也是同样要考虑这种情况。其实特殊边界最主要考虑到一些逻辑上的特殊情况。</p>
+</li>
+</ul>
+<h2 id="四、示例"><a href="#四、示例" class="headerlink" title="四、示例"></a>四、示例</h2><p><strong>例：在链表中间增加和删除节点</strong></p>
+<h3 id="1-定义节点："><a href="#1-定义节点：" class="headerlink" title="1. 定义节点："></a>1. 定义节点：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Node&#123;</span><br><span class="line">    constructor(data)&#123;</span><br><span class="line">        this.data = data;</span><br><span class="line">       this.next = null;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>响应头</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Server:  服务器是哪一种类型。  Tomcat</span><br><span class="line">		Content-Type ： 服务器返回给客户端你的内容类型</span><br><span class="line">		Content-Length ： 返回的数据长度</span><br><span class="line">		Date ： 通讯的日期，响应的时间</span><br></pre></td></tr></table></figure>
+<h3 id="2-增加节点："><a href="#2-增加节点：" class="headerlink" title="2. 增加节点："></a>2. 增加节点：</h3><p>①保存临时地址（4结点的地址）,需要进行遍历查找到3结点，也就是下列代码的currentNode 结点。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200325115953914.gif" alt="在这里插入图片描述"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//先查找该元素</span><br><span class="line"><span class="built_in">let</span> currentNode = this.findByValue(element);</span><br><span class="line">// 保存 3 结点的下一结点地址（4 结点的地址）</span><br><span class="line"><span class="built_in">let</span> pre = currentNode.next</span><br></pre></td></tr></table></figure>
 
-<h1 id="五、Get-和-Post请求区别"><a href="#五、Get-和-Post请求区别" class="headerlink" title="五、Get 和  Post请求区别"></a>五、Get 和  Post请求区别</h1><ul>
-<li>post</li>
-</ul>
-<ol>
-<li>数据是以流的方式写过去，不会在地址栏上面显示。  现在一般提交数据到服务器使用的都是POST。</li>
-<li>以流的方式写数据，所以数据没有大小限制。</li>
-</ol>
-<ul>
-<li>get</li>
-</ul>
-<ol>
-<li>会在地址栏后面拼接数据，所以有安全隐患。 一般从服务器获取数据，并且客户端也不用提交上面数据的时候，可以使用GET。</li>
-<li>能够带的数据有限， 1kb大小。</li>
-</ol>
+<p>②创建新结点，将新结点（5结点）的指针指向下一结点指针（4结点地址，已经在上一步骤保存下来了）</p>
+<p><img src="https://img-blog.csdnimg.cn/20200325120116456.gif" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let newNode = <span class="keyword">new</span> Node(value);</span><br><span class="line">newNode.next = pre;</span><br></pre></td></tr></table></figure>
+
+<p>③将3 的结点地址指向新结点（5结点）</p>
+<p><img src="https://img-blog.csdnimg.cn/20200325120224691.gif" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">currentNode.next = newNode;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-删除节点："><a href="#3-删除节点：" class="headerlink" title="3. 删除节点："></a>3. 删除节点：</h3><p>①断开3结点的指针（断开3结点相当于让2结点直接指向4结点）<br><img src="https://img-blog.csdnimg.cn/20200325120407492.gif" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> let currentNode = <span class="keyword">this</span>.head;</span><br><span class="line">  <span class="comment">// 用来记录 3 结点的前一结点</span></span><br><span class="line">  let preNode = <span class="keyword">null</span>;</span><br><span class="line">  <span class="comment">// 遍历查找 3 结点</span></span><br><span class="line">  <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span> &amp;&amp; currentNode.data !== value)&#123;</span><br><span class="line">         <span class="comment">// 3 结点的前一结点</span></span><br><span class="line">         preNode = currentNode;</span><br><span class="line">        <span class="comment">// 3 结点</span></span><br><span class="line">         currentNode = currentNode.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>②让结点2的指针指向4结点，完成删除。<br><img src="https://img-blog.csdnimg.cn/20200325120504135.gif" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">preNode.next = currentNode.next;</span><br></pre></td></tr></table></figure>
+<h2 id="五、代码实现"><a href="#五、代码实现" class="headerlink" title="五、代码实现"></a>五、代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 功能：单链表的插入、删除、查找</span></span><br><span class="line"><span class="comment">   * 【插入】：插入到指定元素后方</span></span><br><span class="line"><span class="comment">   * 1、查找该元素是否存在？</span></span><br><span class="line"><span class="comment">   * 2、没有找到返回 -1</span></span><br><span class="line"><span class="comment">   * 3、找到进行创建结点并插入链表。</span></span><br><span class="line"><span class="comment">   * </span></span><br><span class="line"><span class="comment">   * 【查找】：按值查找/按索引查找</span></span><br><span class="line"><span class="comment">   * 1、判断当前结点是否等于null，且是否等于给定值？</span></span><br><span class="line"><span class="comment">   * 2、判断是否可以找到该值？</span></span><br><span class="line"><span class="comment">   * 3、没有找到返回 -1；</span></span><br><span class="line"><span class="comment">   * 4、找到该值返回结点；</span></span><br><span class="line"><span class="comment">   * </span></span><br><span class="line"><span class="comment">   * 【删除】：按值删除</span></span><br><span class="line"><span class="comment">   * 1、判断是否找到该值？</span></span><br><span class="line"><span class="comment">   * 2、找到记录前结点，进行删除；</span></span><br><span class="line"><span class="comment">   * 3、找不到直接返回-1；</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">	<span class="comment">//定义结点</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Node</span></span>&#123;</span><br><span class="line">      constructor(data)&#123;</span><br><span class="line">         <span class="keyword">this</span>.data = data;</span><br><span class="line">         <span class="keyword">this</span>.next = <span class="keyword">null</span>;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line">	 <span class="comment">//定义链表</span></span><br><span class="line">	 <span class="class"><span class="keyword">class</span> <span class="title">LinkList</span></span>&#123;</span><br><span class="line">     constructor()&#123;</span><br><span class="line">         <span class="comment">//初始化头结点</span></span><br><span class="line">         <span class="keyword">this</span>.head = <span class="keyword">new</span> Node(<span class="string">'head'</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//根据 value 查找结点</span></span><br><span class="line">     findByValue = (value) =&gt;&#123;</span><br><span class="line">         let currentNode = <span class="keyword">this</span>.head;</span><br><span class="line">         <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span> &amp;&amp; currentNode.data !== value)&#123;</span><br><span class="line">             currentNode = currentNode.next;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">//判断该结点是否找到</span></span><br><span class="line">         console.log(currentNode)</span><br><span class="line">         <span class="keyword">return</span> currentNode === <span class="keyword">null</span> ? -<span class="number">1</span> : currentNode;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//根据 index 查找结点</span></span><br><span class="line">     findByIndex = (index) =&gt;&#123;</span><br><span class="line">         let pos = <span class="number">0</span>;</span><br><span class="line">         let currentNode = <span class="keyword">this</span>.head;</span><br><span class="line">         <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span> &amp;&amp; pos !== index)&#123;</span><br><span class="line">             currentNode = currentNode.next;</span><br><span class="line">             pos++;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">//判断是否找到该索引</span></span><br><span class="line">         console.log(currentNode)</span><br><span class="line">         <span class="keyword">return</span> currentNode === <span class="keyword">null</span> ? -<span class="number">1</span> : currentNode;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//插入元素(指定元素向后插入)</span></span><br><span class="line">     insert = (value,element) =&gt;&#123;</span><br><span class="line">         <span class="comment">//先查找该元素</span></span><br><span class="line">         let currentNode = <span class="keyword">this</span>.findByValue(element);</span><br><span class="line">         <span class="comment">//如果没有找到</span></span><br><span class="line">         <span class="keyword">if</span>(currentNode == -<span class="number">1</span>)&#123;</span><br><span class="line">             console.log(<span class="string">"未找到插入位置!"</span>)</span><br><span class="line">             <span class="keyword">return</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         let newNode = <span class="keyword">new</span> Node(value);</span><br><span class="line">         newNode.next = currentNode.next;</span><br><span class="line">         currentNode.next = newNode;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//根据值删除结点</span></span><br><span class="line">     delete = (value) =&gt;&#123;</span><br><span class="line">         let currentNode = <span class="keyword">this</span>.head;</span><br><span class="line">         let preNode = <span class="keyword">null</span>;</span><br><span class="line">         <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span> &amp;&amp; currentNode.data !== value)&#123;</span><br><span class="line">             preNode = currentNode;</span><br><span class="line">             currentNode = currentNode.next;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">if</span>(currentNode == <span class="keyword">null</span>) <span class="keyword">return</span> -<span class="number">1</span>; </span><br><span class="line">         preNode.next = currentNode.next;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">      <span class="comment">//遍历所有结点</span></span><br><span class="line">     print = () =&gt;&#123;</span><br><span class="line">         let currentNode = <span class="keyword">this</span>.head</span><br><span class="line">         <span class="comment">//如果结点不为空</span></span><br><span class="line">         <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span>)&#123;</span><br><span class="line">             console.log(currentNode.data)</span><br><span class="line">             currentNode = currentNode.next;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
 
       
     </div>
@@ -546,7 +541,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Http%E5%8D%8F%E8%AE%AE/" rel="tag"><i class="fa fa-tag"></i> Http协议</a>
+            <a href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag"><i class="fa fa-tag"></i> 链表</a>
           
         </div>
       
@@ -559,8 +554,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/08/Servlet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="Servlet学习笔记">
-                <i class="fa fa-chevron-left"></i> Servlet学习笔记
+              <a href="/2020/02/25/github%E4%B8%8B%E8%BD%BD%E9%A1%B9%E7%9B%AE%E5%8A%A0%E9%80%9F/" rel="next" title="github下载项目加速">
+                <i class="fa fa-chevron-left"></i> github下载项目加速
               </a>
             
           </div>
@@ -569,8 +564,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/02/09/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ASession/" rel="prev" title="服务器端会话技术：Session">
-                服务器端会话技术：Session <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/10/JSP-MVC/" rel="prev" title="JSP模式&&MVC模式">
+                JSP模式&&MVC模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -820,7 +815,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、Http协议"><span class="nav-number">1.</span> <span class="nav-text">一、Http协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、演示客户端-如何-与服务器端通讯。"><span class="nav-number">2.</span> <span class="nav-text">二、演示客户端 如何 与服务器端通讯。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、Http请求数据解释"><span class="nav-number">3.</span> <span class="nav-text">三、Http请求数据解释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、Http响应数据解析"><span class="nav-number">4.</span> <span class="nav-text">四、Http响应数据解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、Get-和-Post请求区别"><span class="nav-number">5.</span> <span class="nav-text">五、Get 和  Post请求区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、链表结构"><span class="nav-number">1.</span> <span class="nav-text">一、链表结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、插入删除"><span class="nav-number">2.</span> <span class="nav-text">二、插入删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、边界条件"><span class="nav-number">3.</span> <span class="nav-text">三、边界条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、示例"><span class="nav-number">4.</span> <span class="nav-text">四、示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-定义节点："><span class="nav-number">4.1.</span> <span class="nav-text">1. 定义节点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-增加节点："><span class="nav-number">4.2.</span> <span class="nav-text">2. 增加节点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-删除节点："><span class="nav-number">4.3.</span> <span class="nav-text">3. 删除节点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、代码实现"><span class="nav-number">5.</span> <span class="nav-text">五、代码实现</span></a></li></ol></div>
             
 
           </div>

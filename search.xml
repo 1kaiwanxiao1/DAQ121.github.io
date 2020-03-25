@@ -728,6 +728,67 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
+    <title>手写链表</title>
+    <url>/2020/02/26/%E6%89%8B%E5%86%99%E9%93%BE%E8%A1%A8/</url>
+    <content><![CDATA[<p>看过很多面经，看得出来，数据结构和算法在面试中是很重要的，在之前也听说过，面试过程中，出现手撕代码的场景，而我刚好又看到链表这一章，顺便对链表做一下巩固，也打个预防针，万一真遇到要手写代码的时候，也有了一手准备。</p>
+<a id="more"></a>
+
+<h2 id="一、链表结构"><a href="#一、链表结构" class="headerlink" title="一、链表结构"></a>一、链表结构</h2><p><img src="https://img-blog.csdnimg.cn/20200325114240567.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>每个节点结构是由数据域和指针域组成，数据域是存放数据的，而指针域存放下一结点的地址。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200325114318953.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>但是不可能只有一个节点呀，这时候就使用 Class 来声明一个类，为类添加两个属性，一个属性是存放数据的属性data，另一个属性是存放指向下一个结点的指针属性next。这样就可以创造出多个结点实例。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Node&#123;</span><br><span class="line">   constructor(data)&#123;</span><br><span class="line">        this.data = data;</span><br><span class="line">        this.next = null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、插入删除"><a href="#二、插入删除" class="headerlink" title="二、插入删除"></a>二、插入删除</h2><ul>
+<li>插入到单链表的头部</li>
+<li>插入到中间</li>
+<li>插入到尾部</li>
+<li>删除头部节点</li>
+<li>删除中间节点</li>
+<li>删除尾部节点</li>
+</ul>
+<h2 id="三、边界条件"><a href="#三、边界条件" class="headerlink" title="三、边界条件"></a>三、边界条件</h2><ul>
+<li><p><strong>输入边界：</strong><br>先考虑用户输入的参数，比如传入一个链表，我们首先要判断链表是否为空，如果为空我们就不能让它执行下边的程序。再比如插入一个结点到指定结点的后边，那么你也要判断输入的结点是否为空，而且还要判断该结点是否存在该链表中。对于这些输入值的判断，就叫做输入边界。</p>
+</li>
+<li><p><strong>特殊边界：</strong><br>考虑到一些特殊情况，比如插入数据，我们插入数据一般考虑到插入尾部，但要是插入到头部，插入尾部的代码并不适用于插入到头部，所以呢需要考虑这种情况，删除节点也是同样要考虑这种情况。其实特殊边界最主要考虑到一些逻辑上的特殊情况。</p>
+</li>
+</ul>
+<h2 id="四、示例"><a href="#四、示例" class="headerlink" title="四、示例"></a>四、示例</h2><p><strong>例：在链表中间增加和删除节点</strong></p>
+<h3 id="1-定义节点："><a href="#1-定义节点：" class="headerlink" title="1. 定义节点："></a>1. 定义节点：</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Node&#123;</span><br><span class="line">    constructor(data)&#123;</span><br><span class="line">        this.data = data;</span><br><span class="line">       this.next = null;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-增加节点："><a href="#2-增加节点：" class="headerlink" title="2. 增加节点："></a>2. 增加节点：</h3><p>①保存临时地址（4结点的地址）,需要进行遍历查找到3结点，也就是下列代码的currentNode 结点。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200325115953914.gif" alt="在这里插入图片描述"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//先查找该元素</span><br><span class="line"><span class="built_in">let</span> currentNode = this.findByValue(element);</span><br><span class="line">// 保存 3 结点的下一结点地址（4 结点的地址）</span><br><span class="line"><span class="built_in">let</span> pre = currentNode.next</span><br></pre></td></tr></table></figure>
+
+<p>②创建新结点，将新结点（5结点）的指针指向下一结点指针（4结点地址，已经在上一步骤保存下来了）</p>
+<p><img src="https://img-blog.csdnimg.cn/20200325120116456.gif" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">let newNode = <span class="keyword">new</span> Node(value);</span><br><span class="line">newNode.next = pre;</span><br></pre></td></tr></table></figure>
+
+<p>③将3 的结点地址指向新结点（5结点）</p>
+<p><img src="https://img-blog.csdnimg.cn/20200325120224691.gif" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">currentNode.next = newNode;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-删除节点："><a href="#3-删除节点：" class="headerlink" title="3. 删除节点："></a>3. 删除节点：</h3><p>①断开3结点的指针（断开3结点相当于让2结点直接指向4结点）<br><img src="https://img-blog.csdnimg.cn/20200325120407492.gif" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> let currentNode = <span class="keyword">this</span>.head;</span><br><span class="line">  <span class="comment">// 用来记录 3 结点的前一结点</span></span><br><span class="line">  let preNode = <span class="keyword">null</span>;</span><br><span class="line">  <span class="comment">// 遍历查找 3 结点</span></span><br><span class="line">  <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span> &amp;&amp; currentNode.data !== value)&#123;</span><br><span class="line">         <span class="comment">// 3 结点的前一结点</span></span><br><span class="line">         preNode = currentNode;</span><br><span class="line">        <span class="comment">// 3 结点</span></span><br><span class="line">         currentNode = currentNode.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>②让结点2的指针指向4结点，完成删除。<br><img src="https://img-blog.csdnimg.cn/20200325120504135.gif" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">preNode.next = currentNode.next;</span><br></pre></td></tr></table></figure>
+<h2 id="五、代码实现"><a href="#五、代码实现" class="headerlink" title="五、代码实现"></a>五、代码实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 功能：单链表的插入、删除、查找</span></span><br><span class="line"><span class="comment">   * 【插入】：插入到指定元素后方</span></span><br><span class="line"><span class="comment">   * 1、查找该元素是否存在？</span></span><br><span class="line"><span class="comment">   * 2、没有找到返回 -1</span></span><br><span class="line"><span class="comment">   * 3、找到进行创建结点并插入链表。</span></span><br><span class="line"><span class="comment">   * </span></span><br><span class="line"><span class="comment">   * 【查找】：按值查找/按索引查找</span></span><br><span class="line"><span class="comment">   * 1、判断当前结点是否等于null，且是否等于给定值？</span></span><br><span class="line"><span class="comment">   * 2、判断是否可以找到该值？</span></span><br><span class="line"><span class="comment">   * 3、没有找到返回 -1；</span></span><br><span class="line"><span class="comment">   * 4、找到该值返回结点；</span></span><br><span class="line"><span class="comment">   * </span></span><br><span class="line"><span class="comment">   * 【删除】：按值删除</span></span><br><span class="line"><span class="comment">   * 1、判断是否找到该值？</span></span><br><span class="line"><span class="comment">   * 2、找到记录前结点，进行删除；</span></span><br><span class="line"><span class="comment">   * 3、找不到直接返回-1；</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">	<span class="comment">//定义结点</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Node</span></span>&#123;</span><br><span class="line">      constructor(data)&#123;</span><br><span class="line">         <span class="keyword">this</span>.data = data;</span><br><span class="line">         <span class="keyword">this</span>.next = <span class="keyword">null</span>;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line">	 <span class="comment">//定义链表</span></span><br><span class="line">	 <span class="class"><span class="keyword">class</span> <span class="title">LinkList</span></span>&#123;</span><br><span class="line">     constructor()&#123;</span><br><span class="line">         <span class="comment">//初始化头结点</span></span><br><span class="line">         <span class="keyword">this</span>.head = <span class="keyword">new</span> Node(<span class="string">'head'</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//根据 value 查找结点</span></span><br><span class="line">     findByValue = (value) =&gt;&#123;</span><br><span class="line">         let currentNode = <span class="keyword">this</span>.head;</span><br><span class="line">         <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span> &amp;&amp; currentNode.data !== value)&#123;</span><br><span class="line">             currentNode = currentNode.next;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">//判断该结点是否找到</span></span><br><span class="line">         console.log(currentNode)</span><br><span class="line">         <span class="keyword">return</span> currentNode === <span class="keyword">null</span> ? -<span class="number">1</span> : currentNode;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//根据 index 查找结点</span></span><br><span class="line">     findByIndex = (index) =&gt;&#123;</span><br><span class="line">         let pos = <span class="number">0</span>;</span><br><span class="line">         let currentNode = <span class="keyword">this</span>.head;</span><br><span class="line">         <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span> &amp;&amp; pos !== index)&#123;</span><br><span class="line">             currentNode = currentNode.next;</span><br><span class="line">             pos++;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">//判断是否找到该索引</span></span><br><span class="line">         console.log(currentNode)</span><br><span class="line">         <span class="keyword">return</span> currentNode === <span class="keyword">null</span> ? -<span class="number">1</span> : currentNode;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//插入元素(指定元素向后插入)</span></span><br><span class="line">     insert = (value,element) =&gt;&#123;</span><br><span class="line">         <span class="comment">//先查找该元素</span></span><br><span class="line">         let currentNode = <span class="keyword">this</span>.findByValue(element);</span><br><span class="line">         <span class="comment">//如果没有找到</span></span><br><span class="line">         <span class="keyword">if</span>(currentNode == -<span class="number">1</span>)&#123;</span><br><span class="line">             console.log(<span class="string">"未找到插入位置!"</span>)</span><br><span class="line">             <span class="keyword">return</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         let newNode = <span class="keyword">new</span> Node(value);</span><br><span class="line">         newNode.next = currentNode.next;</span><br><span class="line">         currentNode.next = newNode;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//根据值删除结点</span></span><br><span class="line">     delete = (value) =&gt;&#123;</span><br><span class="line">         let currentNode = <span class="keyword">this</span>.head;</span><br><span class="line">         let preNode = <span class="keyword">null</span>;</span><br><span class="line">         <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span> &amp;&amp; currentNode.data !== value)&#123;</span><br><span class="line">             preNode = currentNode;</span><br><span class="line">             currentNode = currentNode.next;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">if</span>(currentNode == <span class="keyword">null</span>) <span class="keyword">return</span> -<span class="number">1</span>; </span><br><span class="line">         preNode.next = currentNode.next;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">      <span class="comment">//遍历所有结点</span></span><br><span class="line">     print = () =&gt;&#123;</span><br><span class="line">         let currentNode = <span class="keyword">this</span>.head</span><br><span class="line">         <span class="comment">//如果结点不为空</span></span><br><span class="line">         <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span>)&#123;</span><br><span class="line">             console.log(currentNode.data)</span><br><span class="line">             currentNode = currentNode.next;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>每天一道面试题</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>github下载项目加速</title>
     <url>/2020/02/25/github%E4%B8%8B%E8%BD%BD%E9%A1%B9%E7%9B%AE%E5%8A%A0%E9%80%9F/</url>
     <content><![CDATA[<p>在github上面找好的开源项目，想要clone到本地，自己调试运行一下，但是由于github的服务器在国外，所以下载速度真的是惊人的慢，有的时候2k/s，如果是一个小项目的话。那还好，等个两三分钟，但是项目大一点的，那就很鸡肋了，这里就介绍一个投机取巧的方法，来加速git clone</p>
@@ -899,6 +960,37 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
+    <title>区块链简单理解</title>
+    <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>对近年来很火的区块链的简单了解</p>
+<a id="more"></a>
+<h2 id="区块链是什么："><a href="#区块链是什么：" class="headerlink" title="区块链是什么："></a>区块链是什么：</h2><p>区块链是分布式数据存储、点对点传输、共识机制、加密算法等计算机技术的新型应用模式。区块链（Blockchain），是比特币的一个重要概念，它本质上是一个<strong>去中心化的数据库</strong>，同时作为比特币的底层技术，是一串使用密码学方法相关联产生的数据块，每一个数据块中包含了一批次比特币网络交易的信息，用于验证其信息的有效性（防伪）和生成下一个区块。</p>
+<h2 id="起源："><a href="#起源：" class="headerlink" title="起源："></a>起源：</h2><p>区块链起源于比特币，2008年11月1日，一位自称<strong>中本聪</strong>(Satoshi Nakamoto)的人发表了《比特币:一种点对点的电子现金系统》，阐述了<strong>基于P2P网络技术、加密技术、时间戳技术、区块链技术等的电子现金系统的构架理念</strong>，这标志着比特币的诞生。两个月后理论步入实践，2009年1月3日第一个序号为0的创世区块诞生。几天后2009年1月9日出现序号为1的区块，并与序号为0的创世区块相连接形成了链，标志着区块链的诞生。<br>近年来，世界对比特币的态度起起落落，但作为比特币底层技术之一的区块链技术日益受到重视。在比特币形成过程中，区块是一个一个的存储单元，记录了一定时间内各个区块节点全部的交流信息。各个区块之间通过<strong>随机散列(也称哈希算法)</strong> 实现链接，后一个区块包含前一个区块的哈希值，随着信息交流的扩大，一个区块与一个区块相继接续，形成的结果就叫区块链 。</p>
+<h2 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h2><ul>
+<li><strong>从科技层面来看：</strong> 区块链涉及数学、密码学、互联网和计算机编程等很多科学技术问题。</li>
+<li><strong>从应用视角来看：</strong> 区块链是一个分布式的共享账本和数据库，具有去中心化、不可篡改、全程留痕、可以追溯、集体维护、公开透明等特点。这些特点保证了区块链的 <strong>“诚实”</strong> 与 <strong>“透明”</strong> ，为区块链创造信任奠定基础。而区块链丰富的应用场景，基本上都基于区块链能够解决信息不对称问题，实现多个主体之间的协作信任与一致行动。</li>
+</ul>
+<h2 id="类型："><a href="#类型：" class="headerlink" title="类型："></a>类型：</h2><ol>
+<li><strong><em>公有区块链</em></strong>（Public Block Chains)：世界上任何个体或者团体都可以发送交易，且交易能够获得该区块链的有效确认，任何人都可以参与其共识过程。公有区块链是最早的区块链，也是应用最广泛的区块链，各大bitcoins系列的虚拟数字货币均基于公有区块链，世界上<strong>有且仅有一条</strong>该币种对应的区块链。</li>
+<li><strong><em>行业区块链</em></strong>（Consortium Block Chains)：由某个群体<strong>内部指定</strong>多个预选的节点为记账人，每个块的生成由所有的预选节点共同决定（预选节点参与共识过程），其他接入节点可以参与交易，但不过问记账过程(本质上还是托管记账，只是变成分布式记账，预选节点的多少，如何决定每个块的记账者成为该区块链的主要风险点），其他任何人可以通过该区块链开放的API进行限定查询。</li>
+<li><strong><em>私有区块链</em></strong>（Private Block Chains)：仅仅使用区块链的总账技术进行记账，可以是一个公司，也可以是个人，独享该区块链的写入权限，本链与其他的分布式存储方案没有太大区别。传统金融都是想实验尝试私有区块链，而公链的应用例如bitcoin已经工业化，私链的应用产品还在摸索当中。</li>
+</ol>
+<h2 id="特性："><a href="#特性：" class="headerlink" title="特性："></a>特性：</h2><ol>
+<li>去中心化。区块链技术不依赖额外的第三方管理机构或硬件设施，没有中心管制，除了自成一体的区块链本身，通过分布式核算和存储，各个节点实现了信息自我验证、传递和管理。去中心化是区块链最突出最本质的特征。</li>
+<li>开放性。区块链技术基础是<strong>开源的</strong>，除了交易各方的私有信息被加密外，区块链的数据对所有人开放，任何人都可以通过公开的接口查询区块链数据和开发相关应用，因此整个系统信息高度透明。</li>
+<li>独立性。基于协商一致的规范和协议(类似比特币采用的哈希算法等各种数学算法)，整个区块链系统不依赖其他第三方，所有节点能够在系统内自动安全地验证、交换数据，不需要任何人为的干预。</li>
+<li>安全性。只要不能掌控全部数据节点的51%，就无法肆意操控修改网络数据，这使区块链本身变得相对安全，避免了主观人为的数据变更。</li>
+<li>匿名性。除非有法律规范要求，单从技术上来讲，各区块节点的身份信息不需要公开或验证，信息传递可以<strong>匿名进行</strong>。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数字货币的种类</title>
     <url>/2020/02/11/%E6%95%B0%E5%AD%97%E8%B4%A7%E5%B8%81%E7%9A%84%E7%A7%8D%E7%B1%BB/</url>
     <content><![CDATA[<p>当前的数字货币大致有以下几种。</p>
@@ -1000,37 +1092,6 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
 <li>止盈止损：止盈止损即是<strong>带有预期</strong>的未来买入或者卖出行为，比如当价格跌破某一价位时进行止损（你预期跌破此价格可能还会继续跌），或者当价格突破某一价位时进行买入（你预期价格一旦突破该价位时将会继续上涨）。</li>
 </ul>
 <h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>如果你是买方，想要<strong>尽快</strong>购入比特币，当然是设置买入价格与当前最低卖出价格一致，这样双方就可以达成交易了，想要尽快卖出比特币，那就设置卖出价格与当前最高买入价格一致。但是市场上的人并不是都急切的想要卖出或者买入，会带有预期的进行买入卖出报价。</p>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>区块链简单理解</title>
-    <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<p>对近年来很火的区块链的简单了解</p>
-<a id="more"></a>
-<h2 id="区块链是什么："><a href="#区块链是什么：" class="headerlink" title="区块链是什么："></a>区块链是什么：</h2><p>区块链是分布式数据存储、点对点传输、共识机制、加密算法等计算机技术的新型应用模式。区块链（Blockchain），是比特币的一个重要概念，它本质上是一个<strong>去中心化的数据库</strong>，同时作为比特币的底层技术，是一串使用密码学方法相关联产生的数据块，每一个数据块中包含了一批次比特币网络交易的信息，用于验证其信息的有效性（防伪）和生成下一个区块。</p>
-<h2 id="起源："><a href="#起源：" class="headerlink" title="起源："></a>起源：</h2><p>区块链起源于比特币，2008年11月1日，一位自称<strong>中本聪</strong>(Satoshi Nakamoto)的人发表了《比特币:一种点对点的电子现金系统》，阐述了<strong>基于P2P网络技术、加密技术、时间戳技术、区块链技术等的电子现金系统的构架理念</strong>，这标志着比特币的诞生。两个月后理论步入实践，2009年1月3日第一个序号为0的创世区块诞生。几天后2009年1月9日出现序号为1的区块，并与序号为0的创世区块相连接形成了链，标志着区块链的诞生。<br>近年来，世界对比特币的态度起起落落，但作为比特币底层技术之一的区块链技术日益受到重视。在比特币形成过程中，区块是一个一个的存储单元，记录了一定时间内各个区块节点全部的交流信息。各个区块之间通过<strong>随机散列(也称哈希算法)</strong> 实现链接，后一个区块包含前一个区块的哈希值，随着信息交流的扩大，一个区块与一个区块相继接续，形成的结果就叫区块链 。</p>
-<h2 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h2><ul>
-<li><strong>从科技层面来看：</strong> 区块链涉及数学、密码学、互联网和计算机编程等很多科学技术问题。</li>
-<li><strong>从应用视角来看：</strong> 区块链是一个分布式的共享账本和数据库，具有去中心化、不可篡改、全程留痕、可以追溯、集体维护、公开透明等特点。这些特点保证了区块链的 <strong>“诚实”</strong> 与 <strong>“透明”</strong> ，为区块链创造信任奠定基础。而区块链丰富的应用场景，基本上都基于区块链能够解决信息不对称问题，实现多个主体之间的协作信任与一致行动。</li>
-</ul>
-<h2 id="类型："><a href="#类型：" class="headerlink" title="类型："></a>类型：</h2><ol>
-<li><strong><em>公有区块链</em></strong>（Public Block Chains)：世界上任何个体或者团体都可以发送交易，且交易能够获得该区块链的有效确认，任何人都可以参与其共识过程。公有区块链是最早的区块链，也是应用最广泛的区块链，各大bitcoins系列的虚拟数字货币均基于公有区块链，世界上<strong>有且仅有一条</strong>该币种对应的区块链。</li>
-<li><strong><em>行业区块链</em></strong>（Consortium Block Chains)：由某个群体<strong>内部指定</strong>多个预选的节点为记账人，每个块的生成由所有的预选节点共同决定（预选节点参与共识过程），其他接入节点可以参与交易，但不过问记账过程(本质上还是托管记账，只是变成分布式记账，预选节点的多少，如何决定每个块的记账者成为该区块链的主要风险点），其他任何人可以通过该区块链开放的API进行限定查询。</li>
-<li><strong><em>私有区块链</em></strong>（Private Block Chains)：仅仅使用区块链的总账技术进行记账，可以是一个公司，也可以是个人，独享该区块链的写入权限，本链与其他的分布式存储方案没有太大区别。传统金融都是想实验尝试私有区块链，而公链的应用例如bitcoin已经工业化，私链的应用产品还在摸索当中。</li>
-</ol>
-<h2 id="特性："><a href="#特性：" class="headerlink" title="特性："></a>特性：</h2><ol>
-<li>去中心化。区块链技术不依赖额外的第三方管理机构或硬件设施，没有中心管制，除了自成一体的区块链本身，通过分布式核算和存储，各个节点实现了信息自我验证、传递和管理。去中心化是区块链最突出最本质的特征。</li>
-<li>开放性。区块链技术基础是<strong>开源的</strong>，除了交易各方的私有信息被加密外，区块链的数据对所有人开放，任何人都可以通过公开的接口查询区块链数据和开发相关应用，因此整个系统信息高度透明。</li>
-<li>独立性。基于协商一致的规范和协议(类似比特币采用的哈希算法等各种数学算法)，整个区块链系统不依赖其他第三方，所有节点能够在系统内自动安全地验证、交换数据，不需要任何人为的干预。</li>
-<li>安全性。只要不能掌控全部数据节点的51%，就无法肆意操控修改网络数据，这使区块链本身变得相对安全，避免了主观人为的数据变更。</li>
-<li>匿名性。除非有法律规范要求，单从技术上来讲，各区块节点的身份信息不需要公开或验证，信息传递可以<strong>匿名进行</strong>。</li>
-</ol>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>
@@ -1782,78 +1843,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
-    <title>JDBC基础知识</title>
-    <url>/2020/02/03/JDBC%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<p>JDBC概述，作用，类型，以及使用时如何选择。</p>
-<a id="more"></a>
-<h2 id="一、JDBC是什么？"><a href="#一、JDBC是什么？" class="headerlink" title="一、JDBC是什么？"></a>一、JDBC是什么？</h2><ul>
-<li>百度百科解释：JDBC(java database connectivity)驱动程序是对JDBC规范完整的实现，它的存在在Java程序与数据库系统之间建立了一条通信的渠道。它是 一 种可用于执行 SQL 语句的 Java API(<strong>Application Programming Interface， 应用程序设计接口</strong>)。</li>
-<li>简单理解：java 数据库连接。有了它，就能够在java代码中操作任何数据库。由于数据库种类繁多，并且java程序使用广泛，sun公司就提供了一种规范，让其他的数据库提供商去实现底层的访问。</li>
-<li>刚开始每个数据库（Oracle，Mysql，SqlServer）的访问规则都不同，后来SUN公司想一统天下，出台了一套规范，各个数据库要按照这个规范去写底层代码，与此同时，Java程序也直接去找JDBC。</li>
-</ul>
-<h2 id="二、作用是什么？"><a href="#二、作用是什么？" class="headerlink" title="二、作用是什么？"></a>二、作用是什么？</h2><ul>
-<li>JDBC 为数据库应用开发人员、数据库前台开发人员提供了一种标准的应用程序设计接口， 使开发人员可以用纯 Java 语言编写完整的数据库应用程序。</li>
-<li>JDBC 通过调用其接口提供的方法， 提供了 Java 应用程序与各种数据库服务器之间的连接服务，。</li>
-<li>它支持 ANSI SQL- 92 标准， 实现了从 Java 程序内调用标准的 SQL 命令对数据库进行查询、插入、删除和更新等操作， 并确保数据事务的正常进行。</li>
-</ul>
-<h2 id="三、JDBC驱动程序"><a href="#三、JDBC驱动程序" class="headerlink" title="三、JDBC驱动程序"></a>三、JDBC驱动程序</h2><p>根据访问数据库的技术不同， JDBC 驱动程序相应地分为四种类型。不同类型的驱动程序有着不一样的特性和使用方法。</p>
-<p> 1.<strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> 此类驱动程序由JDBC-ODBC桥和一个ODBC驱动程序组成。</li>
-<li><input disabled="" type="checkbox"> 工作原理：通过一段本地<strong>C代码</strong>将JDBC调用转化成ODBC调用。这一类型必须在本地计算机上先安装好ODBC驱动程序，然后通过JDBC-ODBCBridge的转换，将Java程序中使用的JDBC API访问指令转化成ODBC API指令，进而通过ODBC驱动程序调用本地数据库驱动代码完成对数据库的访问。</li>
-</ul>
-<p> 2.<strong>部分Java的本地JDBC API驱动程序</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> JDBC API驱动程序(Anative API partly Java technology-enabled Driver)</li>
-<li><input disabled="" type="checkbox"> 工作原理：此类驱动程序也必须在本地计算机上先安装好特定的驱动程序(类似ODBC)，然后通过PartialJavaJDBCDriver的转换，把Java程序中使用的JDBC API转换成NativeAPI，进而存取数据库。</li>
-</ul>
-<p>3.<strong>纯Java的数据库中间件驱动程序</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> 纯Java的数据库中间件驱动程序(Pure Java Driver for Database Middleware)使用这类驱动程序时，不需要在本地计算机上安装任何附加软件，但是必须在安装数据库管理系统的服务器端加装中间件(Middleware)，这个中间件负责所有存取数据库时必要的转换。</li>
-<li><input disabled="" type="checkbox"> 工作原理：驱动程序将JDBC访问转换成与数据库无关的标准网络协议(通常是HTTP或HTTPS)送出，然后再由中间件服务器将其转换成数据库专用的访问指令，完成对数据库的操作。中间件服务器能支持对多种数据库的访问。</li>
-</ul>
-<p>4.<strong>纯Java的JDBC驱动程序</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> 纯Java的JDBC驱动程序(Direct-to-DatabasePureJavaDriver)这类驱动程序是直接面向数据库的纯Java驱动程序，即所谓的”瘦”驱动程序。</li>
-<li><input disabled="" type="checkbox"> 工作原理：使用这类驱动程序时无需安装任何附加的软件(无论是本地计算机或是数据库服务器端)，所有存取数据库的操作都直接由JDBC驱动程序来完成，此类驱动程序能将JDBC调用转换成DBMS专用的网络协议，能够自动识别网络协议下的特殊数据库并能直接创建数据连接。</li>
-</ul>
-<h2 id="四、JDBC驱动程序的选择"><a href="#四、JDBC驱动程序的选择" class="headerlink" title="四、JDBC驱动程序的选择"></a>四、JDBC驱动程序的选择</h2><p>在企业内部信息系统中，选择合适的JDBC驱动程序，使之符合数据库程序设计的要求，是提高系统性能必须考虑的一个方面。不同的应用有不同的需要，所以要根据应用选择合适的驱动程序。</p>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></li>
-<li>优点：节省投资，利用了已有的ODBC驱动程序。</li>
-<li>缺点：中间有多次调用，性能受到影响，执行效率比较低，不适合对大数据量存取的应用。有损Java数据库程序的兼容性，不具备跨平台性，不适合基于Internet/Intranet的应用。</li>
-<li>应用：桥接驱动程序用于已经在ODBC技术上投资的情形，例如已经投资了Windows应用服务器。</li>
-</ul>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>部分Java的本地JDBC API驱动程序</strong></li>
-<li>优点：具有开放性，其利用多层结构，上层用Java实现，支持多数据库，下层为本地代码(包括一些二进制代码和一个轻量的Java库)，加快了执行速度，提高了数据库访问效率。</li>
-<li>缺点：没有使用纯Java的API，如果在本地代码中存在缺陷，将可能使Java虚拟机完全垮掉。</li>
-<li>应用：受到限制</li>
-</ul>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>纯Java的数据库中间件驱动程序</strong></li>
-<li>优点：由纯Java语言开发而成的，并且中间件也仅需要在服务器上安装，不再需要客户端的本机代码，这类驱动程序的体积最小，效率较高，具有最大的灵活性。此类驱动采用标准的网络协议，可以被防火墙支持，是开发Applet程序理想的选择(其实这些驱动是为Applet特别编写的)，是Internet应用理想的解决方案。开发者还可以利用单一的驱动程序连接到多种数据库。</li>
-<li>缺点：需要在服务器端安装中间件，这适当影响了驱动程序的效率。</li>
-<li>应用：基于Web的应用系统的开发。</li>
-</ul>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>纯Java的JDBC驱动程序</strong></li>
-<li>最佳的JDBC驱动程序类型。</li>
-<li>优点：无需安装任何附加软件，不会增加任何额外开销，效率最高，拥有最佳的兼容性。</li>
-<li>缺点：可能不被防火墙支持，在Internet中会存在潜在安全隐患，成为这类驱动最大的缺陷。</li>
-<li>应用：在企业级应用软件中，是应优先考虑的。因此，一个Servlet程序，要适应不同的操作系统，最好使用此类驱动;这种驱动也非常适合Applet程序，事实证明它能安全通过TCP/IP协议连接到数据库。</li>
-</ul>
-<p> <img src="https://img-blog.csdnimg.cn/20200220152318929.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/202002201540355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>JDBC,MySql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JDBC学习</title>
     <url>/2020/02/03/JDBC%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<p>如何使用JDBC连接到数据库</p>
@@ -1949,6 +1938,78 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
 <ul>
 <li>PreparStatement的添加，删除，更新，</li>
 </ul>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>JDBC,MySql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JDBC基础知识</title>
+    <url>/2020/02/03/JDBC%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<p>JDBC概述，作用，类型，以及使用时如何选择。</p>
+<a id="more"></a>
+<h2 id="一、JDBC是什么？"><a href="#一、JDBC是什么？" class="headerlink" title="一、JDBC是什么？"></a>一、JDBC是什么？</h2><ul>
+<li>百度百科解释：JDBC(java database connectivity)驱动程序是对JDBC规范完整的实现，它的存在在Java程序与数据库系统之间建立了一条通信的渠道。它是 一 种可用于执行 SQL 语句的 Java API(<strong>Application Programming Interface， 应用程序设计接口</strong>)。</li>
+<li>简单理解：java 数据库连接。有了它，就能够在java代码中操作任何数据库。由于数据库种类繁多，并且java程序使用广泛，sun公司就提供了一种规范，让其他的数据库提供商去实现底层的访问。</li>
+<li>刚开始每个数据库（Oracle，Mysql，SqlServer）的访问规则都不同，后来SUN公司想一统天下，出台了一套规范，各个数据库要按照这个规范去写底层代码，与此同时，Java程序也直接去找JDBC。</li>
+</ul>
+<h2 id="二、作用是什么？"><a href="#二、作用是什么？" class="headerlink" title="二、作用是什么？"></a>二、作用是什么？</h2><ul>
+<li>JDBC 为数据库应用开发人员、数据库前台开发人员提供了一种标准的应用程序设计接口， 使开发人员可以用纯 Java 语言编写完整的数据库应用程序。</li>
+<li>JDBC 通过调用其接口提供的方法， 提供了 Java 应用程序与各种数据库服务器之间的连接服务，。</li>
+<li>它支持 ANSI SQL- 92 标准， 实现了从 Java 程序内调用标准的 SQL 命令对数据库进行查询、插入、删除和更新等操作， 并确保数据事务的正常进行。</li>
+</ul>
+<h2 id="三、JDBC驱动程序"><a href="#三、JDBC驱动程序" class="headerlink" title="三、JDBC驱动程序"></a>三、JDBC驱动程序</h2><p>根据访问数据库的技术不同， JDBC 驱动程序相应地分为四种类型。不同类型的驱动程序有着不一样的特性和使用方法。</p>
+<p> 1.<strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 此类驱动程序由JDBC-ODBC桥和一个ODBC驱动程序组成。</li>
+<li><input disabled="" type="checkbox"> 工作原理：通过一段本地<strong>C代码</strong>将JDBC调用转化成ODBC调用。这一类型必须在本地计算机上先安装好ODBC驱动程序，然后通过JDBC-ODBCBridge的转换，将Java程序中使用的JDBC API访问指令转化成ODBC API指令，进而通过ODBC驱动程序调用本地数据库驱动代码完成对数据库的访问。</li>
+</ul>
+<p> 2.<strong>部分Java的本地JDBC API驱动程序</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> JDBC API驱动程序(Anative API partly Java technology-enabled Driver)</li>
+<li><input disabled="" type="checkbox"> 工作原理：此类驱动程序也必须在本地计算机上先安装好特定的驱动程序(类似ODBC)，然后通过PartialJavaJDBCDriver的转换，把Java程序中使用的JDBC API转换成NativeAPI，进而存取数据库。</li>
+</ul>
+<p>3.<strong>纯Java的数据库中间件驱动程序</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 纯Java的数据库中间件驱动程序(Pure Java Driver for Database Middleware)使用这类驱动程序时，不需要在本地计算机上安装任何附加软件，但是必须在安装数据库管理系统的服务器端加装中间件(Middleware)，这个中间件负责所有存取数据库时必要的转换。</li>
+<li><input disabled="" type="checkbox"> 工作原理：驱动程序将JDBC访问转换成与数据库无关的标准网络协议(通常是HTTP或HTTPS)送出，然后再由中间件服务器将其转换成数据库专用的访问指令，完成对数据库的操作。中间件服务器能支持对多种数据库的访问。</li>
+</ul>
+<p>4.<strong>纯Java的JDBC驱动程序</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 纯Java的JDBC驱动程序(Direct-to-DatabasePureJavaDriver)这类驱动程序是直接面向数据库的纯Java驱动程序，即所谓的”瘦”驱动程序。</li>
+<li><input disabled="" type="checkbox"> 工作原理：使用这类驱动程序时无需安装任何附加的软件(无论是本地计算机或是数据库服务器端)，所有存取数据库的操作都直接由JDBC驱动程序来完成，此类驱动程序能将JDBC调用转换成DBMS专用的网络协议，能够自动识别网络协议下的特殊数据库并能直接创建数据连接。</li>
+</ul>
+<h2 id="四、JDBC驱动程序的选择"><a href="#四、JDBC驱动程序的选择" class="headerlink" title="四、JDBC驱动程序的选择"></a>四、JDBC驱动程序的选择</h2><p>在企业内部信息系统中，选择合适的JDBC驱动程序，使之符合数据库程序设计的要求，是提高系统性能必须考虑的一个方面。不同的应用有不同的需要，所以要根据应用选择合适的驱动程序。</p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></li>
+<li>优点：节省投资，利用了已有的ODBC驱动程序。</li>
+<li>缺点：中间有多次调用，性能受到影响，执行效率比较低，不适合对大数据量存取的应用。有损Java数据库程序的兼容性，不具备跨平台性，不适合基于Internet/Intranet的应用。</li>
+<li>应用：桥接驱动程序用于已经在ODBC技术上投资的情形，例如已经投资了Windows应用服务器。</li>
+</ul>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>部分Java的本地JDBC API驱动程序</strong></li>
+<li>优点：具有开放性，其利用多层结构，上层用Java实现，支持多数据库，下层为本地代码(包括一些二进制代码和一个轻量的Java库)，加快了执行速度，提高了数据库访问效率。</li>
+<li>缺点：没有使用纯Java的API，如果在本地代码中存在缺陷，将可能使Java虚拟机完全垮掉。</li>
+<li>应用：受到限制</li>
+</ul>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>纯Java的数据库中间件驱动程序</strong></li>
+<li>优点：由纯Java语言开发而成的，并且中间件也仅需要在服务器上安装，不再需要客户端的本机代码，这类驱动程序的体积最小，效率较高，具有最大的灵活性。此类驱动采用标准的网络协议，可以被防火墙支持，是开发Applet程序理想的选择(其实这些驱动是为Applet特别编写的)，是Internet应用理想的解决方案。开发者还可以利用单一的驱动程序连接到多种数据库。</li>
+<li>缺点：需要在服务器端安装中间件，这适当影响了驱动程序的效率。</li>
+<li>应用：基于Web的应用系统的开发。</li>
+</ul>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>纯Java的JDBC驱动程序</strong></li>
+<li>最佳的JDBC驱动程序类型。</li>
+<li>优点：无需安装任何附加软件，不会增加任何额外开销，效率最高，拥有最佳的兼容性。</li>
+<li>缺点：可能不被防火墙支持，在Internet中会存在潜在安全隐患，成为这类驱动最大的缺陷。</li>
+<li>应用：在企业级应用软件中，是应优先考虑的。因此，一个Servlet程序，要适应不同的操作系统，最好使用此类驱动;这种驱动也非常适合Applet程序，事实证明它能安全通过TCP/IP协议连接到数据库。</li>
+</ul>
+<p> <img src="https://img-blog.csdnimg.cn/20200220152318929.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/202002201540355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 ]]></content>
       <categories>
         <category>数据库</category>
