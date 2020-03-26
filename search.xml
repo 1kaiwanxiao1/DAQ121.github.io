@@ -1289,31 +1289,6 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
-    <title>比特币的两种交易方式</title>
-    <url>/2020/02/11/%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E4%B8%A4%E7%A7%8D%E4%BA%A4%E6%98%93%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<p>比特币的交易有很多种，本文了解一下</p>
-<a id="more"></a>
-<h2 id="比特币交易的几种种方式："><a href="#比特币交易的几种种方式：" class="headerlink" title="比特币交易的几种种方式："></a>比特币交易的几种种方式：</h2><p><img src="https://img-blog.csdnimg.cn/20200204170527575.png" alt="在这里插入图片描述"></p>
-<ol>
-<li><strong>场外交易：</strong> 也称为<strong>法币交易</strong>，法币就是<strong>法定货币</strong>，人民币就是我们国家的法定货币，顾名思义，法币交易就是由法币（人民币）直接与比特币（数字货币）进行交易的行为（购买/出售),可以简单理解为网购。</li>
-<li><strong>场内交易：</strong> 也称之为<strong>币币交易</strong>，就是用一种币交易兑换另一种币。</li>
-<li><strong>杠杆交易：</strong> 利用小额的资金来进行数倍于原始金额的投资。以期望获取相对投资标的物波动的数倍收益率，抑或亏损。由于保证金（该笔小额资金）的增减不以标的资产的波动比例来运动，<strong>风险很高</strong>。不推荐。</li>
-<li><strong>合约交易：</strong> 合约交易是指交易双方，在交易所通过买卖合约，并根据约定在未来某一特定时间和地点，以特定价格买卖规定数量商品的行为。合约交易是在现货远期合约交易基础上发展起来的，在交易所内买卖标准化合约的一种新型交易方式。</li>
-</ol>
-<h2 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h2><ol>
-<li>法币交易很耗时间，即使交易双方操作熟练，但是还是不排除人为因素造成交易时间拖长，不利于双方观察局势，很有可能在分分钟内错过行情。</li>
-<li>币币交易可以在极短时间内成交（按下买入键的瞬间与对手成交）且支持购买的币种更多。</li>
-</ol>
-<p>，</p>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>区块链简单理解</title>
     <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</url>
     <content><![CDATA[<p>对近年来很火的区块链的简单了解</p>
@@ -1336,6 +1311,31 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
 <li>安全性。只要不能掌控全部数据节点的51%，就无法肆意操控修改网络数据，这使区块链本身变得相对安全，避免了主观人为的数据变更。</li>
 <li>匿名性。除非有法律规范要求，单从技术上来讲，各区块节点的身份信息不需要公开或验证，信息传递可以<strong>匿名进行</strong>。</li>
 </ol>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>比特币的两种交易方式</title>
+    <url>/2020/02/11/%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E4%B8%A4%E7%A7%8D%E4%BA%A4%E6%98%93%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p>比特币的交易有很多种，本文了解一下</p>
+<a id="more"></a>
+<h2 id="比特币交易的几种种方式："><a href="#比特币交易的几种种方式：" class="headerlink" title="比特币交易的几种种方式："></a>比特币交易的几种种方式：</h2><p><img src="https://img-blog.csdnimg.cn/20200204170527575.png" alt="在这里插入图片描述"></p>
+<ol>
+<li><strong>场外交易：</strong> 也称为<strong>法币交易</strong>，法币就是<strong>法定货币</strong>，人民币就是我们国家的法定货币，顾名思义，法币交易就是由法币（人民币）直接与比特币（数字货币）进行交易的行为（购买/出售),可以简单理解为网购。</li>
+<li><strong>场内交易：</strong> 也称之为<strong>币币交易</strong>，就是用一种币交易兑换另一种币。</li>
+<li><strong>杠杆交易：</strong> 利用小额的资金来进行数倍于原始金额的投资。以期望获取相对投资标的物波动的数倍收益率，抑或亏损。由于保证金（该笔小额资金）的增减不以标的资产的波动比例来运动，<strong>风险很高</strong>。不推荐。</li>
+<li><strong>合约交易：</strong> 合约交易是指交易双方，在交易所通过买卖合约，并根据约定在未来某一特定时间和地点，以特定价格买卖规定数量商品的行为。合约交易是在现货远期合约交易基础上发展起来的，在交易所内买卖标准化合约的一种新型交易方式。</li>
+</ol>
+<h2 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h2><ol>
+<li>法币交易很耗时间，即使交易双方操作熟练，但是还是不排除人为因素造成交易时间拖长，不利于双方观察局势，很有可能在分分钟内错过行情。</li>
+<li>币币交易可以在极短时间内成交（按下买入键的瞬间与对手成交）且支持购买的币种更多。</li>
+</ol>
+<p>，</p>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>
@@ -2147,78 +2147,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
-    <title>JDBC基础知识</title>
-    <url>/2020/02/03/JDBC%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<p>JDBC概述，作用，类型，以及使用时如何选择。</p>
-<a id="more"></a>
-<h2 id="一、JDBC是什么？"><a href="#一、JDBC是什么？" class="headerlink" title="一、JDBC是什么？"></a>一、JDBC是什么？</h2><ul>
-<li>百度百科解释：JDBC(java database connectivity)驱动程序是对JDBC规范完整的实现，它的存在在Java程序与数据库系统之间建立了一条通信的渠道。它是 一 种可用于执行 SQL 语句的 Java API(<strong>Application Programming Interface， 应用程序设计接口</strong>)。</li>
-<li>简单理解：java 数据库连接。有了它，就能够在java代码中操作任何数据库。由于数据库种类繁多，并且java程序使用广泛，sun公司就提供了一种规范，让其他的数据库提供商去实现底层的访问。</li>
-<li>刚开始每个数据库（Oracle，Mysql，SqlServer）的访问规则都不同，后来SUN公司想一统天下，出台了一套规范，各个数据库要按照这个规范去写底层代码，与此同时，Java程序也直接去找JDBC。</li>
-</ul>
-<h2 id="二、作用是什么？"><a href="#二、作用是什么？" class="headerlink" title="二、作用是什么？"></a>二、作用是什么？</h2><ul>
-<li>JDBC 为数据库应用开发人员、数据库前台开发人员提供了一种标准的应用程序设计接口， 使开发人员可以用纯 Java 语言编写完整的数据库应用程序。</li>
-<li>JDBC 通过调用其接口提供的方法， 提供了 Java 应用程序与各种数据库服务器之间的连接服务，。</li>
-<li>它支持 ANSI SQL- 92 标准， 实现了从 Java 程序内调用标准的 SQL 命令对数据库进行查询、插入、删除和更新等操作， 并确保数据事务的正常进行。</li>
-</ul>
-<h2 id="三、JDBC驱动程序"><a href="#三、JDBC驱动程序" class="headerlink" title="三、JDBC驱动程序"></a>三、JDBC驱动程序</h2><p>根据访问数据库的技术不同， JDBC 驱动程序相应地分为四种类型。不同类型的驱动程序有着不一样的特性和使用方法。</p>
-<p> 1.<strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> 此类驱动程序由JDBC-ODBC桥和一个ODBC驱动程序组成。</li>
-<li><input disabled="" type="checkbox"> 工作原理：通过一段本地<strong>C代码</strong>将JDBC调用转化成ODBC调用。这一类型必须在本地计算机上先安装好ODBC驱动程序，然后通过JDBC-ODBCBridge的转换，将Java程序中使用的JDBC API访问指令转化成ODBC API指令，进而通过ODBC驱动程序调用本地数据库驱动代码完成对数据库的访问。</li>
-</ul>
-<p> 2.<strong>部分Java的本地JDBC API驱动程序</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> JDBC API驱动程序(Anative API partly Java technology-enabled Driver)</li>
-<li><input disabled="" type="checkbox"> 工作原理：此类驱动程序也必须在本地计算机上先安装好特定的驱动程序(类似ODBC)，然后通过PartialJavaJDBCDriver的转换，把Java程序中使用的JDBC API转换成NativeAPI，进而存取数据库。</li>
-</ul>
-<p>3.<strong>纯Java的数据库中间件驱动程序</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> 纯Java的数据库中间件驱动程序(Pure Java Driver for Database Middleware)使用这类驱动程序时，不需要在本地计算机上安装任何附加软件，但是必须在安装数据库管理系统的服务器端加装中间件(Middleware)，这个中间件负责所有存取数据库时必要的转换。</li>
-<li><input disabled="" type="checkbox"> 工作原理：驱动程序将JDBC访问转换成与数据库无关的标准网络协议(通常是HTTP或HTTPS)送出，然后再由中间件服务器将其转换成数据库专用的访问指令，完成对数据库的操作。中间件服务器能支持对多种数据库的访问。</li>
-</ul>
-<p>4.<strong>纯Java的JDBC驱动程序</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> 纯Java的JDBC驱动程序(Direct-to-DatabasePureJavaDriver)这类驱动程序是直接面向数据库的纯Java驱动程序，即所谓的”瘦”驱动程序。</li>
-<li><input disabled="" type="checkbox"> 工作原理：使用这类驱动程序时无需安装任何附加的软件(无论是本地计算机或是数据库服务器端)，所有存取数据库的操作都直接由JDBC驱动程序来完成，此类驱动程序能将JDBC调用转换成DBMS专用的网络协议，能够自动识别网络协议下的特殊数据库并能直接创建数据连接。</li>
-</ul>
-<h2 id="四、JDBC驱动程序的选择"><a href="#四、JDBC驱动程序的选择" class="headerlink" title="四、JDBC驱动程序的选择"></a>四、JDBC驱动程序的选择</h2><p>在企业内部信息系统中，选择合适的JDBC驱动程序，使之符合数据库程序设计的要求，是提高系统性能必须考虑的一个方面。不同的应用有不同的需要，所以要根据应用选择合适的驱动程序。</p>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></li>
-<li>优点：节省投资，利用了已有的ODBC驱动程序。</li>
-<li>缺点：中间有多次调用，性能受到影响，执行效率比较低，不适合对大数据量存取的应用。有损Java数据库程序的兼容性，不具备跨平台性，不适合基于Internet/Intranet的应用。</li>
-<li>应用：桥接驱动程序用于已经在ODBC技术上投资的情形，例如已经投资了Windows应用服务器。</li>
-</ul>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>部分Java的本地JDBC API驱动程序</strong></li>
-<li>优点：具有开放性，其利用多层结构，上层用Java实现，支持多数据库，下层为本地代码(包括一些二进制代码和一个轻量的Java库)，加快了执行速度，提高了数据库访问效率。</li>
-<li>缺点：没有使用纯Java的API，如果在本地代码中存在缺陷，将可能使Java虚拟机完全垮掉。</li>
-<li>应用：受到限制</li>
-</ul>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>纯Java的数据库中间件驱动程序</strong></li>
-<li>优点：由纯Java语言开发而成的，并且中间件也仅需要在服务器上安装，不再需要客户端的本机代码，这类驱动程序的体积最小，效率较高，具有最大的灵活性。此类驱动采用标准的网络协议，可以被防火墙支持，是开发Applet程序理想的选择(其实这些驱动是为Applet特别编写的)，是Internet应用理想的解决方案。开发者还可以利用单一的驱动程序连接到多种数据库。</li>
-<li>缺点：需要在服务器端安装中间件，这适当影响了驱动程序的效率。</li>
-<li>应用：基于Web的应用系统的开发。</li>
-</ul>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>纯Java的JDBC驱动程序</strong></li>
-<li>最佳的JDBC驱动程序类型。</li>
-<li>优点：无需安装任何附加软件，不会增加任何额外开销，效率最高，拥有最佳的兼容性。</li>
-<li>缺点：可能不被防火墙支持，在Internet中会存在潜在安全隐患，成为这类驱动最大的缺陷。</li>
-<li>应用：在企业级应用软件中，是应优先考虑的。因此，一个Servlet程序，要适应不同的操作系统，最好使用此类驱动;这种驱动也非常适合Applet程序，事实证明它能安全通过TCP/IP协议连接到数据库。</li>
-</ul>
-<p> <img src="https://img-blog.csdnimg.cn/20200220152318929.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/202002201540355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>JDBC,MySql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JDBC学习</title>
     <url>/2020/02/03/JDBC%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<p>如何使用JDBC连接到数据库</p>
@@ -2314,6 +2242,78 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
 <ul>
 <li>PreparStatement的添加，删除，更新，</li>
 </ul>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>JDBC,MySql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JDBC基础知识</title>
+    <url>/2020/02/03/JDBC%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<p>JDBC概述，作用，类型，以及使用时如何选择。</p>
+<a id="more"></a>
+<h2 id="一、JDBC是什么？"><a href="#一、JDBC是什么？" class="headerlink" title="一、JDBC是什么？"></a>一、JDBC是什么？</h2><ul>
+<li>百度百科解释：JDBC(java database connectivity)驱动程序是对JDBC规范完整的实现，它的存在在Java程序与数据库系统之间建立了一条通信的渠道。它是 一 种可用于执行 SQL 语句的 Java API(<strong>Application Programming Interface， 应用程序设计接口</strong>)。</li>
+<li>简单理解：java 数据库连接。有了它，就能够在java代码中操作任何数据库。由于数据库种类繁多，并且java程序使用广泛，sun公司就提供了一种规范，让其他的数据库提供商去实现底层的访问。</li>
+<li>刚开始每个数据库（Oracle，Mysql，SqlServer）的访问规则都不同，后来SUN公司想一统天下，出台了一套规范，各个数据库要按照这个规范去写底层代码，与此同时，Java程序也直接去找JDBC。</li>
+</ul>
+<h2 id="二、作用是什么？"><a href="#二、作用是什么？" class="headerlink" title="二、作用是什么？"></a>二、作用是什么？</h2><ul>
+<li>JDBC 为数据库应用开发人员、数据库前台开发人员提供了一种标准的应用程序设计接口， 使开发人员可以用纯 Java 语言编写完整的数据库应用程序。</li>
+<li>JDBC 通过调用其接口提供的方法， 提供了 Java 应用程序与各种数据库服务器之间的连接服务，。</li>
+<li>它支持 ANSI SQL- 92 标准， 实现了从 Java 程序内调用标准的 SQL 命令对数据库进行查询、插入、删除和更新等操作， 并确保数据事务的正常进行。</li>
+</ul>
+<h2 id="三、JDBC驱动程序"><a href="#三、JDBC驱动程序" class="headerlink" title="三、JDBC驱动程序"></a>三、JDBC驱动程序</h2><p>根据访问数据库的技术不同， JDBC 驱动程序相应地分为四种类型。不同类型的驱动程序有着不一样的特性和使用方法。</p>
+<p> 1.<strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 此类驱动程序由JDBC-ODBC桥和一个ODBC驱动程序组成。</li>
+<li><input disabled="" type="checkbox"> 工作原理：通过一段本地<strong>C代码</strong>将JDBC调用转化成ODBC调用。这一类型必须在本地计算机上先安装好ODBC驱动程序，然后通过JDBC-ODBCBridge的转换，将Java程序中使用的JDBC API访问指令转化成ODBC API指令，进而通过ODBC驱动程序调用本地数据库驱动代码完成对数据库的访问。</li>
+</ul>
+<p> 2.<strong>部分Java的本地JDBC API驱动程序</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> JDBC API驱动程序(Anative API partly Java technology-enabled Driver)</li>
+<li><input disabled="" type="checkbox"> 工作原理：此类驱动程序也必须在本地计算机上先安装好特定的驱动程序(类似ODBC)，然后通过PartialJavaJDBCDriver的转换，把Java程序中使用的JDBC API转换成NativeAPI，进而存取数据库。</li>
+</ul>
+<p>3.<strong>纯Java的数据库中间件驱动程序</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 纯Java的数据库中间件驱动程序(Pure Java Driver for Database Middleware)使用这类驱动程序时，不需要在本地计算机上安装任何附加软件，但是必须在安装数据库管理系统的服务器端加装中间件(Middleware)，这个中间件负责所有存取数据库时必要的转换。</li>
+<li><input disabled="" type="checkbox"> 工作原理：驱动程序将JDBC访问转换成与数据库无关的标准网络协议(通常是HTTP或HTTPS)送出，然后再由中间件服务器将其转换成数据库专用的访问指令，完成对数据库的操作。中间件服务器能支持对多种数据库的访问。</li>
+</ul>
+<p>4.<strong>纯Java的JDBC驱动程序</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 纯Java的JDBC驱动程序(Direct-to-DatabasePureJavaDriver)这类驱动程序是直接面向数据库的纯Java驱动程序，即所谓的”瘦”驱动程序。</li>
+<li><input disabled="" type="checkbox"> 工作原理：使用这类驱动程序时无需安装任何附加的软件(无论是本地计算机或是数据库服务器端)，所有存取数据库的操作都直接由JDBC驱动程序来完成，此类驱动程序能将JDBC调用转换成DBMS专用的网络协议，能够自动识别网络协议下的特殊数据库并能直接创建数据连接。</li>
+</ul>
+<h2 id="四、JDBC驱动程序的选择"><a href="#四、JDBC驱动程序的选择" class="headerlink" title="四、JDBC驱动程序的选择"></a>四、JDBC驱动程序的选择</h2><p>在企业内部信息系统中，选择合适的JDBC驱动程序，使之符合数据库程序设计的要求，是提高系统性能必须考虑的一个方面。不同的应用有不同的需要，所以要根据应用选择合适的驱动程序。</p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></li>
+<li>优点：节省投资，利用了已有的ODBC驱动程序。</li>
+<li>缺点：中间有多次调用，性能受到影响，执行效率比较低，不适合对大数据量存取的应用。有损Java数据库程序的兼容性，不具备跨平台性，不适合基于Internet/Intranet的应用。</li>
+<li>应用：桥接驱动程序用于已经在ODBC技术上投资的情形，例如已经投资了Windows应用服务器。</li>
+</ul>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>部分Java的本地JDBC API驱动程序</strong></li>
+<li>优点：具有开放性，其利用多层结构，上层用Java实现，支持多数据库，下层为本地代码(包括一些二进制代码和一个轻量的Java库)，加快了执行速度，提高了数据库访问效率。</li>
+<li>缺点：没有使用纯Java的API，如果在本地代码中存在缺陷，将可能使Java虚拟机完全垮掉。</li>
+<li>应用：受到限制</li>
+</ul>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>纯Java的数据库中间件驱动程序</strong></li>
+<li>优点：由纯Java语言开发而成的，并且中间件也仅需要在服务器上安装，不再需要客户端的本机代码，这类驱动程序的体积最小，效率较高，具有最大的灵活性。此类驱动采用标准的网络协议，可以被防火墙支持，是开发Applet程序理想的选择(其实这些驱动是为Applet特别编写的)，是Internet应用理想的解决方案。开发者还可以利用单一的驱动程序连接到多种数据库。</li>
+<li>缺点：需要在服务器端安装中间件，这适当影响了驱动程序的效率。</li>
+<li>应用：基于Web的应用系统的开发。</li>
+</ul>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>纯Java的JDBC驱动程序</strong></li>
+<li>最佳的JDBC驱动程序类型。</li>
+<li>优点：无需安装任何附加软件，不会增加任何额外开销，效率最高，拥有最佳的兼容性。</li>
+<li>缺点：可能不被防火墙支持，在Internet中会存在潜在安全隐患，成为这类驱动最大的缺陷。</li>
+<li>应用：在企业级应用软件中，是应优先考虑的。因此，一个Servlet程序，要适应不同的操作系统，最好使用此类驱动;这种驱动也非常适合Applet程序，事实证明它能安全通过TCP/IP协议连接到数据库。</li>
+</ul>
+<p> <img src="https://img-blog.csdnimg.cn/20200220152318929.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/202002201540355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 ]]></content>
       <categories>
         <category>数据库</category>
