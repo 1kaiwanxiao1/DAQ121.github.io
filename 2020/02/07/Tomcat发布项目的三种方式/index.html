@@ -16,6 +16,7 @@
 <meta property="og:url" content="http://daqwt.top/2020/02/07/Tomcat%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/index.html">
 <meta property="og:site_name" content="DAQ&#39;s Blog">
 <meta property="og:description" content="本文介绍Tomcat发布项目到服务器上的三种方式">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://daqwt.top/images/og_image.png">
 <meta property="article:published_time" content="2020-02-07T05:01:53.000Z">
 <meta property="article:modified_time" content="2020-03-07T07:50:43.658Z">
@@ -31,7 +32,7 @@
 
 
 
-<link rel="icon" href="/images/favicon.svg">
+<link rel="icon" href="/images/wangzhantubiao-32.png">
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
@@ -148,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes lesen (Über 357 Worte)
+                    2 分钟 lesen (Über 357 Worte)
                 </span>
                 
                 
@@ -167,9 +168,9 @@
 
 <ul>
 <li>在webaps下面新建一个文件夹xml  , 然后拷贝文件放置到这个文件夹中</li>
-<li><a href="http://localhost:8080/xml/stu.xml" target="_blank" rel="noopener">http://localhost:8080/xml/stu.xml</a></li>
-<li><a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> ： 对应的是到webapps/root</li>
-<li><a href="http://localhost:8080/xml/" target="_blank" rel="noopener">http://localhost:8080/xml/</a> : 对应是 webapps/xml</li>
+<li><a href="http://localhost:8080/xml/stu.xml">http://localhost:8080/xml/stu.xml</a></li>
+<li><a href="http://localhost:8080">http://localhost:8080</a> ： 对应的是到webapps/root</li>
+<li><a href="http://localhost:8080/xml/">http://localhost:8080/xml/</a> : 对应是 webapps/xml</li>
 <li>使用IP地址访问：http://本机ip:8080/xml/stu.xml</li>
 </ul>
 <h2 id="二、配置虚拟路径"><a href="#二、配置虚拟路径" class="headerlink" title="二、配置虚拟路径"></a>二、配置虚拟路径</h2><p> 使用localhost：8080 打开tomcat首页， 找到Tomcat 8.5 Documentation,进入Reference，点击configuration ，找到左边的context，点击进入，复制此页面路径：</p>
@@ -181,7 +182,7 @@
 </ul>
 <p><img src="https://img-blog.csdnimg.cn/20200225124622947.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
-<li>在浏览器地址栏上输入： <a href="http://localhost:8080/daq/person.xml" target="_blank" rel="noopener">http://localhost:8080/daq/person.xml</a></li>
+<li>在浏览器地址栏上输入： <a href="http://localhost:8080/daq/person.xml">http://localhost:8080/daq/person.xml</a></li>
 </ul>
 <h2 id="配置虚拟路径2"><a href="#配置虚拟路径2" class="headerlink" title="配置虚拟路径2"></a>配置虚拟路径2</h2><ol>
 <li><p>在<code>tomcat/conf/catalina/localhost/</code> 文件夹下新建一个xml文件，名字可以自己定义。 <code>person.xml</code></p>
@@ -626,7 +627,7 @@
         <li>
             <a class="level is-marginless" href="/archives/2020/03/">
                 <span class="level-start">
-                    <span class="level-item">March 2020</span>
+                    <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">8</span>
@@ -637,7 +638,7 @@
         <li>
             <a class="level is-marginless" href="/archives/2020/02/">
                 <span class="level-start">
-                    <span class="level-item">February 2020</span>
+                    <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">29</span>
@@ -943,7 +944,7 @@
         <li>
             <a class="level is-marginless" href="/archives/2020/03/">
                 <span class="level-start">
-                    <span class="level-item">March 2020</span>
+                    <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">8</span>
@@ -954,7 +955,7 @@
         <li>
             <a class="level is-marginless" href="/archives/2020/02/">
                 <span class="level-start">
-                    <span class="level-item">February 2020</span>
+                    <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">29</span>
@@ -1192,7 +1193,7 @@
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-Hans");</script>
+<script>moment.locale("zh-CN");</script>
 
 
 <script>

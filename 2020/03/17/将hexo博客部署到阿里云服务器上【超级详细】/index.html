@@ -16,6 +16,7 @@
 <meta property="og:url" content="http://daqwt.top/2020/03/17/%E5%B0%86hexo%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E3%80%90%E8%B6%85%E7%BA%A7%E8%AF%A6%E7%BB%86%E3%80%91/index.html">
 <meta property="og:site_name" content="DAQ&#39;s Blog">
 <meta property="og:description" content="由于这次的疫情，最爱的马云爸爸的阿里云推出了学生在家上机实践的活动，免费领六个月的ECS云服务器，天呐，2核4G啊，六个月之后还可续费六个月，整整一年呐，市场价780软妹币呢，不过投放量少，而且还是每天早上八点领，连续7:55闹钟起早，终于，在第三个早上，马云爸爸眷顾了我，我领到了。领到了就不能让他吃灰吧，于是先部署个博客再说。因为之前博客是托管在github上面的。而github的服务器又在国外">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://daqwt.top/images/og_image.png">
 <meta property="article:published_time" content="2020-03-17T08:49:31.000Z">
 <meta property="article:modified_time" content="2020-03-18T10:02:33.646Z">
@@ -30,7 +31,7 @@
 
 
 
-<link rel="icon" href="/images/favicon.svg">
+<link rel="icon" href="/images/wangzhantubiao-32.png">
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
@@ -147,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 minutes lesen (Über 2236 Worte)
+                    15 分钟 lesen (Über 2236 Worte)
                 </span>
                 
                 
@@ -163,7 +164,7 @@
             <p>由于这次的疫情，最爱的马云爸爸的阿里云推出了学生在家上机实践的活动，免费领六个月的ECS云服务器，天呐，2核4G啊，六个月之后还可续费六个月，整整一年呐，市场价780软妹币呢，不过投放量少，而且还是每天早上八点领，连续7:55闹钟起早，终于，在第三个早上，马云爸爸眷顾了我，我领到了。领到了就不能让他吃灰吧，于是先部署个博客再说。因为之前博客是托管在github上面的。而github的服务器又在国外，所以访问速度十分感人，但是有了国内的服务器就不一样了，瞬间嗖嗖嗖。。。</p>
 <a id="more"></a>
 
-<p><strong>写在开头的话：</strong> 对于一个刚接触的门外汉来说，搭建博客，到部署到服务器真的让人崩溃，但是在不断地排错过程中，也渐渐弄懂了一些东西。很值得！由于我的域名还在备案中，DNS解析已经停掉了，所以暂时只能用公网IP访问：<a href="https://123.57.60.151" target="_blank" rel="noopener">123.57.60.151</a>，后期等备案成功后再做修改，并且进一步优化。还想做一点SEO的东西。</p>
+<p><strong>写在开头的话：</strong> 对于一个刚接触的门外汉来说，搭建博客，到部署到服务器真的让人崩溃，但是在不断地排错过程中，也渐渐弄懂了一些东西。很值得！由于我的域名还在备案中，DNS解析已经停掉了，所以暂时只能用公网IP访问：<a href="https://123.57.60.151">123.57.60.151</a>，后期等备案成功后再做修改，并且进一步优化。还想做一点SEO的东西。</p>
 <h1 id="一、云服务器配置"><a href="#一、云服务器配置" class="headerlink" title="一、云服务器配置"></a>一、云服务器配置</h1><h2 id="①建立博客存放的目录"><a href="#①建立博客存放的目录" class="headerlink" title="①建立博客存放的目录"></a>①建立博客存放的目录</h2><ul>
 <li>我的目录是：<code>home/www/blog</code></li>
 </ul>
@@ -215,9 +216,9 @@
 <p><img src="https://img-blog.csdnimg.cn/20200317202421490.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>12.创建一个<code>git</code>的仓库，并且新建一个<code>post-receive</code>文件。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.创建并初始化Git仓库</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">git init --bare blog.git</span><br><span class="line"></span><br><span class="line">2.新建post—receive文件</span><br><span class="line">vi ~/blog.git/hooks/post-receive</span><br><span class="line"></span><br><span class="line">3.输入以下内容：</span><br><span class="line">git --work-tree=/home/www/website --git-dir=/home/git/blog.git checkout -f</span><br><span class="line"></span><br><span class="line">4.保存退出之后赋予可执行权限</span><br><span class="line">chmod +x ~/blog.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
 <p><strong>至此，服务器端的配置完成！！！！！！！！</strong></p>
-<h1 id="二、本地主机配置"><a href="#二、本地主机配置" class="headerlink" title="二、本地主机配置"></a>二、本地主机配置</h1><p><strong>说明：</strong> 因为我之前没有云服务器的时候，是把博客部署在<strong>github</strong>仓库中的，所以，在下面的<code>config.yml</code>中会出现两个仓库，这并不影响，他会同时部署到<code>github</code>中和云服务器上，想要了解的话可以去看这篇文章：<a href="https://blog.csdn.net/weixin_44861399/article/details/104673527" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44861399/article/details/104673527</a>，下面就是正式的，将本地主机与服务器连接起来的具体步骤了。</p>
-<h2 id="①安装git"><a href="#①安装git" class="headerlink" title="①安装git"></a>①安装git</h2><p>下载地址：<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">https://git-scm.com/download/win</a></p>
-<h2 id="②安装Node-js"><a href="#②安装Node-js" class="headerlink" title="②安装Node.js"></a>②安装Node.js</h2><p>下载地址：<a href="http://nodejs.org/download/" target="_blank" rel="noopener">http://nodejs.org/download/</a></p>
+<h1 id="二、本地主机配置"><a href="#二、本地主机配置" class="headerlink" title="二、本地主机配置"></a>二、本地主机配置</h1><p><strong>说明：</strong> 因为我之前没有云服务器的时候，是把博客部署在<strong>github</strong>仓库中的，所以，在下面的<code>config.yml</code>中会出现两个仓库，这并不影响，他会同时部署到<code>github</code>中和云服务器上，想要了解的话可以去看这篇文章：<a href="https://blog.csdn.net/weixin_44861399/article/details/104673527">https://blog.csdn.net/weixin_44861399/article/details/104673527</a>，下面就是正式的，将本地主机与服务器连接起来的具体步骤了。</p>
+<h2 id="①安装git"><a href="#①安装git" class="headerlink" title="①安装git"></a>①安装git</h2><p>下载地址：<a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></p>
+<h2 id="②安装Node-js"><a href="#②安装Node-js" class="headerlink" title="②安装Node.js"></a>②安装Node.js</h2><p>下载地址：<a href="http://nodejs.org/download/">http://nodejs.org/download/</a></p>
 <ul>
 <li>安装的时候，选择<code>add to path</code>，他会自动配置环境变量。</li>
 </ul>
@@ -273,7 +274,7 @@
 <ul>
 <li>浏览器地址栏中输入公网ip查看成果。</li>
 </ul>
-<h1 id="四、美化博客"><a href="#四、美化博客" class="headerlink" title="四、美化博客"></a>四、美化博客</h1><p>请参考我的这篇文章：<a href="https://blog.csdn.net/weixin_44861399/article/details/104646946" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44861399/article/details/104646946</a></p>
+<h1 id="四、美化博客"><a href="#四、美化博客" class="headerlink" title="四、美化博客"></a>四、美化博客</h1><p>请参考我的这篇文章：<a href="https://blog.csdn.net/weixin_44861399/article/details/104646946">https://blog.csdn.net/weixin_44861399/article/details/104646946</a></p>
 
         </div>
         
@@ -703,7 +704,7 @@
         <li>
             <a class="level is-marginless" href="/archives/2020/03/">
                 <span class="level-start">
-                    <span class="level-item">March 2020</span>
+                    <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">8</span>
@@ -714,7 +715,7 @@
         <li>
             <a class="level is-marginless" href="/archives/2020/02/">
                 <span class="level-start">
-                    <span class="level-item">February 2020</span>
+                    <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">29</span>
@@ -1020,7 +1021,7 @@
         <li>
             <a class="level is-marginless" href="/archives/2020/03/">
                 <span class="level-start">
-                    <span class="level-item">March 2020</span>
+                    <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">8</span>
@@ -1031,7 +1032,7 @@
         <li>
             <a class="level is-marginless" href="/archives/2020/02/">
                 <span class="level-start">
-                    <span class="level-item">February 2020</span>
+                    <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">29</span>
@@ -1269,7 +1270,7 @@
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-Hans");</script>
+<script>moment.locale("zh-CN");</script>
 
 
 <script>

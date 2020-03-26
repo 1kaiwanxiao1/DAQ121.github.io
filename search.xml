@@ -83,7 +83,7 @@
     <content><![CDATA[<p>由于这次的疫情，最爱的马云爸爸的阿里云推出了学生在家上机实践的活动，免费领六个月的ECS云服务器，天呐，2核4G啊，六个月之后还可续费六个月，整整一年呐，市场价780软妹币呢，不过投放量少，而且还是每天早上八点领，连续7:55闹钟起早，终于，在第三个早上，马云爸爸眷顾了我，我领到了。领到了就不能让他吃灰吧，于是先部署个博客再说。因为之前博客是托管在github上面的。而github的服务器又在国外，所以访问速度十分感人，但是有了国内的服务器就不一样了，瞬间嗖嗖嗖。。。</p>
 <a id="more"></a>
 
-<p><strong>写在开头的话：</strong> 对于一个刚接触的门外汉来说，搭建博客，到部署到服务器真的让人崩溃，但是在不断地排错过程中，也渐渐弄懂了一些东西。很值得！由于我的域名还在备案中，DNS解析已经停掉了，所以暂时只能用公网IP访问：<a href="https://123.57.60.151" target="_blank" rel="noopener">123.57.60.151</a>，后期等备案成功后再做修改，并且进一步优化。还想做一点SEO的东西。</p>
+<p><strong>写在开头的话：</strong> 对于一个刚接触的门外汉来说，搭建博客，到部署到服务器真的让人崩溃，但是在不断地排错过程中，也渐渐弄懂了一些东西。很值得！由于我的域名还在备案中，DNS解析已经停掉了，所以暂时只能用公网IP访问：<a href="https://123.57.60.151">123.57.60.151</a>，后期等备案成功后再做修改，并且进一步优化。还想做一点SEO的东西。</p>
 <h1 id="一、云服务器配置"><a href="#一、云服务器配置" class="headerlink" title="一、云服务器配置"></a>一、云服务器配置</h1><h2 id="①建立博客存放的目录"><a href="#①建立博客存放的目录" class="headerlink" title="①建立博客存放的目录"></a>①建立博客存放的目录</h2><ul>
 <li>我的目录是：<code>home/www/blog</code></li>
 </ul>
@@ -135,9 +135,9 @@
 <p><img src="https://img-blog.csdnimg.cn/20200317202421490.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>12.创建一个<code>git</code>的仓库，并且新建一个<code>post-receive</code>文件。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.创建并初始化Git仓库</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">git init --bare blog.git</span><br><span class="line"></span><br><span class="line">2.新建post—receive文件</span><br><span class="line">vi ~/blog.git/hooks/post-receive</span><br><span class="line"></span><br><span class="line">3.输入以下内容：</span><br><span class="line">git --work-tree=/home/www/website --git-dir=/home/git/blog.git checkout -f</span><br><span class="line"></span><br><span class="line">4.保存退出之后赋予可执行权限</span><br><span class="line">chmod +x ~/blog.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
 <p><strong>至此，服务器端的配置完成！！！！！！！！</strong></p>
-<h1 id="二、本地主机配置"><a href="#二、本地主机配置" class="headerlink" title="二、本地主机配置"></a>二、本地主机配置</h1><p><strong>说明：</strong> 因为我之前没有云服务器的时候，是把博客部署在<strong>github</strong>仓库中的，所以，在下面的<code>config.yml</code>中会出现两个仓库，这并不影响，他会同时部署到<code>github</code>中和云服务器上，想要了解的话可以去看这篇文章：<a href="https://blog.csdn.net/weixin_44861399/article/details/104673527" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44861399/article/details/104673527</a>，下面就是正式的，将本地主机与服务器连接起来的具体步骤了。</p>
-<h2 id="①安装git"><a href="#①安装git" class="headerlink" title="①安装git"></a>①安装git</h2><p>下载地址：<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">https://git-scm.com/download/win</a></p>
-<h2 id="②安装Node-js"><a href="#②安装Node-js" class="headerlink" title="②安装Node.js"></a>②安装Node.js</h2><p>下载地址：<a href="http://nodejs.org/download/" target="_blank" rel="noopener">http://nodejs.org/download/</a></p>
+<h1 id="二、本地主机配置"><a href="#二、本地主机配置" class="headerlink" title="二、本地主机配置"></a>二、本地主机配置</h1><p><strong>说明：</strong> 因为我之前没有云服务器的时候，是把博客部署在<strong>github</strong>仓库中的，所以，在下面的<code>config.yml</code>中会出现两个仓库，这并不影响，他会同时部署到<code>github</code>中和云服务器上，想要了解的话可以去看这篇文章：<a href="https://blog.csdn.net/weixin_44861399/article/details/104673527">https://blog.csdn.net/weixin_44861399/article/details/104673527</a>，下面就是正式的，将本地主机与服务器连接起来的具体步骤了。</p>
+<h2 id="①安装git"><a href="#①安装git" class="headerlink" title="①安装git"></a>①安装git</h2><p>下载地址：<a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></p>
+<h2 id="②安装Node-js"><a href="#②安装Node-js" class="headerlink" title="②安装Node.js"></a>②安装Node.js</h2><p>下载地址：<a href="http://nodejs.org/download/">http://nodejs.org/download/</a></p>
 <ul>
 <li>安装的时候，选择<code>add to path</code>，他会自动配置环境变量。</li>
 </ul>
@@ -193,7 +193,7 @@
 <ul>
 <li>浏览器地址栏中输入公网ip查看成果。</li>
 </ul>
-<h1 id="四、美化博客"><a href="#四、美化博客" class="headerlink" title="四、美化博客"></a>四、美化博客</h1><p>请参考我的这篇文章：<a href="https://blog.csdn.net/weixin_44861399/article/details/104646946" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44861399/article/details/104646946</a></p>
+<h1 id="四、美化博客"><a href="#四、美化博客" class="headerlink" title="四、美化博客"></a>四、美化博客</h1><p>请参考我的这篇文章：<a href="https://blog.csdn.net/weixin_44861399/article/details/104646946">https://blog.csdn.net/weixin_44861399/article/details/104646946</a></p>
 ]]></content>
       <categories>
         <category>Hexo建站系列</category>
@@ -261,7 +261,7 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Sidebar Avatar</span></span><br><span class="line"><span class="comment"># in theme directory(source/images): /images/avatar.gif</span></span><br><span class="line"><span class="comment"># in site  directory(source/uploads): /uploads/avatar.gif</span></span><br><span class="line">avatar: /images/touxiang.jpg</span><br></pre></td></tr></table></figure>
 <h2 id="修改网站图标"><a href="#修改网站图标" class="headerlink" title="修改网站图标"></a>修改网站图标</h2><ul>
-<li>图标素材网站：<a href="https://www.iconfont.cn/collections/index?spm=a313x.7781069.1998910419.d2b281273&type=2" target="_blank" rel="noopener">iconfont</a></li>
+<li>图标素材网站：<a href="https://www.iconfont.cn/collections/index?spm=a313x.7781069.1998910419.d2b281273&type=2">iconfont</a></li>
 <li>下载16x16以及32x32大小的PNG格式图标，置于<code>/themes/next/source/images/</code>下</li>
 <li>打开<code>themes/next/</code>下的<code>_config.yml</code>，查找<code>favicon</code>，修改要更换的图标名字即可。</li>
 </ul>
@@ -280,7 +280,7 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Set rss to false to disable feed link.</span></span><br><span class="line"><span class="comment"># Leave rss as empty to use site's feed link.</span></span><br><span class="line"><span class="comment"># Set rss to specific value if you have burned your feed already.</span></span><br><span class="line">rss: /atom.xml</span><br></pre></td></tr></table></figure>
 <h2 id="添加fork-me-Github"><a href="#添加fork-me-Github" class="headerlink" title="添加fork me Github"></a>添加fork me Github</h2><ul>
-<li><p>点击<a href="https://github.blog/2008-12-19-github-ribbons/" target="_blank" rel="noopener">http://tholman.com/github-corners/</a>挑选自己喜欢的样式，并复制代码。</p>
+<li><p>点击<a href="https://github.blog/2008-12-19-github-ribbons/">http://tholman.com/github-corners/</a>挑选自己喜欢的样式，并复制代码。</p>
 </li>
 <li><p>找到<code>themes/next/layout/_layout.swig</code>文件，(放在<code>&lt;div class=&quot;headband&quot;&gt;&lt;/div&gt;</code>的下面)，并把<code>href</code>改为你的<code>github</code>地址。</p>
 <h2 id="修改文章底部带-号的标签"><a href="#修改文章底部带-号的标签" class="headerlink" title="修改文章底部带#号的标签"></a>修改文章底部带#号的标签</h2></li>
@@ -358,7 +358,7 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">baidushare:</span><br><span class="line">  <span class="built_in">type</span>: slide</span><br><span class="line">  baidushare: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>下载<code>static</code>文件夹，地址：<a href="https://github.com/hrwhisper/baiduShare" target="_blank" rel="noopener">https://github.com/hrwhisper/baiduShare</a>，将<code>static</code>文件夹保存至<code>themes\next\source</code>目录下。</li>
+<li>下载<code>static</code>文件夹，地址：<a href="https://github.com/hrwhisper/baiduShare">https://github.com/hrwhisper/baiduShare</a>，将<code>static</code>文件夹保存至<code>themes\next\source</code>目录下。</li>
 <li>修改文件：<code>themes\next\layout_partials\share\baidushare.swig</code><br>末尾部分的代码：</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.src=<span class="string">'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='</span>+~(-new Date()/36e5)];</span><br></pre></td></tr></table></figure>
@@ -381,8 +381,8 @@
 <a id="more"></a>
 
 <p><strong>概述：</strong> 本文主要讲的是基于github，利用hexo博客框架搭建网站。购买域名（9块）并绑定。实现效果：可以看到网站首页。</p>
-<h2 id="一、下载安装Git"><a href="#一、下载安装Git" class="headerlink" title="一、下载安装Git"></a>一、下载安装Git</h2><p>下载地址：<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">https://git-scm.com/download/win</a><br>安装过程就不赘述了！</p>
-<h2 id="二、下载安装Node-js"><a href="#二、下载安装Node-js" class="headerlink" title="二、下载安装Node.js"></a>二、下载安装Node.js</h2><p>下载地址：<a href="http://nodejs.org/download/" target="_blank" rel="noopener">http://nodejs.org/download/</a><br>安装的时候，选择<code>add to path</code>，他会自动配置环境变量。</p>
+<h2 id="一、下载安装Git"><a href="#一、下载安装Git" class="headerlink" title="一、下载安装Git"></a>一、下载安装Git</h2><p>下载地址：<a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a><br>安装过程就不赘述了！</p>
+<h2 id="二、下载安装Node-js"><a href="#二、下载安装Node-js" class="headerlink" title="二、下载安装Node.js"></a>二、下载安装Node.js</h2><p>下载地址：<a href="http://nodejs.org/download/">http://nodejs.org/download/</a><br>安装的时候，选择<code>add to path</code>，他会自动配置环境变量。</p>
 <ul>
 <li>换镜像（亲身体验，可以省去以后好多麻烦）</li>
 </ul>
@@ -444,7 +444,7 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 <p>这样在博客和github都可以看到推送的内容。</p>
-<h2 id="六、购买绑定域名"><a href="#六、购买绑定域名" class="headerlink" title="六、购买绑定域名"></a>六、购买绑定域名</h2><p>阿里云：<a href="https://wanwang.aliyun.com/domain/" target="_blank" rel="noopener">https://wanwang.aliyun.com/domain/</a></p>
+<h2 id="六、购买绑定域名"><a href="#六、购买绑定域名" class="headerlink" title="六、购买绑定域名"></a>六、购买绑定域名</h2><p>阿里云：<a href="https://wanwang.aliyun.com/domain/">https://wanwang.aliyun.com/domain/</a></p>
 <ul>
 <li>在阿里云或者腾讯云购买一个域名，我买的是阿里云的<code>.top</code>后缀名的，后缀名不同，价格不同，top最便宜，一年只要九块。</li>
 <li>如何买域名以及解析域名不做描述，注意要是实名认证，解析域名的意思就是，把ip地址和域名做一个映射，它让你填的<code>ip地址</code>就是你github网站仓库的<code>ip</code>。如何得到这个<code>ip</code>：</li>
@@ -965,7 +965,7 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
 </ol>
 <p>##二、使用目的</p>
 <p>通过git管理github托管项目代码。<br>##三、下载安装</p>
-<p>下载地址：<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">https://git-scm.com/download/win</a><br>##四、Git工作区域</p>
+<p>下载地址：<a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a><br>##四、Git工作区域</p>
 <ul>
 <li>工作区（Working Directory）： 添加、编辑、修改文件。</li>
 <li>暂存区 ： 暂存已经修改的文件最后统一提交到git仓库中。 留一个回旋的余地，没改好接着改，改好了再提交到仓库。</li>
@@ -1859,9 +1859,9 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
 
 <ul>
 <li>在webaps下面新建一个文件夹xml  , 然后拷贝文件放置到这个文件夹中</li>
-<li><a href="http://localhost:8080/xml/stu.xml" target="_blank" rel="noopener">http://localhost:8080/xml/stu.xml</a></li>
-<li><a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> ： 对应的是到webapps/root</li>
-<li><a href="http://localhost:8080/xml/" target="_blank" rel="noopener">http://localhost:8080/xml/</a> : 对应是 webapps/xml</li>
+<li><a href="http://localhost:8080/xml/stu.xml">http://localhost:8080/xml/stu.xml</a></li>
+<li><a href="http://localhost:8080">http://localhost:8080</a> ： 对应的是到webapps/root</li>
+<li><a href="http://localhost:8080/xml/">http://localhost:8080/xml/</a> : 对应是 webapps/xml</li>
 <li>使用IP地址访问：http://本机ip:8080/xml/stu.xml</li>
 </ul>
 <h2 id="二、配置虚拟路径"><a href="#二、配置虚拟路径" class="headerlink" title="二、配置虚拟路径"></a>二、配置虚拟路径</h2><p> 使用localhost：8080 打开tomcat首页， 找到Tomcat 8.5 Documentation,进入Reference，点击configuration ，找到左边的context，点击进入，复制此页面路径：</p>
@@ -1873,7 +1873,7 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
 </ul>
 <p><img src="https://img-blog.csdnimg.cn/20200225124622947.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
-<li>在浏览器地址栏上输入： <a href="http://localhost:8080/daq/person.xml" target="_blank" rel="noopener">http://localhost:8080/daq/person.xml</a></li>
+<li>在浏览器地址栏上输入： <a href="http://localhost:8080/daq/person.xml">http://localhost:8080/daq/person.xml</a></li>
 </ul>
 <h2 id="配置虚拟路径2"><a href="#配置虚拟路径2" class="headerlink" title="配置虚拟路径2"></a>配置虚拟路径2</h2><ol>
 <li><p>在<code>tomcat/conf/catalina/localhost/</code> 文件夹下新建一个xml文件，名字可以自己定义。 <code>person.xml</code></p>
@@ -1920,7 +1920,7 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
 <ul>
 <li>常用web服务器：<br> Tomcat  —–apache 免费<br> WebLogic —–BEA  收费<br> Websphere —–IBM 收费<br> IIS   —–微软<h2 id="三、安装tomcat"><a href="#三、安装tomcat" class="headerlink" title="三、安装tomcat"></a>三、安装tomcat</h2></li>
 <li>直接解压 ，然后找到bin/startup.bat</li>
-<li>安装启动之后，如果能够正常看到黑窗口，表明已经成功安装。 为了确保万无一失， 最好在浏览器的地址栏上输入 ： <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> , 如果有看到内容 就表明成功了。在黑窗口开着的同时输入网址。</li>
+<li>安装启动之后，如果能够正常看到黑窗口，表明已经成功安装。 为了确保万无一失， 最好在浏览器的地址栏上输入 ： <a href="http://localhost:8080">http://localhost:8080</a> , 如果有看到内容 就表明成功了。在黑窗口开着的同时输入网址。</li>
 <li>出现控制台乱码问题，右键控制台，查看是GBK，还是UTF-8。然后在安装目录中找到conf–logging.properties文件，修改里面的编码方式，保持一致即可。</li>
 <li>如果双击了startup.bat,  看到一闪而过的情形，一般都是 JDK的环境变量没有配置。<h2 id="四、Tomcat目录介绍"><a href="#四、Tomcat目录介绍" class="headerlink" title="四、Tomcat目录介绍"></a>四、Tomcat目录介绍</h2></li>
 </ul>
