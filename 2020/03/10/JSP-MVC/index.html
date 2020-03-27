@@ -176,6 +176,13 @@
                 JSP模式&amp;&amp;MVC模式
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>一个项目有一个好的设计模式很重要，有一个好的设计模式，使得开发和维护也变得简单。MVC是一种程序开发设计模式，他实现了显示模块与功能模块分离，提高了程序的可维护性，可移植性，可扩展性，可重用性，降低了程序的开发难度。</p>
 <a id="more"></a>
@@ -443,6 +450,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
                     目录
                 </h3>
                 <ul class="menu-list"><li>

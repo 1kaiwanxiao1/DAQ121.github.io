@@ -176,6 +176,13 @@
                 MySql基础操作
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>本文简单介绍了数据库，和一些基本操作。</p>
 <a id="more"></a>
@@ -535,6 +542,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
                     目录
                 </h3>
                 <ul class="menu-list"><li>

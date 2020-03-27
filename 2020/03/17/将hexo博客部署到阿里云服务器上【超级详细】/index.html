@@ -176,6 +176,13 @@
                 建站系列之---部署网站到云服务器
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>由于这次的疫情，最爱的马云爸爸的阿里云推出了学生在家上机实践的活动，免费领六个月的ECS云服务器，天呐，2核4G啊，六个月之后还可续费六个月，整整一年呐，市场价780软妹币呢，不过投放量少，而且还是每天早上八点领，连续7:55闹钟起早，终于，在第三个早上，马云爸爸眷顾了我，我领到了。领到了就不能让他吃灰吧，于是先部署个博客再说。因为之前博客是托管在github上面的。而github的服务器又在国外，所以访问速度十分感人，但是有了国内的服务器就不一样了，瞬间嗖嗖嗖。。。</p>
 <a id="more"></a>
@@ -526,6 +533,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
                     目录
                 </h3>
                 <ul class="menu-list"><li>

@@ -176,6 +176,13 @@
                 JDBC基础知识
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>JDBC概述，作用，类型，以及使用时如何选择。</p>
 <a id="more"></a>
@@ -473,6 +480,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
                     目录
                 </h3>
                 <ul class="menu-list"><li>

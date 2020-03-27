@@ -176,6 +176,13 @@
                 <a class="has-link-black-ter" href="/2020/02/02/MySql%E5%A4%9A%E8%A1%A8%E6%93%8D%E4%BD%9C/">MySql多表操作</a>
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p><strong>问：</strong> 分类表和商品表之间是不是有关系? 如果有关系,在数据库中如何表示这种关系？</p>
         </div>
@@ -230,6 +237,13 @@
                 <a class="has-link-black-ter" href="/2020/02/01/MySql%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/">MySql安装与卸载</a>
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>MySql的卸载与安装</p>
         </div>
@@ -284,6 +298,13 @@
                 <a class="has-link-black-ter" href="/2020/02/01/MySql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">MySql基础操作</a>
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>本文简单介绍了数据库，和一些基本操作。</p>
         </div>
@@ -456,6 +477,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
+        <i class="fas fa-link"></i>
             友链
         </h3>
         <ul class="menu-list">
@@ -493,6 +515,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
+                <i class="iconfont icon-leimupinleifenleileibie"></i>
                 分类
             </h3>
             <ul class="menu-list">
@@ -554,6 +577,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
+                <i class="iconfont icon-biaoqian"></i>
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
@@ -724,7 +748,7 @@
     <div class="card-content">
 
         <h3 class="menu-label">
-            <i class="fas fa-book-reader"></i>
+            <i class="iconfont icon-zuixinwenzhang"></i>
             最新文章
         </h3>
         
@@ -800,7 +824,7 @@
     <div class="card-content">
        <div class="menu">      
         <h3 class="menu-label">
-        <i class="far fa-address-book"></i>
+        <i class="iconfont icon-guidang"></i>
             归档
         </h3>
         <ul class="menu-list">
@@ -847,7 +871,7 @@
     <div class="card-content">
 
         <h3 class="menu-label">
-            <i class="fas fa-book-reader"></i>
+            <i class="iconfont icon-zuixinwenzhang"></i>
             最新文章
         </h3>
         
@@ -923,7 +947,7 @@
     <div class="card-content">
        <div class="menu">      
         <h3 class="menu-label">
-        <i class="far fa-address-book"></i>
+        <i class="iconfont icon-guidang"></i>
             归档
         </h3>
         <ul class="menu-list">

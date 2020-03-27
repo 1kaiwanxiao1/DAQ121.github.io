@@ -136,9 +136,7 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-
     <div class="card-content">
-    <i class="fas fa-tags"></i>
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="/tags">标签</a></li>
@@ -177,6 +175,13 @@
                 <a class="has-link-black-ter" href="/2020/02/11/%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E4%B8%A4%E7%A7%8D%E4%BA%A4%E6%98%93%E6%96%B9%E5%BC%8F/">比特币的两种交易方式</a>
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>比特币的交易有很多种，本文了解一下</p>
         </div>
@@ -231,6 +236,13 @@
                 <a class="has-link-black-ter" href="/2020/02/11/%E8%82%A1%E7%A5%A8%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD/">股票基本术语</a>
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>股票基本术语了解。</p>
         </div>
@@ -285,6 +297,13 @@
                 <a class="has-link-black-ter" href="/2020/02/11/%E7%81%AB%E5%B8%81%E7%BD%91-%E5%B8%81%E5%B8%81%E4%BA%A4%E6%98%93%E5%9B%BE%E8%A7%A3/">火币网--币币交易图解</a>
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>如何在火币网上执行币币交易</p>
         </div>
@@ -457,6 +476,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
+        <i class="fas fa-link"></i>
             友链
         </h3>
         <ul class="menu-list">
@@ -494,6 +514,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
+                <i class="iconfont icon-leimupinleifenleileibie"></i>
                 分类
             </h3>
             <ul class="menu-list">
@@ -555,6 +576,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
+                <i class="iconfont icon-biaoqian"></i>
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
@@ -725,7 +747,7 @@
     <div class="card-content">
 
         <h3 class="menu-label">
-            <i class="fas fa-book-reader"></i>
+            <i class="iconfont icon-zuixinwenzhang"></i>
             最新文章
         </h3>
         
@@ -801,7 +823,7 @@
     <div class="card-content">
        <div class="menu">      
         <h3 class="menu-label">
-        <i class="far fa-address-book"></i>
+        <i class="iconfont icon-guidang"></i>
             归档
         </h3>
         <ul class="menu-list">
@@ -848,7 +870,7 @@
     <div class="card-content">
 
         <h3 class="menu-label">
-            <i class="fas fa-book-reader"></i>
+            <i class="iconfont icon-zuixinwenzhang"></i>
             最新文章
         </h3>
         
@@ -924,7 +946,7 @@
     <div class="card-content">
        <div class="menu">      
         <h3 class="menu-label">
-        <i class="far fa-address-book"></i>
+        <i class="iconfont icon-guidang"></i>
             归档
         </h3>
         <ul class="menu-list">

@@ -136,9 +136,7 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-
     <div class="card-content">
-    <i class="fas fa-tags"></i>
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="/tags">标签</a></li>
@@ -177,6 +175,13 @@
                 <a class="has-link-black-ter" href="/2020/03/14/HashMap%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/">一、HashMap的底层实现原理</a>
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>HeshMap是基于哈希表的Map接口的实现，此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了非同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。 此实现假定哈希函数将元素适当地分布在各桶之间，可为基本操作（get 和 put）提供稳定的性能。迭代 collection 视图所需的时间与 HashMap 实例的“容量”（桶的数量）及其大小（键-值映射关系数）成比例。所以，如果迭代性能很重要，则不要将初始容量设置得太高（或将加载因子设置得太低）。在面试中也经常出现这道考题，记录一下！</p>
         </div>
@@ -330,6 +335,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
+        <i class="fas fa-link"></i>
             友链
         </h3>
         <ul class="menu-list">
@@ -367,6 +373,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
+                <i class="iconfont icon-leimupinleifenleileibie"></i>
                 分类
             </h3>
             <ul class="menu-list">
@@ -428,6 +435,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
+                <i class="iconfont icon-biaoqian"></i>
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
@@ -598,7 +606,7 @@
     <div class="card-content">
 
         <h3 class="menu-label">
-            <i class="fas fa-book-reader"></i>
+            <i class="iconfont icon-zuixinwenzhang"></i>
             最新文章
         </h3>
         
@@ -674,7 +682,7 @@
     <div class="card-content">
        <div class="menu">      
         <h3 class="menu-label">
-        <i class="far fa-address-book"></i>
+        <i class="iconfont icon-guidang"></i>
             归档
         </h3>
         <ul class="menu-list">
@@ -721,7 +729,7 @@
     <div class="card-content">
 
         <h3 class="menu-label">
-            <i class="fas fa-book-reader"></i>
+            <i class="iconfont icon-zuixinwenzhang"></i>
             最新文章
         </h3>
         
@@ -797,7 +805,7 @@
     <div class="card-content">
        <div class="menu">      
         <h3 class="menu-label">
-        <i class="far fa-address-book"></i>
+        <i class="iconfont icon-guidang"></i>
             归档
         </h3>
         <ul class="menu-list">

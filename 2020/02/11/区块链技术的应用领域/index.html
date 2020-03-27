@@ -172,6 +172,13 @@
                 区块链技术的应用领域
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>-</p>
 <a id="more"></a>
@@ -407,6 +414,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
+        <i class="fas fa-link"></i>
             友链
         </h3>
         <ul class="menu-list">
@@ -444,6 +452,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
+                <i class="iconfont icon-leimupinleifenleileibie"></i>
                 分类
             </h3>
             <ul class="menu-list">
@@ -505,6 +514,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
+                <i class="iconfont icon-biaoqian"></i>
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
@@ -675,7 +685,7 @@
     <div class="card-content">
 
         <h3 class="menu-label">
-            <i class="fas fa-book-reader"></i>
+            <i class="iconfont icon-zuixinwenzhang"></i>
             最新文章
         </h3>
         
@@ -751,7 +761,7 @@
     <div class="card-content">
        <div class="menu">      
         <h3 class="menu-label">
-        <i class="far fa-address-book"></i>
+        <i class="iconfont icon-guidang"></i>
             归档
         </h3>
         <ul class="menu-list">
@@ -798,7 +808,7 @@
     <div class="card-content">
 
         <h3 class="menu-label">
-            <i class="fas fa-book-reader"></i>
+            <i class="iconfont icon-zuixinwenzhang"></i>
             最新文章
         </h3>
         
@@ -874,7 +884,7 @@
     <div class="card-content">
        <div class="menu">      
         <h3 class="menu-label">
-        <i class="far fa-address-book"></i>
+        <i class="iconfont icon-guidang"></i>
             归档
         </h3>
         <ul class="menu-list">

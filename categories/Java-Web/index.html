@@ -176,6 +176,13 @@
                 <a class="has-link-black-ter" href="/2020/03/10/JSP-MVC/">JSP模式&amp;&amp;MVC模式</a>
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>一个项目有一个好的设计模式很重要，有一个好的设计模式，使得开发和维护也变得简单。MVC是一种程序开发设计模式，他实现了显示模块与功能模块分离，提高了程序的可维护性，可移植性，可扩展性，可重用性，降低了程序的开发难度。</p>
         </div>
@@ -230,6 +237,13 @@
                 <a class="has-link-black-ter" href="/2020/02/11/JSP-EL-JSTL/">JSP&amp;EL&amp;JSTL</a>
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>JSP，EL表达式，JSTL介绍</p>
         </div>
@@ -284,6 +298,13 @@
                 <a class="has-link-black-ter" href="/2020/02/09/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ASession/">服务器端会话技术：Session</a>
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>Session对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的Web页之间跳转时，存储在Session对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。他是用来解决Cookie带来的安全问题。</p>
         </div>
@@ -338,6 +359,13 @@
                 <a class="has-link-black-ter" href="/2020/02/09/%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ACookie/">客户端会话技术：Cookie</a>
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>类型为“小型文本文件”，是某些网站为了辨别用户身份，进行Session跟踪而储存在用户本地终端上的数据（通常经过加密），由客户端计算机暂时或永久保存的信息。</p>
         </div>
@@ -392,6 +420,13 @@
                 <a class="has-link-black-ter" href="/2020/02/08/Http%E5%8D%8F%E8%AE%AE-C-S%E9%80%9A%E8%AE%AF%E6%8A%93%E5%8C%85/">Http协议&amp;C/S通讯抓包</a>
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>http协议：针对网络上的客户端 与 服务器端在执行http请求的时候，遵守的一种规范。 规定了客户端在访问服务器端的时候,服务器端返回数据的时候，要带上什么东西。</p>
         </div>
@@ -564,6 +599,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
+        <i class="fas fa-link"></i>
             友链
         </h3>
         <ul class="menu-list">
@@ -601,6 +637,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
+                <i class="iconfont icon-leimupinleifenleileibie"></i>
                 分类
             </h3>
             <ul class="menu-list">
@@ -662,6 +699,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
+                <i class="iconfont icon-biaoqian"></i>
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
@@ -832,7 +870,7 @@
     <div class="card-content">
 
         <h3 class="menu-label">
-            <i class="fas fa-book-reader"></i>
+            <i class="iconfont icon-zuixinwenzhang"></i>
             最新文章
         </h3>
         
@@ -908,7 +946,7 @@
     <div class="card-content">
        <div class="menu">      
         <h3 class="menu-label">
-        <i class="far fa-address-book"></i>
+        <i class="iconfont icon-guidang"></i>
             归档
         </h3>
         <ul class="menu-list">
@@ -955,7 +993,7 @@
     <div class="card-content">
 
         <h3 class="menu-label">
-            <i class="fas fa-book-reader"></i>
+            <i class="iconfont icon-zuixinwenzhang"></i>
             最新文章
         </h3>
         
@@ -1031,7 +1069,7 @@
     <div class="card-content">
        <div class="menu">      
         <h3 class="menu-label">
-        <i class="far fa-address-book"></i>
+        <i class="iconfont icon-guidang"></i>
             归档
         </h3>
         <ul class="menu-list">

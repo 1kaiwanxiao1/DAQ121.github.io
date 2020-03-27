@@ -176,6 +176,13 @@
                 建站系列之---备份本地站点到github上
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>试想一下，就你自己的电脑上配置了hexo，平时写博客，部署都是在自己电脑上，那万一有一天，用的不是自己电脑，又想要写博客，那怎么办呢？此时就要用到git了，将你的站点配置等信息备份到github上，要用的时候，用 git clone到本地。而且好处不仅如此，万一哪天出了问题，有个备份，岂不美哉？</p>
 <a id="more"></a>
@@ -459,6 +466,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
                     目录
                 </h3>
                 <ul class="menu-list"><li>

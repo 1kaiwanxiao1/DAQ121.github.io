@@ -177,6 +177,13 @@
                 Tomcat发布项目的三种方式
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>本文介绍Tomcat发布项目到服务器上的三种方式</p>
 <a id="more"></a>
@@ -449,6 +456,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
                     目录
                 </h3>
                 <ul class="menu-list"><li>

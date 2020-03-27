@@ -176,6 +176,13 @@
                 github下载项目加速
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>在github上面找好的开源项目，想要clone到本地，自己调试运行一下，但是由于github的服务器在国外，所以下载速度真的是惊人的慢，有的时候2k/s，如果是一个小项目的话。那还好，等个两三分钟，但是项目大一点的，那就很鸡肋了，这里就介绍一个投机取巧的方法，来加速git clone</p>
 <a id="more"></a>

@@ -136,9 +136,7 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-
     <div class="card-content">
-    <i class="fas fa-tags"></i>
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="/tags">标签</a></li>
@@ -177,6 +175,13 @@
                 <a class="has-link-black-ter" href="/2020/02/27/git%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/">git命令大全</a>
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>git分布式版本控制工具，在日常的开发中起到了非常重要的作用，掌握一些基本的命令也对工作效率的提高有很大的帮助，下面介绍一些基本的git操作。</p>
         </div>
@@ -231,6 +236,13 @@
                 <a class="has-link-black-ter" href="/2020/02/25/Git%E4%BD%BF%E7%94%A8%E5%AD%A6%E4%B9%A0/">Git使用学习</a>
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>Git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。也是程序员最常用工具之一，连接本地仓库与github仓库，提高了开发效率，github也是开源项目宝库。</p>
         </div>
@@ -285,6 +297,13 @@
                 <a class="has-link-black-ter" href="/2020/02/25/github%E4%B8%8B%E8%BD%BD%E9%A1%B9%E7%9B%AE%E5%8A%A0%E9%80%9F/">github下载项目加速</a>
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>在github上面找好的开源项目，想要clone到本地，自己调试运行一下，但是由于github的服务器在国外，所以下载速度真的是惊人的慢，有的时候2k/s，如果是一个小项目的话。那还好，等个两三分钟，但是项目大一点的，那就很鸡肋了，这里就介绍一个投机取巧的方法，来加速git clone</p>
         </div>
@@ -438,6 +457,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
+        <i class="fas fa-link"></i>
             友链
         </h3>
         <ul class="menu-list">
@@ -475,6 +495,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
+                <i class="iconfont icon-leimupinleifenleileibie"></i>
                 分类
             </h3>
             <ul class="menu-list">
@@ -536,6 +557,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
+                <i class="iconfont icon-biaoqian"></i>
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
@@ -706,7 +728,7 @@
     <div class="card-content">
 
         <h3 class="menu-label">
-            <i class="fas fa-book-reader"></i>
+            <i class="iconfont icon-zuixinwenzhang"></i>
             最新文章
         </h3>
         
@@ -782,7 +804,7 @@
     <div class="card-content">
        <div class="menu">      
         <h3 class="menu-label">
-        <i class="far fa-address-book"></i>
+        <i class="iconfont icon-guidang"></i>
             归档
         </h3>
         <ul class="menu-list">
@@ -829,7 +851,7 @@
     <div class="card-content">
 
         <h3 class="menu-label">
-            <i class="fas fa-book-reader"></i>
+            <i class="iconfont icon-zuixinwenzhang"></i>
             最新文章
         </h3>
         
@@ -905,7 +927,7 @@
     <div class="card-content">
        <div class="menu">      
         <h3 class="menu-label">
-        <i class="far fa-address-book"></i>
+        <i class="iconfont icon-guidang"></i>
             归档
         </h3>
         <ul class="menu-list">

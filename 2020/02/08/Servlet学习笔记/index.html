@@ -176,6 +176,13 @@
                 Servlet学习笔记
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>java Web离不开Servlet，它其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </p>
 <a id="more"></a>
@@ -472,6 +479,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
                     目录
                 </h3>
                 <ul class="menu-list"><li>

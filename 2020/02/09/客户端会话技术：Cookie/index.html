@@ -176,6 +176,13 @@
                 客户端会话技术：Cookie
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>类型为“小型文本文件”，是某些网站为了辨别用户身份，进行Session跟踪而储存在用户本地终端上的数据（通常经过加密），由客户端计算机暂时或永久保存的信息。</p>
 <a id="more"></a>
@@ -448,6 +455,7 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
                     目录
                 </h3>
                 <ul class="menu-list"><li>

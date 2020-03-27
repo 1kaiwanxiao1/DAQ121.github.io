@@ -175,6 +175,13 @@
                 try-catch-finally总结
             
         </h1>
+
+ <div>
+    {% if not is_index %}
+         {% include 'passage-end-tag.ejs' %}
+    {% endif %}
+ </div>
+
         <div class="content">
             <p>在日常编译运行程序出错的时候，编译器就会抛出异常，抛出异常要比终止程序灵活的多，这是因为Java提供了一个”捕获”异常的处理器对异常情况进行处理，如果没有提供处理器机制，程序就会终止，try-catch-finally可以保证程序发生错误的时候继续执行下去。下面就谈一下使用的总结，和注意事项。</p>
 <a id="more"></a>
@@ -406,6 +413,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
                     目录
                 </h3>
                 <ul class="menu-list"><li>
