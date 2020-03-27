@@ -176,13 +176,6 @@
                 服务器端会话技术：Session
             
         </h1>
-
- <div>
-    {% if not is_index %}
-         {% include 'passage-end-tag.ejs' %}
-    {% endif %}
- </div>
-
         <div class="content">
             <p>Session对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的Web页之间跳转时，存储在Session对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。他是用来解决Cookie带来的安全问题。</p>
 <a id="more"></a>
@@ -489,7 +482,7 @@
     <footer class="footer">
     <div class="container">
         <div class="level">
-            <div class="level-start has-text-centered-mobile">
+            <div class="level-start has-text-centered-mobile" align="center">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
                     <img src="/images/logo.png" alt="服务器端会话技术：Session" height="28">
@@ -500,8 +493,8 @@
                 <a href="http://www.beian.miit.gov.cn/"  style="color:#f72b07" target="_blank">鄂ICP备20003594</a>
                 
                 <br>
-                <span id="busuanzi_container_site_uv">来访<span id="busuanzi_value_site_uv"></span>0人</span>
-				<span id="busuanzi_container_site_pv">总访问<span id="busuanzi_value_site_pv"></span>0次</span>
+                <span id="busuanzi_container_site_uv">来访<span id="busuanzi_value_site_uv"></span>人</span>
+				<span id="busuanzi_container_site_pv">总访问<span id="busuanzi_value_site_pv"></span>次</span>
                 
                 </p>
             </div>
