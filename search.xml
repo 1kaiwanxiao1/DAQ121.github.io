@@ -1369,42 +1369,6 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
-    <title>火币网--币币交易图解</title>
-    <url>/2020/02/11/%E7%81%AB%E5%B8%81%E7%BD%91-%E5%B8%81%E5%B8%81%E4%BA%A4%E6%98%93%E5%9B%BE%E8%A7%A3/</url>
-    <content><![CDATA[<p>如何在火币网上执行币币交易</p>
-<a id="more"></a>
-<p><img src="https://img-blog.csdnimg.cn/20200205111557755.png" alt="在这里插入图片描述"></p>
-<ul>
-<li><p>BTC/USDT：BTC对USDT的交易对，相当于平均1个BTC当前需要9211.76个USDT来购买，后面的64574.43CNY是说9211.76个USDT约等于64574.43人民币。</p>
-</li>
-<li><p>涨幅+0.01%是今天此时此刻比特币的价格相对于昨天的这个时候价格涨了0.01%，如果是红色的-0.01%就代表跌了0.01%。</p>
-</li>
-<li><p>高9320.00 低9100.00是<strong>过去24小时</strong>最高9320.00USDT最低9100.00USDT。</p>
-</li>
-<li><p>24H量：是过去24小时火币网交易了28878个比特币。这只是在火币网交易的数量。<br><img src="https://img-blog.csdnimg.cn/2020020511252911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-</li>
-<li><p>上面一排时间是，选择显示这个时间段的数据，比如我选择的是1min，那么k线图中每一个红色或者绿色的柱就代表这一分钟内的走势。</p>
-</li>
-<li><p>时间下面的一排：11：24这个时间点的开盘价，最高价，最低价，收盘价，成交量。</p>
-</li>
-<li><p>MA均线：<strong>（MA）理论是股市最常见的一种技术分析方法，它对股市操作具有神奇的指导作用。</strong></p>
-</li>
-<li><p>绿色柱状：柱底代表开盘价，柱顶代表收盘价，红色则相反。</p>
-</li>
-<li><p>柱上下的细线：上影线，下影线，分别代表在这一分钟内的最高价和最低价。</p>
-</li>
-<li><p>图中标有今日最高，和今日最低。严谨理解为：从今日凌晨到目前为止的最高价与最低价。</p>
-<h2 id="均线分析方法："><a href="#均线分析方法：" class="headerlink" title="均线分析方法："></a>均线分析方法：</h2></li>
-</ul>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>股票基本术语</title>
     <url>/2020/02/11/%E8%82%A1%E7%A5%A8%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD/</url>
     <content><![CDATA[<p>股票基本术语了解。</p>
@@ -1517,6 +1481,80 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
+    <title>火币网--币币交易图解</title>
+    <url>/2020/02/11/%E7%81%AB%E5%B8%81%E7%BD%91-%E5%B8%81%E5%B8%81%E4%BA%A4%E6%98%93%E5%9B%BE%E8%A7%A3/</url>
+    <content><![CDATA[<p>如何在火币网上执行币币交易</p>
+<a id="more"></a>
+<p><img src="https://img-blog.csdnimg.cn/20200205111557755.png" alt="在这里插入图片描述"></p>
+<ul>
+<li><p>BTC/USDT：BTC对USDT的交易对，相当于平均1个BTC当前需要9211.76个USDT来购买，后面的64574.43CNY是说9211.76个USDT约等于64574.43人民币。</p>
+</li>
+<li><p>涨幅+0.01%是今天此时此刻比特币的价格相对于昨天的这个时候价格涨了0.01%，如果是红色的-0.01%就代表跌了0.01%。</p>
+</li>
+<li><p>高9320.00 低9100.00是<strong>过去24小时</strong>最高9320.00USDT最低9100.00USDT。</p>
+</li>
+<li><p>24H量：是过去24小时火币网交易了28878个比特币。这只是在火币网交易的数量。<br><img src="https://img-blog.csdnimg.cn/2020020511252911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+<li><p>上面一排时间是，选择显示这个时间段的数据，比如我选择的是1min，那么k线图中每一个红色或者绿色的柱就代表这一分钟内的走势。</p>
+</li>
+<li><p>时间下面的一排：11：24这个时间点的开盘价，最高价，最低价，收盘价，成交量。</p>
+</li>
+<li><p>MA均线：<strong>（MA）理论是股市最常见的一种技术分析方法，它对股市操作具有神奇的指导作用。</strong></p>
+</li>
+<li><p>绿色柱状：柱底代表开盘价，柱顶代表收盘价，红色则相反。</p>
+</li>
+<li><p>柱上下的细线：上影线，下影线，分别代表在这一分钟内的最高价和最低价。</p>
+</li>
+<li><p>图中标有今日最高，和今日最低。严谨理解为：从今日凌晨到目前为止的最高价与最低价。</p>
+<h2 id="均线分析方法："><a href="#均线分析方法：" class="headerlink" title="均线分析方法："></a>均线分析方法：</h2></li>
+</ul>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>服务器端会话技术：Session</title>
+    <url>/2020/02/09/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ASession/</url>
+    <content><![CDATA[<p>Session对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的Web页之间跳转时，存储在Session对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。他是用来解决Cookie带来的安全问题。</p>
+<a id="more"></a>
+<h2 id="一、Session概述"><a href="#一、Session概述" class="headerlink" title="一、Session概述"></a>一、Session概述</h2><ul>
+<li>会话 ， Session是基于Cookie的一种会话机制。 </li>
+<li>Cookie是服务器返回一小份数据给客户端。并且存放在客户端上。 </li>
+<li>Session是，数据存放在服务器端。</li>
+</ul>
+<h2 id="二、常用方法"><a href="#二、常用方法" class="headerlink" title="二、常用方法"></a>二、常用方法</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//得到会话ID</span><br><span class="line">String id = session.getId();</span><br><span class="line"></span><br><span class="line">//存值</span><br><span class="line">session.setAttribute(name, value);</span><br><span class="line">	</span><br><span class="line">//取值</span><br><span class="line">session.getAttribute(name);</span><br><span class="line">	</span><br><span class="line">//移除值</span><br><span class="line">session.removeAttribute(name);</span><br></pre></td></tr></table></figure>
+<h2 id="三、Session的创建与销毁。"><a href="#三、Session的创建与销毁。" class="headerlink" title="三、Session的创建与销毁。"></a>三、Session的创建与销毁。</h2><ul>
+<li>创建<br>如果有在servlet里面调用了 request.getSession()</li>
+<li>销毁<br>session 是存放在服务器的内存中的一份数据。 当然可以持久化. Redis . 即使关了浏览器，session也不会销毁。</li>
+</ul>
+<ol>
+<li>关闭服务器</li>
+<li>session会话时间过期。 有效期过了，默认有效期： 30分钟。</li>
+</ol>
+<h2 id="四、移除Session中的元素"><a href="#四、移除Session中的元素" class="headerlink" title="四、移除Session中的元素"></a>四、移除Session中的元素</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//强制干掉会话，里面存放的任何数据就都没有了。</span><br><span class="line">session.invalidate();</span><br><span class="line">	</span><br><span class="line">//从session中移除某一个数据</span><br><span class="line">session.removeAttribute(<span class="string">"cart"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><ul>
+<li>Session： 也是基于cookie的一种会话技术，  数据存放存放在服务器端。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">会在cookie里面添加一个字段 JSESSIONID . 是tomcat服务器生成。 </span><br><span class="line">setAttribute 存数据</span><br><span class="line">getAttribute 取数据</span><br><span class="line">removeAttribute  移除数据</span><br><span class="line">getSessionId();  获取会话id</span><br><span class="line">invalidate() 强制让会话失效。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建和销毁<br>  调用<strong>request.getSesion</strong>创建<br>   服务器关闭 ， 会话超时（30分）</li>
+</ul>
+<ul>
+<li>setAttribute 存放的值， 在浏览器关闭后，依然不会丢失！</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>Session</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>客户端会话技术：Cookie</title>
     <url>/2020/02/09/%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ACookie/</url>
     <content><![CDATA[<p>类型为“小型文本文件”，是某些网站为了辨别用户身份，进行Session跟踪而储存在用户本地终端上的数据（通常经过加密），由客户端计算机暂时或永久保存的信息。</p>
@@ -1561,44 +1599,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </categories>
       <tags>
         <tag>Cookie</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>服务器端会话技术：Session</title>
-    <url>/2020/02/09/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ASession/</url>
-    <content><![CDATA[<p>Session对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的Web页之间跳转时，存储在Session对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。他是用来解决Cookie带来的安全问题。</p>
-<a id="more"></a>
-<h2 id="一、Session概述"><a href="#一、Session概述" class="headerlink" title="一、Session概述"></a>一、Session概述</h2><ul>
-<li>会话 ， Session是基于Cookie的一种会话机制。 </li>
-<li>Cookie是服务器返回一小份数据给客户端。并且存放在客户端上。 </li>
-<li>Session是，数据存放在服务器端。</li>
-</ul>
-<h2 id="二、常用方法"><a href="#二、常用方法" class="headerlink" title="二、常用方法"></a>二、常用方法</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//得到会话ID</span><br><span class="line">String id = session.getId();</span><br><span class="line"></span><br><span class="line">//存值</span><br><span class="line">session.setAttribute(name, value);</span><br><span class="line">	</span><br><span class="line">//取值</span><br><span class="line">session.getAttribute(name);</span><br><span class="line">	</span><br><span class="line">//移除值</span><br><span class="line">session.removeAttribute(name);</span><br></pre></td></tr></table></figure>
-<h2 id="三、Session的创建与销毁。"><a href="#三、Session的创建与销毁。" class="headerlink" title="三、Session的创建与销毁。"></a>三、Session的创建与销毁。</h2><ul>
-<li>创建<br>如果有在servlet里面调用了 request.getSession()</li>
-<li>销毁<br>session 是存放在服务器的内存中的一份数据。 当然可以持久化. Redis . 即使关了浏览器，session也不会销毁。</li>
-</ul>
-<ol>
-<li>关闭服务器</li>
-<li>session会话时间过期。 有效期过了，默认有效期： 30分钟。</li>
-</ol>
-<h2 id="四、移除Session中的元素"><a href="#四、移除Session中的元素" class="headerlink" title="四、移除Session中的元素"></a>四、移除Session中的元素</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//强制干掉会话，里面存放的任何数据就都没有了。</span><br><span class="line">session.invalidate();</span><br><span class="line">	</span><br><span class="line">//从session中移除某一个数据</span><br><span class="line">session.removeAttribute(<span class="string">"cart"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><ul>
-<li>Session： 也是基于cookie的一种会话技术，  数据存放存放在服务器端。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">会在cookie里面添加一个字段 JSESSIONID . 是tomcat服务器生成。 </span><br><span class="line">setAttribute 存数据</span><br><span class="line">getAttribute 取数据</span><br><span class="line">removeAttribute  移除数据</span><br><span class="line">getSessionId();  获取会话id</span><br><span class="line">invalidate() 强制让会话失效。</span><br></pre></td></tr></table></figure>
-<ul>
-<li>创建和销毁<br>  调用<strong>request.getSesion</strong>创建<br>   服务器关闭 ， 会话超时（30分）</li>
-</ul>
-<ul>
-<li>setAttribute 存放的值， 在浏览器关闭后，依然不会丢失！</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>Session</tag>
       </tags>
   </entry>
   <entry>
@@ -1670,80 +1670,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </categories>
       <tags>
         <tag>Servlet</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Http协议&amp;C/S通讯抓包</title>
-    <url>/2020/02/08/Http%E5%8D%8F%E8%AE%AE-C-S%E9%80%9A%E8%AE%AF%E6%8A%93%E5%8C%85/</url>
-    <content><![CDATA[<p>http协议：针对网络上的客户端 与 服务器端在执行http请求的时候，遵守的一种规范。 规定了客户端在访问服务器端的时候,服务器端返回数据的时候，要带上什么东西。</p>
-<a id="more"></a>
-<h1 id="一、Http协议"><a href="#一、Http协议" class="headerlink" title="一、Http协议"></a>一、Http协议</h1><ul>
-<li>什么是协议？<br>双方在交互、通讯的时候， 遵守的一种规范、规则。</li>
-<li>http协议概述<br>针对网络上的客户端 与 服务器端在执行http请求的时候，遵守的一种规范。 其实就是规定了客户端在访问服务器端的时候，要带上哪些东西， 服务器端返回数据的时候，也要带上什么东西。 </li>
-<li>版本<br> 1.0：请求数据，服务器返回后， 将会断开连接。<br> 1.1：请求数据，服务器返回后， 连接还会保持着。 除非服务器 | 客户端 关掉。 有一定的时间限制，如果都空着这个连接，那么后面会自己断掉。</li>
-</ul>
-<h1 id="二、演示客户端-如何-与服务器端通讯。"><a href="#二、演示客户端-如何-与服务器端通讯。" class="headerlink" title="二、演示客户端 如何 与服务器端通讯。"></a>二、演示客户端 如何 与服务器端通讯。</h1><p>问题： 在地址栏中键入网络地址 回车  或者是平常注册的时候，点击了注册按钮 ， 浏览器都能显示出来一些东西。那么背地里到底浏览器和服务器是怎么通讯。 它们都传输了哪些数据？</p>
-<ul>
-<li><p>安装抓包工具 HttpWatch (IE插件)</p>
-</li>
-<li><p>打开tomcat. 输入localhost:8080 打开首页</p>
-</li>
-<li><p>在首页上找到Example—&gt;选择 Servlet Examples—&gt; Request Parameter</p>
-</li>
-<li><p>接着点击Request  Parameters 的 Execute超链接，会出现请求参数示例</p>
-</li>
-<li><p>执行tomcat的例子，然后查看浏览器和 tomcat服务器的对接细节</p>
-</li>
-</ul>
-<h1 id="三、Http请求数据解释"><a href="#三、Http请求数据解释" class="headerlink" title="三、Http请求数据解释"></a>三、Http请求数据解释</h1><ul>
-<li><strong>请求的数据里面包含三个部分内容 ： 请求行 、 请求头 、请求体</strong></li>
-<li>请求行：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST /examples/servlets/servlet/RequestParamExample HTTP/1.1 </span><br><span class="line"></span><br><span class="line">		POST ： 请求方式 ，以post去提交数据</span><br><span class="line">			</span><br><span class="line">		/examples/servlets/servlet/RequestParamExample</span><br><span class="line">		请求的地址路径 ， 就是要访问哪个地方。</span><br><span class="line">	</span><br><span class="line">		HTTP/1.1 协议版本</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>请求头：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Accept: application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, */*</span><br><span class="line">		Referer: http://localhost:8080/examples/servlets/servlet/RequestParamExample</span><br><span class="line">		Accept-Language: zh-CN</span><br><span class="line">		User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)</span><br><span class="line">		Content-Type: application/x-www-form-urlencoded</span><br><span class="line">		Accept-Encoding: gzip, deflate</span><br><span class="line">		Host: localhost:8080</span><br><span class="line">		Content-Length: 31</span><br><span class="line">		Connection: Keep-Alive</span><br><span class="line">		Cache-Control: no-cache</span><br><span class="line"></span><br><span class="line">		Accept: 客户端向服务器端表示，我能支持什么类型的数据。 </span><br><span class="line">		Referer ： 真正请求的地址路径，全路径</span><br><span class="line">		Accept-Language: 支持语言格式</span><br><span class="line">		User-Agent: 用户代理 向服务器表明，当前来访的客户端信息。 </span><br><span class="line">		Content-Type： 提交的数据类型。经过urlencoding编码的form表单的数据</span><br><span class="line">		Accept-Encoding： gzip, deflate ： 压缩算法 。 </span><br><span class="line">		Host ： 主机地址</span><br><span class="line">		Content-Length： 数据长度</span><br><span class="line">		Connection : Keep-Alive 保持连接</span><br><span class="line">		Cache-Control ： 对缓存的操作</span><br></pre></td></tr></table></figure>
-<ul>
-<li>请求体：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">浏览器真正发送给服务器的数据 </span><br><span class="line">	</span><br><span class="line">	发送的数据呈现的是key=value ,如果存在多个数据，那么使用 &amp;</span><br><span class="line"></span><br><span class="line">	firstname=zhang&amp;lastname=sansan</span><br></pre></td></tr></table></figure>
-<h1 id="四、Http响应数据解析"><a href="#四、Http响应数据解析" class="headerlink" title="四、Http响应数据解析"></a>四、Http响应数据解析</h1><ul>
-<li><strong>请求的数据里面包含三个部分内容 ： 响应行 、 响应头 、响应体</strong></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: Apache-Coyote/1.1</span><br><span class="line">Content-Type: text/html;charset=ISO-8859-1</span><br><span class="line">Content-Length: 673</span><br><span class="line">Date: Fri, 17 Feb 2017 02:53:02 GMT</span><br><span class="line"></span><br><span class="line">...这里还有很多数据...</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>响应行：第一行</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line"></span><br><span class="line">		协议版本  </span><br><span class="line">		状态码 </span><br><span class="line">			咱们这次交互到底是什么样结果的一个code. </span><br><span class="line">			200 : 成功，正常处理，得到数据。</span><br><span class="line">			403  : <span class="keyword">for</span> bidden  拒绝</span><br><span class="line">			404 ： Not Found</span><br><span class="line">			500 ： 服务器异常</span><br><span class="line">		OK</span><br><span class="line">			对应前面的状态码</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>响应头</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Server:  服务器是哪一种类型。  Tomcat</span><br><span class="line">		Content-Type ： 服务器返回给客户端你的内容类型</span><br><span class="line">		Content-Length ： 返回的数据长度</span><br><span class="line">		Date ： 通讯的日期，响应的时间</span><br></pre></td></tr></table></figure>
-
-<h1 id="五、Get-和-Post请求区别"><a href="#五、Get-和-Post请求区别" class="headerlink" title="五、Get 和  Post请求区别"></a>五、Get 和  Post请求区别</h1><ul>
-<li>post</li>
-</ul>
-<ol>
-<li>数据是以流的方式写过去，不会在地址栏上面显示。  现在一般提交数据到服务器使用的都是POST。</li>
-<li>以流的方式写数据，所以数据没有大小限制。</li>
-</ol>
-<ul>
-<li>get</li>
-</ul>
-<ol>
-<li>会在地址栏后面拼接数据，所以有安全隐患。 一般从服务器获取数据，并且客户端也不用提交上面数据的时候，可以使用GET。</li>
-<li>能够带的数据有限， 1kb大小。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>Http协议</tag>
       </tags>
   </entry>
   <entry>
@@ -1848,6 +1774,80 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </categories>
       <tags>
         <tag>XML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Http协议&amp;C/S通讯抓包</title>
+    <url>/2020/02/08/Http%E5%8D%8F%E8%AE%AE-C-S%E9%80%9A%E8%AE%AF%E6%8A%93%E5%8C%85/</url>
+    <content><![CDATA[<p>http协议：针对网络上的客户端 与 服务器端在执行http请求的时候，遵守的一种规范。 规定了客户端在访问服务器端的时候,服务器端返回数据的时候，要带上什么东西。</p>
+<a id="more"></a>
+<h1 id="一、Http协议"><a href="#一、Http协议" class="headerlink" title="一、Http协议"></a>一、Http协议</h1><ul>
+<li>什么是协议？<br>双方在交互、通讯的时候， 遵守的一种规范、规则。</li>
+<li>http协议概述<br>针对网络上的客户端 与 服务器端在执行http请求的时候，遵守的一种规范。 其实就是规定了客户端在访问服务器端的时候，要带上哪些东西， 服务器端返回数据的时候，也要带上什么东西。 </li>
+<li>版本<br> 1.0：请求数据，服务器返回后， 将会断开连接。<br> 1.1：请求数据，服务器返回后， 连接还会保持着。 除非服务器 | 客户端 关掉。 有一定的时间限制，如果都空着这个连接，那么后面会自己断掉。</li>
+</ul>
+<h1 id="二、演示客户端-如何-与服务器端通讯。"><a href="#二、演示客户端-如何-与服务器端通讯。" class="headerlink" title="二、演示客户端 如何 与服务器端通讯。"></a>二、演示客户端 如何 与服务器端通讯。</h1><p>问题： 在地址栏中键入网络地址 回车  或者是平常注册的时候，点击了注册按钮 ， 浏览器都能显示出来一些东西。那么背地里到底浏览器和服务器是怎么通讯。 它们都传输了哪些数据？</p>
+<ul>
+<li><p>安装抓包工具 HttpWatch (IE插件)</p>
+</li>
+<li><p>打开tomcat. 输入localhost:8080 打开首页</p>
+</li>
+<li><p>在首页上找到Example—&gt;选择 Servlet Examples—&gt; Request Parameter</p>
+</li>
+<li><p>接着点击Request  Parameters 的 Execute超链接，会出现请求参数示例</p>
+</li>
+<li><p>执行tomcat的例子，然后查看浏览器和 tomcat服务器的对接细节</p>
+</li>
+</ul>
+<h1 id="三、Http请求数据解释"><a href="#三、Http请求数据解释" class="headerlink" title="三、Http请求数据解释"></a>三、Http请求数据解释</h1><ul>
+<li><strong>请求的数据里面包含三个部分内容 ： 请求行 、 请求头 、请求体</strong></li>
+<li>请求行：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST /examples/servlets/servlet/RequestParamExample HTTP/1.1 </span><br><span class="line"></span><br><span class="line">		POST ： 请求方式 ，以post去提交数据</span><br><span class="line">			</span><br><span class="line">		/examples/servlets/servlet/RequestParamExample</span><br><span class="line">		请求的地址路径 ， 就是要访问哪个地方。</span><br><span class="line">	</span><br><span class="line">		HTTP/1.1 协议版本</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>请求头：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Accept: application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, */*</span><br><span class="line">		Referer: http://localhost:8080/examples/servlets/servlet/RequestParamExample</span><br><span class="line">		Accept-Language: zh-CN</span><br><span class="line">		User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)</span><br><span class="line">		Content-Type: application/x-www-form-urlencoded</span><br><span class="line">		Accept-Encoding: gzip, deflate</span><br><span class="line">		Host: localhost:8080</span><br><span class="line">		Content-Length: 31</span><br><span class="line">		Connection: Keep-Alive</span><br><span class="line">		Cache-Control: no-cache</span><br><span class="line"></span><br><span class="line">		Accept: 客户端向服务器端表示，我能支持什么类型的数据。 </span><br><span class="line">		Referer ： 真正请求的地址路径，全路径</span><br><span class="line">		Accept-Language: 支持语言格式</span><br><span class="line">		User-Agent: 用户代理 向服务器表明，当前来访的客户端信息。 </span><br><span class="line">		Content-Type： 提交的数据类型。经过urlencoding编码的form表单的数据</span><br><span class="line">		Accept-Encoding： gzip, deflate ： 压缩算法 。 </span><br><span class="line">		Host ： 主机地址</span><br><span class="line">		Content-Length： 数据长度</span><br><span class="line">		Connection : Keep-Alive 保持连接</span><br><span class="line">		Cache-Control ： 对缓存的操作</span><br></pre></td></tr></table></figure>
+<ul>
+<li>请求体：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">浏览器真正发送给服务器的数据 </span><br><span class="line">	</span><br><span class="line">	发送的数据呈现的是key=value ,如果存在多个数据，那么使用 &amp;</span><br><span class="line"></span><br><span class="line">	firstname=zhang&amp;lastname=sansan</span><br></pre></td></tr></table></figure>
+<h1 id="四、Http响应数据解析"><a href="#四、Http响应数据解析" class="headerlink" title="四、Http响应数据解析"></a>四、Http响应数据解析</h1><ul>
+<li><strong>请求的数据里面包含三个部分内容 ： 响应行 、 响应头 、响应体</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: Apache-Coyote/1.1</span><br><span class="line">Content-Type: text/html;charset=ISO-8859-1</span><br><span class="line">Content-Length: 673</span><br><span class="line">Date: Fri, 17 Feb 2017 02:53:02 GMT</span><br><span class="line"></span><br><span class="line">...这里还有很多数据...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>响应行：第一行</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line"></span><br><span class="line">		协议版本  </span><br><span class="line">		状态码 </span><br><span class="line">			咱们这次交互到底是什么样结果的一个code. </span><br><span class="line">			200 : 成功，正常处理，得到数据。</span><br><span class="line">			403  : <span class="keyword">for</span> bidden  拒绝</span><br><span class="line">			404 ： Not Found</span><br><span class="line">			500 ： 服务器异常</span><br><span class="line">		OK</span><br><span class="line">			对应前面的状态码</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>响应头</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Server:  服务器是哪一种类型。  Tomcat</span><br><span class="line">		Content-Type ： 服务器返回给客户端你的内容类型</span><br><span class="line">		Content-Length ： 返回的数据长度</span><br><span class="line">		Date ： 通讯的日期，响应的时间</span><br></pre></td></tr></table></figure>
+
+<h1 id="五、Get-和-Post请求区别"><a href="#五、Get-和-Post请求区别" class="headerlink" title="五、Get 和  Post请求区别"></a>五、Get 和  Post请求区别</h1><ul>
+<li>post</li>
+</ul>
+<ol>
+<li>数据是以流的方式写过去，不会在地址栏上面显示。  现在一般提交数据到服务器使用的都是POST。</li>
+<li>以流的方式写数据，所以数据没有大小限制。</li>
+</ol>
+<ul>
+<li>get</li>
+</ul>
+<ol>
+<li>会在地址栏后面拼接数据，所以有安全隐患。 一般从服务器获取数据，并且客户端也不用提交上面数据的时候，可以使用GET。</li>
+<li>能够带的数据有限， 1kb大小。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>Http协议</tag>
       </tags>
   </entry>
   <entry>
@@ -2147,78 +2147,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
-    <title>JDBC基础知识</title>
-    <url>/2020/02/03/JDBC%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<p>JDBC概述，作用，类型，以及使用时如何选择。</p>
-<a id="more"></a>
-<h2 id="一、JDBC是什么？"><a href="#一、JDBC是什么？" class="headerlink" title="一、JDBC是什么？"></a>一、JDBC是什么？</h2><ul>
-<li>百度百科解释：JDBC(java database connectivity)驱动程序是对JDBC规范完整的实现，它的存在在Java程序与数据库系统之间建立了一条通信的渠道。它是 一 种可用于执行 SQL 语句的 Java API(<strong>Application Programming Interface， 应用程序设计接口</strong>)。</li>
-<li>简单理解：java 数据库连接。有了它，就能够在java代码中操作任何数据库。由于数据库种类繁多，并且java程序使用广泛，sun公司就提供了一种规范，让其他的数据库提供商去实现底层的访问。</li>
-<li>刚开始每个数据库（Oracle，Mysql，SqlServer）的访问规则都不同，后来SUN公司想一统天下，出台了一套规范，各个数据库要按照这个规范去写底层代码，与此同时，Java程序也直接去找JDBC。</li>
-</ul>
-<h2 id="二、作用是什么？"><a href="#二、作用是什么？" class="headerlink" title="二、作用是什么？"></a>二、作用是什么？</h2><ul>
-<li>JDBC 为数据库应用开发人员、数据库前台开发人员提供了一种标准的应用程序设计接口， 使开发人员可以用纯 Java 语言编写完整的数据库应用程序。</li>
-<li>JDBC 通过调用其接口提供的方法， 提供了 Java 应用程序与各种数据库服务器之间的连接服务，。</li>
-<li>它支持 ANSI SQL- 92 标准， 实现了从 Java 程序内调用标准的 SQL 命令对数据库进行查询、插入、删除和更新等操作， 并确保数据事务的正常进行。</li>
-</ul>
-<h2 id="三、JDBC驱动程序"><a href="#三、JDBC驱动程序" class="headerlink" title="三、JDBC驱动程序"></a>三、JDBC驱动程序</h2><p>根据访问数据库的技术不同， JDBC 驱动程序相应地分为四种类型。不同类型的驱动程序有着不一样的特性和使用方法。</p>
-<p> 1.<strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> 此类驱动程序由JDBC-ODBC桥和一个ODBC驱动程序组成。</li>
-<li><input disabled="" type="checkbox"> 工作原理：通过一段本地<strong>C代码</strong>将JDBC调用转化成ODBC调用。这一类型必须在本地计算机上先安装好ODBC驱动程序，然后通过JDBC-ODBCBridge的转换，将Java程序中使用的JDBC API访问指令转化成ODBC API指令，进而通过ODBC驱动程序调用本地数据库驱动代码完成对数据库的访问。</li>
-</ul>
-<p> 2.<strong>部分Java的本地JDBC API驱动程序</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> JDBC API驱动程序(Anative API partly Java technology-enabled Driver)</li>
-<li><input disabled="" type="checkbox"> 工作原理：此类驱动程序也必须在本地计算机上先安装好特定的驱动程序(类似ODBC)，然后通过PartialJavaJDBCDriver的转换，把Java程序中使用的JDBC API转换成NativeAPI，进而存取数据库。</li>
-</ul>
-<p>3.<strong>纯Java的数据库中间件驱动程序</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> 纯Java的数据库中间件驱动程序(Pure Java Driver for Database Middleware)使用这类驱动程序时，不需要在本地计算机上安装任何附加软件，但是必须在安装数据库管理系统的服务器端加装中间件(Middleware)，这个中间件负责所有存取数据库时必要的转换。</li>
-<li><input disabled="" type="checkbox"> 工作原理：驱动程序将JDBC访问转换成与数据库无关的标准网络协议(通常是HTTP或HTTPS)送出，然后再由中间件服务器将其转换成数据库专用的访问指令，完成对数据库的操作。中间件服务器能支持对多种数据库的访问。</li>
-</ul>
-<p>4.<strong>纯Java的JDBC驱动程序</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> 纯Java的JDBC驱动程序(Direct-to-DatabasePureJavaDriver)这类驱动程序是直接面向数据库的纯Java驱动程序，即所谓的”瘦”驱动程序。</li>
-<li><input disabled="" type="checkbox"> 工作原理：使用这类驱动程序时无需安装任何附加的软件(无论是本地计算机或是数据库服务器端)，所有存取数据库的操作都直接由JDBC驱动程序来完成，此类驱动程序能将JDBC调用转换成DBMS专用的网络协议，能够自动识别网络协议下的特殊数据库并能直接创建数据连接。</li>
-</ul>
-<h2 id="四、JDBC驱动程序的选择"><a href="#四、JDBC驱动程序的选择" class="headerlink" title="四、JDBC驱动程序的选择"></a>四、JDBC驱动程序的选择</h2><p>在企业内部信息系统中，选择合适的JDBC驱动程序，使之符合数据库程序设计的要求，是提高系统性能必须考虑的一个方面。不同的应用有不同的需要，所以要根据应用选择合适的驱动程序。</p>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></li>
-<li>优点：节省投资，利用了已有的ODBC驱动程序。</li>
-<li>缺点：中间有多次调用，性能受到影响，执行效率比较低，不适合对大数据量存取的应用。有损Java数据库程序的兼容性，不具备跨平台性，不适合基于Internet/Intranet的应用。</li>
-<li>应用：桥接驱动程序用于已经在ODBC技术上投资的情形，例如已经投资了Windows应用服务器。</li>
-</ul>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>部分Java的本地JDBC API驱动程序</strong></li>
-<li>优点：具有开放性，其利用多层结构，上层用Java实现，支持多数据库，下层为本地代码(包括一些二进制代码和一个轻量的Java库)，加快了执行速度，提高了数据库访问效率。</li>
-<li>缺点：没有使用纯Java的API，如果在本地代码中存在缺陷，将可能使Java虚拟机完全垮掉。</li>
-<li>应用：受到限制</li>
-</ul>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>纯Java的数据库中间件驱动程序</strong></li>
-<li>优点：由纯Java语言开发而成的，并且中间件也仅需要在服务器上安装，不再需要客户端的本机代码，这类驱动程序的体积最小，效率较高，具有最大的灵活性。此类驱动采用标准的网络协议，可以被防火墙支持，是开发Applet程序理想的选择(其实这些驱动是为Applet特别编写的)，是Internet应用理想的解决方案。开发者还可以利用单一的驱动程序连接到多种数据库。</li>
-<li>缺点：需要在服务器端安装中间件，这适当影响了驱动程序的效率。</li>
-<li>应用：基于Web的应用系统的开发。</li>
-</ul>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>纯Java的JDBC驱动程序</strong></li>
-<li>最佳的JDBC驱动程序类型。</li>
-<li>优点：无需安装任何附加软件，不会增加任何额外开销，效率最高，拥有最佳的兼容性。</li>
-<li>缺点：可能不被防火墙支持，在Internet中会存在潜在安全隐患，成为这类驱动最大的缺陷。</li>
-<li>应用：在企业级应用软件中，是应优先考虑的。因此，一个Servlet程序，要适应不同的操作系统，最好使用此类驱动;这种驱动也非常适合Applet程序，事实证明它能安全通过TCP/IP协议连接到数据库。</li>
-</ul>
-<p> <img src="https://img-blog.csdnimg.cn/20200220152318929.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/202002201540355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>JDBC,MySql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JDBC学习</title>
     <url>/2020/02/03/JDBC%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<p>如何使用JDBC连接到数据库</p>
@@ -2314,6 +2242,78 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
 <ul>
 <li>PreparStatement的添加，删除，更新，</li>
 </ul>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>JDBC,MySql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JDBC基础知识</title>
+    <url>/2020/02/03/JDBC%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<p>JDBC概述，作用，类型，以及使用时如何选择。</p>
+<a id="more"></a>
+<h2 id="一、JDBC是什么？"><a href="#一、JDBC是什么？" class="headerlink" title="一、JDBC是什么？"></a>一、JDBC是什么？</h2><ul>
+<li>百度百科解释：JDBC(java database connectivity)驱动程序是对JDBC规范完整的实现，它的存在在Java程序与数据库系统之间建立了一条通信的渠道。它是 一 种可用于执行 SQL 语句的 Java API(<strong>Application Programming Interface， 应用程序设计接口</strong>)。</li>
+<li>简单理解：java 数据库连接。有了它，就能够在java代码中操作任何数据库。由于数据库种类繁多，并且java程序使用广泛，sun公司就提供了一种规范，让其他的数据库提供商去实现底层的访问。</li>
+<li>刚开始每个数据库（Oracle，Mysql，SqlServer）的访问规则都不同，后来SUN公司想一统天下，出台了一套规范，各个数据库要按照这个规范去写底层代码，与此同时，Java程序也直接去找JDBC。</li>
+</ul>
+<h2 id="二、作用是什么？"><a href="#二、作用是什么？" class="headerlink" title="二、作用是什么？"></a>二、作用是什么？</h2><ul>
+<li>JDBC 为数据库应用开发人员、数据库前台开发人员提供了一种标准的应用程序设计接口， 使开发人员可以用纯 Java 语言编写完整的数据库应用程序。</li>
+<li>JDBC 通过调用其接口提供的方法， 提供了 Java 应用程序与各种数据库服务器之间的连接服务，。</li>
+<li>它支持 ANSI SQL- 92 标准， 实现了从 Java 程序内调用标准的 SQL 命令对数据库进行查询、插入、删除和更新等操作， 并确保数据事务的正常进行。</li>
+</ul>
+<h2 id="三、JDBC驱动程序"><a href="#三、JDBC驱动程序" class="headerlink" title="三、JDBC驱动程序"></a>三、JDBC驱动程序</h2><p>根据访问数据库的技术不同， JDBC 驱动程序相应地分为四种类型。不同类型的驱动程序有着不一样的特性和使用方法。</p>
+<p> 1.<strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 此类驱动程序由JDBC-ODBC桥和一个ODBC驱动程序组成。</li>
+<li><input disabled="" type="checkbox"> 工作原理：通过一段本地<strong>C代码</strong>将JDBC调用转化成ODBC调用。这一类型必须在本地计算机上先安装好ODBC驱动程序，然后通过JDBC-ODBCBridge的转换，将Java程序中使用的JDBC API访问指令转化成ODBC API指令，进而通过ODBC驱动程序调用本地数据库驱动代码完成对数据库的访问。</li>
+</ul>
+<p> 2.<strong>部分Java的本地JDBC API驱动程序</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> JDBC API驱动程序(Anative API partly Java technology-enabled Driver)</li>
+<li><input disabled="" type="checkbox"> 工作原理：此类驱动程序也必须在本地计算机上先安装好特定的驱动程序(类似ODBC)，然后通过PartialJavaJDBCDriver的转换，把Java程序中使用的JDBC API转换成NativeAPI，进而存取数据库。</li>
+</ul>
+<p>3.<strong>纯Java的数据库中间件驱动程序</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 纯Java的数据库中间件驱动程序(Pure Java Driver for Database Middleware)使用这类驱动程序时，不需要在本地计算机上安装任何附加软件，但是必须在安装数据库管理系统的服务器端加装中间件(Middleware)，这个中间件负责所有存取数据库时必要的转换。</li>
+<li><input disabled="" type="checkbox"> 工作原理：驱动程序将JDBC访问转换成与数据库无关的标准网络协议(通常是HTTP或HTTPS)送出，然后再由中间件服务器将其转换成数据库专用的访问指令，完成对数据库的操作。中间件服务器能支持对多种数据库的访问。</li>
+</ul>
+<p>4.<strong>纯Java的JDBC驱动程序</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 纯Java的JDBC驱动程序(Direct-to-DatabasePureJavaDriver)这类驱动程序是直接面向数据库的纯Java驱动程序，即所谓的”瘦”驱动程序。</li>
+<li><input disabled="" type="checkbox"> 工作原理：使用这类驱动程序时无需安装任何附加的软件(无论是本地计算机或是数据库服务器端)，所有存取数据库的操作都直接由JDBC驱动程序来完成，此类驱动程序能将JDBC调用转换成DBMS专用的网络协议，能够自动识别网络协议下的特殊数据库并能直接创建数据连接。</li>
+</ul>
+<h2 id="四、JDBC驱动程序的选择"><a href="#四、JDBC驱动程序的选择" class="headerlink" title="四、JDBC驱动程序的选择"></a>四、JDBC驱动程序的选择</h2><p>在企业内部信息系统中，选择合适的JDBC驱动程序，使之符合数据库程序设计的要求，是提高系统性能必须考虑的一个方面。不同的应用有不同的需要，所以要根据应用选择合适的驱动程序。</p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></li>
+<li>优点：节省投资，利用了已有的ODBC驱动程序。</li>
+<li>缺点：中间有多次调用，性能受到影响，执行效率比较低，不适合对大数据量存取的应用。有损Java数据库程序的兼容性，不具备跨平台性，不适合基于Internet/Intranet的应用。</li>
+<li>应用：桥接驱动程序用于已经在ODBC技术上投资的情形，例如已经投资了Windows应用服务器。</li>
+</ul>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>部分Java的本地JDBC API驱动程序</strong></li>
+<li>优点：具有开放性，其利用多层结构，上层用Java实现，支持多数据库，下层为本地代码(包括一些二进制代码和一个轻量的Java库)，加快了执行速度，提高了数据库访问效率。</li>
+<li>缺点：没有使用纯Java的API，如果在本地代码中存在缺陷，将可能使Java虚拟机完全垮掉。</li>
+<li>应用：受到限制</li>
+</ul>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>纯Java的数据库中间件驱动程序</strong></li>
+<li>优点：由纯Java语言开发而成的，并且中间件也仅需要在服务器上安装，不再需要客户端的本机代码，这类驱动程序的体积最小，效率较高，具有最大的灵活性。此类驱动采用标准的网络协议，可以被防火墙支持，是开发Applet程序理想的选择(其实这些驱动是为Applet特别编写的)，是Internet应用理想的解决方案。开发者还可以利用单一的驱动程序连接到多种数据库。</li>
+<li>缺点：需要在服务器端安装中间件，这适当影响了驱动程序的效率。</li>
+<li>应用：基于Web的应用系统的开发。</li>
+</ul>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>纯Java的JDBC驱动程序</strong></li>
+<li>最佳的JDBC驱动程序类型。</li>
+<li>优点：无需安装任何附加软件，不会增加任何额外开销，效率最高，拥有最佳的兼容性。</li>
+<li>缺点：可能不被防火墙支持，在Internet中会存在潜在安全隐患，成为这类驱动最大的缺陷。</li>
+<li>应用：在企业级应用软件中，是应优先考虑的。因此，一个Servlet程序，要适应不同的操作系统，最好使用此类驱动;这种驱动也非常适合Applet程序，事实证明它能安全通过TCP/IP协议连接到数据库。</li>
+</ul>
+<p> <img src="https://img-blog.csdnimg.cn/20200220152318929.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/202002201540355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 ]]></content>
       <categories>
         <category>数据库</category>
