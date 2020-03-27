@@ -1235,6 +1235,37 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
+    <title>区块链简单理解</title>
+    <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>对近年来很火的区块链的简单了解</p>
+<a id="more"></a>
+<h2 id="区块链是什么："><a href="#区块链是什么：" class="headerlink" title="区块链是什么："></a>区块链是什么：</h2><p>区块链是分布式数据存储、点对点传输、共识机制、加密算法等计算机技术的新型应用模式。区块链（Blockchain），是比特币的一个重要概念，它本质上是一个<strong>去中心化的数据库</strong>，同时作为比特币的底层技术，是一串使用密码学方法相关联产生的数据块，每一个数据块中包含了一批次比特币网络交易的信息，用于验证其信息的有效性（防伪）和生成下一个区块。</p>
+<h2 id="起源："><a href="#起源：" class="headerlink" title="起源："></a>起源：</h2><p>区块链起源于比特币，2008年11月1日，一位自称<strong>中本聪</strong>(Satoshi Nakamoto)的人发表了《比特币:一种点对点的电子现金系统》，阐述了<strong>基于P2P网络技术、加密技术、时间戳技术、区块链技术等的电子现金系统的构架理念</strong>，这标志着比特币的诞生。两个月后理论步入实践，2009年1月3日第一个序号为0的创世区块诞生。几天后2009年1月9日出现序号为1的区块，并与序号为0的创世区块相连接形成了链，标志着区块链的诞生。<br>近年来，世界对比特币的态度起起落落，但作为比特币底层技术之一的区块链技术日益受到重视。在比特币形成过程中，区块是一个一个的存储单元，记录了一定时间内各个区块节点全部的交流信息。各个区块之间通过<strong>随机散列(也称哈希算法)</strong> 实现链接，后一个区块包含前一个区块的哈希值，随着信息交流的扩大，一个区块与一个区块相继接续，形成的结果就叫区块链 。</p>
+<h2 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h2><ul>
+<li><strong>从科技层面来看：</strong> 区块链涉及数学、密码学、互联网和计算机编程等很多科学技术问题。</li>
+<li><strong>从应用视角来看：</strong> 区块链是一个分布式的共享账本和数据库，具有去中心化、不可篡改、全程留痕、可以追溯、集体维护、公开透明等特点。这些特点保证了区块链的 <strong>“诚实”</strong> 与 <strong>“透明”</strong> ，为区块链创造信任奠定基础。而区块链丰富的应用场景，基本上都基于区块链能够解决信息不对称问题，实现多个主体之间的协作信任与一致行动。</li>
+</ul>
+<h2 id="类型："><a href="#类型：" class="headerlink" title="类型："></a>类型：</h2><ol>
+<li><strong><em>公有区块链</em></strong>（Public Block Chains)：世界上任何个体或者团体都可以发送交易，且交易能够获得该区块链的有效确认，任何人都可以参与其共识过程。公有区块链是最早的区块链，也是应用最广泛的区块链，各大bitcoins系列的虚拟数字货币均基于公有区块链，世界上<strong>有且仅有一条</strong>该币种对应的区块链。</li>
+<li><strong><em>行业区块链</em></strong>（Consortium Block Chains)：由某个群体<strong>内部指定</strong>多个预选的节点为记账人，每个块的生成由所有的预选节点共同决定（预选节点参与共识过程），其他接入节点可以参与交易，但不过问记账过程(本质上还是托管记账，只是变成分布式记账，预选节点的多少，如何决定每个块的记账者成为该区块链的主要风险点），其他任何人可以通过该区块链开放的API进行限定查询。</li>
+<li><strong><em>私有区块链</em></strong>（Private Block Chains)：仅仅使用区块链的总账技术进行记账，可以是一个公司，也可以是个人，独享该区块链的写入权限，本链与其他的分布式存储方案没有太大区别。传统金融都是想实验尝试私有区块链，而公链的应用例如bitcoin已经工业化，私链的应用产品还在摸索当中。</li>
+</ol>
+<h2 id="特性："><a href="#特性：" class="headerlink" title="特性："></a>特性：</h2><ol>
+<li>去中心化。区块链技术不依赖额外的第三方管理机构或硬件设施，没有中心管制，除了自成一体的区块链本身，通过分布式核算和存储，各个节点实现了信息自我验证、传递和管理。去中心化是区块链最突出最本质的特征。</li>
+<li>开放性。区块链技术基础是<strong>开源的</strong>，除了交易各方的私有信息被加密外，区块链的数据对所有人开放，任何人都可以通过公开的接口查询区块链数据和开发相关应用，因此整个系统信息高度透明。</li>
+<li>独立性。基于协商一致的规范和协议(类似比特币采用的哈希算法等各种数学算法)，整个区块链系统不依赖其他第三方，所有节点能够在系统内自动安全地验证、交换数据，不需要任何人为的干预。</li>
+<li>安全性。只要不能掌控全部数据节点的51%，就无法肆意操控修改网络数据，这使区块链本身变得相对安全，避免了主观人为的数据变更。</li>
+<li>匿名性。除非有法律规范要求，单从技术上来讲，各区块节点的身份信息不需要公开或验证，信息传递可以<strong>匿名进行</strong>。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>区块链的架构模型以及核心技术</title>
     <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/</url>
     <content><![CDATA[<p>-</p>
@@ -1289,6 +1320,30 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
+    <title>比特币的价格是怎么算出来的</title>
+    <url>/2020/02/11/%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E4%BB%B7%E6%A0%BC%E6%98%AF%E6%80%8E%E4%B9%88%E7%AE%97%E5%87%BA%E6%9D%A5%E7%9A%84/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<h2 id="首先了解一下拍卖"><a href="#首先了解一下拍卖" class="headerlink" title="首先了解一下拍卖"></a>首先了解一下拍卖</h2><ul>
+<li><strong>英式拍卖：</strong> 如果拍卖方（卖方）要卖一个商品，那么买方则通过集体竞价的方式进行拍卖，价高者得，最后和卖方成交的一定只有一个买家，而这个买家一定是出价最高的那位。</li>
+<li><strong>荷兰式拍卖：</strong> 假如有一个买家想要买一个商品，但是卖方有很多，那么卖方递减报出新的价位，最终和买方成交的一定是卖价最低的那位。</li>
+</ul>
+<h2 id="实际定价方式"><a href="#实际定价方式" class="headerlink" title="实际定价方式"></a>实际定价方式</h2><p>在交易所看到的一排排红色的数字和一排排绿色的数字其实就是许多的买方和许多的卖方不断报出的<strong>买进价</strong>和<strong>卖出价</strong>，价格随供求变化而不断变动。买者和卖者彼此竞争，<strong>双向拍卖</strong>，买者对想要买进的出价，通过竞争以最低价买入;卖者也互相竞争，试图以最高价格出售，然而最新成交价一定是买卖双方达成一致的那个价格。买卖双方不断成交，最新一笔的成交价就是我们看到的不断变化的价格，这就是为什么价格在一直变化的原因。报价后面的数量，即代表当前的买方或者卖方想要购买或者卖出的币的数量。买卖一旦成交，则不得反悔。在未成交以前，也可以撤单，撤单程序与买卖委托的过程基本相同。</p>
+<h2 id="限价，市价，止盈止损"><a href="#限价，市价，止盈止损" class="headerlink" title="限价，市价，止盈止损"></a>限价，市价，止盈止损</h2><ul>
+<li>限价：是<strong>自己设定</strong>价格进行挂单，需价格波动到设定价格并有对手愿意交易才可以成交。</li>
+<li>市价：市价是以<strong>当前最新</strong>成交价挂单，一般马上成交。</li>
+<li>止盈止损：止盈止损即是<strong>带有预期</strong>的未来买入或者卖出行为，比如当价格跌破某一价位时进行止损（你预期跌破此价格可能还会继续跌），或者当价格突破某一价位时进行买入（你预期价格一旦突破该价位时将会继续上涨）。</li>
+</ul>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>如果你是买方，想要<strong>尽快</strong>购入比特币，当然是设置买入价格与当前最低卖出价格一致，这样双方就可以达成交易了，想要尽快卖出比特币，那就设置卖出价格与当前最高买入价格一致。但是市场上的人并不是都急切的想要卖出或者买入，会带有预期的进行买入卖出报价。</p>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>比特币的两种交易方式</title>
     <url>/2020/02/11/%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E4%B8%A4%E7%A7%8D%E4%BA%A4%E6%98%93%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<p>比特币的交易有很多种，本文了解一下</p>
@@ -1305,73 +1360,6 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
 <li>币币交易可以在极短时间内成交（按下买入键的瞬间与对手成交）且支持购买的币种更多。</li>
 </ol>
 <p>，</p>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>火币网--币币交易图解</title>
-    <url>/2020/02/11/%E7%81%AB%E5%B8%81%E7%BD%91-%E5%B8%81%E5%B8%81%E4%BA%A4%E6%98%93%E5%9B%BE%E8%A7%A3/</url>
-    <content><![CDATA[<p>如何在火币网上执行币币交易</p>
-<a id="more"></a>
-<p><img src="https://img-blog.csdnimg.cn/20200205111557755.png" alt="在这里插入图片描述"></p>
-<ul>
-<li><p>BTC/USDT：BTC对USDT的交易对，相当于平均1个BTC当前需要9211.76个USDT来购买，后面的64574.43CNY是说9211.76个USDT约等于64574.43人民币。</p>
-</li>
-<li><p>涨幅+0.01%是今天此时此刻比特币的价格相对于昨天的这个时候价格涨了0.01%，如果是红色的-0.01%就代表跌了0.01%。</p>
-</li>
-<li><p>高9320.00 低9100.00是<strong>过去24小时</strong>最高9320.00USDT最低9100.00USDT。</p>
-</li>
-<li><p>24H量：是过去24小时火币网交易了28878个比特币。这只是在火币网交易的数量。<br><img src="https://img-blog.csdnimg.cn/2020020511252911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-</li>
-<li><p>上面一排时间是，选择显示这个时间段的数据，比如我选择的是1min，那么k线图中每一个红色或者绿色的柱就代表这一分钟内的走势。</p>
-</li>
-<li><p>时间下面的一排：11：24这个时间点的开盘价，最高价，最低价，收盘价，成交量。</p>
-</li>
-<li><p>MA均线：<strong>（MA）理论是股市最常见的一种技术分析方法，它对股市操作具有神奇的指导作用。</strong></p>
-</li>
-<li><p>绿色柱状：柱底代表开盘价，柱顶代表收盘价，红色则相反。</p>
-</li>
-<li><p>柱上下的细线：上影线，下影线，分别代表在这一分钟内的最高价和最低价。</p>
-</li>
-<li><p>图中标有今日最高，和今日最低。严谨理解为：从今日凌晨到目前为止的最高价与最低价。</p>
-<h2 id="均线分析方法："><a href="#均线分析方法：" class="headerlink" title="均线分析方法："></a>均线分析方法：</h2></li>
-</ul>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>区块链简单理解</title>
-    <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<p>对近年来很火的区块链的简单了解</p>
-<a id="more"></a>
-<h2 id="区块链是什么："><a href="#区块链是什么：" class="headerlink" title="区块链是什么："></a>区块链是什么：</h2><p>区块链是分布式数据存储、点对点传输、共识机制、加密算法等计算机技术的新型应用模式。区块链（Blockchain），是比特币的一个重要概念，它本质上是一个<strong>去中心化的数据库</strong>，同时作为比特币的底层技术，是一串使用密码学方法相关联产生的数据块，每一个数据块中包含了一批次比特币网络交易的信息，用于验证其信息的有效性（防伪）和生成下一个区块。</p>
-<h2 id="起源："><a href="#起源：" class="headerlink" title="起源："></a>起源：</h2><p>区块链起源于比特币，2008年11月1日，一位自称<strong>中本聪</strong>(Satoshi Nakamoto)的人发表了《比特币:一种点对点的电子现金系统》，阐述了<strong>基于P2P网络技术、加密技术、时间戳技术、区块链技术等的电子现金系统的构架理念</strong>，这标志着比特币的诞生。两个月后理论步入实践，2009年1月3日第一个序号为0的创世区块诞生。几天后2009年1月9日出现序号为1的区块，并与序号为0的创世区块相连接形成了链，标志着区块链的诞生。<br>近年来，世界对比特币的态度起起落落，但作为比特币底层技术之一的区块链技术日益受到重视。在比特币形成过程中，区块是一个一个的存储单元，记录了一定时间内各个区块节点全部的交流信息。各个区块之间通过<strong>随机散列(也称哈希算法)</strong> 实现链接，后一个区块包含前一个区块的哈希值，随着信息交流的扩大，一个区块与一个区块相继接续，形成的结果就叫区块链 。</p>
-<h2 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h2><ul>
-<li><strong>从科技层面来看：</strong> 区块链涉及数学、密码学、互联网和计算机编程等很多科学技术问题。</li>
-<li><strong>从应用视角来看：</strong> 区块链是一个分布式的共享账本和数据库，具有去中心化、不可篡改、全程留痕、可以追溯、集体维护、公开透明等特点。这些特点保证了区块链的 <strong>“诚实”</strong> 与 <strong>“透明”</strong> ，为区块链创造信任奠定基础。而区块链丰富的应用场景，基本上都基于区块链能够解决信息不对称问题，实现多个主体之间的协作信任与一致行动。</li>
-</ul>
-<h2 id="类型："><a href="#类型：" class="headerlink" title="类型："></a>类型：</h2><ol>
-<li><strong><em>公有区块链</em></strong>（Public Block Chains)：世界上任何个体或者团体都可以发送交易，且交易能够获得该区块链的有效确认，任何人都可以参与其共识过程。公有区块链是最早的区块链，也是应用最广泛的区块链，各大bitcoins系列的虚拟数字货币均基于公有区块链，世界上<strong>有且仅有一条</strong>该币种对应的区块链。</li>
-<li><strong><em>行业区块链</em></strong>（Consortium Block Chains)：由某个群体<strong>内部指定</strong>多个预选的节点为记账人，每个块的生成由所有的预选节点共同决定（预选节点参与共识过程），其他接入节点可以参与交易，但不过问记账过程(本质上还是托管记账，只是变成分布式记账，预选节点的多少，如何决定每个块的记账者成为该区块链的主要风险点），其他任何人可以通过该区块链开放的API进行限定查询。</li>
-<li><strong><em>私有区块链</em></strong>（Private Block Chains)：仅仅使用区块链的总账技术进行记账，可以是一个公司，也可以是个人，独享该区块链的写入权限，本链与其他的分布式存储方案没有太大区别。传统金融都是想实验尝试私有区块链，而公链的应用例如bitcoin已经工业化，私链的应用产品还在摸索当中。</li>
-</ol>
-<h2 id="特性："><a href="#特性：" class="headerlink" title="特性："></a>特性：</h2><ol>
-<li>去中心化。区块链技术不依赖额外的第三方管理机构或硬件设施，没有中心管制，除了自成一体的区块链本身，通过分布式核算和存储，各个节点实现了信息自我验证、传递和管理。去中心化是区块链最突出最本质的特征。</li>
-<li>开放性。区块链技术基础是<strong>开源的</strong>，除了交易各方的私有信息被加密外，区块链的数据对所有人开放，任何人都可以通过公开的接口查询区块链数据和开发相关应用，因此整个系统信息高度透明。</li>
-<li>独立性。基于协商一致的规范和协议(类似比特币采用的哈希算法等各种数学算法)，整个区块链系统不依赖其他第三方，所有节点能够在系统内自动安全地验证、交换数据，不需要任何人为的干预。</li>
-<li>安全性。只要不能掌控全部数据节点的51%，就无法肆意操控修改网络数据，这使区块链本身变得相对安全，避免了主观人为的数据变更。</li>
-<li>匿名性。除非有法律规范要求，单从技术上来讲，各区块节点的身份信息不需要公开或验证，信息传递可以<strong>匿名进行</strong>。</li>
-</ol>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>
@@ -1493,27 +1481,77 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
-    <title>比特币的价格是怎么算出来的</title>
-    <url>/2020/02/11/%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E4%BB%B7%E6%A0%BC%E6%98%AF%E6%80%8E%E4%B9%88%E7%AE%97%E5%87%BA%E6%9D%A5%E7%9A%84/</url>
-    <content><![CDATA[<p>-</p>
+    <title>火币网--币币交易图解</title>
+    <url>/2020/02/11/%E7%81%AB%E5%B8%81%E7%BD%91-%E5%B8%81%E5%B8%81%E4%BA%A4%E6%98%93%E5%9B%BE%E8%A7%A3/</url>
+    <content><![CDATA[<p>如何在火币网上执行币币交易</p>
 <a id="more"></a>
-<h2 id="首先了解一下拍卖"><a href="#首先了解一下拍卖" class="headerlink" title="首先了解一下拍卖"></a>首先了解一下拍卖</h2><ul>
-<li><strong>英式拍卖：</strong> 如果拍卖方（卖方）要卖一个商品，那么买方则通过集体竞价的方式进行拍卖，价高者得，最后和卖方成交的一定只有一个买家，而这个买家一定是出价最高的那位。</li>
-<li><strong>荷兰式拍卖：</strong> 假如有一个买家想要买一个商品，但是卖方有很多，那么卖方递减报出新的价位，最终和买方成交的一定是卖价最低的那位。</li>
+<p><img src="https://img-blog.csdnimg.cn/20200205111557755.png" alt="在这里插入图片描述"></p>
+<ul>
+<li><p>BTC/USDT：BTC对USDT的交易对，相当于平均1个BTC当前需要9211.76个USDT来购买，后面的64574.43CNY是说9211.76个USDT约等于64574.43人民币。</p>
+</li>
+<li><p>涨幅+0.01%是今天此时此刻比特币的价格相对于昨天的这个时候价格涨了0.01%，如果是红色的-0.01%就代表跌了0.01%。</p>
+</li>
+<li><p>高9320.00 低9100.00是<strong>过去24小时</strong>最高9320.00USDT最低9100.00USDT。</p>
+</li>
+<li><p>24H量：是过去24小时火币网交易了28878个比特币。这只是在火币网交易的数量。<br><img src="https://img-blog.csdnimg.cn/2020020511252911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+<li><p>上面一排时间是，选择显示这个时间段的数据，比如我选择的是1min，那么k线图中每一个红色或者绿色的柱就代表这一分钟内的走势。</p>
+</li>
+<li><p>时间下面的一排：11：24这个时间点的开盘价，最高价，最低价，收盘价，成交量。</p>
+</li>
+<li><p>MA均线：<strong>（MA）理论是股市最常见的一种技术分析方法，它对股市操作具有神奇的指导作用。</strong></p>
+</li>
+<li><p>绿色柱状：柱底代表开盘价，柱顶代表收盘价，红色则相反。</p>
+</li>
+<li><p>柱上下的细线：上影线，下影线，分别代表在这一分钟内的最高价和最低价。</p>
+</li>
+<li><p>图中标有今日最高，和今日最低。严谨理解为：从今日凌晨到目前为止的最高价与最低价。</p>
+<h2 id="均线分析方法："><a href="#均线分析方法：" class="headerlink" title="均线分析方法："></a>均线分析方法：</h2></li>
 </ul>
-<h2 id="实际定价方式"><a href="#实际定价方式" class="headerlink" title="实际定价方式"></a>实际定价方式</h2><p>在交易所看到的一排排红色的数字和一排排绿色的数字其实就是许多的买方和许多的卖方不断报出的<strong>买进价</strong>和<strong>卖出价</strong>，价格随供求变化而不断变动。买者和卖者彼此竞争，<strong>双向拍卖</strong>，买者对想要买进的出价，通过竞争以最低价买入;卖者也互相竞争，试图以最高价格出售，然而最新成交价一定是买卖双方达成一致的那个价格。买卖双方不断成交，最新一笔的成交价就是我们看到的不断变化的价格，这就是为什么价格在一直变化的原因。报价后面的数量，即代表当前的买方或者卖方想要购买或者卖出的币的数量。买卖一旦成交，则不得反悔。在未成交以前，也可以撤单，撤单程序与买卖委托的过程基本相同。</p>
-<h2 id="限价，市价，止盈止损"><a href="#限价，市价，止盈止损" class="headerlink" title="限价，市价，止盈止损"></a>限价，市价，止盈止损</h2><ul>
-<li>限价：是<strong>自己设定</strong>价格进行挂单，需价格波动到设定价格并有对手愿意交易才可以成交。</li>
-<li>市价：市价是以<strong>当前最新</strong>成交价挂单，一般马上成交。</li>
-<li>止盈止损：止盈止损即是<strong>带有预期</strong>的未来买入或者卖出行为，比如当价格跌破某一价位时进行止损（你预期跌破此价格可能还会继续跌），或者当价格突破某一价位时进行买入（你预期价格一旦突破该价位时将会继续上涨）。</li>
-</ul>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>如果你是买方，想要<strong>尽快</strong>购入比特币，当然是设置买入价格与当前最低卖出价格一致，这样双方就可以达成交易了，想要尽快卖出比特币，那就设置卖出价格与当前最高买入价格一致。但是市场上的人并不是都急切的想要卖出或者买入，会带有预期的进行买入卖出报价。</p>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>
       </categories>
       <tags>
         <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>服务器端会话技术：Session</title>
+    <url>/2020/02/09/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ASession/</url>
+    <content><![CDATA[<p>Session对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的Web页之间跳转时，存储在Session对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。他是用来解决Cookie带来的安全问题。</p>
+<a id="more"></a>
+<h2 id="一、Session概述"><a href="#一、Session概述" class="headerlink" title="一、Session概述"></a>一、Session概述</h2><ul>
+<li>会话 ， Session是基于Cookie的一种会话机制。 </li>
+<li>Cookie是服务器返回一小份数据给客户端。并且存放在客户端上。 </li>
+<li>Session是，数据存放在服务器端。</li>
+</ul>
+<h2 id="二、常用方法"><a href="#二、常用方法" class="headerlink" title="二、常用方法"></a>二、常用方法</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//得到会话ID</span><br><span class="line">String id = session.getId();</span><br><span class="line"></span><br><span class="line">//存值</span><br><span class="line">session.setAttribute(name, value);</span><br><span class="line">	</span><br><span class="line">//取值</span><br><span class="line">session.getAttribute(name);</span><br><span class="line">	</span><br><span class="line">//移除值</span><br><span class="line">session.removeAttribute(name);</span><br></pre></td></tr></table></figure>
+<h2 id="三、Session的创建与销毁。"><a href="#三、Session的创建与销毁。" class="headerlink" title="三、Session的创建与销毁。"></a>三、Session的创建与销毁。</h2><ul>
+<li>创建<br>如果有在servlet里面调用了 request.getSession()</li>
+<li>销毁<br>session 是存放在服务器的内存中的一份数据。 当然可以持久化. Redis . 即使关了浏览器，session也不会销毁。</li>
+</ul>
+<ol>
+<li>关闭服务器</li>
+<li>session会话时间过期。 有效期过了，默认有效期： 30分钟。</li>
+</ol>
+<h2 id="四、移除Session中的元素"><a href="#四、移除Session中的元素" class="headerlink" title="四、移除Session中的元素"></a>四、移除Session中的元素</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//强制干掉会话，里面存放的任何数据就都没有了。</span><br><span class="line">session.invalidate();</span><br><span class="line">	</span><br><span class="line">//从session中移除某一个数据</span><br><span class="line">session.removeAttribute(<span class="string">"cart"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><ul>
+<li>Session： 也是基于cookie的一种会话技术，  数据存放存放在服务器端。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">会在cookie里面添加一个字段 JSESSIONID . 是tomcat服务器生成。 </span><br><span class="line">setAttribute 存数据</span><br><span class="line">getAttribute 取数据</span><br><span class="line">removeAttribute  移除数据</span><br><span class="line">getSessionId();  获取会话id</span><br><span class="line">invalidate() 强制让会话失效。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建和销毁<br>  调用<strong>request.getSesion</strong>创建<br>   服务器关闭 ， 会话超时（30分）</li>
+</ul>
+<ul>
+<li>setAttribute 存放的值， 在浏览器关闭后，依然不会丢失！</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>Session</tag>
       </tags>
   </entry>
   <entry>
@@ -1561,44 +1599,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </categories>
       <tags>
         <tag>Cookie</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>服务器端会话技术：Session</title>
-    <url>/2020/02/09/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ASession/</url>
-    <content><![CDATA[<p>Session对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的Web页之间跳转时，存储在Session对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。他是用来解决Cookie带来的安全问题。</p>
-<a id="more"></a>
-<h2 id="一、Session概述"><a href="#一、Session概述" class="headerlink" title="一、Session概述"></a>一、Session概述</h2><ul>
-<li>会话 ， Session是基于Cookie的一种会话机制。 </li>
-<li>Cookie是服务器返回一小份数据给客户端。并且存放在客户端上。 </li>
-<li>Session是，数据存放在服务器端。</li>
-</ul>
-<h2 id="二、常用方法"><a href="#二、常用方法" class="headerlink" title="二、常用方法"></a>二、常用方法</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//得到会话ID</span><br><span class="line">String id = session.getId();</span><br><span class="line"></span><br><span class="line">//存值</span><br><span class="line">session.setAttribute(name, value);</span><br><span class="line">	</span><br><span class="line">//取值</span><br><span class="line">session.getAttribute(name);</span><br><span class="line">	</span><br><span class="line">//移除值</span><br><span class="line">session.removeAttribute(name);</span><br></pre></td></tr></table></figure>
-<h2 id="三、Session的创建与销毁。"><a href="#三、Session的创建与销毁。" class="headerlink" title="三、Session的创建与销毁。"></a>三、Session的创建与销毁。</h2><ul>
-<li>创建<br>如果有在servlet里面调用了 request.getSession()</li>
-<li>销毁<br>session 是存放在服务器的内存中的一份数据。 当然可以持久化. Redis . 即使关了浏览器，session也不会销毁。</li>
-</ul>
-<ol>
-<li>关闭服务器</li>
-<li>session会话时间过期。 有效期过了，默认有效期： 30分钟。</li>
-</ol>
-<h2 id="四、移除Session中的元素"><a href="#四、移除Session中的元素" class="headerlink" title="四、移除Session中的元素"></a>四、移除Session中的元素</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//强制干掉会话，里面存放的任何数据就都没有了。</span><br><span class="line">session.invalidate();</span><br><span class="line">	</span><br><span class="line">//从session中移除某一个数据</span><br><span class="line">session.removeAttribute(<span class="string">"cart"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><ul>
-<li>Session： 也是基于cookie的一种会话技术，  数据存放存放在服务器端。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">会在cookie里面添加一个字段 JSESSIONID . 是tomcat服务器生成。 </span><br><span class="line">setAttribute 存数据</span><br><span class="line">getAttribute 取数据</span><br><span class="line">removeAttribute  移除数据</span><br><span class="line">getSessionId();  获取会话id</span><br><span class="line">invalidate() 强制让会话失效。</span><br></pre></td></tr></table></figure>
-<ul>
-<li>创建和销毁<br>  调用<strong>request.getSesion</strong>创建<br>   服务器关闭 ， 会话超时（30分）</li>
-</ul>
-<ul>
-<li>setAttribute 存放的值， 在浏览器关闭后，依然不会丢失！</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>Session</tag>
       </tags>
   </entry>
   <entry>
@@ -1673,6 +1673,77 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </categories>
       <tags>
         <tag>Http协议</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Servlet学习笔记</title>
+    <url>/2020/02/08/Servlet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>java Web离不开Servlet，它其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </p>
+<a id="more"></a>
+<h2 id="一、Web资源介绍"><a href="#一、Web资源介绍" class="headerlink" title="一、Web资源介绍"></a>一、Web资源介绍</h2><ul>
+<li><strong>在http协议当中，规定了请求和响应双方， 客户端和服务器端。与web相关的资源。</strong></li>
+<li>有两种分类：</li>
+<li>静态资源：html 、 js、 css</li>
+<li>动态资源：servlet/jsp</li>
+</ul>
+<h2 id="二、Servlet介绍"><a href="#二、Servlet介绍" class="headerlink" title="二、Servlet介绍"></a>二、Servlet介绍</h2><ul>
+<li><strong>servlet是什么?</strong><ol>
+<li>其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </li>
+<li>更多的是配合动态资源来做。 当然静态资源也需要使用到servlet，只不过是Tomcat里面已经定义好了一个 DefaultServlet</li>
+</ol>
+</li>
+</ul>
+<h2 id="三、Selvlet简单使用Web工程"><a href="#三、Selvlet简单使用Web工程" class="headerlink" title="三、Selvlet简单使用Web工程"></a>三、Selvlet简单使用Web工程</h2><ol>
+<li><p>得写一个Web工程 ， 要有一个服务器。</p>
+</li>
+<li><p>测试运行Web工程：</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">得写一个Web工程 ， 要有一个服务器。</span><br><span class="line">测试运行Web工程</span><br><span class="line">	1. 新建一个类， 实现Servlet接口`public class HelloServlet implements Servlet&#123;&#125;`</span><br><span class="line"></span><br><span class="line">	2. 配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。</span><br><span class="line">		在webContent/WEB-INF/web.xml里面写上以下内容：</span><br><span class="line">		</span><br><span class="line">		  &lt;!-- 向tomcat报告， 我这个应用里面有这个servlet， 名字叫做HelloServlet , 具体的路径是com.itheima.servlet.HelloServlet --&gt;</span><br><span class="line">		  &lt;servlet&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet&lt;/servlet-class&gt;</span><br><span class="line">		  &lt;/servlet&gt;</span><br><span class="line">		  </span><br><span class="line">		  &lt;!-- 注册servlet的映射。  servletName : 找到上面注册的具体servlet，  url-pattern: 在地址栏上的path 一定要以/打头 --&gt;</span><br><span class="line">		  &lt;servlet-mapping&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;url-pattern&gt;/a&lt;/url-pattern&gt;</span><br><span class="line">		  &lt;/servlet-mapping&gt;</span><br><span class="line"></span><br><span class="line">		3. 在地址栏上输入 http://localhost:8080/项目名称/a</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20200226115856385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="四、Servlet执行过程"><a href="#四、Servlet执行过程" class="headerlink" title="四、Servlet执行过程"></a>四、Servlet执行过程</h2><p><img src="https://img-blog.csdnimg.cn/20200226120652999.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="五、Servlet的通用写法"><a href="#五、Servlet的通用写法" class="headerlink" title="五、Servlet的通用写法"></a>五、Servlet的通用写法</h2><ul>
+<li>实现Servlet接口，但接口里的方法很多，有些用不到。</li>
+</ul>
+<ol>
+<li>Servlet (接口)        </li>
+<li>GenericServlet    </li>
+<li>HttpServlet （用于处理http的请求）</li>
+</ol>
+<ul>
+<li>定义一个类，继承HttpServlet ,复写doGet 和 doPost</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200226124900942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="六、Servlet的生命周期方法"><a href="#六、Servlet的生命周期方法" class="headerlink" title="六、Servlet的生命周期方法"></a>六、Servlet的生命周期方法</h2><ul>
+<li>生命周期： 从创建到销毁的一段时间</li>
+<li>生命周期方法： 从创建到销毁，所调用的那些方法。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. init方法</span><br><span class="line">	在创建该servlet的实例时，就执行该方法。</span><br><span class="line">	一个servlet只会初始化一次， init方法只会执行一次</span><br><span class="line">	默认情况下是 ： 初次访问该servlet，才会创建实例。 </span><br><span class="line">		</span><br><span class="line">2.service方法</span><br><span class="line">	只要客户端来了一个请求，那么就执行这个方法了。</span><br><span class="line">	该方法可以被执行很多次。 一次请求，对应一次service方法的调用</span><br><span class="line">	</span><br><span class="line">3.destroy方法</span><br><span class="line">	servlet销毁的时候，就会执行该方法</span><br><span class="line">			1. 该项目从tomcat的里面移除。</span><br><span class="line">		  	2. 正常关闭tomcat就会执行 shutdown.bat</span><br><span class="line"></span><br><span class="line">4. doGet 和 doPost不算生命周期方法。</span><br><span class="line">所谓的生命周期方法是指，从对象的创建到销毁一定会执行的方法， 但是这两个方法，不一定会执行。</span><br><span class="line">```	 </span><br><span class="line"><span class="comment">## 七、让Servlet创建实例的时机提前。</span></span><br><span class="line">1. 默认情况下，只有在初次访问servlet的时候，才会执行init方法。 有的时候，我们可能需要在这个方法里面执行一些初始化工作，甚至是做一些比较耗时的逻辑。 </span><br><span class="line"></span><br><span class="line">2. 那么这个时候，初次访问，可能会在init方法中逗留太久的时间。 为了提升用户的体验，需要让这个初始化的时机提前一点。 </span><br><span class="line"></span><br><span class="line">3. 在配置的时候， 使用load-on-startup元素来指定， 给定的数字越小，启动的时机就越早。 一般不写负数， 从2开始即可。 </span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet04&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet04&lt;/servlet-class&gt;</span><br><span class="line">	&lt;load-on-startup&gt;2&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="八、ServletConfig"><a href="#八、ServletConfig" class="headerlink" title="八、ServletConfig"></a>八、ServletConfig</h2><ul>
+<li><strong>Servlet的配置，通过这个对象，可以获取servlet在配置的时候一些信息。</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1. 得到servlet配置对象 专门用于在配置servlet的信息</span></span><br><span class="line">ServletConfig config = getServletConfig();</span><br><span class="line">	</span><br><span class="line"><span class="comment">//获取到的是配置servlet里面servlet-name 的文本内容</span></span><br><span class="line">String servletName = config.getServletName();</span><br><span class="line">System.out.println(<span class="string">"servletName="</span>+servletName);</span><br><span class="line">	</span><br><span class="line"><span class="comment">//2. 可以获取具体的某一个参数。 </span></span><br><span class="line">String address = config.getInitParameter(<span class="string">"address"</span>);</span><br><span class="line">System.out.println(<span class="string">"address="</span>+address);</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.获取所有的参数名称</span></span><br><span class="line">Enumeration&lt;String&gt; names = config.getInitParameterNames();</span><br><span class="line"><span class="comment">//遍历取出所有的参数名称</span></span><br><span class="line"><span class="keyword">while</span> (names.hasMoreElements()) &#123;</span><br><span class="line">	String key = (String) names.nextElement();</span><br><span class="line">	String value = config.getInitParameter(key);</span><br><span class="line">	System.out.println(<span class="string">"key==="</span>+key + <span class="string">"   value="</span>+value);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>参数在哪里配置？在web.xml中</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;aa&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.daq.servlet.HelloServletConfig&lt;/servlet-class&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 可以添加初始化参数 --&gt;</span><br><span class="line">	&lt;init-param&gt;</span><br><span class="line">		&lt;param-name&gt;adress&lt;/param-name&gt;</span><br><span class="line">		&lt;param-value&gt;bejing&lt;/param-value&gt;</span><br><span class="line">	&lt;/init-param&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">	</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet02&lt;/servlet-name&gt;</span><br><span class="line">	&lt;url-pattern&gt;/HelloServlet02&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="九、为什么需要有ServletConfig？"><a href="#九、为什么需要有ServletConfig？" class="headerlink" title="九、为什么需要有ServletConfig？"></a>九、为什么需要有ServletConfig？</h2><ol>
+<li><p>未来我们自己开发的一些应用，使用到了一些技术，或者一些代码，我们不会。 但是有人写出来了。做成了jar包，它的代码放置在了自己的servlet类里面。 </p>
+</li>
+<li><p>刚好这个servlet 里面需要一个数字或者叫做变量值。 但是这个值不能是固定了。 所以要求使用到这个servlet的公司，在注册servlet的时候，必须要在web.xml里面，声明init-params</p>
+</li>
+<li><p>在开发当中比较少用。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>Servlet</tag>
       </tags>
   </entry>
   <entry>
@@ -1777,77 +1848,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </categories>
       <tags>
         <tag>XML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Servlet学习笔记</title>
-    <url>/2020/02/08/Servlet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>java Web离不开Servlet，它其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </p>
-<a id="more"></a>
-<h2 id="一、Web资源介绍"><a href="#一、Web资源介绍" class="headerlink" title="一、Web资源介绍"></a>一、Web资源介绍</h2><ul>
-<li><strong>在http协议当中，规定了请求和响应双方， 客户端和服务器端。与web相关的资源。</strong></li>
-<li>有两种分类：</li>
-<li>静态资源：html 、 js、 css</li>
-<li>动态资源：servlet/jsp</li>
-</ul>
-<h2 id="二、Servlet介绍"><a href="#二、Servlet介绍" class="headerlink" title="二、Servlet介绍"></a>二、Servlet介绍</h2><ul>
-<li><strong>servlet是什么?</strong><ol>
-<li>其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </li>
-<li>更多的是配合动态资源来做。 当然静态资源也需要使用到servlet，只不过是Tomcat里面已经定义好了一个 DefaultServlet</li>
-</ol>
-</li>
-</ul>
-<h2 id="三、Selvlet简单使用Web工程"><a href="#三、Selvlet简单使用Web工程" class="headerlink" title="三、Selvlet简单使用Web工程"></a>三、Selvlet简单使用Web工程</h2><ol>
-<li><p>得写一个Web工程 ， 要有一个服务器。</p>
-</li>
-<li><p>测试运行Web工程：</p>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">得写一个Web工程 ， 要有一个服务器。</span><br><span class="line">测试运行Web工程</span><br><span class="line">	1. 新建一个类， 实现Servlet接口`public class HelloServlet implements Servlet&#123;&#125;`</span><br><span class="line"></span><br><span class="line">	2. 配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。</span><br><span class="line">		在webContent/WEB-INF/web.xml里面写上以下内容：</span><br><span class="line">		</span><br><span class="line">		  &lt;!-- 向tomcat报告， 我这个应用里面有这个servlet， 名字叫做HelloServlet , 具体的路径是com.itheima.servlet.HelloServlet --&gt;</span><br><span class="line">		  &lt;servlet&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet&lt;/servlet-class&gt;</span><br><span class="line">		  &lt;/servlet&gt;</span><br><span class="line">		  </span><br><span class="line">		  &lt;!-- 注册servlet的映射。  servletName : 找到上面注册的具体servlet，  url-pattern: 在地址栏上的path 一定要以/打头 --&gt;</span><br><span class="line">		  &lt;servlet-mapping&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;url-pattern&gt;/a&lt;/url-pattern&gt;</span><br><span class="line">		  &lt;/servlet-mapping&gt;</span><br><span class="line"></span><br><span class="line">		3. 在地址栏上输入 http://localhost:8080/项目名称/a</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20200226115856385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="四、Servlet执行过程"><a href="#四、Servlet执行过程" class="headerlink" title="四、Servlet执行过程"></a>四、Servlet执行过程</h2><p><img src="https://img-blog.csdnimg.cn/20200226120652999.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="五、Servlet的通用写法"><a href="#五、Servlet的通用写法" class="headerlink" title="五、Servlet的通用写法"></a>五、Servlet的通用写法</h2><ul>
-<li>实现Servlet接口，但接口里的方法很多，有些用不到。</li>
-</ul>
-<ol>
-<li>Servlet (接口)        </li>
-<li>GenericServlet    </li>
-<li>HttpServlet （用于处理http的请求）</li>
-</ol>
-<ul>
-<li>定义一个类，继承HttpServlet ,复写doGet 和 doPost</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200226124900942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="六、Servlet的生命周期方法"><a href="#六、Servlet的生命周期方法" class="headerlink" title="六、Servlet的生命周期方法"></a>六、Servlet的生命周期方法</h2><ul>
-<li>生命周期： 从创建到销毁的一段时间</li>
-<li>生命周期方法： 从创建到销毁，所调用的那些方法。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. init方法</span><br><span class="line">	在创建该servlet的实例时，就执行该方法。</span><br><span class="line">	一个servlet只会初始化一次， init方法只会执行一次</span><br><span class="line">	默认情况下是 ： 初次访问该servlet，才会创建实例。 </span><br><span class="line">		</span><br><span class="line">2.service方法</span><br><span class="line">	只要客户端来了一个请求，那么就执行这个方法了。</span><br><span class="line">	该方法可以被执行很多次。 一次请求，对应一次service方法的调用</span><br><span class="line">	</span><br><span class="line">3.destroy方法</span><br><span class="line">	servlet销毁的时候，就会执行该方法</span><br><span class="line">			1. 该项目从tomcat的里面移除。</span><br><span class="line">		  	2. 正常关闭tomcat就会执行 shutdown.bat</span><br><span class="line"></span><br><span class="line">4. doGet 和 doPost不算生命周期方法。</span><br><span class="line">所谓的生命周期方法是指，从对象的创建到销毁一定会执行的方法， 但是这两个方法，不一定会执行。</span><br><span class="line">```	 </span><br><span class="line"><span class="comment">## 七、让Servlet创建实例的时机提前。</span></span><br><span class="line">1. 默认情况下，只有在初次访问servlet的时候，才会执行init方法。 有的时候，我们可能需要在这个方法里面执行一些初始化工作，甚至是做一些比较耗时的逻辑。 </span><br><span class="line"></span><br><span class="line">2. 那么这个时候，初次访问，可能会在init方法中逗留太久的时间。 为了提升用户的体验，需要让这个初始化的时机提前一点。 </span><br><span class="line"></span><br><span class="line">3. 在配置的时候， 使用load-on-startup元素来指定， 给定的数字越小，启动的时机就越早。 一般不写负数， 从2开始即可。 </span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet04&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet04&lt;/servlet-class&gt;</span><br><span class="line">	&lt;load-on-startup&gt;2&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="八、ServletConfig"><a href="#八、ServletConfig" class="headerlink" title="八、ServletConfig"></a>八、ServletConfig</h2><ul>
-<li><strong>Servlet的配置，通过这个对象，可以获取servlet在配置的时候一些信息。</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1. 得到servlet配置对象 专门用于在配置servlet的信息</span></span><br><span class="line">ServletConfig config = getServletConfig();</span><br><span class="line">	</span><br><span class="line"><span class="comment">//获取到的是配置servlet里面servlet-name 的文本内容</span></span><br><span class="line">String servletName = config.getServletName();</span><br><span class="line">System.out.println(<span class="string">"servletName="</span>+servletName);</span><br><span class="line">	</span><br><span class="line"><span class="comment">//2. 可以获取具体的某一个参数。 </span></span><br><span class="line">String address = config.getInitParameter(<span class="string">"address"</span>);</span><br><span class="line">System.out.println(<span class="string">"address="</span>+address);</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.获取所有的参数名称</span></span><br><span class="line">Enumeration&lt;String&gt; names = config.getInitParameterNames();</span><br><span class="line"><span class="comment">//遍历取出所有的参数名称</span></span><br><span class="line"><span class="keyword">while</span> (names.hasMoreElements()) &#123;</span><br><span class="line">	String key = (String) names.nextElement();</span><br><span class="line">	String value = config.getInitParameter(key);</span><br><span class="line">	System.out.println(<span class="string">"key==="</span>+key + <span class="string">"   value="</span>+value);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>参数在哪里配置？在web.xml中</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;aa&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.daq.servlet.HelloServletConfig&lt;/servlet-class&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 可以添加初始化参数 --&gt;</span><br><span class="line">	&lt;init-param&gt;</span><br><span class="line">		&lt;param-name&gt;adress&lt;/param-name&gt;</span><br><span class="line">		&lt;param-value&gt;bejing&lt;/param-value&gt;</span><br><span class="line">	&lt;/init-param&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">	</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet02&lt;/servlet-name&gt;</span><br><span class="line">	&lt;url-pattern&gt;/HelloServlet02&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="九、为什么需要有ServletConfig？"><a href="#九、为什么需要有ServletConfig？" class="headerlink" title="九、为什么需要有ServletConfig？"></a>九、为什么需要有ServletConfig？</h2><ol>
-<li><p>未来我们自己开发的一些应用，使用到了一些技术，或者一些代码，我们不会。 但是有人写出来了。做成了jar包，它的代码放置在了自己的servlet类里面。 </p>
-</li>
-<li><p>刚好这个servlet 里面需要一个数字或者叫做变量值。 但是这个值不能是固定了。 所以要求使用到这个servlet的公司，在注册servlet的时候，必须要在web.xml里面，声明init-params</p>
-</li>
-<li><p>在开发当中比较少用。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>Servlet</tag>
       </tags>
   </entry>
   <entry>
@@ -2391,6 +2391,30 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
+    <title>MySql安装与卸载</title>
+    <url>/2020/02/01/MySql%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</url>
+    <content><![CDATA[<p>MySql的卸载与安装</p>
+<a id="more"></a>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ul>
+<li>运行安装程序，在启动配置教程之前，一路下一步，没有下一步的话就直接<code>finish</code></li>
+<li>第一次<code>finish</code>之后启动服务器配置教程</li>
+<li>第一个注意：<code>include mysql bin directory to windows path</code></li>
+<li>第二个注意：端口号不要修改，字符集选择UTF-8</li>
+</ul>
+<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><ul>
+<li>打开控制面板，删除软件</li>
+<li>删除mysql安装目录的所有文件</li>
+<li>删除mysql数据存放文件，C盘下面的<code>Programe data</code>里，它是隐藏文件，要点击查看隐藏文件。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>MySql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySql基础操作</title>
     <url>/2020/02/01/MySql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<p>本文简单介绍了数据库，和一些基本操作。</p>
@@ -2523,30 +2547,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">1.like :模糊查询</span><br><span class="line">	_ ：代表的是一个字符</span><br><span class="line">	% ：代表的是多个字符</span><br><span class="line">	in：在某个范围内获得值</span><br><span class="line">	-查询出名字中带有饼的所有商品  ‘%饼%’</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> pname <span class="keyword">like</span> <span class="string">'%饼%'</span>;</span><br><span class="line">	-查询第二名字是熊的所有商品  '_熊%'</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> pname <span class="keyword">like</span> <span class="string">'_熊%'</span>;</span><br><span class="line">	-查询出商品分类ID在1，4，5里面的所有商品</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> cno <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">2.排序查询: order by  关键字</span><br><span class="line">	asc:   ascend  升序（默认的排序方式）</span><br><span class="line">	desc： descend 降序</span><br><span class="line">	-查询所有商品，按照降序排序</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">desc</span>;</span><br><span class="line">	-查询名称有“小”的商品，按照升序排序</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> pname <span class="keyword">like</span> <span class="string">'%小%'</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>;</span><br><span class="line"></span><br><span class="line">3.聚合函数：</span><br><span class="line">	-获得所有商品价格总和：</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">sum</span>(price) <span class="keyword">from</span> product;</span><br><span class="line">	-获得所有商品价格平均值：</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">avg</span>(price) <span class="keyword">from</span> product;</span><br><span class="line">	-获得所有商品的个数：</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> product;</span><br><span class="line"></span><br><span class="line">4.分组：group by</span><br><span class="line">	-根据cno字段分组，分组后统计商品的个数</span><br><span class="line">	<span class="keyword">select</span> cno,<span class="keyword">count</span>(*) <span class="keyword">from</span> product <span class="keyword">group</span> <span class="keyword">by</span> cno; </span><br><span class="line">	-根据cno字段分组，分组后统计商品的平均价格，并且商品平均价格 &gt;60</span><br><span class="line">	<span class="keyword">select</span> cno,<span class="keyword">avg</span>(price) <span class="keyword">from</span> product <span class="keyword">group</span> <span class="keyword">by</span> cno <span class="keyword">having</span> <span class="keyword">avg</span>(price) &gt;<span class="number">60</span>;</span><br><span class="line">	-having 关键字，他可以接聚合函数的，  出现在分组之后</span><br><span class="line">	-where 关键字，他不可以接聚合函数，出现在分组之前</span><br></pre></td></tr></table></figure>
 <p><strong>补充：</strong></p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">编写顺序：</span><br><span class="line">S..F..W..G..H..O</span><br><span class="line">select..from..where..group by..having..drder <span class="keyword">by</span></span><br><span class="line">执行顺序：</span><br><span class="line">F..W..G..H..S..O</span><br><span class="line">from..where..group by..having..select..drder <span class="keyword">by</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>MySql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MySql安装与卸载</title>
-    <url>/2020/02/01/MySql%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</url>
-    <content><![CDATA[<p>MySql的卸载与安装</p>
-<a id="more"></a>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ul>
-<li>运行安装程序，在启动配置教程之前，一路下一步，没有下一步的话就直接<code>finish</code></li>
-<li>第一次<code>finish</code>之后启动服务器配置教程</li>
-<li>第一个注意：<code>include mysql bin directory to windows path</code></li>
-<li>第二个注意：端口号不要修改，字符集选择UTF-8</li>
-</ul>
-<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><ul>
-<li>打开控制面板，删除软件</li>
-<li>删除mysql安装目录的所有文件</li>
-<li>删除mysql数据存放文件，C盘下面的<code>Programe data</code>里，它是隐藏文件，要点击查看隐藏文件。</li>
-</ul>
 ]]></content>
       <categories>
         <category>数据库</category>
