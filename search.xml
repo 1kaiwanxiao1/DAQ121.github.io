@@ -1235,35 +1235,6 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
-    <title>区块链的架构模型以及核心技术</title>
-    <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-<h2 id="一-架构模型"><a href="#一-架构模型" class="headerlink" title="一.架构模型"></a>一.架构模型</h2><p>一般说来，区块链系统由数据层、网络层、共识层、激励层、合约层，应用层组成。</p>
-<ol>
-<li><strong>数据层：</strong> 封装了底层数据区块以及相关的数据加密和时间戳等基础数据和基本算法。</li>
-<li><strong>网络层：</strong> 则包括分布式组网机制、数据传播机制和数据验证机制等。</li>
-<li><strong>共识层：</strong> 主要封装网络节点的各类共识算法。</li>
-<li><strong>激励层：</strong> 将经济因素集成到区块链技术体系中来，主要包括经济激励的发行机制和分配机制等。</li>
-<li><strong>合约层：</strong> 主要封装各类脚本、算法和智能合约，是区块链可编程特性的基础。</li>
-<li><strong>应用层：</strong> 则封装了区块链的各种应用场景和案例。</li>
-</ol>
-<p><strong>区块链技术最具代表性的创新点：</strong></p>
-<ol>
-<li>基于时间戳的链式区块结构、分布式节点的共识机制。</li>
-<li>基于共识算力的经济激励和灵活可编程的智能合约。</li>
-</ol>
-<h2 id="二-核心技术"><a href="#二-核心技术" class="headerlink" title="二.核心技术"></a>二.核心技术</h2><p> 1.<strong>分布式账本：</strong>分布式账本指的是交易记账由分布在不同地方的多个节点共同完成，而且每一个节点记录的是完整的账目，因此它们都可以参与监督交易合法性，同时也可以共同为其作证 。跟传统的分布式存储有所不同，区块链的分布式存储的独特性主要体现在两个方面：一是区块链每个节点都按照块链式结构存储完整的数据，传统分布式存储一般是将数据按照一定的规则分成多份进行存储。二是区块链每个节点存储都是独立的、地位等同的，依靠共识机制保证存储的一致性，而传统分布式存储一般是通过中心节点往其他备份节点同步数据。没有任何一个节点可以单独记录账本数据，从而避免了单一记账人被控制或者被贿赂而记假账的可能性。也由记账节点足够多，理论上讲除非所有的节点被破坏，否则账目就不会丢失，从而保证了账目数据的安全性。</p>
-<p>2.<strong>非对称加密：</strong>存储在区块链上的交易信息是公开的，但是账户身份信息是高度加密的，只有在数据拥有者授权的情况下才能访问到，从而保证了数据的安全和个人的隐私。<br>3.<strong>共识机制</strong>就是所有记账节点之间怎么达成共识，去认定一个记录的有效性，这既是认定的手段，也是防止篡改的手段。区块链提出了四种不同的共识机制，适用于不同的应用场景，在效率和安全性之间取得平衡 。<br>区块链的共识机制具备“少数服从多数”以及“人人平等”的特点，其中“少数服从多数”并不完全指节点个数，也可以是计算能力、股权数或者其他的计算机可以比较的特征量。“人人平等”是当节点满足条件时，所有节点都有权优先提出共识结果、直接被其他节点认同后并最后有可能成为最终共识结果。以比特币为例，采用的是工作量证明，只有在控制了全网超过51%的记账节点的情况下，才有可能伪造出一条不存在的记录。当加入区块链的节点足够多的时候，这基本上不可能，从而杜绝了造假的可能。<br>4.<strong>智能合约：</strong>基于这些可信的不可篡改的数据，可以自动化的执行一些预先定义好的规则和条款。以保险为例，如果说每个人的信息（包括医疗信息和风险发生的信息）都是真实可信的，那就很容易的在一些标准化的保险产品中，去进行自动化的理赔。在保险公司的日常业务中，虽然交易不像银行和证券行业那样频繁，但是对可信数据的依赖是有增无减。因此，笔者认为利用区块链技术，从数据管理的角度切入，能够有效地帮助保险公司提高风险管理能力。具体来讲主要分投保人风险管理和保险公司的风险监督。</p>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>区块链简单理解</title>
     <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</url>
     <content><![CDATA[<p>对近年来很火的区块链的简单了解</p>
@@ -1295,22 +1266,51 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
-    <title>数字货币的种类</title>
-    <url>/2020/02/11/%E6%95%B0%E5%AD%97%E8%B4%A7%E5%B8%81%E7%9A%84%E7%A7%8D%E7%B1%BB/</url>
-    <content><![CDATA[<p>当前的数字货币大致有以下几种。</p>
+    <title>区块链的架构模型以及核心技术</title>
+    <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/</url>
+    <content><![CDATA[<p>-</p>
 <a id="more"></a>
-<p><img src="https://img-blog.csdnimg.cn/20200204160645330.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><strong>BTC：</strong> 比特币</li>
-<li><strong>ETH：</strong> 以太币</li>
-<li><strong>USDT：</strong> 泰达币（与同数量的美元是等值的）</li>
-<li><strong>EOS：</strong> 为商用分布式应用设计的一款区块链操作系统。EOS是引入的一种新的区块链架构，旨在实现分布式应用的性能扩展。注意，它并不是像比特币和以太坊那样的货币，而是基于EOS软件项目之上发布的代币，被称为区块链3.0 。</li>
-<li><strong>XRP：</strong> 瑞波币。它是基于Ripple协议的虚拟货币，主要功能有二：1.防止恶意攻击；2.桥梁货币。</li>
-<li><strong>LTC：</strong> 莱特币。<img src="https://img-blog.csdnimg.cn/20200204161448813.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li><strong>HT：</strong> 火币<br><img src="https://img-blog.csdnimg.cn/20200204161631662.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li><strong>HUSD：</strong> 稳定币<img src="https://img-blog.csdnimg.cn/20200204162140418.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li><strong>BCH：</strong><img src="https://img-blog.csdnimg.cn/20200204162243770.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-</ul>
+<h2 id="一-架构模型"><a href="#一-架构模型" class="headerlink" title="一.架构模型"></a>一.架构模型</h2><p>一般说来，区块链系统由数据层、网络层、共识层、激励层、合约层，应用层组成。</p>
+<ol>
+<li><strong>数据层：</strong> 封装了底层数据区块以及相关的数据加密和时间戳等基础数据和基本算法。</li>
+<li><strong>网络层：</strong> 则包括分布式组网机制、数据传播机制和数据验证机制等。</li>
+<li><strong>共识层：</strong> 主要封装网络节点的各类共识算法。</li>
+<li><strong>激励层：</strong> 将经济因素集成到区块链技术体系中来，主要包括经济激励的发行机制和分配机制等。</li>
+<li><strong>合约层：</strong> 主要封装各类脚本、算法和智能合约，是区块链可编程特性的基础。</li>
+<li><strong>应用层：</strong> 则封装了区块链的各种应用场景和案例。</li>
+</ol>
+<p><strong>区块链技术最具代表性的创新点：</strong></p>
+<ol>
+<li>基于时间戳的链式区块结构、分布式节点的共识机制。</li>
+<li>基于共识算力的经济激励和灵活可编程的智能合约。</li>
+</ol>
+<h2 id="二-核心技术"><a href="#二-核心技术" class="headerlink" title="二.核心技术"></a>二.核心技术</h2><p> 1.<strong>分布式账本：</strong>分布式账本指的是交易记账由分布在不同地方的多个节点共同完成，而且每一个节点记录的是完整的账目，因此它们都可以参与监督交易合法性，同时也可以共同为其作证 。跟传统的分布式存储有所不同，区块链的分布式存储的独特性主要体现在两个方面：一是区块链每个节点都按照块链式结构存储完整的数据，传统分布式存储一般是将数据按照一定的规则分成多份进行存储。二是区块链每个节点存储都是独立的、地位等同的，依靠共识机制保证存储的一致性，而传统分布式存储一般是通过中心节点往其他备份节点同步数据。没有任何一个节点可以单独记录账本数据，从而避免了单一记账人被控制或者被贿赂而记假账的可能性。也由记账节点足够多，理论上讲除非所有的节点被破坏，否则账目就不会丢失，从而保证了账目数据的安全性。</p>
+<p>2.<strong>非对称加密：</strong>存储在区块链上的交易信息是公开的，但是账户身份信息是高度加密的，只有在数据拥有者授权的情况下才能访问到，从而保证了数据的安全和个人的隐私。<br>3.<strong>共识机制</strong>就是所有记账节点之间怎么达成共识，去认定一个记录的有效性，这既是认定的手段，也是防止篡改的手段。区块链提出了四种不同的共识机制，适用于不同的应用场景，在效率和安全性之间取得平衡 。<br>区块链的共识机制具备“少数服从多数”以及“人人平等”的特点，其中“少数服从多数”并不完全指节点个数，也可以是计算能力、股权数或者其他的计算机可以比较的特征量。“人人平等”是当节点满足条件时，所有节点都有权优先提出共识结果、直接被其他节点认同后并最后有可能成为最终共识结果。以比特币为例，采用的是工作量证明，只有在控制了全网超过51%的记账节点的情况下，才有可能伪造出一条不存在的记录。当加入区块链的节点足够多的时候，这基本上不可能，从而杜绝了造假的可能。<br>4.<strong>智能合约：</strong>基于这些可信的不可篡改的数据，可以自动化的执行一些预先定义好的规则和条款。以保险为例，如果说每个人的信息（包括医疗信息和风险发生的信息）都是真实可信的，那就很容易的在一些标准化的保险产品中，去进行自动化的理赔。在保险公司的日常业务中，虽然交易不像银行和证券行业那样频繁，但是对可信数据的依赖是有增无减。因此，笔者认为利用区块链技术，从数据管理的角度切入，能够有效地帮助保险公司提高风险管理能力。具体来讲主要分投保人风险管理和保险公司的风险监督。</p>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>比特币的两种交易方式</title>
+    <url>/2020/02/11/%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E4%B8%A4%E7%A7%8D%E4%BA%A4%E6%98%93%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p>比特币的交易有很多种，本文了解一下</p>
+<a id="more"></a>
+<h2 id="比特币交易的几种种方式："><a href="#比特币交易的几种种方式：" class="headerlink" title="比特币交易的几种种方式："></a>比特币交易的几种种方式：</h2><p><img src="https://img-blog.csdnimg.cn/20200204170527575.png" alt="在这里插入图片描述"></p>
+<ol>
+<li><strong>场外交易：</strong> 也称为<strong>法币交易</strong>，法币就是<strong>法定货币</strong>，人民币就是我们国家的法定货币，顾名思义，法币交易就是由法币（人民币）直接与比特币（数字货币）进行交易的行为（购买/出售),可以简单理解为网购。</li>
+<li><strong>场内交易：</strong> 也称之为<strong>币币交易</strong>，就是用一种币交易兑换另一种币。</li>
+<li><strong>杠杆交易：</strong> 利用小额的资金来进行数倍于原始金额的投资。以期望获取相对投资标的物波动的数倍收益率，抑或亏损。由于保证金（该笔小额资金）的增减不以标的资产的波动比例来运动，<strong>风险很高</strong>。不推荐。</li>
+<li><strong>合约交易：</strong> 合约交易是指交易双方，在交易所通过买卖合约，并根据约定在未来某一特定时间和地点，以特定价格买卖规定数量商品的行为。合约交易是在现货远期合约交易基础上发展起来的，在交易所内买卖标准化合约的一种新型交易方式。</li>
+</ol>
+<h2 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h2><ol>
+<li>法币交易很耗时间，即使交易双方操作熟练，但是还是不排除人为因素造成交易时间拖长，不利于双方观察局势，很有可能在分分钟内错过行情。</li>
+<li>币币交易可以在极短时间内成交（按下买入键的瞬间与对手成交）且支持购买的币种更多。</li>
+</ol>
+<p>，</p>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>
@@ -1344,22 +1344,22 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
-    <title>比特币的两种交易方式</title>
-    <url>/2020/02/11/%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E4%B8%A4%E7%A7%8D%E4%BA%A4%E6%98%93%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<p>比特币的交易有很多种，本文了解一下</p>
+    <title>数字货币的种类</title>
+    <url>/2020/02/11/%E6%95%B0%E5%AD%97%E8%B4%A7%E5%B8%81%E7%9A%84%E7%A7%8D%E7%B1%BB/</url>
+    <content><![CDATA[<p>当前的数字货币大致有以下几种。</p>
 <a id="more"></a>
-<h2 id="比特币交易的几种种方式："><a href="#比特币交易的几种种方式：" class="headerlink" title="比特币交易的几种种方式："></a>比特币交易的几种种方式：</h2><p><img src="https://img-blog.csdnimg.cn/20200204170527575.png" alt="在这里插入图片描述"></p>
-<ol>
-<li><strong>场外交易：</strong> 也称为<strong>法币交易</strong>，法币就是<strong>法定货币</strong>，人民币就是我们国家的法定货币，顾名思义，法币交易就是由法币（人民币）直接与比特币（数字货币）进行交易的行为（购买/出售),可以简单理解为网购。</li>
-<li><strong>场内交易：</strong> 也称之为<strong>币币交易</strong>，就是用一种币交易兑换另一种币。</li>
-<li><strong>杠杆交易：</strong> 利用小额的资金来进行数倍于原始金额的投资。以期望获取相对投资标的物波动的数倍收益率，抑或亏损。由于保证金（该笔小额资金）的增减不以标的资产的波动比例来运动，<strong>风险很高</strong>。不推荐。</li>
-<li><strong>合约交易：</strong> 合约交易是指交易双方，在交易所通过买卖合约，并根据约定在未来某一特定时间和地点，以特定价格买卖规定数量商品的行为。合约交易是在现货远期合约交易基础上发展起来的，在交易所内买卖标准化合约的一种新型交易方式。</li>
-</ol>
-<h2 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h2><ol>
-<li>法币交易很耗时间，即使交易双方操作熟练，但是还是不排除人为因素造成交易时间拖长，不利于双方观察局势，很有可能在分分钟内错过行情。</li>
-<li>币币交易可以在极短时间内成交（按下买入键的瞬间与对手成交）且支持购买的币种更多。</li>
-</ol>
-<p>，</p>
+<p><img src="https://img-blog.csdnimg.cn/20200204160645330.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>BTC：</strong> 比特币</li>
+<li><strong>ETH：</strong> 以太币</li>
+<li><strong>USDT：</strong> 泰达币（与同数量的美元是等值的）</li>
+<li><strong>EOS：</strong> 为商用分布式应用设计的一款区块链操作系统。EOS是引入的一种新的区块链架构，旨在实现分布式应用的性能扩展。注意，它并不是像比特币和以太坊那样的货币，而是基于EOS软件项目之上发布的代币，被称为区块链3.0 。</li>
+<li><strong>XRP：</strong> 瑞波币。它是基于Ripple协议的虚拟货币，主要功能有二：1.防止恶意攻击；2.桥梁货币。</li>
+<li><strong>LTC：</strong> 莱特币。<img src="https://img-blog.csdnimg.cn/20200204161448813.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li><strong>HT：</strong> 火币<br><img src="https://img-blog.csdnimg.cn/20200204161631662.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li><strong>HUSD：</strong> 稳定币<img src="https://img-blog.csdnimg.cn/20200204162140418.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li><strong>BCH：</strong><img src="https://img-blog.csdnimg.cn/20200204162243770.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>
@@ -1602,6 +1602,77 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
+    <title>Servlet学习笔记</title>
+    <url>/2020/02/08/Servlet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>java Web离不开Servlet，它其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </p>
+<a id="more"></a>
+<h2 id="一、Web资源介绍"><a href="#一、Web资源介绍" class="headerlink" title="一、Web资源介绍"></a>一、Web资源介绍</h2><ul>
+<li><strong>在http协议当中，规定了请求和响应双方， 客户端和服务器端。与web相关的资源。</strong></li>
+<li>有两种分类：</li>
+<li>静态资源：html 、 js、 css</li>
+<li>动态资源：servlet/jsp</li>
+</ul>
+<h2 id="二、Servlet介绍"><a href="#二、Servlet介绍" class="headerlink" title="二、Servlet介绍"></a>二、Servlet介绍</h2><ul>
+<li><strong>servlet是什么?</strong><ol>
+<li>其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </li>
+<li>更多的是配合动态资源来做。 当然静态资源也需要使用到servlet，只不过是Tomcat里面已经定义好了一个 DefaultServlet</li>
+</ol>
+</li>
+</ul>
+<h2 id="三、Selvlet简单使用Web工程"><a href="#三、Selvlet简单使用Web工程" class="headerlink" title="三、Selvlet简单使用Web工程"></a>三、Selvlet简单使用Web工程</h2><ol>
+<li><p>得写一个Web工程 ， 要有一个服务器。</p>
+</li>
+<li><p>测试运行Web工程：</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">得写一个Web工程 ， 要有一个服务器。</span><br><span class="line">测试运行Web工程</span><br><span class="line">	1. 新建一个类， 实现Servlet接口`public class HelloServlet implements Servlet&#123;&#125;`</span><br><span class="line"></span><br><span class="line">	2. 配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。</span><br><span class="line">		在webContent/WEB-INF/web.xml里面写上以下内容：</span><br><span class="line">		</span><br><span class="line">		  &lt;!-- 向tomcat报告， 我这个应用里面有这个servlet， 名字叫做HelloServlet , 具体的路径是com.itheima.servlet.HelloServlet --&gt;</span><br><span class="line">		  &lt;servlet&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet&lt;/servlet-class&gt;</span><br><span class="line">		  &lt;/servlet&gt;</span><br><span class="line">		  </span><br><span class="line">		  &lt;!-- 注册servlet的映射。  servletName : 找到上面注册的具体servlet，  url-pattern: 在地址栏上的path 一定要以/打头 --&gt;</span><br><span class="line">		  &lt;servlet-mapping&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;url-pattern&gt;/a&lt;/url-pattern&gt;</span><br><span class="line">		  &lt;/servlet-mapping&gt;</span><br><span class="line"></span><br><span class="line">		3. 在地址栏上输入 http://localhost:8080/项目名称/a</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20200226115856385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="四、Servlet执行过程"><a href="#四、Servlet执行过程" class="headerlink" title="四、Servlet执行过程"></a>四、Servlet执行过程</h2><p><img src="https://img-blog.csdnimg.cn/20200226120652999.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="五、Servlet的通用写法"><a href="#五、Servlet的通用写法" class="headerlink" title="五、Servlet的通用写法"></a>五、Servlet的通用写法</h2><ul>
+<li>实现Servlet接口，但接口里的方法很多，有些用不到。</li>
+</ul>
+<ol>
+<li>Servlet (接口)        </li>
+<li>GenericServlet    </li>
+<li>HttpServlet （用于处理http的请求）</li>
+</ol>
+<ul>
+<li>定义一个类，继承HttpServlet ,复写doGet 和 doPost</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200226124900942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="六、Servlet的生命周期方法"><a href="#六、Servlet的生命周期方法" class="headerlink" title="六、Servlet的生命周期方法"></a>六、Servlet的生命周期方法</h2><ul>
+<li>生命周期： 从创建到销毁的一段时间</li>
+<li>生命周期方法： 从创建到销毁，所调用的那些方法。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. init方法</span><br><span class="line">	在创建该servlet的实例时，就执行该方法。</span><br><span class="line">	一个servlet只会初始化一次， init方法只会执行一次</span><br><span class="line">	默认情况下是 ： 初次访问该servlet，才会创建实例。 </span><br><span class="line">		</span><br><span class="line">2.service方法</span><br><span class="line">	只要客户端来了一个请求，那么就执行这个方法了。</span><br><span class="line">	该方法可以被执行很多次。 一次请求，对应一次service方法的调用</span><br><span class="line">	</span><br><span class="line">3.destroy方法</span><br><span class="line">	servlet销毁的时候，就会执行该方法</span><br><span class="line">			1. 该项目从tomcat的里面移除。</span><br><span class="line">		  	2. 正常关闭tomcat就会执行 shutdown.bat</span><br><span class="line"></span><br><span class="line">4. doGet 和 doPost不算生命周期方法。</span><br><span class="line">所谓的生命周期方法是指，从对象的创建到销毁一定会执行的方法， 但是这两个方法，不一定会执行。</span><br><span class="line">```	 </span><br><span class="line"><span class="comment">## 七、让Servlet创建实例的时机提前。</span></span><br><span class="line">1. 默认情况下，只有在初次访问servlet的时候，才会执行init方法。 有的时候，我们可能需要在这个方法里面执行一些初始化工作，甚至是做一些比较耗时的逻辑。 </span><br><span class="line"></span><br><span class="line">2. 那么这个时候，初次访问，可能会在init方法中逗留太久的时间。 为了提升用户的体验，需要让这个初始化的时机提前一点。 </span><br><span class="line"></span><br><span class="line">3. 在配置的时候， 使用load-on-startup元素来指定， 给定的数字越小，启动的时机就越早。 一般不写负数， 从2开始即可。 </span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet04&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet04&lt;/servlet-class&gt;</span><br><span class="line">	&lt;load-on-startup&gt;2&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="八、ServletConfig"><a href="#八、ServletConfig" class="headerlink" title="八、ServletConfig"></a>八、ServletConfig</h2><ul>
+<li><strong>Servlet的配置，通过这个对象，可以获取servlet在配置的时候一些信息。</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1. 得到servlet配置对象 专门用于在配置servlet的信息</span></span><br><span class="line">ServletConfig config = getServletConfig();</span><br><span class="line">	</span><br><span class="line"><span class="comment">//获取到的是配置servlet里面servlet-name 的文本内容</span></span><br><span class="line">String servletName = config.getServletName();</span><br><span class="line">System.out.println(<span class="string">"servletName="</span>+servletName);</span><br><span class="line">	</span><br><span class="line"><span class="comment">//2. 可以获取具体的某一个参数。 </span></span><br><span class="line">String address = config.getInitParameter(<span class="string">"address"</span>);</span><br><span class="line">System.out.println(<span class="string">"address="</span>+address);</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.获取所有的参数名称</span></span><br><span class="line">Enumeration&lt;String&gt; names = config.getInitParameterNames();</span><br><span class="line"><span class="comment">//遍历取出所有的参数名称</span></span><br><span class="line"><span class="keyword">while</span> (names.hasMoreElements()) &#123;</span><br><span class="line">	String key = (String) names.nextElement();</span><br><span class="line">	String value = config.getInitParameter(key);</span><br><span class="line">	System.out.println(<span class="string">"key==="</span>+key + <span class="string">"   value="</span>+value);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>参数在哪里配置？在web.xml中</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;aa&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.daq.servlet.HelloServletConfig&lt;/servlet-class&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 可以添加初始化参数 --&gt;</span><br><span class="line">	&lt;init-param&gt;</span><br><span class="line">		&lt;param-name&gt;adress&lt;/param-name&gt;</span><br><span class="line">		&lt;param-value&gt;bejing&lt;/param-value&gt;</span><br><span class="line">	&lt;/init-param&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">	</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet02&lt;/servlet-name&gt;</span><br><span class="line">	&lt;url-pattern&gt;/HelloServlet02&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="九、为什么需要有ServletConfig？"><a href="#九、为什么需要有ServletConfig？" class="headerlink" title="九、为什么需要有ServletConfig？"></a>九、为什么需要有ServletConfig？</h2><ol>
+<li><p>未来我们自己开发的一些应用，使用到了一些技术，或者一些代码，我们不会。 但是有人写出来了。做成了jar包，它的代码放置在了自己的servlet类里面。 </p>
+</li>
+<li><p>刚好这个servlet 里面需要一个数字或者叫做变量值。 但是这个值不能是固定了。 所以要求使用到这个servlet的公司，在注册servlet的时候，必须要在web.xml里面，声明init-params</p>
+</li>
+<li><p>在开发当中比较少用。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>Servlet</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Http协议&amp;C/S通讯抓包</title>
     <url>/2020/02/08/Http%E5%8D%8F%E8%AE%AE-C-S%E9%80%9A%E8%AE%AF%E6%8A%93%E5%8C%85/</url>
     <content><![CDATA[<p>http协议：针对网络上的客户端 与 服务器端在执行http请求的时候，遵守的一种规范。 规定了客户端在访问服务器端的时候,服务器端返回数据的时候，要带上什么东西。</p>
@@ -1673,77 +1744,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </categories>
       <tags>
         <tag>Http协议</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Servlet学习笔记</title>
-    <url>/2020/02/08/Servlet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>java Web离不开Servlet，它其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </p>
-<a id="more"></a>
-<h2 id="一、Web资源介绍"><a href="#一、Web资源介绍" class="headerlink" title="一、Web资源介绍"></a>一、Web资源介绍</h2><ul>
-<li><strong>在http协议当中，规定了请求和响应双方， 客户端和服务器端。与web相关的资源。</strong></li>
-<li>有两种分类：</li>
-<li>静态资源：html 、 js、 css</li>
-<li>动态资源：servlet/jsp</li>
-</ul>
-<h2 id="二、Servlet介绍"><a href="#二、Servlet介绍" class="headerlink" title="二、Servlet介绍"></a>二、Servlet介绍</h2><ul>
-<li><strong>servlet是什么?</strong><ol>
-<li>其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </li>
-<li>更多的是配合动态资源来做。 当然静态资源也需要使用到servlet，只不过是Tomcat里面已经定义好了一个 DefaultServlet</li>
-</ol>
-</li>
-</ul>
-<h2 id="三、Selvlet简单使用Web工程"><a href="#三、Selvlet简单使用Web工程" class="headerlink" title="三、Selvlet简单使用Web工程"></a>三、Selvlet简单使用Web工程</h2><ol>
-<li><p>得写一个Web工程 ， 要有一个服务器。</p>
-</li>
-<li><p>测试运行Web工程：</p>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">得写一个Web工程 ， 要有一个服务器。</span><br><span class="line">测试运行Web工程</span><br><span class="line">	1. 新建一个类， 实现Servlet接口`public class HelloServlet implements Servlet&#123;&#125;`</span><br><span class="line"></span><br><span class="line">	2. 配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。</span><br><span class="line">		在webContent/WEB-INF/web.xml里面写上以下内容：</span><br><span class="line">		</span><br><span class="line">		  &lt;!-- 向tomcat报告， 我这个应用里面有这个servlet， 名字叫做HelloServlet , 具体的路径是com.itheima.servlet.HelloServlet --&gt;</span><br><span class="line">		  &lt;servlet&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet&lt;/servlet-class&gt;</span><br><span class="line">		  &lt;/servlet&gt;</span><br><span class="line">		  </span><br><span class="line">		  &lt;!-- 注册servlet的映射。  servletName : 找到上面注册的具体servlet，  url-pattern: 在地址栏上的path 一定要以/打头 --&gt;</span><br><span class="line">		  &lt;servlet-mapping&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;url-pattern&gt;/a&lt;/url-pattern&gt;</span><br><span class="line">		  &lt;/servlet-mapping&gt;</span><br><span class="line"></span><br><span class="line">		3. 在地址栏上输入 http://localhost:8080/项目名称/a</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20200226115856385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="四、Servlet执行过程"><a href="#四、Servlet执行过程" class="headerlink" title="四、Servlet执行过程"></a>四、Servlet执行过程</h2><p><img src="https://img-blog.csdnimg.cn/20200226120652999.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="五、Servlet的通用写法"><a href="#五、Servlet的通用写法" class="headerlink" title="五、Servlet的通用写法"></a>五、Servlet的通用写法</h2><ul>
-<li>实现Servlet接口，但接口里的方法很多，有些用不到。</li>
-</ul>
-<ol>
-<li>Servlet (接口)        </li>
-<li>GenericServlet    </li>
-<li>HttpServlet （用于处理http的请求）</li>
-</ol>
-<ul>
-<li>定义一个类，继承HttpServlet ,复写doGet 和 doPost</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200226124900942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="六、Servlet的生命周期方法"><a href="#六、Servlet的生命周期方法" class="headerlink" title="六、Servlet的生命周期方法"></a>六、Servlet的生命周期方法</h2><ul>
-<li>生命周期： 从创建到销毁的一段时间</li>
-<li>生命周期方法： 从创建到销毁，所调用的那些方法。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. init方法</span><br><span class="line">	在创建该servlet的实例时，就执行该方法。</span><br><span class="line">	一个servlet只会初始化一次， init方法只会执行一次</span><br><span class="line">	默认情况下是 ： 初次访问该servlet，才会创建实例。 </span><br><span class="line">		</span><br><span class="line">2.service方法</span><br><span class="line">	只要客户端来了一个请求，那么就执行这个方法了。</span><br><span class="line">	该方法可以被执行很多次。 一次请求，对应一次service方法的调用</span><br><span class="line">	</span><br><span class="line">3.destroy方法</span><br><span class="line">	servlet销毁的时候，就会执行该方法</span><br><span class="line">			1. 该项目从tomcat的里面移除。</span><br><span class="line">		  	2. 正常关闭tomcat就会执行 shutdown.bat</span><br><span class="line"></span><br><span class="line">4. doGet 和 doPost不算生命周期方法。</span><br><span class="line">所谓的生命周期方法是指，从对象的创建到销毁一定会执行的方法， 但是这两个方法，不一定会执行。</span><br><span class="line">```	 </span><br><span class="line"><span class="comment">## 七、让Servlet创建实例的时机提前。</span></span><br><span class="line">1. 默认情况下，只有在初次访问servlet的时候，才会执行init方法。 有的时候，我们可能需要在这个方法里面执行一些初始化工作，甚至是做一些比较耗时的逻辑。 </span><br><span class="line"></span><br><span class="line">2. 那么这个时候，初次访问，可能会在init方法中逗留太久的时间。 为了提升用户的体验，需要让这个初始化的时机提前一点。 </span><br><span class="line"></span><br><span class="line">3. 在配置的时候， 使用load-on-startup元素来指定， 给定的数字越小，启动的时机就越早。 一般不写负数， 从2开始即可。 </span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet04&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet04&lt;/servlet-class&gt;</span><br><span class="line">	&lt;load-on-startup&gt;2&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="八、ServletConfig"><a href="#八、ServletConfig" class="headerlink" title="八、ServletConfig"></a>八、ServletConfig</h2><ul>
-<li><strong>Servlet的配置，通过这个对象，可以获取servlet在配置的时候一些信息。</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1. 得到servlet配置对象 专门用于在配置servlet的信息</span></span><br><span class="line">ServletConfig config = getServletConfig();</span><br><span class="line">	</span><br><span class="line"><span class="comment">//获取到的是配置servlet里面servlet-name 的文本内容</span></span><br><span class="line">String servletName = config.getServletName();</span><br><span class="line">System.out.println(<span class="string">"servletName="</span>+servletName);</span><br><span class="line">	</span><br><span class="line"><span class="comment">//2. 可以获取具体的某一个参数。 </span></span><br><span class="line">String address = config.getInitParameter(<span class="string">"address"</span>);</span><br><span class="line">System.out.println(<span class="string">"address="</span>+address);</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.获取所有的参数名称</span></span><br><span class="line">Enumeration&lt;String&gt; names = config.getInitParameterNames();</span><br><span class="line"><span class="comment">//遍历取出所有的参数名称</span></span><br><span class="line"><span class="keyword">while</span> (names.hasMoreElements()) &#123;</span><br><span class="line">	String key = (String) names.nextElement();</span><br><span class="line">	String value = config.getInitParameter(key);</span><br><span class="line">	System.out.println(<span class="string">"key==="</span>+key + <span class="string">"   value="</span>+value);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>参数在哪里配置？在web.xml中</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;aa&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.daq.servlet.HelloServletConfig&lt;/servlet-class&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 可以添加初始化参数 --&gt;</span><br><span class="line">	&lt;init-param&gt;</span><br><span class="line">		&lt;param-name&gt;adress&lt;/param-name&gt;</span><br><span class="line">		&lt;param-value&gt;bejing&lt;/param-value&gt;</span><br><span class="line">	&lt;/init-param&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">	</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet02&lt;/servlet-name&gt;</span><br><span class="line">	&lt;url-pattern&gt;/HelloServlet02&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="九、为什么需要有ServletConfig？"><a href="#九、为什么需要有ServletConfig？" class="headerlink" title="九、为什么需要有ServletConfig？"></a>九、为什么需要有ServletConfig？</h2><ol>
-<li><p>未来我们自己开发的一些应用，使用到了一些技术，或者一些代码，我们不会。 但是有人写出来了。做成了jar包，它的代码放置在了自己的servlet类里面。 </p>
-</li>
-<li><p>刚好这个servlet 里面需要一个数字或者叫做变量值。 但是这个值不能是固定了。 所以要求使用到这个servlet的公司，在注册servlet的时候，必须要在web.xml里面，声明init-params</p>
-</li>
-<li><p>在开发当中比较少用。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>Servlet</tag>
       </tags>
   </entry>
   <entry>
