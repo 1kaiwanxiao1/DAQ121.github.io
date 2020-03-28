@@ -1320,6 +1320,31 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
+    <title>比特币的两种交易方式</title>
+    <url>/2020/02/11/%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E4%B8%A4%E7%A7%8D%E4%BA%A4%E6%98%93%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p>比特币的交易有很多种，本文了解一下</p>
+<a id="more"></a>
+<h2 id="比特币交易的几种种方式："><a href="#比特币交易的几种种方式：" class="headerlink" title="比特币交易的几种种方式："></a>比特币交易的几种种方式：</h2><p><img src="https://img-blog.csdnimg.cn/20200204170527575.png" alt="在这里插入图片描述"></p>
+<ol>
+<li><strong>场外交易：</strong> 也称为<strong>法币交易</strong>，法币就是<strong>法定货币</strong>，人民币就是我们国家的法定货币，顾名思义，法币交易就是由法币（人民币）直接与比特币（数字货币）进行交易的行为（购买/出售),可以简单理解为网购。</li>
+<li><strong>场内交易：</strong> 也称之为<strong>币币交易</strong>，就是用一种币交易兑换另一种币。</li>
+<li><strong>杠杆交易：</strong> 利用小额的资金来进行数倍于原始金额的投资。以期望获取相对投资标的物波动的数倍收益率，抑或亏损。由于保证金（该笔小额资金）的增减不以标的资产的波动比例来运动，<strong>风险很高</strong>。不推荐。</li>
+<li><strong>合约交易：</strong> 合约交易是指交易双方，在交易所通过买卖合约，并根据约定在未来某一特定时间和地点，以特定价格买卖规定数量商品的行为。合约交易是在现货远期合约交易基础上发展起来的，在交易所内买卖标准化合约的一种新型交易方式。</li>
+</ol>
+<h2 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h2><ol>
+<li>法币交易很耗时间，即使交易双方操作熟练，但是还是不排除人为因素造成交易时间拖长，不利于双方观察局势，很有可能在分分钟内错过行情。</li>
+<li>币币交易可以在极短时间内成交（按下买入键的瞬间与对手成交）且支持购买的币种更多。</li>
+</ol>
+<p>，</p>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>比特币的价格是怎么算出来的</title>
     <url>/2020/02/11/%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E4%BB%B7%E6%A0%BC%E6%98%AF%E6%80%8E%E4%B9%88%E7%AE%97%E5%87%BA%E6%9D%A5%E7%9A%84/</url>
     <content><![CDATA[<p>-</p>
@@ -1344,22 +1369,33 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
-    <title>比特币的两种交易方式</title>
-    <url>/2020/02/11/%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E4%B8%A4%E7%A7%8D%E4%BA%A4%E6%98%93%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<p>比特币的交易有很多种，本文了解一下</p>
+    <title>火币网--币币交易图解</title>
+    <url>/2020/02/11/%E7%81%AB%E5%B8%81%E7%BD%91-%E5%B8%81%E5%B8%81%E4%BA%A4%E6%98%93%E5%9B%BE%E8%A7%A3/</url>
+    <content><![CDATA[<p>如何在火币网上执行币币交易</p>
 <a id="more"></a>
-<h2 id="比特币交易的几种种方式："><a href="#比特币交易的几种种方式：" class="headerlink" title="比特币交易的几种种方式："></a>比特币交易的几种种方式：</h2><p><img src="https://img-blog.csdnimg.cn/20200204170527575.png" alt="在这里插入图片描述"></p>
-<ol>
-<li><strong>场外交易：</strong> 也称为<strong>法币交易</strong>，法币就是<strong>法定货币</strong>，人民币就是我们国家的法定货币，顾名思义，法币交易就是由法币（人民币）直接与比特币（数字货币）进行交易的行为（购买/出售),可以简单理解为网购。</li>
-<li><strong>场内交易：</strong> 也称之为<strong>币币交易</strong>，就是用一种币交易兑换另一种币。</li>
-<li><strong>杠杆交易：</strong> 利用小额的资金来进行数倍于原始金额的投资。以期望获取相对投资标的物波动的数倍收益率，抑或亏损。由于保证金（该笔小额资金）的增减不以标的资产的波动比例来运动，<strong>风险很高</strong>。不推荐。</li>
-<li><strong>合约交易：</strong> 合约交易是指交易双方，在交易所通过买卖合约，并根据约定在未来某一特定时间和地点，以特定价格买卖规定数量商品的行为。合约交易是在现货远期合约交易基础上发展起来的，在交易所内买卖标准化合约的一种新型交易方式。</li>
-</ol>
-<h2 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h2><ol>
-<li>法币交易很耗时间，即使交易双方操作熟练，但是还是不排除人为因素造成交易时间拖长，不利于双方观察局势，很有可能在分分钟内错过行情。</li>
-<li>币币交易可以在极短时间内成交（按下买入键的瞬间与对手成交）且支持购买的币种更多。</li>
-</ol>
-<p>，</p>
+<p><img src="https://img-blog.csdnimg.cn/20200205111557755.png" alt="在这里插入图片描述"></p>
+<ul>
+<li><p>BTC/USDT：BTC对USDT的交易对，相当于平均1个BTC当前需要9211.76个USDT来购买，后面的64574.43CNY是说9211.76个USDT约等于64574.43人民币。</p>
+</li>
+<li><p>涨幅+0.01%是今天此时此刻比特币的价格相对于昨天的这个时候价格涨了0.01%，如果是红色的-0.01%就代表跌了0.01%。</p>
+</li>
+<li><p>高9320.00 低9100.00是<strong>过去24小时</strong>最高9320.00USDT最低9100.00USDT。</p>
+</li>
+<li><p>24H量：是过去24小时火币网交易了28878个比特币。这只是在火币网交易的数量。<br><img src="https://img-blog.csdnimg.cn/2020020511252911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+<li><p>上面一排时间是，选择显示这个时间段的数据，比如我选择的是1min，那么k线图中每一个红色或者绿色的柱就代表这一分钟内的走势。</p>
+</li>
+<li><p>时间下面的一排：11：24这个时间点的开盘价，最高价，最低价，收盘价，成交量。</p>
+</li>
+<li><p>MA均线：<strong>（MA）理论是股市最常见的一种技术分析方法，它对股市操作具有神奇的指导作用。</strong></p>
+</li>
+<li><p>绿色柱状：柱底代表开盘价，柱顶代表收盘价，红色则相反。</p>
+</li>
+<li><p>柱上下的细线：上影线，下影线，分别代表在这一分钟内的最高价和最低价。</p>
+</li>
+<li><p>图中标有今日最高，和今日最低。严谨理解为：从今日凌晨到目前为止的最高价与最低价。</p>
+<h2 id="均线分析方法："><a href="#均线分析方法：" class="headerlink" title="均线分析方法："></a>均线分析方法：</h2></li>
+</ul>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>
@@ -1481,80 +1517,6 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
-    <title>火币网--币币交易图解</title>
-    <url>/2020/02/11/%E7%81%AB%E5%B8%81%E7%BD%91-%E5%B8%81%E5%B8%81%E4%BA%A4%E6%98%93%E5%9B%BE%E8%A7%A3/</url>
-    <content><![CDATA[<p>如何在火币网上执行币币交易</p>
-<a id="more"></a>
-<p><img src="https://img-blog.csdnimg.cn/20200205111557755.png" alt="在这里插入图片描述"></p>
-<ul>
-<li><p>BTC/USDT：BTC对USDT的交易对，相当于平均1个BTC当前需要9211.76个USDT来购买，后面的64574.43CNY是说9211.76个USDT约等于64574.43人民币。</p>
-</li>
-<li><p>涨幅+0.01%是今天此时此刻比特币的价格相对于昨天的这个时候价格涨了0.01%，如果是红色的-0.01%就代表跌了0.01%。</p>
-</li>
-<li><p>高9320.00 低9100.00是<strong>过去24小时</strong>最高9320.00USDT最低9100.00USDT。</p>
-</li>
-<li><p>24H量：是过去24小时火币网交易了28878个比特币。这只是在火币网交易的数量。<br><img src="https://img-blog.csdnimg.cn/2020020511252911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-</li>
-<li><p>上面一排时间是，选择显示这个时间段的数据，比如我选择的是1min，那么k线图中每一个红色或者绿色的柱就代表这一分钟内的走势。</p>
-</li>
-<li><p>时间下面的一排：11：24这个时间点的开盘价，最高价，最低价，收盘价，成交量。</p>
-</li>
-<li><p>MA均线：<strong>（MA）理论是股市最常见的一种技术分析方法，它对股市操作具有神奇的指导作用。</strong></p>
-</li>
-<li><p>绿色柱状：柱底代表开盘价，柱顶代表收盘价，红色则相反。</p>
-</li>
-<li><p>柱上下的细线：上影线，下影线，分别代表在这一分钟内的最高价和最低价。</p>
-</li>
-<li><p>图中标有今日最高，和今日最低。严谨理解为：从今日凌晨到目前为止的最高价与最低价。</p>
-<h2 id="均线分析方法："><a href="#均线分析方法：" class="headerlink" title="均线分析方法："></a>均线分析方法：</h2></li>
-</ul>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>服务器端会话技术：Session</title>
-    <url>/2020/02/09/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ASession/</url>
-    <content><![CDATA[<p>Session对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的Web页之间跳转时，存储在Session对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。他是用来解决Cookie带来的安全问题。</p>
-<a id="more"></a>
-<h2 id="一、Session概述"><a href="#一、Session概述" class="headerlink" title="一、Session概述"></a>一、Session概述</h2><ul>
-<li>会话 ， Session是基于Cookie的一种会话机制。 </li>
-<li>Cookie是服务器返回一小份数据给客户端。并且存放在客户端上。 </li>
-<li>Session是，数据存放在服务器端。</li>
-</ul>
-<h2 id="二、常用方法"><a href="#二、常用方法" class="headerlink" title="二、常用方法"></a>二、常用方法</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//得到会话ID</span><br><span class="line">String id = session.getId();</span><br><span class="line"></span><br><span class="line">//存值</span><br><span class="line">session.setAttribute(name, value);</span><br><span class="line">	</span><br><span class="line">//取值</span><br><span class="line">session.getAttribute(name);</span><br><span class="line">	</span><br><span class="line">//移除值</span><br><span class="line">session.removeAttribute(name);</span><br></pre></td></tr></table></figure>
-<h2 id="三、Session的创建与销毁。"><a href="#三、Session的创建与销毁。" class="headerlink" title="三、Session的创建与销毁。"></a>三、Session的创建与销毁。</h2><ul>
-<li>创建<br>如果有在servlet里面调用了 request.getSession()</li>
-<li>销毁<br>session 是存放在服务器的内存中的一份数据。 当然可以持久化. Redis . 即使关了浏览器，session也不会销毁。</li>
-</ul>
-<ol>
-<li>关闭服务器</li>
-<li>session会话时间过期。 有效期过了，默认有效期： 30分钟。</li>
-</ol>
-<h2 id="四、移除Session中的元素"><a href="#四、移除Session中的元素" class="headerlink" title="四、移除Session中的元素"></a>四、移除Session中的元素</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//强制干掉会话，里面存放的任何数据就都没有了。</span><br><span class="line">session.invalidate();</span><br><span class="line">	</span><br><span class="line">//从session中移除某一个数据</span><br><span class="line">session.removeAttribute(<span class="string">"cart"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><ul>
-<li>Session： 也是基于cookie的一种会话技术，  数据存放存放在服务器端。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">会在cookie里面添加一个字段 JSESSIONID . 是tomcat服务器生成。 </span><br><span class="line">setAttribute 存数据</span><br><span class="line">getAttribute 取数据</span><br><span class="line">removeAttribute  移除数据</span><br><span class="line">getSessionId();  获取会话id</span><br><span class="line">invalidate() 强制让会话失效。</span><br></pre></td></tr></table></figure>
-<ul>
-<li>创建和销毁<br>  调用<strong>request.getSesion</strong>创建<br>   服务器关闭 ， 会话超时（30分）</li>
-</ul>
-<ul>
-<li>setAttribute 存放的值， 在浏览器关闭后，依然不会丢失！</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>Session</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>客户端会话技术：Cookie</title>
     <url>/2020/02/09/%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ACookie/</url>
     <content><![CDATA[<p>类型为“小型文本文件”，是某些网站为了辨别用户身份，进行Session跟踪而储存在用户本地终端上的数据（通常经过加密），由客户端计算机暂时或永久保存的信息。</p>
@@ -1599,6 +1561,44 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </categories>
       <tags>
         <tag>Cookie</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>服务器端会话技术：Session</title>
+    <url>/2020/02/09/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ASession/</url>
+    <content><![CDATA[<p>Session对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的Web页之间跳转时，存储在Session对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。他是用来解决Cookie带来的安全问题。</p>
+<a id="more"></a>
+<h2 id="一、Session概述"><a href="#一、Session概述" class="headerlink" title="一、Session概述"></a>一、Session概述</h2><ul>
+<li>会话 ， Session是基于Cookie的一种会话机制。 </li>
+<li>Cookie是服务器返回一小份数据给客户端。并且存放在客户端上。 </li>
+<li>Session是，数据存放在服务器端。</li>
+</ul>
+<h2 id="二、常用方法"><a href="#二、常用方法" class="headerlink" title="二、常用方法"></a>二、常用方法</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//得到会话ID</span><br><span class="line">String id = session.getId();</span><br><span class="line"></span><br><span class="line">//存值</span><br><span class="line">session.setAttribute(name, value);</span><br><span class="line">	</span><br><span class="line">//取值</span><br><span class="line">session.getAttribute(name);</span><br><span class="line">	</span><br><span class="line">//移除值</span><br><span class="line">session.removeAttribute(name);</span><br></pre></td></tr></table></figure>
+<h2 id="三、Session的创建与销毁。"><a href="#三、Session的创建与销毁。" class="headerlink" title="三、Session的创建与销毁。"></a>三、Session的创建与销毁。</h2><ul>
+<li>创建<br>如果有在servlet里面调用了 request.getSession()</li>
+<li>销毁<br>session 是存放在服务器的内存中的一份数据。 当然可以持久化. Redis . 即使关了浏览器，session也不会销毁。</li>
+</ul>
+<ol>
+<li>关闭服务器</li>
+<li>session会话时间过期。 有效期过了，默认有效期： 30分钟。</li>
+</ol>
+<h2 id="四、移除Session中的元素"><a href="#四、移除Session中的元素" class="headerlink" title="四、移除Session中的元素"></a>四、移除Session中的元素</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//强制干掉会话，里面存放的任何数据就都没有了。</span><br><span class="line">session.invalidate();</span><br><span class="line">	</span><br><span class="line">//从session中移除某一个数据</span><br><span class="line">session.removeAttribute(<span class="string">"cart"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><ul>
+<li>Session： 也是基于cookie的一种会话技术，  数据存放存放在服务器端。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">会在cookie里面添加一个字段 JSESSIONID . 是tomcat服务器生成。 </span><br><span class="line">setAttribute 存数据</span><br><span class="line">getAttribute 取数据</span><br><span class="line">removeAttribute  移除数据</span><br><span class="line">getSessionId();  获取会话id</span><br><span class="line">invalidate() 强制让会话失效。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建和销毁<br>  调用<strong>request.getSesion</strong>创建<br>   服务器关闭 ， 会话超时（30分）</li>
+</ul>
+<ul>
+<li>setAttribute 存放的值， 在浏览器关闭后，依然不会丢失！</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>Session</tag>
       </tags>
   </entry>
   <entry>
@@ -2391,30 +2391,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
-    <title>MySql安装与卸载</title>
-    <url>/2020/02/01/MySql%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</url>
-    <content><![CDATA[<p>MySql的卸载与安装</p>
-<a id="more"></a>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ul>
-<li>运行安装程序，在启动配置教程之前，一路下一步，没有下一步的话就直接<code>finish</code></li>
-<li>第一次<code>finish</code>之后启动服务器配置教程</li>
-<li>第一个注意：<code>include mysql bin directory to windows path</code></li>
-<li>第二个注意：端口号不要修改，字符集选择UTF-8</li>
-</ul>
-<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><ul>
-<li>打开控制面板，删除软件</li>
-<li>删除mysql安装目录的所有文件</li>
-<li>删除mysql数据存放文件，C盘下面的<code>Programe data</code>里，它是隐藏文件，要点击查看隐藏文件。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>MySql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySql基础操作</title>
     <url>/2020/02/01/MySql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<p>本文简单介绍了数据库，和一些基本操作。</p>
@@ -2547,6 +2523,30 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">1.like :模糊查询</span><br><span class="line">	_ ：代表的是一个字符</span><br><span class="line">	% ：代表的是多个字符</span><br><span class="line">	in：在某个范围内获得值</span><br><span class="line">	-查询出名字中带有饼的所有商品  ‘%饼%’</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> pname <span class="keyword">like</span> <span class="string">'%饼%'</span>;</span><br><span class="line">	-查询第二名字是熊的所有商品  '_熊%'</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> pname <span class="keyword">like</span> <span class="string">'_熊%'</span>;</span><br><span class="line">	-查询出商品分类ID在1，4，5里面的所有商品</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> cno <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">2.排序查询: order by  关键字</span><br><span class="line">	asc:   ascend  升序（默认的排序方式）</span><br><span class="line">	desc： descend 降序</span><br><span class="line">	-查询所有商品，按照降序排序</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">desc</span>;</span><br><span class="line">	-查询名称有“小”的商品，按照升序排序</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> pname <span class="keyword">like</span> <span class="string">'%小%'</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>;</span><br><span class="line"></span><br><span class="line">3.聚合函数：</span><br><span class="line">	-获得所有商品价格总和：</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">sum</span>(price) <span class="keyword">from</span> product;</span><br><span class="line">	-获得所有商品价格平均值：</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">avg</span>(price) <span class="keyword">from</span> product;</span><br><span class="line">	-获得所有商品的个数：</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> product;</span><br><span class="line"></span><br><span class="line">4.分组：group by</span><br><span class="line">	-根据cno字段分组，分组后统计商品的个数</span><br><span class="line">	<span class="keyword">select</span> cno,<span class="keyword">count</span>(*) <span class="keyword">from</span> product <span class="keyword">group</span> <span class="keyword">by</span> cno; </span><br><span class="line">	-根据cno字段分组，分组后统计商品的平均价格，并且商品平均价格 &gt;60</span><br><span class="line">	<span class="keyword">select</span> cno,<span class="keyword">avg</span>(price) <span class="keyword">from</span> product <span class="keyword">group</span> <span class="keyword">by</span> cno <span class="keyword">having</span> <span class="keyword">avg</span>(price) &gt;<span class="number">60</span>;</span><br><span class="line">	-having 关键字，他可以接聚合函数的，  出现在分组之后</span><br><span class="line">	-where 关键字，他不可以接聚合函数，出现在分组之前</span><br></pre></td></tr></table></figure>
 <p><strong>补充：</strong></p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">编写顺序：</span><br><span class="line">S..F..W..G..H..O</span><br><span class="line">select..from..where..group by..having..drder <span class="keyword">by</span></span><br><span class="line">执行顺序：</span><br><span class="line">F..W..G..H..S..O</span><br><span class="line">from..where..group by..having..select..drder <span class="keyword">by</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>MySql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySql安装与卸载</title>
+    <url>/2020/02/01/MySql%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</url>
+    <content><![CDATA[<p>MySql的卸载与安装</p>
+<a id="more"></a>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ul>
+<li>运行安装程序，在启动配置教程之前，一路下一步，没有下一步的话就直接<code>finish</code></li>
+<li>第一次<code>finish</code>之后启动服务器配置教程</li>
+<li>第一个注意：<code>include mysql bin directory to windows path</code></li>
+<li>第二个注意：端口号不要修改，字符集选择UTF-8</li>
+</ul>
+<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><ul>
+<li>打开控制面板，删除软件</li>
+<li>删除mysql安装目录的所有文件</li>
+<li>删除mysql数据存放文件，C盘下面的<code>Programe data</code>里，它是隐藏文件，要点击查看隐藏文件。</li>
+</ul>
 ]]></content>
       <categories>
         <category>数据库</category>
