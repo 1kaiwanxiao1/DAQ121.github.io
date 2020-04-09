@@ -80,7 +80,7 @@ img.thumbnail {
 }
 .navbar-logo img,
 .footer-logo img {
-  max-height: 2.75rem;
+  max-height: 5rem;
 }
 .navbar-main {
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
@@ -109,7 +109,7 @@ img.thumbnail {
 .navbar-main .navbar-item {
   display: flex;
   align-items: center;
-  padding: 1.25rem 0.75rem;
+  padding: 0rem 1rem;
 }
 .navbar-main .navbar-item.is-active {
   color: #3273dc;
