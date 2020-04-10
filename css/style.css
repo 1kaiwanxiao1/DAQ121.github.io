@@ -2,10 +2,10 @@
  *       Override CSS Framework
  * --------------------------------- */
 html {
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 body {
-  background-color: geba(255, 10, 10, 0.02);
+  background-color: #f7f7f7;
 }
 body,
 button,
@@ -221,8 +221,8 @@ img.thumbnail {
 .rtl {
   direction: rtl;
 }
-.rtl .level .level-item:not(:last-child),
-.rtl .level.is-mobile .level-item:not(:last-child) {
+.rtl .level .level-start .level-item:not(:last-child),
+.rtl .level.is-mobile .level-start .level-item:not(:last-child) {
   margin-left: 0.75rem;
   margin-right: 0;
 }
