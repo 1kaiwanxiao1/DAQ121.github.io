@@ -103,6 +103,50 @@
       </tags>
   </entry>
   <entry>
+    <title>HTPP中的GET和POST</title>
+    <url>/2020/03/20/HTPP%E4%B8%AD%E7%9A%84GET%E5%92%8CPOST/</url>
+    <content><![CDATA[<p>当我们在浏览器点击某个按钮，会向服务器发送一个请求（request），服务器收到请求之后，会返回给我们一个响应（response），那这个请求是如何发送的呢。</p>
+<a id="more"></a>
+
+<h2 id="一、基础概念"><a href="#一、基础概念" class="headerlink" title="一、基础概念"></a>一、基础概念</h2><ul>
+<li>HTTP是什么？<br>HTTP基于TCP/IP，它是关于<strong>数据如何在万维网中通讯</strong> 的协议。</li>
+<li>GET和POST是什么？<br>HTTP协议中的两种<strong>发送请求</strong> 的方法。</li>
+</ul>
+<h2 id="二、简单理解"><a href="#二、简单理解" class="headerlink" title="二、简单理解"></a>二、简单理解</h2><ul>
+<li><p>把万维网传输线路比作一条高速公路，公路上的汽车就相当于一个个<strong>TCP</strong> ，用他们来实现可靠数据传输，但是车也有不同车型，如果全都一样，送急件的汽车可能被前面满载货物的汽车拦堵在路上，整个交通就会瘫痪。为了避免这种情况发生，需要制定好交通规则，也就是<strong>HTTP</strong>协议。</p>
+</li>
+<li><p>HTTP给汽车运输设定了好几个服务类别，有GET, POST, PUT, DELETE等等。<br>①当执行GET请求的时候，要给汽车贴上GET的标签（设置method为GET），而且要求把传送的数据放在车顶上（url中）以方便记录。<br>②如果是POST请求，就要在车上贴上POST的标签，并把货物放在车厢里。当然，你也可以在GET的时候往车厢内偷偷藏点货物；也可以在POST的时候在车顶上也放一些数据。<strong>HTTP只是个行为准则，而TCP才是GET和POST怎么实现的基本。</strong></p>
+</li>
+<li><p>不同的浏览器（发起http请求）和服务器（接受http请求），虽然理论上，你可以在车顶上无限的堆货物（url中无限加参数）。但是数据量太大对浏览器和服务器都是很大负担。 于是大多数浏览器通常都会限制url长度在2K个字节，而（大多数）服务器最多处理64K大小的url。超过的部分不处理。如果使用GET服务，在request body偷偷藏了数据，不同服务器的处理方式也是不同的，有些服务器会读出数据，有些服务器直接忽略，所以，虽然GET可以带request body，也不能保证一定能被接收到。</p>
+</li>
+<li><p>所以可以这么理解：GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中体现出一些不同。</p>
+</li>
+</ul>
+<h2 id="三、标准答案"><a href="#三、标准答案" class="headerlink" title="三、标准答案"></a>三、标准答案</h2><ul>
+<li>GET参数通过URL传递，POST放在Request body中。</li>
+<li>GET在浏览器回退时是无害的，而POST会再次提交请求。</li>
+<li>GET产生的URL地址可以被Bookmark，而POST不可以。</li>
+<li>GET请求会被浏览器主动cache，而POST不会，除非手动设置。</li>
+<li>GET请求只能进行url编码，而POST支持多种编码方式。</li>
+<li>GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。</li>
+<li>GET请求在URL中传送的参数是有长度限制的，而POST没有</li>
+<li>对参数的数据类型，GET只接受ASCII字符，而POST没有限制。</li>
+<li>GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。</li>
+</ul>
+<h2 id="四、关键区别"><a href="#四、关键区别" class="headerlink" title="四、关键区别"></a>四、关键区别</h2><ul>
+<li>GET产生一个TCP数据包；POST产生两个TCP数据包。</li>
+<li>通俗来讲就是：<br>①对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）。<br>②对于POST方式的请求，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。</li>
+<li>因为POST需要两步，时间上消耗的要多一点，看起来GET比POST更有效。但是！！！！<br>①GET与POST都有自己的语义，不能随便混用。<br>②在网络环境好的情况下，发一次包的时间和发两次包的时间差别基本可以无视。而在网络环境差的情况下，两次包的TCP在验证数据包完整性上，有非常大的优点。<br>③并不是所有浏览器都会在POST中发送两次包，Firefox就只发送一次。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>每天一道面试题</category>
+      </categories>
+      <tags>
+        <tag>https</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git使用学习</title>
     <url>/2020/02/25/Git%E4%BD%BF%E7%94%A8%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<p>Git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。也是程序员最常用工具之一，连接本地仓库与github仓库，提高了开发效率，github也是开源项目宝库。</p>
@@ -206,50 +250,6 @@
       </tags>
   </entry>
   <entry>
-    <title>HTPP中的GET和POST</title>
-    <url>/2020/03/20/HTPP%E4%B8%AD%E7%9A%84GET%E5%92%8CPOST/</url>
-    <content><![CDATA[<p>当我们在浏览器点击某个按钮，会向服务器发送一个请求（request），服务器收到请求之后，会返回给我们一个响应（response），那这个请求是如何发送的呢。</p>
-<a id="more"></a>
-
-<h2 id="一、基础概念"><a href="#一、基础概念" class="headerlink" title="一、基础概念"></a>一、基础概念</h2><ul>
-<li>HTTP是什么？<br>HTTP基于TCP/IP，它是关于<strong>数据如何在万维网中通讯</strong> 的协议。</li>
-<li>GET和POST是什么？<br>HTTP协议中的两种<strong>发送请求</strong> 的方法。</li>
-</ul>
-<h2 id="二、简单理解"><a href="#二、简单理解" class="headerlink" title="二、简单理解"></a>二、简单理解</h2><ul>
-<li><p>把万维网传输线路比作一条高速公路，公路上的汽车就相当于一个个<strong>TCP</strong> ，用他们来实现可靠数据传输，但是车也有不同车型，如果全都一样，送急件的汽车可能被前面满载货物的汽车拦堵在路上，整个交通就会瘫痪。为了避免这种情况发生，需要制定好交通规则，也就是<strong>HTTP</strong>协议。</p>
-</li>
-<li><p>HTTP给汽车运输设定了好几个服务类别，有GET, POST, PUT, DELETE等等。<br>①当执行GET请求的时候，要给汽车贴上GET的标签（设置method为GET），而且要求把传送的数据放在车顶上（url中）以方便记录。<br>②如果是POST请求，就要在车上贴上POST的标签，并把货物放在车厢里。当然，你也可以在GET的时候往车厢内偷偷藏点货物；也可以在POST的时候在车顶上也放一些数据。<strong>HTTP只是个行为准则，而TCP才是GET和POST怎么实现的基本。</strong></p>
-</li>
-<li><p>不同的浏览器（发起http请求）和服务器（接受http请求），虽然理论上，你可以在车顶上无限的堆货物（url中无限加参数）。但是数据量太大对浏览器和服务器都是很大负担。 于是大多数浏览器通常都会限制url长度在2K个字节，而（大多数）服务器最多处理64K大小的url。超过的部分不处理。如果使用GET服务，在request body偷偷藏了数据，不同服务器的处理方式也是不同的，有些服务器会读出数据，有些服务器直接忽略，所以，虽然GET可以带request body，也不能保证一定能被接收到。</p>
-</li>
-<li><p>所以可以这么理解：GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中体现出一些不同。</p>
-</li>
-</ul>
-<h2 id="三、标准答案"><a href="#三、标准答案" class="headerlink" title="三、标准答案"></a>三、标准答案</h2><ul>
-<li>GET参数通过URL传递，POST放在Request body中。</li>
-<li>GET在浏览器回退时是无害的，而POST会再次提交请求。</li>
-<li>GET产生的URL地址可以被Bookmark，而POST不可以。</li>
-<li>GET请求会被浏览器主动cache，而POST不会，除非手动设置。</li>
-<li>GET请求只能进行url编码，而POST支持多种编码方式。</li>
-<li>GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。</li>
-<li>GET请求在URL中传送的参数是有长度限制的，而POST没有</li>
-<li>对参数的数据类型，GET只接受ASCII字符，而POST没有限制。</li>
-<li>GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。</li>
-</ul>
-<h2 id="四、关键区别"><a href="#四、关键区别" class="headerlink" title="四、关键区别"></a>四、关键区别</h2><ul>
-<li>GET产生一个TCP数据包；POST产生两个TCP数据包。</li>
-<li>通俗来讲就是：<br>①对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）。<br>②对于POST方式的请求，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。</li>
-<li>因为POST需要两步，时间上消耗的要多一点，看起来GET比POST更有效。但是！！！！<br>①GET与POST都有自己的语义，不能随便混用。<br>②在网络环境好的情况下，发一次包的时间和发两次包的时间差别基本可以无视。而在网络环境差的情况下，两次包的TCP在验证数据包完整性上，有非常大的优点。<br>③并不是所有浏览器都会在POST中发送两次包，Firefox就只发送一次。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>每天一道面试题</category>
-      </categories>
-      <tags>
-        <tag>https</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Http协议&amp;C/S通讯抓包</title>
     <url>/2020/02/08/Http%E5%8D%8F%E8%AE%AE-C-S%E9%80%9A%E8%AE%AF%E6%8A%93%E5%8C%85/</url>
     <content><![CDATA[<p>http协议：针对网络上的客户端 与 服务器端在执行http请求的时候，遵守的一种规范。 规定了客户端在访问服务器端的时候,服务器端返回数据的时候，要带上什么东西。</p>
@@ -321,153 +321,6 @@
       </categories>
       <tags>
         <tag>Http协议</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JDBC基础知识</title>
-    <url>/2020/02/03/JDBC%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<p>JDBC概述，作用，类型，以及使用时如何选择。</p>
-<a id="more"></a>
-<h2 id="一、JDBC是什么？"><a href="#一、JDBC是什么？" class="headerlink" title="一、JDBC是什么？"></a>一、JDBC是什么？</h2><ul>
-<li>百度百科解释：JDBC(java database connectivity)驱动程序是对JDBC规范完整的实现，它的存在在Java程序与数据库系统之间建立了一条通信的渠道。它是 一 种可用于执行 SQL 语句的 Java API(<strong>Application Programming Interface， 应用程序设计接口</strong>)。</li>
-<li>简单理解：java 数据库连接。有了它，就能够在java代码中操作任何数据库。由于数据库种类繁多，并且java程序使用广泛，sun公司就提供了一种规范，让其他的数据库提供商去实现底层的访问。</li>
-<li>刚开始每个数据库（Oracle，Mysql，SqlServer）的访问规则都不同，后来SUN公司想一统天下，出台了一套规范，各个数据库要按照这个规范去写底层代码，与此同时，Java程序也直接去找JDBC。</li>
-</ul>
-<h2 id="二、作用是什么？"><a href="#二、作用是什么？" class="headerlink" title="二、作用是什么？"></a>二、作用是什么？</h2><ul>
-<li>JDBC 为数据库应用开发人员、数据库前台开发人员提供了一种标准的应用程序设计接口， 使开发人员可以用纯 Java 语言编写完整的数据库应用程序。</li>
-<li>JDBC 通过调用其接口提供的方法， 提供了 Java 应用程序与各种数据库服务器之间的连接服务，。</li>
-<li>它支持 ANSI SQL- 92 标准， 实现了从 Java 程序内调用标准的 SQL 命令对数据库进行查询、插入、删除和更新等操作， 并确保数据事务的正常进行。</li>
-</ul>
-<h2 id="三、JDBC驱动程序"><a href="#三、JDBC驱动程序" class="headerlink" title="三、JDBC驱动程序"></a>三、JDBC驱动程序</h2><p>根据访问数据库的技术不同， JDBC 驱动程序相应地分为四种类型。不同类型的驱动程序有着不一样的特性和使用方法。</p>
-<p> 1.<strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> 此类驱动程序由JDBC-ODBC桥和一个ODBC驱动程序组成。</li>
-<li><input disabled="" type="checkbox"> 工作原理：通过一段本地<strong>C代码</strong>将JDBC调用转化成ODBC调用。这一类型必须在本地计算机上先安装好ODBC驱动程序，然后通过JDBC-ODBCBridge的转换，将Java程序中使用的JDBC API访问指令转化成ODBC API指令，进而通过ODBC驱动程序调用本地数据库驱动代码完成对数据库的访问。</li>
-</ul>
-<p> 2.<strong>部分Java的本地JDBC API驱动程序</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> JDBC API驱动程序(Anative API partly Java technology-enabled Driver)</li>
-<li><input disabled="" type="checkbox"> 工作原理：此类驱动程序也必须在本地计算机上先安装好特定的驱动程序(类似ODBC)，然后通过PartialJavaJDBCDriver的转换，把Java程序中使用的JDBC API转换成NativeAPI，进而存取数据库。</li>
-</ul>
-<p>3.<strong>纯Java的数据库中间件驱动程序</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> 纯Java的数据库中间件驱动程序(Pure Java Driver for Database Middleware)使用这类驱动程序时，不需要在本地计算机上安装任何附加软件，但是必须在安装数据库管理系统的服务器端加装中间件(Middleware)，这个中间件负责所有存取数据库时必要的转换。</li>
-<li><input disabled="" type="checkbox"> 工作原理：驱动程序将JDBC访问转换成与数据库无关的标准网络协议(通常是HTTP或HTTPS)送出，然后再由中间件服务器将其转换成数据库专用的访问指令，完成对数据库的操作。中间件服务器能支持对多种数据库的访问。</li>
-</ul>
-<p>4.<strong>纯Java的JDBC驱动程序</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> 纯Java的JDBC驱动程序(Direct-to-DatabasePureJavaDriver)这类驱动程序是直接面向数据库的纯Java驱动程序，即所谓的”瘦”驱动程序。</li>
-<li><input disabled="" type="checkbox"> 工作原理：使用这类驱动程序时无需安装任何附加的软件(无论是本地计算机或是数据库服务器端)，所有存取数据库的操作都直接由JDBC驱动程序来完成，此类驱动程序能将JDBC调用转换成DBMS专用的网络协议，能够自动识别网络协议下的特殊数据库并能直接创建数据连接。</li>
-</ul>
-<h2 id="四、JDBC驱动程序的选择"><a href="#四、JDBC驱动程序的选择" class="headerlink" title="四、JDBC驱动程序的选择"></a>四、JDBC驱动程序的选择</h2><p>在企业内部信息系统中，选择合适的JDBC驱动程序，使之符合数据库程序设计的要求，是提高系统性能必须考虑的一个方面。不同的应用有不同的需要，所以要根据应用选择合适的驱动程序。</p>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></li>
-<li>优点：节省投资，利用了已有的ODBC驱动程序。</li>
-<li>缺点：中间有多次调用，性能受到影响，执行效率比较低，不适合对大数据量存取的应用。有损Java数据库程序的兼容性，不具备跨平台性，不适合基于Internet/Intranet的应用。</li>
-<li>应用：桥接驱动程序用于已经在ODBC技术上投资的情形，例如已经投资了Windows应用服务器。</li>
-</ul>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>部分Java的本地JDBC API驱动程序</strong></li>
-<li>优点：具有开放性，其利用多层结构，上层用Java实现，支持多数据库，下层为本地代码(包括一些二进制代码和一个轻量的Java库)，加快了执行速度，提高了数据库访问效率。</li>
-<li>缺点：没有使用纯Java的API，如果在本地代码中存在缺陷，将可能使Java虚拟机完全垮掉。</li>
-<li>应用：受到限制</li>
-</ul>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>纯Java的数据库中间件驱动程序</strong></li>
-<li>优点：由纯Java语言开发而成的，并且中间件也仅需要在服务器上安装，不再需要客户端的本机代码，这类驱动程序的体积最小，效率较高，具有最大的灵活性。此类驱动采用标准的网络协议，可以被防火墙支持，是开发Applet程序理想的选择(其实这些驱动是为Applet特别编写的)，是Internet应用理想的解决方案。开发者还可以利用单一的驱动程序连接到多种数据库。</li>
-<li>缺点：需要在服务器端安装中间件，这适当影响了驱动程序的效率。</li>
-<li>应用：基于Web的应用系统的开发。</li>
-</ul>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>纯Java的JDBC驱动程序</strong></li>
-<li>最佳的JDBC驱动程序类型。</li>
-<li>优点：无需安装任何附加软件，不会增加任何额外开销，效率最高，拥有最佳的兼容性。</li>
-<li>缺点：可能不被防火墙支持，在Internet中会存在潜在安全隐患，成为这类驱动最大的缺陷。</li>
-<li>应用：在企业级应用软件中，是应优先考虑的。因此，一个Servlet程序，要适应不同的操作系统，最好使用此类驱动;这种驱动也非常适合Applet程序，事实证明它能安全通过TCP/IP协议连接到数据库。</li>
-</ul>
-<p> <img src="https://img-blog.csdnimg.cn/20200220152318929.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/202002201540355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>JDBC,MySql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一、HashMap的底层实现原理</title>
-    <url>/2020/03/14/HashMap%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<p>HeshMap是基于哈希表的Map接口的实现，此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了非同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。 此实现假定哈希函数将元素适当地分布在各桶之间，可为基本操作（get 和 put）提供稳定的性能。迭代 collection 视图所需的时间与 HashMap 实例的“容量”（桶的数量）及其大小（键-值映射关系数）成比例。所以，如果迭代性能很重要，则不要将初始容量设置得太高（或将加载因子设置得太低）。在面试中也经常出现这道考题，记录一下！</p>
-<a id="more"></a>
-
-
-<h1 id="HsahMap的实现原理"><a href="#HsahMap的实现原理" class="headerlink" title="HsahMap的实现原理"></a>HsahMap的实现原理</h1><h2 id="简要概括"><a href="#简要概括" class="headerlink" title="简要概括"></a>简要概括</h2><ul>
-<li>HashMap 基于 Hash 算法实现的，底层是由数组+链表/红黑树构成的，我们通过 put(key,value)存储，get(key)来获取。当传入 key 时，HashMap 会根据 key. hashCode() 计算出 hash 值，根据 hash 值将 value 保存在 bucket 里。当计算出的 hash 值相同时，我们称之为 hash 冲突，HashMap 的做法是用链表和红黑树存储相同 hash 值的 value。当 hash 冲突的个数比较少时，使用链表，否则使用红黑树。</li>
-</ul>
-<h2 id="HashMap的存取实现"><a href="#HashMap的存取实现" class="headerlink" title="HashMap的存取实现"></a>HashMap的存取实现</h2><ul>
-<li>HashMap通过<strong>键值对</strong>实现存取。</li>
-<li><code>put（）</code>方法：对key做null检查。如果key是null，会被存储到table[0]，因为null的hash值总是0。 key的hashcode()方法会被调用，然后计算hash值。hash值用来找到存储Entry对象的数组的索引。有时候hash函数可能写的很不好，所以JDK的设计者添加了另一个叫做hash()的方法，它接收刚才计算的hash值作为参数。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> putVal(hash(key), key, value, <span class="keyword">false</span>, <span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Implements Map.put and related methods.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> hash hash for key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key the key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> value the value to put</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> onlyIfAbsent if true, don't change existing value</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> evict if false, the table is in creation mode.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> previous value, or null if none</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">boolean</span> onlyIfAbsent,<span class="keyword">boolean</span> evict)</span> </span>&#123;</span><br><span class="line">  		 Node&lt;K,V&gt;[] tab; </span><br><span class="line">  		 Node&lt;K,V&gt; p; </span><br><span class="line">  		 <span class="keyword">int</span> n, i;</span><br><span class="line">        <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">            n = (tab = resize()).length;</span><br><span class="line">        <span class="keyword">if</span> ((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == <span class="keyword">null</span>)</span><br><span class="line">            tab[i] = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            Node&lt;K,V&gt; e; K k;</span><br><span class="line">            <span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">                ((k = p.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                e = p;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="keyword">this</span>, tab, hash, key, value);</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> binCount = <span class="number">0</span>; ; ++binCount) &#123;</span><br><span class="line">                    <span class="keyword">if</span> ((e = p.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                        p.next = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">                        <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st</span></span><br><span class="line">                            treeifyBin(tab, hash);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                        ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    p = e;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123; <span class="comment">// existing mapping for key</span></span><br><span class="line">                V oldValue = e.value;</span><br><span class="line">                <span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="keyword">null</span>)</span><br><span class="line">                    e.value = value;</span><br><span class="line">                afterNodeAccess(e);</span><br><span class="line">                <span class="keyword">return</span> oldValue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ++modCount;</span><br><span class="line">        <span class="keyword">if</span> (++size &gt; threshold)</span><br><span class="line">            resize();</span><br><span class="line">        afterNodeInsertion(evict);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>Get（）</code>：对key进行null检查。如果key是null，table[0]这个位置的元素将被返回。<br>key的hashcode()方法被调用，然后计算hash值。indexFor(hash,table.length)用来计算要获取的Entry对象在table数组中的精确的位置，使用刚才计算的hash值。在获取了table数组的索引之后，会迭代链表，调用equals()方法检查key的相等性，如果equals()方法返回true，get方法返回Entry对象的value，否则，返回null。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public V get(Object key) &#123;</span><br><span class="line">       Node&lt;K,V&gt; e;</span><br><span class="line">       <span class="built_in">return</span> (e = getNode(<span class="built_in">hash</span>(key), key)) == null ? null : e.value;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   /**</span><br><span class="line">    * Implements Map.get and related methods.</span><br><span class="line">    *</span><br><span class="line">    * @param <span class="built_in">hash</span> <span class="built_in">hash</span> <span class="keyword">for</span> key</span><br><span class="line">    * @param key the key</span><br><span class="line">    * @<span class="built_in">return</span> the node, or null <span class="keyword">if</span> none</span><br><span class="line">    */</span><br><span class="line">   final Node&lt;K,V&gt; getNode(int <span class="built_in">hash</span>, Object key) &#123;</span><br><span class="line">       Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; first, e; int n; K k;</span><br><span class="line">       <span class="keyword">if</span> ((tab = table) != null &amp;&amp; (n = tab.length) &gt; 0 &amp;&amp;</span><br><span class="line">           (first = tab[(n - 1) &amp; <span class="built_in">hash</span>]) != null) &#123;</span><br><span class="line">           <span class="keyword">if</span> (first.hash == <span class="built_in">hash</span> &amp;&amp; // always check first node</span><br><span class="line">               ((k = first.key) == key || (key != null &amp;&amp; key.equals(k))))</span><br><span class="line">               <span class="built_in">return</span> first;</span><br><span class="line">           <span class="keyword">if</span> ((e = first.next) != null) &#123;</span><br><span class="line">               <span class="keyword">if</span> (first instanceof TreeNode)</span><br><span class="line">                   <span class="built_in">return</span> ((TreeNode&lt;K,V&gt;)first).getTreeNode(<span class="built_in">hash</span>, key);</span><br><span class="line">               <span class="keyword">do</span> &#123;</span><br><span class="line">                   <span class="keyword">if</span> (e.hash == <span class="built_in">hash</span> &amp;&amp;</span><br><span class="line">                       ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))</span><br><span class="line">                       <span class="built_in">return</span> e;</span><br><span class="line">               &#125; <span class="keyword">while</span> ((e = e.next) != null);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">return</span> null;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>补充：</p>
-<ol>
-<li>HashMap有一个叫做Entry的内部类，它用来存储key-value对。</li>
-<li>上面的Entry对象是存储在一个叫做table的Entry数组中。</li>
-<li>table的索引在逻辑上叫做“桶”(bucket)，它存储了链表的第一个元素。</li>
-<li>key的hashcode()方法用来找到Entry对象所在的桶。</li>
-<li>如果两个key有相同的hash值，他们会被放在table数组的同一个桶里面。</li>
-<li>key的equals()方法用来确保key的唯一性。</li>
-</ol>
-<h1 id="有关知识的具体解析"><a href="#有关知识的具体解析" class="headerlink" title="有关知识的具体解析"></a>有关知识的具体解析</h1><h2 id="一、Map的几种类型"><a href="#一、Map的几种类型" class="headerlink" title="一、Map的几种类型"></a>一、Map的几种类型</h2><p><img src="https://img-blog.csdnimg.cn/20200314144530842.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>Map就是一个值key对应一个value。</li>
-<li>Hashtable（线程安全）和HashMap（非线程安全）在代码实现上，基本上是一样的。现在Hashtable已经过时了(小写的t，因为sun当时的一个失误，因为是JDK1.0的产物，所以不方便改)。</li>
-<li>ConcurrentHashMap也是线程安全的，但性能比HashTable好很多，Hashtable是锁整个Map对象，而ConcurrentHashMap是锁Map的部分结构。</li>
-</ul>
-<h2 id="二、什么是哈希表？"><a href="#二、什么是哈希表？" class="headerlink" title="二、什么是哈希表？"></a>二、什么是哈希表？</h2><ul>
-<li>利用<strong>数组</strong>寻址容易，但插入和删除困难。而<strong>链表</strong>是：寻址困难，插入和删除容易。而<strong>哈希表</strong>便综合两者的特性，是一种寻址容易，插入删除也容易的数据结构。</li>
-<li>哈希表有多种不同的实现方法，最常用的方法—— 拉链法，可以理解为“链表的数组”<br><img src="https://img-blog.csdnimg.cn/20200314161134205.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li>一个长度为16的数组中，每个元素存储的是一个链表的头结点。这些元素是按照什么样的规则存储到数组中呢？一般情况是通过<code>hash(key)%len</code>获得，也就是元素的key的哈希值对数组长度取模得到。</li>
-<li>比如上述哈希表中12%16=12 , 28%16=12 , 108%16=12 , 140%16=12。所以12、28、108，140都存储在数组下标为12的位置。</li>
-<li><strong>HashMap其实也是一个线性数组（<code>Entry[]</code>）实现的,所以可以理解为其存储数据的容器就是一个线性数组。但是一个线性的数组怎么实现按键值对来存取数据呢？这里HashMap是做了一些处理的。</strong></li>
-</ul>
-<h2 id="三、什么是哈希算法？"><a href="#三、什么是哈希算法？" class="headerlink" title="三、什么是哈希算法？"></a>三、什么是哈希算法？</h2><ul>
-<li>Hash算法虽然被称为算法，但实际上它更像是一种思想。Hash算法没有一个固定的公式，只要符合散列思想的算法都可以被称为是Hash算法。</li>
-<li>哈希（hash）算法又称为散列算法，通过hash算法，可以将任意长度的信息转换成一个固定长度的二进制数据，我们经常会使用十六进制值来表示转换后的信息。</li>
-<li>比如，数字123，使用md5的hash算法后，得到十六进制的值：202cb962ac59075b964b07152d234b70</li>
-<li>哈希算法的特点：<br>（1）不同的信息，理论上得到的hash值不同，我们称之为“无碰撞”，或者发生“碰撞”的概率非常小。<br>（2）不可逆，hash算法是单向的，从hash值反向推导出原始信息是很困难的。所以，有些系统中，我们可以使用hash算法对密码进行处理后保存。</li>
-<li>哈希算法的应用<br>①</li>
-</ul>
-<h2 id="四、什么是红黑树？"><a href="#四、什么是红黑树？" class="headerlink" title="四、什么是红黑树？"></a>四、什么是红黑树？</h2><ul>
-<li><strong>二叉树（BST）</strong>：<br>①左子树结点的值小于等于根节点的值。<br>②右子树结点的值大于等于根节点的值。<br>③左右子树分开来也是单独的二叉树。<br><img src="https://img-blog.csdnimg.cn/20200314174010980.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><ul>
-<li><strong>红黑树（RBT）</strong>：红黑树是一种自平衡的二叉树，除了符合二叉树的基本特征之外还引入了一些附加的条件。<br>①节点是红色或黑色。<br>②根节点是黑色。<br>③每个叶子节点都是黑色的空节点（NIL节点）。<br>④每个红色节点的两个子节点都是黑色。(从每个叶子到根的所有路径上不能有两个连续的红色节点)。<br>⑥从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点。<br><img src="https://img-blog.csdnimg.cn/20200314174041551.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-</ul>
-</li>
-</ul>
-<h2 id="五、HashMap-和-Hashtable-有什么区别？"><a href="#五、HashMap-和-Hashtable-有什么区别？" class="headerlink" title="五、HashMap 和 Hashtable 有什么区别？"></a>五、HashMap 和 Hashtable 有什么区别？</h2><ul>
-<li>HashMap是非线程安全的，HashMap是Map的一个实现类，是将键映射到值的对象，不允许键值重复。允许空键和空值；由于非线程安全，HashMap的效率要较 Hashtable 的效率高一些。</li>
-<li>Hashtable 是线程安全的一个集合，不允许 null 值作为一个 key 值或者value 值。             </li>
-<li>Hashtable是sychronized，多个线程访问时不需要自己为它的方法实现同步，而HashMap 在被多个线程访问的时候需要自己为它的方法实现同步。</li>
-<li>一般现在不建议用Hashtable：<br>①注意是小写的t，这是sun公司的一个失误，但是由于是JDK1.0的产物，所以没有改<br>②是Hashtable是遗留类，内部实现很多没优化和冗余。<br>③即使在多线程环境下，现在也有同步的ConcurrentHashMap替代，没有必要因为是多线程而用HashTable。</li>
-</ul>
-<h1 id="如何解决hash冲突"><a href="#如何解决hash冲突" class="headerlink" title="如何解决hash冲突"></a>如何解决hash冲突</h1><h2 id="产生hash冲突的原因"><a href="#产生hash冲突的原因" class="headerlink" title="产生hash冲突的原因"></a>产生hash冲突的原因</h2><ul>
-<li>当我们通过put(key, value)向hashmap中添加元素时，需要通过hash函数确定元素究竟应该放置在数组中的哪个位置，因为不同的元素可能通过hashcode（）计算得到的哈希值相同，那么不同的元素被放置在了数据的同一个位置时，后放入的元素会以链表的形式，插在前一个元素的尾部，这个时候我们称发生了hash冲突。</li>
-</ul>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>
-<li>事实上，想让hash冲突完全不发生，是不太可能的，我们能做的只是尽可能的降低hash冲突发生的概率。<br>①开放定址法<br>②链地址法（拉链法）<br>Java 中 HashMap 解决 Hash 冲突就是利用了这个方法，具体实现这里暂时不做详解，可以参考 Jdk HashMap 源码进行理解。<br>③再哈希法<br>④建立公共溢出区</li>
-</ul>
-]]></content>
-      <categories>
-        <category>每天一道面试题</category>
-      </categories>
-      <tags>
-        <tag>HashMap</tag>
       </tags>
   </entry>
   <entry>
@@ -707,6 +560,105 @@
       </tags>
   </entry>
   <entry>
+    <title>MySql安装与卸载</title>
+    <url>/2020/02/01/MySql%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</url>
+    <content><![CDATA[<p>MySql的卸载与安装</p>
+<a id="more"></a>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ul>
+<li>运行安装程序，在启动配置教程之前，一路下一步，没有下一步的话就直接<code>finish</code></li>
+<li>第一次<code>finish</code>之后启动服务器配置教程</li>
+<li>第一个注意：<code>include mysql bin directory to windows path</code></li>
+<li>第二个注意：端口号不要修改，字符集选择UTF-8</li>
+</ul>
+<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><ul>
+<li>打开控制面板，删除软件</li>
+<li>删除mysql安装目录的所有文件</li>
+<li>删除mysql数据存放文件，C盘下面的<code>Programe data</code>里，它是隐藏文件，要点击查看隐藏文件。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>MySql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一、HashMap的底层实现原理</title>
+    <url>/2020/03/14/HashMap%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<p>HeshMap是基于哈希表的Map接口的实现，此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了非同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。 此实现假定哈希函数将元素适当地分布在各桶之间，可为基本操作（get 和 put）提供稳定的性能。迭代 collection 视图所需的时间与 HashMap 实例的“容量”（桶的数量）及其大小（键-值映射关系数）成比例。所以，如果迭代性能很重要，则不要将初始容量设置得太高（或将加载因子设置得太低）。在面试中也经常出现这道考题，记录一下！</p>
+<a id="more"></a>
+
+
+<h1 id="HsahMap的实现原理"><a href="#HsahMap的实现原理" class="headerlink" title="HsahMap的实现原理"></a>HsahMap的实现原理</h1><h2 id="简要概括"><a href="#简要概括" class="headerlink" title="简要概括"></a>简要概括</h2><ul>
+<li>HashMap 基于 Hash 算法实现的，底层是由数组+链表/红黑树构成的，我们通过 put(key,value)存储，get(key)来获取。当传入 key 时，HashMap 会根据 key. hashCode() 计算出 hash 值，根据 hash 值将 value 保存在 bucket 里。当计算出的 hash 值相同时，我们称之为 hash 冲突，HashMap 的做法是用链表和红黑树存储相同 hash 值的 value。当 hash 冲突的个数比较少时，使用链表，否则使用红黑树。</li>
+</ul>
+<h2 id="HashMap的存取实现"><a href="#HashMap的存取实现" class="headerlink" title="HashMap的存取实现"></a>HashMap的存取实现</h2><ul>
+<li>HashMap通过<strong>键值对</strong>实现存取。</li>
+<li><code>put（）</code>方法：对key做null检查。如果key是null，会被存储到table[0]，因为null的hash值总是0。 key的hashcode()方法会被调用，然后计算hash值。hash值用来找到存储Entry对象的数组的索引。有时候hash函数可能写的很不好，所以JDK的设计者添加了另一个叫做hash()的方法，它接收刚才计算的hash值作为参数。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> putVal(hash(key), key, value, <span class="keyword">false</span>, <span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Implements Map.put and related methods.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> hash hash for key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key the key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> value the value to put</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> onlyIfAbsent if true, don't change existing value</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> evict if false, the table is in creation mode.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> previous value, or null if none</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">boolean</span> onlyIfAbsent,<span class="keyword">boolean</span> evict)</span> </span>&#123;</span><br><span class="line">  		 Node&lt;K,V&gt;[] tab; </span><br><span class="line">  		 Node&lt;K,V&gt; p; </span><br><span class="line">  		 <span class="keyword">int</span> n, i;</span><br><span class="line">        <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">            n = (tab = resize()).length;</span><br><span class="line">        <span class="keyword">if</span> ((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == <span class="keyword">null</span>)</span><br><span class="line">            tab[i] = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            Node&lt;K,V&gt; e; K k;</span><br><span class="line">            <span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">                ((k = p.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                e = p;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="keyword">this</span>, tab, hash, key, value);</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> binCount = <span class="number">0</span>; ; ++binCount) &#123;</span><br><span class="line">                    <span class="keyword">if</span> ((e = p.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                        p.next = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">                        <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st</span></span><br><span class="line">                            treeifyBin(tab, hash);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                        ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    p = e;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123; <span class="comment">// existing mapping for key</span></span><br><span class="line">                V oldValue = e.value;</span><br><span class="line">                <span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="keyword">null</span>)</span><br><span class="line">                    e.value = value;</span><br><span class="line">                afterNodeAccess(e);</span><br><span class="line">                <span class="keyword">return</span> oldValue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ++modCount;</span><br><span class="line">        <span class="keyword">if</span> (++size &gt; threshold)</span><br><span class="line">            resize();</span><br><span class="line">        afterNodeInsertion(evict);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Get（）</code>：对key进行null检查。如果key是null，table[0]这个位置的元素将被返回。<br>key的hashcode()方法被调用，然后计算hash值。indexFor(hash,table.length)用来计算要获取的Entry对象在table数组中的精确的位置，使用刚才计算的hash值。在获取了table数组的索引之后，会迭代链表，调用equals()方法检查key的相等性，如果equals()方法返回true，get方法返回Entry对象的value，否则，返回null。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public V get(Object key) &#123;</span><br><span class="line">       Node&lt;K,V&gt; e;</span><br><span class="line">       <span class="built_in">return</span> (e = getNode(<span class="built_in">hash</span>(key), key)) == null ? null : e.value;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   /**</span><br><span class="line">    * Implements Map.get and related methods.</span><br><span class="line">    *</span><br><span class="line">    * @param <span class="built_in">hash</span> <span class="built_in">hash</span> <span class="keyword">for</span> key</span><br><span class="line">    * @param key the key</span><br><span class="line">    * @<span class="built_in">return</span> the node, or null <span class="keyword">if</span> none</span><br><span class="line">    */</span><br><span class="line">   final Node&lt;K,V&gt; getNode(int <span class="built_in">hash</span>, Object key) &#123;</span><br><span class="line">       Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; first, e; int n; K k;</span><br><span class="line">       <span class="keyword">if</span> ((tab = table) != null &amp;&amp; (n = tab.length) &gt; 0 &amp;&amp;</span><br><span class="line">           (first = tab[(n - 1) &amp; <span class="built_in">hash</span>]) != null) &#123;</span><br><span class="line">           <span class="keyword">if</span> (first.hash == <span class="built_in">hash</span> &amp;&amp; // always check first node</span><br><span class="line">               ((k = first.key) == key || (key != null &amp;&amp; key.equals(k))))</span><br><span class="line">               <span class="built_in">return</span> first;</span><br><span class="line">           <span class="keyword">if</span> ((e = first.next) != null) &#123;</span><br><span class="line">               <span class="keyword">if</span> (first instanceof TreeNode)</span><br><span class="line">                   <span class="built_in">return</span> ((TreeNode&lt;K,V&gt;)first).getTreeNode(<span class="built_in">hash</span>, key);</span><br><span class="line">               <span class="keyword">do</span> &#123;</span><br><span class="line">                   <span class="keyword">if</span> (e.hash == <span class="built_in">hash</span> &amp;&amp;</span><br><span class="line">                       ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))</span><br><span class="line">                       <span class="built_in">return</span> e;</span><br><span class="line">               &#125; <span class="keyword">while</span> ((e = e.next) != null);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">return</span> null;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>补充：</p>
+<ol>
+<li>HashMap有一个叫做Entry的内部类，它用来存储key-value对。</li>
+<li>上面的Entry对象是存储在一个叫做table的Entry数组中。</li>
+<li>table的索引在逻辑上叫做“桶”(bucket)，它存储了链表的第一个元素。</li>
+<li>key的hashcode()方法用来找到Entry对象所在的桶。</li>
+<li>如果两个key有相同的hash值，他们会被放在table数组的同一个桶里面。</li>
+<li>key的equals()方法用来确保key的唯一性。</li>
+</ol>
+<h1 id="有关知识的具体解析"><a href="#有关知识的具体解析" class="headerlink" title="有关知识的具体解析"></a>有关知识的具体解析</h1><h2 id="一、Map的几种类型"><a href="#一、Map的几种类型" class="headerlink" title="一、Map的几种类型"></a>一、Map的几种类型</h2><p><img src="https://img-blog.csdnimg.cn/20200314144530842.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>Map就是一个值key对应一个value。</li>
+<li>Hashtable（线程安全）和HashMap（非线程安全）在代码实现上，基本上是一样的。现在Hashtable已经过时了(小写的t，因为sun当时的一个失误，因为是JDK1.0的产物，所以不方便改)。</li>
+<li>ConcurrentHashMap也是线程安全的，但性能比HashTable好很多，Hashtable是锁整个Map对象，而ConcurrentHashMap是锁Map的部分结构。</li>
+</ul>
+<h2 id="二、什么是哈希表？"><a href="#二、什么是哈希表？" class="headerlink" title="二、什么是哈希表？"></a>二、什么是哈希表？</h2><ul>
+<li>利用<strong>数组</strong>寻址容易，但插入和删除困难。而<strong>链表</strong>是：寻址困难，插入和删除容易。而<strong>哈希表</strong>便综合两者的特性，是一种寻址容易，插入删除也容易的数据结构。</li>
+<li>哈希表有多种不同的实现方法，最常用的方法—— 拉链法，可以理解为“链表的数组”<br><img src="https://img-blog.csdnimg.cn/20200314161134205.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li>一个长度为16的数组中，每个元素存储的是一个链表的头结点。这些元素是按照什么样的规则存储到数组中呢？一般情况是通过<code>hash(key)%len</code>获得，也就是元素的key的哈希值对数组长度取模得到。</li>
+<li>比如上述哈希表中12%16=12 , 28%16=12 , 108%16=12 , 140%16=12。所以12、28、108，140都存储在数组下标为12的位置。</li>
+<li><strong>HashMap其实也是一个线性数组（<code>Entry[]</code>）实现的,所以可以理解为其存储数据的容器就是一个线性数组。但是一个线性的数组怎么实现按键值对来存取数据呢？这里HashMap是做了一些处理的。</strong></li>
+</ul>
+<h2 id="三、什么是哈希算法？"><a href="#三、什么是哈希算法？" class="headerlink" title="三、什么是哈希算法？"></a>三、什么是哈希算法？</h2><ul>
+<li>Hash算法虽然被称为算法，但实际上它更像是一种思想。Hash算法没有一个固定的公式，只要符合散列思想的算法都可以被称为是Hash算法。</li>
+<li>哈希（hash）算法又称为散列算法，通过hash算法，可以将任意长度的信息转换成一个固定长度的二进制数据，我们经常会使用十六进制值来表示转换后的信息。</li>
+<li>比如，数字123，使用md5的hash算法后，得到十六进制的值：202cb962ac59075b964b07152d234b70</li>
+<li>哈希算法的特点：<br>（1）不同的信息，理论上得到的hash值不同，我们称之为“无碰撞”，或者发生“碰撞”的概率非常小。<br>（2）不可逆，hash算法是单向的，从hash值反向推导出原始信息是很困难的。所以，有些系统中，我们可以使用hash算法对密码进行处理后保存。</li>
+<li>哈希算法的应用<br>①</li>
+</ul>
+<h2 id="四、什么是红黑树？"><a href="#四、什么是红黑树？" class="headerlink" title="四、什么是红黑树？"></a>四、什么是红黑树？</h2><ul>
+<li><strong>二叉树（BST）</strong>：<br>①左子树结点的值小于等于根节点的值。<br>②右子树结点的值大于等于根节点的值。<br>③左右子树分开来也是单独的二叉树。<br><img src="https://img-blog.csdnimg.cn/20200314174010980.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><ul>
+<li><strong>红黑树（RBT）</strong>：红黑树是一种自平衡的二叉树，除了符合二叉树的基本特征之外还引入了一些附加的条件。<br>①节点是红色或黑色。<br>②根节点是黑色。<br>③每个叶子节点都是黑色的空节点（NIL节点）。<br>④每个红色节点的两个子节点都是黑色。(从每个叶子到根的所有路径上不能有两个连续的红色节点)。<br>⑥从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点。<br><img src="https://img-blog.csdnimg.cn/20200314174041551.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+</ul>
+<h2 id="五、HashMap-和-Hashtable-有什么区别？"><a href="#五、HashMap-和-Hashtable-有什么区别？" class="headerlink" title="五、HashMap 和 Hashtable 有什么区别？"></a>五、HashMap 和 Hashtable 有什么区别？</h2><ul>
+<li>HashMap是非线程安全的，HashMap是Map的一个实现类，是将键映射到值的对象，不允许键值重复。允许空键和空值；由于非线程安全，HashMap的效率要较 Hashtable 的效率高一些。</li>
+<li>Hashtable 是线程安全的一个集合，不允许 null 值作为一个 key 值或者value 值。             </li>
+<li>Hashtable是sychronized，多个线程访问时不需要自己为它的方法实现同步，而HashMap 在被多个线程访问的时候需要自己为它的方法实现同步。</li>
+<li>一般现在不建议用Hashtable：<br>①注意是小写的t，这是sun公司的一个失误，但是由于是JDK1.0的产物，所以没有改<br>②是Hashtable是遗留类，内部实现很多没优化和冗余。<br>③即使在多线程环境下，现在也有同步的ConcurrentHashMap替代，没有必要因为是多线程而用HashTable。</li>
+</ul>
+<h1 id="如何解决hash冲突"><a href="#如何解决hash冲突" class="headerlink" title="如何解决hash冲突"></a>如何解决hash冲突</h1><h2 id="产生hash冲突的原因"><a href="#产生hash冲突的原因" class="headerlink" title="产生hash冲突的原因"></a>产生hash冲突的原因</h2><ul>
+<li>当我们通过put(key, value)向hashmap中添加元素时，需要通过hash函数确定元素究竟应该放置在数组中的哪个位置，因为不同的元素可能通过hashcode（）计算得到的哈希值相同，那么不同的元素被放置在了数据的同一个位置时，后放入的元素会以链表的形式，插在前一个元素的尾部，这个时候我们称发生了hash冲突。</li>
+</ul>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>
+<li>事实上，想让hash冲突完全不发生，是不太可能的，我们能做的只是尽可能的降低hash冲突发生的概率。<br>①开放定址法<br>②链地址法（拉链法）<br>Java 中 HashMap 解决 Hash 冲突就是利用了这个方法，具体实现这里暂时不做详解，可以参考 Jdk HashMap 源码进行理解。<br>③再哈希法<br>④建立公共溢出区</li>
+</ul>
+]]></content>
+      <categories>
+        <category>每天一道面试题</category>
+      </categories>
+      <tags>
+        <tag>HashMap</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySql基础操作</title>
     <url>/2020/02/01/MySql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<p>本文简单介绍了数据库，和一些基本操作。</p>
@@ -848,349 +800,75 @@
       </tags>
   </entry>
   <entry>
-    <title>MySql多表操作</title>
-    <url>/2020/02/02/MySql%E5%A4%9A%E8%A1%A8%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<p><strong>问：</strong> 分类表和商品表之间是不是有关系? 如果有关系,在数据库中如何表示这种关系？</p>
+    <title>JDBC基础知识</title>
+    <url>/2020/02/03/JDBC%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<p>JDBC概述，作用，类型，以及使用时如何选择。</p>
 <a id="more"></a>
-<h1 id="创建多表及多表的关系"><a href="#创建多表及多表的关系" class="headerlink" title="创建多表及多表的关系"></a>创建多表及多表的关系</h1><p> <strong>问：</strong> 分类表和商品表之间是不是有关系? 如果有关系,在数据库中如何表示这种关系？</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">category</span>(</span><br><span class="line">  cid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">  cname <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">  cdesc <span class="built_in">varchar</span>(<span class="number">31</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'手机数码'</span>,<span class="string">'电子产品,黑马生产'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'鞋靴箱包'</span>,<span class="string">'江南皮鞋厂倾情打造'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'香烟酒水'</span>,<span class="string">'黄鹤楼,茅台,二锅头'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'酸奶饼干'</span>,<span class="string">'娃哈哈,蒙牛酸酸乳'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'馋嘴零食'</span>,<span class="string">'瓜子花生,八宝粥,辣条'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">category</span>;</span><br><span class="line"><span class="keyword">select</span> cname,cdesc <span class="keyword">from</span> <span class="keyword">category</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--所有商品</span></span><br><span class="line">1.商品ID</span><br><span class="line">2.商品名称</span><br><span class="line">3.商品的价格</span><br><span class="line">4.生产日期</span><br><span class="line">5.商品分类ID</span><br><span class="line"></span><br><span class="line">商品和商品分类 : 所属关系</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> product(</span><br><span class="line">	pid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">  	pname <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">  	price <span class="keyword">double</span>,</span><br><span class="line">  	pdate <span class="built_in">timestamp</span>,</span><br><span class="line">  	cno <span class="built_in">int</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'小米mix4'</span>,<span class="number">998</span>,<span class="literal">null</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'锤子'</span>,<span class="number">2888</span>,<span class="literal">null</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'阿迪王'</span>,<span class="number">99</span>,<span class="literal">null</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'老村长'</span>,<span class="number">88</span>,<span class="literal">null</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'劲酒'</span>,<span class="number">35</span>,<span class="literal">null</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'小熊饼干'</span>,<span class="number">1</span>,<span class="literal">null</span>,<span class="number">4</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'卫龙辣条'</span>,<span class="number">1</span>,<span class="literal">null</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'旺旺大饼'</span>,<span class="number">1</span>,<span class="literal">null</span>,<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>多表之间的关系如何来维护</li>
+<h2 id="一、JDBC是什么？"><a href="#一、JDBC是什么？" class="headerlink" title="一、JDBC是什么？"></a>一、JDBC是什么？</h2><ul>
+<li>百度百科解释：JDBC(java database connectivity)驱动程序是对JDBC规范完整的实现，它的存在在Java程序与数据库系统之间建立了一条通信的渠道。它是 一 种可用于执行 SQL 语句的 Java API(<strong>Application Programming Interface， 应用程序设计接口</strong>)。</li>
+<li>简单理解：java 数据库连接。有了它，就能够在java代码中操作任何数据库。由于数据库种类繁多，并且java程序使用广泛，sun公司就提供了一种规范，让其他的数据库提供商去实现底层的访问。</li>
+<li>刚开始每个数据库（Oracle，Mysql，SqlServer）的访问规则都不同，后来SUN公司想一统天下，出台了一套规范，各个数据库要按照这个规范去写底层代码，与此同时，Java程序也直接去找JDBC。</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">外键约束: foreign key</span><br><span class="line">	-给product中的cno 添加一个外键约束</span><br><span class="line">	 <span class="keyword">alter</span> <span class="keyword">table</span> product <span class="keyword">add</span> <span class="keyword">foreign</span> <span class="keyword">key</span>(cno)  <span class="keyword">references</span>  <span class="keyword">category</span>(cid);</span><br><span class="line">	-从分类表中,删除分类为5信息</span><br><span class="line">	<span class="keyword">delete</span> <span class="keyword">from</span> <span class="keyword">category</span> <span class="keyword">where</span> cid =<span class="number">5</span>;  //删除失败,</span><br><span class="line">	首先得去product表, 删除所有分类ID5  商品</span><br><span class="line">	<span class="keyword">delete</span> <span class="keyword">from</span> product <span class="keyword">where</span> cno=<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>建数据库原则:  <strong>通常情况下,一个项目/应用建一个数据库</strong></li>
-<li>多表之间的建表原则</li>
+<h2 id="二、作用是什么？"><a href="#二、作用是什么？" class="headerlink" title="二、作用是什么？"></a>二、作用是什么？</h2><ul>
+<li>JDBC 为数据库应用开发人员、数据库前台开发人员提供了一种标准的应用程序设计接口， 使开发人员可以用纯 Java 语言编写完整的数据库应用程序。</li>
+<li>JDBC 通过调用其接口提供的方法， 提供了 Java 应用程序与各种数据库服务器之间的连接服务，。</li>
+<li>它支持 ANSI SQL- 92 标准， 实现了从 Java 程序内调用标准的 SQL 命令对数据库进行查询、插入、删除和更新等操作， 并确保数据事务的正常进行。</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">1. 一对多 : 商品和分类</span><br><span class="line">    建表原则: 在多的一方添加一个外键,指向一的一方的主键</span><br><span class="line"></span><br><span class="line">2.多对多: 老师和学生, 学生和课程</span><br><span class="line">    建表原则: 建立一张中间表,将多对多的关系,拆分成一对多的关系,中间表至少要有两个外键,分别指向原来的那两张表。</span><br><span class="line"></span><br><span class="line">3.一对一: 班级和班长, 公民和身份证, 国家和国旗</span><br><span class="line">    建表原则:  </span><br><span class="line">      - 将一对一的情况,当作是一对多情况处理,在任意一张表添加一个外键,并且这个外键要唯一,指向另外一张表</span><br><span class="line">      - 直接将两张表合并成一张表</span><br><span class="line">      - 将两张表的主键建立起连接,让两张表里面主键相等</span><br><span class="line"></span><br><span class="line">4.实际用途: 用的不是很多.    (拆表操作  )</span><br><span class="line">	如：相亲网站: </span><br><span class="line">        - 个人信息 : 姓名,性别,年龄,身高,体重,三围,兴趣爱好,(年收入,  特长,学历, 职业, 择偶目标,要求)</span><br><span class="line">        - 拆表操作 : 将个人的常用信息和不常用信息,减少表的臃肿,</span><br></pre></td></tr></table></figure>
-<h1 id="网上商城表案例分析：用户购物流程"><a href="#网上商城表案例分析：用户购物流程" class="headerlink" title="网上商城表案例分析：用户购物流程"></a>网上商城表案例分析：用户购物流程</h1><p><img src="https://img-blog.csdnimg.cn/20200221150553826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="三、JDBC驱动程序"><a href="#三、JDBC驱动程序" class="headerlink" title="三、JDBC驱动程序"></a>三、JDBC驱动程序</h2><p>根据访问数据库的技术不同， JDBC 驱动程序相应地分为四种类型。不同类型的驱动程序有着不一样的特性和使用方法。</p>
+<p> 1.<strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></p>
 <ul>
-<li>商品分类表(分类ID,分类名称,分类描述</li>
+<li><input disabled="" type="checkbox"> 此类驱动程序由JDBC-ODBC桥和一个ODBC驱动程序组成。</li>
+<li><input disabled="" type="checkbox"> 工作原理：通过一段本地<strong>C代码</strong>将JDBC调用转化成ODBC调用。这一类型必须在本地计算机上先安装好ODBC驱动程序，然后通过JDBC-ODBCBridge的转换，将Java程序中使用的JDBC API访问指令转化成ODBC API指令，进而通过ODBC驱动程序调用本地数据库驱动代码完成对数据库的访问。</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">category</span>(</span><br><span class="line">   	cid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">     	cname <span class="built_in">varchar</span>(<span class="number">15</span>),</span><br><span class="line">     	cdesc <span class="built_in">varchar</span>(<span class="number">100</span>)</span><br><span class="line">   );</span><br><span class="line"></span><br><span class="line">   <span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'手机数码'</span>,<span class="string">'电子产品,黑马生产'</span>);</span><br><span class="line">   <span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'鞋靴箱包'</span>,<span class="string">'江南皮鞋厂倾情打造'</span>);</span><br><span class="line">   <span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'香烟酒水'</span>,<span class="string">'黄鹤楼,茅台,二锅头'</span>);</span><br><span class="line">   <span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'酸奶饼干'</span>,<span class="string">'娃哈哈,蒙牛酸酸乳'</span>);</span><br><span class="line">   <span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'馋嘴零食'</span>,<span class="string">'瓜子花生,八宝粥,辣条'</span>);</span><br></pre></td></tr></table></figure>
+<p> 2.<strong>部分Java的本地JDBC API驱动程序</strong></p>
 <ul>
-<li>商品表 (商品ID, 商品名称,商品价格,外键cno)</li>
+<li><input disabled="" type="checkbox"> JDBC API驱动程序(Anative API partly Java technology-enabled Driver)</li>
+<li><input disabled="" type="checkbox"> 工作原理：此类驱动程序也必须在本地计算机上先安装好特定的驱动程序(类似ODBC)，然后通过PartialJavaJDBCDriver的转换，把Java程序中使用的JDBC API转换成NativeAPI，进而存取数据库。</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> product(</span><br><span class="line">    	pid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">      	pname <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">      	price <span class="keyword">double</span>,</span><br><span class="line">      	cno <span class="built_in">int</span>,</span><br><span class="line">      	<span class="keyword">foreign</span> <span class="keyword">key</span>(cno) <span class="keyword">references</span> <span class="keyword">category</span>(cid)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'小米mix4'</span>,<span class="number">998</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'锤子'</span>,<span class="number">2888</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'阿迪王'</span>,<span class="number">99</span>,<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'老村长'</span>,<span class="number">88</span>,<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'劲酒'</span>,<span class="number">35</span>,<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'小熊饼干'</span>,<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'卫龙辣条'</span>,<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'旺旺大饼'</span>,<span class="number">1</span>,<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
-
+<p>3.<strong>纯Java的数据库中间件驱动程序</strong></p>
 <ul>
-<li>用户表</li>
+<li><input disabled="" type="checkbox"> 纯Java的数据库中间件驱动程序(Pure Java Driver for Database Middleware)使用这类驱动程序时，不需要在本地计算机上安装任何附加软件，但是必须在安装数据库管理系统的服务器端加装中间件(Middleware)，这个中间件负责所有存取数据库时必要的转换。</li>
+<li><input disabled="" type="checkbox"> 工作原理：驱动程序将JDBC访问转换成与数据库无关的标准网络协议(通常是HTTP或HTTPS)送出，然后再由中间件服务器将其转换成数据库专用的访问指令，完成对数据库的操作。中间件服务器能支持对多种数据库的访问。</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">user</span>(</span><br><span class="line">  	uid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">    	username <span class="built_in">varchar</span>(<span class="number">31</span>),</span><br><span class="line">    	<span class="keyword">password</span> <span class="built_in">varchar</span>(<span class="number">31</span>),</span><br><span class="line">    	phone  <span class="built_in">varchar</span>(<span class="number">11</span>)</span><br><span class="line">  );</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span> <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'zhangsan'</span>,<span class="string">'123'</span>,<span class="string">'13811118888'</span>);</span><br></pre></td></tr></table></figure>
+<p>4.<strong>纯Java的JDBC驱动程序</strong></p>
 <ul>
-<li>订单表 (订单编号,总价,订单时间 ,地址,外键用户的ID)</li>
+<li><input disabled="" type="checkbox"> 纯Java的JDBC驱动程序(Direct-to-DatabasePureJavaDriver)这类驱动程序是直接面向数据库的纯Java驱动程序，即所谓的”瘦”驱动程序。</li>
+<li><input disabled="" type="checkbox"> 工作原理：使用这类驱动程序时无需安装任何附加的软件(无论是本地计算机或是数据库服务器端)，所有存取数据库的操作都直接由JDBC驱动程序来完成，此类驱动程序能将JDBC调用转换成DBMS专用的网络协议，能够自动识别网络协议下的特殊数据库并能直接创建数据连接。</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> orders(</span><br><span class="line">    	<span class="keyword">oid</span> <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">      	<span class="keyword">sum</span> <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">        otime <span class="built_in">timestamp</span>,</span><br><span class="line">      	address <span class="built_in">varchar</span>(<span class="number">100</span>),</span><br><span class="line">      	uno <span class="built_in">int</span>,</span><br><span class="line">      	<span class="keyword">foreign</span> <span class="keyword">key</span>(uno) <span class="keyword">references</span> <span class="keyword">user</span>(uid)</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> orders <span class="keyword">values</span>(<span class="number">1</span>,<span class="number">200</span>,<span class="literal">null</span>,<span class="string">'学校'</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> orders <span class="keyword">values</span>(<span class="number">2</span>,<span class="number">250</span>,<span class="literal">null</span>,<span class="string">'家里'</span>,<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
+<h2 id="四、JDBC驱动程序的选择"><a href="#四、JDBC驱动程序的选择" class="headerlink" title="四、JDBC驱动程序的选择"></a>四、JDBC驱动程序的选择</h2><p>在企业内部信息系统中，选择合适的JDBC驱动程序，使之符合数据库程序设计的要求，是提高系统性能必须考虑的一个方面。不同的应用有不同的需要，所以要根据应用选择合适的驱动程序。</p>
 <ul>
-<li>订单项: 中间表(订单ID,商品ID,商品数量,订单项总价)</li>
+<li><input disabled="" type="checkbox"> <strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></li>
+<li>优点：节省投资，利用了已有的ODBC驱动程序。</li>
+<li>缺点：中间有多次调用，性能受到影响，执行效率比较低，不适合对大数据量存取的应用。有损Java数据库程序的兼容性，不具备跨平台性，不适合基于Internet/Intranet的应用。</li>
+<li>应用：桥接驱动程序用于已经在ODBC技术上投资的情形，例如已经投资了Windows应用服务器。</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> orderitem(</span><br><span class="line"> 	ono <span class="built_in">int</span>,</span><br><span class="line">   	pno <span class="built_in">int</span>,</span><br><span class="line">   	<span class="keyword">foreign</span> <span class="keyword">key</span>(ono) <span class="keyword">references</span> orders(<span class="keyword">oid</span>),</span><br><span class="line">   	<span class="keyword">foreign</span> <span class="keyword">key</span>(pno) <span class="keyword">references</span> product(pid),</span><br><span class="line">   	ocount <span class="built_in">int</span>,</span><br><span class="line">   	subsum <span class="keyword">double</span></span><br><span class="line"> );</span><br><span class="line"> <span class="comment">--给1号订单添加商品 200块钱的商品</span></span><br><span class="line"> <span class="keyword">insert</span> <span class="keyword">into</span> orderitem <span class="keyword">values</span>(<span class="number">1</span>,<span class="number">7</span>,<span class="number">100</span>,<span class="number">100</span>);</span><br><span class="line"> <span class="keyword">insert</span> <span class="keyword">into</span> orderitem <span class="keyword">values</span>(<span class="number">1</span>,<span class="number">8</span>,<span class="number">101</span>,<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line"> <span class="comment">--给2号订单添加商品 250块钱的商品 ()</span></span><br><span class="line"> <span class="keyword">insert</span> <span class="keyword">into</span> orderitem <span class="keyword">values</span>(<span class="number">2</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">35</span>);</span><br><span class="line"> <span class="keyword">insert</span> <span class="keyword">into</span> orderitem <span class="keyword">values</span>(<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">99</span>);</span><br></pre></td></tr></table></figure>
-
 <ul>
-<li><strong>内连接查询</strong></li>
+<li><input disabled="" type="checkbox"> <strong>部分Java的本地JDBC API驱动程序</strong></li>
+<li>优点：具有开放性，其利用多层结构，上层用Java实现，支持多数据库，下层为本地代码(包括一些二进制代码和一个轻量的Java库)，加快了执行速度，提高了数据库访问效率。</li>
+<li>缺点：没有使用纯Java的API，如果在本地代码中存在缺陷，将可能使Java虚拟机完全垮掉。</li>
+<li>应用：受到限制</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">-隐式内连接</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product p,<span class="keyword">category</span> c <span class="keyword">where</span> p.cno=c.cid;</span><br><span class="line">-显式内连接</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product p <span class="keyword">inner</span> <span class="keyword">join</span> <span class="keyword">category</span> c <span class="keyword">on</span> p.cno=c.cid;</span><br><span class="line">-区别：</span><br><span class="line">	隐式内连接：在查询出结果的基础上去做where 条件过滤</span><br><span class="line">	显式内连接：带着条件去查询结果，执行效率高。</span><br></pre></td></tr></table></figure>
-
 <ul>
-<li><strong>连接查询</strong><br>左外连接：会将左表中的所有数据都查询出来，如果右表中没有对应的数据，用NULL代替。<br>右外连接：会将右表中的所有数据查询出来如果左表没有对应数据的话<img src="https://img-blog.csdnimg.cn/20200221170140826.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li><strong>分页查询</strong><br>每页数据数据3，起始索引从0 ，第1页: 0，第2页: 3。<br>起始索引:  index 代表显示第几页 页数从1开始，每页显示3条数据</li>
+<li><input disabled="" type="checkbox"> <strong>纯Java的数据库中间件驱动程序</strong></li>
+<li>优点：由纯Java语言开发而成的，并且中间件也仅需要在服务器上安装，不再需要客户端的本机代码，这类驱动程序的体积最小，效率较高，具有最大的灵活性。此类驱动采用标准的网络协议，可以被防火墙支持，是开发Applet程序理想的选择(其实这些驱动是为Applet特别编写的)，是Internet应用理想的解决方案。开发者还可以利用单一的驱动程序连接到多种数据库。</li>
+<li>缺点：需要在服务器端安装中间件，这适当影响了驱动程序的效率。</li>
+<li>应用：基于Web的应用系统的开发。</li>
 </ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">startIndex  = (index-1)*3</span><br></pre></td></tr></table></figure>
 <ul>
-<li>第一个参数是索引<br>第二个参数显示的个数</li>
+<li><input disabled="" type="checkbox"> <strong>纯Java的JDBC驱动程序</strong></li>
+<li>最佳的JDBC驱动程序类型。</li>
+<li>优点：无需安装任何附加软件，不会增加任何额外开销，效率最高，拥有最佳的兼容性。</li>
+<li>缺点：可能不被防火墙支持，在Internet中会存在潜在安全隐患，成为这类驱动最大的缺陷。</li>
+<li>应用：在企业级应用软件中，是应优先考虑的。因此，一个Servlet程序，要适应不同的操作系统，最好使用此类驱动;这种驱动也非常适合Applet程序，事实证明它能安全通过TCP/IP协议连接到数据库。</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">3</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">limit</span> <span class="number">3</span>,<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p><strong>子查询</strong></p>
-<p>sql的嵌套：查询语句里面嵌套查询语句</p>
-</li>
-</ul>
+<p> <img src="https://img-blog.csdnimg.cn/20200220152318929.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/202002201540355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 ]]></content>
       <categories>
         <category>数据库</category>
       </categories>
       <tags>
-        <tag>MySql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MySql安装与卸载</title>
-    <url>/2020/02/01/MySql%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/</url>
-    <content><![CDATA[<p>MySql的卸载与安装</p>
-<a id="more"></a>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ul>
-<li>运行安装程序，在启动配置教程之前，一路下一步，没有下一步的话就直接<code>finish</code></li>
-<li>第一次<code>finish</code>之后启动服务器配置教程</li>
-<li>第一个注意：<code>include mysql bin directory to windows path</code></li>
-<li>第二个注意：端口号不要修改，字符集选择UTF-8</li>
-</ul>
-<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><ul>
-<li>打开控制面板，删除软件</li>
-<li>删除mysql安装目录的所有文件</li>
-<li>删除mysql数据存放文件，C盘下面的<code>Programe data</code>里，它是隐藏文件，要点击查看隐藏文件。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>MySql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Servlet学习笔记</title>
-    <url>/2020/02/08/Servlet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>java Web离不开Servlet，它其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </p>
-<a id="more"></a>
-<h2 id="一、Web资源介绍"><a href="#一、Web资源介绍" class="headerlink" title="一、Web资源介绍"></a>一、Web资源介绍</h2><ul>
-<li><strong>在http协议当中，规定了请求和响应双方， 客户端和服务器端。与web相关的资源。</strong></li>
-<li>有两种分类：</li>
-<li>静态资源：html 、 js、 css</li>
-<li>动态资源：servlet/jsp</li>
-</ul>
-<h2 id="二、Servlet介绍"><a href="#二、Servlet介绍" class="headerlink" title="二、Servlet介绍"></a>二、Servlet介绍</h2><ul>
-<li><strong>servlet是什么?</strong><ol>
-<li>其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </li>
-<li>更多的是配合动态资源来做。 当然静态资源也需要使用到servlet，只不过是Tomcat里面已经定义好了一个 DefaultServlet</li>
-</ol>
-</li>
-</ul>
-<h2 id="三、Selvlet简单使用Web工程"><a href="#三、Selvlet简单使用Web工程" class="headerlink" title="三、Selvlet简单使用Web工程"></a>三、Selvlet简单使用Web工程</h2><ol>
-<li><p>得写一个Web工程 ， 要有一个服务器。</p>
-</li>
-<li><p>测试运行Web工程：</p>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">得写一个Web工程 ， 要有一个服务器。</span><br><span class="line">测试运行Web工程</span><br><span class="line">	1. 新建一个类， 实现Servlet接口`public class HelloServlet implements Servlet&#123;&#125;`</span><br><span class="line"></span><br><span class="line">	2. 配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。</span><br><span class="line">		在webContent/WEB-INF/web.xml里面写上以下内容：</span><br><span class="line">		</span><br><span class="line">		  &lt;!-- 向tomcat报告， 我这个应用里面有这个servlet， 名字叫做HelloServlet , 具体的路径是com.itheima.servlet.HelloServlet --&gt;</span><br><span class="line">		  &lt;servlet&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet&lt;/servlet-class&gt;</span><br><span class="line">		  &lt;/servlet&gt;</span><br><span class="line">		  </span><br><span class="line">		  &lt;!-- 注册servlet的映射。  servletName : 找到上面注册的具体servlet，  url-pattern: 在地址栏上的path 一定要以/打头 --&gt;</span><br><span class="line">		  &lt;servlet-mapping&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;url-pattern&gt;/a&lt;/url-pattern&gt;</span><br><span class="line">		  &lt;/servlet-mapping&gt;</span><br><span class="line"></span><br><span class="line">		3. 在地址栏上输入 http://localhost:8080/项目名称/a</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20200226115856385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="四、Servlet执行过程"><a href="#四、Servlet执行过程" class="headerlink" title="四、Servlet执行过程"></a>四、Servlet执行过程</h2><p><img src="https://img-blog.csdnimg.cn/20200226120652999.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="五、Servlet的通用写法"><a href="#五、Servlet的通用写法" class="headerlink" title="五、Servlet的通用写法"></a>五、Servlet的通用写法</h2><ul>
-<li>实现Servlet接口，但接口里的方法很多，有些用不到。</li>
-</ul>
-<ol>
-<li>Servlet (接口)        </li>
-<li>GenericServlet    </li>
-<li>HttpServlet （用于处理http的请求）</li>
-</ol>
-<ul>
-<li>定义一个类，继承HttpServlet ,复写doGet 和 doPost</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200226124900942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="六、Servlet的生命周期方法"><a href="#六、Servlet的生命周期方法" class="headerlink" title="六、Servlet的生命周期方法"></a>六、Servlet的生命周期方法</h2><ul>
-<li>生命周期： 从创建到销毁的一段时间</li>
-<li>生命周期方法： 从创建到销毁，所调用的那些方法。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. init方法</span><br><span class="line">	在创建该servlet的实例时，就执行该方法。</span><br><span class="line">	一个servlet只会初始化一次， init方法只会执行一次</span><br><span class="line">	默认情况下是 ： 初次访问该servlet，才会创建实例。 </span><br><span class="line">		</span><br><span class="line">2.service方法</span><br><span class="line">	只要客户端来了一个请求，那么就执行这个方法了。</span><br><span class="line">	该方法可以被执行很多次。 一次请求，对应一次service方法的调用</span><br><span class="line">	</span><br><span class="line">3.destroy方法</span><br><span class="line">	servlet销毁的时候，就会执行该方法</span><br><span class="line">			1. 该项目从tomcat的里面移除。</span><br><span class="line">		  	2. 正常关闭tomcat就会执行 shutdown.bat</span><br><span class="line"></span><br><span class="line">4. doGet 和 doPost不算生命周期方法。</span><br><span class="line">所谓的生命周期方法是指，从对象的创建到销毁一定会执行的方法， 但是这两个方法，不一定会执行。</span><br><span class="line">```	 </span><br><span class="line"><span class="comment">## 七、让Servlet创建实例的时机提前。</span></span><br><span class="line">1. 默认情况下，只有在初次访问servlet的时候，才会执行init方法。 有的时候，我们可能需要在这个方法里面执行一些初始化工作，甚至是做一些比较耗时的逻辑。 </span><br><span class="line"></span><br><span class="line">2. 那么这个时候，初次访问，可能会在init方法中逗留太久的时间。 为了提升用户的体验，需要让这个初始化的时机提前一点。 </span><br><span class="line"></span><br><span class="line">3. 在配置的时候， 使用load-on-startup元素来指定， 给定的数字越小，启动的时机就越早。 一般不写负数， 从2开始即可。 </span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet04&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet04&lt;/servlet-class&gt;</span><br><span class="line">	&lt;load-on-startup&gt;2&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="八、ServletConfig"><a href="#八、ServletConfig" class="headerlink" title="八、ServletConfig"></a>八、ServletConfig</h2><ul>
-<li><strong>Servlet的配置，通过这个对象，可以获取servlet在配置的时候一些信息。</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1. 得到servlet配置对象 专门用于在配置servlet的信息</span></span><br><span class="line">ServletConfig config = getServletConfig();</span><br><span class="line">	</span><br><span class="line"><span class="comment">//获取到的是配置servlet里面servlet-name 的文本内容</span></span><br><span class="line">String servletName = config.getServletName();</span><br><span class="line">System.out.println(<span class="string">"servletName="</span>+servletName);</span><br><span class="line">	</span><br><span class="line"><span class="comment">//2. 可以获取具体的某一个参数。 </span></span><br><span class="line">String address = config.getInitParameter(<span class="string">"address"</span>);</span><br><span class="line">System.out.println(<span class="string">"address="</span>+address);</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.获取所有的参数名称</span></span><br><span class="line">Enumeration&lt;String&gt; names = config.getInitParameterNames();</span><br><span class="line"><span class="comment">//遍历取出所有的参数名称</span></span><br><span class="line"><span class="keyword">while</span> (names.hasMoreElements()) &#123;</span><br><span class="line">	String key = (String) names.nextElement();</span><br><span class="line">	String value = config.getInitParameter(key);</span><br><span class="line">	System.out.println(<span class="string">"key==="</span>+key + <span class="string">"   value="</span>+value);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>参数在哪里配置？在web.xml中</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;aa&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.daq.servlet.HelloServletConfig&lt;/servlet-class&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 可以添加初始化参数 --&gt;</span><br><span class="line">	&lt;init-param&gt;</span><br><span class="line">		&lt;param-name&gt;adress&lt;/param-name&gt;</span><br><span class="line">		&lt;param-value&gt;bejing&lt;/param-value&gt;</span><br><span class="line">	&lt;/init-param&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">	</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet02&lt;/servlet-name&gt;</span><br><span class="line">	&lt;url-pattern&gt;/HelloServlet02&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="九、为什么需要有ServletConfig？"><a href="#九、为什么需要有ServletConfig？" class="headerlink" title="九、为什么需要有ServletConfig？"></a>九、为什么需要有ServletConfig？</h2><ol>
-<li><p>未来我们自己开发的一些应用，使用到了一些技术，或者一些代码，我们不会。 但是有人写出来了。做成了jar包，它的代码放置在了自己的servlet类里面。 </p>
-</li>
-<li><p>刚好这个servlet 里面需要一个数字或者叫做变量值。 但是这个值不能是固定了。 所以要求使用到这个servlet的公司，在注册servlet的时候，必须要在web.xml里面，声明init-params</p>
-</li>
-<li><p>在开发当中比较少用。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>Servlet</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>TCP三次握手和四次挥手</title>
-    <url>/2020/03/15/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/</url>
-    <content><![CDATA[<p>TCP位于传输层，作用是提供可靠的字节流服务，为了准确无误地将数据送达目的地，TCP协议采纳三次握手策略来建立连接。通过四次挥手来释放连接。</p>
-<a id="more"></a>
-
-<ul>
-<li>用<code>wireshark</code>抓包分析一次连接的报文信息</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200409123355146.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>这是tcp报文的数据包格式。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200315135901175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><strong>序列号seq：</strong> 占4个字节，用来标记数据段的顺序，TCP把连接中发送的所有数据字节都编上一个序号，第一个字节的编号由本地随机产生；给字节编上序号后，就给每一个报文段指派一个序号；序列号seq就是这个报文段中的第一个字节的数据编号。</li>
-</ul>
-<ul>
-<li><strong>确认号ack：</strong> 占4个字节，期待收到对方下一个报文段的第一个数据字节的序号；序列号表示报文段携带数据的第一个字节的编号；而确认号指的是期望接收到下一个字节的编号；因此当前报文段最后一个字节的编号+1即为确认号。</li>
-</ul>
-<ul>
-<li><strong>确认ACK：</strong> 占1位，仅当ACK=1时，确认号字段才有效。ACK=0时，确认号无效</li>
-</ul>
-<ul>
-<li><strong>同步SYN：</strong> 连接建立时用于同步序号。当SYN=1，ACK=0时表示：这是一个连接请求报文段。若同意连接，则在响应报文段中使得SYN=1，ACK=1。因此，SYN=1表示这是一个连接请求，或连接接受报文。SYN这个标志位只有在TCP建产连接时才会被置1，握手完成后SYN标志位被置0。</li>
-</ul>
-<ul>
-<li><strong>终止FIN：</strong> 用来释放一个连接。FIN=1表示：此报文段的发送方的数据已经发送完毕，并要求释放运输连接</li>
-</ul>
-<ul>
-<li><strong>补充：</strong> ACK、SYN和FIN这些大写的单词表示标志位，其值要么是1，要么是0；ack、seq小写的单词表示序号。</li>
-</ul>
-<h2 id="三次握手过程与作用"><a href="#三次握手过程与作用" class="headerlink" title="三次握手过程与作用"></a>三次握手过程与作用</h2><p>刚开始客户端处于<code>CLOSE</code>的状态，服务端处于<code>LISTEN</code>状态。<br><strong>第一次握手：</strong></p>
-<ul>
-<li>建立连接时，客户端发送SYN包（同时随机生成初始序列号seq=x，并进入<code>SYN_SENT</code>状态，等待服务器确认。</li>
-<li>TCP规定，SYN报文段（SYN=1的报文段）不能携带数据，但需要消耗掉一个序号。这个三次握手中的开始。表示客户端想要和服务端建立连接。</li>
-</ul>
-<p> <strong>第二次握手：</strong></p>
-<ul>
-<li>服务器收到SYN包，发出确认报文。确认报文中应该 ACK=1，SYN=1，确认号是ack=x+1，同时也要<strong>为自己</strong>随机初始化一个序列号 seq=y，此时服务器进入<code>SYN_RECV</code>状态。</li>
-<li>这个报文也不能携带数据，但是同样要消耗一个序号。这个报文带有SYN(建立连接)和ACK(确认)标志，询问客户端是否准备好。</li>
-</ul>
-<p><strong>第三次握手：</strong></p>
-<ul>
-<li>客户进程收到确认后，还要向服务器给出确认。确认报文的ACK=1，ack=y+1，此时，TCP连接建立，客户端进入<code>ESTABLISHED</code>（已建立连接）状态。</li>
-</ul>
-<ul>
-<li>第三次的ACK报文段可以携带数据，但是如果不携带数据则不消耗序号。这里客户端表示我已经准备好。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200315113736297.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><strong>三次握手的作用</strong></p>
-<ol>
-<li>确认双方的接受能力，发送能力是否正常。</li>
-<li>指定自己的初始化序列号，为后面的可靠传送做准备。</li>
-<li>如果是Https协议的话，三次握手这个过程，还会进行数字证书的验证，以及加密秘钥的生成。</li>
-</ol>
-<h2 id="面试常见问题："><a href="#面试常见问题：" class="headerlink" title="面试常见问题："></a>面试常见问题：</h2><h3 id="①（ISN）是固定的吗？"><a href="#①（ISN）是固定的吗？" class="headerlink" title="①（ISN）是固定的吗？"></a>①（ISN）是固定的吗？</h3><ul>
-<li>三次握手的一个重要功能是客户端和服务端交换ISN(Initial Sequence Number，初始序列号), 以便让对方知道接下来接收数据的时候如何按序列号组装数据。</li>
-<li>如果ISN是固定的，攻击者很容易猜出后续的确认号，因此 ISN 是动态生成的。</li>
-</ul>
-<h3 id="②什么是半连接队列？"><a href="#②什么是半连接队列？" class="headerlink" title="②什么是半连接队列？"></a>②什么是半连接队列？</h3><ul>
-<li>服务器第一次收到客户端的 SYN 之后，就会处于 SYN_RCVD 状态，此时双方还没有完全建立其连接，服务器会把此种状态下请求连接放在一个队列里，我们把这种队列称之为半连接队列。当然还有一个全连接队列，就是已经完成三次握手，建立起连接的就会放在全连接队列中。如果队列满了就有可能会出现丢包现象。</li>
-<li>补充一点关于SYN-ACK 重传次数的问题：　服务器发送完SYN－ACK包，如果未收到客户确认包，服务器进行首次重传，等待一段时间仍未收到客户确认包，进行第二次重传，如果重传次数超 过系统规定的最大重传次数，系统将该连接信息从半连接队列中删除。注意，每次重传等待的时间不一定相同，一般会是指数增长，例如间隔时间为 1s, 2s, 4s, 8s, ….</li>
-</ul>
-<h3 id="③三次握手过程中可以携带数据吗？"><a href="#③三次握手过程中可以携带数据吗？" class="headerlink" title="③三次握手过程中可以携带数据吗？"></a>③三次握手过程中可以携带数据吗？</h3><ul>
-<li><p>很多人可能会认为三次握手都不能携带数据，其实第三次握手的时候，是可以携带数据的。也就是说，第一次、第二次握手不可以携带数据，<strong>而第三次握手是可以携带数据的</strong>。</p>
-</li>
-<li><p>假如第一次握手可以携带数据的话，如果有人要恶意攻击服务器，那他每次都在第一次握手中的 SYN 报文中放入大量的数据，因为攻击者根本就不理服务器的接收、发送能力是否正常，然后疯狂着重复发 SYN 报文的话，这会让服务器花费很多时间、内存空间来接收这些报文。也就是说，第一次握手可以放数据的话，其中一个简单的原因就是会让服务器更加容易受到攻击了。</p>
-</li>
-<li><p>而对于第三次的话，此时客户端已经处于 established 状态，也就是说，对于客户端来说，他已经建立起连接了，并且也已经知道服务器的接收、发送能力是正常的了，所以能携带数据页没啥毛病。</p>
-</li>
-</ul>
-<h3 id="④为什么要三次握手呢？有人说两次握手就好了"><a href="#④为什么要三次握手呢？有人说两次握手就好了" class="headerlink" title="④为什么要三次握手呢？有人说两次握手就好了"></a>④为什么要三次握手呢？有人说两次握手就好了</h3><ul>
-<li><p>举例：已失效的连接请求报文段。</p>
-</li>
-<li><p>客户端发送了第一个连接的请求报文，但是由于网络不好，这个请求没有立即到达服务端，而是在某个网络节点中滞留了，直到某个时间才到达server，本来这已经是一个失效的报文，但是server端接收到这个请求报文后，还是会想client发出确认的报文，表示同意连接。假如不采用三次握手，那么只要server发出确认，新的建立就连接了，但其实这个请求是失效的请求，client是不会理睬server的确认信息，也不会向服务端发送确认的请求，但是server认为新的连接已经建立起来了，并一直等待client发来数据，这样，server的很多资源就没白白浪费掉了，采用三次握手就是为了防止这种情况的发生server会因为收不到确认的报文，就知道client并没有建立连接。这就是三次握手的作用。</p>
-</li>
-</ul>
-<h2 id="四次挥手过程详解"><a href="#四次挥手过程详解" class="headerlink" title="四次挥手过程详解"></a>四次挥手过程详解</h2><p><strong>第一次挥手：</strong></p>
-<ul>
-<li>TCP发送一个FIN(结束)，用来关闭客户到服务端的连接。客户端进程发出连接释放报文，并且停止发送数据。释放数据报文首部，FIN=1，其序列号为seq=u（等于前面已经传送过来的数据的最后一个字节的序号加1），此时，客户端进入<code>FIN-WAIT-1</code>（终止等待1）状态。</li>
-<li>TCP规定，FIN报文段即使不携带数据，也要消耗一个序号。</li>
-</ul>
-<p><strong>第二次挥手</strong></p>
-<ul>
-<li>​ 服务端收到这个FIN，他发回一个<strong>ACK报文</strong> 确认收到序号为收到序号+1，和SYN一样，一个FIN将占用一个序号。​ 服务器收到连接释放报文，发出确认报文，ACK=1，ack=u+1，并且带上自己的序列号seq=v，此时，服务端就进入了<code>CLOSE-WAIT</code>（关闭等待）状态。</li>
-<li>TCP服务器通知高层的应用进程，客户端向服务器的方向就释放了，这时候处于半关闭状态，即客户端已经没有数据要发送了，但是服务器若发送数据，客户端依然要接受。这个状态还要持续一段时间，也就是整个CLOSE-WAIT状态持续的时间。客户端收到服务器的确认请求后，此时，客户端就进入<code>FIN-WAIT-2</code>（终止等待2）状态，等待服务器发送连接释放报文（在这之前还需要接受服务器发送的最后的数据）。</li>
-</ul>
-<p><strong>第三次挥手：</strong></p>
-<ul>
-<li>​ 服务端发送一个<strong>FIN(结束)</strong>到客户端，服务端关闭客户端的连接。服务器将最后的数据发送完毕后，就向客户端发送连接释放报文，FIN=1，ack=u+1，由于在半关闭状态，服务器很可能又发送了一些数据，假定此时的序列号为seq=w，此时，服务器就进入了<code>LAST-ACK</code>（最后确认）状态，等待客户端的确认。</li>
-</ul>
-<p><strong>第四次挥手：</strong></p>
-<ul>
-<li>​ 客户端发送<strong>ACK</strong> 报文确认，并将确认的序号+1，这样关闭完成。​ 客户端收到服务器的连接释放报文后，必须发出确认，ACK=1，ack=w+1，而自己的序列号是seq=u+1，此时，客户端就进入了<code>TIME-WAIT</code>（时间等待）状态。此时TCP连接还没有释放，必须经过<code>2∗∗MSL</code>（最长报文段寿命）的时间后，当客户端撤销相应的TCB后，才进入<code>CLOSED</code>状态。</li>
-<li>服务器只要收到了客户端发出的确认，立即进入CLOSED状态。同样，撤销TCB后，就结束了这次的TCP连接。可以看到，服务器结束TCP连接的时间要比客户端早一些。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200315131718947.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="面试常问："><a href="#面试常问：" class="headerlink" title="面试常问："></a>面试常问：</h2><h3 id="①为什么是4次挥手呢？"><a href="#①为什么是4次挥手呢？" class="headerlink" title="①为什么是4次挥手呢？"></a>①为什么是4次挥手呢？</h3><ul>
-<li>为了确保数据能够完成传输。关闭连接时，当收到对方的FIN报文通知时，它仅仅表示对方没有数据发送给你了；但未必你所有的数据都全部发送给对方了，所以你可以未必会马上会关闭SOCKET,也即你可能还需要发送一些数据给对方之后，再发送FIN报文给对方来表示你同意现在可以关闭连接了，所以它这里的ACK报文和FIN报文多数情况下都是分开发送的。</li>
-</ul>
-<h3 id="②tcp握手的时候为何ACK-确认-和SYN-建立连接-是一起发送。挥手的时候为什么是分开的时候发送呢？"><a href="#②tcp握手的时候为何ACK-确认-和SYN-建立连接-是一起发送。挥手的时候为什么是分开的时候发送呢？" class="headerlink" title="②tcp握手的时候为何ACK(确认)和SYN(建立连接)是一起发送。挥手的时候为什么是分开的时候发送呢？"></a>②tcp握手的时候为何ACK(确认)和SYN(建立连接)是一起发送。挥手的时候为什么是分开的时候发送呢？</h3><ul>
-<li>因为当Server端收到Client端的SYN连接请求报文后，可以直接发送SYN+ACK报文。其中ACK报文是用来应答的，SYN报文是用来同步的。但是关闭连接时，当Server端收到FIN报文时，很可能并不会立即关闭 SOCKET，所以只能先回复一个ACK报文，告诉Client端，<strong>“你发的FIN报文我收到了”</strong>。只有等到我Server端所有的报文都发送完了，我才能发送FIN报文，因此不能一起发送。故需要四步握手。</li>
-</ul>
-<h3 id="③客户端突然挂掉了怎么办？"><a href="#③客户端突然挂掉了怎么办？" class="headerlink" title="③客户端突然挂掉了怎么办？"></a>③客户端突然挂掉了怎么办？</h3><ul>
-<li>正常连接时，客户端突然挂掉了，如果没有措施处理这种情况，那么就会出现客户端和服务器端出现长时期的空闲。解决办法是在服务器端设置保活计时器，每当服务器收到客户端的消息，就将计时器复位。超时时间通常设置为2小时。若服务器超过2小时没收到客户的信息，他就发送探测报文段。若发送了10个探测报文段，每一个相隔75秒，还没有响应就认为客户端出了故障，因而终止该连接。</li>
-</ul>
-<h2 id="SYN洪水攻击"><a href="#SYN洪水攻击" class="headerlink" title="SYN洪水攻击"></a>SYN洪水攻击</h2><p><strong>背景：</strong></p>
-<ul>
-<li>初始化连接的 SYN 超时问题Client发送SYN包给Server后挂了，Server回给Client的SYN-ACK一直没收到Client的ACK确认，这个时候这个连接既没建立起来，也不能算失败。这就需要一个超时时间让Server将这个连接断开，否则这个连接就会一直占用Server的SYN连接队列中的一个位置，大量这样的连接就会将Server的SYN连接队列耗尽。</li>
-</ul>
-<p><strong>让正常的连接无法得到处理。</strong></p>
-<ul>
-<li>​ 目前，Linux下默认会进行5次重发SYN-ACK包，重试的间隔时间从1s开始，下次的重试间隔时间是前一次的双倍，5次的重试时间间隔为1s, 2s, 4s, 8s, 16s，总共31s，第5次发出后还要等32s都知道第5次也超时了，所以，总共需要 1s + 2s + 4s+ 8s+ 16s + 32s = 63s，TCP才会把断开这个连接。由于，SYN超时需要63秒，那么就给攻击者一个攻击服务器的机会，攻击者在短时间内发送大量的SYN包给Server(俗称SYN flood攻击)，用于耗尽Server的SYN队列。</li>
-</ul>
-<p><strong>什么是 SYN 攻击？</strong></p>
-<ul>
-<li>SYN 攻击指的是，攻击客户端在短时间内伪造大量不存在的IP地址，向服务器不断地发送SYN包，服务器回复确认包，并等待客户的确认。由于源地址是不存在的，服务器需要不断的重发直至超时，这些伪造的SYN包将长时间占用未连接队列，正常的SYN请求被丢弃，导致目标系统运行缓慢，严重者会引起网络堵塞甚至系统瘫痪。SYN 攻击是一种典型的 DoS攻击。</li>
-</ul>
-<p><strong>如何检测 SYN 攻击？</strong></p>
-<ul>
-<li>检测 SYN 攻击非常的方便，当你在服务器上看到大量的半连接状态时，特别是源IP地址是随机的，基本上可以断定这是一次SYN攻击。在 Linux/Unix 上可以使用系统自带的netstats 命令来检测 SYN 攻击。</li>
-</ul>
-<p><strong>如何防御 SYN 攻击？</strong></p>
-<ul>
-<li>​ SYN攻击不能完全被阻止，除非将TCP协议重新设计。我们所做的是尽可能的减轻SYN攻击的危害，常见的防御 SYN 攻击的方法有如下几种：<br>①缩短超时（SYN Timeout）<br>②时间增加最大半连接数<br>③过滤网关防护SYN<br>④cookies技术</li>
-</ul>
-]]></content>
-      <categories>
-        <category>每天一道面试题</category>
-      </categories>
-      <tags>
-        <tag>TCP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Tomcat发布项目的三种方式</title>
-    <url>/2020/02/07/Tomcat%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<p>本文介绍Tomcat发布项目到服务器上的三种方式</p>
-<a id="more"></a>
-<h2 id="一、拷贝这个文件到webapps-ROOT底下，-在浏览器里面访问。"><a href="#一、拷贝这个文件到webapps-ROOT底下，-在浏览器里面访问。" class="headerlink" title="一、拷贝这个文件到webapps/ROOT底下， 在浏览器里面访问。"></a>一、拷贝这个文件到webapps/ROOT底下， 在浏览器里面访问。</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http://localhost:8080/stu.xml</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在webaps下面新建一个文件夹xml  , 然后拷贝文件放置到这个文件夹中</li>
-<li><a href="http://localhost:8080/xml/stu.xml">http://localhost:8080/xml/stu.xml</a></li>
-<li><a href="http://localhost:8080">http://localhost:8080</a> ： 对应的是到webapps/root</li>
-<li><a href="http://localhost:8080/xml/">http://localhost:8080/xml/</a> : 对应是 webapps/xml</li>
-<li>使用IP地址访问：http://本机ip:8080/xml/stu.xml</li>
-</ul>
-<h2 id="二、配置虚拟路径"><a href="#二、配置虚拟路径" class="headerlink" title="二、配置虚拟路径"></a>二、配置虚拟路径</h2><p> 使用localhost：8080 打开tomcat首页， 找到Tomcat 8.5 Documentation,进入Reference，点击configuration ，找到左边的context，点击进入，复制此页面路径：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http://localhost:8080/docs/config/context.html</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20200225123552708.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>在conf/server.xml 找到host元素节点。加入以下内容。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200225124622947.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>在浏览器地址栏上输入： <a href="http://localhost:8080/daq/person.xml">http://localhost:8080/daq/person.xml</a></li>
-</ul>
-<h2 id="配置虚拟路径2"><a href="#配置虚拟路径2" class="headerlink" title="配置虚拟路径2"></a>配置虚拟路径2</h2><ol>
-<li><p>在<code>tomcat/conf/catalina/localhost/</code> 文件夹下新建一个xml文件，名字可以自己定义。 <code>person.xml</code></p>
-</li>
-<li><p>在这个文件里面写入以下内容</p>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">'1.0'</span> encoding=<span class="string">'utf-8'</span>?&gt;</span><br><span class="line">&lt;Context docBase=<span class="string">"F：\XML2"</span>&gt;&lt;/Context&gt;</span><br></pre></td></tr></table></figure>
-
-
-<ol start="3">
-<li>在浏览器上面访问:</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http://localhost:8080/person/xml的名字即可</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>web</tag>
-        <tag>Tomcat</tag>
+        <tag>JDBC,MySql</tag>
       </tags>
   </entry>
   <entry>
@@ -1478,23 +1156,207 @@
       </tags>
   </entry>
   <entry>
-    <title>try-catch-finally总结</title>
-    <url>/2020/03/24/try-catch-finally%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p>在日常编译运行程序出错的时候，编译器就会抛出异常，抛出异常要比终止程序灵活的多，这是因为Java提供了一个”捕获”异常的处理器对异常情况进行处理，如果没有提供处理器机制，程序就会终止，try-catch-finally可以保证程序发生错误的时候继续执行下去。下面就谈一下使用的总结，和注意事项。</p>
+    <title>MySql多表操作</title>
+    <url>/2020/02/02/MySql%E5%A4%9A%E8%A1%A8%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<p><strong>问：</strong> 分类表和商品表之间是不是有关系? 如果有关系,在数据库中如何表示这种关系？</p>
+<a id="more"></a>
+<h1 id="创建多表及多表的关系"><a href="#创建多表及多表的关系" class="headerlink" title="创建多表及多表的关系"></a>创建多表及多表的关系</h1><p> <strong>问：</strong> 分类表和商品表之间是不是有关系? 如果有关系,在数据库中如何表示这种关系？</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">category</span>(</span><br><span class="line">  cid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">  cname <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">  cdesc <span class="built_in">varchar</span>(<span class="number">31</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'手机数码'</span>,<span class="string">'电子产品,黑马生产'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'鞋靴箱包'</span>,<span class="string">'江南皮鞋厂倾情打造'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'香烟酒水'</span>,<span class="string">'黄鹤楼,茅台,二锅头'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'酸奶饼干'</span>,<span class="string">'娃哈哈,蒙牛酸酸乳'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'馋嘴零食'</span>,<span class="string">'瓜子花生,八宝粥,辣条'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">category</span>;</span><br><span class="line"><span class="keyword">select</span> cname,cdesc <span class="keyword">from</span> <span class="keyword">category</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--所有商品</span></span><br><span class="line">1.商品ID</span><br><span class="line">2.商品名称</span><br><span class="line">3.商品的价格</span><br><span class="line">4.生产日期</span><br><span class="line">5.商品分类ID</span><br><span class="line"></span><br><span class="line">商品和商品分类 : 所属关系</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> product(</span><br><span class="line">	pid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">  	pname <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">  	price <span class="keyword">double</span>,</span><br><span class="line">  	pdate <span class="built_in">timestamp</span>,</span><br><span class="line">  	cno <span class="built_in">int</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'小米mix4'</span>,<span class="number">998</span>,<span class="literal">null</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'锤子'</span>,<span class="number">2888</span>,<span class="literal">null</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'阿迪王'</span>,<span class="number">99</span>,<span class="literal">null</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'老村长'</span>,<span class="number">88</span>,<span class="literal">null</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'劲酒'</span>,<span class="number">35</span>,<span class="literal">null</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'小熊饼干'</span>,<span class="number">1</span>,<span class="literal">null</span>,<span class="number">4</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'卫龙辣条'</span>,<span class="number">1</span>,<span class="literal">null</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'旺旺大饼'</span>,<span class="number">1</span>,<span class="literal">null</span>,<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>多表之间的关系如何来维护</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">外键约束: foreign key</span><br><span class="line">	-给product中的cno 添加一个外键约束</span><br><span class="line">	 <span class="keyword">alter</span> <span class="keyword">table</span> product <span class="keyword">add</span> <span class="keyword">foreign</span> <span class="keyword">key</span>(cno)  <span class="keyword">references</span>  <span class="keyword">category</span>(cid);</span><br><span class="line">	-从分类表中,删除分类为5信息</span><br><span class="line">	<span class="keyword">delete</span> <span class="keyword">from</span> <span class="keyword">category</span> <span class="keyword">where</span> cid =<span class="number">5</span>;  //删除失败,</span><br><span class="line">	首先得去product表, 删除所有分类ID5  商品</span><br><span class="line">	<span class="keyword">delete</span> <span class="keyword">from</span> product <span class="keyword">where</span> cno=<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>建数据库原则:  <strong>通常情况下,一个项目/应用建一个数据库</strong></li>
+<li>多表之间的建表原则</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">1. 一对多 : 商品和分类</span><br><span class="line">    建表原则: 在多的一方添加一个外键,指向一的一方的主键</span><br><span class="line"></span><br><span class="line">2.多对多: 老师和学生, 学生和课程</span><br><span class="line">    建表原则: 建立一张中间表,将多对多的关系,拆分成一对多的关系,中间表至少要有两个外键,分别指向原来的那两张表。</span><br><span class="line"></span><br><span class="line">3.一对一: 班级和班长, 公民和身份证, 国家和国旗</span><br><span class="line">    建表原则:  </span><br><span class="line">      - 将一对一的情况,当作是一对多情况处理,在任意一张表添加一个外键,并且这个外键要唯一,指向另外一张表</span><br><span class="line">      - 直接将两张表合并成一张表</span><br><span class="line">      - 将两张表的主键建立起连接,让两张表里面主键相等</span><br><span class="line"></span><br><span class="line">4.实际用途: 用的不是很多.    (拆表操作  )</span><br><span class="line">	如：相亲网站: </span><br><span class="line">        - 个人信息 : 姓名,性别,年龄,身高,体重,三围,兴趣爱好,(年收入,  特长,学历, 职业, 择偶目标,要求)</span><br><span class="line">        - 拆表操作 : 将个人的常用信息和不常用信息,减少表的臃肿,</span><br></pre></td></tr></table></figure>
+<h1 id="网上商城表案例分析：用户购物流程"><a href="#网上商城表案例分析：用户购物流程" class="headerlink" title="网上商城表案例分析：用户购物流程"></a>网上商城表案例分析：用户购物流程</h1><p><img src="https://img-blog.csdnimg.cn/20200221150553826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>商品分类表(分类ID,分类名称,分类描述</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">category</span>(</span><br><span class="line">   	cid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">     	cname <span class="built_in">varchar</span>(<span class="number">15</span>),</span><br><span class="line">     	cdesc <span class="built_in">varchar</span>(<span class="number">100</span>)</span><br><span class="line">   );</span><br><span class="line"></span><br><span class="line">   <span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'手机数码'</span>,<span class="string">'电子产品,黑马生产'</span>);</span><br><span class="line">   <span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'鞋靴箱包'</span>,<span class="string">'江南皮鞋厂倾情打造'</span>);</span><br><span class="line">   <span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'香烟酒水'</span>,<span class="string">'黄鹤楼,茅台,二锅头'</span>);</span><br><span class="line">   <span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'酸奶饼干'</span>,<span class="string">'娃哈哈,蒙牛酸酸乳'</span>);</span><br><span class="line">   <span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'馋嘴零食'</span>,<span class="string">'瓜子花生,八宝粥,辣条'</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>商品表 (商品ID, 商品名称,商品价格,外键cno)</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> product(</span><br><span class="line">    	pid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">      	pname <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">      	price <span class="keyword">double</span>,</span><br><span class="line">      	cno <span class="built_in">int</span>,</span><br><span class="line">      	<span class="keyword">foreign</span> <span class="keyword">key</span>(cno) <span class="keyword">references</span> <span class="keyword">category</span>(cid)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'小米mix4'</span>,<span class="number">998</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'锤子'</span>,<span class="number">2888</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'阿迪王'</span>,<span class="number">99</span>,<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'老村长'</span>,<span class="number">88</span>,<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'劲酒'</span>,<span class="number">35</span>,<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'小熊饼干'</span>,<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'卫龙辣条'</span>,<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'旺旺大饼'</span>,<span class="number">1</span>,<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>用户表</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">user</span>(</span><br><span class="line">  	uid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">    	username <span class="built_in">varchar</span>(<span class="number">31</span>),</span><br><span class="line">    	<span class="keyword">password</span> <span class="built_in">varchar</span>(<span class="number">31</span>),</span><br><span class="line">    	phone  <span class="built_in">varchar</span>(<span class="number">11</span>)</span><br><span class="line">  );</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span> <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'zhangsan'</span>,<span class="string">'123'</span>,<span class="string">'13811118888'</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>订单表 (订单编号,总价,订单时间 ,地址,外键用户的ID)</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> orders(</span><br><span class="line">    	<span class="keyword">oid</span> <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">      	<span class="keyword">sum</span> <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">        otime <span class="built_in">timestamp</span>,</span><br><span class="line">      	address <span class="built_in">varchar</span>(<span class="number">100</span>),</span><br><span class="line">      	uno <span class="built_in">int</span>,</span><br><span class="line">      	<span class="keyword">foreign</span> <span class="keyword">key</span>(uno) <span class="keyword">references</span> <span class="keyword">user</span>(uid)</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> orders <span class="keyword">values</span>(<span class="number">1</span>,<span class="number">200</span>,<span class="literal">null</span>,<span class="string">'学校'</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">insert</span> <span class="keyword">into</span> orders <span class="keyword">values</span>(<span class="number">2</span>,<span class="number">250</span>,<span class="literal">null</span>,<span class="string">'家里'</span>,<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>订单项: 中间表(订单ID,商品ID,商品数量,订单项总价)</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> orderitem(</span><br><span class="line"> 	ono <span class="built_in">int</span>,</span><br><span class="line">   	pno <span class="built_in">int</span>,</span><br><span class="line">   	<span class="keyword">foreign</span> <span class="keyword">key</span>(ono) <span class="keyword">references</span> orders(<span class="keyword">oid</span>),</span><br><span class="line">   	<span class="keyword">foreign</span> <span class="keyword">key</span>(pno) <span class="keyword">references</span> product(pid),</span><br><span class="line">   	ocount <span class="built_in">int</span>,</span><br><span class="line">   	subsum <span class="keyword">double</span></span><br><span class="line"> );</span><br><span class="line"> <span class="comment">--给1号订单添加商品 200块钱的商品</span></span><br><span class="line"> <span class="keyword">insert</span> <span class="keyword">into</span> orderitem <span class="keyword">values</span>(<span class="number">1</span>,<span class="number">7</span>,<span class="number">100</span>,<span class="number">100</span>);</span><br><span class="line"> <span class="keyword">insert</span> <span class="keyword">into</span> orderitem <span class="keyword">values</span>(<span class="number">1</span>,<span class="number">8</span>,<span class="number">101</span>,<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line"> <span class="comment">--给2号订单添加商品 250块钱的商品 ()</span></span><br><span class="line"> <span class="keyword">insert</span> <span class="keyword">into</span> orderitem <span class="keyword">values</span>(<span class="number">2</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">35</span>);</span><br><span class="line"> <span class="keyword">insert</span> <span class="keyword">into</span> orderitem <span class="keyword">values</span>(<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">99</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>内连接查询</strong></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">-隐式内连接</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product p,<span class="keyword">category</span> c <span class="keyword">where</span> p.cno=c.cid;</span><br><span class="line">-显式内连接</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product p <span class="keyword">inner</span> <span class="keyword">join</span> <span class="keyword">category</span> c <span class="keyword">on</span> p.cno=c.cid;</span><br><span class="line">-区别：</span><br><span class="line">	隐式内连接：在查询出结果的基础上去做where 条件过滤</span><br><span class="line">	显式内连接：带着条件去查询结果，执行效率高。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>连接查询</strong><br>左外连接：会将左表中的所有数据都查询出来，如果右表中没有对应的数据，用NULL代替。<br>右外连接：会将右表中的所有数据查询出来如果左表没有对应数据的话<img src="https://img-blog.csdnimg.cn/20200221170140826.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li><strong>分页查询</strong><br>每页数据数据3，起始索引从0 ，第1页: 0，第2页: 3。<br>起始索引:  index 代表显示第几页 页数从1开始，每页显示3条数据</li>
+</ul>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">startIndex  = (index-1)*3</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第一个参数是索引<br>第二个参数显示的个数</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">3</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">limit</span> <span class="number">3</span>,<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>子查询</strong></p>
+<p>sql的嵌套：查询语句里面嵌套查询语句</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>MySql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TCP三次握手和四次挥手</title>
+    <url>/2020/03/15/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/</url>
+    <content><![CDATA[<p>TCP位于传输层，作用是提供可靠的字节流服务，为了准确无误地将数据送达目的地，TCP协议采纳三次握手策略来建立连接。通过四次挥手来释放连接。</p>
 <a id="more"></a>
 
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>try，catch，finally语句中，如果try语句有return语句，此后做任何修改，都不影响try中return的返回值。</li>
-<li>如果finally块中有return语句，则try或catch中中的返回语句忽略。</li>
-<li>如果finally块中抛出异常，则整个try，catch，finally块中抛出异常。</li>
+<ul>
+<li>用<code>wireshark</code>抓包分析一次连接的报文信息</li>
 </ul>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
-<li>在使用try- catch-finally的时候，要注意以下问题：<br>①尽量在try或者catch中使用return语句。通过finally块中达到对try或者catch返回值修改是不可行的。<br>②finally块中避免使用return语句，因为finally块中如果使用return语句，会显式的消化掉try，catch块中的异常信息，屏蔽错误的发生。<br>③finally块中避免再次抛出异常，否则整个包含try语句块的方法会抛出异常，并且会消化掉try，catch块中的异常。</li>
+<p><img src="https://img-blog.csdnimg.cn/20200409123355146.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>这是tcp报文的数据包格式。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200315135901175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>序列号seq：</strong> 占4个字节，用来标记数据段的顺序，TCP把连接中发送的所有数据字节都编上一个序号，第一个字节的编号由本地随机产生；给字节编上序号后，就给每一个报文段指派一个序号；序列号seq就是这个报文段中的第一个字节的数据编号。</li>
+</ul>
+<ul>
+<li><strong>确认号ack：</strong> 占4个字节，期待收到对方下一个报文段的第一个数据字节的序号；序列号表示报文段携带数据的第一个字节的编号；而确认号指的是期望接收到下一个字节的编号；因此当前报文段最后一个字节的编号+1即为确认号。</li>
+</ul>
+<ul>
+<li><strong>确认ACK：</strong> 占1位，仅当ACK=1时，确认号字段才有效。ACK=0时，确认号无效</li>
+</ul>
+<ul>
+<li><strong>同步SYN：</strong> 连接建立时用于同步序号。当SYN=1，ACK=0时表示：这是一个连接请求报文段。若同意连接，则在响应报文段中使得SYN=1，ACK=1。因此，SYN=1表示这是一个连接请求，或连接接受报文。SYN这个标志位只有在TCP建产连接时才会被置1，握手完成后SYN标志位被置0。</li>
+</ul>
+<ul>
+<li><strong>终止FIN：</strong> 用来释放一个连接。FIN=1表示：此报文段的发送方的数据已经发送完毕，并要求释放运输连接</li>
+</ul>
+<ul>
+<li><strong>补充：</strong> ACK、SYN和FIN这些大写的单词表示标志位，其值要么是1，要么是0；ack、seq小写的单词表示序号。</li>
+</ul>
+<h2 id="三次握手过程与作用"><a href="#三次握手过程与作用" class="headerlink" title="三次握手过程与作用"></a>三次握手过程与作用</h2><p>刚开始客户端处于<code>CLOSE</code>的状态，服务端处于<code>LISTEN</code>状态。<br><strong>第一次握手：</strong></p>
+<ul>
+<li>建立连接时，客户端发送SYN包（同时随机生成初始序列号seq=x，并进入<code>SYN_SENT</code>状态，等待服务器确认。</li>
+<li>TCP规定，SYN报文段（SYN=1的报文段）不能携带数据，但需要消耗掉一个序号。这个三次握手中的开始。表示客户端想要和服务端建立连接。</li>
+</ul>
+<p> <strong>第二次握手：</strong></p>
+<ul>
+<li>服务器收到SYN包，发出确认报文。确认报文中应该 ACK=1，SYN=1，确认号是ack=x+1，同时也要<strong>为自己</strong>随机初始化一个序列号 seq=y，此时服务器进入<code>SYN_RECV</code>状态。</li>
+<li>这个报文也不能携带数据，但是同样要消耗一个序号。这个报文带有SYN(建立连接)和ACK(确认)标志，询问客户端是否准备好。</li>
+</ul>
+<p><strong>第三次握手：</strong></p>
+<ul>
+<li>客户进程收到确认后，还要向服务器给出确认。确认报文的ACK=1，ack=y+1，此时，TCP连接建立，客户端进入<code>ESTABLISHED</code>（已建立连接）状态。</li>
+</ul>
+<ul>
+<li>第三次的ACK报文段可以携带数据，但是如果不携带数据则不消耗序号。这里客户端表示我已经准备好。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200315113736297.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>三次握手的作用</strong></p>
+<ol>
+<li>确认双方的接受能力，发送能力是否正常。</li>
+<li>指定自己的初始化序列号，为后面的可靠传送做准备。</li>
+<li>如果是Https协议的话，三次握手这个过程，还会进行数字证书的验证，以及加密秘钥的生成。</li>
+</ol>
+<h2 id="面试常见问题："><a href="#面试常见问题：" class="headerlink" title="面试常见问题："></a>面试常见问题：</h2><h3 id="①（ISN）是固定的吗？"><a href="#①（ISN）是固定的吗？" class="headerlink" title="①（ISN）是固定的吗？"></a>①（ISN）是固定的吗？</h3><ul>
+<li>三次握手的一个重要功能是客户端和服务端交换ISN(Initial Sequence Number，初始序列号), 以便让对方知道接下来接收数据的时候如何按序列号组装数据。</li>
+<li>如果ISN是固定的，攻击者很容易猜出后续的确认号，因此 ISN 是动态生成的。</li>
+</ul>
+<h3 id="②什么是半连接队列？"><a href="#②什么是半连接队列？" class="headerlink" title="②什么是半连接队列？"></a>②什么是半连接队列？</h3><ul>
+<li>服务器第一次收到客户端的 SYN 之后，就会处于 SYN_RCVD 状态，此时双方还没有完全建立其连接，服务器会把此种状态下请求连接放在一个队列里，我们把这种队列称之为半连接队列。当然还有一个全连接队列，就是已经完成三次握手，建立起连接的就会放在全连接队列中。如果队列满了就有可能会出现丢包现象。</li>
+<li>补充一点关于SYN-ACK 重传次数的问题：　服务器发送完SYN－ACK包，如果未收到客户确认包，服务器进行首次重传，等待一段时间仍未收到客户确认包，进行第二次重传，如果重传次数超 过系统规定的最大重传次数，系统将该连接信息从半连接队列中删除。注意，每次重传等待的时间不一定相同，一般会是指数增长，例如间隔时间为 1s, 2s, 4s, 8s, ….</li>
+</ul>
+<h3 id="③三次握手过程中可以携带数据吗？"><a href="#③三次握手过程中可以携带数据吗？" class="headerlink" title="③三次握手过程中可以携带数据吗？"></a>③三次握手过程中可以携带数据吗？</h3><ul>
+<li><p>很多人可能会认为三次握手都不能携带数据，其实第三次握手的时候，是可以携带数据的。也就是说，第一次、第二次握手不可以携带数据，<strong>而第三次握手是可以携带数据的</strong>。</p>
+</li>
+<li><p>假如第一次握手可以携带数据的话，如果有人要恶意攻击服务器，那他每次都在第一次握手中的 SYN 报文中放入大量的数据，因为攻击者根本就不理服务器的接收、发送能力是否正常，然后疯狂着重复发 SYN 报文的话，这会让服务器花费很多时间、内存空间来接收这些报文。也就是说，第一次握手可以放数据的话，其中一个简单的原因就是会让服务器更加容易受到攻击了。</p>
+</li>
+<li><p>而对于第三次的话，此时客户端已经处于 established 状态，也就是说，对于客户端来说，他已经建立起连接了，并且也已经知道服务器的接收、发送能力是正常的了，所以能携带数据页没啥毛病。</p>
+</li>
+</ul>
+<h3 id="④为什么要三次握手呢？有人说两次握手就好了"><a href="#④为什么要三次握手呢？有人说两次握手就好了" class="headerlink" title="④为什么要三次握手呢？有人说两次握手就好了"></a>④为什么要三次握手呢？有人说两次握手就好了</h3><ul>
+<li><p>举例：已失效的连接请求报文段。</p>
+</li>
+<li><p>客户端发送了第一个连接的请求报文，但是由于网络不好，这个请求没有立即到达服务端，而是在某个网络节点中滞留了，直到某个时间才到达server，本来这已经是一个失效的报文，但是server端接收到这个请求报文后，还是会想client发出确认的报文，表示同意连接。假如不采用三次握手，那么只要server发出确认，新的建立就连接了，但其实这个请求是失效的请求，client是不会理睬server的确认信息，也不会向服务端发送确认的请求，但是server认为新的连接已经建立起来了，并一直等待client发来数据，这样，server的很多资源就没白白浪费掉了，采用三次握手就是为了防止这种情况的发生server会因为收不到确认的报文，就知道client并没有建立连接。这就是三次握手的作用。</p>
+</li>
+</ul>
+<h2 id="四次挥手过程详解"><a href="#四次挥手过程详解" class="headerlink" title="四次挥手过程详解"></a>四次挥手过程详解</h2><p><strong>第一次挥手：</strong></p>
+<ul>
+<li>TCP发送一个FIN(结束)，用来关闭客户到服务端的连接。客户端进程发出连接释放报文，并且停止发送数据。释放数据报文首部，FIN=1，其序列号为seq=u（等于前面已经传送过来的数据的最后一个字节的序号加1），此时，客户端进入<code>FIN-WAIT-1</code>（终止等待1）状态。</li>
+<li>TCP规定，FIN报文段即使不携带数据，也要消耗一个序号。</li>
+</ul>
+<p><strong>第二次挥手</strong></p>
+<ul>
+<li>​ 服务端收到这个FIN，他发回一个<strong>ACK报文</strong> 确认收到序号为收到序号+1，和SYN一样，一个FIN将占用一个序号。​ 服务器收到连接释放报文，发出确认报文，ACK=1，ack=u+1，并且带上自己的序列号seq=v，此时，服务端就进入了<code>CLOSE-WAIT</code>（关闭等待）状态。</li>
+<li>TCP服务器通知高层的应用进程，客户端向服务器的方向就释放了，这时候处于半关闭状态，即客户端已经没有数据要发送了，但是服务器若发送数据，客户端依然要接受。这个状态还要持续一段时间，也就是整个CLOSE-WAIT状态持续的时间。客户端收到服务器的确认请求后，此时，客户端就进入<code>FIN-WAIT-2</code>（终止等待2）状态，等待服务器发送连接释放报文（在这之前还需要接受服务器发送的最后的数据）。</li>
+</ul>
+<p><strong>第三次挥手：</strong></p>
+<ul>
+<li>​ 服务端发送一个<strong>FIN(结束)</strong>到客户端，服务端关闭客户端的连接。服务器将最后的数据发送完毕后，就向客户端发送连接释放报文，FIN=1，ack=u+1，由于在半关闭状态，服务器很可能又发送了一些数据，假定此时的序列号为seq=w，此时，服务器就进入了<code>LAST-ACK</code>（最后确认）状态，等待客户端的确认。</li>
+</ul>
+<p><strong>第四次挥手：</strong></p>
+<ul>
+<li>​ 客户端发送<strong>ACK</strong> 报文确认，并将确认的序号+1，这样关闭完成。​ 客户端收到服务器的连接释放报文后，必须发出确认，ACK=1，ack=w+1，而自己的序列号是seq=u+1，此时，客户端就进入了<code>TIME-WAIT</code>（时间等待）状态。此时TCP连接还没有释放，必须经过<code>2∗∗MSL</code>（最长报文段寿命）的时间后，当客户端撤销相应的TCB后，才进入<code>CLOSED</code>状态。</li>
+<li>服务器只要收到了客户端发出的确认，立即进入CLOSED状态。同样，撤销TCB后，就结束了这次的TCP连接。可以看到，服务器结束TCP连接的时间要比客户端早一些。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200315131718947.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="面试常问："><a href="#面试常问：" class="headerlink" title="面试常问："></a>面试常问：</h2><h3 id="①为什么是4次挥手呢？"><a href="#①为什么是4次挥手呢？" class="headerlink" title="①为什么是4次挥手呢？"></a>①为什么是4次挥手呢？</h3><ul>
+<li>为了确保数据能够完成传输。关闭连接时，当收到对方的FIN报文通知时，它仅仅表示对方没有数据发送给你了；但未必你所有的数据都全部发送给对方了，所以你可以未必会马上会关闭SOCKET,也即你可能还需要发送一些数据给对方之后，再发送FIN报文给对方来表示你同意现在可以关闭连接了，所以它这里的ACK报文和FIN报文多数情况下都是分开发送的。</li>
+</ul>
+<h3 id="②tcp握手的时候为何ACK-确认-和SYN-建立连接-是一起发送。挥手的时候为什么是分开的时候发送呢？"><a href="#②tcp握手的时候为何ACK-确认-和SYN-建立连接-是一起发送。挥手的时候为什么是分开的时候发送呢？" class="headerlink" title="②tcp握手的时候为何ACK(确认)和SYN(建立连接)是一起发送。挥手的时候为什么是分开的时候发送呢？"></a>②tcp握手的时候为何ACK(确认)和SYN(建立连接)是一起发送。挥手的时候为什么是分开的时候发送呢？</h3><ul>
+<li>因为当Server端收到Client端的SYN连接请求报文后，可以直接发送SYN+ACK报文。其中ACK报文是用来应答的，SYN报文是用来同步的。但是关闭连接时，当Server端收到FIN报文时，很可能并不会立即关闭 SOCKET，所以只能先回复一个ACK报文，告诉Client端，<strong>“你发的FIN报文我收到了”</strong>。只有等到我Server端所有的报文都发送完了，我才能发送FIN报文，因此不能一起发送。故需要四步握手。</li>
+</ul>
+<h3 id="③客户端突然挂掉了怎么办？"><a href="#③客户端突然挂掉了怎么办？" class="headerlink" title="③客户端突然挂掉了怎么办？"></a>③客户端突然挂掉了怎么办？</h3><ul>
+<li>正常连接时，客户端突然挂掉了，如果没有措施处理这种情况，那么就会出现客户端和服务器端出现长时期的空闲。解决办法是在服务器端设置保活计时器，每当服务器收到客户端的消息，就将计时器复位。超时时间通常设置为2小时。若服务器超过2小时没收到客户的信息，他就发送探测报文段。若发送了10个探测报文段，每一个相隔75秒，还没有响应就认为客户端出了故障，因而终止该连接。</li>
+</ul>
+<h2 id="SYN洪水攻击"><a href="#SYN洪水攻击" class="headerlink" title="SYN洪水攻击"></a>SYN洪水攻击</h2><p><strong>背景：</strong></p>
+<ul>
+<li>初始化连接的 SYN 超时问题Client发送SYN包给Server后挂了，Server回给Client的SYN-ACK一直没收到Client的ACK确认，这个时候这个连接既没建立起来，也不能算失败。这就需要一个超时时间让Server将这个连接断开，否则这个连接就会一直占用Server的SYN连接队列中的一个位置，大量这样的连接就会将Server的SYN连接队列耗尽。</li>
+</ul>
+<p><strong>让正常的连接无法得到处理。</strong></p>
+<ul>
+<li>​ 目前，Linux下默认会进行5次重发SYN-ACK包，重试的间隔时间从1s开始，下次的重试间隔时间是前一次的双倍，5次的重试时间间隔为1s, 2s, 4s, 8s, 16s，总共31s，第5次发出后还要等32s都知道第5次也超时了，所以，总共需要 1s + 2s + 4s+ 8s+ 16s + 32s = 63s，TCP才会把断开这个连接。由于，SYN超时需要63秒，那么就给攻击者一个攻击服务器的机会，攻击者在短时间内发送大量的SYN包给Server(俗称SYN flood攻击)，用于耗尽Server的SYN队列。</li>
+</ul>
+<p><strong>什么是 SYN 攻击？</strong></p>
+<ul>
+<li>SYN 攻击指的是，攻击客户端在短时间内伪造大量不存在的IP地址，向服务器不断地发送SYN包，服务器回复确认包，并等待客户的确认。由于源地址是不存在的，服务器需要不断的重发直至超时，这些伪造的SYN包将长时间占用未连接队列，正常的SYN请求被丢弃，导致目标系统运行缓慢，严重者会引起网络堵塞甚至系统瘫痪。SYN 攻击是一种典型的 DoS攻击。</li>
+</ul>
+<p><strong>如何检测 SYN 攻击？</strong></p>
+<ul>
+<li>检测 SYN 攻击非常的方便，当你在服务器上看到大量的半连接状态时，特别是源IP地址是随机的，基本上可以断定这是一次SYN攻击。在 Linux/Unix 上可以使用系统自带的netstats 命令来检测 SYN 攻击。</li>
+</ul>
+<p><strong>如何防御 SYN 攻击？</strong></p>
+<ul>
+<li>​ SYN攻击不能完全被阻止，除非将TCP协议重新设计。我们所做的是尽可能的减轻SYN攻击的危害，常见的防御 SYN 攻击的方法有如下几种：<br>①缩短超时（SYN Timeout）<br>②时间增加最大半连接数<br>③过滤网关防护SYN<br>④cookies技术</li>
 </ul>
 ]]></content>
       <categories>
         <category>每天一道面试题</category>
       </categories>
+      <tags>
+        <tag>TCP</tag>
+      </tags>
   </entry>
   <entry>
     <title>建站系列之---美化网站</title>
@@ -1669,22 +1531,74 @@
       </tags>
   </entry>
   <entry>
-    <title>区块链技术的应用领域</title>
-    <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%8A%80%E6%9C%AF%E7%9A%84%E5%BA%94%E7%94%A8%E9%A2%86%E5%9F%9F/</url>
-    <content><![CDATA[<p>-</p>
+    <title>Servlet学习笔记</title>
+    <url>/2020/02/08/Servlet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>java Web离不开Servlet，它其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </p>
 <a id="more"></a>
-<h2 id="金融领域"><a href="#金融领域" class="headerlink" title="金融领域"></a>金融领域</h2><p>区块链在<strong>国际汇兑</strong>、<strong>信用证</strong>、<strong>股权登记</strong>和<strong>证券交易所</strong>等金融领域有着潜在的巨大应用价值。将区块链技术应用在金融行业中，能够省去第三方中介环节，实现<strong>点对点</strong>的直接对接，从而在大大降低成本的同时，快速完成交易支付。<br>比如Visa推出基于区块链技术的 Visa B2B Connect，它能为机构提供一种费用更低、更快速和安全的跨境支付方式来处理全球范围的企业对企业的交易。要知道传统的跨境支付需要等3-5天，并为此支付1-3%的交易费用。Visa 还联合 Coinbase 推出了首张比特币借记卡，<strong>花旗银行</strong>则在区块链上测试运行加密货币“<strong>花旗币</strong>”。</p>
-<h2 id="物联网和物流领域"><a href="#物联网和物流领域" class="headerlink" title="物联网和物流领域"></a>物联网和物流领域</h2><p>区块链在物联网和物流领域也可以天然结合。通过区块链可以降低物流成本，追溯物品的生产和运送过程，并且提高供应链管理的效率。该领域被认为是区块链一个很有前景的应用方向。<br>区块链通过结点连接的散状网络分层结构，能够在整个网络中实现信息的全面传递，并能够检验信息的准确程度。这种特性一 定程度上提高了物联网交易的便利性和智能化。<strong>区块链</strong>+<strong>大数据</strong>的解决方案就利用了大数据的自动筛选过滤模式，在区块链中建立信用资源，可双重提高交易的安全性，并提高物联网交易便利程度。为智能物流模式应用节约时间成本。区块链结点具有十分自由的进出能力，可独立的参与或离开区块链体系，不对整个区块链体系有任何干扰。区块链 +大数据解决方案就利用了大数据的整合能力，促使物联网基础用户拓展更具有方向性，便于在智能物流的分散用户之间实现用户拓展。</p>
-<h2 id="公共服务领域"><a href="#公共服务领域" class="headerlink" title="公共服务领域"></a>公共服务领域</h2><p>区块链在公共管理、能源、交通等领域都与民众的生产生活息息相关，但是这些领域的中心化特质也带来了一些问题，可以用区块链来改造。区块链提供的去中心化的完全分布式DNS服务通过网络中各个节点之间的点对点数据传输服务就能实现域名的查询和解析，可用于确保某个重要的基础设施的操作系统和固件没有被篡改，可以监控软件的状态和完整性，发现不良的篡改，并确保使用了物联网技术的系统所传输的数据没用经过篡改。</p>
-<h2 id="数字版权领域"><a href="#数字版权领域" class="headerlink" title="数字版权领域"></a>数字版权领域</h2><p>通过区块链技术，可以对作品进行鉴权，证明文字、视频、音频等作品的存在，保证权属的真实、唯一性。作品在区块链上被确权后，后续交易都会进行实时记录，实现数字版权全生命周期管理，也可作为司法取证中的技术性保障。例如，美国纽约一家创业公司Mine Labs开发了一个基于区块链的元数据协议，这个名为Mediachain的系统利用IPFS文件系统，实现数字作品版权保护，主要是面向数字图片的版权保护应用。</p>
-<h2 id="保险领域"><a href="#保险领域" class="headerlink" title="保险领域"></a>保险领域</h2><p>在保险理赔方面，保险机构负责资金归集、投资、理赔，往往管理和运营成本较高。通过智能合约的应用，既无需投保人申请，也无需保险公司批准，只要触发理赔条件，实现保单自动理赔。一个典型的应用案例就是LenderBot, 是 2016 年由区块链企业 Stratumn、德勤与支付服务商 Lemonway 合作推出，它允许人们通过 Facebook Messenger 的聊天功能，注册定制化的微保险产品， 为个人之间交换的高价值物品进行投保，而区块链在贷款合同中代替了第三方角色 。</p>
-<h2 id="公益领域"><a href="#公益领域" class="headerlink" title="公益领域"></a>公益领域</h2><p>区块链上存储的数据，高可靠且不可篡改，天然适合用在社会公益场景。公益流程中的相关信息，如捐赠项目、募集明细、资金流向、受助人反馈等，均可以存放于区块链上，并且有条件地进行透明公开公示，方便社会监督。</p>
+<h2 id="一、Web资源介绍"><a href="#一、Web资源介绍" class="headerlink" title="一、Web资源介绍"></a>一、Web资源介绍</h2><ul>
+<li><strong>在http协议当中，规定了请求和响应双方， 客户端和服务器端。与web相关的资源。</strong></li>
+<li>有两种分类：</li>
+<li>静态资源：html 、 js、 css</li>
+<li>动态资源：servlet/jsp</li>
+</ul>
+<h2 id="二、Servlet介绍"><a href="#二、Servlet介绍" class="headerlink" title="二、Servlet介绍"></a>二、Servlet介绍</h2><ul>
+<li><strong>servlet是什么?</strong><ol>
+<li>其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </li>
+<li>更多的是配合动态资源来做。 当然静态资源也需要使用到servlet，只不过是Tomcat里面已经定义好了一个 DefaultServlet</li>
+</ol>
+</li>
+</ul>
+<h2 id="三、Selvlet简单使用Web工程"><a href="#三、Selvlet简单使用Web工程" class="headerlink" title="三、Selvlet简单使用Web工程"></a>三、Selvlet简单使用Web工程</h2><ol>
+<li><p>得写一个Web工程 ， 要有一个服务器。</p>
+</li>
+<li><p>测试运行Web工程：</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">得写一个Web工程 ， 要有一个服务器。</span><br><span class="line">测试运行Web工程</span><br><span class="line">	1. 新建一个类， 实现Servlet接口`public class HelloServlet implements Servlet&#123;&#125;`</span><br><span class="line"></span><br><span class="line">	2. 配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。</span><br><span class="line">		在webContent/WEB-INF/web.xml里面写上以下内容：</span><br><span class="line">		</span><br><span class="line">		  &lt;!-- 向tomcat报告， 我这个应用里面有这个servlet， 名字叫做HelloServlet , 具体的路径是com.itheima.servlet.HelloServlet --&gt;</span><br><span class="line">		  &lt;servlet&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet&lt;/servlet-class&gt;</span><br><span class="line">		  &lt;/servlet&gt;</span><br><span class="line">		  </span><br><span class="line">		  &lt;!-- 注册servlet的映射。  servletName : 找到上面注册的具体servlet，  url-pattern: 在地址栏上的path 一定要以/打头 --&gt;</span><br><span class="line">		  &lt;servlet-mapping&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;url-pattern&gt;/a&lt;/url-pattern&gt;</span><br><span class="line">		  &lt;/servlet-mapping&gt;</span><br><span class="line"></span><br><span class="line">		3. 在地址栏上输入 http://localhost:8080/项目名称/a</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20200226115856385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="四、Servlet执行过程"><a href="#四、Servlet执行过程" class="headerlink" title="四、Servlet执行过程"></a>四、Servlet执行过程</h2><p><img src="https://img-blog.csdnimg.cn/20200226120652999.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="五、Servlet的通用写法"><a href="#五、Servlet的通用写法" class="headerlink" title="五、Servlet的通用写法"></a>五、Servlet的通用写法</h2><ul>
+<li>实现Servlet接口，但接口里的方法很多，有些用不到。</li>
+</ul>
+<ol>
+<li>Servlet (接口)        </li>
+<li>GenericServlet    </li>
+<li>HttpServlet （用于处理http的请求）</li>
+</ol>
+<ul>
+<li>定义一个类，继承HttpServlet ,复写doGet 和 doPost</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200226124900942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="六、Servlet的生命周期方法"><a href="#六、Servlet的生命周期方法" class="headerlink" title="六、Servlet的生命周期方法"></a>六、Servlet的生命周期方法</h2><ul>
+<li>生命周期： 从创建到销毁的一段时间</li>
+<li>生命周期方法： 从创建到销毁，所调用的那些方法。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. init方法</span><br><span class="line">	在创建该servlet的实例时，就执行该方法。</span><br><span class="line">	一个servlet只会初始化一次， init方法只会执行一次</span><br><span class="line">	默认情况下是 ： 初次访问该servlet，才会创建实例。 </span><br><span class="line">		</span><br><span class="line">2.service方法</span><br><span class="line">	只要客户端来了一个请求，那么就执行这个方法了。</span><br><span class="line">	该方法可以被执行很多次。 一次请求，对应一次service方法的调用</span><br><span class="line">	</span><br><span class="line">3.destroy方法</span><br><span class="line">	servlet销毁的时候，就会执行该方法</span><br><span class="line">			1. 该项目从tomcat的里面移除。</span><br><span class="line">		  	2. 正常关闭tomcat就会执行 shutdown.bat</span><br><span class="line"></span><br><span class="line">4. doGet 和 doPost不算生命周期方法。</span><br><span class="line">所谓的生命周期方法是指，从对象的创建到销毁一定会执行的方法， 但是这两个方法，不一定会执行。</span><br><span class="line">```	 </span><br><span class="line"><span class="comment">## 七、让Servlet创建实例的时机提前。</span></span><br><span class="line">1. 默认情况下，只有在初次访问servlet的时候，才会执行init方法。 有的时候，我们可能需要在这个方法里面执行一些初始化工作，甚至是做一些比较耗时的逻辑。 </span><br><span class="line"></span><br><span class="line">2. 那么这个时候，初次访问，可能会在init方法中逗留太久的时间。 为了提升用户的体验，需要让这个初始化的时机提前一点。 </span><br><span class="line"></span><br><span class="line">3. 在配置的时候， 使用load-on-startup元素来指定， 给定的数字越小，启动的时机就越早。 一般不写负数， 从2开始即可。 </span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet04&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet04&lt;/servlet-class&gt;</span><br><span class="line">	&lt;load-on-startup&gt;2&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="八、ServletConfig"><a href="#八、ServletConfig" class="headerlink" title="八、ServletConfig"></a>八、ServletConfig</h2><ul>
+<li><strong>Servlet的配置，通过这个对象，可以获取servlet在配置的时候一些信息。</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1. 得到servlet配置对象 专门用于在配置servlet的信息</span></span><br><span class="line">ServletConfig config = getServletConfig();</span><br><span class="line">	</span><br><span class="line"><span class="comment">//获取到的是配置servlet里面servlet-name 的文本内容</span></span><br><span class="line">String servletName = config.getServletName();</span><br><span class="line">System.out.println(<span class="string">"servletName="</span>+servletName);</span><br><span class="line">	</span><br><span class="line"><span class="comment">//2. 可以获取具体的某一个参数。 </span></span><br><span class="line">String address = config.getInitParameter(<span class="string">"address"</span>);</span><br><span class="line">System.out.println(<span class="string">"address="</span>+address);</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.获取所有的参数名称</span></span><br><span class="line">Enumeration&lt;String&gt; names = config.getInitParameterNames();</span><br><span class="line"><span class="comment">//遍历取出所有的参数名称</span></span><br><span class="line"><span class="keyword">while</span> (names.hasMoreElements()) &#123;</span><br><span class="line">	String key = (String) names.nextElement();</span><br><span class="line">	String value = config.getInitParameter(key);</span><br><span class="line">	System.out.println(<span class="string">"key==="</span>+key + <span class="string">"   value="</span>+value);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>参数在哪里配置？在web.xml中</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;aa&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.daq.servlet.HelloServletConfig&lt;/servlet-class&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 可以添加初始化参数 --&gt;</span><br><span class="line">	&lt;init-param&gt;</span><br><span class="line">		&lt;param-name&gt;adress&lt;/param-name&gt;</span><br><span class="line">		&lt;param-value&gt;bejing&lt;/param-value&gt;</span><br><span class="line">	&lt;/init-param&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">	</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet02&lt;/servlet-name&gt;</span><br><span class="line">	&lt;url-pattern&gt;/HelloServlet02&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="九、为什么需要有ServletConfig？"><a href="#九、为什么需要有ServletConfig？" class="headerlink" title="九、为什么需要有ServletConfig？"></a>九、为什么需要有ServletConfig？</h2><ol>
+<li><p>未来我们自己开发的一些应用，使用到了一些技术，或者一些代码，我们不会。 但是有人写出来了。做成了jar包，它的代码放置在了自己的servlet类里面。 </p>
+</li>
+<li><p>刚好这个servlet 里面需要一个数字或者叫做变量值。 但是这个值不能是固定了。 所以要求使用到这个servlet的公司，在注册servlet的时候，必须要在web.xml里面，声明init-params</p>
+</li>
+<li><p>在开发当中比较少用。</p>
+</li>
+</ol>
 ]]></content>
       <categories>
-        <category>区块链+比特币</category>
+        <category>Java Web</category>
       </categories>
       <tags>
-        <tag>区块链，比特币</tag>
+        <tag>Servlet</tag>
       </tags>
   </entry>
   <entry>
@@ -1772,35 +1686,6 @@
       </tags>
   </entry>
   <entry>
-    <title>区块链的架构模型以及核心技术</title>
-    <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-<h2 id="一-架构模型"><a href="#一-架构模型" class="headerlink" title="一.架构模型"></a>一.架构模型</h2><p>一般说来，区块链系统由数据层、网络层、共识层、激励层、合约层，应用层组成。</p>
-<ol>
-<li><strong>数据层：</strong> 封装了底层数据区块以及相关的数据加密和时间戳等基础数据和基本算法。</li>
-<li><strong>网络层：</strong> 则包括分布式组网机制、数据传播机制和数据验证机制等。</li>
-<li><strong>共识层：</strong> 主要封装网络节点的各类共识算法。</li>
-<li><strong>激励层：</strong> 将经济因素集成到区块链技术体系中来，主要包括经济激励的发行机制和分配机制等。</li>
-<li><strong>合约层：</strong> 主要封装各类脚本、算法和智能合约，是区块链可编程特性的基础。</li>
-<li><strong>应用层：</strong> 则封装了区块链的各种应用场景和案例。</li>
-</ol>
-<p><strong>区块链技术最具代表性的创新点：</strong></p>
-<ol>
-<li>基于时间戳的链式区块结构、分布式节点的共识机制。</li>
-<li>基于共识算力的经济激励和灵活可编程的智能合约。</li>
-</ol>
-<h2 id="二-核心技术"><a href="#二-核心技术" class="headerlink" title="二.核心技术"></a>二.核心技术</h2><p> 1.<strong>分布式账本：</strong>分布式账本指的是交易记账由分布在不同地方的多个节点共同完成，而且每一个节点记录的是完整的账目，因此它们都可以参与监督交易合法性，同时也可以共同为其作证 。跟传统的分布式存储有所不同，区块链的分布式存储的独特性主要体现在两个方面：一是区块链每个节点都按照块链式结构存储完整的数据，传统分布式存储一般是将数据按照一定的规则分成多份进行存储。二是区块链每个节点存储都是独立的、地位等同的，依靠共识机制保证存储的一致性，而传统分布式存储一般是通过中心节点往其他备份节点同步数据。没有任何一个节点可以单独记录账本数据，从而避免了单一记账人被控制或者被贿赂而记假账的可能性。也由记账节点足够多，理论上讲除非所有的节点被破坏，否则账目就不会丢失，从而保证了账目数据的安全性。</p>
-<p>2.<strong>非对称加密：</strong>存储在区块链上的交易信息是公开的，但是账户身份信息是高度加密的，只有在数据拥有者授权的情况下才能访问到，从而保证了数据的安全和个人的隐私。<br>3.<strong>共识机制</strong>就是所有记账节点之间怎么达成共识，去认定一个记录的有效性，这既是认定的手段，也是防止篡改的手段。区块链提出了四种不同的共识机制，适用于不同的应用场景，在效率和安全性之间取得平衡 。<br>区块链的共识机制具备“少数服从多数”以及“人人平等”的特点，其中“少数服从多数”并不完全指节点个数，也可以是计算能力、股权数或者其他的计算机可以比较的特征量。“人人平等”是当节点满足条件时，所有节点都有权优先提出共识结果、直接被其他节点认同后并最后有可能成为最终共识结果。以比特币为例，采用的是工作量证明，只有在控制了全网超过51%的记账节点的情况下，才有可能伪造出一条不存在的记录。当加入区块链的节点足够多的时候，这基本上不可能，从而杜绝了造假的可能。<br>4.<strong>智能合约：</strong>基于这些可信的不可篡改的数据，可以自动化的执行一些预先定义好的规则和条款。以保险为例，如果说每个人的信息（包括医疗信息和风险发生的信息）都是真实可信的，那就很容易的在一些标准化的保险产品中，去进行自动化的理赔。在保险公司的日常业务中，虽然交易不像银行和证券行业那样频繁，但是对可信数据的依赖是有增无减。因此，笔者认为利用区块链技术，从数据管理的角度切入，能够有效地帮助保险公司提高风险管理能力。具体来讲主要分投保人风险管理和保险公司的风险监督。</p>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>区块链简单理解</title>
     <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</url>
     <content><![CDATA[<p>对近年来很火的区块链的简单了解</p>
@@ -1823,6 +1708,35 @@
 <li>安全性。只要不能掌控全部数据节点的51%，就无法肆意操控修改网络数据，这使区块链本身变得相对安全，避免了主观人为的数据变更。</li>
 <li>匿名性。除非有法律规范要求，单从技术上来讲，各区块节点的身份信息不需要公开或验证，信息传递可以<strong>匿名进行</strong>。</li>
 </ol>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>区块链的架构模型以及核心技术</title>
+    <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<h2 id="一-架构模型"><a href="#一-架构模型" class="headerlink" title="一.架构模型"></a>一.架构模型</h2><p>一般说来，区块链系统由数据层、网络层、共识层、激励层、合约层，应用层组成。</p>
+<ol>
+<li><strong>数据层：</strong> 封装了底层数据区块以及相关的数据加密和时间戳等基础数据和基本算法。</li>
+<li><strong>网络层：</strong> 则包括分布式组网机制、数据传播机制和数据验证机制等。</li>
+<li><strong>共识层：</strong> 主要封装网络节点的各类共识算法。</li>
+<li><strong>激励层：</strong> 将经济因素集成到区块链技术体系中来，主要包括经济激励的发行机制和分配机制等。</li>
+<li><strong>合约层：</strong> 主要封装各类脚本、算法和智能合约，是区块链可编程特性的基础。</li>
+<li><strong>应用层：</strong> 则封装了区块链的各种应用场景和案例。</li>
+</ol>
+<p><strong>区块链技术最具代表性的创新点：</strong></p>
+<ol>
+<li>基于时间戳的链式区块结构、分布式节点的共识机制。</li>
+<li>基于共识算力的经济激励和灵活可编程的智能合约。</li>
+</ol>
+<h2 id="二-核心技术"><a href="#二-核心技术" class="headerlink" title="二.核心技术"></a>二.核心技术</h2><p> 1.<strong>分布式账本：</strong>分布式账本指的是交易记账由分布在不同地方的多个节点共同完成，而且每一个节点记录的是完整的账目，因此它们都可以参与监督交易合法性，同时也可以共同为其作证 。跟传统的分布式存储有所不同，区块链的分布式存储的独特性主要体现在两个方面：一是区块链每个节点都按照块链式结构存储完整的数据，传统分布式存储一般是将数据按照一定的规则分成多份进行存储。二是区块链每个节点存储都是独立的、地位等同的，依靠共识机制保证存储的一致性，而传统分布式存储一般是通过中心节点往其他备份节点同步数据。没有任何一个节点可以单独记录账本数据，从而避免了单一记账人被控制或者被贿赂而记假账的可能性。也由记账节点足够多，理论上讲除非所有的节点被破坏，否则账目就不会丢失，从而保证了账目数据的安全性。</p>
+<p>2.<strong>非对称加密：</strong>存储在区块链上的交易信息是公开的，但是账户身份信息是高度加密的，只有在数据拥有者授权的情况下才能访问到，从而保证了数据的安全和个人的隐私。<br>3.<strong>共识机制</strong>就是所有记账节点之间怎么达成共识，去认定一个记录的有效性，这既是认定的手段，也是防止篡改的手段。区块链提出了四种不同的共识机制，适用于不同的应用场景，在效率和安全性之间取得平衡 。<br>区块链的共识机制具备“少数服从多数”以及“人人平等”的特点，其中“少数服从多数”并不完全指节点个数，也可以是计算能力、股权数或者其他的计算机可以比较的特征量。“人人平等”是当节点满足条件时，所有节点都有权优先提出共识结果、直接被其他节点认同后并最后有可能成为最终共识结果。以比特币为例，采用的是工作量证明，只有在控制了全网超过51%的记账节点的情况下，才有可能伪造出一条不存在的记录。当加入区块链的节点足够多的时候，这基本上不可能，从而杜绝了造假的可能。<br>4.<strong>智能合约：</strong>基于这些可信的不可篡改的数据，可以自动化的执行一些预先定义好的规则和条款。以保险为例，如果说每个人的信息（包括医疗信息和风险发生的信息）都是真实可信的，那就很容易的在一些标准化的保险产品中，去进行自动化的理赔。在保险公司的日常业务中，虽然交易不像银行和证券行业那样频繁，但是对可信数据的依赖是有增无减。因此，笔者认为利用区块链技术，从数据管理的角度切入，能够有效地帮助保险公司提高风险管理能力。具体来讲主要分投保人风险管理和保险公司的风险监督。</p>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>
@@ -1936,53 +1850,6 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </categories>
       <tags>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>客户端会话技术：Cookie</title>
-    <url>/2020/02/09/%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ACookie/</url>
-    <content><![CDATA[<p>类型为“小型文本文件”，是某些网站为了辨别用户身份，进行Session跟踪而储存在用户本地终端上的数据（通常经过加密），由客户端计算机暂时或永久保存的信息。</p>
-<a id="more"></a>
-<h2 id="Cookie概述"><a href="#Cookie概述" class="headerlink" title="Cookie概述"></a>Cookie概述</h2><ul>
-<li><strong>概述：</strong> 一份小数据， 是服务器给客户端，并且存储在客户端上的一份小数据</li>
-<li><strong>应用场景：</strong> 自动登录、浏览记录、购物车。</li>
-<li><strong>为什么要有这个Cookie：</strong>  http的请求是无状态。 客户端与服务器在通讯的时候，是无状态的，其实就是客户端在第二次来访的时候，服务器根本就不知道这个客户端以前有没有来访问过。 为了更好的用户体验，更好的交互 <strong>[自动登录]</strong>，其实从公司层面讲，就是为了更好的收集用户习惯 <strong>[大数据]</strong>。</li>
-</ul>
-<h2 id="如何使用Cookie"><a href="#如何使用Cookie" class="headerlink" title="如何使用Cookie"></a>如何使用Cookie</h2><h3 id="发送Cookie给客户端"><a href="#发送Cookie给客户端" class="headerlink" title="发送Cookie给客户端"></a>发送Cookie给客户端</h3><ol>
-<li>在响应的时候，添加cookie</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Cookie cookie = new Cookie(<span class="string">"aa"</span>, <span class="string">"bb"</span>);</span><br><span class="line"></span><br><span class="line">	//给响应，添加一个cookie</span><br><span class="line">	response.addCookie(cookie);</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>客户端收到的信息里面，响应头中多了一个字段 Set-Cookie</li>
-</ol>
-<p><img src="https://img-blog.csdnimg.cn/20200228143218378.png" alt="在这里插入图片描述"></p>
-<h3 id="获取客户端带过来的Cookie"><a href="#获取客户端带过来的Cookie" class="headerlink" title="获取客户端带过来的Cookie"></a>获取客户端带过来的Cookie</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//获取客户端带过来的cookie</span><br><span class="line">Cookie[] cookies = request.getCookies();</span><br><span class="line">	<span class="keyword">if</span>(cookies != null)&#123;</span><br><span class="line">		<span class="keyword">for</span> (Cookie c : cookies) &#123;</span><br><span class="line">			String cookieName = c.getName();</span><br><span class="line">			String cookieValue = c.getValue();</span><br><span class="line">			System.out.println(cookieName + <span class="string">" = "</span>+ cookieValue);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//关闭浏览器后，cookie就没有了。 ---&gt; 针对没有设置cookie的有效期。</span><br><span class="line">//	expiry： 有效 以秒计算。</span><br><span class="line">//正值： 表示 在这个数字过后，cookie将会失效。</span><br><span class="line">//负值： 关闭浏览器，那么cookie就失效， 默认值是 -1</span><br><span class="line">cookie.setMaxAge(60 * 60 * 24 * 7);</span><br><span class="line">		</span><br><span class="line">//赋值新的值</span><br><span class="line">cookie.setValue(newValue);</span><br><span class="line">		</span><br><span class="line">//用于指定只有请求了指定的域名，才会带上该cookie</span><br><span class="line">cookie.setDomain(<span class="string">".itheima.com"</span>);</span><br><span class="line">		</span><br><span class="line">//只有访问该域名下的cookieDemo的这个路径地址才会带cookie</span><br><span class="line">cookie.setPath(<span class="string">"/CookieDemo"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="典型案例："><a href="#典型案例：" class="headerlink" title="典型案例："></a>典型案例：</h2><h3 id="显示最近访问的时间"><a href="#显示最近访问的时间" class="headerlink" title="显示最近访问的时间"></a>显示最近访问的时间</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. 判断账号是否正确</span><br><span class="line">2. 如果正确，则获取cookie。 但是得到的cookie是一个数组， 我们要从数组里面找到我们想要的对象。</span><br><span class="line">3. 如果找到的对象为空，表明是第一次登录。那么要添加cookie</span><br><span class="line">4. 如果找到的对象不为空， 表明不是第一次登录。 </span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(<span class="string">"admin"</span>.equals(userName) &amp;&amp; <span class="string">"123"</span>.equals(password))&#123;</span><br><span class="line">		//获取cookie last-name --- &gt;</span><br><span class="line">		Cookie [] cookies = request.getCookies();</span><br><span class="line">			</span><br><span class="line">		//从数组里面找出我们想要的cookie</span><br><span class="line">		Cookie cookie = CookieUtil.findCookie(cookies, <span class="string">"last"</span>);</span><br><span class="line">			</span><br><span class="line">		//是第一次登录，没有cookie</span><br><span class="line">		<span class="keyword">if</span>(cookie == null)&#123;</span><br><span class="line">				</span><br><span class="line">			Cookie c = new Cookie(<span class="string">"last"</span>, System.currentTimeMillis()+<span class="string">""</span>);</span><br><span class="line">			c.setMaxAge(60*60); //一个小时</span><br><span class="line">			response.addCookie(c);</span><br><span class="line">				</span><br><span class="line">			response.getWriter().write(<span class="string">"欢迎您, "</span>+userName);</span><br><span class="line">				</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			//1. 去以前的cookie第二次登录，有cookie</span><br><span class="line">			long lastVisitTime = Long.parseLong(cookie.getValue());</span><br><span class="line">				</span><br><span class="line">			//2. 输出到界面，</span><br><span class="line">			response.getWriter().write(<span class="string">"欢迎您, "</span>+userName +<span class="string">",上次来访时间是："</span>+new Date(lastVisitTime));</span><br><span class="line">				</span><br><span class="line">			//3. 重置登录的时间</span><br><span class="line">			cookie.setValue(System.currentTimeMillis()+<span class="string">""</span>);</span><br><span class="line">			response.addCookie(cookie);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		response.getWriter().write(<span class="string">"登陆失败 "</span>);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="显示商品浏览记录"><a href="#显示商品浏览记录" class="headerlink" title="显示商品浏览记录"></a>显示商品浏览记录</h3><p><img src="https://img-blog.csdnimg.cn/20200228173445822.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><strong>jsp</strong><br>Java Server Pager —&gt; 最终会翻译成一个类， 就是一个Servlet</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jsp中写java代码：</span><br><span class="line">	&lt;%</span><br><span class="line">		只能写java代码</span><br><span class="line">	%&gt;</span><br><span class="line">定义全局变量:</span><br><span class="line">	&lt;%! int a = 99; %&gt;</span><br><span class="line"></span><br><span class="line">定义局部变量:</span><br><span class="line">	&lt;% int b = 999; %&gt;</span><br><span class="line"></span><br><span class="line">在jsp页面上，显示 a 和 b的值:</span><br><span class="line">	&lt;%=a %&gt; </span><br><span class="line">	&lt;%=b %&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>删除浏览记录</strong><br><img src="https://img-blog.csdnimg.cn/2020022818005011.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>清除浏览记录</strong></p>
-<ul>
-<li>其实就是清除Cookie， 删除cookie是没有什么delete方法的。只有设置maxAge 为0 。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Cookie cookie = new Cookie(<span class="string">"history"</span>,<span class="string">""</span>);</span><br><span class="line">cookie.setMaxAge(0); //设置立即删除</span><br><span class="line">cookie.setPath(<span class="string">"/CookieDemo02"</span>);</span><br><span class="line">response.addCookie(cookie);</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.服务器给客户端发送过来的一小份数据，并且存放在客户端上。</p>
-<p>2.获取cookie， 添加cookie</p>
-<pre><code>request.getCookie();
-
-response.addCookie();</code></pre><p>3.Cookie分类</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">会话Cookie</span><br><span class="line">	默认情况下，关闭了浏览器，那么cookie就会消失。</span><br><span class="line"></span><br><span class="line">持久Cookie</span><br><span class="line">	在一定时间内，都有效，并且会保存在客户端上。 </span><br><span class="line">		cookie.setMaxAge(0); //设置立即删除</span><br><span class="line">		cookie.setMaxAge(100); //100 秒</span><br></pre></td></tr></table></figure>
-<p>4.Cookie的安全问题。<br>由于Cookie会保存在客户端上，所以有安全隐患问题。  还有一个问题， Cookie的大小与个数有限制。 为了解决这个问题 —&gt; <strong>Session .</strong></p>
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>Cookie</tag>
       </tags>
   </entry>
   <entry>
@@ -2111,61 +1978,50 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
-    <title>建站系列之---备份本地站点到github上</title>
-    <url>/2020/03/18/%E5%B0%86%E6%9C%AC%E5%9C%B0%E7%AB%99%E7%82%B9%E5%A4%87%E4%BB%BD%E5%88%B0github%E4%B8%8A/</url>
-    <content><![CDATA[<p>试想一下，就你自己的电脑上配置了hexo，平时写博客，部署都是在自己电脑上，那万一有一天，用的不是自己电脑，又想要写博客，那怎么办呢？此时就要用到git了，将你的站点配置等信息备份到github上，要用的时候，用 git clone到本地。而且好处不仅如此，万一哪天出了问题，有个备份，岂不美哉？</p>
+    <title>客户端会话技术：Cookie</title>
+    <url>/2020/02/09/%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ACookie/</url>
+    <content><![CDATA[<p>类型为“小型文本文件”，是某些网站为了辨别用户身份，进行Session跟踪而储存在用户本地终端上的数据（通常经过加密），由客户端计算机暂时或永久保存的信息。</p>
 <a id="more"></a>
-<h2 id="一、本地配置"><a href="#一、本地配置" class="headerlink" title="一、本地配置"></a>一、本地配置</h2><ul>
-<li>由于是在个人电脑上配置的<code>hexo</code>，部署也不方便，如果在另外一台机子上写博客，没有<code>hexo</code>的配置也不行，另一方面出于备份项目的目的，最好的办法是将本地<code>hexo</code>站点备份到<code>Github</code>上。</li>
+<h2 id="Cookie概述"><a href="#Cookie概述" class="headerlink" title="Cookie概述"></a>Cookie概述</h2><ul>
+<li><strong>概述：</strong> 一份小数据， 是服务器给客户端，并且存储在客户端上的一份小数据</li>
+<li><strong>应用场景：</strong> 自动登录、浏览记录、购物车。</li>
+<li><strong>为什么要有这个Cookie：</strong>  http的请求是无状态。 客户端与服务器在通讯的时候，是无状态的，其实就是客户端在第二次来访的时候，服务器根本就不知道这个客户端以前有没有来访问过。 为了更好的用户体验，更好的交互 <strong>[自动登录]</strong>，其实从公司层面讲，就是为了更好的收集用户习惯 <strong>[大数据]</strong>。</li>
 </ul>
-<p>1.新建<code>hexo</code>文件夹存放分支工作目录。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir hexo</span><br></pre></td></tr></table></figure>
-
-<p>2.把你的GitHub的远程仓库克隆到<code>hexo</code>文件夹</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/DAQ121/DAQ121.github.io hexo</span><br></pre></td></tr></table></figure>
-
-<p>3.删除除了版本管理的<code>.git</code>之外的所有文件和文件夹</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexo</span><br><span class="line">rm -r *</span><br></pre></td></tr></table></figure>
-
-<p>4.把要备份的文件复制到<code>hexo</code>目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">scaffolds/</span><br><span class="line"><span class="built_in">source</span>/</span><br><span class="line">themes/</span><br><span class="line">.gitignore</span><br><span class="line">_config.yml</span><br><span class="line">package.json</span><br></pre></td></tr></table></figure>
-
-<p>5.如果使用的主题是从Github克隆的，那么使用命令删除它的Git文件（以next主题为例）,否则无法将主题文件<code>push</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rm -R themes/next/.git*</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、github配置"><a href="#二、github配置" class="headerlink" title="二、github配置"></a>二、github配置</h2><p>1.github创建一个<code>hexo</code>分支 </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -b hexo</span><br></pre></td></tr></table></figure>
-<p>2.保存所有文件到暂存区</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add --all</span><br></pre></td></tr></table></figure>
-<p>3.提交变更</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">"创建hexo分支"</span></span><br></pre></td></tr></table></figure>
-<p>4.推送到github，并用<code>--set-upstream</code>与<code>origin</code>创建关联，将<code>hexo</code>设置为默认分支</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push --<span class="built_in">set</span>-upstream origin hexo</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、合并管理"><a href="#三、合并管理" class="headerlink" title="三、合并管理"></a>三、合并管理</h2><ul>
-<li>现在有两个需要管理的文件夹，一个是<code>blog</code>，一个是<code>hexo</code>，但是每次发布文章的时候如果要提交两次就很失效率，</li>
+<h2 id="如何使用Cookie"><a href="#如何使用Cookie" class="headerlink" title="如何使用Cookie"></a>如何使用Cookie</h2><h3 id="发送Cookie给客户端"><a href="#发送Cookie给客户端" class="headerlink" title="发送Cookie给客户端"></a>发送Cookie给客户端</h3><ol>
+<li>在响应的时候，添加cookie</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Cookie cookie = new Cookie(<span class="string">"aa"</span>, <span class="string">"bb"</span>);</span><br><span class="line"></span><br><span class="line">	//给响应，添加一个cookie</span><br><span class="line">	response.addCookie(cookie);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>客户端收到的信息里面，响应头中多了一个字段 Set-Cookie</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20200228143218378.png" alt="在这里插入图片描述"></p>
+<h3 id="获取客户端带过来的Cookie"><a href="#获取客户端带过来的Cookie" class="headerlink" title="获取客户端带过来的Cookie"></a>获取客户端带过来的Cookie</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//获取客户端带过来的cookie</span><br><span class="line">Cookie[] cookies = request.getCookies();</span><br><span class="line">	<span class="keyword">if</span>(cookies != null)&#123;</span><br><span class="line">		<span class="keyword">for</span> (Cookie c : cookies) &#123;</span><br><span class="line">			String cookieName = c.getName();</span><br><span class="line">			String cookieValue = c.getValue();</span><br><span class="line">			System.out.println(cookieName + <span class="string">" = "</span>+ cookieValue);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//关闭浏览器后，cookie就没有了。 ---&gt; 针对没有设置cookie的有效期。</span><br><span class="line">//	expiry： 有效 以秒计算。</span><br><span class="line">//正值： 表示 在这个数字过后，cookie将会失效。</span><br><span class="line">//负值： 关闭浏览器，那么cookie就失效， 默认值是 -1</span><br><span class="line">cookie.setMaxAge(60 * 60 * 24 * 7);</span><br><span class="line">		</span><br><span class="line">//赋值新的值</span><br><span class="line">cookie.setValue(newValue);</span><br><span class="line">		</span><br><span class="line">//用于指定只有请求了指定的域名，才会带上该cookie</span><br><span class="line">cookie.setDomain(<span class="string">".itheima.com"</span>);</span><br><span class="line">		</span><br><span class="line">//只有访问该域名下的cookieDemo的这个路径地址才会带cookie</span><br><span class="line">cookie.setPath(<span class="string">"/CookieDemo"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="典型案例："><a href="#典型案例：" class="headerlink" title="典型案例："></a>典型案例：</h2><h3 id="显示最近访问的时间"><a href="#显示最近访问的时间" class="headerlink" title="显示最近访问的时间"></a>显示最近访问的时间</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. 判断账号是否正确</span><br><span class="line">2. 如果正确，则获取cookie。 但是得到的cookie是一个数组， 我们要从数组里面找到我们想要的对象。</span><br><span class="line">3. 如果找到的对象为空，表明是第一次登录。那么要添加cookie</span><br><span class="line">4. 如果找到的对象不为空， 表明不是第一次登录。 </span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(<span class="string">"admin"</span>.equals(userName) &amp;&amp; <span class="string">"123"</span>.equals(password))&#123;</span><br><span class="line">		//获取cookie last-name --- &gt;</span><br><span class="line">		Cookie [] cookies = request.getCookies();</span><br><span class="line">			</span><br><span class="line">		//从数组里面找出我们想要的cookie</span><br><span class="line">		Cookie cookie = CookieUtil.findCookie(cookies, <span class="string">"last"</span>);</span><br><span class="line">			</span><br><span class="line">		//是第一次登录，没有cookie</span><br><span class="line">		<span class="keyword">if</span>(cookie == null)&#123;</span><br><span class="line">				</span><br><span class="line">			Cookie c = new Cookie(<span class="string">"last"</span>, System.currentTimeMillis()+<span class="string">""</span>);</span><br><span class="line">			c.setMaxAge(60*60); //一个小时</span><br><span class="line">			response.addCookie(c);</span><br><span class="line">				</span><br><span class="line">			response.getWriter().write(<span class="string">"欢迎您, "</span>+userName);</span><br><span class="line">				</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			//1. 去以前的cookie第二次登录，有cookie</span><br><span class="line">			long lastVisitTime = Long.parseLong(cookie.getValue());</span><br><span class="line">				</span><br><span class="line">			//2. 输出到界面，</span><br><span class="line">			response.getWriter().write(<span class="string">"欢迎您, "</span>+userName +<span class="string">",上次来访时间是："</span>+new Date(lastVisitTime));</span><br><span class="line">				</span><br><span class="line">			//3. 重置登录的时间</span><br><span class="line">			cookie.setValue(System.currentTimeMillis()+<span class="string">""</span>);</span><br><span class="line">			response.addCookie(cookie);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		response.getWriter().write(<span class="string">"登陆失败 "</span>);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="显示商品浏览记录"><a href="#显示商品浏览记录" class="headerlink" title="显示商品浏览记录"></a>显示商品浏览记录</h3><p><img src="https://img-blog.csdnimg.cn/20200228173445822.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>jsp</strong><br>Java Server Pager —&gt; 最终会翻译成一个类， 就是一个Servlet</li>
 </ul>
-<p>1.将本地<code>hexo</code>分支中的<code>.git</code>文件夹复制到<code>blog</code>根目录中</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp -a .git ../blog</span><br></pre></td></tr></table></figure>
-<p>2.<code>master</code>分支的文件则由<code>hexo</code>管理，编辑<code>hexo</code>配置文件<code>_config.yml</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">   <span class="built_in">type</span>: git</span><br><span class="line">   repo: https://github.com/DAQ121/DAQ121.github.io</span><br><span class="line">   branch: master</span><br></pre></td></tr></table></figure>
-<h2 id="四、发布文章"><a href="#四、发布文章" class="headerlink" title="四、发布文章"></a>四、发布文章</h2><p>1.新建文章</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
-<p>2.将相关更改推送到<code>hexo</code>分支</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"发表文章test"</span></span><br><span class="line">git push origin hexo</span><br></pre></td></tr></table></figure>
-<p>3.将静态文件推送到<code>master</code>分支</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-<h2 id="五、使用的时候如何迁移"><a href="#五、使用的时候如何迁移" class="headerlink" title="五、使用的时候如何迁移"></a>五、使用的时候如何迁移</h2><p>1.将<code>hexo</code>分支克隆下来</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b hexo http://github.com/DAQ121/DAQ121.github.io</span><br></pre></td></tr></table></figure>
-<p>2.安装<code>hexo</code>依赖</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install</span><br></pre></td></tr></table></figure>
-<p>3.只不过每次发文章的时候，要输入用户名和密码。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jsp中写java代码：</span><br><span class="line">	&lt;%</span><br><span class="line">		只能写java代码</span><br><span class="line">	%&gt;</span><br><span class="line">定义全局变量:</span><br><span class="line">	&lt;%! int a = 99; %&gt;</span><br><span class="line"></span><br><span class="line">定义局部变量:</span><br><span class="line">	&lt;% int b = 999; %&gt;</span><br><span class="line"></span><br><span class="line">在jsp页面上，显示 a 和 b的值:</span><br><span class="line">	&lt;%=a %&gt; </span><br><span class="line">	&lt;%=b %&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>删除浏览记录</strong><br><img src="https://img-blog.csdnimg.cn/2020022818005011.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>清除浏览记录</strong></p>
+<ul>
+<li>其实就是清除Cookie， 删除cookie是没有什么delete方法的。只有设置maxAge 为0 。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Cookie cookie = new Cookie(<span class="string">"history"</span>,<span class="string">""</span>);</span><br><span class="line">cookie.setMaxAge(0); //设置立即删除</span><br><span class="line">cookie.setPath(<span class="string">"/CookieDemo02"</span>);</span><br><span class="line">response.addCookie(cookie);</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.服务器给客户端发送过来的一小份数据，并且存放在客户端上。</p>
+<p>2.获取cookie， 添加cookie</p>
+<pre><code>request.getCookie();
+
+response.addCookie();</code></pre><p>3.Cookie分类</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">会话Cookie</span><br><span class="line">	默认情况下，关闭了浏览器，那么cookie就会消失。</span><br><span class="line"></span><br><span class="line">持久Cookie</span><br><span class="line">	在一定时间内，都有效，并且会保存在客户端上。 </span><br><span class="line">		cookie.setMaxAge(0); //设置立即删除</span><br><span class="line">		cookie.setMaxAge(100); //100 秒</span><br></pre></td></tr></table></figure>
+<p>4.Cookie的安全问题。<br>由于Cookie会保存在客户端上，所以有安全隐患问题。  还有一个问题， Cookie的大小与个数有限制。 为了解决这个问题 —&gt; <strong>Session .</strong></p>
 ]]></content>
       <categories>
-        <category>Hexo建站系列</category>
+        <category>Java Web</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
+        <tag>Cookie</tag>
       </tags>
   </entry>
   <entry>
@@ -2313,6 +2169,88 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
+    <title>建站系列之---备份本地站点到github上</title>
+    <url>/2020/03/18/%E5%B0%86%E6%9C%AC%E5%9C%B0%E7%AB%99%E7%82%B9%E5%A4%87%E4%BB%BD%E5%88%B0github%E4%B8%8A/</url>
+    <content><![CDATA[<p>试想一下，就你自己的电脑上配置了hexo，平时写博客，部署都是在自己电脑上，那万一有一天，用的不是自己电脑，又想要写博客，那怎么办呢？此时就要用到git了，将你的站点配置等信息备份到github上，要用的时候，用 git clone到本地。而且好处不仅如此，万一哪天出了问题，有个备份，岂不美哉？</p>
+<a id="more"></a>
+<h2 id="一、本地配置"><a href="#一、本地配置" class="headerlink" title="一、本地配置"></a>一、本地配置</h2><ul>
+<li>由于是在个人电脑上配置的<code>hexo</code>，部署也不方便，如果在另外一台机子上写博客，没有<code>hexo</code>的配置也不行，另一方面出于备份项目的目的，最好的办法是将本地<code>hexo</code>站点备份到<code>Github</code>上。</li>
+</ul>
+<p>1.新建<code>hexo</code>文件夹存放分支工作目录。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir hexo</span><br></pre></td></tr></table></figure>
+
+<p>2.把你的GitHub的远程仓库克隆到<code>hexo</code>文件夹</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/DAQ121/DAQ121.github.io hexo</span><br></pre></td></tr></table></figure>
+
+<p>3.删除除了版本管理的<code>.git</code>之外的所有文件和文件夹</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexo</span><br><span class="line">rm -r *</span><br></pre></td></tr></table></figure>
+
+<p>4.把要备份的文件复制到<code>hexo</code>目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">scaffolds/</span><br><span class="line"><span class="built_in">source</span>/</span><br><span class="line">themes/</span><br><span class="line">.gitignore</span><br><span class="line">_config.yml</span><br><span class="line">package.json</span><br></pre></td></tr></table></figure>
+
+<p>5.如果使用的主题是从Github克隆的，那么使用命令删除它的Git文件（以next主题为例）,否则无法将主题文件<code>push</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rm -R themes/next/.git*</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、github配置"><a href="#二、github配置" class="headerlink" title="二、github配置"></a>二、github配置</h2><p>1.github创建一个<code>hexo</code>分支 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -b hexo</span><br></pre></td></tr></table></figure>
+<p>2.保存所有文件到暂存区</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add --all</span><br></pre></td></tr></table></figure>
+<p>3.提交变更</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">"创建hexo分支"</span></span><br></pre></td></tr></table></figure>
+<p>4.推送到github，并用<code>--set-upstream</code>与<code>origin</code>创建关联，将<code>hexo</code>设置为默认分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push --<span class="built_in">set</span>-upstream origin hexo</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、合并管理"><a href="#三、合并管理" class="headerlink" title="三、合并管理"></a>三、合并管理</h2><ul>
+<li>现在有两个需要管理的文件夹，一个是<code>blog</code>，一个是<code>hexo</code>，但是每次发布文章的时候如果要提交两次就很失效率，</li>
+</ul>
+<p>1.将本地<code>hexo</code>分支中的<code>.git</code>文件夹复制到<code>blog</code>根目录中</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp -a .git ../blog</span><br></pre></td></tr></table></figure>
+<p>2.<code>master</code>分支的文件则由<code>hexo</code>管理，编辑<code>hexo</code>配置文件<code>_config.yml</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">   <span class="built_in">type</span>: git</span><br><span class="line">   repo: https://github.com/DAQ121/DAQ121.github.io</span><br><span class="line">   branch: master</span><br></pre></td></tr></table></figure>
+<h2 id="四、发布文章"><a href="#四、发布文章" class="headerlink" title="四、发布文章"></a>四、发布文章</h2><p>1.新建文章</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<p>2.将相关更改推送到<code>hexo</code>分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"发表文章test"</span></span><br><span class="line">git push origin hexo</span><br></pre></td></tr></table></figure>
+<p>3.将静态文件推送到<code>master</code>分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+<h2 id="五、使用的时候如何迁移"><a href="#五、使用的时候如何迁移" class="headerlink" title="五、使用的时候如何迁移"></a>五、使用的时候如何迁移</h2><p>1.将<code>hexo</code>分支克隆下来</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b hexo http://github.com/DAQ121/DAQ121.github.io</span><br></pre></td></tr></table></figure>
+<p>2.安装<code>hexo</code>依赖</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install</span><br></pre></td></tr></table></figure>
+<p>3.只不过每次发文章的时候，要输入用户名和密码。</p>
+]]></content>
+      <categories>
+        <category>Hexo建站系列</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>比特币的价格是怎么算出来的</title>
+    <url>/2020/02/11/%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E4%BB%B7%E6%A0%BC%E6%98%AF%E6%80%8E%E4%B9%88%E7%AE%97%E5%87%BA%E6%9D%A5%E7%9A%84/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<h2 id="首先了解一下拍卖"><a href="#首先了解一下拍卖" class="headerlink" title="首先了解一下拍卖"></a>首先了解一下拍卖</h2><ul>
+<li><strong>英式拍卖：</strong> 如果拍卖方（卖方）要卖一个商品，那么买方则通过集体竞价的方式进行拍卖，价高者得，最后和卖方成交的一定只有一个买家，而这个买家一定是出价最高的那位。</li>
+<li><strong>荷兰式拍卖：</strong> 假如有一个买家想要买一个商品，但是卖方有很多，那么卖方递减报出新的价位，最终和买方成交的一定是卖价最低的那位。</li>
+</ul>
+<h2 id="实际定价方式"><a href="#实际定价方式" class="headerlink" title="实际定价方式"></a>实际定价方式</h2><p>在交易所看到的一排排红色的数字和一排排绿色的数字其实就是许多的买方和许多的卖方不断报出的<strong>买进价</strong>和<strong>卖出价</strong>，价格随供求变化而不断变动。买者和卖者彼此竞争，<strong>双向拍卖</strong>，买者对想要买进的出价，通过竞争以最低价买入;卖者也互相竞争，试图以最高价格出售，然而最新成交价一定是买卖双方达成一致的那个价格。买卖双方不断成交，最新一笔的成交价就是我们看到的不断变化的价格，这就是为什么价格在一直变化的原因。报价后面的数量，即代表当前的买方或者卖方想要购买或者卖出的币的数量。买卖一旦成交，则不得反悔。在未成交以前，也可以撤单，撤单程序与买卖委托的过程基本相同。</p>
+<h2 id="限价，市价，止盈止损"><a href="#限价，市价，止盈止损" class="headerlink" title="限价，市价，止盈止损"></a>限价，市价，止盈止损</h2><ul>
+<li>限价：是<strong>自己设定</strong>价格进行挂单，需价格波动到设定价格并有对手愿意交易才可以成交。</li>
+<li>市价：市价是以<strong>当前最新</strong>成交价挂单，一般马上成交。</li>
+<li>止盈止损：止盈止损即是<strong>带有预期</strong>的未来买入或者卖出行为，比如当价格跌破某一价位时进行止损（你预期跌破此价格可能还会继续跌），或者当价格突破某一价位时进行买入（你预期价格一旦突破该价位时将会继续上涨）。</li>
+</ul>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>如果你是买方，想要<strong>尽快</strong>购入比特币，当然是设置买入价格与当前最低卖出价格一致，这样双方就可以达成交易了，想要尽快卖出比特币，那就设置卖出价格与当前最高买入价格一致。但是市场上的人并不是都急切的想要卖出或者买入，会带有预期的进行买入卖出报价。</p>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>服务器端会话技术：Session</title>
     <url>/2020/02/09/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF%EF%BC%9ASession/</url>
     <content><![CDATA[<p>Session对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的Web页之间跳转时，存储在Session对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。他是用来解决Cookie带来的安全问题。</p>
@@ -2373,124 +2311,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </categories>
       <tags>
         <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>比特币的价格是怎么算出来的</title>
-    <url>/2020/02/11/%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E4%BB%B7%E6%A0%BC%E6%98%AF%E6%80%8E%E4%B9%88%E7%AE%97%E5%87%BA%E6%9D%A5%E7%9A%84/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-<h2 id="首先了解一下拍卖"><a href="#首先了解一下拍卖" class="headerlink" title="首先了解一下拍卖"></a>首先了解一下拍卖</h2><ul>
-<li><strong>英式拍卖：</strong> 如果拍卖方（卖方）要卖一个商品，那么买方则通过集体竞价的方式进行拍卖，价高者得，最后和卖方成交的一定只有一个买家，而这个买家一定是出价最高的那位。</li>
-<li><strong>荷兰式拍卖：</strong> 假如有一个买家想要买一个商品，但是卖方有很多，那么卖方递减报出新的价位，最终和买方成交的一定是卖价最低的那位。</li>
-</ul>
-<h2 id="实际定价方式"><a href="#实际定价方式" class="headerlink" title="实际定价方式"></a>实际定价方式</h2><p>在交易所看到的一排排红色的数字和一排排绿色的数字其实就是许多的买方和许多的卖方不断报出的<strong>买进价</strong>和<strong>卖出价</strong>，价格随供求变化而不断变动。买者和卖者彼此竞争，<strong>双向拍卖</strong>，买者对想要买进的出价，通过竞争以最低价买入;卖者也互相竞争，试图以最高价格出售，然而最新成交价一定是买卖双方达成一致的那个价格。买卖双方不断成交，最新一笔的成交价就是我们看到的不断变化的价格，这就是为什么价格在一直变化的原因。报价后面的数量，即代表当前的买方或者卖方想要购买或者卖出的币的数量。买卖一旦成交，则不得反悔。在未成交以前，也可以撤单，撤单程序与买卖委托的过程基本相同。</p>
-<h2 id="限价，市价，止盈止损"><a href="#限价，市价，止盈止损" class="headerlink" title="限价，市价，止盈止损"></a>限价，市价，止盈止损</h2><ul>
-<li>限价：是<strong>自己设定</strong>价格进行挂单，需价格波动到设定价格并有对手愿意交易才可以成交。</li>
-<li>市价：市价是以<strong>当前最新</strong>成交价挂单，一般马上成交。</li>
-<li>止盈止损：止盈止损即是<strong>带有预期</strong>的未来买入或者卖出行为，比如当价格跌破某一价位时进行止损（你预期跌破此价格可能还会继续跌），或者当价格突破某一价位时进行买入（你预期价格一旦突破该价位时将会继续上涨）。</li>
-</ul>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>如果你是买方，想要<strong>尽快</strong>购入比特币，当然是设置买入价格与当前最低卖出价格一致，这样双方就可以达成交易了，想要尽快卖出比特币，那就设置卖出价格与当前最高买入价格一致。但是市场上的人并不是都急切的想要卖出或者买入，会带有预期的进行买入卖出报价。</p>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>火币网--币币交易图解</title>
-    <url>/2020/02/11/%E7%81%AB%E5%B8%81%E7%BD%91-%E5%B8%81%E5%B8%81%E4%BA%A4%E6%98%93%E5%9B%BE%E8%A7%A3/</url>
-    <content><![CDATA[<p>如何在火币网上执行币币交易</p>
-<a id="more"></a>
-<p><img src="https://img-blog.csdnimg.cn/20200205111557755.png" alt="在这里插入图片描述"></p>
-<ul>
-<li><p>BTC/USDT：BTC对USDT的交易对，相当于平均1个BTC当前需要9211.76个USDT来购买，后面的64574.43CNY是说9211.76个USDT约等于64574.43人民币。</p>
-</li>
-<li><p>涨幅+0.01%是今天此时此刻比特币的价格相对于昨天的这个时候价格涨了0.01%，如果是红色的-0.01%就代表跌了0.01%。</p>
-</li>
-<li><p>高9320.00 低9100.00是<strong>过去24小时</strong>最高9320.00USDT最低9100.00USDT。</p>
-</li>
-<li><p>24H量：是过去24小时火币网交易了28878个比特币。这只是在火币网交易的数量。<br><img src="https://img-blog.csdnimg.cn/2020020511252911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-</li>
-<li><p>上面一排时间是，选择显示这个时间段的数据，比如我选择的是1min，那么k线图中每一个红色或者绿色的柱就代表这一分钟内的走势。</p>
-</li>
-<li><p>时间下面的一排：11：24这个时间点的开盘价，最高价，最低价，收盘价，成交量。</p>
-</li>
-<li><p>MA均线：<strong>（MA）理论是股市最常见的一种技术分析方法，它对股市操作具有神奇的指导作用。</strong></p>
-</li>
-<li><p>绿色柱状：柱底代表开盘价，柱顶代表收盘价，红色则相反。</p>
-</li>
-<li><p>柱上下的细线：上影线，下影线，分别代表在这一分钟内的最高价和最低价。</p>
-</li>
-<li><p>图中标有今日最高，和今日最低。严谨理解为：从今日凌晨到目前为止的最高价与最低价。</p>
-<h2 id="均线分析方法："><a href="#均线分析方法：" class="headerlink" title="均线分析方法："></a>均线分析方法：</h2></li>
-</ul>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>认识web服务器&amp;Eclipse配置部署Tomcat</title>
-    <url>/2020/02/07/%E8%AE%A4%E8%AF%86web%E6%9C%8D%E5%8A%A1%E5%99%A8-Eclipse%E9%85%8D%E7%BD%AE%E9%83%A8%E7%BD%B2Tomcat/</url>
-    <content><![CDATA[<p>Web服务器一般指网站服务器，是指驻留于因特网上某种类型计算机的程序，可以向浏览器等Web客户端提供文档，也可以放置网站文件，让全世界浏览；可以放置数据文件，让全世界下载。目前最主流的三个Web服务器是Apache、 Nginx 、IIS。</p>
-<a id="more"></a>
-<h2 id="一、程序架构"><a href="#一、程序架构" class="headerlink" title="一、程序架构"></a>一、程序架构</h2><ul>
-<li>C /  S (client / server)<br>如：QQ  微信   LOL<br>优点：有一部分代码写在客户端，用户体验比较好。<br>缺点：占用资源大，比较吃硬盘，服务器更新，客户端也要随之更新。</li>
-<li>B / S (browser / server)<br>如：网页QQ，  网页游戏。<br>优点：客户端只要浏览器就可以了，占用资源小，不用更新。<br>缺点：用户体验不佳。</li>
-</ul>
-<h2 id="二、web服务器"><a href="#二、web服务器" class="headerlink" title="二、web服务器"></a>二、web服务器</h2><ul>
-<li><strong>服务器：其实服务器就是一台电脑。 配置比一般的要好。</strong></li>
-<li>Web服务器软件 ：客户端在浏览器的地址栏上输入地址 ，然后web服务器软件，接收请求，然后响应消息。 </li>
-</ul>
-<ul>
-<li>处理客户端的请求， 返回资源 | 信息</li>
-</ul>
-<ul>
-<li>Web应用  需要服务器支撑。 index.html</li>
-</ul>
-<ul>
-<li>常用web服务器：<br> Tomcat  —–apache 免费<br> WebLogic —–BEA  收费<br> Websphere —–IBM 收费<br> IIS   —–微软<h2 id="三、安装tomcat"><a href="#三、安装tomcat" class="headerlink" title="三、安装tomcat"></a>三、安装tomcat</h2></li>
-<li>直接解压 ，然后找到bin/startup.bat</li>
-<li>安装启动之后，如果能够正常看到黑窗口，表明已经成功安装。 为了确保万无一失， 最好在浏览器的地址栏上输入 ： <a href="http://localhost:8080">http://localhost:8080</a> , 如果有看到内容 就表明成功了。在黑窗口开着的同时输入网址。</li>
-<li>出现控制台乱码问题，右键控制台，查看是GBK，还是UTF-8。然后在安装目录中找到conf–logging.properties文件，修改里面的编码方式，保持一致即可。</li>
-<li>如果双击了startup.bat,  看到一闪而过的情形，一般都是 JDK的环境变量没有配置。<h2 id="四、Tomcat目录介绍"><a href="#四、Tomcat目录介绍" class="headerlink" title="四、Tomcat目录介绍"></a>四、Tomcat目录介绍</h2></li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200225115238417.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><p>bin： 包含了一些jar ,  bat文件 。  startup.bat。</p>
-</li>
-<li><p>conf：tomcat的配置   server.xml ，  web.xml。</p>
-</li>
-<li><p>lib：tomcat运行所需的jar文件。</p>
-</li>
-<li><p>logs：运行的日志文件。</p>
-</li>
-<li><p>temp：临时文件。</p>
-</li>
-<li><p>webapps：发布到tomcat服务器上的项目，就存放在这个目录。</p>
-</li>
-<li><p>work：jsp翻译成class文件存放地。</p>
-</li>
-</ul>
-<h2 id="五、Eclipse配置Tomcat"><a href="#五、Eclipse配置Tomcat" class="headerlink" title="五、Eclipse配置Tomcat"></a>五、Eclipse配置Tomcat</h2><ol>
-<li>Java EE 的视图下，在server里面，右键新建一个服务器， 选择到apache分类， 找到对应的tomcat版本， 接着一步一步配置即可。</li>
-<li>配置完毕后， 在server 里面， 右键刚才的服务器，然后open  ， 找到上面的Server Location , 选择中间的 Use Tomcat installation…</li>
-<li>创建web工程， 在WebContent下新建html文件， 右击工程， run as server<br><img src="https://img-blog.csdnimg.cn/20200225140218529.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li>至此成功！！！</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>web</tag>
-        <tag>Tomcat</tag>
       </tags>
   </entry>
   <entry>
@@ -2596,6 +2416,186 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
 <h2 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h2><ul>
 <li>在股票名称前冠以“ST”的股票表示该上市公司最近两年连续亏损，或亏损一年，但净资产跌破面值、公司经营过程中出现重大违法行为等情况之一，交易所对该公司股票交易进行特别处理。股票交易日涨跌幅限制5%。</li>
 <li><strong>F10：</strong> 股票非行情类的基本面资料统称为股票F10。在各种金融行情终端软件中，用户通过键盘上的F10快捷键，可迅速查看上市公司的非行情信息，诸如：公司概况、财务数据、公司公告、公司新闻、经营分析等等信息数据。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>try-catch-finally总结</title>
+    <url>/2020/03/24/try-catch-finally%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p>在日常编译运行程序出错的时候，编译器就会抛出异常，抛出异常要比终止程序灵活的多，这是因为Java提供了一个”捕获”异常的处理器对异常情况进行处理，如果没有提供处理器机制，程序就会终止，try-catch-finally可以保证程序发生错误的时候继续执行下去。下面就谈一下使用的总结，和注意事项。</p>
+<a id="more"></a>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>try，catch，finally语句中，如果try语句有return语句，此后做任何修改，都不影响try中return的返回值。</li>
+<li>如果finally块中有return语句，则try或catch中中的返回语句忽略。</li>
+<li>如果finally块中抛出异常，则整个try，catch，finally块中抛出异常。</li>
+</ul>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
+<li>在使用try- catch-finally的时候，要注意以下问题：<br>①尽量在try或者catch中使用return语句。通过finally块中达到对try或者catch返回值修改是不可行的。<br>②finally块中避免使用return语句，因为finally块中如果使用return语句，会显式的消化掉try，catch块中的异常信息，屏蔽错误的发生。<br>③finally块中避免再次抛出异常，否则整个包含try语句块的方法会抛出异常，并且会消化掉try，catch块中的异常。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>每天一道面试题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>认识web服务器&amp;Eclipse配置部署Tomcat</title>
+    <url>/2020/02/07/%E8%AE%A4%E8%AF%86web%E6%9C%8D%E5%8A%A1%E5%99%A8-Eclipse%E9%85%8D%E7%BD%AE%E9%83%A8%E7%BD%B2Tomcat/</url>
+    <content><![CDATA[<p>Web服务器一般指网站服务器，是指驻留于因特网上某种类型计算机的程序，可以向浏览器等Web客户端提供文档，也可以放置网站文件，让全世界浏览；可以放置数据文件，让全世界下载。目前最主流的三个Web服务器是Apache、 Nginx 、IIS。</p>
+<a id="more"></a>
+<h2 id="一、程序架构"><a href="#一、程序架构" class="headerlink" title="一、程序架构"></a>一、程序架构</h2><ul>
+<li>C /  S (client / server)<br>如：QQ  微信   LOL<br>优点：有一部分代码写在客户端，用户体验比较好。<br>缺点：占用资源大，比较吃硬盘，服务器更新，客户端也要随之更新。</li>
+<li>B / S (browser / server)<br>如：网页QQ，  网页游戏。<br>优点：客户端只要浏览器就可以了，占用资源小，不用更新。<br>缺点：用户体验不佳。</li>
+</ul>
+<h2 id="二、web服务器"><a href="#二、web服务器" class="headerlink" title="二、web服务器"></a>二、web服务器</h2><ul>
+<li><strong>服务器：其实服务器就是一台电脑。 配置比一般的要好。</strong></li>
+<li>Web服务器软件 ：客户端在浏览器的地址栏上输入地址 ，然后web服务器软件，接收请求，然后响应消息。 </li>
+</ul>
+<ul>
+<li>处理客户端的请求， 返回资源 | 信息</li>
+</ul>
+<ul>
+<li>Web应用  需要服务器支撑。 index.html</li>
+</ul>
+<ul>
+<li>常用web服务器：<br> Tomcat  —–apache 免费<br> WebLogic —–BEA  收费<br> Websphere —–IBM 收费<br> IIS   —–微软<h2 id="三、安装tomcat"><a href="#三、安装tomcat" class="headerlink" title="三、安装tomcat"></a>三、安装tomcat</h2></li>
+<li>直接解压 ，然后找到bin/startup.bat</li>
+<li>安装启动之后，如果能够正常看到黑窗口，表明已经成功安装。 为了确保万无一失， 最好在浏览器的地址栏上输入 ： <a href="http://localhost:8080">http://localhost:8080</a> , 如果有看到内容 就表明成功了。在黑窗口开着的同时输入网址。</li>
+<li>出现控制台乱码问题，右键控制台，查看是GBK，还是UTF-8。然后在安装目录中找到conf–logging.properties文件，修改里面的编码方式，保持一致即可。</li>
+<li>如果双击了startup.bat,  看到一闪而过的情形，一般都是 JDK的环境变量没有配置。<h2 id="四、Tomcat目录介绍"><a href="#四、Tomcat目录介绍" class="headerlink" title="四、Tomcat目录介绍"></a>四、Tomcat目录介绍</h2></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200225115238417.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><p>bin： 包含了一些jar ,  bat文件 。  startup.bat。</p>
+</li>
+<li><p>conf：tomcat的配置   server.xml ，  web.xml。</p>
+</li>
+<li><p>lib：tomcat运行所需的jar文件。</p>
+</li>
+<li><p>logs：运行的日志文件。</p>
+</li>
+<li><p>temp：临时文件。</p>
+</li>
+<li><p>webapps：发布到tomcat服务器上的项目，就存放在这个目录。</p>
+</li>
+<li><p>work：jsp翻译成class文件存放地。</p>
+</li>
+</ul>
+<h2 id="五、Eclipse配置Tomcat"><a href="#五、Eclipse配置Tomcat" class="headerlink" title="五、Eclipse配置Tomcat"></a>五、Eclipse配置Tomcat</h2><ol>
+<li>Java EE 的视图下，在server里面，右键新建一个服务器， 选择到apache分类， 找到对应的tomcat版本， 接着一步一步配置即可。</li>
+<li>配置完毕后， 在server 里面， 右键刚才的服务器，然后open  ， 找到上面的Server Location , 选择中间的 Use Tomcat installation…</li>
+<li>创建web工程， 在WebContent下新建html文件， 右击工程， run as server<br><img src="https://img-blog.csdnimg.cn/20200225140218529.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li>至此成功！！！</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+        <tag>Tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Tomcat发布项目的三种方式</title>
+    <url>/2020/02/07/Tomcat%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p>本文介绍Tomcat发布项目到服务器上的三种方式</p>
+<a id="more"></a>
+<h2 id="一、拷贝这个文件到webapps-ROOT底下，-在浏览器里面访问。"><a href="#一、拷贝这个文件到webapps-ROOT底下，-在浏览器里面访问。" class="headerlink" title="一、拷贝这个文件到webapps/ROOT底下， 在浏览器里面访问。"></a>一、拷贝这个文件到webapps/ROOT底下， 在浏览器里面访问。</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http://localhost:8080/stu.xml</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在webaps下面新建一个文件夹xml  , 然后拷贝文件放置到这个文件夹中</li>
+<li><a href="http://localhost:8080/xml/stu.xml">http://localhost:8080/xml/stu.xml</a></li>
+<li><a href="http://localhost:8080">http://localhost:8080</a> ： 对应的是到webapps/root</li>
+<li><a href="http://localhost:8080/xml/">http://localhost:8080/xml/</a> : 对应是 webapps/xml</li>
+<li>使用IP地址访问：http://本机ip:8080/xml/stu.xml</li>
+</ul>
+<h2 id="二、配置虚拟路径"><a href="#二、配置虚拟路径" class="headerlink" title="二、配置虚拟路径"></a>二、配置虚拟路径</h2><p> 使用localhost：8080 打开tomcat首页， 找到Tomcat 8.5 Documentation,进入Reference，点击configuration ，找到左边的context，点击进入，复制此页面路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http://localhost:8080/docs/config/context.html</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20200225123552708.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>在conf/server.xml 找到host元素节点。加入以下内容。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200225124622947.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>在浏览器地址栏上输入： <a href="http://localhost:8080/daq/person.xml">http://localhost:8080/daq/person.xml</a></li>
+</ul>
+<h2 id="配置虚拟路径2"><a href="#配置虚拟路径2" class="headerlink" title="配置虚拟路径2"></a>配置虚拟路径2</h2><ol>
+<li><p>在<code>tomcat/conf/catalina/localhost/</code> 文件夹下新建一个xml文件，名字可以自己定义。 <code>person.xml</code></p>
+</li>
+<li><p>在这个文件里面写入以下内容</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">'1.0'</span> encoding=<span class="string">'utf-8'</span>?&gt;</span><br><span class="line">&lt;Context docBase=<span class="string">"F：\XML2"</span>&gt;&lt;/Context&gt;</span><br></pre></td></tr></table></figure>
+
+
+<ol start="3">
+<li>在浏览器上面访问:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http://localhost:8080/person/xml的名字即可</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+        <tag>Tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>区块链技术的应用领域</title>
+    <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%8A%80%E6%9C%AF%E7%9A%84%E5%BA%94%E7%94%A8%E9%A2%86%E5%9F%9F/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<h2 id="金融领域"><a href="#金融领域" class="headerlink" title="金融领域"></a>金融领域</h2><p>区块链在<strong>国际汇兑</strong>、<strong>信用证</strong>、<strong>股权登记</strong>和<strong>证券交易所</strong>等金融领域有着潜在的巨大应用价值。将区块链技术应用在金融行业中，能够省去第三方中介环节，实现<strong>点对点</strong>的直接对接，从而在大大降低成本的同时，快速完成交易支付。<br>比如Visa推出基于区块链技术的 Visa B2B Connect，它能为机构提供一种费用更低、更快速和安全的跨境支付方式来处理全球范围的企业对企业的交易。要知道传统的跨境支付需要等3-5天，并为此支付1-3%的交易费用。Visa 还联合 Coinbase 推出了首张比特币借记卡，<strong>花旗银行</strong>则在区块链上测试运行加密货币“<strong>花旗币</strong>”。</p>
+<h2 id="物联网和物流领域"><a href="#物联网和物流领域" class="headerlink" title="物联网和物流领域"></a>物联网和物流领域</h2><p>区块链在物联网和物流领域也可以天然结合。通过区块链可以降低物流成本，追溯物品的生产和运送过程，并且提高供应链管理的效率。该领域被认为是区块链一个很有前景的应用方向。<br>区块链通过结点连接的散状网络分层结构，能够在整个网络中实现信息的全面传递，并能够检验信息的准确程度。这种特性一 定程度上提高了物联网交易的便利性和智能化。<strong>区块链</strong>+<strong>大数据</strong>的解决方案就利用了大数据的自动筛选过滤模式，在区块链中建立信用资源，可双重提高交易的安全性，并提高物联网交易便利程度。为智能物流模式应用节约时间成本。区块链结点具有十分自由的进出能力，可独立的参与或离开区块链体系，不对整个区块链体系有任何干扰。区块链 +大数据解决方案就利用了大数据的整合能力，促使物联网基础用户拓展更具有方向性，便于在智能物流的分散用户之间实现用户拓展。</p>
+<h2 id="公共服务领域"><a href="#公共服务领域" class="headerlink" title="公共服务领域"></a>公共服务领域</h2><p>区块链在公共管理、能源、交通等领域都与民众的生产生活息息相关，但是这些领域的中心化特质也带来了一些问题，可以用区块链来改造。区块链提供的去中心化的完全分布式DNS服务通过网络中各个节点之间的点对点数据传输服务就能实现域名的查询和解析，可用于确保某个重要的基础设施的操作系统和固件没有被篡改，可以监控软件的状态和完整性，发现不良的篡改，并确保使用了物联网技术的系统所传输的数据没用经过篡改。</p>
+<h2 id="数字版权领域"><a href="#数字版权领域" class="headerlink" title="数字版权领域"></a>数字版权领域</h2><p>通过区块链技术，可以对作品进行鉴权，证明文字、视频、音频等作品的存在，保证权属的真实、唯一性。作品在区块链上被确权后，后续交易都会进行实时记录，实现数字版权全生命周期管理，也可作为司法取证中的技术性保障。例如，美国纽约一家创业公司Mine Labs开发了一个基于区块链的元数据协议，这个名为Mediachain的系统利用IPFS文件系统，实现数字作品版权保护，主要是面向数字图片的版权保护应用。</p>
+<h2 id="保险领域"><a href="#保险领域" class="headerlink" title="保险领域"></a>保险领域</h2><p>在保险理赔方面，保险机构负责资金归集、投资、理赔，往往管理和运营成本较高。通过智能合约的应用，既无需投保人申请，也无需保险公司批准，只要触发理赔条件，实现保单自动理赔。一个典型的应用案例就是LenderBot, 是 2016 年由区块链企业 Stratumn、德勤与支付服务商 Lemonway 合作推出，它允许人们通过 Facebook Messenger 的聊天功能，注册定制化的微保险产品， 为个人之间交换的高价值物品进行投保，而区块链在贷款合同中代替了第三方角色 。</p>
+<h2 id="公益领域"><a href="#公益领域" class="headerlink" title="公益领域"></a>公益领域</h2><p>区块链上存储的数据，高可靠且不可篡改，天然适合用在社会公益场景。公益流程中的相关信息，如捐赠项目、募集明细、资金流向、受助人反馈等，均可以存放于区块链上，并且有条件地进行透明公开公示，方便社会监督。</p>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>火币网--币币交易图解</title>
+    <url>/2020/02/11/%E7%81%AB%E5%B8%81%E7%BD%91-%E5%B8%81%E5%B8%81%E4%BA%A4%E6%98%93%E5%9B%BE%E8%A7%A3/</url>
+    <content><![CDATA[<p>如何在火币网上执行币币交易</p>
+<a id="more"></a>
+<p><img src="https://img-blog.csdnimg.cn/20200205111557755.png" alt="在这里插入图片描述"></p>
+<ul>
+<li><p>BTC/USDT：BTC对USDT的交易对，相当于平均1个BTC当前需要9211.76个USDT来购买，后面的64574.43CNY是说9211.76个USDT约等于64574.43人民币。</p>
+</li>
+<li><p>涨幅+0.01%是今天此时此刻比特币的价格相对于昨天的这个时候价格涨了0.01%，如果是红色的-0.01%就代表跌了0.01%。</p>
+</li>
+<li><p>高9320.00 低9100.00是<strong>过去24小时</strong>最高9320.00USDT最低9100.00USDT。</p>
+</li>
+<li><p>24H量：是过去24小时火币网交易了28878个比特币。这只是在火币网交易的数量。<br><img src="https://img-blog.csdnimg.cn/2020020511252911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+<li><p>上面一排时间是，选择显示这个时间段的数据，比如我选择的是1min，那么k线图中每一个红色或者绿色的柱就代表这一分钟内的走势。</p>
+</li>
+<li><p>时间下面的一排：11：24这个时间点的开盘价，最高价，最低价，收盘价，成交量。</p>
+</li>
+<li><p>MA均线：<strong>（MA）理论是股市最常见的一种技术分析方法，它对股市操作具有神奇的指导作用。</strong></p>
+</li>
+<li><p>绿色柱状：柱底代表开盘价，柱顶代表收盘价，红色则相反。</p>
+</li>
+<li><p>柱上下的细线：上影线，下影线，分别代表在这一分钟内的最高价和最低价。</p>
+</li>
+<li><p>图中标有今日最高，和今日最低。严谨理解为：从今日凌晨到目前为止的最高价与最低价。</p>
+<h2 id="均线分析方法："><a href="#均线分析方法：" class="headerlink" title="均线分析方法："></a>均线分析方法：</h2></li>
 </ul>
 ]]></content>
       <categories>
