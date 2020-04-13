@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Github使用学习</title>
+    <url>/2020/02/21/Github%E4%BD%BF%E7%94%A8%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>刚开始上手使用github的时候，真是一头雾水，不仅看不懂英文，而且也不懂如何使用，一番研究之后，基本了解了如何使用github的功能。</p>
+<h1 id="一、使用Github"><a href="#一、使用Github" class="headerlink" title="一、使用Github"></a>一、使用Github</h1><h2 id="1-1-目的"><a href="#1-1-目的" class="headerlink" title="1.1  目的"></a>1.1  目的</h2><p> 借助Github托管项目代码</p>
+<h2 id="1-2-基本概念"><a href="#1-2-基本概念" class="headerlink" title="1.2  基本概念"></a>1.2  基本概念</h2><ul>
+<li>仓库（Respository）</li>
+<li>收藏（Star） </li>
+<li>复制克隆项目（Fork）</li>
+<li>发起请求（Pull Request）：等待作者查看，如果他觉得不错，他会合并到自己的仓库。</li>
+<li>关注（Watch）：你关注的人或者项目有新动态，你会收到消息。</li>
+<li>事物卡片（Issue）：向作者发送问题，并且可以一起讨论这个问题。</li>
+</ul>
+<h2 id="1-3-创建仓库"><a href="#1-3-创建仓库" class="headerlink" title="1.3  创建仓库"></a>1.3  创建仓库</h2><ul>
+<li>创建账号，验证邮箱</li>
+<li>创建一个test仓库</li>
+<li>readMe：详细描述</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200222123314231.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="1-4-仓库管理"><a href="#1-4-仓库管理" class="headerlink" title="1.4  仓库管理"></a>1.4  仓库管理</h2><ul>
+<li><strong>创建新文件</strong></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200222124459789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200222124645965.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>修改文件</strong></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200222125407532.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>删除文件</strong></li>
+</ul>
+<p>删除之后可以进入commits查看被删除的文件。</p>
+<ul>
+<li><strong>上传文件</strong></li>
+</ul>
+<p>点击 upload选择要上传的文件，或者将文件拖动到该区域，一次可以选择上传多个文件。<br>填写标题和描述之后，点击提交，就上传完成</p>
+<ul>
+<li><strong>搜索文件</strong></li>
+</ul>
+<p>点击find file，或者按住键盘T。</p>
+<ul>
+<li><strong>下载 / 检出项目</strong></li>
+</ul>
+<p>点击克隆或者下载。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222131226364.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="1-5-提出问题-Issues"><a href="#1-5-提出问题-Issues" class="headerlink" title="1.5  提出问题 Issues"></a>1.5  提出问题 Issues</h2><p><strong>作用：</strong> 发现代码BUG，但是目前没有成型代码，需要讨论时用，或者使用开源项目，出现问题时用。<br><strong>使用：</strong> 发现别人的项目有bug，提交issue，填写相应的标题和描述，然后提交过去。当作者登录github的时候，可以查看问题并讨论回复，问题解决后，点击close Issue 关闭问题。两方都有关闭Issue的权限。</p>
+<h2 id="1-6-拉取请求（Pull-Request）"><a href="#1-6-拉取请求（Pull-Request）" class="headerlink" title="1.6  拉取请求（Pull Request）"></a>1.6  拉取请求（Pull Request）</h2><p><img src="https://img-blog.csdnimg.cn/2020022213452533.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>git+github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>DBUtils学习笔记</title>
     <url>/2020/02/06/DBUtils%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。并且简化了增删改查的操作。</p>
@@ -149,60 +203,6 @@
       </categories>
       <tags>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github使用学习</title>
-    <url>/2020/02/21/Github%E4%BD%BF%E7%94%A8%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<p>刚开始上手使用github的时候，真是一头雾水，不仅看不懂英文，而且也不懂如何使用，一番研究之后，基本了解了如何使用github的功能。</p>
-<h1 id="一、使用Github"><a href="#一、使用Github" class="headerlink" title="一、使用Github"></a>一、使用Github</h1><h2 id="1-1-目的"><a href="#1-1-目的" class="headerlink" title="1.1  目的"></a>1.1  目的</h2><p> 借助Github托管项目代码</p>
-<h2 id="1-2-基本概念"><a href="#1-2-基本概念" class="headerlink" title="1.2  基本概念"></a>1.2  基本概念</h2><ul>
-<li>仓库（Respository）</li>
-<li>收藏（Star） </li>
-<li>复制克隆项目（Fork）</li>
-<li>发起请求（Pull Request）：等待作者查看，如果他觉得不错，他会合并到自己的仓库。</li>
-<li>关注（Watch）：你关注的人或者项目有新动态，你会收到消息。</li>
-<li>事物卡片（Issue）：向作者发送问题，并且可以一起讨论这个问题。</li>
-</ul>
-<h2 id="1-3-创建仓库"><a href="#1-3-创建仓库" class="headerlink" title="1.3  创建仓库"></a>1.3  创建仓库</h2><ul>
-<li>创建账号，验证邮箱</li>
-<li>创建一个test仓库</li>
-<li>readMe：详细描述</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200222123314231.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="1-4-仓库管理"><a href="#1-4-仓库管理" class="headerlink" title="1.4  仓库管理"></a>1.4  仓库管理</h2><ul>
-<li><strong>创建新文件</strong></li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200222124459789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200222124645965.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><strong>修改文件</strong></li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200222125407532.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><strong>删除文件</strong></li>
-</ul>
-<p>删除之后可以进入commits查看被删除的文件。</p>
-<ul>
-<li><strong>上传文件</strong></li>
-</ul>
-<p>点击 upload选择要上传的文件，或者将文件拖动到该区域，一次可以选择上传多个文件。<br>填写标题和描述之后，点击提交，就上传完成</p>
-<ul>
-<li><strong>搜索文件</strong></li>
-</ul>
-<p>点击find file，或者按住键盘T。</p>
-<ul>
-<li><strong>下载 / 检出项目</strong></li>
-</ul>
-<p>点击克隆或者下载。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222131226364.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="1-5-提出问题-Issues"><a href="#1-5-提出问题-Issues" class="headerlink" title="1.5  提出问题 Issues"></a>1.5  提出问题 Issues</h2><p><strong>作用：</strong> 发现代码BUG，但是目前没有成型代码，需要讨论时用，或者使用开源项目，出现问题时用。<br><strong>使用：</strong> 发现别人的项目有bug，提交issue，填写相应的标题和描述，然后提交过去。当作者登录github的时候，可以查看问题并讨论回复，问题解决后，点击close Issue 关闭问题。两方都有关闭Issue的权限。</p>
-<h2 id="1-6-拉取请求（Pull-Request）"><a href="#1-6-拉取请求（Pull-Request）" class="headerlink" title="1.6  拉取请求（Pull Request）"></a>1.6  拉取请求（Pull Request）</h2><p><img src="https://img-blog.csdnimg.cn/2020022213452533.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>git+github</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -575,48 +575,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JSP模式&amp;&amp;MVC模式</title>
-    <url>/2020/03/10/JSP-MVC/</url>
-    <content><![CDATA[<p>一个项目有一个好的设计模式很重要，有一个好的设计模式，使得开发和维护也变得简单。MVC是一种程序开发设计模式，他实现了显示模块与功能模块分离，提高了程序的可维护性，可移植性，可扩展性，可重用性，降低了程序的开发难度。</p>
-<a id="more"></a>
-
-<h2 id="JSP模式-amp-MVC模式"><a href="#JSP模式-amp-MVC模式" class="headerlink" title="JSP模式&amp;MVC模式"></a>JSP模式&amp;MVC模式</h2><ul>
-<li>MVC=model（模型）+view（视图）+contorller（控制）</li>
-<li>商城=仓库（模型）+店铺（视图），（控制）店铺去仓库拿货（取数据）</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200323093038355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200323093051579.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><strong>MVC工作机制</strong></li>
-</ul>
-<ol>
-<li>用户操作，将指令送到Conntoller（控制器）。</li>
-<li>控制器将指令和数据传递给业务模型（model）。</li>
-<li>模型进行业务逻辑判断，数据库存取。</li>
-<li>根据业务逻辑选择不的视图（View）展示给用户</li>
-</ol>
-<ul>
-<li>MVC设计模式可以分为两种：闭环和开放，但是开放派中（controllor）的职责过重。下面是闭环的优点：</li>
-</ul>
-<ol>
-<li>耦合性低，实现了用户显示模块与功能（业务逻辑）模块的分离</li>
-<li>提高应用系统的可维护性，可扩展性，可维护性，以及模块功能的复用性。</li>
-</ol>
-<ul>
-<li><strong>缺点：</strong></li>
-</ul>
-<ol>
-<li>对于简单的页面来说，会增加结构的复杂性，产生过多的更新操作，降低运行效率，而且使用的时候要精心计划，由于模型和视图严格分离，给调试程序带来了一定的困难。</li>
-<li>不适合中小应用程序，设计比较麻烦，用在中小应用上，或者改造一些工具来适应MVC，也是得不偿失的！！  </li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>MVC</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JSP&amp;EL&amp;JSTL</title>
     <url>/2020/02/11/JSP-EL-JSTL/</url>
     <content><![CDATA[<p>JSP，EL表达式，JSTL介绍</p>
@@ -704,6 +662,48 @@
         <tag>JSP</tag>
         <tag>EL</tag>
         <tag>JSTL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JSP模式&amp;&amp;MVC模式</title>
+    <url>/2020/03/10/JSP-MVC/</url>
+    <content><![CDATA[<p>一个项目有一个好的设计模式很重要，有一个好的设计模式，使得开发和维护也变得简单。MVC是一种程序开发设计模式，他实现了显示模块与功能模块分离，提高了程序的可维护性，可移植性，可扩展性，可重用性，降低了程序的开发难度。</p>
+<a id="more"></a>
+
+<h2 id="JSP模式-amp-MVC模式"><a href="#JSP模式-amp-MVC模式" class="headerlink" title="JSP模式&amp;MVC模式"></a>JSP模式&amp;MVC模式</h2><ul>
+<li>MVC=model（模型）+view（视图）+contorller（控制）</li>
+<li>商城=仓库（模型）+店铺（视图），（控制）店铺去仓库拿货（取数据）</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200323093038355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200323093051579.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>MVC工作机制</strong></li>
+</ul>
+<ol>
+<li>用户操作，将指令送到Conntoller（控制器）。</li>
+<li>控制器将指令和数据传递给业务模型（model）。</li>
+<li>模型进行业务逻辑判断，数据库存取。</li>
+<li>根据业务逻辑选择不的视图（View）展示给用户</li>
+</ol>
+<ul>
+<li>MVC设计模式可以分为两种：闭环和开放，但是开放派中（controllor）的职责过重。下面是闭环的优点：</li>
+</ul>
+<ol>
+<li>耦合性低，实现了用户显示模块与功能（业务逻辑）模块的分离</li>
+<li>提高应用系统的可维护性，可扩展性，可维护性，以及模块功能的复用性。</li>
+</ol>
+<ul>
+<li><strong>缺点：</strong></li>
+</ul>
+<ol>
+<li>对于简单的页面来说，会增加结构的复杂性，产生过多的更新操作，降低运行效率，而且使用的时候要精心计划，由于模型和视图严格分离，给调试程序带来了一定的困难。</li>
+<li>不适合中小应用程序，设计比较麻烦，用在中小应用上，或者改造一些工具来适应MVC，也是得不偿失的！！  </li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>MVC</tag>
       </tags>
   </entry>
   <entry>
@@ -1772,6 +1772,35 @@
       </tags>
   </entry>
   <entry>
+    <title>区块链的架构模型以及核心技术</title>
+    <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<h2 id="一-架构模型"><a href="#一-架构模型" class="headerlink" title="一.架构模型"></a>一.架构模型</h2><p>一般说来，区块链系统由数据层、网络层、共识层、激励层、合约层，应用层组成。</p>
+<ol>
+<li><strong>数据层：</strong> 封装了底层数据区块以及相关的数据加密和时间戳等基础数据和基本算法。</li>
+<li><strong>网络层：</strong> 则包括分布式组网机制、数据传播机制和数据验证机制等。</li>
+<li><strong>共识层：</strong> 主要封装网络节点的各类共识算法。</li>
+<li><strong>激励层：</strong> 将经济因素集成到区块链技术体系中来，主要包括经济激励的发行机制和分配机制等。</li>
+<li><strong>合约层：</strong> 主要封装各类脚本、算法和智能合约，是区块链可编程特性的基础。</li>
+<li><strong>应用层：</strong> 则封装了区块链的各种应用场景和案例。</li>
+</ol>
+<p><strong>区块链技术最具代表性的创新点：</strong></p>
+<ol>
+<li>基于时间戳的链式区块结构、分布式节点的共识机制。</li>
+<li>基于共识算力的经济激励和灵活可编程的智能合约。</li>
+</ol>
+<h2 id="二-核心技术"><a href="#二-核心技术" class="headerlink" title="二.核心技术"></a>二.核心技术</h2><p> 1.<strong>分布式账本：</strong>分布式账本指的是交易记账由分布在不同地方的多个节点共同完成，而且每一个节点记录的是完整的账目，因此它们都可以参与监督交易合法性，同时也可以共同为其作证 。跟传统的分布式存储有所不同，区块链的分布式存储的独特性主要体现在两个方面：一是区块链每个节点都按照块链式结构存储完整的数据，传统分布式存储一般是将数据按照一定的规则分成多份进行存储。二是区块链每个节点存储都是独立的、地位等同的，依靠共识机制保证存储的一致性，而传统分布式存储一般是通过中心节点往其他备份节点同步数据。没有任何一个节点可以单独记录账本数据，从而避免了单一记账人被控制或者被贿赂而记假账的可能性。也由记账节点足够多，理论上讲除非所有的节点被破坏，否则账目就不会丢失，从而保证了账目数据的安全性。</p>
+<p>2.<strong>非对称加密：</strong>存储在区块链上的交易信息是公开的，但是账户身份信息是高度加密的，只有在数据拥有者授权的情况下才能访问到，从而保证了数据的安全和个人的隐私。<br>3.<strong>共识机制</strong>就是所有记账节点之间怎么达成共识，去认定一个记录的有效性，这既是认定的手段，也是防止篡改的手段。区块链提出了四种不同的共识机制，适用于不同的应用场景，在效率和安全性之间取得平衡 。<br>区块链的共识机制具备“少数服从多数”以及“人人平等”的特点，其中“少数服从多数”并不完全指节点个数，也可以是计算能力、股权数或者其他的计算机可以比较的特征量。“人人平等”是当节点满足条件时，所有节点都有权优先提出共识结果、直接被其他节点认同后并最后有可能成为最终共识结果。以比特币为例，采用的是工作量证明，只有在控制了全网超过51%的记账节点的情况下，才有可能伪造出一条不存在的记录。当加入区块链的节点足够多的时候，这基本上不可能，从而杜绝了造假的可能。<br>4.<strong>智能合约：</strong>基于这些可信的不可篡改的数据，可以自动化的执行一些预先定义好的规则和条款。以保险为例，如果说每个人的信息（包括医疗信息和风险发生的信息）都是真实可信的，那就很容易的在一些标准化的保险产品中，去进行自动化的理赔。在保险公司的日常业务中，虽然交易不像银行和证券行业那样频繁，但是对可信数据的依赖是有增无减。因此，笔者认为利用区块链技术，从数据管理的角度切入，能够有效地帮助保险公司提高风险管理能力。具体来讲主要分投保人风险管理和保险公司的风险监督。</p>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>区块链简单理解</title>
     <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</url>
     <content><![CDATA[<p>对近年来很火的区块链的简单了解</p>
@@ -1794,35 +1823,6 @@
 <li>安全性。只要不能掌控全部数据节点的51%，就无法肆意操控修改网络数据，这使区块链本身变得相对安全，避免了主观人为的数据变更。</li>
 <li>匿名性。除非有法律规范要求，单从技术上来讲，各区块节点的身份信息不需要公开或验证，信息传递可以<strong>匿名进行</strong>。</li>
 </ol>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>区块链的架构模型以及核心技术</title>
-    <url>/2020/02/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%9E%8B%E4%BB%A5%E5%8F%8A%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-<h2 id="一-架构模型"><a href="#一-架构模型" class="headerlink" title="一.架构模型"></a>一.架构模型</h2><p>一般说来，区块链系统由数据层、网络层、共识层、激励层、合约层，应用层组成。</p>
-<ol>
-<li><strong>数据层：</strong> 封装了底层数据区块以及相关的数据加密和时间戳等基础数据和基本算法。</li>
-<li><strong>网络层：</strong> 则包括分布式组网机制、数据传播机制和数据验证机制等。</li>
-<li><strong>共识层：</strong> 主要封装网络节点的各类共识算法。</li>
-<li><strong>激励层：</strong> 将经济因素集成到区块链技术体系中来，主要包括经济激励的发行机制和分配机制等。</li>
-<li><strong>合约层：</strong> 主要封装各类脚本、算法和智能合约，是区块链可编程特性的基础。</li>
-<li><strong>应用层：</strong> 则封装了区块链的各种应用场景和案例。</li>
-</ol>
-<p><strong>区块链技术最具代表性的创新点：</strong></p>
-<ol>
-<li>基于时间戳的链式区块结构、分布式节点的共识机制。</li>
-<li>基于共识算力的经济激励和灵活可编程的智能合约。</li>
-</ol>
-<h2 id="二-核心技术"><a href="#二-核心技术" class="headerlink" title="二.核心技术"></a>二.核心技术</h2><p> 1.<strong>分布式账本：</strong>分布式账本指的是交易记账由分布在不同地方的多个节点共同完成，而且每一个节点记录的是完整的账目，因此它们都可以参与监督交易合法性，同时也可以共同为其作证 。跟传统的分布式存储有所不同，区块链的分布式存储的独特性主要体现在两个方面：一是区块链每个节点都按照块链式结构存储完整的数据，传统分布式存储一般是将数据按照一定的规则分成多份进行存储。二是区块链每个节点存储都是独立的、地位等同的，依靠共识机制保证存储的一致性，而传统分布式存储一般是通过中心节点往其他备份节点同步数据。没有任何一个节点可以单独记录账本数据，从而避免了单一记账人被控制或者被贿赂而记假账的可能性。也由记账节点足够多，理论上讲除非所有的节点被破坏，否则账目就不会丢失，从而保证了账目数据的安全性。</p>
-<p>2.<strong>非对称加密：</strong>存储在区块链上的交易信息是公开的，但是账户身份信息是高度加密的，只有在数据拥有者授权的情况下才能访问到，从而保证了数据的安全和个人的隐私。<br>3.<strong>共识机制</strong>就是所有记账节点之间怎么达成共识，去认定一个记录的有效性，这既是认定的手段，也是防止篡改的手段。区块链提出了四种不同的共识机制，适用于不同的应用场景，在效率和安全性之间取得平衡 。<br>区块链的共识机制具备“少数服从多数”以及“人人平等”的特点，其中“少数服从多数”并不完全指节点个数，也可以是计算能力、股权数或者其他的计算机可以比较的特征量。“人人平等”是当节点满足条件时，所有节点都有权优先提出共识结果、直接被其他节点认同后并最后有可能成为最终共识结果。以比特币为例，采用的是工作量证明，只有在控制了全网超过51%的记账节点的情况下，才有可能伪造出一条不存在的记录。当加入区块链的节点足够多的时候，这基本上不可能，从而杜绝了造假的可能。<br>4.<strong>智能合约：</strong>基于这些可信的不可篡改的数据，可以自动化的执行一些预先定义好的规则和条款。以保险为例，如果说每个人的信息（包括医疗信息和风险发生的信息）都是真实可信的，那就很容易的在一些标准化的保险产品中，去进行自动化的理赔。在保险公司的日常业务中，虽然交易不像银行和证券行业那样频繁，但是对可信数据的依赖是有增无减。因此，笔者认为利用区块链技术，从数据管理的角度切入，能够有效地帮助保险公司提高风险管理能力。具体来讲主要分投保人风险管理和保险公司的风险监督。</p>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>

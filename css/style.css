@@ -129,6 +129,8 @@ img.thumbnail {
 }
 .footer {
   background: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .footer .field .button {
   background: transparent;
