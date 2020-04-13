@@ -2,10 +2,10 @@
  *       Override CSS Framework
  * --------------------------------- */
 html {
-  font-size: 0.975rem;
+  font-size: 0.9rem;
 }
 body {
-  background-color: #d0d0d0;
+  background-color: #f7f7f7;
 }
 body,
 button,
@@ -90,7 +90,7 @@ img.thumbnail {
 .navbar-main .navbar-end {
   align-items: stretch;
   display: flex;
-  padding: 0;
+  padding: 6px;
   flex-shrink: 0;
 }
 .navbar-main .navbar-menu {
@@ -109,7 +109,7 @@ img.thumbnail {
 .navbar-main .navbar-item {
   display: flex;
   align-items: center;
-  padding: 0rem 0.7rem;
+  padding: 0rem 0.6rem;
 }
 .navbar-main .navbar-item.is-active {
   color: #3273dc;
