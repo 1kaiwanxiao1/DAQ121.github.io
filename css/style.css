@@ -12,8 +12,11 @@ button,
 input,
 select,
 textarea {
-  font-family: "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei", "MyFont";
-  src: url(Font/font.ttf);
+  font-family: "MyFont";
+}
+@font-face{
+  font-family: "MyFont";
+  src: url('/font.ttf');
 }
 @media screen and (min-width: 1280px) {
   .is-2-column .container {
