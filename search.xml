@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Github使用学习</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<p>刚开始上手使用github的时候，真是一头雾水，不仅看不懂英文，而且也不懂如何使用，一番研究之后，基本了解了如何使用github的功能。</p>
+<h1 id="一、使用Github"><a href="#一、使用Github" class="headerlink" title="一、使用Github"></a>一、使用Github</h1><h2 id="1-1-目的"><a href="#1-1-目的" class="headerlink" title="1.1  目的"></a>1.1  目的</h2><p> 借助Github托管项目代码</p>
+<h2 id="1-2-基本概念"><a href="#1-2-基本概念" class="headerlink" title="1.2  基本概念"></a>1.2  基本概念</h2><ul>
+<li>仓库（Respository）</li>
+<li>收藏（Star） </li>
+<li>复制克隆项目（Fork）</li>
+<li>发起请求（Pull Request）：等待作者查看，如果他觉得不错，他会合并到自己的仓库。</li>
+<li>关注（Watch）：你关注的人或者项目有新动态，你会收到消息。</li>
+<li>事物卡片（Issue）：向作者发送问题，并且可以一起讨论这个问题。</li>
+</ul>
+<h2 id="1-3-创建仓库"><a href="#1-3-创建仓库" class="headerlink" title="1.3  创建仓库"></a>1.3  创建仓库</h2><ul>
+<li>创建账号，验证邮箱</li>
+<li>创建一个test仓库</li>
+<li>readMe：详细描述</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200222123314231.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="1-4-仓库管理"><a href="#1-4-仓库管理" class="headerlink" title="1.4  仓库管理"></a>1.4  仓库管理</h2><ul>
+<li><strong>创建新文件</strong></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200222124459789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200222124645965.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>修改文件</strong></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200222125407532.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>删除文件</strong></li>
+</ul>
+<p>删除之后可以进入commits查看被删除的文件。</p>
+<ul>
+<li><strong>上传文件</strong></li>
+</ul>
+<p>点击 upload选择要上传的文件，或者将文件拖动到该区域，一次可以选择上传多个文件。<br>填写标题和描述之后，点击提交，就上传完成</p>
+<ul>
+<li><strong>搜索文件</strong></li>
+</ul>
+<p>点击find file，或者按住键盘T。</p>
+<ul>
+<li><strong>下载 / 检出项目</strong></li>
+</ul>
+<p>点击克隆或者下载。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222131226364.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="1-5-提出问题-Issues"><a href="#1-5-提出问题-Issues" class="headerlink" title="1.5  提出问题 Issues"></a>1.5  提出问题 Issues</h2><p><strong>作用：</strong> 发现代码BUG，但是目前没有成型代码，需要讨论时用，或者使用开源项目，出现问题时用。<br><strong>使用：</strong> 发现别人的项目有bug，提交issue，填写相应的标题和描述，然后提交过去。当作者登录github的时候，可以查看问题并讨论回复，问题解决后，点击close Issue 关闭问题。两方都有关闭Issue的权限。</p>
+<h2 id="1-6-拉取请求（Pull-Request）"><a href="#1-6-拉取请求（Pull-Request）" class="headerlink" title="1.6  拉取请求（Pull Request）"></a>1.6  拉取请求（Pull Request）</h2><p><img src="https://img-blog.csdnimg.cn/2020022213452533.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>git+github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git使用学习</title>
     <url>/undefined/</url>
     <content><![CDATA[<p>Git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。也是程序员最常用工具之一，连接本地仓库与github仓库，提高了开发效率，github也是开源项目宝库。</p>
@@ -148,78 +202,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JDBC基础知识</title>
-    <url>/undefined/</url>
-    <content><![CDATA[<p>JDBC概述，作用，类型，以及使用时如何选择。</p>
-<a id="more"></a>
-<h2 id="一、JDBC是什么？"><a href="#一、JDBC是什么？" class="headerlink" title="一、JDBC是什么？"></a>一、JDBC是什么？</h2><ul>
-<li>百度百科解释：JDBC(java database connectivity)驱动程序是对JDBC规范完整的实现，它的存在在Java程序与数据库系统之间建立了一条通信的渠道。它是 一 种可用于执行 SQL 语句的 Java API(<strong>Application Programming Interface， 应用程序设计接口</strong>)。</li>
-<li>简单理解：java 数据库连接。有了它，就能够在java代码中操作任何数据库。由于数据库种类繁多，并且java程序使用广泛，sun公司就提供了一种规范，让其他的数据库提供商去实现底层的访问。</li>
-<li>刚开始每个数据库（Oracle，Mysql，SqlServer）的访问规则都不同，后来SUN公司想一统天下，出台了一套规范，各个数据库要按照这个规范去写底层代码，与此同时，Java程序也直接去找JDBC。</li>
-</ul>
-<h2 id="二、作用是什么？"><a href="#二、作用是什么？" class="headerlink" title="二、作用是什么？"></a>二、作用是什么？</h2><ul>
-<li>JDBC 为数据库应用开发人员、数据库前台开发人员提供了一种标准的应用程序设计接口， 使开发人员可以用纯 Java 语言编写完整的数据库应用程序。</li>
-<li>JDBC 通过调用其接口提供的方法， 提供了 Java 应用程序与各种数据库服务器之间的连接服务，。</li>
-<li>它支持 ANSI SQL- 92 标准， 实现了从 Java 程序内调用标准的 SQL 命令对数据库进行查询、插入、删除和更新等操作， 并确保数据事务的正常进行。</li>
-</ul>
-<h2 id="三、JDBC驱动程序"><a href="#三、JDBC驱动程序" class="headerlink" title="三、JDBC驱动程序"></a>三、JDBC驱动程序</h2><p>根据访问数据库的技术不同， JDBC 驱动程序相应地分为四种类型。不同类型的驱动程序有着不一样的特性和使用方法。</p>
-<p> 1.<strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> 此类驱动程序由JDBC-ODBC桥和一个ODBC驱动程序组成。</li>
-<li><input disabled="" type="checkbox"> 工作原理：通过一段本地<strong>C代码</strong>将JDBC调用转化成ODBC调用。这一类型必须在本地计算机上先安装好ODBC驱动程序，然后通过JDBC-ODBCBridge的转换，将Java程序中使用的JDBC API访问指令转化成ODBC API指令，进而通过ODBC驱动程序调用本地数据库驱动代码完成对数据库的访问。</li>
-</ul>
-<p> 2.<strong>部分Java的本地JDBC API驱动程序</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> JDBC API驱动程序(Anative API partly Java technology-enabled Driver)</li>
-<li><input disabled="" type="checkbox"> 工作原理：此类驱动程序也必须在本地计算机上先安装好特定的驱动程序(类似ODBC)，然后通过PartialJavaJDBCDriver的转换，把Java程序中使用的JDBC API转换成NativeAPI，进而存取数据库。</li>
-</ul>
-<p>3.<strong>纯Java的数据库中间件驱动程序</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> 纯Java的数据库中间件驱动程序(Pure Java Driver for Database Middleware)使用这类驱动程序时，不需要在本地计算机上安装任何附加软件，但是必须在安装数据库管理系统的服务器端加装中间件(Middleware)，这个中间件负责所有存取数据库时必要的转换。</li>
-<li><input disabled="" type="checkbox"> 工作原理：驱动程序将JDBC访问转换成与数据库无关的标准网络协议(通常是HTTP或HTTPS)送出，然后再由中间件服务器将其转换成数据库专用的访问指令，完成对数据库的操作。中间件服务器能支持对多种数据库的访问。</li>
-</ul>
-<p>4.<strong>纯Java的JDBC驱动程序</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> 纯Java的JDBC驱动程序(Direct-to-DatabasePureJavaDriver)这类驱动程序是直接面向数据库的纯Java驱动程序，即所谓的”瘦”驱动程序。</li>
-<li><input disabled="" type="checkbox"> 工作原理：使用这类驱动程序时无需安装任何附加的软件(无论是本地计算机或是数据库服务器端)，所有存取数据库的操作都直接由JDBC驱动程序来完成，此类驱动程序能将JDBC调用转换成DBMS专用的网络协议，能够自动识别网络协议下的特殊数据库并能直接创建数据连接。</li>
-</ul>
-<h2 id="四、JDBC驱动程序的选择"><a href="#四、JDBC驱动程序的选择" class="headerlink" title="四、JDBC驱动程序的选择"></a>四、JDBC驱动程序的选择</h2><p>在企业内部信息系统中，选择合适的JDBC驱动程序，使之符合数据库程序设计的要求，是提高系统性能必须考虑的一个方面。不同的应用有不同的需要，所以要根据应用选择合适的驱动程序。</p>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></li>
-<li>优点：节省投资，利用了已有的ODBC驱动程序。</li>
-<li>缺点：中间有多次调用，性能受到影响，执行效率比较低，不适合对大数据量存取的应用。有损Java数据库程序的兼容性，不具备跨平台性，不适合基于Internet/Intranet的应用。</li>
-<li>应用：桥接驱动程序用于已经在ODBC技术上投资的情形，例如已经投资了Windows应用服务器。</li>
-</ul>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>部分Java的本地JDBC API驱动程序</strong></li>
-<li>优点：具有开放性，其利用多层结构，上层用Java实现，支持多数据库，下层为本地代码(包括一些二进制代码和一个轻量的Java库)，加快了执行速度，提高了数据库访问效率。</li>
-<li>缺点：没有使用纯Java的API，如果在本地代码中存在缺陷，将可能使Java虚拟机完全垮掉。</li>
-<li>应用：受到限制</li>
-</ul>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>纯Java的数据库中间件驱动程序</strong></li>
-<li>优点：由纯Java语言开发而成的，并且中间件也仅需要在服务器上安装，不再需要客户端的本机代码，这类驱动程序的体积最小，效率较高，具有最大的灵活性。此类驱动采用标准的网络协议，可以被防火墙支持，是开发Applet程序理想的选择(其实这些驱动是为Applet特别编写的)，是Internet应用理想的解决方案。开发者还可以利用单一的驱动程序连接到多种数据库。</li>
-<li>缺点：需要在服务器端安装中间件，这适当影响了驱动程序的效率。</li>
-<li>应用：基于Web的应用系统的开发。</li>
-</ul>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>纯Java的JDBC驱动程序</strong></li>
-<li>最佳的JDBC驱动程序类型。</li>
-<li>优点：无需安装任何附加软件，不会增加任何额外开销，效率最高，拥有最佳的兼容性。</li>
-<li>缺点：可能不被防火墙支持，在Internet中会存在潜在安全隐患，成为这类驱动最大的缺陷。</li>
-<li>应用：在企业级应用软件中，是应优先考虑的。因此，一个Servlet程序，要适应不同的操作系统，最好使用此类驱动;这种驱动也非常适合Applet程序，事实证明它能安全通过TCP/IP协议连接到数据库。</li>
-</ul>
-<p> <img src="https://img-blog.csdnimg.cn/20200220152318929.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/202002201540355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>JDBC,MySql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>一、HashMap的底层实现原理</title>
     <url>/undefined/</url>
     <content><![CDATA[<p>HeshMap是基于哈希表的Map接口的实现，此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了非同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。 此实现假定哈希函数将元素适当地分布在各桶之间，可为基本操作（get 和 put）提供稳定的性能。迭代 collection 视图所需的时间与 HashMap 实例的“容量”（桶的数量）及其大小（键-值映射关系数）成比例。所以，如果迭代性能很重要，则不要将初始容量设置得太高（或将加载因子设置得太低）。在面试中也经常出现这道考题，记录一下！</p>
@@ -292,6 +274,78 @@
       </categories>
       <tags>
         <tag>HashMap</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JDBC基础知识</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<p>JDBC概述，作用，类型，以及使用时如何选择。</p>
+<a id="more"></a>
+<h2 id="一、JDBC是什么？"><a href="#一、JDBC是什么？" class="headerlink" title="一、JDBC是什么？"></a>一、JDBC是什么？</h2><ul>
+<li>百度百科解释：JDBC(java database connectivity)驱动程序是对JDBC规范完整的实现，它的存在在Java程序与数据库系统之间建立了一条通信的渠道。它是 一 种可用于执行 SQL 语句的 Java API(<strong>Application Programming Interface， 应用程序设计接口</strong>)。</li>
+<li>简单理解：java 数据库连接。有了它，就能够在java代码中操作任何数据库。由于数据库种类繁多，并且java程序使用广泛，sun公司就提供了一种规范，让其他的数据库提供商去实现底层的访问。</li>
+<li>刚开始每个数据库（Oracle，Mysql，SqlServer）的访问规则都不同，后来SUN公司想一统天下，出台了一套规范，各个数据库要按照这个规范去写底层代码，与此同时，Java程序也直接去找JDBC。</li>
+</ul>
+<h2 id="二、作用是什么？"><a href="#二、作用是什么？" class="headerlink" title="二、作用是什么？"></a>二、作用是什么？</h2><ul>
+<li>JDBC 为数据库应用开发人员、数据库前台开发人员提供了一种标准的应用程序设计接口， 使开发人员可以用纯 Java 语言编写完整的数据库应用程序。</li>
+<li>JDBC 通过调用其接口提供的方法， 提供了 Java 应用程序与各种数据库服务器之间的连接服务，。</li>
+<li>它支持 ANSI SQL- 92 标准， 实现了从 Java 程序内调用标准的 SQL 命令对数据库进行查询、插入、删除和更新等操作， 并确保数据事务的正常进行。</li>
+</ul>
+<h2 id="三、JDBC驱动程序"><a href="#三、JDBC驱动程序" class="headerlink" title="三、JDBC驱动程序"></a>三、JDBC驱动程序</h2><p>根据访问数据库的技术不同， JDBC 驱动程序相应地分为四种类型。不同类型的驱动程序有着不一样的特性和使用方法。</p>
+<p> 1.<strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 此类驱动程序由JDBC-ODBC桥和一个ODBC驱动程序组成。</li>
+<li><input disabled="" type="checkbox"> 工作原理：通过一段本地<strong>C代码</strong>将JDBC调用转化成ODBC调用。这一类型必须在本地计算机上先安装好ODBC驱动程序，然后通过JDBC-ODBCBridge的转换，将Java程序中使用的JDBC API访问指令转化成ODBC API指令，进而通过ODBC驱动程序调用本地数据库驱动代码完成对数据库的访问。</li>
+</ul>
+<p> 2.<strong>部分Java的本地JDBC API驱动程序</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> JDBC API驱动程序(Anative API partly Java technology-enabled Driver)</li>
+<li><input disabled="" type="checkbox"> 工作原理：此类驱动程序也必须在本地计算机上先安装好特定的驱动程序(类似ODBC)，然后通过PartialJavaJDBCDriver的转换，把Java程序中使用的JDBC API转换成NativeAPI，进而存取数据库。</li>
+</ul>
+<p>3.<strong>纯Java的数据库中间件驱动程序</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 纯Java的数据库中间件驱动程序(Pure Java Driver for Database Middleware)使用这类驱动程序时，不需要在本地计算机上安装任何附加软件，但是必须在安装数据库管理系统的服务器端加装中间件(Middleware)，这个中间件负责所有存取数据库时必要的转换。</li>
+<li><input disabled="" type="checkbox"> 工作原理：驱动程序将JDBC访问转换成与数据库无关的标准网络协议(通常是HTTP或HTTPS)送出，然后再由中间件服务器将其转换成数据库专用的访问指令，完成对数据库的操作。中间件服务器能支持对多种数据库的访问。</li>
+</ul>
+<p>4.<strong>纯Java的JDBC驱动程序</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 纯Java的JDBC驱动程序(Direct-to-DatabasePureJavaDriver)这类驱动程序是直接面向数据库的纯Java驱动程序，即所谓的”瘦”驱动程序。</li>
+<li><input disabled="" type="checkbox"> 工作原理：使用这类驱动程序时无需安装任何附加的软件(无论是本地计算机或是数据库服务器端)，所有存取数据库的操作都直接由JDBC驱动程序来完成，此类驱动程序能将JDBC调用转换成DBMS专用的网络协议，能够自动识别网络协议下的特殊数据库并能直接创建数据连接。</li>
+</ul>
+<h2 id="四、JDBC驱动程序的选择"><a href="#四、JDBC驱动程序的选择" class="headerlink" title="四、JDBC驱动程序的选择"></a>四、JDBC驱动程序的选择</h2><p>在企业内部信息系统中，选择合适的JDBC驱动程序，使之符合数据库程序设计的要求，是提高系统性能必须考虑的一个方面。不同的应用有不同的需要，所以要根据应用选择合适的驱动程序。</p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>JDBC-ODBC桥驱动程序(JDBC-ODBC Bridge Driver)</strong></li>
+<li>优点：节省投资，利用了已有的ODBC驱动程序。</li>
+<li>缺点：中间有多次调用，性能受到影响，执行效率比较低，不适合对大数据量存取的应用。有损Java数据库程序的兼容性，不具备跨平台性，不适合基于Internet/Intranet的应用。</li>
+<li>应用：桥接驱动程序用于已经在ODBC技术上投资的情形，例如已经投资了Windows应用服务器。</li>
+</ul>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>部分Java的本地JDBC API驱动程序</strong></li>
+<li>优点：具有开放性，其利用多层结构，上层用Java实现，支持多数据库，下层为本地代码(包括一些二进制代码和一个轻量的Java库)，加快了执行速度，提高了数据库访问效率。</li>
+<li>缺点：没有使用纯Java的API，如果在本地代码中存在缺陷，将可能使Java虚拟机完全垮掉。</li>
+<li>应用：受到限制</li>
+</ul>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>纯Java的数据库中间件驱动程序</strong></li>
+<li>优点：由纯Java语言开发而成的，并且中间件也仅需要在服务器上安装，不再需要客户端的本机代码，这类驱动程序的体积最小，效率较高，具有最大的灵活性。此类驱动采用标准的网络协议，可以被防火墙支持，是开发Applet程序理想的选择(其实这些驱动是为Applet特别编写的)，是Internet应用理想的解决方案。开发者还可以利用单一的驱动程序连接到多种数据库。</li>
+<li>缺点：需要在服务器端安装中间件，这适当影响了驱动程序的效率。</li>
+<li>应用：基于Web的应用系统的开发。</li>
+</ul>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>纯Java的JDBC驱动程序</strong></li>
+<li>最佳的JDBC驱动程序类型。</li>
+<li>优点：无需安装任何附加软件，不会增加任何额外开销，效率最高，拥有最佳的兼容性。</li>
+<li>缺点：可能不被防火墙支持，在Internet中会存在潜在安全隐患，成为这类驱动最大的缺陷。</li>
+<li>应用：在企业级应用软件中，是应优先考虑的。因此，一个Servlet程序，要适应不同的操作系统，最好使用此类驱动;这种驱动也非常适合Applet程序，事实证明它能安全通过TCP/IP协议连接到数据库。</li>
+</ul>
+<p> <img src="https://img-blog.csdnimg.cn/20200220152318929.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/202002201540355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>JDBC,MySql</tag>
       </tags>
   </entry>
   <entry>
@@ -515,54 +569,6 @@
       </tags>
   </entry>
   <entry>
-    <title>DBUtils学习笔记</title>
-    <url>/undefined/</url>
-    <content><![CDATA[<p>DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。并且简化了增删改查的操作。</p>
-<a id="more"></a>
-<h1 id="使用开源的DBUtils"><a href="#使用开源的DBUtils" class="headerlink" title="使用开源的DBUtils"></a>使用开源的DBUtils</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
-<li>Commons DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。</li>
-<li>简化了增删改查的操作。</li>
-</ul>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><ul>
-<li>增删改</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.导入jar包  commons-dbutils-1.4.jar</span><br><span class="line">public class TestDBUtils &#123;</span><br><span class="line">	@Test</span><br><span class="line">	public void testInsert() throws SQLException &#123;</span><br><span class="line">		ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">		// dbutils 只是帮我们简化了CRUD 的代码， 但是连接的创建以及获取工作。 不在他的考虑范围</span><br><span class="line">		QueryRunner queryRunner = new QueryRunner(dataSource);</span><br><span class="line">		// 增加</span><br><span class="line">		queryRunner.update(<span class="string">"insert into category values (null , ? , ? )"</span>, <span class="string">"a"</span>, 1000);</span><br><span class="line">		// 删除</span><br><span class="line">		queryRunner.update(<span class="string">"delete from account where id = ?"</span>, 5);</span><br><span class="line">		// 更新</span><br><span class="line">		queryRunner.update(<span class="string">"update account set money = ? where id = ?"</span>, 10000000, 6);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>查</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.直接new接口的匿名实现类</span><br><span class="line">QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());</span><br><span class="line">	Account  account =  queryRunner.query(<span class="string">"select * from account where id = ?"</span>, new ResultSetHandler&lt;Account&gt;()&#123;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public Account handle(ResultSet rs) throws SQLException &#123;</span><br><span class="line">			Account account  =  new Account();</span><br><span class="line">			<span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">				String name = rs.getString(<span class="string">"name"</span>);</span><br><span class="line">				int money = rs.getInt(<span class="string">"money"</span>);</span><br><span class="line">					</span><br><span class="line">				account.setName(name);</span><br><span class="line">				account.setMoney(money);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> account;</span><br><span class="line">		&#125; </span><br><span class="line">	 &#125;, 6);</span><br><span class="line">	System.out.println(account.toString());</span><br><span class="line"></span><br><span class="line">2. 直接使用框架已经写好的实现类。（最常用）</span><br><span class="line">	QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());</span><br><span class="line">	//查询单个对象</span><br><span class="line">Account account = queryRunner.query(<span class="string">"select * from account where id = ?"</span>, </span><br><span class="line">			new BeanHandler&lt;Account&gt;(Account.class), 8);</span><br><span class="line">	System.out.println(category.toString());</span><br><span class="line">	</span><br><span class="line">	* 查询多个对象</span><br><span class="line">List&lt;Category&gt; list = queryRunner.query(<span class="string">"select * from category"</span>, new BeanListHandler&lt;Category&gt;(Category.class));</span><br><span class="line">	<span class="keyword">for</span> (Category category : list) &#123;</span><br><span class="line">		System.out.println(category.toString());</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="ResultSetHandler-常用的实现类"><a href="#ResultSetHandler-常用的实现类" class="headerlink" title="ResultSetHandler 常用的实现类"></a>ResultSetHandler 常用的实现类</h1><ul>
-<li>以下两个是使用频率最高的</li>
-</ul>
-<ol>
-<li><p>BeanHandler          查询到的<strong>单个</strong>数据封装成一个对象</p>
-</li>
-<li><p>BeanListHandler    查询到的<strong>多个</strong>数据封装 成一个List&lt;对象&gt;</p>
-</li>
-<li><p>ArrayHandler,  查询到的单个数据封装成一个数组。</p>
-</li>
-<li><p>ArrayListHandler,  查询到的多个数据封装成一个集合 ，集合里面的元素是数组。 </p>
-</li>
-<li><p>MapHandler,  查询到的单个数据封装成一个map</p>
-</li>
-<li><p>MapListHandler,查询到的多个数据封装成一个集合 ，集合里面的元素是map。 </p>
-</li>
-<li><p>ColumnListHandler</p>
-</li>
-<li><p>KeyedHandler</p>
-</li>
-<li><p>ScalarHandler</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>MySql,DBUtils</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySql多表操作</title>
     <url>/undefined/</url>
     <content><![CDATA[<p><strong>问：</strong> 分类表和商品表之间是不是有关系? 如果有关系,在数据库中如何表示这种关系？</p>
@@ -631,218 +637,75 @@
       </tags>
   </entry>
   <entry>
-    <title>Github使用学习</title>
+    <title>MySql安装与卸载</title>
     <url>/undefined/</url>
-    <content><![CDATA[<p>刚开始上手使用github的时候，真是一头雾水，不仅看不懂英文，而且也不懂如何使用，一番研究之后，基本了解了如何使用github的功能。</p>
-<h1 id="一、使用Github"><a href="#一、使用Github" class="headerlink" title="一、使用Github"></a>一、使用Github</h1><h2 id="1-1-目的"><a href="#1-1-目的" class="headerlink" title="1.1  目的"></a>1.1  目的</h2><p> 借助Github托管项目代码</p>
-<h2 id="1-2-基本概念"><a href="#1-2-基本概念" class="headerlink" title="1.2  基本概念"></a>1.2  基本概念</h2><ul>
-<li>仓库（Respository）</li>
-<li>收藏（Star） </li>
-<li>复制克隆项目（Fork）</li>
-<li>发起请求（Pull Request）：等待作者查看，如果他觉得不错，他会合并到自己的仓库。</li>
-<li>关注（Watch）：你关注的人或者项目有新动态，你会收到消息。</li>
-<li>事物卡片（Issue）：向作者发送问题，并且可以一起讨论这个问题。</li>
+    <content><![CDATA[<p>MySql的卸载与安装</p>
+<a id="more"></a>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ul>
+<li>运行安装程序，在启动配置教程之前，一路下一步，没有下一步的话就直接<code>finish</code></li>
+<li>第一次<code>finish</code>之后启动服务器配置教程</li>
+<li>第一个注意：<code>include mysql bin directory to windows path</code></li>
+<li>第二个注意：端口号不要修改，字符集选择UTF-8</li>
 </ul>
-<h2 id="1-3-创建仓库"><a href="#1-3-创建仓库" class="headerlink" title="1.3  创建仓库"></a>1.3  创建仓库</h2><ul>
-<li>创建账号，验证邮箱</li>
-<li>创建一个test仓库</li>
-<li>readMe：详细描述</li>
+<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><ul>
+<li>打开控制面板，删除软件</li>
+<li>删除mysql安装目录的所有文件</li>
+<li>删除mysql数据存放文件，C盘下面的<code>Programe data</code>里，它是隐藏文件，要点击查看隐藏文件。</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/20200222123314231.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="1-4-仓库管理"><a href="#1-4-仓库管理" class="headerlink" title="1.4  仓库管理"></a>1.4  仓库管理</h2><ul>
-<li><strong>创建新文件</strong></li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200222124459789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200222124645965.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><strong>修改文件</strong></li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200222125407532.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><strong>删除文件</strong></li>
-</ul>
-<p>删除之后可以进入commits查看被删除的文件。</p>
-<ul>
-<li><strong>上传文件</strong></li>
-</ul>
-<p>点击 upload选择要上传的文件，或者将文件拖动到该区域，一次可以选择上传多个文件。<br>填写标题和描述之后，点击提交，就上传完成</p>
-<ul>
-<li><strong>搜索文件</strong></li>
-</ul>
-<p>点击find file，或者按住键盘T。</p>
-<ul>
-<li><strong>下载 / 检出项目</strong></li>
-</ul>
-<p>点击克隆或者下载。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222131226364.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="1-5-提出问题-Issues"><a href="#1-5-提出问题-Issues" class="headerlink" title="1.5  提出问题 Issues"></a>1.5  提出问题 Issues</h2><p><strong>作用：</strong> 发现代码BUG，但是目前没有成型代码，需要讨论时用，或者使用开源项目，出现问题时用。<br><strong>使用：</strong> 发现别人的项目有bug，提交issue，填写相应的标题和描述，然后提交过去。当作者登录github的时候，可以查看问题并讨论回复，问题解决后，点击close Issue 关闭问题。两方都有关闭Issue的权限。</p>
-<h2 id="1-6-拉取请求（Pull-Request）"><a href="#1-6-拉取请求（Pull-Request）" class="headerlink" title="1.6  拉取请求（Pull Request）"></a>1.6  拉取请求（Pull Request）</h2><p><img src="https://img-blog.csdnimg.cn/2020022213452533.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 ]]></content>
       <categories>
-        <category>git+github</category>
+        <category>数据库</category>
       </categories>
       <tags>
-        <tag>github</tag>
+        <tag>MySql</tag>
       </tags>
   </entry>
   <entry>
-    <title>Servlet学习笔记</title>
+    <title>DBUtils学习笔记</title>
     <url>/undefined/</url>
-    <content><![CDATA[<p>java Web离不开Servlet，它其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </p>
+    <content><![CDATA[<p>DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。并且简化了增删改查的操作。</p>
 <a id="more"></a>
-<h2 id="一、Web资源介绍"><a href="#一、Web资源介绍" class="headerlink" title="一、Web资源介绍"></a>一、Web资源介绍</h2><ul>
-<li><strong>在http协议当中，规定了请求和响应双方， 客户端和服务器端。与web相关的资源。</strong></li>
-<li>有两种分类：</li>
-<li>静态资源：html 、 js、 css</li>
-<li>动态资源：servlet/jsp</li>
+<h1 id="使用开源的DBUtils"><a href="#使用开源的DBUtils" class="headerlink" title="使用开源的DBUtils"></a>使用开源的DBUtils</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>Commons DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。</li>
+<li>简化了增删改查的操作。</li>
 </ul>
-<h2 id="二、Servlet介绍"><a href="#二、Servlet介绍" class="headerlink" title="二、Servlet介绍"></a>二、Servlet介绍</h2><ul>
-<li><strong>servlet是什么?</strong><ol>
-<li>其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </li>
-<li>更多的是配合动态资源来做。 当然静态资源也需要使用到servlet，只不过是Tomcat里面已经定义好了一个 DefaultServlet</li>
-</ol>
-</li>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><ul>
+<li>增删改</li>
 </ul>
-<h2 id="三、Selvlet简单使用Web工程"><a href="#三、Selvlet简单使用Web工程" class="headerlink" title="三、Selvlet简单使用Web工程"></a>三、Selvlet简单使用Web工程</h2><ol>
-<li><p>得写一个Web工程 ， 要有一个服务器。</p>
-</li>
-<li><p>测试运行Web工程：</p>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">得写一个Web工程 ， 要有一个服务器。</span><br><span class="line">测试运行Web工程</span><br><span class="line">	1. 新建一个类， 实现Servlet接口`public class HelloServlet implements Servlet&#123;&#125;`</span><br><span class="line"></span><br><span class="line">	2. 配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。</span><br><span class="line">		在webContent/WEB-INF/web.xml里面写上以下内容：</span><br><span class="line">		</span><br><span class="line">		  &lt;!-- 向tomcat报告， 我这个应用里面有这个servlet， 名字叫做HelloServlet , 具体的路径是com.itheima.servlet.HelloServlet --&gt;</span><br><span class="line">		  &lt;servlet&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet&lt;/servlet-class&gt;</span><br><span class="line">		  &lt;/servlet&gt;</span><br><span class="line">		  </span><br><span class="line">		  &lt;!-- 注册servlet的映射。  servletName : 找到上面注册的具体servlet，  url-pattern: 在地址栏上的path 一定要以/打头 --&gt;</span><br><span class="line">		  &lt;servlet-mapping&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;url-pattern&gt;/a&lt;/url-pattern&gt;</span><br><span class="line">		  &lt;/servlet-mapping&gt;</span><br><span class="line"></span><br><span class="line">		3. 在地址栏上输入 http://localhost:8080/项目名称/a</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20200226115856385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="四、Servlet执行过程"><a href="#四、Servlet执行过程" class="headerlink" title="四、Servlet执行过程"></a>四、Servlet执行过程</h2><p><img src="https://img-blog.csdnimg.cn/20200226120652999.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="五、Servlet的通用写法"><a href="#五、Servlet的通用写法" class="headerlink" title="五、Servlet的通用写法"></a>五、Servlet的通用写法</h2><ul>
-<li>实现Servlet接口，但接口里的方法很多，有些用不到。</li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.导入jar包  commons-dbutils-1.4.jar</span><br><span class="line">public class TestDBUtils &#123;</span><br><span class="line">	@Test</span><br><span class="line">	public void testInsert() throws SQLException &#123;</span><br><span class="line">		ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">		// dbutils 只是帮我们简化了CRUD 的代码， 但是连接的创建以及获取工作。 不在他的考虑范围</span><br><span class="line">		QueryRunner queryRunner = new QueryRunner(dataSource);</span><br><span class="line">		// 增加</span><br><span class="line">		queryRunner.update(<span class="string">"insert into category values (null , ? , ? )"</span>, <span class="string">"a"</span>, 1000);</span><br><span class="line">		// 删除</span><br><span class="line">		queryRunner.update(<span class="string">"delete from account where id = ?"</span>, 5);</span><br><span class="line">		// 更新</span><br><span class="line">		queryRunner.update(<span class="string">"update account set money = ? where id = ?"</span>, 10000000, 6);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.直接new接口的匿名实现类</span><br><span class="line">QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());</span><br><span class="line">	Account  account =  queryRunner.query(<span class="string">"select * from account where id = ?"</span>, new ResultSetHandler&lt;Account&gt;()&#123;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public Account handle(ResultSet rs) throws SQLException &#123;</span><br><span class="line">			Account account  =  new Account();</span><br><span class="line">			<span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">				String name = rs.getString(<span class="string">"name"</span>);</span><br><span class="line">				int money = rs.getInt(<span class="string">"money"</span>);</span><br><span class="line">					</span><br><span class="line">				account.setName(name);</span><br><span class="line">				account.setMoney(money);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> account;</span><br><span class="line">		&#125; </span><br><span class="line">	 &#125;, 6);</span><br><span class="line">	System.out.println(account.toString());</span><br><span class="line"></span><br><span class="line">2. 直接使用框架已经写好的实现类。（最常用）</span><br><span class="line">	QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());</span><br><span class="line">	//查询单个对象</span><br><span class="line">Account account = queryRunner.query(<span class="string">"select * from account where id = ?"</span>, </span><br><span class="line">			new BeanHandler&lt;Account&gt;(Account.class), 8);</span><br><span class="line">	System.out.println(category.toString());</span><br><span class="line">	</span><br><span class="line">	* 查询多个对象</span><br><span class="line">List&lt;Category&gt; list = queryRunner.query(<span class="string">"select * from category"</span>, new BeanListHandler&lt;Category&gt;(Category.class));</span><br><span class="line">	<span class="keyword">for</span> (Category category : list) &#123;</span><br><span class="line">		System.out.println(category.toString());</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="ResultSetHandler-常用的实现类"><a href="#ResultSetHandler-常用的实现类" class="headerlink" title="ResultSetHandler 常用的实现类"></a>ResultSetHandler 常用的实现类</h1><ul>
+<li>以下两个是使用频率最高的</li>
 </ul>
 <ol>
-<li>Servlet (接口)        </li>
-<li>GenericServlet    </li>
-<li>HttpServlet （用于处理http的请求）</li>
-</ol>
-<ul>
-<li>定义一个类，继承HttpServlet ,复写doGet 和 doPost</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200226124900942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="六、Servlet的生命周期方法"><a href="#六、Servlet的生命周期方法" class="headerlink" title="六、Servlet的生命周期方法"></a>六、Servlet的生命周期方法</h2><ul>
-<li>生命周期： 从创建到销毁的一段时间</li>
-<li>生命周期方法： 从创建到销毁，所调用的那些方法。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. init方法</span><br><span class="line">	在创建该servlet的实例时，就执行该方法。</span><br><span class="line">	一个servlet只会初始化一次， init方法只会执行一次</span><br><span class="line">	默认情况下是 ： 初次访问该servlet，才会创建实例。 </span><br><span class="line">		</span><br><span class="line">2.service方法</span><br><span class="line">	只要客户端来了一个请求，那么就执行这个方法了。</span><br><span class="line">	该方法可以被执行很多次。 一次请求，对应一次service方法的调用</span><br><span class="line">	</span><br><span class="line">3.destroy方法</span><br><span class="line">	servlet销毁的时候，就会执行该方法</span><br><span class="line">			1. 该项目从tomcat的里面移除。</span><br><span class="line">		  	2. 正常关闭tomcat就会执行 shutdown.bat</span><br><span class="line"></span><br><span class="line">4. doGet 和 doPost不算生命周期方法。</span><br><span class="line">所谓的生命周期方法是指，从对象的创建到销毁一定会执行的方法， 但是这两个方法，不一定会执行。</span><br><span class="line">```	 </span><br><span class="line"><span class="comment">## 七、让Servlet创建实例的时机提前。</span></span><br><span class="line">1. 默认情况下，只有在初次访问servlet的时候，才会执行init方法。 有的时候，我们可能需要在这个方法里面执行一些初始化工作，甚至是做一些比较耗时的逻辑。 </span><br><span class="line"></span><br><span class="line">2. 那么这个时候，初次访问，可能会在init方法中逗留太久的时间。 为了提升用户的体验，需要让这个初始化的时机提前一点。 </span><br><span class="line"></span><br><span class="line">3. 在配置的时候， 使用load-on-startup元素来指定， 给定的数字越小，启动的时机就越早。 一般不写负数， 从2开始即可。 </span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet04&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet04&lt;/servlet-class&gt;</span><br><span class="line">	&lt;load-on-startup&gt;2&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="八、ServletConfig"><a href="#八、ServletConfig" class="headerlink" title="八、ServletConfig"></a>八、ServletConfig</h2><ul>
-<li><strong>Servlet的配置，通过这个对象，可以获取servlet在配置的时候一些信息。</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1. 得到servlet配置对象 专门用于在配置servlet的信息</span></span><br><span class="line">ServletConfig config = getServletConfig();</span><br><span class="line">	</span><br><span class="line"><span class="comment">//获取到的是配置servlet里面servlet-name 的文本内容</span></span><br><span class="line">String servletName = config.getServletName();</span><br><span class="line">System.out.println(<span class="string">"servletName="</span>+servletName);</span><br><span class="line">	</span><br><span class="line"><span class="comment">//2. 可以获取具体的某一个参数。 </span></span><br><span class="line">String address = config.getInitParameter(<span class="string">"address"</span>);</span><br><span class="line">System.out.println(<span class="string">"address="</span>+address);</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.获取所有的参数名称</span></span><br><span class="line">Enumeration&lt;String&gt; names = config.getInitParameterNames();</span><br><span class="line"><span class="comment">//遍历取出所有的参数名称</span></span><br><span class="line"><span class="keyword">while</span> (names.hasMoreElements()) &#123;</span><br><span class="line">	String key = (String) names.nextElement();</span><br><span class="line">	String value = config.getInitParameter(key);</span><br><span class="line">	System.out.println(<span class="string">"key==="</span>+key + <span class="string">"   value="</span>+value);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>参数在哪里配置？在web.xml中</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;aa&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.daq.servlet.HelloServletConfig&lt;/servlet-class&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 可以添加初始化参数 --&gt;</span><br><span class="line">	&lt;init-param&gt;</span><br><span class="line">		&lt;param-name&gt;adress&lt;/param-name&gt;</span><br><span class="line">		&lt;param-value&gt;bejing&lt;/param-value&gt;</span><br><span class="line">	&lt;/init-param&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">	</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet02&lt;/servlet-name&gt;</span><br><span class="line">	&lt;url-pattern&gt;/HelloServlet02&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="九、为什么需要有ServletConfig？"><a href="#九、为什么需要有ServletConfig？" class="headerlink" title="九、为什么需要有ServletConfig？"></a>九、为什么需要有ServletConfig？</h2><ol>
-<li><p>未来我们自己开发的一些应用，使用到了一些技术，或者一些代码，我们不会。 但是有人写出来了。做成了jar包，它的代码放置在了自己的servlet类里面。 </p>
+<li><p>BeanHandler          查询到的<strong>单个</strong>数据封装成一个对象</p>
 </li>
-<li><p>刚好这个servlet 里面需要一个数字或者叫做变量值。 但是这个值不能是固定了。 所以要求使用到这个servlet的公司，在注册servlet的时候，必须要在web.xml里面，声明init-params</p>
+<li><p>BeanListHandler    查询到的<strong>多个</strong>数据封装 成一个List&lt;对象&gt;</p>
 </li>
-<li><p>在开发当中比较少用。</p>
+<li><p>ArrayHandler,  查询到的单个数据封装成一个数组。</p>
+</li>
+<li><p>ArrayListHandler,  查询到的多个数据封装成一个集合 ，集合里面的元素是数组。 </p>
+</li>
+<li><p>MapHandler,  查询到的单个数据封装成一个map</p>
+</li>
+<li><p>MapListHandler,查询到的多个数据封装成一个集合 ，集合里面的元素是map。 </p>
+</li>
+<li><p>ColumnListHandler</p>
+</li>
+<li><p>KeyedHandler</p>
+</li>
+<li><p>ScalarHandler</p>
 </li>
 </ol>
 ]]></content>
       <categories>
-        <category>Java Web</category>
+        <category>数据库</category>
       </categories>
       <tags>
-        <tag>Servlet</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JSP&amp;EL&amp;JSTL</title>
-    <url>/undefined/</url>
-    <content><![CDATA[<p>JSP，EL表达式，JSTL介绍</p>
-<a id="more"></a>
-<h1 id="一、JSP"><a href="#一、JSP" class="headerlink" title="一、JSP"></a>一、JSP</h1><h2 id="什么是jsp？"><a href="#什么是jsp？" class="headerlink" title="什么是jsp？"></a>什么是jsp？</h2><p><strong>Java Server Page</strong>  从用户角度看待 ，就是是一个网页 ， 从程序员角度看待 ， 其实是一个java类， 它继承了servlet，所以可以直接说jsp 就是一个Servlet.</p>
-<h2 id="为什么会有jsp"><a href="#为什么会有jsp" class="headerlink" title="为什么会有jsp?"></a>为什么会有jsp?</h2><p>为了有更好的用户体检，更好的交互效果。因为html 多数情况下用来显示静态内容 ， 一成不变的。 但是有时候我们需要在网页上显示一些动态数据， 比如： 查询所有的学生信息， 根据姓名去查询具体某个学生。  这些动作都需要去查询数据库，然后在网页上显示。 html是不支持写java代码  ， <strong>jsp里面可以写java代码。</strong> </p>
-<h2 id="jsp怎么用？"><a href="#jsp怎么用？" class="headerlink" title="jsp怎么用？"></a>jsp怎么用？</h2><h3 id="一、jsp指令"><a href="#一、jsp指令" class="headerlink" title="一、jsp指令"></a>一、jsp指令</h3><p><strong>一、page指令</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/20200229121757727.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">指令写法：</span><br><span class="line">&lt;%@ 指令名字 %&gt;</span><br><span class="line"></span><br><span class="line">page指令：</span><br><span class="line">1. language：表明jsp页面中可以写java代码</span><br><span class="line"></span><br><span class="line">2. contentType：其实就是说这个文件是什么类型，告诉浏览器我是什么内容类型，以及使用什么编码</span><br><span class="line">	contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">	text/html  MIMEType 这是一个文本，html网页</span><br><span class="line"></span><br><span class="line">3. pageEncoding：jsp内容编码</span><br><span class="line"></span><br><span class="line">4. extends 用于指定jsp翻译成java文件后，继承的父类是谁，一般不用改。</span><br><span class="line"></span><br><span class="line">5. import 导包使用的，一般不用手写。</span><br><span class="line"></span><br><span class="line">6. session </span><br><span class="line"> - 值可选的有<span class="literal">true</span> or <span class="literal">false</span></span><br><span class="line"> - 用于控制在这个jsp页面里面，能够直接使用session对象。</span><br><span class="line"> - 具体的区别是，请看翻译后的java文件：</span><br><span class="line">	如果该值是<span class="literal">true</span> , 那么在代码里面会有getSession（）的调用，</span><br><span class="line">	如果是<span class="literal">false</span> :  那么就不会有该方法调用，也就是没有session对象了。在页面上自然也就不能使用session了。</span><br><span class="line"></span><br><span class="line">7. errorPage： 指的是错误的页面， 值需要给错误的页面路径</span><br><span class="line"></span><br><span class="line">8. isErrorPage：上面的errorPage 用于指定错误的时候跑到哪一个页面去。 那么这个isErroPage , 就是声明某一个页面到底是不是错误的页面。</span><br></pre></td></tr></table></figure>
-
-<p><strong>二、include指令</strong></p>
-<ul>
-<li>包含另外一个jsp的内容进来。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;%@ include file=<span class="string">"other02.jsp"</span>%&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>背后细节:<br>把另外一个页面的所有内容拿过来一起输出。 所有的标签元素都包含进来。</li>
-</ul>
-<p><strong>三、taglib</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">""</span>  uri=<span class="string">""</span>%&gt;  </span><br><span class="line">	uri: 标签库路径</span><br><span class="line">	prefix : 标签库的别名</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、jsp动作标签（写在body里面）"><a href="#二、jsp动作标签（写在body里面）" class="headerlink" title="二、jsp动作标签（写在body里面）"></a>二、jsp动作标签（写在body里面）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;jsp:include page=<span class="string">""</span>&gt;&lt;/jsp:include&gt;</span><br><span class="line">&lt;jsp:param value=<span class="string">""</span> name=<span class="string">""</span>/&gt;</span><br><span class="line">&lt;jsp:forward page=<span class="string">""</span>&gt;&lt;/jsp:forward&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">- jsp:include</span><br><span class="line">&lt;jsp:include page=<span class="string">"other02.jsp"</span>&gt;&lt;/jsp:include&gt;</span><br><span class="line">包含指定的页面， 这里是动态包含。 也就是不把包含的页面所有元素标签全部拿过来输出，而是把它的运行结果拿过来。 </span><br><span class="line"></span><br><span class="line">- jsp:forward</span><br><span class="line">前往哪一个页面。</span><br><span class="line"> 	&lt;jsp:forward page=<span class="string">""</span>&gt;&lt;/jsp:forward&gt;</span><br><span class="line">等同于：请求转发</span><br><span class="line">&lt;% request.getRequestDispatcher(<span class="string">"other02.jsp"</span>).forward(request,response);%&gt;	</span><br><span class="line"></span><br><span class="line">- jsp:param</span><br><span class="line">第一步：在包含某个页面的时候，或者在跳转某个页面的时候，加入这个参数。</span><br><span class="line">&lt;jsp:forward page=<span class="string">"other02.jsp"</span>&gt;</span><br><span class="line">	&lt;jsp:param value=<span class="string">"beijing"</span> name=<span class="string">"address"</span>/&gt;</span><br><span class="line">&lt;/jsp:forward&gt;</span><br><span class="line"></span><br><span class="line">第二步：在other02.jsp中获取这个参数</span><br><span class="line">&lt;br&gt;收到的参数是：&lt;br&gt;</span><br><span class="line">&lt;%= request.getParameter(<span class="string">"address"</span>)%&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="jsp内置对象（重点！）"><a href="#jsp内置对象（重点！）" class="headerlink" title="jsp内置对象（重点！）"></a>jsp内置对象（重点！）</h2><p> 所谓内置对象（有九个），就是我们可以直接在jsp页面中使用这些对象。 不用创建。</p>
-<h3 id="作用域对象"><a href="#作用域对象" class="headerlink" title="作用域对象"></a>作用域对象</h3><ul>
-<li><strong>作用域对象有四个：</strong><ol>
-<li><strong>pageContext</strong></li>
-<li><strong>request</strong></li>
-<li><strong>session</strong></li>
-<li><strong>application</strong></li>
-</ol>
-</li>
-</ul>
-<ul>
-<li><strong>作用域 ：</strong> 表示这些对象可以存值，他们的取值范围有限定。<br>用setAttribute   和  getAttribute来进行存取。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">使用作用域来存储数据&lt;br&gt;</span><br><span class="line">&lt;%</span><br><span class="line">	pageContext.setAttribute(<span class="string">"name"</span>, <span class="string">"page"</span>);</span><br><span class="line">	request.setAttribute(<span class="string">"name"</span>, <span class="string">"request"</span>);</span><br><span class="line">	session.setAttribute(<span class="string">"name"</span>, <span class="string">"session"</span>);</span><br><span class="line">	application.setAttribute(<span class="string">"name"</span>, <span class="string">"application"</span>);</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">取出四个作用域中的值&lt;br&gt;</span><br><span class="line">&lt;%=pageContext.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">&lt;%=request.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">&lt;%=session.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">&lt;%=application.getAttribute(<span class="string">"name"</span>)%&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>作用域范围大小：（由小到大）</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pageContext -- request --- session -- application</span><br></pre></td></tr></table></figure>
-<ul>
-<li>四个作用域的区别</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">11. pageContext 【PageContext】</span><br><span class="line">作用域仅限于当前的页面，还可以获取到其他八个内置对象。</span><br><span class="line"></span><br><span class="line">12. request 【HttpServletRequest】</span><br><span class="line">作用域仅限于一次请求， 只要服务器对该请求做出了响应。 这个域中存的值就没有了。</span><br><span class="line"></span><br><span class="line">13. session 【HttpSession】</span><br><span class="line">作用域限于一次会话（多次请求与响应） 当中。 </span><br><span class="line"></span><br><span class="line">14. application 【ServletContext】</span><br><span class="line"> 整个工程都可以访问， 服务器关闭后就不能访问了。</span><br></pre></td></tr></table></figure>
-<h3 id="其他内置对象"><a href="#其他内置对象" class="headerlink" title="其他内置对象"></a>其他内置对象</h3><ul>
-<li>out                 【JspWriter】</li>
-<li>response      【HttpServletResponse】<br><img src="https://img-blog.csdnimg.cn/20200229140948897.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li>exception  【Throwable】</li>
-<li>page             【Object】 —就是这个jsp翻译成的java类的实例对象</li>
-<li>config         【ServletConfig】</li>
-</ul>
-<h1 id="二、EL表达式"><a href="#二、EL表达式" class="headerlink" title="二、EL表达式"></a>二、EL表达式</h1><ul>
-<li>是为了简化jsp代码，具体一点就是为了简化在jsp里面写的那些java代码。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">写法格式：</span><br><span class="line">	<span class="variable">$&#123;表达式 &#125;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果从作用域中取值，会先从小的作用域开始取，如果没有，就往下一个作用域取。  一直把四个作用域取完都没有， 就没有显示。</li>
-</ul>
-<h3 id="EL取值方式"><a href="#EL取值方式" class="headerlink" title="EL取值方式"></a>EL取值方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. 取出4个作用域中存放的值</span><br><span class="line">	&lt;%</span><br><span class="line">		pageContext.setAttribute(<span class="string">"name"</span>, <span class="string">"page"</span>);</span><br><span class="line">		request.setAttribute(<span class="string">"name"</span>, <span class="string">"request"</span>);</span><br><span class="line">		session.setAttribute(<span class="string">"name"</span>, <span class="string">"session"</span>);</span><br><span class="line">		application.setAttribute(<span class="string">"name"</span>, <span class="string">"application"</span>);</span><br><span class="line">	%&gt;</span><br><span class="line">		</span><br><span class="line">	按普通手段取值：</span><br><span class="line">	&lt;%= pageContext.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">	&lt;%= request.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">	&lt;%= session.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">	&lt;%= application.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">		</span><br><span class="line">	使用EL表达式取出作用域中的值：</span><br><span class="line">	<span class="variable">$&#123; pageScope.name &#125;</span></span><br><span class="line">	<span class="variable">$&#123; requestScope.name &#125;</span></span><br><span class="line">	<span class="variable">$&#123; sessionScope.name &#125;</span></span><br><span class="line">	<span class="variable">$&#123; applicationScope.name &#125;</span></span><br><span class="line"></span><br><span class="line">2. 如果域中所存的是数组</span><br><span class="line">   	&lt;%	String [] a = &#123;<span class="string">"aa"</span>,<span class="string">"bb"</span>,<span class="string">"cc"</span>,<span class="string">"dd"</span>&#125;;</span><br><span class="line">   		pageContext.setAttribute(<span class="string">"array"</span>, a); %&gt;</span><br><span class="line">   		</span><br><span class="line">   	使用EL表达式取出作用域中数组的值：</span><br><span class="line">   	<span class="variable">$&#123;array[0] &#125;</span> , <span class="variable">$&#123;array[1] &#125;</span>,<span class="variable">$&#123;array[2] &#125;</span>,<span class="variable">$&#123;array[3] &#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">3. 如果域中存的是集合</span><br><span class="line">	使用EL表达式取出作用域中集合的值：</span><br><span class="line">	<span class="variable">$&#123;li[0] &#125;</span> , <span class="variable">$&#123;li[1] &#125;</span>,<span class="variable">$&#123;li[2] &#125;</span>,<span class="variable">$&#123;li[3] &#125;</span></span><br><span class="line"></span><br><span class="line">4. 取出Map集合的值</span><br><span class="line">	&lt;br&gt;-------------Map数据----------------&lt;br&gt;</span><br><span class="line">  	&lt;%</span><br><span class="line">   		Map map = new HashMap();</span><br><span class="line">   		map.put(<span class="string">"name"</span>, <span class="string">"zhangsna"</span>);</span><br><span class="line">   		map.put(<span class="string">"age"</span>,18);</span><br><span class="line">   		map.put(<span class="string">"address"</span>,<span class="string">"北京.."</span>);</span><br><span class="line">   		map.put(<span class="string">"address.aa"</span>,<span class="string">"深圳.."</span>);</span><br><span class="line">   		pageContext.setAttribute(<span class="string">"map"</span>, map);</span><br><span class="line">   	%&gt;</span><br><span class="line">   	</span><br><span class="line">   	使用EL表达式取出作用域中Map的值：</span><br><span class="line">   	<span class="variable">$&#123;map.name &#125;</span> , <span class="variable">$&#123;map.age &#125;</span> , <span class="variable">$&#123;map.address &#125;</span>  , <span class="variable">$&#123;map["address.aa"] &#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="取值细节"><a href="#取值细节" class="headerlink" title="取值细节"></a>取值细节</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.  从域中取值。  得先存值。</span><br><span class="line"></span><br><span class="line">  &lt;%  //pageContext.setAttribute(<span class="string">"name"</span>, <span class="string">"zhangsan"</span>);</span><br><span class="line">      session.setAttribute(<span class="string">"name"</span>, <span class="string">"lisi..."</span>);  %&gt;</span><br><span class="line">  </span><br><span class="line">   直接指定说了，到这个作用域里面去找这个name</span><br><span class="line">   <span class="variable">$&#123; pageScope.name &#125;</span> </span><br><span class="line"></span><br><span class="line">   //先从page里面找，没有去request找，去session，去application </span><br><span class="line">   <span class="variable">$&#123; name &#125;</span></span><br><span class="line"></span><br><span class="line">   指定从session中取值</span><br><span class="line">   <span class="variable">$&#123; sessionScope.name &#125;</span>  </span><br><span class="line"></span><br><span class="line">2. 取值方式</span><br><span class="line"></span><br><span class="line">- 如果这份值是有下标的，那么直接使用[]</span><br><span class="line">	&lt;%	String [] array = &#123;<span class="string">"aa"</span>,<span class="string">"bb"</span>,<span class="string">"cc"</span>&#125;</span><br><span class="line">		session.setAttribute(<span class="string">"array"</span>,array);  %&gt;</span><br><span class="line">	</span><br><span class="line">	<span class="variable">$&#123; array[1] &#125;</span> --&gt; 这里array说的是attribute的name </span><br><span class="line"></span><br><span class="line">- 如果没有下标， 直接使用 .的方式去取</span><br><span class="line">	&lt;%	User user = new User(<span class="string">"zhangsan"</span>,18);</span><br><span class="line">		session.setAttribute(<span class="string">"u"</span>, user);  %&gt;</span><br><span class="line">		</span><br><span class="line">	<span class="variable">$&#123; u.name &#125;</span>  , <span class="variable">$&#123; u.age &#125;</span> </span><br><span class="line"></span><br><span class="line">3. 一般使用EL表达式，用的比较多的，都是从一个对象中取出它的属性值，比如取出某一个学生的姓名。</span><br></pre></td></tr></table></figure>
-<h3 id="EL表达式-的11个内置（隐式）对象"><a href="#EL表达式-的11个内置（隐式）对象" class="headerlink" title="EL表达式 的11个内置（隐式）对象"></a>EL表达式 的11个内置（隐式）对象</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">内置对象：已经存在，不用创建，可以直接获取成员变量或者属性</span><br><span class="line">	用法：<span class="variable">$&#123; 对象名.成员 &#125;</span></span><br><span class="line"></span><br><span class="line">JSP相关对象</span><br><span class="line">- pageContext </span><br><span class="line"></span><br><span class="line">作用域相关对象（用的比较多）</span><br><span class="line">- pageScope</span><br><span class="line">- requestScope</span><br><span class="line">- sessionScope</span><br><span class="line">- applicationScope</span><br><span class="line"></span><br><span class="line">请求头信息相关对象</span><br><span class="line">- header</span><br><span class="line">- headerValues</span><br><span class="line"></span><br><span class="line">请求参数信息相关对象</span><br><span class="line">- param</span><br><span class="line">- paramValues</span><br><span class="line"></span><br><span class="line">Cookie</span><br><span class="line">- cookie</span><br><span class="line"></span><br><span class="line">全局初始化参数</span><br><span class="line">- initParam</span><br></pre></td></tr></table></figure>
-
-<h1 id="三、-JSTL（标准标签库）"><a href="#三、-JSTL（标准标签库）" class="headerlink" title="三、 JSTL（标准标签库）"></a>三、 JSTL（标准标签库）</h1><ul>
-<li>全称 ： JSP Standard Tag Library  ： jsp标准标签库</li>
-<li>简化jsp的代码编写。 替换 &lt;%%&gt; 写法。 一般与EL表达式配合</li>
-</ul>
-<h2 id="JSTL使用"><a href="#JSTL使用" class="headerlink" title="JSTL使用"></a>JSTL使用</h2><ol>
-<li>导入jar文件到工程的WebContent/Web-Inf/lib    jstl.jar和standard.jar</li>
-<li>在jsp页面上，使用taglib 指令，来引入标签库</li>
-<li>注意： 如果想支持 EL表达式，那么引入的标签库必须选择1.1的版本，1.0的版本不支持EL表达式。</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">"c"</span> uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;c:<span class="built_in">set</span>&gt;&lt;/c:<span class="built_in">set</span>&gt;</span><br><span class="line">&lt;c:<span class="keyword">if</span> <span class="built_in">test</span>=<span class="string">""</span>&gt;&lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line">&lt;c:forEach&gt;&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. c:<span class="built_in">set</span></span><br><span class="line">		&lt;!-- 声明一个对象name， 对象的值 zhangsan , 存储到了page（默认） ， 指定是session --&gt;</span><br><span class="line">		&lt;c:<span class="built_in">set</span> var=<span class="string">"name"</span> value=<span class="string">"zhangsan"</span> scope=<span class="string">"session"</span>&gt;&lt;/c:<span class="built_in">set</span>&gt;</span><br><span class="line">		</span><br><span class="line">		<span class="variable">$&#123;sessionScope.name &#125;</span></span><br><span class="line"></span><br><span class="line">2. c:<span class="keyword">if</span></span><br><span class="line"> 判断<span class="built_in">test</span>里面的表达式是否满足，如果满足，就执行c:<span class="keyword">if</span>标签中的输出 ， c:<span class="keyword">if</span> 是没有<span class="keyword">else</span>的。 </span><br><span class="line">		&lt;c:<span class="built_in">set</span> var=<span class="string">"age"</span> value=<span class="string">"18"</span> &gt;&lt;/c:<span class="built_in">set</span>&gt;</span><br><span class="line">		&lt;c:<span class="keyword">if</span> <span class="built_in">test</span>=<span class="string">"<span class="variable">$&#123; age &gt; 26 &#125;</span>"</span>&gt;</span><br><span class="line">			年龄大于了26岁...</span><br><span class="line">		&lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line"></span><br><span class="line">		&lt;c:<span class="keyword">if</span> <span class="built_in">test</span>=<span class="string">"<span class="variable">$&#123; age &lt;= 26 &#125;</span>"</span>&gt;</span><br><span class="line">			年龄小于了26岁...</span><br><span class="line">		&lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		------------------------------</span><br><span class="line"></span><br><span class="line">		定义一个变量名 flag  去接收前面表达式的值，然后存在session域中</span><br><span class="line"></span><br><span class="line">		&lt;c:<span class="keyword">if</span> <span class="built_in">test</span>=<span class="string">"<span class="variable">$&#123; age &gt; 26 &#125;</span>"</span> var=<span class="string">"flag"</span> scope=<span class="string">"session"</span>&gt;</span><br><span class="line">			年龄大于了26岁...</span><br><span class="line">		&lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">3. c:forEach</span><br><span class="line">	从1 开始遍历到10 ，得到的结果 ，赋值给 i ,并且会存储到page域中， step , 增幅为2， </span><br><span class="line">	&lt;c:forEach begin=<span class="string">"1"</span> end=<span class="string">"10"</span> var=<span class="string">"i"</span> step=<span class="string">"2"</span>&gt;</span><br><span class="line">		<span class="variable">$&#123;i &#125;</span></span><br><span class="line">	&lt;/c:forEach&gt;</span><br><span class="line">	-----------------------------------------------</span><br><span class="line"></span><br><span class="line">	&lt;!-- items : 表示遍历哪一个对象，注意，这里必须写EL表达式。 </span><br><span class="line">	var: 遍历出来的每一个元素用user 去接收。 --&gt;</span><br><span class="line">	&lt;c:forEach var=<span class="string">"user"</span> items=<span class="string">"<span class="variable">$&#123;list &#125;</span>"</span>&gt;</span><br><span class="line">		<span class="variable">$&#123;user.name &#125;</span> ----<span class="variable">$&#123;user.age &#125;</span></span><br><span class="line">	&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>JSP</tag>
-        <tag>EL</tag>
-        <tag>JSTL</tag>
+        <tag>MySql,DBUtils</tag>
       </tags>
   </entry>
   <entry>
@@ -1226,6 +1089,39 @@
       </tags>
   </entry>
   <entry>
+    <title>github下载项目加速</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<p>在github上面找好的开源项目，想要clone到本地，自己调试运行一下，但是由于github的服务器在国外，所以下载速度真的是惊人的慢，有的时候2k/s，如果是一个小项目的话。那还好，等个两三分钟，但是项目大一点的，那就很鸡肋了，这里就介绍一个投机取巧的方法，来加速git clone</p>
+<a id="more"></a>
+
+<ul>
+<li><strong>核心思想：</strong> 利用<code>gitee</code>（码云）做中间工具</li>
+</ul>
+<ol>
+<li>注册好码云，并配置好本地仓库，保证可以从<code>gitee</code>上<code>git clone</code></li>
+<li>在<code>github</code>上复制你要克隆的项目的<code>url</code>。在码云中选择新建仓库的<code>从github/github导入仓库</code>，选择<code>从url导入</code>。粘贴刚才<code>github</code>上的<code>URL</code>到其中，点击导入即可。</li>
+<li>然后在从码云将项目克隆到本地。</li>
+<li>但是现在的项目，关联的是码云，而不是github。所以就要修改配置文件。</li>
+<li>打开项目的<code>.git</code>，找到<code>config</code>文件，找到里面的<code>url</code>关键字，修改<code>gitee</code>为<code>github</code>，即可。</li>
+</ol>
+<ul>
+<li><strong>补充：</strong> 修改，提交四步走</li>
+</ul>
+<ol>
+<li><code>git status</code></li>
+<li><code>git add &quot; 文件&quot;</code></li>
+<li><code>git commit -m &quot;本次提交操作的相关描述&quot;</code></li>
+<li><code>git push</code></li>
+</ol>
+]]></content>
+      <categories>
+        <category>git+github</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git命令大全</title>
     <url>/undefined/</url>
     <content><![CDATA[<p>git分布式版本控制工具，在日常的开发中起到了非常重要的作用，掌握一些基本的命令也对工作效率的提高有很大的帮助，下面介绍一些基本的git操作。</p>
@@ -1373,39 +1269,6 @@
       </tags>
   </entry>
   <entry>
-    <title>github下载项目加速</title>
-    <url>/undefined/</url>
-    <content><![CDATA[<p>在github上面找好的开源项目，想要clone到本地，自己调试运行一下，但是由于github的服务器在国外，所以下载速度真的是惊人的慢，有的时候2k/s，如果是一个小项目的话。那还好，等个两三分钟，但是项目大一点的，那就很鸡肋了，这里就介绍一个投机取巧的方法，来加速git clone</p>
-<a id="more"></a>
-
-<ul>
-<li><strong>核心思想：</strong> 利用<code>gitee</code>（码云）做中间工具</li>
-</ul>
-<ol>
-<li>注册好码云，并配置好本地仓库，保证可以从<code>gitee</code>上<code>git clone</code></li>
-<li>在<code>github</code>上复制你要克隆的项目的<code>url</code>。在码云中选择新建仓库的<code>从github/github导入仓库</code>，选择<code>从url导入</code>。粘贴刚才<code>github</code>上的<code>URL</code>到其中，点击导入即可。</li>
-<li>然后在从码云将项目克隆到本地。</li>
-<li>但是现在的项目，关联的是码云，而不是github。所以就要修改配置文件。</li>
-<li>打开项目的<code>.git</code>，找到<code>config</code>文件，找到里面的<code>url</code>关键字，修改<code>gitee</code>为<code>github</code>，即可。</li>
-</ol>
-<ul>
-<li><strong>补充：</strong> 修改，提交四步走</li>
-</ul>
-<ol>
-<li><code>git status</code></li>
-<li><code>git add &quot; 文件&quot;</code></li>
-<li><code>git commit -m &quot;本次提交操作的相关描述&quot;</code></li>
-<li><code>git push</code></li>
-</ol>
-]]></content>
-      <categories>
-        <category>git+github</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>try-catch-finally总结</title>
     <url>/undefined/</url>
     <content><![CDATA[<p>在日常编译运行程序出错的时候，编译器就会抛出异常，抛出异常要比终止程序灵活的多，这是因为Java提供了一个”捕获”异常的处理器对异常情况进行处理，如果没有提供处理器机制，程序就会终止，try-catch-finally可以保证程序发生错误的时候继续执行下去。下面就谈一下使用的总结，和注意事项。</p>
@@ -1425,46 +1288,164 @@
       </categories>
   </entry>
   <entry>
-    <title>MySql安装与卸载</title>
+    <title>JSP&amp;EL&amp;JSTL</title>
     <url>/undefined/</url>
-    <content><![CDATA[<p>MySql的卸载与安装</p>
+    <content><![CDATA[<p>JSP，EL表达式，JSTL介绍</p>
 <a id="more"></a>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ul>
-<li>运行安装程序，在启动配置教程之前，一路下一步，没有下一步的话就直接<code>finish</code></li>
-<li>第一次<code>finish</code>之后启动服务器配置教程</li>
-<li>第一个注意：<code>include mysql bin directory to windows path</code></li>
-<li>第二个注意：端口号不要修改，字符集选择UTF-8</li>
+<h1 id="一、JSP"><a href="#一、JSP" class="headerlink" title="一、JSP"></a>一、JSP</h1><h2 id="什么是jsp？"><a href="#什么是jsp？" class="headerlink" title="什么是jsp？"></a>什么是jsp？</h2><p><strong>Java Server Page</strong>  从用户角度看待 ，就是是一个网页 ， 从程序员角度看待 ， 其实是一个java类， 它继承了servlet，所以可以直接说jsp 就是一个Servlet.</p>
+<h2 id="为什么会有jsp"><a href="#为什么会有jsp" class="headerlink" title="为什么会有jsp?"></a>为什么会有jsp?</h2><p>为了有更好的用户体检，更好的交互效果。因为html 多数情况下用来显示静态内容 ， 一成不变的。 但是有时候我们需要在网页上显示一些动态数据， 比如： 查询所有的学生信息， 根据姓名去查询具体某个学生。  这些动作都需要去查询数据库，然后在网页上显示。 html是不支持写java代码  ， <strong>jsp里面可以写java代码。</strong> </p>
+<h2 id="jsp怎么用？"><a href="#jsp怎么用？" class="headerlink" title="jsp怎么用？"></a>jsp怎么用？</h2><h3 id="一、jsp指令"><a href="#一、jsp指令" class="headerlink" title="一、jsp指令"></a>一、jsp指令</h3><p><strong>一、page指令</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20200229121757727.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">指令写法：</span><br><span class="line">&lt;%@ 指令名字 %&gt;</span><br><span class="line"></span><br><span class="line">page指令：</span><br><span class="line">1. language：表明jsp页面中可以写java代码</span><br><span class="line"></span><br><span class="line">2. contentType：其实就是说这个文件是什么类型，告诉浏览器我是什么内容类型，以及使用什么编码</span><br><span class="line">	contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">	text/html  MIMEType 这是一个文本，html网页</span><br><span class="line"></span><br><span class="line">3. pageEncoding：jsp内容编码</span><br><span class="line"></span><br><span class="line">4. extends 用于指定jsp翻译成java文件后，继承的父类是谁，一般不用改。</span><br><span class="line"></span><br><span class="line">5. import 导包使用的，一般不用手写。</span><br><span class="line"></span><br><span class="line">6. session </span><br><span class="line"> - 值可选的有<span class="literal">true</span> or <span class="literal">false</span></span><br><span class="line"> - 用于控制在这个jsp页面里面，能够直接使用session对象。</span><br><span class="line"> - 具体的区别是，请看翻译后的java文件：</span><br><span class="line">	如果该值是<span class="literal">true</span> , 那么在代码里面会有getSession（）的调用，</span><br><span class="line">	如果是<span class="literal">false</span> :  那么就不会有该方法调用，也就是没有session对象了。在页面上自然也就不能使用session了。</span><br><span class="line"></span><br><span class="line">7. errorPage： 指的是错误的页面， 值需要给错误的页面路径</span><br><span class="line"></span><br><span class="line">8. isErrorPage：上面的errorPage 用于指定错误的时候跑到哪一个页面去。 那么这个isErroPage , 就是声明某一个页面到底是不是错误的页面。</span><br></pre></td></tr></table></figure>
+
+<p><strong>二、include指令</strong></p>
+<ul>
+<li>包含另外一个jsp的内容进来。</li>
 </ul>
-<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><ul>
-<li>打开控制面板，删除软件</li>
-<li>删除mysql安装目录的所有文件</li>
-<li>删除mysql数据存放文件，C盘下面的<code>Programe data</code>里，它是隐藏文件，要点击查看隐藏文件。</li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;%@ include file=<span class="string">"other02.jsp"</span>%&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>背后细节:<br>把另外一个页面的所有内容拿过来一起输出。 所有的标签元素都包含进来。</li>
 </ul>
+<p><strong>三、taglib</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">""</span>  uri=<span class="string">""</span>%&gt;  </span><br><span class="line">	uri: 标签库路径</span><br><span class="line">	prefix : 标签库的别名</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、jsp动作标签（写在body里面）"><a href="#二、jsp动作标签（写在body里面）" class="headerlink" title="二、jsp动作标签（写在body里面）"></a>二、jsp动作标签（写在body里面）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;jsp:include page=<span class="string">""</span>&gt;&lt;/jsp:include&gt;</span><br><span class="line">&lt;jsp:param value=<span class="string">""</span> name=<span class="string">""</span>/&gt;</span><br><span class="line">&lt;jsp:forward page=<span class="string">""</span>&gt;&lt;/jsp:forward&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">- jsp:include</span><br><span class="line">&lt;jsp:include page=<span class="string">"other02.jsp"</span>&gt;&lt;/jsp:include&gt;</span><br><span class="line">包含指定的页面， 这里是动态包含。 也就是不把包含的页面所有元素标签全部拿过来输出，而是把它的运行结果拿过来。 </span><br><span class="line"></span><br><span class="line">- jsp:forward</span><br><span class="line">前往哪一个页面。</span><br><span class="line"> 	&lt;jsp:forward page=<span class="string">""</span>&gt;&lt;/jsp:forward&gt;</span><br><span class="line">等同于：请求转发</span><br><span class="line">&lt;% request.getRequestDispatcher(<span class="string">"other02.jsp"</span>).forward(request,response);%&gt;	</span><br><span class="line"></span><br><span class="line">- jsp:param</span><br><span class="line">第一步：在包含某个页面的时候，或者在跳转某个页面的时候，加入这个参数。</span><br><span class="line">&lt;jsp:forward page=<span class="string">"other02.jsp"</span>&gt;</span><br><span class="line">	&lt;jsp:param value=<span class="string">"beijing"</span> name=<span class="string">"address"</span>/&gt;</span><br><span class="line">&lt;/jsp:forward&gt;</span><br><span class="line"></span><br><span class="line">第二步：在other02.jsp中获取这个参数</span><br><span class="line">&lt;br&gt;收到的参数是：&lt;br&gt;</span><br><span class="line">&lt;%= request.getParameter(<span class="string">"address"</span>)%&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="jsp内置对象（重点！）"><a href="#jsp内置对象（重点！）" class="headerlink" title="jsp内置对象（重点！）"></a>jsp内置对象（重点！）</h2><p> 所谓内置对象（有九个），就是我们可以直接在jsp页面中使用这些对象。 不用创建。</p>
+<h3 id="作用域对象"><a href="#作用域对象" class="headerlink" title="作用域对象"></a>作用域对象</h3><ul>
+<li><strong>作用域对象有四个：</strong><ol>
+<li><strong>pageContext</strong></li>
+<li><strong>request</strong></li>
+<li><strong>session</strong></li>
+<li><strong>application</strong></li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><strong>作用域 ：</strong> 表示这些对象可以存值，他们的取值范围有限定。<br>用setAttribute   和  getAttribute来进行存取。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">使用作用域来存储数据&lt;br&gt;</span><br><span class="line">&lt;%</span><br><span class="line">	pageContext.setAttribute(<span class="string">"name"</span>, <span class="string">"page"</span>);</span><br><span class="line">	request.setAttribute(<span class="string">"name"</span>, <span class="string">"request"</span>);</span><br><span class="line">	session.setAttribute(<span class="string">"name"</span>, <span class="string">"session"</span>);</span><br><span class="line">	application.setAttribute(<span class="string">"name"</span>, <span class="string">"application"</span>);</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">取出四个作用域中的值&lt;br&gt;</span><br><span class="line">&lt;%=pageContext.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">&lt;%=request.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">&lt;%=session.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">&lt;%=application.getAttribute(<span class="string">"name"</span>)%&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>作用域范围大小：（由小到大）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pageContext -- request --- session -- application</span><br></pre></td></tr></table></figure>
+<ul>
+<li>四个作用域的区别</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">11. pageContext 【PageContext】</span><br><span class="line">作用域仅限于当前的页面，还可以获取到其他八个内置对象。</span><br><span class="line"></span><br><span class="line">12. request 【HttpServletRequest】</span><br><span class="line">作用域仅限于一次请求， 只要服务器对该请求做出了响应。 这个域中存的值就没有了。</span><br><span class="line"></span><br><span class="line">13. session 【HttpSession】</span><br><span class="line">作用域限于一次会话（多次请求与响应） 当中。 </span><br><span class="line"></span><br><span class="line">14. application 【ServletContext】</span><br><span class="line"> 整个工程都可以访问， 服务器关闭后就不能访问了。</span><br></pre></td></tr></table></figure>
+<h3 id="其他内置对象"><a href="#其他内置对象" class="headerlink" title="其他内置对象"></a>其他内置对象</h3><ul>
+<li>out                 【JspWriter】</li>
+<li>response      【HttpServletResponse】<br><img src="https://img-blog.csdnimg.cn/20200229140948897.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li>exception  【Throwable】</li>
+<li>page             【Object】 —就是这个jsp翻译成的java类的实例对象</li>
+<li>config         【ServletConfig】</li>
+</ul>
+<h1 id="二、EL表达式"><a href="#二、EL表达式" class="headerlink" title="二、EL表达式"></a>二、EL表达式</h1><ul>
+<li>是为了简化jsp代码，具体一点就是为了简化在jsp里面写的那些java代码。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">写法格式：</span><br><span class="line">	<span class="variable">$&#123;表达式 &#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果从作用域中取值，会先从小的作用域开始取，如果没有，就往下一个作用域取。  一直把四个作用域取完都没有， 就没有显示。</li>
+</ul>
+<h3 id="EL取值方式"><a href="#EL取值方式" class="headerlink" title="EL取值方式"></a>EL取值方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. 取出4个作用域中存放的值</span><br><span class="line">	&lt;%</span><br><span class="line">		pageContext.setAttribute(<span class="string">"name"</span>, <span class="string">"page"</span>);</span><br><span class="line">		request.setAttribute(<span class="string">"name"</span>, <span class="string">"request"</span>);</span><br><span class="line">		session.setAttribute(<span class="string">"name"</span>, <span class="string">"session"</span>);</span><br><span class="line">		application.setAttribute(<span class="string">"name"</span>, <span class="string">"application"</span>);</span><br><span class="line">	%&gt;</span><br><span class="line">		</span><br><span class="line">	按普通手段取值：</span><br><span class="line">	&lt;%= pageContext.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">	&lt;%= request.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">	&lt;%= session.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">	&lt;%= application.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">		</span><br><span class="line">	使用EL表达式取出作用域中的值：</span><br><span class="line">	<span class="variable">$&#123; pageScope.name &#125;</span></span><br><span class="line">	<span class="variable">$&#123; requestScope.name &#125;</span></span><br><span class="line">	<span class="variable">$&#123; sessionScope.name &#125;</span></span><br><span class="line">	<span class="variable">$&#123; applicationScope.name &#125;</span></span><br><span class="line"></span><br><span class="line">2. 如果域中所存的是数组</span><br><span class="line">   	&lt;%	String [] a = &#123;<span class="string">"aa"</span>,<span class="string">"bb"</span>,<span class="string">"cc"</span>,<span class="string">"dd"</span>&#125;;</span><br><span class="line">   		pageContext.setAttribute(<span class="string">"array"</span>, a); %&gt;</span><br><span class="line">   		</span><br><span class="line">   	使用EL表达式取出作用域中数组的值：</span><br><span class="line">   	<span class="variable">$&#123;array[0] &#125;</span> , <span class="variable">$&#123;array[1] &#125;</span>,<span class="variable">$&#123;array[2] &#125;</span>,<span class="variable">$&#123;array[3] &#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">3. 如果域中存的是集合</span><br><span class="line">	使用EL表达式取出作用域中集合的值：</span><br><span class="line">	<span class="variable">$&#123;li[0] &#125;</span> , <span class="variable">$&#123;li[1] &#125;</span>,<span class="variable">$&#123;li[2] &#125;</span>,<span class="variable">$&#123;li[3] &#125;</span></span><br><span class="line"></span><br><span class="line">4. 取出Map集合的值</span><br><span class="line">	&lt;br&gt;-------------Map数据----------------&lt;br&gt;</span><br><span class="line">  	&lt;%</span><br><span class="line">   		Map map = new HashMap();</span><br><span class="line">   		map.put(<span class="string">"name"</span>, <span class="string">"zhangsna"</span>);</span><br><span class="line">   		map.put(<span class="string">"age"</span>,18);</span><br><span class="line">   		map.put(<span class="string">"address"</span>,<span class="string">"北京.."</span>);</span><br><span class="line">   		map.put(<span class="string">"address.aa"</span>,<span class="string">"深圳.."</span>);</span><br><span class="line">   		pageContext.setAttribute(<span class="string">"map"</span>, map);</span><br><span class="line">   	%&gt;</span><br><span class="line">   	</span><br><span class="line">   	使用EL表达式取出作用域中Map的值：</span><br><span class="line">   	<span class="variable">$&#123;map.name &#125;</span> , <span class="variable">$&#123;map.age &#125;</span> , <span class="variable">$&#123;map.address &#125;</span>  , <span class="variable">$&#123;map["address.aa"] &#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="取值细节"><a href="#取值细节" class="headerlink" title="取值细节"></a>取值细节</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.  从域中取值。  得先存值。</span><br><span class="line"></span><br><span class="line">  &lt;%  //pageContext.setAttribute(<span class="string">"name"</span>, <span class="string">"zhangsan"</span>);</span><br><span class="line">      session.setAttribute(<span class="string">"name"</span>, <span class="string">"lisi..."</span>);  %&gt;</span><br><span class="line">  </span><br><span class="line">   直接指定说了，到这个作用域里面去找这个name</span><br><span class="line">   <span class="variable">$&#123; pageScope.name &#125;</span> </span><br><span class="line"></span><br><span class="line">   //先从page里面找，没有去request找，去session，去application </span><br><span class="line">   <span class="variable">$&#123; name &#125;</span></span><br><span class="line"></span><br><span class="line">   指定从session中取值</span><br><span class="line">   <span class="variable">$&#123; sessionScope.name &#125;</span>  </span><br><span class="line"></span><br><span class="line">2. 取值方式</span><br><span class="line"></span><br><span class="line">- 如果这份值是有下标的，那么直接使用[]</span><br><span class="line">	&lt;%	String [] array = &#123;<span class="string">"aa"</span>,<span class="string">"bb"</span>,<span class="string">"cc"</span>&#125;</span><br><span class="line">		session.setAttribute(<span class="string">"array"</span>,array);  %&gt;</span><br><span class="line">	</span><br><span class="line">	<span class="variable">$&#123; array[1] &#125;</span> --&gt; 这里array说的是attribute的name </span><br><span class="line"></span><br><span class="line">- 如果没有下标， 直接使用 .的方式去取</span><br><span class="line">	&lt;%	User user = new User(<span class="string">"zhangsan"</span>,18);</span><br><span class="line">		session.setAttribute(<span class="string">"u"</span>, user);  %&gt;</span><br><span class="line">		</span><br><span class="line">	<span class="variable">$&#123; u.name &#125;</span>  , <span class="variable">$&#123; u.age &#125;</span> </span><br><span class="line"></span><br><span class="line">3. 一般使用EL表达式，用的比较多的，都是从一个对象中取出它的属性值，比如取出某一个学生的姓名。</span><br></pre></td></tr></table></figure>
+<h3 id="EL表达式-的11个内置（隐式）对象"><a href="#EL表达式-的11个内置（隐式）对象" class="headerlink" title="EL表达式 的11个内置（隐式）对象"></a>EL表达式 的11个内置（隐式）对象</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">内置对象：已经存在，不用创建，可以直接获取成员变量或者属性</span><br><span class="line">	用法：<span class="variable">$&#123; 对象名.成员 &#125;</span></span><br><span class="line"></span><br><span class="line">JSP相关对象</span><br><span class="line">- pageContext </span><br><span class="line"></span><br><span class="line">作用域相关对象（用的比较多）</span><br><span class="line">- pageScope</span><br><span class="line">- requestScope</span><br><span class="line">- sessionScope</span><br><span class="line">- applicationScope</span><br><span class="line"></span><br><span class="line">请求头信息相关对象</span><br><span class="line">- header</span><br><span class="line">- headerValues</span><br><span class="line"></span><br><span class="line">请求参数信息相关对象</span><br><span class="line">- param</span><br><span class="line">- paramValues</span><br><span class="line"></span><br><span class="line">Cookie</span><br><span class="line">- cookie</span><br><span class="line"></span><br><span class="line">全局初始化参数</span><br><span class="line">- initParam</span><br></pre></td></tr></table></figure>
+
+<h1 id="三、-JSTL（标准标签库）"><a href="#三、-JSTL（标准标签库）" class="headerlink" title="三、 JSTL（标准标签库）"></a>三、 JSTL（标准标签库）</h1><ul>
+<li>全称 ： JSP Standard Tag Library  ： jsp标准标签库</li>
+<li>简化jsp的代码编写。 替换 &lt;%%&gt; 写法。 一般与EL表达式配合</li>
+</ul>
+<h2 id="JSTL使用"><a href="#JSTL使用" class="headerlink" title="JSTL使用"></a>JSTL使用</h2><ol>
+<li>导入jar文件到工程的WebContent/Web-Inf/lib    jstl.jar和standard.jar</li>
+<li>在jsp页面上，使用taglib 指令，来引入标签库</li>
+<li>注意： 如果想支持 EL表达式，那么引入的标签库必须选择1.1的版本，1.0的版本不支持EL表达式。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">"c"</span> uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;c:<span class="built_in">set</span>&gt;&lt;/c:<span class="built_in">set</span>&gt;</span><br><span class="line">&lt;c:<span class="keyword">if</span> <span class="built_in">test</span>=<span class="string">""</span>&gt;&lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line">&lt;c:forEach&gt;&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. c:<span class="built_in">set</span></span><br><span class="line">		&lt;!-- 声明一个对象name， 对象的值 zhangsan , 存储到了page（默认） ， 指定是session --&gt;</span><br><span class="line">		&lt;c:<span class="built_in">set</span> var=<span class="string">"name"</span> value=<span class="string">"zhangsan"</span> scope=<span class="string">"session"</span>&gt;&lt;/c:<span class="built_in">set</span>&gt;</span><br><span class="line">		</span><br><span class="line">		<span class="variable">$&#123;sessionScope.name &#125;</span></span><br><span class="line"></span><br><span class="line">2. c:<span class="keyword">if</span></span><br><span class="line"> 判断<span class="built_in">test</span>里面的表达式是否满足，如果满足，就执行c:<span class="keyword">if</span>标签中的输出 ， c:<span class="keyword">if</span> 是没有<span class="keyword">else</span>的。 </span><br><span class="line">		&lt;c:<span class="built_in">set</span> var=<span class="string">"age"</span> value=<span class="string">"18"</span> &gt;&lt;/c:<span class="built_in">set</span>&gt;</span><br><span class="line">		&lt;c:<span class="keyword">if</span> <span class="built_in">test</span>=<span class="string">"<span class="variable">$&#123; age &gt; 26 &#125;</span>"</span>&gt;</span><br><span class="line">			年龄大于了26岁...</span><br><span class="line">		&lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line"></span><br><span class="line">		&lt;c:<span class="keyword">if</span> <span class="built_in">test</span>=<span class="string">"<span class="variable">$&#123; age &lt;= 26 &#125;</span>"</span>&gt;</span><br><span class="line">			年龄小于了26岁...</span><br><span class="line">		&lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		------------------------------</span><br><span class="line"></span><br><span class="line">		定义一个变量名 flag  去接收前面表达式的值，然后存在session域中</span><br><span class="line"></span><br><span class="line">		&lt;c:<span class="keyword">if</span> <span class="built_in">test</span>=<span class="string">"<span class="variable">$&#123; age &gt; 26 &#125;</span>"</span> var=<span class="string">"flag"</span> scope=<span class="string">"session"</span>&gt;</span><br><span class="line">			年龄大于了26岁...</span><br><span class="line">		&lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">3. c:forEach</span><br><span class="line">	从1 开始遍历到10 ，得到的结果 ，赋值给 i ,并且会存储到page域中， step , 增幅为2， </span><br><span class="line">	&lt;c:forEach begin=<span class="string">"1"</span> end=<span class="string">"10"</span> var=<span class="string">"i"</span> step=<span class="string">"2"</span>&gt;</span><br><span class="line">		<span class="variable">$&#123;i &#125;</span></span><br><span class="line">	&lt;/c:forEach&gt;</span><br><span class="line">	-----------------------------------------------</span><br><span class="line"></span><br><span class="line">	&lt;!-- items : 表示遍历哪一个对象，注意，这里必须写EL表达式。 </span><br><span class="line">	var: 遍历出来的每一个元素用user 去接收。 --&gt;</span><br><span class="line">	&lt;c:forEach var=<span class="string">"user"</span> items=<span class="string">"<span class="variable">$&#123;list &#125;</span>"</span>&gt;</span><br><span class="line">		<span class="variable">$&#123;user.name &#125;</span> ----<span class="variable">$&#123;user.age &#125;</span></span><br><span class="line">	&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure>
+
+
 ]]></content>
       <categories>
-        <category>数据库</category>
+        <category>Java Web</category>
       </categories>
       <tags>
-        <tag>MySql</tag>
+        <tag>JSP</tag>
+        <tag>EL</tag>
+        <tag>JSTL</tag>
       </tags>
   </entry>
   <entry>
-    <title>区块链技术的应用领域</title>
+    <title>Servlet学习笔记</title>
     <url>/undefined/</url>
-    <content><![CDATA[<p>-</p>
+    <content><![CDATA[<p>java Web离不开Servlet，它其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </p>
 <a id="more"></a>
-<h2 id="金融领域"><a href="#金融领域" class="headerlink" title="金融领域"></a>金融领域</h2><p>区块链在<strong>国际汇兑</strong>、<strong>信用证</strong>、<strong>股权登记</strong>和<strong>证券交易所</strong>等金融领域有着潜在的巨大应用价值。将区块链技术应用在金融行业中，能够省去第三方中介环节，实现<strong>点对点</strong>的直接对接，从而在大大降低成本的同时，快速完成交易支付。<br>比如Visa推出基于区块链技术的 Visa B2B Connect，它能为机构提供一种费用更低、更快速和安全的跨境支付方式来处理全球范围的企业对企业的交易。要知道传统的跨境支付需要等3-5天，并为此支付1-3%的交易费用。Visa 还联合 Coinbase 推出了首张比特币借记卡，<strong>花旗银行</strong>则在区块链上测试运行加密货币“<strong>花旗币</strong>”。</p>
-<h2 id="物联网和物流领域"><a href="#物联网和物流领域" class="headerlink" title="物联网和物流领域"></a>物联网和物流领域</h2><p>区块链在物联网和物流领域也可以天然结合。通过区块链可以降低物流成本，追溯物品的生产和运送过程，并且提高供应链管理的效率。该领域被认为是区块链一个很有前景的应用方向。<br>区块链通过结点连接的散状网络分层结构，能够在整个网络中实现信息的全面传递，并能够检验信息的准确程度。这种特性一 定程度上提高了物联网交易的便利性和智能化。<strong>区块链</strong>+<strong>大数据</strong>的解决方案就利用了大数据的自动筛选过滤模式，在区块链中建立信用资源，可双重提高交易的安全性，并提高物联网交易便利程度。为智能物流模式应用节约时间成本。区块链结点具有十分自由的进出能力，可独立的参与或离开区块链体系，不对整个区块链体系有任何干扰。区块链 +大数据解决方案就利用了大数据的整合能力，促使物联网基础用户拓展更具有方向性，便于在智能物流的分散用户之间实现用户拓展。</p>
-<h2 id="公共服务领域"><a href="#公共服务领域" class="headerlink" title="公共服务领域"></a>公共服务领域</h2><p>区块链在公共管理、能源、交通等领域都与民众的生产生活息息相关，但是这些领域的中心化特质也带来了一些问题，可以用区块链来改造。区块链提供的去中心化的完全分布式DNS服务通过网络中各个节点之间的点对点数据传输服务就能实现域名的查询和解析，可用于确保某个重要的基础设施的操作系统和固件没有被篡改，可以监控软件的状态和完整性，发现不良的篡改，并确保使用了物联网技术的系统所传输的数据没用经过篡改。</p>
-<h2 id="数字版权领域"><a href="#数字版权领域" class="headerlink" title="数字版权领域"></a>数字版权领域</h2><p>通过区块链技术，可以对作品进行鉴权，证明文字、视频、音频等作品的存在，保证权属的真实、唯一性。作品在区块链上被确权后，后续交易都会进行实时记录，实现数字版权全生命周期管理，也可作为司法取证中的技术性保障。例如，美国纽约一家创业公司Mine Labs开发了一个基于区块链的元数据协议，这个名为Mediachain的系统利用IPFS文件系统，实现数字作品版权保护，主要是面向数字图片的版权保护应用。</p>
-<h2 id="保险领域"><a href="#保险领域" class="headerlink" title="保险领域"></a>保险领域</h2><p>在保险理赔方面，保险机构负责资金归集、投资、理赔，往往管理和运营成本较高。通过智能合约的应用，既无需投保人申请，也无需保险公司批准，只要触发理赔条件，实现保单自动理赔。一个典型的应用案例就是LenderBot, 是 2016 年由区块链企业 Stratumn、德勤与支付服务商 Lemonway 合作推出，它允许人们通过 Facebook Messenger 的聊天功能，注册定制化的微保险产品， 为个人之间交换的高价值物品进行投保，而区块链在贷款合同中代替了第三方角色 。</p>
-<h2 id="公益领域"><a href="#公益领域" class="headerlink" title="公益领域"></a>公益领域</h2><p>区块链上存储的数据，高可靠且不可篡改，天然适合用在社会公益场景。公益流程中的相关信息，如捐赠项目、募集明细、资金流向、受助人反馈等，均可以存放于区块链上，并且有条件地进行透明公开公示，方便社会监督。</p>
+<h2 id="一、Web资源介绍"><a href="#一、Web资源介绍" class="headerlink" title="一、Web资源介绍"></a>一、Web资源介绍</h2><ul>
+<li><strong>在http协议当中，规定了请求和响应双方， 客户端和服务器端。与web相关的资源。</strong></li>
+<li>有两种分类：</li>
+<li>静态资源：html 、 js、 css</li>
+<li>动态资源：servlet/jsp</li>
+</ul>
+<h2 id="二、Servlet介绍"><a href="#二、Servlet介绍" class="headerlink" title="二、Servlet介绍"></a>二、Servlet介绍</h2><ul>
+<li><strong>servlet是什么?</strong><ol>
+<li>其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </li>
+<li>更多的是配合动态资源来做。 当然静态资源也需要使用到servlet，只不过是Tomcat里面已经定义好了一个 DefaultServlet</li>
+</ol>
+</li>
+</ul>
+<h2 id="三、Selvlet简单使用Web工程"><a href="#三、Selvlet简单使用Web工程" class="headerlink" title="三、Selvlet简单使用Web工程"></a>三、Selvlet简单使用Web工程</h2><ol>
+<li><p>得写一个Web工程 ， 要有一个服务器。</p>
+</li>
+<li><p>测试运行Web工程：</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">得写一个Web工程 ， 要有一个服务器。</span><br><span class="line">测试运行Web工程</span><br><span class="line">	1. 新建一个类， 实现Servlet接口`public class HelloServlet implements Servlet&#123;&#125;`</span><br><span class="line"></span><br><span class="line">	2. 配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。</span><br><span class="line">		在webContent/WEB-INF/web.xml里面写上以下内容：</span><br><span class="line">		</span><br><span class="line">		  &lt;!-- 向tomcat报告， 我这个应用里面有这个servlet， 名字叫做HelloServlet , 具体的路径是com.itheima.servlet.HelloServlet --&gt;</span><br><span class="line">		  &lt;servlet&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet&lt;/servlet-class&gt;</span><br><span class="line">		  &lt;/servlet&gt;</span><br><span class="line">		  </span><br><span class="line">		  &lt;!-- 注册servlet的映射。  servletName : 找到上面注册的具体servlet，  url-pattern: 在地址栏上的path 一定要以/打头 --&gt;</span><br><span class="line">		  &lt;servlet-mapping&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;url-pattern&gt;/a&lt;/url-pattern&gt;</span><br><span class="line">		  &lt;/servlet-mapping&gt;</span><br><span class="line"></span><br><span class="line">		3. 在地址栏上输入 http://localhost:8080/项目名称/a</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20200226115856385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="四、Servlet执行过程"><a href="#四、Servlet执行过程" class="headerlink" title="四、Servlet执行过程"></a>四、Servlet执行过程</h2><p><img src="https://img-blog.csdnimg.cn/20200226120652999.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="五、Servlet的通用写法"><a href="#五、Servlet的通用写法" class="headerlink" title="五、Servlet的通用写法"></a>五、Servlet的通用写法</h2><ul>
+<li>实现Servlet接口，但接口里的方法很多，有些用不到。</li>
+</ul>
+<ol>
+<li>Servlet (接口)        </li>
+<li>GenericServlet    </li>
+<li>HttpServlet （用于处理http的请求）</li>
+</ol>
+<ul>
+<li>定义一个类，继承HttpServlet ,复写doGet 和 doPost</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200226124900942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="六、Servlet的生命周期方法"><a href="#六、Servlet的生命周期方法" class="headerlink" title="六、Servlet的生命周期方法"></a>六、Servlet的生命周期方法</h2><ul>
+<li>生命周期： 从创建到销毁的一段时间</li>
+<li>生命周期方法： 从创建到销毁，所调用的那些方法。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. init方法</span><br><span class="line">	在创建该servlet的实例时，就执行该方法。</span><br><span class="line">	一个servlet只会初始化一次， init方法只会执行一次</span><br><span class="line">	默认情况下是 ： 初次访问该servlet，才会创建实例。 </span><br><span class="line">		</span><br><span class="line">2.service方法</span><br><span class="line">	只要客户端来了一个请求，那么就执行这个方法了。</span><br><span class="line">	该方法可以被执行很多次。 一次请求，对应一次service方法的调用</span><br><span class="line">	</span><br><span class="line">3.destroy方法</span><br><span class="line">	servlet销毁的时候，就会执行该方法</span><br><span class="line">			1. 该项目从tomcat的里面移除。</span><br><span class="line">		  	2. 正常关闭tomcat就会执行 shutdown.bat</span><br><span class="line"></span><br><span class="line">4. doGet 和 doPost不算生命周期方法。</span><br><span class="line">所谓的生命周期方法是指，从对象的创建到销毁一定会执行的方法， 但是这两个方法，不一定会执行。</span><br><span class="line">```	 </span><br><span class="line"><span class="comment">## 七、让Servlet创建实例的时机提前。</span></span><br><span class="line">1. 默认情况下，只有在初次访问servlet的时候，才会执行init方法。 有的时候，我们可能需要在这个方法里面执行一些初始化工作，甚至是做一些比较耗时的逻辑。 </span><br><span class="line"></span><br><span class="line">2. 那么这个时候，初次访问，可能会在init方法中逗留太久的时间。 为了提升用户的体验，需要让这个初始化的时机提前一点。 </span><br><span class="line"></span><br><span class="line">3. 在配置的时候， 使用load-on-startup元素来指定， 给定的数字越小，启动的时机就越早。 一般不写负数， 从2开始即可。 </span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet04&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet04&lt;/servlet-class&gt;</span><br><span class="line">	&lt;load-on-startup&gt;2&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="八、ServletConfig"><a href="#八、ServletConfig" class="headerlink" title="八、ServletConfig"></a>八、ServletConfig</h2><ul>
+<li><strong>Servlet的配置，通过这个对象，可以获取servlet在配置的时候一些信息。</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1. 得到servlet配置对象 专门用于在配置servlet的信息</span></span><br><span class="line">ServletConfig config = getServletConfig();</span><br><span class="line">	</span><br><span class="line"><span class="comment">//获取到的是配置servlet里面servlet-name 的文本内容</span></span><br><span class="line">String servletName = config.getServletName();</span><br><span class="line">System.out.println(<span class="string">"servletName="</span>+servletName);</span><br><span class="line">	</span><br><span class="line"><span class="comment">//2. 可以获取具体的某一个参数。 </span></span><br><span class="line">String address = config.getInitParameter(<span class="string">"address"</span>);</span><br><span class="line">System.out.println(<span class="string">"address="</span>+address);</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.获取所有的参数名称</span></span><br><span class="line">Enumeration&lt;String&gt; names = config.getInitParameterNames();</span><br><span class="line"><span class="comment">//遍历取出所有的参数名称</span></span><br><span class="line"><span class="keyword">while</span> (names.hasMoreElements()) &#123;</span><br><span class="line">	String key = (String) names.nextElement();</span><br><span class="line">	String value = config.getInitParameter(key);</span><br><span class="line">	System.out.println(<span class="string">"key==="</span>+key + <span class="string">"   value="</span>+value);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>参数在哪里配置？在web.xml中</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;aa&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.daq.servlet.HelloServletConfig&lt;/servlet-class&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 可以添加初始化参数 --&gt;</span><br><span class="line">	&lt;init-param&gt;</span><br><span class="line">		&lt;param-name&gt;adress&lt;/param-name&gt;</span><br><span class="line">		&lt;param-value&gt;bejing&lt;/param-value&gt;</span><br><span class="line">	&lt;/init-param&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">	</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet02&lt;/servlet-name&gt;</span><br><span class="line">	&lt;url-pattern&gt;/HelloServlet02&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="九、为什么需要有ServletConfig？"><a href="#九、为什么需要有ServletConfig？" class="headerlink" title="九、为什么需要有ServletConfig？"></a>九、为什么需要有ServletConfig？</h2><ol>
+<li><p>未来我们自己开发的一些应用，使用到了一些技术，或者一些代码，我们不会。 但是有人写出来了。做成了jar包，它的代码放置在了自己的servlet类里面。 </p>
+</li>
+<li><p>刚好这个servlet 里面需要一个数字或者叫做变量值。 但是这个值不能是固定了。 所以要求使用到这个servlet的公司，在注册servlet的时候，必须要在web.xml里面，声明init-params</p>
+</li>
+<li><p>在开发当中比较少用。</p>
+</li>
+</ol>
 ]]></content>
       <categories>
-        <category>区块链+比特币</category>
+        <category>Java Web</category>
       </categories>
       <tags>
-        <tag>区块链，比特币</tag>
+        <tag>Servlet</tag>
       </tags>
   </entry>
   <entry>
@@ -1516,6 +1497,25 @@
       </tags>
   </entry>
   <entry>
+    <title>区块链技术的应用领域</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<h2 id="金融领域"><a href="#金融领域" class="headerlink" title="金融领域"></a>金融领域</h2><p>区块链在<strong>国际汇兑</strong>、<strong>信用证</strong>、<strong>股权登记</strong>和<strong>证券交易所</strong>等金融领域有着潜在的巨大应用价值。将区块链技术应用在金融行业中，能够省去第三方中介环节，实现<strong>点对点</strong>的直接对接，从而在大大降低成本的同时，快速完成交易支付。<br>比如Visa推出基于区块链技术的 Visa B2B Connect，它能为机构提供一种费用更低、更快速和安全的跨境支付方式来处理全球范围的企业对企业的交易。要知道传统的跨境支付需要等3-5天，并为此支付1-3%的交易费用。Visa 还联合 Coinbase 推出了首张比特币借记卡，<strong>花旗银行</strong>则在区块链上测试运行加密货币“<strong>花旗币</strong>”。</p>
+<h2 id="物联网和物流领域"><a href="#物联网和物流领域" class="headerlink" title="物联网和物流领域"></a>物联网和物流领域</h2><p>区块链在物联网和物流领域也可以天然结合。通过区块链可以降低物流成本，追溯物品的生产和运送过程，并且提高供应链管理的效率。该领域被认为是区块链一个很有前景的应用方向。<br>区块链通过结点连接的散状网络分层结构，能够在整个网络中实现信息的全面传递，并能够检验信息的准确程度。这种特性一 定程度上提高了物联网交易的便利性和智能化。<strong>区块链</strong>+<strong>大数据</strong>的解决方案就利用了大数据的自动筛选过滤模式，在区块链中建立信用资源，可双重提高交易的安全性，并提高物联网交易便利程度。为智能物流模式应用节约时间成本。区块链结点具有十分自由的进出能力，可独立的参与或离开区块链体系，不对整个区块链体系有任何干扰。区块链 +大数据解决方案就利用了大数据的整合能力，促使物联网基础用户拓展更具有方向性，便于在智能物流的分散用户之间实现用户拓展。</p>
+<h2 id="公共服务领域"><a href="#公共服务领域" class="headerlink" title="公共服务领域"></a>公共服务领域</h2><p>区块链在公共管理、能源、交通等领域都与民众的生产生活息息相关，但是这些领域的中心化特质也带来了一些问题，可以用区块链来改造。区块链提供的去中心化的完全分布式DNS服务通过网络中各个节点之间的点对点数据传输服务就能实现域名的查询和解析，可用于确保某个重要的基础设施的操作系统和固件没有被篡改，可以监控软件的状态和完整性，发现不良的篡改，并确保使用了物联网技术的系统所传输的数据没用经过篡改。</p>
+<h2 id="数字版权领域"><a href="#数字版权领域" class="headerlink" title="数字版权领域"></a>数字版权领域</h2><p>通过区块链技术，可以对作品进行鉴权，证明文字、视频、音频等作品的存在，保证权属的真实、唯一性。作品在区块链上被确权后，后续交易都会进行实时记录，实现数字版权全生命周期管理，也可作为司法取证中的技术性保障。例如，美国纽约一家创业公司Mine Labs开发了一个基于区块链的元数据协议，这个名为Mediachain的系统利用IPFS文件系统，实现数字作品版权保护，主要是面向数字图片的版权保护应用。</p>
+<h2 id="保险领域"><a href="#保险领域" class="headerlink" title="保险领域"></a>保险领域</h2><p>在保险理赔方面，保险机构负责资金归集、投资、理赔，往往管理和运营成本较高。通过智能合约的应用，既无需投保人申请，也无需保险公司批准，只要触发理赔条件，实现保单自动理赔。一个典型的应用案例就是LenderBot, 是 2016 年由区块链企业 Stratumn、德勤与支付服务商 Lemonway 合作推出，它允许人们通过 Facebook Messenger 的聊天功能，注册定制化的微保险产品， 为个人之间交换的高价值物品进行投保，而区块链在贷款合同中代替了第三方角色 。</p>
+<h2 id="公益领域"><a href="#公益领域" class="headerlink" title="公益领域"></a>公益领域</h2><p>区块链上存储的数据，高可靠且不可篡改，天然适合用在社会公益场景。公益流程中的相关信息，如捐赠项目、募集明细、资金流向、受助人反馈等，均可以存放于区块链上，并且有条件地进行透明公开公示，方便社会监督。</p>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>区块链简单理解</title>
     <url>/undefined/</url>
     <content><![CDATA[<p>对近年来很火的区块链的简单了解</p>
@@ -1538,6 +1538,35 @@
 <li>安全性。只要不能掌控全部数据节点的51%，就无法肆意操控修改网络数据，这使区块链本身变得相对安全，避免了主观人为的数据变更。</li>
 <li>匿名性。除非有法律规范要求，单从技术上来讲，各区块节点的身份信息不需要公开或验证，信息传递可以<strong>匿名进行</strong>。</li>
 </ol>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>区块链的架构模型以及核心技术</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<h2 id="一-架构模型"><a href="#一-架构模型" class="headerlink" title="一.架构模型"></a>一.架构模型</h2><p>一般说来，区块链系统由数据层、网络层、共识层、激励层、合约层，应用层组成。</p>
+<ol>
+<li><strong>数据层：</strong> 封装了底层数据区块以及相关的数据加密和时间戳等基础数据和基本算法。</li>
+<li><strong>网络层：</strong> 则包括分布式组网机制、数据传播机制和数据验证机制等。</li>
+<li><strong>共识层：</strong> 主要封装网络节点的各类共识算法。</li>
+<li><strong>激励层：</strong> 将经济因素集成到区块链技术体系中来，主要包括经济激励的发行机制和分配机制等。</li>
+<li><strong>合约层：</strong> 主要封装各类脚本、算法和智能合约，是区块链可编程特性的基础。</li>
+<li><strong>应用层：</strong> 则封装了区块链的各种应用场景和案例。</li>
+</ol>
+<p><strong>区块链技术最具代表性的创新点：</strong></p>
+<ol>
+<li>基于时间戳的链式区块结构、分布式节点的共识机制。</li>
+<li>基于共识算力的经济激励和灵活可编程的智能合约。</li>
+</ol>
+<h2 id="二-核心技术"><a href="#二-核心技术" class="headerlink" title="二.核心技术"></a>二.核心技术</h2><p> 1.<strong>分布式账本：</strong>分布式账本指的是交易记账由分布在不同地方的多个节点共同完成，而且每一个节点记录的是完整的账目，因此它们都可以参与监督交易合法性，同时也可以共同为其作证 。跟传统的分布式存储有所不同，区块链的分布式存储的独特性主要体现在两个方面：一是区块链每个节点都按照块链式结构存储完整的数据，传统分布式存储一般是将数据按照一定的规则分成多份进行存储。二是区块链每个节点存储都是独立的、地位等同的，依靠共识机制保证存储的一致性，而传统分布式存储一般是通过中心节点往其他备份节点同步数据。没有任何一个节点可以单独记录账本数据，从而避免了单一记账人被控制或者被贿赂而记假账的可能性。也由记账节点足够多，理论上讲除非所有的节点被破坏，否则账目就不会丢失，从而保证了账目数据的安全性。</p>
+<p>2.<strong>非对称加密：</strong>存储在区块链上的交易信息是公开的，但是账户身份信息是高度加密的，只有在数据拥有者授权的情况下才能访问到，从而保证了数据的安全和个人的隐私。<br>3.<strong>共识机制</strong>就是所有记账节点之间怎么达成共识，去认定一个记录的有效性，这既是认定的手段，也是防止篡改的手段。区块链提出了四种不同的共识机制，适用于不同的应用场景，在效率和安全性之间取得平衡 。<br>区块链的共识机制具备“少数服从多数”以及“人人平等”的特点，其中“少数服从多数”并不完全指节点个数，也可以是计算能力、股权数或者其他的计算机可以比较的特征量。“人人平等”是当节点满足条件时，所有节点都有权优先提出共识结果、直接被其他节点认同后并最后有可能成为最终共识结果。以比特币为例，采用的是工作量证明，只有在控制了全网超过51%的记账节点的情况下，才有可能伪造出一条不存在的记录。当加入区块链的节点足够多的时候，这基本上不可能，从而杜绝了造假的可能。<br>4.<strong>智能合约：</strong>基于这些可信的不可篡改的数据，可以自动化的执行一些预先定义好的规则和条款。以保险为例，如果说每个人的信息（包括医疗信息和风险发生的信息）都是真实可信的，那就很容易的在一些标准化的保险产品中，去进行自动化的理赔。在保险公司的日常业务中，虽然交易不像银行和证券行业那样频繁，但是对可信数据的依赖是有增无减。因此，笔者认为利用区块链技术，从数据管理的角度切入，能够有效地帮助保险公司提高风险管理能力。具体来讲主要分投保人风险管理和保险公司的风险监督。</p>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>
@@ -1785,247 +1814,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
-    <title>区块链的架构模型以及核心技术</title>
-    <url>/undefined/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-<h2 id="一-架构模型"><a href="#一-架构模型" class="headerlink" title="一.架构模型"></a>一.架构模型</h2><p>一般说来，区块链系统由数据层、网络层、共识层、激励层、合约层，应用层组成。</p>
-<ol>
-<li><strong>数据层：</strong> 封装了底层数据区块以及相关的数据加密和时间戳等基础数据和基本算法。</li>
-<li><strong>网络层：</strong> 则包括分布式组网机制、数据传播机制和数据验证机制等。</li>
-<li><strong>共识层：</strong> 主要封装网络节点的各类共识算法。</li>
-<li><strong>激励层：</strong> 将经济因素集成到区块链技术体系中来，主要包括经济激励的发行机制和分配机制等。</li>
-<li><strong>合约层：</strong> 主要封装各类脚本、算法和智能合约，是区块链可编程特性的基础。</li>
-<li><strong>应用层：</strong> 则封装了区块链的各种应用场景和案例。</li>
-</ol>
-<p><strong>区块链技术最具代表性的创新点：</strong></p>
-<ol>
-<li>基于时间戳的链式区块结构、分布式节点的共识机制。</li>
-<li>基于共识算力的经济激励和灵活可编程的智能合约。</li>
-</ol>
-<h2 id="二-核心技术"><a href="#二-核心技术" class="headerlink" title="二.核心技术"></a>二.核心技术</h2><p> 1.<strong>分布式账本：</strong>分布式账本指的是交易记账由分布在不同地方的多个节点共同完成，而且每一个节点记录的是完整的账目，因此它们都可以参与监督交易合法性，同时也可以共同为其作证 。跟传统的分布式存储有所不同，区块链的分布式存储的独特性主要体现在两个方面：一是区块链每个节点都按照块链式结构存储完整的数据，传统分布式存储一般是将数据按照一定的规则分成多份进行存储。二是区块链每个节点存储都是独立的、地位等同的，依靠共识机制保证存储的一致性，而传统分布式存储一般是通过中心节点往其他备份节点同步数据。没有任何一个节点可以单独记录账本数据，从而避免了单一记账人被控制或者被贿赂而记假账的可能性。也由记账节点足够多，理论上讲除非所有的节点被破坏，否则账目就不会丢失，从而保证了账目数据的安全性。</p>
-<p>2.<strong>非对称加密：</strong>存储在区块链上的交易信息是公开的，但是账户身份信息是高度加密的，只有在数据拥有者授权的情况下才能访问到，从而保证了数据的安全和个人的隐私。<br>3.<strong>共识机制</strong>就是所有记账节点之间怎么达成共识，去认定一个记录的有效性，这既是认定的手段，也是防止篡改的手段。区块链提出了四种不同的共识机制，适用于不同的应用场景，在效率和安全性之间取得平衡 。<br>区块链的共识机制具备“少数服从多数”以及“人人平等”的特点，其中“少数服从多数”并不完全指节点个数，也可以是计算能力、股权数或者其他的计算机可以比较的特征量。“人人平等”是当节点满足条件时，所有节点都有权优先提出共识结果、直接被其他节点认同后并最后有可能成为最终共识结果。以比特币为例，采用的是工作量证明，只有在控制了全网超过51%的记账节点的情况下，才有可能伪造出一条不存在的记录。当加入区块链的节点足够多的时候，这基本上不可能，从而杜绝了造假的可能。<br>4.<strong>智能合约：</strong>基于这些可信的不可篡改的数据，可以自动化的执行一些预先定义好的规则和条款。以保险为例，如果说每个人的信息（包括医疗信息和风险发生的信息）都是真实可信的，那就很容易的在一些标准化的保险产品中，去进行自动化的理赔。在保险公司的日常业务中，虽然交易不像银行和证券行业那样频繁，但是对可信数据的依赖是有增无减。因此，笔者认为利用区块链技术，从数据管理的角度切入，能够有效地帮助保险公司提高风险管理能力。具体来讲主要分投保人风险管理和保险公司的风险监督。</p>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>&lt;&lt;小狗钱钱&gt;&gt;</title>
-    <url>/read.html/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在B站看了半佛仙人一期关于理财的视频，视频里面也推荐了很多值得一看的书，有《小狗钱钱》，《海龟交易法则》，《经济学原理》，我首先看的是小狗钱钱，写下了这篇读后感。</p>
-<a id="more"></a>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这本书是美国的一版儿童理财读物，虽然说是儿童读物，但在我看来，实际上就是用孩子能够理解的故事，讲述一些大人都未必清楚的一些道理，这些道理可能直白的说出来，成人都懂，可是又有谁能够贯彻到生活中呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大致内容讲的是，小女孩吉娅的爸爸妈妈陷入了财政窘迫的时期，吉娅意外的捡到了一条狗，而这是一条会说话的狗，名字就叫钱钱，机缘巧合，钱钱开始教吉娅理财知识，吉娅一步一步富有了起来，并且也帮助爸爸妈妈摆脱了财政窘境。我看完这本书，并不能说从中学到了什么知识，知识把以前了解到的理财观念加深了，就像那句话：道理咱都懂！！！可他并没有深入你的骨髓，这才是关键。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我将重要的理念罗列以下：</p>
-<p>####(一)自信，有想法，做自己喜欢做的事</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不要为了挣钱而去挣钱，尤其是在我们这个年纪，通过打工，兼职挣来的钱，如果只是满足自己的消费欲望，那将毫无意义，如果将这些钱用在正道上，比如说买书，买课程，提高自己的修养与知识积累，那暂且还花对了地方，对我们这个年纪的学生，真正的意义是提升自己的能力，然后再去赚钱，换句话说，就是用自己的专业技能变现，如果专业技能达不到要求，那就将赚钱一事先放在一边，提升技能放在第一位，毕竟以后还是要靠本事吃饭，当你的专业技能足够好时，就不愁赚不到钱，这个时候就要找渠道了。</p>
-<p>####(二)把钱分成日常开销。梦想目标，和账户三部分</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日常开销是刚需，这个必不可少，但也不要追求过高的消费，如果超出了自己经济承担范围，那么将所剩无几，梦想目标是指，心中有一个或者多个明确的目标，并且用小本本将他们记下来，估计达成这个目标需要多少钱，多少时间。单独为他们开一个账户，当然这里的账户是指形式上的，目的就是为了实现这些目标而去存钱。</p>
-<p>####(三)进行明智的投资</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投资是一门高深的学问，我觉得入个门还是很有必要的，毕竟等到以后，人到中年了，还是靠着储蓄过日子，并不是理想的生活，我身边有很多长辈有观念上的错误，他们就是将挣到的钱定期存进银行里，一存就是五到十年，吃定期的利息，然而他们并想不清楚，你吃银行的利息，通货膨胀在吃你的本金，对于他们那一代人，这个观念既然不能扭转，那就从我们这一代人做起吧，培养理财意识，学习投资方式，也是一种赚钱的利器，万年亘古不变的道理：投资有风险！！！明智的投资会帮你入账不少，而一旦看错了眼，亏损也是常有的事，这就需要长期的积累经验，形成意识了，投资—得先从韭菜做起。</p>
-<h4 id="四-关键在于自信程度"><a href="#四-关键在于自信程度" class="headerlink" title="(四) 关键在于自信程度"></a>(四) 关键在于自信程度</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这是一个老生常谈的话题，听过很多道理，喝过很多鸡汤，尝试过很多次，然而至少就我个人而言，我是一个没有自信的人，我顶多算是一个脸皮比较厚的人，自信和自卑是对立的，但是他们同样都是骨子里的东西，我们都活了二十多年了，经历的事也不少了，生活环境等等因素，到底是帮我们养成了自信，还是形成了自卑，只有我们自己清楚，深入骨髓的东西很难完全改变，但未必是坏事，在做任何事情的时候，保持谦逊的同时，也要掌握50%的主动权。</p>
-<h4 id="五-你最好想清楚，你喜欢做什么，然后再考虑怎么用它来挣钱"><a href="#五-你最好想清楚，你喜欢做什么，然后再考虑怎么用它来挣钱" class="headerlink" title="(五) 你最好想清楚，你喜欢做什么，然后再考虑怎么用它来挣钱"></a>(五) 你最好想清楚，你喜欢做什么，然后再考虑怎么用它来挣钱</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正如上面所说的，不为挣钱而做一些没有意义的事，年轻人，多提升以下自己。花时间花精力修炼内功，学习，比什么都重要。</p>
-<p>####(六)欠债的人应该毁掉所有的信用卡</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里毁掉信用卡，并不是真正意义上的毁掉，就像那些段子：只要你卸载掉支付宝，你就不用还花呗了，对于花呗这个东西，该怎么去形容你最贴切？拿什么跟你作比较才算特别？还是要看用途的，如果是为了缓解经济压力，（这里的经济压力是指，你做了某些有意义的事后，欠下的债），有短期之内不要利息的钱用，何乐而不为呢？但是如果要是为了用这个花呗满足自己的消费欲望，那我觉得还是大可不必了，个人觉得，这种做法，是最low的，买不起我就不买。又不是必需品。还花呗的时候，也要在不收取利息的时候，还最低还款，但是要保证，最终能还清。</p>
-<p>####(七)真的有必要吗？</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;花钱买一样东西的时候，事先考虑有没有必要，你是真的需要他吗？买了之后有什么用？能给你带来你预期的效果吗？能用多久？有更好的替代品吗?一般，扪心自问这些问题之后，你就应该知道，该不该买了。得出买不买的结论之后，就要考虑，买什么样的？现在这个信息错综复杂的互联网时代，各种测评，各种推荐，各种大数据分析，最后到你手里的，也许达不到你的预期，什么性价比乱七八糟的，哪儿有什么性价比，都是些商家搞出来唬人的噱头，你真的能看准东西吗？所谓性价比，大部分就是低价配low货，想买的东西，就别去占便宜。你占的便宜最终都会反映在产品上。</p>
-<p>####(八)当你定下大目标的时候，就意味着你必须付出比别人更多的努力。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我以前考四级的时候，考教师资格证，都没过，包括这次四级430分险过，是因为我没有努力吗？不是，我努力了，周围也有人裸考过了的，并且分比我高多了，羨慕吗？不羡慕，因为我努力过，我没过的原因是我的方法不对，也是努力的不够，你努力了不一定会成功，但你不努力，一定不会有结果，当然也有幸存者偏差，对于天生聪明，基础好的人，可能有些时候会听到这样说：没那个必要，这个也没什么实际意义。但是我始终会坚持自己的理念：当我定下大目标的时候，就意味着必须付出比别人更多的努力。幸运其实是充分准备加上努力工作的结果。</p>
-<p>####(九)克服畏惧心理</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;恐惧总是在我们设想事情会如何不顺利的时候出现，我们对失败的可能性想得越多，就越害怕，当你朝着积极地目标去思考的时候，就不会心生畏惧，我从小一直到现在，都没有真正意义上上台讲演过，我永远都是那个坐在台下为他人喝彩的观众，感叹她们真有魄力啊，就连在班级里做个自我介绍我都会脸红，我害怕面对很多人，害怕出糗，也不是没有过讲演的机会，因为我的畏惧，我也不知道我什么时候能踏出这一步，但是我会尽力克服自己的恐惧，等下次机会到来的时候，我不会拱手让人的。</p>
-<p>####(十)72定理</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;72定理：用72除以投资的年收益率的百分比，得出的数字就是这笔钱翻一倍所需要的年数，用72除以通货膨胀率的百分比，得出的数字就是这笔钱贬值一倍所需要的年数。还补充一点就是挑选基金时注意哪些问题：<br>1.基金至少有十年历史，也就是所谓的老基金<br>2.选择大型的跨国股票基金，以分散投资风险<br>3.了解基金的走势图，合理利用72定理</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其实之前说看完这本书，我并没有学到多少知识，这句话太过于自大，文章写到这里，我才发现，原来小狗钱钱教会我的东西并不少。去合理利用自己的<code>money</code>吧！！！</p>
-]]></content>
-      <categories>
-        <category>读后感</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>手写链表</title>
-    <url>/undefined/</url>
-    <content><![CDATA[<p>看过很多面经，看得出来，数据结构和算法在面试中是很重要的，在之前也听说过，面试过程中，出现手撕代码的场景，而我刚好又看到链表这一章，顺便对链表做一下巩固，也打个预防针，万一真遇到要手写代码的时候，也有了一手准备。</p>
-<a id="more"></a>
-
-<h2 id="一、链表结构"><a href="#一、链表结构" class="headerlink" title="一、链表结构"></a>一、链表结构</h2><p><img src="https://img-blog.csdnimg.cn/20200325114240567.png" alt="在这里插入图片描述"></p>
-<ul>
-<li>每个节点结构是由数据域和指针域组成，数据域是存放数据的，而指针域存放下一结点的地址。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200325114318953.png" alt="在这里插入图片描述"></p>
-<ul>
-<li>但是不可能只有一个节点呀，这时候就使用 Class 来声明一个类，为类添加两个属性，一个属性是存放数据的属性data，另一个属性是存放指向下一个结点的指针属性next。这样就可以创造出多个结点实例。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Node&#123;</span><br><span class="line">   constructor(data)&#123;</span><br><span class="line">        this.data = data;</span><br><span class="line">        this.next = null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、插入删除"><a href="#二、插入删除" class="headerlink" title="二、插入删除"></a>二、插入删除</h2><ul>
-<li>插入到单链表的头部</li>
-<li>插入到中间</li>
-<li>插入到尾部</li>
-<li>删除头部节点</li>
-<li>删除中间节点</li>
-<li>删除尾部节点</li>
-</ul>
-<h2 id="三、边界条件"><a href="#三、边界条件" class="headerlink" title="三、边界条件"></a>三、边界条件</h2><ul>
-<li><p><strong>输入边界：</strong><br>先考虑用户输入的参数，比如传入一个链表，我们首先要判断链表是否为空，如果为空我们就不能让它执行下边的程序。再比如插入一个结点到指定结点的后边，那么你也要判断输入的结点是否为空，而且还要判断该结点是否存在该链表中。对于这些输入值的判断，就叫做输入边界。</p>
-</li>
-<li><p><strong>特殊边界：</strong><br>考虑到一些特殊情况，比如插入数据，我们插入数据一般考虑到插入尾部，但要是插入到头部，插入尾部的代码并不适用于插入到头部，所以呢需要考虑这种情况，删除节点也是同样要考虑这种情况。其实特殊边界最主要考虑到一些逻辑上的特殊情况。</p>
-</li>
-</ul>
-<h2 id="四、示例"><a href="#四、示例" class="headerlink" title="四、示例"></a>四、示例</h2><p><strong>例：在链表中间增加和删除节点</strong></p>
-<h3 id="1-定义节点："><a href="#1-定义节点：" class="headerlink" title="1. 定义节点："></a>1. 定义节点：</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Node&#123;</span><br><span class="line">    constructor(data)&#123;</span><br><span class="line">        this.data = data;</span><br><span class="line">       this.next = null;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-增加节点："><a href="#2-增加节点：" class="headerlink" title="2. 增加节点："></a>2. 增加节点：</h3><p>①保存临时地址（4结点的地址）,需要进行遍历查找到3结点，也就是下列代码的currentNode 结点。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200325115953914.gif" alt="在这里插入图片描述"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//先查找该元素</span><br><span class="line"><span class="built_in">let</span> currentNode = this.findByValue(element);</span><br><span class="line">// 保存 3 结点的下一结点地址（4 结点的地址）</span><br><span class="line"><span class="built_in">let</span> pre = currentNode.next</span><br></pre></td></tr></table></figure>
-
-<p>②创建新结点，将新结点（5结点）的指针指向下一结点指针（4结点地址，已经在上一步骤保存下来了）</p>
-<p><img src="https://img-blog.csdnimg.cn/20200325120116456.gif" alt="在这里插入图片描述"></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">let newNode = <span class="keyword">new</span> Node(value);</span><br><span class="line">newNode.next = pre;</span><br></pre></td></tr></table></figure>
-
-<p>③将3 的结点地址指向新结点（5结点）</p>
-<p><img src="https://img-blog.csdnimg.cn/20200325120224691.gif" alt="在这里插入图片描述"></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">currentNode.next = newNode;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-删除节点："><a href="#3-删除节点：" class="headerlink" title="3. 删除节点："></a>3. 删除节点：</h3><p>①断开3结点的指针（断开3结点相当于让2结点直接指向4结点）<br><img src="https://img-blog.csdnimg.cn/20200325120407492.gif" alt="在这里插入图片描述"></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> let currentNode = <span class="keyword">this</span>.head;</span><br><span class="line">  <span class="comment">// 用来记录 3 结点的前一结点</span></span><br><span class="line">  let preNode = <span class="keyword">null</span>;</span><br><span class="line">  <span class="comment">// 遍历查找 3 结点</span></span><br><span class="line">  <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span> &amp;&amp; currentNode.data !== value)&#123;</span><br><span class="line">         <span class="comment">// 3 结点的前一结点</span></span><br><span class="line">         preNode = currentNode;</span><br><span class="line">        <span class="comment">// 3 结点</span></span><br><span class="line">         currentNode = currentNode.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>②让结点2的指针指向4结点，完成删除。<br><img src="https://img-blog.csdnimg.cn/20200325120504135.gif" alt="在这里插入图片描述"></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">preNode.next = currentNode.next;</span><br></pre></td></tr></table></figure>
-<h2 id="五、代码实现"><a href="#五、代码实现" class="headerlink" title="五、代码实现"></a>五、代码实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 功能：单链表的插入、删除、查找</span></span><br><span class="line"><span class="comment">   * 【插入】：插入到指定元素后方</span></span><br><span class="line"><span class="comment">   * 1、查找该元素是否存在？</span></span><br><span class="line"><span class="comment">   * 2、没有找到返回 -1</span></span><br><span class="line"><span class="comment">   * 3、找到进行创建结点并插入链表。</span></span><br><span class="line"><span class="comment">   * </span></span><br><span class="line"><span class="comment">   * 【查找】：按值查找/按索引查找</span></span><br><span class="line"><span class="comment">   * 1、判断当前结点是否等于null，且是否等于给定值？</span></span><br><span class="line"><span class="comment">   * 2、判断是否可以找到该值？</span></span><br><span class="line"><span class="comment">   * 3、没有找到返回 -1；</span></span><br><span class="line"><span class="comment">   * 4、找到该值返回结点；</span></span><br><span class="line"><span class="comment">   * </span></span><br><span class="line"><span class="comment">   * 【删除】：按值删除</span></span><br><span class="line"><span class="comment">   * 1、判断是否找到该值？</span></span><br><span class="line"><span class="comment">   * 2、找到记录前结点，进行删除；</span></span><br><span class="line"><span class="comment">   * 3、找不到直接返回-1；</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">	<span class="comment">//定义结点</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Node</span></span>&#123;</span><br><span class="line">      constructor(data)&#123;</span><br><span class="line">         <span class="keyword">this</span>.data = data;</span><br><span class="line">         <span class="keyword">this</span>.next = <span class="keyword">null</span>;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line">	 <span class="comment">//定义链表</span></span><br><span class="line">	 <span class="class"><span class="keyword">class</span> <span class="title">LinkList</span></span>&#123;</span><br><span class="line">     constructor()&#123;</span><br><span class="line">         <span class="comment">//初始化头结点</span></span><br><span class="line">         <span class="keyword">this</span>.head = <span class="keyword">new</span> Node(<span class="string">'head'</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//根据 value 查找结点</span></span><br><span class="line">     findByValue = (value) =&gt;&#123;</span><br><span class="line">         let currentNode = <span class="keyword">this</span>.head;</span><br><span class="line">         <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span> &amp;&amp; currentNode.data !== value)&#123;</span><br><span class="line">             currentNode = currentNode.next;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">//判断该结点是否找到</span></span><br><span class="line">         console.log(currentNode)</span><br><span class="line">         <span class="keyword">return</span> currentNode === <span class="keyword">null</span> ? -<span class="number">1</span> : currentNode;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//根据 index 查找结点</span></span><br><span class="line">     findByIndex = (index) =&gt;&#123;</span><br><span class="line">         let pos = <span class="number">0</span>;</span><br><span class="line">         let currentNode = <span class="keyword">this</span>.head;</span><br><span class="line">         <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span> &amp;&amp; pos !== index)&#123;</span><br><span class="line">             currentNode = currentNode.next;</span><br><span class="line">             pos++;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">//判断是否找到该索引</span></span><br><span class="line">         console.log(currentNode)</span><br><span class="line">         <span class="keyword">return</span> currentNode === <span class="keyword">null</span> ? -<span class="number">1</span> : currentNode;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//插入元素(指定元素向后插入)</span></span><br><span class="line">     insert = (value,element) =&gt;&#123;</span><br><span class="line">         <span class="comment">//先查找该元素</span></span><br><span class="line">         let currentNode = <span class="keyword">this</span>.findByValue(element);</span><br><span class="line">         <span class="comment">//如果没有找到</span></span><br><span class="line">         <span class="keyword">if</span>(currentNode == -<span class="number">1</span>)&#123;</span><br><span class="line">             console.log(<span class="string">"未找到插入位置!"</span>)</span><br><span class="line">             <span class="keyword">return</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         let newNode = <span class="keyword">new</span> Node(value);</span><br><span class="line">         newNode.next = currentNode.next;</span><br><span class="line">         currentNode.next = newNode;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//根据值删除结点</span></span><br><span class="line">     delete = (value) =&gt;&#123;</span><br><span class="line">         let currentNode = <span class="keyword">this</span>.head;</span><br><span class="line">         let preNode = <span class="keyword">null</span>;</span><br><span class="line">         <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span> &amp;&amp; currentNode.data !== value)&#123;</span><br><span class="line">             preNode = currentNode;</span><br><span class="line">             currentNode = currentNode.next;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">if</span>(currentNode == <span class="keyword">null</span>) <span class="keyword">return</span> -<span class="number">1</span>; </span><br><span class="line">         preNode.next = currentNode.next;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">      <span class="comment">//遍历所有结点</span></span><br><span class="line">     print = () =&gt;&#123;</span><br><span class="line">         let currentNode = <span class="keyword">this</span>.head</span><br><span class="line">         <span class="comment">//如果结点不为空</span></span><br><span class="line">         <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span>)&#123;</span><br><span class="line">             console.log(currentNode.data)</span><br><span class="line">             currentNode = currentNode.next;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>每天一道面试题</category>
-      </categories>
-      <tags>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数字货币的种类</title>
-    <url>/undefined/</url>
-    <content><![CDATA[<p>当前的数字货币大致有以下几种。</p>
-<a id="more"></a>
-<p><img src="https://img-blog.csdnimg.cn/20200204160645330.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><strong>BTC：</strong> 比特币</li>
-<li><strong>ETH：</strong> 以太币</li>
-<li><strong>USDT：</strong> 泰达币（与同数量的美元是等值的）</li>
-<li><strong>EOS：</strong> 为商用分布式应用设计的一款区块链操作系统。EOS是引入的一种新的区块链架构，旨在实现分布式应用的性能扩展。注意，它并不是像比特币和以太坊那样的货币，而是基于EOS软件项目之上发布的代币，被称为区块链3.0 。</li>
-<li><strong>XRP：</strong> 瑞波币。它是基于Ripple协议的虚拟货币，主要功能有二：1.防止恶意攻击；2.桥梁货币。</li>
-<li><strong>LTC：</strong> 莱特币。<img src="https://img-blog.csdnimg.cn/20200204161448813.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li><strong>HT：</strong> 火币<br><img src="https://img-blog.csdnimg.cn/20200204161631662.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li><strong>HUSD：</strong> 稳定币<img src="https://img-blog.csdnimg.cn/20200204162140418.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li><strong>BCH：</strong><img src="https://img-blog.csdnimg.cn/20200204162243770.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-</ul>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据库连接池</title>
-    <url>/undefined/</url>
-    <content><![CDATA[<p>数据库连接池负责分配、管理和释放数据库连接，它允许应用程序重复使用一个现有的数据库连接，而不是再重新建立一个；释放空闲时间超过最大空闲时间的数据库连接来避免因为没有释放数据库连接而引起的数据库连接遗漏。这项技术能明显提高对数据库操作的性能。</p>
-<a id="more"></a>
-<h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><ul>
-<li><strong>数据库的连接对象创建工作，比较消耗性能。</strong> </li>
-<li>一开始现在内存中开辟一块空间（集合） ， 一开先往池子里面放置 多个连接对象。  后面需要连接的话，直接从池子里面去。不要去自己创建连接了。  使用完毕， 要记得归还连接。确保连接对象能循环利用。</li>
-</ul>
-<ul>
-<li>连接池指：创建一个池子（容器） ， 专门用来管理连接对象。<br><img src="https://img-blog.csdnimg.cn/20200301155401842.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-</ul>
-<h2 id="二、作用"><a href="#二、作用" class="headerlink" title="二、作用"></a>二、作用</h2><ul>
-<li>创建和管理连接，对数据的操作没有影响。</li>
-<li>更快响应速度，连接池里的连接在一开始就已经创建好了，后面如果需要直接拿就可以了，无需创建。</li>
-<li>资源的重复利用、避免重复创建对象，连接对象使用完毕后，再归还到池子中进行统一管理即可。</li>
-</ul>
-<h2 id="三、自定义数据库连接池"><a href="#三、自定义数据库连接池" class="headerlink" title="三、自定义数据库连接池"></a>三、自定义数据库连接池</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 这是一个数据库连接池</span><br><span class="line"> * 一开始先往池子里面放十个连接</span><br><span class="line"> */</span><br><span class="line">public class MyDataSource implements DataSource &#123;</span><br><span class="line">//创建一个集合用来存放连接对象</span><br><span class="line">	List&lt;Connection&gt; list=new ArrayList&lt;Connection&gt;();</span><br><span class="line">	//用一个构造方法，刚开始就给这个池子里放入10个连接对象</span><br><span class="line">	public <span class="function"><span class="title">MyDataSource</span></span>() &#123;</span><br><span class="line">		<span class="keyword">for</span> (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">			Connection conn = JDBCUtil.getconn();</span><br><span class="line">			list.add(conn);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 该连接池对外公布的获取连接的方法</span><br><span class="line">	@Override</span><br><span class="line">	public Connection getConnection() throws SQLException &#123;</span><br><span class="line">		//来拿连接的时候，先看看，池子里面有没有，没有了就再添加，扩容</span><br><span class="line">		<span class="keyword">if</span>(list.size()==0) &#123;</span><br><span class="line">			<span class="keyword">for</span> (int i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">				Connection conn = JDBCUtil.getconn();</span><br><span class="line">				list.add(conn);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Connection conn=list.remove(0);</span><br><span class="line">		<span class="built_in">return</span> null;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//用完之后返回连接对象</span><br><span class="line">	public void addBack(Connection conn) &#123;</span><br><span class="line">		list.add(conn);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用连接池</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class TestPool &#123;</span><br><span class="line">	@Test</span><br><span class="line">	public void <span class="function"><span class="title">testPool</span></span>() &#123;</span><br><span class="line">		Connection conn=null;</span><br><span class="line">		PreparedStatement ps=null;</span><br><span class="line">		MyDataSource dataSource=new MyDataSource();</span><br><span class="line">		try &#123;</span><br><span class="line">			conn=dataSource.getConnection();</span><br><span class="line">			</span><br><span class="line">			String sql=<span class="string">"insert into category values(null,'lisi',daq)"</span>;</span><br><span class="line">			ps=conn.prepareStatement(sql);</span><br><span class="line">			ps.executeUpdate();</span><br><span class="line">			</span><br><span class="line">		&#125; catch (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;finally &#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				ps.close();</span><br><span class="line">			&#125; catch (Exception e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			//归还连接对象</span><br><span class="line">			dataSource.addBack(conn);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h3><ul>
-<li>对象没有做成单例。<br>在哪里使用，都需要new MyDataSource().  这就会造成有多个对象的情况出现， 那就不只一个池子了。</li>
-<li>需要额外记住 addBack方法。<br>由于sun公司定义的数据库连接池里面并没有这个addBack方法，所以要用这个连接池的时候，需要记住这个方法是用来回收连接对象的。</li>
-<li>无法面向接口编程。<br>由于连接池直接定义成了一个类，并且里面还额外添加了一个addBack方法，这就造成了无法面向接口编程。</li>
-</ul>
-<p><strong>解决思路：</strong><br>由于多了一个addBack 方法，所以使用这个连接池的地方，需要额外记住这个方法，并且不能面向接口编程。</p>
-<ol>
-<li>修改接口中的close方法。  原来的Connection对象的close方法，是真的关闭连接。 </li>
-<li>修改此close方法，以后在调用close， 并不是真的关闭，而是归还连接对象。如何扩展某一个方法?</li>
-</ol>
-<p>原有的方法逻辑，不是我们想要的。 想修改方法的逻辑，怎么办？</p>
-<ol>
-<li>直接改源码  无法实现。</li>
-<li>继承， 必须得知道这个接口的具体实现是谁。 </li>
-<li>使用装饰者模式。 </li>
-<li>动态代理</li>
-</ol>
-<h3 id="解决方式：装饰者模式"><a href="#解决方式：装饰者模式" class="headerlink" title="解决方式：装饰者模式"></a>解决方式：装饰者模式</h3><p>两个不同的人，去实现同一个接口，先把我的方法执行了，再执行你的。</p>
-<h2 id="四、开源连接池"><a href="#四、开源连接池" class="headerlink" title="四、开源连接池"></a>四、开源连接池</h2><h3 id="DBCP"><a href="#DBCP" class="headerlink" title="DBCP"></a>DBCP</h3><ul>
-<li>DBCP（DataBase Connection Pool）数据库连接池，是java数据库连接池的一种，由Apache开发，通过数据库连接池，可以让程序自动管理数据库连接的释放和断开。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.导入jar包  commons-dbcp.jar和commons-pool.jar</span><br><span class="line">2.不使用配置文件方式（不常用）</span><br><span class="line">		// 1.构建数据源对象</span><br><span class="line">		BasicDataSource dataSource = new BasicDataSource();</span><br><span class="line">		</span><br><span class="line">		dataSource.setDriverClassName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		//Url格式-主协议：子协议：//本地//数据库</span><br><span class="line">		dataSource.setUrl(<span class="string">"jdbc:mysql://localhost/users"</span>);</span><br><span class="line">		dataSource.setUsername(<span class="string">"root"</span>);</span><br><span class="line">		dataSource.setPassword(<span class="string">"daq"</span>);</span><br><span class="line">		// 2.得到连接对象</span><br><span class="line">		conn = dataSource.getConnection();</span><br><span class="line">		String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">		ps.setInt(2,23);</span><br><span class="line">		</span><br><span class="line">		ps.executeUpdate();</span><br><span class="line">		...</span><br><span class="line">3.使用配置文件方式。(常用)</span><br><span class="line">		1. 在 src 下定义配置文件 dbcp.properties. 内容如下： </span><br><span class="line">			//连接设置</span><br><span class="line">			driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">			url=jdbc:mysql://localhost:3306/jdbc</span><br><span class="line">			username=root</span><br><span class="line">			password=daq</span><br><span class="line">			...</span><br><span class="line">		2. 使用代码读取配置文件，即可获取连接池</span><br><span class="line">			BasicDataSourceFactory factory=new BasicDataSourceFactory();</span><br><span class="line">			Properties properties = new Properties();</span><br><span class="line">			properties.load(new FileInputStream(<span class="string">"src/dbcp.properties"</span>));</span><br><span class="line">			DataSource dataSource =factory.createDataSource(properties);</span><br><span class="line"></span><br><span class="line">			conn = dataSource.getConnection();</span><br><span class="line">			String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">			ps = conn.prepareStatement(sql);</span><br><span class="line">			ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">			ps.setInt(2,23);</span><br><span class="line"></span><br><span class="line">			ps.executeUpdate();</span><br><span class="line">			...</span><br></pre></td></tr></table></figure>
-
-<h3 id="C3P0（重点）"><a href="#C3P0（重点）" class="headerlink" title="C3P0（重点）"></a>C3P0（重点）</h3><ul>
-<li>C3P0是一个开源的JDBC连接池，它实现了数据源和JNDI绑定，支持JDBC3规范和JDBC2的标准扩展。目前使用它的开源项目有Hibernate，Spring等。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. 拷贝jar 文件   c3p0-0.9.1.2.jar</span><br><span class="line">2. 不使用配置文件方式（开发的时候不会用）</span><br><span class="line">		//默认会找 xml 中的 default-config 分支。 </span><br><span class="line">		ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">		//2. 设置连接数据的信息</span><br><span class="line">		dataSource.setDriverClass(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		dataSource.setJdbcUrl(<span class="string">"jdbc:mysql://localhost/users"</span>);</span><br><span class="line">		dataSource.setUser(<span class="string">"root"</span>);</span><br><span class="line">		dataSource.setPassword(<span class="string">"daq"</span>);</span><br><span class="line">		//3. 获取连接对象</span><br><span class="line">		conn = dataSource.getConnection();</span><br><span class="line">		String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">		ps.setInt(2,23);</span><br><span class="line"></span><br><span class="line">		ps.executeUpdate();</span><br><span class="line">		...</span><br><span class="line">		</span><br><span class="line">3. 使用配置文件方式。（开发常用）</span><br><span class="line">c3p0的配置文件 支持 properties , 也支持 xml 方式。 不过开发中，一般使用xml方式来配置</span><br><span class="line"></span><br><span class="line">	1.  src下， 创建xml文件，名为：c3p0-config.xml 　注意此处，名字需要固定了。</span><br><span class="line">	&lt;c3p0-config&gt;</span><br><span class="line">  		&lt;default-config&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"driverClass"</span>&gt;com.mysql.jdbc.Driver&lt;/property&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"jdbcUrl"</span>&gt;jdbc:mysql://localhost/user&lt;/property&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"user"</span>&gt;root&lt;/property&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"password"</span>&gt;daq&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">  			&lt;!-- 可选配置 --&gt;</span><br><span class="line">			&lt;property name=<span class="string">"initialPoolSize"</span>&gt;10&lt;/property&gt;   //初始容量</span><br><span class="line">			&lt;property name=<span class="string">"maxIdleTime"</span>&gt;30&lt;/property&gt;		 //</span><br><span class="line">			&lt;property name=<span class="string">"maxPoolSize"</span>&gt;100&lt;/property&gt;		 //最大容量</span><br><span class="line">			&lt;property name=<span class="string">"minPoolSize"</span>&gt;10&lt;/property&gt;		 //最小容量</span><br><span class="line">			&lt;property name=<span class="string">"maxStatement"</span>&gt;200&lt;/property&gt;	 //</span><br><span class="line">  		&lt;/default-config&gt;</span><br><span class="line">	&lt;/c3p0-config&gt;</span><br><span class="line"></span><br><span class="line">		//1. 代码中获取连接dataSource对象</span><br><span class="line">		ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">		//2. 获取连接对象</span><br><span class="line">		conn = dataSource.getConnection();</span><br><span class="line">		String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">		ps.setInt(2,23);</span><br><span class="line">		</span><br><span class="line">		ps.executeUpdate();</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>MySql,连接池</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>服务器端会话技术：Session</title>
-    <url>/undefined/</url>
-    <content><![CDATA[<p>Session对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的Web页之间跳转时，存储在Session对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。他是用来解决Cookie带来的安全问题。</p>
-<a id="more"></a>
-<h2 id="一、Session概述"><a href="#一、Session概述" class="headerlink" title="一、Session概述"></a>一、Session概述</h2><ul>
-<li>会话 ， Session是基于Cookie的一种会话机制。 </li>
-<li>Cookie是服务器返回一小份数据给客户端。并且存放在客户端上。 </li>
-<li>Session是，数据存放在服务器端。</li>
-</ul>
-<h2 id="二、常用方法"><a href="#二、常用方法" class="headerlink" title="二、常用方法"></a>二、常用方法</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//得到会话ID</span><br><span class="line">String id = session.getId();</span><br><span class="line"></span><br><span class="line">//存值</span><br><span class="line">session.setAttribute(name, value);</span><br><span class="line">	</span><br><span class="line">//取值</span><br><span class="line">session.getAttribute(name);</span><br><span class="line">	</span><br><span class="line">//移除值</span><br><span class="line">session.removeAttribute(name);</span><br></pre></td></tr></table></figure>
-<h2 id="三、Session的创建与销毁。"><a href="#三、Session的创建与销毁。" class="headerlink" title="三、Session的创建与销毁。"></a>三、Session的创建与销毁。</h2><ul>
-<li>创建<br>如果有在servlet里面调用了 request.getSession()</li>
-<li>销毁<br>session 是存放在服务器的内存中的一份数据。 当然可以持久化. Redis . 即使关了浏览器，session也不会销毁。</li>
-</ul>
-<ol>
-<li>关闭服务器</li>
-<li>session会话时间过期。 有效期过了，默认有效期： 30分钟。</li>
-</ol>
-<h2 id="四、移除Session中的元素"><a href="#四、移除Session中的元素" class="headerlink" title="四、移除Session中的元素"></a>四、移除Session中的元素</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//强制干掉会话，里面存放的任何数据就都没有了。</span><br><span class="line">session.invalidate();</span><br><span class="line">	</span><br><span class="line">//从session中移除某一个数据</span><br><span class="line">session.removeAttribute(<span class="string">"cart"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><ul>
-<li>Session： 也是基于cookie的一种会话技术，  数据存放存放在服务器端。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">会在cookie里面添加一个字段 JSESSIONID . 是tomcat服务器生成。 </span><br><span class="line">setAttribute 存数据</span><br><span class="line">getAttribute 取数据</span><br><span class="line">removeAttribute  移除数据</span><br><span class="line">getSessionId();  获取会话id</span><br><span class="line">invalidate() 强制让会话失效。</span><br></pre></td></tr></table></figure>
-<ul>
-<li>创建和销毁<br>  调用<strong>request.getSesion</strong>创建<br>   服务器关闭 ， 会话超时（30分）</li>
-</ul>
-<ul>
-<li>setAttribute 存放的值， 在浏览器关闭后，依然不会丢失！</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>Session</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>建站系列之---部署网站到云服务器</title>
     <url>/undefined/</url>
     <content><![CDATA[<p>由于这次的疫情，最爱的马云爸爸的阿里云推出了学生在家上机实践的活动，免费领六个月的ECS云服务器，天呐，2核4G啊，六个月之后还可续费六个月，整整一年呐，市场价780软妹币呢，不过投放量少，而且还是每天早上八点领，连续7:55闹钟起早，终于，在第三个早上，马云爸爸眷顾了我，我领到了。领到了就不能让他吃灰吧，于是先部署个博客再说。因为之前博客是托管在github上面的。而github的服务器又在国外，所以访问速度十分感人，但是有了国内的服务器就不一样了，瞬间嗖嗖嗖。。。</p>
@@ -2148,6 +1936,67 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </categories>
       <tags>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>手写链表</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<p>看过很多面经，看得出来，数据结构和算法在面试中是很重要的，在之前也听说过，面试过程中，出现手撕代码的场景，而我刚好又看到链表这一章，顺便对链表做一下巩固，也打个预防针，万一真遇到要手写代码的时候，也有了一手准备。</p>
+<a id="more"></a>
+
+<h2 id="一、链表结构"><a href="#一、链表结构" class="headerlink" title="一、链表结构"></a>一、链表结构</h2><p><img src="https://img-blog.csdnimg.cn/20200325114240567.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>每个节点结构是由数据域和指针域组成，数据域是存放数据的，而指针域存放下一结点的地址。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200325114318953.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>但是不可能只有一个节点呀，这时候就使用 Class 来声明一个类，为类添加两个属性，一个属性是存放数据的属性data，另一个属性是存放指向下一个结点的指针属性next。这样就可以创造出多个结点实例。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Node&#123;</span><br><span class="line">   constructor(data)&#123;</span><br><span class="line">        this.data = data;</span><br><span class="line">        this.next = null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、插入删除"><a href="#二、插入删除" class="headerlink" title="二、插入删除"></a>二、插入删除</h2><ul>
+<li>插入到单链表的头部</li>
+<li>插入到中间</li>
+<li>插入到尾部</li>
+<li>删除头部节点</li>
+<li>删除中间节点</li>
+<li>删除尾部节点</li>
+</ul>
+<h2 id="三、边界条件"><a href="#三、边界条件" class="headerlink" title="三、边界条件"></a>三、边界条件</h2><ul>
+<li><p><strong>输入边界：</strong><br>先考虑用户输入的参数，比如传入一个链表，我们首先要判断链表是否为空，如果为空我们就不能让它执行下边的程序。再比如插入一个结点到指定结点的后边，那么你也要判断输入的结点是否为空，而且还要判断该结点是否存在该链表中。对于这些输入值的判断，就叫做输入边界。</p>
+</li>
+<li><p><strong>特殊边界：</strong><br>考虑到一些特殊情况，比如插入数据，我们插入数据一般考虑到插入尾部，但要是插入到头部，插入尾部的代码并不适用于插入到头部，所以呢需要考虑这种情况，删除节点也是同样要考虑这种情况。其实特殊边界最主要考虑到一些逻辑上的特殊情况。</p>
+</li>
+</ul>
+<h2 id="四、示例"><a href="#四、示例" class="headerlink" title="四、示例"></a>四、示例</h2><p><strong>例：在链表中间增加和删除节点</strong></p>
+<h3 id="1-定义节点："><a href="#1-定义节点：" class="headerlink" title="1. 定义节点："></a>1. 定义节点：</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Node&#123;</span><br><span class="line">    constructor(data)&#123;</span><br><span class="line">        this.data = data;</span><br><span class="line">       this.next = null;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-增加节点："><a href="#2-增加节点：" class="headerlink" title="2. 增加节点："></a>2. 增加节点：</h3><p>①保存临时地址（4结点的地址）,需要进行遍历查找到3结点，也就是下列代码的currentNode 结点。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200325115953914.gif" alt="在这里插入图片描述"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//先查找该元素</span><br><span class="line"><span class="built_in">let</span> currentNode = this.findByValue(element);</span><br><span class="line">// 保存 3 结点的下一结点地址（4 结点的地址）</span><br><span class="line"><span class="built_in">let</span> pre = currentNode.next</span><br></pre></td></tr></table></figure>
+
+<p>②创建新结点，将新结点（5结点）的指针指向下一结点指针（4结点地址，已经在上一步骤保存下来了）</p>
+<p><img src="https://img-blog.csdnimg.cn/20200325120116456.gif" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">let newNode = <span class="keyword">new</span> Node(value);</span><br><span class="line">newNode.next = pre;</span><br></pre></td></tr></table></figure>
+
+<p>③将3 的结点地址指向新结点（5结点）</p>
+<p><img src="https://img-blog.csdnimg.cn/20200325120224691.gif" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">currentNode.next = newNode;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-删除节点："><a href="#3-删除节点：" class="headerlink" title="3. 删除节点："></a>3. 删除节点：</h3><p>①断开3结点的指针（断开3结点相当于让2结点直接指向4结点）<br><img src="https://img-blog.csdnimg.cn/20200325120407492.gif" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> let currentNode = <span class="keyword">this</span>.head;</span><br><span class="line">  <span class="comment">// 用来记录 3 结点的前一结点</span></span><br><span class="line">  let preNode = <span class="keyword">null</span>;</span><br><span class="line">  <span class="comment">// 遍历查找 3 结点</span></span><br><span class="line">  <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span> &amp;&amp; currentNode.data !== value)&#123;</span><br><span class="line">         <span class="comment">// 3 结点的前一结点</span></span><br><span class="line">         preNode = currentNode;</span><br><span class="line">        <span class="comment">// 3 结点</span></span><br><span class="line">         currentNode = currentNode.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>②让结点2的指针指向4结点，完成删除。<br><img src="https://img-blog.csdnimg.cn/20200325120504135.gif" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">preNode.next = currentNode.next;</span><br></pre></td></tr></table></figure>
+<h2 id="五、代码实现"><a href="#五、代码实现" class="headerlink" title="五、代码实现"></a>五、代码实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 功能：单链表的插入、删除、查找</span></span><br><span class="line"><span class="comment">   * 【插入】：插入到指定元素后方</span></span><br><span class="line"><span class="comment">   * 1、查找该元素是否存在？</span></span><br><span class="line"><span class="comment">   * 2、没有找到返回 -1</span></span><br><span class="line"><span class="comment">   * 3、找到进行创建结点并插入链表。</span></span><br><span class="line"><span class="comment">   * </span></span><br><span class="line"><span class="comment">   * 【查找】：按值查找/按索引查找</span></span><br><span class="line"><span class="comment">   * 1、判断当前结点是否等于null，且是否等于给定值？</span></span><br><span class="line"><span class="comment">   * 2、判断是否可以找到该值？</span></span><br><span class="line"><span class="comment">   * 3、没有找到返回 -1；</span></span><br><span class="line"><span class="comment">   * 4、找到该值返回结点；</span></span><br><span class="line"><span class="comment">   * </span></span><br><span class="line"><span class="comment">   * 【删除】：按值删除</span></span><br><span class="line"><span class="comment">   * 1、判断是否找到该值？</span></span><br><span class="line"><span class="comment">   * 2、找到记录前结点，进行删除；</span></span><br><span class="line"><span class="comment">   * 3、找不到直接返回-1；</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">	<span class="comment">//定义结点</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Node</span></span>&#123;</span><br><span class="line">      constructor(data)&#123;</span><br><span class="line">         <span class="keyword">this</span>.data = data;</span><br><span class="line">         <span class="keyword">this</span>.next = <span class="keyword">null</span>;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line">	 <span class="comment">//定义链表</span></span><br><span class="line">	 <span class="class"><span class="keyword">class</span> <span class="title">LinkList</span></span>&#123;</span><br><span class="line">     constructor()&#123;</span><br><span class="line">         <span class="comment">//初始化头结点</span></span><br><span class="line">         <span class="keyword">this</span>.head = <span class="keyword">new</span> Node(<span class="string">'head'</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//根据 value 查找结点</span></span><br><span class="line">     findByValue = (value) =&gt;&#123;</span><br><span class="line">         let currentNode = <span class="keyword">this</span>.head;</span><br><span class="line">         <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span> &amp;&amp; currentNode.data !== value)&#123;</span><br><span class="line">             currentNode = currentNode.next;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">//判断该结点是否找到</span></span><br><span class="line">         console.log(currentNode)</span><br><span class="line">         <span class="keyword">return</span> currentNode === <span class="keyword">null</span> ? -<span class="number">1</span> : currentNode;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//根据 index 查找结点</span></span><br><span class="line">     findByIndex = (index) =&gt;&#123;</span><br><span class="line">         let pos = <span class="number">0</span>;</span><br><span class="line">         let currentNode = <span class="keyword">this</span>.head;</span><br><span class="line">         <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span> &amp;&amp; pos !== index)&#123;</span><br><span class="line">             currentNode = currentNode.next;</span><br><span class="line">             pos++;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">//判断是否找到该索引</span></span><br><span class="line">         console.log(currentNode)</span><br><span class="line">         <span class="keyword">return</span> currentNode === <span class="keyword">null</span> ? -<span class="number">1</span> : currentNode;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//插入元素(指定元素向后插入)</span></span><br><span class="line">     insert = (value,element) =&gt;&#123;</span><br><span class="line">         <span class="comment">//先查找该元素</span></span><br><span class="line">         let currentNode = <span class="keyword">this</span>.findByValue(element);</span><br><span class="line">         <span class="comment">//如果没有找到</span></span><br><span class="line">         <span class="keyword">if</span>(currentNode == -<span class="number">1</span>)&#123;</span><br><span class="line">             console.log(<span class="string">"未找到插入位置!"</span>)</span><br><span class="line">             <span class="keyword">return</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         let newNode = <span class="keyword">new</span> Node(value);</span><br><span class="line">         newNode.next = currentNode.next;</span><br><span class="line">         currentNode.next = newNode;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//根据值删除结点</span></span><br><span class="line">     delete = (value) =&gt;&#123;</span><br><span class="line">         let currentNode = <span class="keyword">this</span>.head;</span><br><span class="line">         let preNode = <span class="keyword">null</span>;</span><br><span class="line">         <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span> &amp;&amp; currentNode.data !== value)&#123;</span><br><span class="line">             preNode = currentNode;</span><br><span class="line">             currentNode = currentNode.next;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">if</span>(currentNode == <span class="keyword">null</span>) <span class="keyword">return</span> -<span class="number">1</span>; </span><br><span class="line">         preNode.next = currentNode.next;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">      <span class="comment">//遍历所有结点</span></span><br><span class="line">     print = () =&gt;&#123;</span><br><span class="line">         let currentNode = <span class="keyword">this</span>.head</span><br><span class="line">         <span class="comment">//如果结点不为空</span></span><br><span class="line">         <span class="keyword">while</span>(currentNode !== <span class="keyword">null</span>)&#123;</span><br><span class="line">             console.log(currentNode.data)</span><br><span class="line">             currentNode = currentNode.next;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>每天一道面试题</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -2323,28 +2172,154 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
-    <title>比特币的两种交易方式</title>
+    <title>数据库连接池</title>
     <url>/undefined/</url>
-    <content><![CDATA[<p>比特币的交易有很多种，本文了解一下</p>
+    <content><![CDATA[<p>数据库连接池负责分配、管理和释放数据库连接，它允许应用程序重复使用一个现有的数据库连接，而不是再重新建立一个；释放空闲时间超过最大空闲时间的数据库连接来避免因为没有释放数据库连接而引起的数据库连接遗漏。这项技术能明显提高对数据库操作的性能。</p>
 <a id="more"></a>
-<h2 id="比特币交易的几种种方式："><a href="#比特币交易的几种种方式：" class="headerlink" title="比特币交易的几种种方式："></a>比特币交易的几种种方式：</h2><p><img src="https://img-blog.csdnimg.cn/20200204170527575.png" alt="在这里插入图片描述"></p>
+<h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><ul>
+<li><strong>数据库的连接对象创建工作，比较消耗性能。</strong> </li>
+<li>一开始现在内存中开辟一块空间（集合） ， 一开先往池子里面放置 多个连接对象。  后面需要连接的话，直接从池子里面去。不要去自己创建连接了。  使用完毕， 要记得归还连接。确保连接对象能循环利用。</li>
+</ul>
+<ul>
+<li>连接池指：创建一个池子（容器） ， 专门用来管理连接对象。<br><img src="https://img-blog.csdnimg.cn/20200301155401842.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+<h2 id="二、作用"><a href="#二、作用" class="headerlink" title="二、作用"></a>二、作用</h2><ul>
+<li>创建和管理连接，对数据的操作没有影响。</li>
+<li>更快响应速度，连接池里的连接在一开始就已经创建好了，后面如果需要直接拿就可以了，无需创建。</li>
+<li>资源的重复利用、避免重复创建对象，连接对象使用完毕后，再归还到池子中进行统一管理即可。</li>
+</ul>
+<h2 id="三、自定义数据库连接池"><a href="#三、自定义数据库连接池" class="headerlink" title="三、自定义数据库连接池"></a>三、自定义数据库连接池</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 这是一个数据库连接池</span><br><span class="line"> * 一开始先往池子里面放十个连接</span><br><span class="line"> */</span><br><span class="line">public class MyDataSource implements DataSource &#123;</span><br><span class="line">//创建一个集合用来存放连接对象</span><br><span class="line">	List&lt;Connection&gt; list=new ArrayList&lt;Connection&gt;();</span><br><span class="line">	//用一个构造方法，刚开始就给这个池子里放入10个连接对象</span><br><span class="line">	public <span class="function"><span class="title">MyDataSource</span></span>() &#123;</span><br><span class="line">		<span class="keyword">for</span> (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">			Connection conn = JDBCUtil.getconn();</span><br><span class="line">			list.add(conn);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 该连接池对外公布的获取连接的方法</span><br><span class="line">	@Override</span><br><span class="line">	public Connection getConnection() throws SQLException &#123;</span><br><span class="line">		//来拿连接的时候，先看看，池子里面有没有，没有了就再添加，扩容</span><br><span class="line">		<span class="keyword">if</span>(list.size()==0) &#123;</span><br><span class="line">			<span class="keyword">for</span> (int i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">				Connection conn = JDBCUtil.getconn();</span><br><span class="line">				list.add(conn);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Connection conn=list.remove(0);</span><br><span class="line">		<span class="built_in">return</span> null;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//用完之后返回连接对象</span><br><span class="line">	public void addBack(Connection conn) &#123;</span><br><span class="line">		list.add(conn);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用连接池</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class TestPool &#123;</span><br><span class="line">	@Test</span><br><span class="line">	public void <span class="function"><span class="title">testPool</span></span>() &#123;</span><br><span class="line">		Connection conn=null;</span><br><span class="line">		PreparedStatement ps=null;</span><br><span class="line">		MyDataSource dataSource=new MyDataSource();</span><br><span class="line">		try &#123;</span><br><span class="line">			conn=dataSource.getConnection();</span><br><span class="line">			</span><br><span class="line">			String sql=<span class="string">"insert into category values(null,'lisi',daq)"</span>;</span><br><span class="line">			ps=conn.prepareStatement(sql);</span><br><span class="line">			ps.executeUpdate();</span><br><span class="line">			</span><br><span class="line">		&#125; catch (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;finally &#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				ps.close();</span><br><span class="line">			&#125; catch (Exception e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			//归还连接对象</span><br><span class="line">			dataSource.addBack(conn);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h3><ul>
+<li>对象没有做成单例。<br>在哪里使用，都需要new MyDataSource().  这就会造成有多个对象的情况出现， 那就不只一个池子了。</li>
+<li>需要额外记住 addBack方法。<br>由于sun公司定义的数据库连接池里面并没有这个addBack方法，所以要用这个连接池的时候，需要记住这个方法是用来回收连接对象的。</li>
+<li>无法面向接口编程。<br>由于连接池直接定义成了一个类，并且里面还额外添加了一个addBack方法，这就造成了无法面向接口编程。</li>
+</ul>
+<p><strong>解决思路：</strong><br>由于多了一个addBack 方法，所以使用这个连接池的地方，需要额外记住这个方法，并且不能面向接口编程。</p>
 <ol>
-<li><strong>场外交易：</strong> 也称为<strong>法币交易</strong>，法币就是<strong>法定货币</strong>，人民币就是我们国家的法定货币，顾名思义，法币交易就是由法币（人民币）直接与比特币（数字货币）进行交易的行为（购买/出售),可以简单理解为网购。</li>
-<li><strong>场内交易：</strong> 也称之为<strong>币币交易</strong>，就是用一种币交易兑换另一种币。</li>
-<li><strong>杠杆交易：</strong> 利用小额的资金来进行数倍于原始金额的投资。以期望获取相对投资标的物波动的数倍收益率，抑或亏损。由于保证金（该笔小额资金）的增减不以标的资产的波动比例来运动，<strong>风险很高</strong>。不推荐。</li>
-<li><strong>合约交易：</strong> 合约交易是指交易双方，在交易所通过买卖合约，并根据约定在未来某一特定时间和地点，以特定价格买卖规定数量商品的行为。合约交易是在现货远期合约交易基础上发展起来的，在交易所内买卖标准化合约的一种新型交易方式。</li>
+<li>修改接口中的close方法。  原来的Connection对象的close方法，是真的关闭连接。 </li>
+<li>修改此close方法，以后在调用close， 并不是真的关闭，而是归还连接对象。如何扩展某一个方法?</li>
 </ol>
-<h2 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h2><ol>
-<li>法币交易很耗时间，即使交易双方操作熟练，但是还是不排除人为因素造成交易时间拖长，不利于双方观察局势，很有可能在分分钟内错过行情。</li>
-<li>币币交易可以在极短时间内成交（按下买入键的瞬间与对手成交）且支持购买的币种更多。</li>
+<p>原有的方法逻辑，不是我们想要的。 想修改方法的逻辑，怎么办？</p>
+<ol>
+<li>直接改源码  无法实现。</li>
+<li>继承， 必须得知道这个接口的具体实现是谁。 </li>
+<li>使用装饰者模式。 </li>
+<li>动态代理</li>
 </ol>
-<p>，</p>
+<h3 id="解决方式：装饰者模式"><a href="#解决方式：装饰者模式" class="headerlink" title="解决方式：装饰者模式"></a>解决方式：装饰者模式</h3><p>两个不同的人，去实现同一个接口，先把我的方法执行了，再执行你的。</p>
+<h2 id="四、开源连接池"><a href="#四、开源连接池" class="headerlink" title="四、开源连接池"></a>四、开源连接池</h2><h3 id="DBCP"><a href="#DBCP" class="headerlink" title="DBCP"></a>DBCP</h3><ul>
+<li>DBCP（DataBase Connection Pool）数据库连接池，是java数据库连接池的一种，由Apache开发，通过数据库连接池，可以让程序自动管理数据库连接的释放和断开。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.导入jar包  commons-dbcp.jar和commons-pool.jar</span><br><span class="line">2.不使用配置文件方式（不常用）</span><br><span class="line">		// 1.构建数据源对象</span><br><span class="line">		BasicDataSource dataSource = new BasicDataSource();</span><br><span class="line">		</span><br><span class="line">		dataSource.setDriverClassName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		//Url格式-主协议：子协议：//本地//数据库</span><br><span class="line">		dataSource.setUrl(<span class="string">"jdbc:mysql://localhost/users"</span>);</span><br><span class="line">		dataSource.setUsername(<span class="string">"root"</span>);</span><br><span class="line">		dataSource.setPassword(<span class="string">"daq"</span>);</span><br><span class="line">		// 2.得到连接对象</span><br><span class="line">		conn = dataSource.getConnection();</span><br><span class="line">		String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">		ps.setInt(2,23);</span><br><span class="line">		</span><br><span class="line">		ps.executeUpdate();</span><br><span class="line">		...</span><br><span class="line">3.使用配置文件方式。(常用)</span><br><span class="line">		1. 在 src 下定义配置文件 dbcp.properties. 内容如下： </span><br><span class="line">			//连接设置</span><br><span class="line">			driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">			url=jdbc:mysql://localhost:3306/jdbc</span><br><span class="line">			username=root</span><br><span class="line">			password=daq</span><br><span class="line">			...</span><br><span class="line">		2. 使用代码读取配置文件，即可获取连接池</span><br><span class="line">			BasicDataSourceFactory factory=new BasicDataSourceFactory();</span><br><span class="line">			Properties properties = new Properties();</span><br><span class="line">			properties.load(new FileInputStream(<span class="string">"src/dbcp.properties"</span>));</span><br><span class="line">			DataSource dataSource =factory.createDataSource(properties);</span><br><span class="line"></span><br><span class="line">			conn = dataSource.getConnection();</span><br><span class="line">			String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">			ps = conn.prepareStatement(sql);</span><br><span class="line">			ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">			ps.setInt(2,23);</span><br><span class="line"></span><br><span class="line">			ps.executeUpdate();</span><br><span class="line">			...</span><br></pre></td></tr></table></figure>
+
+<h3 id="C3P0（重点）"><a href="#C3P0（重点）" class="headerlink" title="C3P0（重点）"></a>C3P0（重点）</h3><ul>
+<li>C3P0是一个开源的JDBC连接池，它实现了数据源和JNDI绑定，支持JDBC3规范和JDBC2的标准扩展。目前使用它的开源项目有Hibernate，Spring等。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. 拷贝jar 文件   c3p0-0.9.1.2.jar</span><br><span class="line">2. 不使用配置文件方式（开发的时候不会用）</span><br><span class="line">		//默认会找 xml 中的 default-config 分支。 </span><br><span class="line">		ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">		//2. 设置连接数据的信息</span><br><span class="line">		dataSource.setDriverClass(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		dataSource.setJdbcUrl(<span class="string">"jdbc:mysql://localhost/users"</span>);</span><br><span class="line">		dataSource.setUser(<span class="string">"root"</span>);</span><br><span class="line">		dataSource.setPassword(<span class="string">"daq"</span>);</span><br><span class="line">		//3. 获取连接对象</span><br><span class="line">		conn = dataSource.getConnection();</span><br><span class="line">		String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">		ps.setInt(2,23);</span><br><span class="line"></span><br><span class="line">		ps.executeUpdate();</span><br><span class="line">		...</span><br><span class="line">		</span><br><span class="line">3. 使用配置文件方式。（开发常用）</span><br><span class="line">c3p0的配置文件 支持 properties , 也支持 xml 方式。 不过开发中，一般使用xml方式来配置</span><br><span class="line"></span><br><span class="line">	1.  src下， 创建xml文件，名为：c3p0-config.xml 　注意此处，名字需要固定了。</span><br><span class="line">	&lt;c3p0-config&gt;</span><br><span class="line">  		&lt;default-config&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"driverClass"</span>&gt;com.mysql.jdbc.Driver&lt;/property&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"jdbcUrl"</span>&gt;jdbc:mysql://localhost/user&lt;/property&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"user"</span>&gt;root&lt;/property&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"password"</span>&gt;daq&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">  			&lt;!-- 可选配置 --&gt;</span><br><span class="line">			&lt;property name=<span class="string">"initialPoolSize"</span>&gt;10&lt;/property&gt;   //初始容量</span><br><span class="line">			&lt;property name=<span class="string">"maxIdleTime"</span>&gt;30&lt;/property&gt;		 //</span><br><span class="line">			&lt;property name=<span class="string">"maxPoolSize"</span>&gt;100&lt;/property&gt;		 //最大容量</span><br><span class="line">			&lt;property name=<span class="string">"minPoolSize"</span>&gt;10&lt;/property&gt;		 //最小容量</span><br><span class="line">			&lt;property name=<span class="string">"maxStatement"</span>&gt;200&lt;/property&gt;	 //</span><br><span class="line">  		&lt;/default-config&gt;</span><br><span class="line">	&lt;/c3p0-config&gt;</span><br><span class="line"></span><br><span class="line">		//1. 代码中获取连接dataSource对象</span><br><span class="line">		ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">		//2. 获取连接对象</span><br><span class="line">		conn = dataSource.getConnection();</span><br><span class="line">		String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">		ps.setInt(2,23);</span><br><span class="line">		</span><br><span class="line">		ps.executeUpdate();</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>MySql,连接池</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>&lt;&lt;小狗钱钱&gt;&gt;</title>
+    <url>/read.html/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在B站看了半佛仙人一期关于理财的视频，视频里面也推荐了很多值得一看的书，有《小狗钱钱》，《海龟交易法则》，《经济学原理》，我首先看的是小狗钱钱，写下了这篇读后感。</p>
+<a id="more"></a>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这本书是美国的一版儿童理财读物，虽然说是儿童读物，但在我看来，实际上就是用孩子能够理解的故事，讲述一些大人都未必清楚的一些道理，这些道理可能直白的说出来，成人都懂，可是又有谁能够贯彻到生活中呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大致内容讲的是，小女孩吉娅的爸爸妈妈陷入了财政窘迫的时期，吉娅意外的捡到了一条狗，而这是一条会说话的狗，名字就叫钱钱，机缘巧合，钱钱开始教吉娅理财知识，吉娅一步一步富有了起来，并且也帮助爸爸妈妈摆脱了财政窘境。我看完这本书，并不能说从中学到了什么知识，知识把以前了解到的理财观念加深了，就像那句话：道理咱都懂！！！可他并没有深入你的骨髓，这才是关键。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我将重要的理念罗列以下：</p>
+<p>##(一)自信，有想法，做自己喜欢做的事</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不要为了挣钱而去挣钱，尤其是在我们这个年纪，通过打工，兼职挣来的钱，如果只是满足自己的消费欲望，那将毫无意义，如果将这些钱用在正道上，比如说买书，买课程，提高自己的修养与知识积累，那暂且还花对了地方，对我们这个年纪的学生，真正的意义是提升自己的能力，然后再去赚钱，换句话说，就是用自己的专业技能变现，如果专业技能达不到要求，那就将赚钱一事先放在一边，提升技能放在第一位，毕竟以后还是要靠本事吃饭，当你的专业技能足够好时，就不愁赚不到钱，这个时候就要找渠道了。</p>
+<p>##(二)把钱分成日常开销。梦想目标，和账户三部分</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日常开销是刚需，这个必不可少，但也不要追求过高的消费，如果超出了自己经济承担范围，那么将所剩无几，梦想目标是指，心中有一个或者多个明确的目标，并且用小本本将他们记下来，估计达成这个目标需要多少钱，多少时间。单独为他们开一个账户，当然这里的账户是指形式上的，目的就是为了实现这些目标而去存钱。</p>
+<p>##(三)进行明智的投资</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投资是一门高深的学问，我觉得入个门还是很有必要的，毕竟等到以后，人到中年了，还是靠着储蓄过日子，并不是理想的生活，我身边有很多长辈有观念上的错误，他们就是将挣到的钱定期存进银行里，一存就是五到十年，吃定期的利息，然而他们并想不清楚，你吃银行的利息，通货膨胀在吃你的本金，对于他们那一代人，这个观念既然不能扭转，那就从我们这一代人做起吧，培养理财意识，学习投资方式，也是一种赚钱的利器，万年亘古不变的道理：投资有风险！！！明智的投资会帮你入账不少，而一旦看错了眼，亏损也是常有的事，这就需要长期的积累经验，形成意识了，投资—得先从韭菜做起。</p>
+<h2 id="四-关键在于自信程度"><a href="#四-关键在于自信程度" class="headerlink" title="(四) 关键在于自信程度"></a>(四) 关键在于自信程度</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这是一个老生常谈的话题，听过很多道理，喝过很多鸡汤，尝试过很多次，然而至少就我个人而言，我是一个没有自信的人，我顶多算是一个脸皮比较厚的人，自信和自卑是对立的，但是他们同样都是骨子里的东西，我们都活了二十多年了，经历的事也不少了，生活环境等等因素，到底是帮我们养成了自信，还是形成了自卑，只有我们自己清楚，深入骨髓的东西很难完全改变，但未必是坏事，在做任何事情的时候，保持谦逊的同时，也要掌握50%的主动权。</p>
+<h2 id="五-你最好想清楚，你喜欢做什么，然后再考虑怎么用它来挣钱"><a href="#五-你最好想清楚，你喜欢做什么，然后再考虑怎么用它来挣钱" class="headerlink" title="(五) 你最好想清楚，你喜欢做什么，然后再考虑怎么用它来挣钱"></a>(五) 你最好想清楚，你喜欢做什么，然后再考虑怎么用它来挣钱</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正如上面所说的，不为挣钱而做一些没有意义的事，年轻人，多提升以下自己。花时间花精力修炼内功，学习，比什么都重要。</p>
+<p>##(六)欠债的人应该毁掉所有的信用卡</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里毁掉信用卡，并不是真正意义上的毁掉，就像那些段子：只要你卸载掉支付宝，你就不用还花呗了，对于花呗这个东西，该怎么去形容你最贴切？拿什么跟你作比较才算特别？还是要看用途的，如果是为了缓解经济压力，（这里的经济压力是指，你做了某些有意义的事后，欠下的债），有短期之内不要利息的钱用，何乐而不为呢？但是如果要是为了用这个花呗满足自己的消费欲望，那我觉得还是大可不必了，个人觉得，这种做法，是最low的，买不起我就不买。又不是必需品。还花呗的时候，也要在不收取利息的时候，还最低还款，但是要保证，最终能还清。</p>
+<p>##(七)真的有必要吗？</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;花钱买一样东西的时候，事先考虑有没有必要，你是真的需要他吗？买了之后有什么用？能给你带来你预期的效果吗？能用多久？有更好的替代品吗?一般，扪心自问这些问题之后，你就应该知道，该不该买了。得出买不买的结论之后，就要考虑，买什么样的？现在这个信息错综复杂的互联网时代，各种测评，各种推荐，各种大数据分析，最后到你手里的，也许达不到你的预期，什么性价比乱七八糟的，哪儿有什么性价比，都是些商家搞出来唬人的噱头，你真的能看准东西吗？所谓性价比，大部分就是低价配low货，想买的东西，就别去占便宜。你占的便宜最终都会反映在产品上。</p>
+<p>##(八)当你定下大目标的时候，就意味着你必须付出比别人更多的努力。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我以前考四级的时候，考教师资格证，都没过，包括这次四级430分险过，是因为我没有努力吗？不是，我努力了，周围也有人裸考过了的，并且分比我高多了，羨慕吗？不羡慕，因为我努力过，我没过的原因是我的方法不对，也是努力的不够，你努力了不一定会成功，但你不努力，一定不会有结果，当然也有幸存者偏差，对于天生聪明，基础好的人，可能有些时候会听到这样说：没那个必要，这个也没什么实际意义。但是我始终会坚持自己的理念：当我定下大目标的时候，就意味着必须付出比别人更多的努力。幸运其实是充分准备加上努力工作的结果。</p>
+<p>##(九)克服畏惧心理</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;恐惧总是在我们设想事情会如何不顺利的时候出现，我们对失败的可能性想得越多，就越害怕，当你朝着积极地目标去思考的时候，就不会心生畏惧，我从小一直到现在，都没有真正意义上上台讲演过，我永远都是那个坐在台下为他人喝彩的观众，感叹她们真有魄力啊，就连在班级里做个自我介绍我都会脸红，我害怕面对很多人，害怕出糗，也不是没有过讲演的机会，因为我的畏惧，我也不知道我什么时候能踏出这一步，但是我会尽力克服自己的恐惧，等下次机会到来的时候，我不会拱手让人的。</p>
+<p>##(十)72定理</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;72定理：用72除以投资的年收益率的百分比，得出的数字就是这笔钱翻一倍所需要的年数，用72除以通货膨胀率的百分比，得出的数字就是这笔钱贬值一倍所需要的年数。还补充一点就是挑选基金时注意哪些问题：<br>1.基金至少有十年历史，也就是所谓的老基金<br>2.选择大型的跨国股票基金，以分散投资风险<br>3.了解基金的走势图，合理利用72定理</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其实之前说看完这本书，我并没有学到多少知识，这句话太过于自大，文章写到这里，我才发现，原来小狗钱钱教会我的东西并不少。去合理利用自己的<code>money</code>吧！！！</p>
+]]></content>
+      <categories>
+        <category>读后感</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>数字货币的种类</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<p>当前的数字货币大致有以下几种。</p>
+<a id="more"></a>
+<p><img src="https://img-blog.csdnimg.cn/20200204160645330.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>BTC：</strong> 比特币</li>
+<li><strong>ETH：</strong> 以太币</li>
+<li><strong>USDT：</strong> 泰达币（与同数量的美元是等值的）</li>
+<li><strong>EOS：</strong> 为商用分布式应用设计的一款区块链操作系统。EOS是引入的一种新的区块链架构，旨在实现分布式应用的性能扩展。注意，它并不是像比特币和以太坊那样的货币，而是基于EOS软件项目之上发布的代币，被称为区块链3.0 。</li>
+<li><strong>XRP：</strong> 瑞波币。它是基于Ripple协议的虚拟货币，主要功能有二：1.防止恶意攻击；2.桥梁货币。</li>
+<li><strong>LTC：</strong> 莱特币。<img src="https://img-blog.csdnimg.cn/20200204161448813.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li><strong>HT：</strong> 火币<br><img src="https://img-blog.csdnimg.cn/20200204161631662.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li><strong>HUSD：</strong> 稳定币<img src="https://img-blog.csdnimg.cn/20200204162140418.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li><strong>BCH：</strong><img src="https://img-blog.csdnimg.cn/20200204162243770.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>
       </categories>
       <tags>
         <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>服务器端会话技术：Session</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<p>Session对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的Web页之间跳转时，存储在Session对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。他是用来解决Cookie带来的安全问题。</p>
+<a id="more"></a>
+<h2 id="一、Session概述"><a href="#一、Session概述" class="headerlink" title="一、Session概述"></a>一、Session概述</h2><ul>
+<li>会话 ， Session是基于Cookie的一种会话机制。 </li>
+<li>Cookie是服务器返回一小份数据给客户端。并且存放在客户端上。 </li>
+<li>Session是，数据存放在服务器端。</li>
+</ul>
+<h2 id="二、常用方法"><a href="#二、常用方法" class="headerlink" title="二、常用方法"></a>二、常用方法</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//得到会话ID</span><br><span class="line">String id = session.getId();</span><br><span class="line"></span><br><span class="line">//存值</span><br><span class="line">session.setAttribute(name, value);</span><br><span class="line">	</span><br><span class="line">//取值</span><br><span class="line">session.getAttribute(name);</span><br><span class="line">	</span><br><span class="line">//移除值</span><br><span class="line">session.removeAttribute(name);</span><br></pre></td></tr></table></figure>
+<h2 id="三、Session的创建与销毁。"><a href="#三、Session的创建与销毁。" class="headerlink" title="三、Session的创建与销毁。"></a>三、Session的创建与销毁。</h2><ul>
+<li>创建<br>如果有在servlet里面调用了 request.getSession()</li>
+<li>销毁<br>session 是存放在服务器的内存中的一份数据。 当然可以持久化. Redis . 即使关了浏览器，session也不会销毁。</li>
+</ul>
+<ol>
+<li>关闭服务器</li>
+<li>session会话时间过期。 有效期过了，默认有效期： 30分钟。</li>
+</ol>
+<h2 id="四、移除Session中的元素"><a href="#四、移除Session中的元素" class="headerlink" title="四、移除Session中的元素"></a>四、移除Session中的元素</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//强制干掉会话，里面存放的任何数据就都没有了。</span><br><span class="line">session.invalidate();</span><br><span class="line">	</span><br><span class="line">//从session中移除某一个数据</span><br><span class="line">session.removeAttribute(<span class="string">"cart"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><ul>
+<li>Session： 也是基于cookie的一种会话技术，  数据存放存放在服务器端。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">会在cookie里面添加一个字段 JSESSIONID . 是tomcat服务器生成。 </span><br><span class="line">setAttribute 存数据</span><br><span class="line">getAttribute 取数据</span><br><span class="line">removeAttribute  移除数据</span><br><span class="line">getSessionId();  获取会话id</span><br><span class="line">invalidate() 强制让会话失效。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建和销毁<br>  调用<strong>request.getSesion</strong>创建<br>   服务器关闭 ， 会话超时（30分）</li>
+</ul>
+<ul>
+<li>setAttribute 存放的值， 在浏览器关闭后，依然不会丢失！</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>Session</tag>
       </tags>
   </entry>
   <entry>
@@ -2484,61 +2459,28 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
-    <title>建站系列之---备份本地站点到github上</title>
+    <title>比特币的两种交易方式</title>
     <url>/undefined/</url>
-    <content><![CDATA[<p>试想一下，就你自己的电脑上配置了hexo，平时写博客，部署都是在自己电脑上，那万一有一天，用的不是自己电脑，又想要写博客，那怎么办呢？此时就要用到git了，将你的站点配置等信息备份到github上，要用的时候，用 git clone到本地。而且好处不仅如此，万一哪天出了问题，有个备份，岂不美哉？</p>
+    <content><![CDATA[<p>比特币的交易有很多种，本文了解一下</p>
 <a id="more"></a>
-<h2 id="一、本地配置"><a href="#一、本地配置" class="headerlink" title="一、本地配置"></a>一、本地配置</h2><ul>
-<li>由于是在个人电脑上配置的<code>hexo</code>，部署也不方便，如果在另外一台机子上写博客，没有<code>hexo</code>的配置也不行，另一方面出于备份项目的目的，最好的办法是将本地<code>hexo</code>站点备份到<code>Github</code>上。</li>
-</ul>
-<p>1.新建<code>hexo</code>文件夹存放分支工作目录。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir hexo</span><br></pre></td></tr></table></figure>
-
-<p>2.把你的GitHub的远程仓库克隆到<code>hexo</code>文件夹</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/DAQ121/DAQ121.github.io hexo</span><br></pre></td></tr></table></figure>
-
-<p>3.删除除了版本管理的<code>.git</code>之外的所有文件和文件夹</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexo</span><br><span class="line">rm -r *</span><br></pre></td></tr></table></figure>
-
-<p>4.把要备份的文件复制到<code>hexo</code>目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">scaffolds/</span><br><span class="line"><span class="built_in">source</span>/</span><br><span class="line">themes/</span><br><span class="line">.gitignore</span><br><span class="line">_config.yml</span><br><span class="line">package.json</span><br></pre></td></tr></table></figure>
-
-<p>5.如果使用的主题是从Github克隆的，那么使用命令删除它的Git文件（以next主题为例）,否则无法将主题文件<code>push</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rm -R themes/next/.git*</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、github配置"><a href="#二、github配置" class="headerlink" title="二、github配置"></a>二、github配置</h2><p>1.github创建一个<code>hexo</code>分支 </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -b hexo</span><br></pre></td></tr></table></figure>
-<p>2.保存所有文件到暂存区</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add --all</span><br></pre></td></tr></table></figure>
-<p>3.提交变更</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">"创建hexo分支"</span></span><br></pre></td></tr></table></figure>
-<p>4.推送到github，并用<code>--set-upstream</code>与<code>origin</code>创建关联，将<code>hexo</code>设置为默认分支</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push --<span class="built_in">set</span>-upstream origin hexo</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、合并管理"><a href="#三、合并管理" class="headerlink" title="三、合并管理"></a>三、合并管理</h2><ul>
-<li>现在有两个需要管理的文件夹，一个是<code>blog</code>，一个是<code>hexo</code>，但是每次发布文章的时候如果要提交两次就很失效率，</li>
-</ul>
-<p>1.将本地<code>hexo</code>分支中的<code>.git</code>文件夹复制到<code>blog</code>根目录中</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp -a .git ../blog</span><br></pre></td></tr></table></figure>
-<p>2.<code>master</code>分支的文件则由<code>hexo</code>管理，编辑<code>hexo</code>配置文件<code>_config.yml</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">   <span class="built_in">type</span>: git</span><br><span class="line">   repo: https://github.com/DAQ121/DAQ121.github.io</span><br><span class="line">   branch: master</span><br></pre></td></tr></table></figure>
-<h2 id="四、发布文章"><a href="#四、发布文章" class="headerlink" title="四、发布文章"></a>四、发布文章</h2><p>1.新建文章</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
-<p>2.将相关更改推送到<code>hexo</code>分支</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"发表文章test"</span></span><br><span class="line">git push origin hexo</span><br></pre></td></tr></table></figure>
-<p>3.将静态文件推送到<code>master</code>分支</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-<h2 id="五、使用的时候如何迁移"><a href="#五、使用的时候如何迁移" class="headerlink" title="五、使用的时候如何迁移"></a>五、使用的时候如何迁移</h2><p>1.将<code>hexo</code>分支克隆下来</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b hexo http://github.com/DAQ121/DAQ121.github.io</span><br></pre></td></tr></table></figure>
-<p>2.安装<code>hexo</code>依赖</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install</span><br></pre></td></tr></table></figure>
-<p>3.只不过每次发文章的时候，要输入用户名和密码。</p>
+<h2 id="比特币交易的几种种方式："><a href="#比特币交易的几种种方式：" class="headerlink" title="比特币交易的几种种方式："></a>比特币交易的几种种方式：</h2><p><img src="https://img-blog.csdnimg.cn/20200204170527575.png" alt="在这里插入图片描述"></p>
+<ol>
+<li><strong>场外交易：</strong> 也称为<strong>法币交易</strong>，法币就是<strong>法定货币</strong>，人民币就是我们国家的法定货币，顾名思义，法币交易就是由法币（人民币）直接与比特币（数字货币）进行交易的行为（购买/出售),可以简单理解为网购。</li>
+<li><strong>场内交易：</strong> 也称之为<strong>币币交易</strong>，就是用一种币交易兑换另一种币。</li>
+<li><strong>杠杆交易：</strong> 利用小额的资金来进行数倍于原始金额的投资。以期望获取相对投资标的物波动的数倍收益率，抑或亏损。由于保证金（该笔小额资金）的增减不以标的资产的波动比例来运动，<strong>风险很高</strong>。不推荐。</li>
+<li><strong>合约交易：</strong> 合约交易是指交易双方，在交易所通过买卖合约，并根据约定在未来某一特定时间和地点，以特定价格买卖规定数量商品的行为。合约交易是在现货远期合约交易基础上发展起来的，在交易所内买卖标准化合约的一种新型交易方式。</li>
+</ol>
+<h2 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h2><ol>
+<li>法币交易很耗时间，即使交易双方操作熟练，但是还是不排除人为因素造成交易时间拖长，不利于双方观察局势，很有可能在分分钟内错过行情。</li>
+<li>币币交易可以在极短时间内成交（按下买入键的瞬间与对手成交）且支持购买的币种更多。</li>
+</ol>
+<p>，</p>
 ]]></content>
       <categories>
-        <category>Hexo建站系列</category>
+        <category>区块链+比特币</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
+        <tag>区块链，比特币</tag>
       </tags>
   </entry>
   <entry>
@@ -2597,6 +2539,64 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       <tags>
         <tag>web</tag>
         <tag>Tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>建站系列之---备份本地站点到github上</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<p>试想一下，就你自己的电脑上配置了hexo，平时写博客，部署都是在自己电脑上，那万一有一天，用的不是自己电脑，又想要写博客，那怎么办呢？此时就要用到git了，将你的站点配置等信息备份到github上，要用的时候，用 git clone到本地。而且好处不仅如此，万一哪天出了问题，有个备份，岂不美哉？</p>
+<a id="more"></a>
+<h2 id="一、本地配置"><a href="#一、本地配置" class="headerlink" title="一、本地配置"></a>一、本地配置</h2><ul>
+<li>由于是在个人电脑上配置的<code>hexo</code>，部署也不方便，如果在另外一台机子上写博客，没有<code>hexo</code>的配置也不行，另一方面出于备份项目的目的，最好的办法是将本地<code>hexo</code>站点备份到<code>Github</code>上。</li>
+</ul>
+<p>1.新建<code>hexo</code>文件夹存放分支工作目录。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir hexo</span><br></pre></td></tr></table></figure>
+
+<p>2.把你的GitHub的远程仓库克隆到<code>hexo</code>文件夹</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/DAQ121/DAQ121.github.io hexo</span><br></pre></td></tr></table></figure>
+
+<p>3.删除除了版本管理的<code>.git</code>之外的所有文件和文件夹</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexo</span><br><span class="line">rm -r *</span><br></pre></td></tr></table></figure>
+
+<p>4.把要备份的文件复制到<code>hexo</code>目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">scaffolds/</span><br><span class="line"><span class="built_in">source</span>/</span><br><span class="line">themes/</span><br><span class="line">.gitignore</span><br><span class="line">_config.yml</span><br><span class="line">package.json</span><br></pre></td></tr></table></figure>
+
+<p>5.如果使用的主题是从Github克隆的，那么使用命令删除它的Git文件（以next主题为例）,否则无法将主题文件<code>push</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rm -R themes/next/.git*</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、github配置"><a href="#二、github配置" class="headerlink" title="二、github配置"></a>二、github配置</h2><p>1.github创建一个<code>hexo</code>分支 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -b hexo</span><br></pre></td></tr></table></figure>
+<p>2.保存所有文件到暂存区</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add --all</span><br></pre></td></tr></table></figure>
+<p>3.提交变更</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">"创建hexo分支"</span></span><br></pre></td></tr></table></figure>
+<p>4.推送到github，并用<code>--set-upstream</code>与<code>origin</code>创建关联，将<code>hexo</code>设置为默认分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push --<span class="built_in">set</span>-upstream origin hexo</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、合并管理"><a href="#三、合并管理" class="headerlink" title="三、合并管理"></a>三、合并管理</h2><ul>
+<li>现在有两个需要管理的文件夹，一个是<code>blog</code>，一个是<code>hexo</code>，但是每次发布文章的时候如果要提交两次就很失效率，</li>
+</ul>
+<p>1.将本地<code>hexo</code>分支中的<code>.git</code>文件夹复制到<code>blog</code>根目录中</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp -a .git ../blog</span><br></pre></td></tr></table></figure>
+<p>2.<code>master</code>分支的文件则由<code>hexo</code>管理，编辑<code>hexo</code>配置文件<code>_config.yml</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">   <span class="built_in">type</span>: git</span><br><span class="line">   repo: https://github.com/DAQ121/DAQ121.github.io</span><br><span class="line">   branch: master</span><br></pre></td></tr></table></figure>
+<h2 id="四、发布文章"><a href="#四、发布文章" class="headerlink" title="四、发布文章"></a>四、发布文章</h2><p>1.新建文章</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<p>2.将相关更改推送到<code>hexo</code>分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"发表文章test"</span></span><br><span class="line">git push origin hexo</span><br></pre></td></tr></table></figure>
+<p>3.将静态文件推送到<code>master</code>分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+<h2 id="五、使用的时候如何迁移"><a href="#五、使用的时候如何迁移" class="headerlink" title="五、使用的时候如何迁移"></a>五、使用的时候如何迁移</h2><p>1.将<code>hexo</code>分支克隆下来</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b hexo http://github.com/DAQ121/DAQ121.github.io</span><br></pre></td></tr></table></figure>
+<p>2.安装<code>hexo</code>依赖</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install</span><br></pre></td></tr></table></figure>
+<p>3.只不过每次发文章的时候，要输入用户名和密码。</p>
+]]></content>
+      <categories>
+        <category>Hexo建站系列</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
