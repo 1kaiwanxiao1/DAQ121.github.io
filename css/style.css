@@ -2,7 +2,7 @@
  *       Override CSS Framework
  * --------------------------------- */
 html {
-  font-size: 0.9rem;
+  font-size: 0.89rem;
 }
 body {
   background-color: #f7f7f7;
@@ -12,7 +12,8 @@ button,
 input,
 select,
 textarea {
-  font-family: "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei", sans-serif;
+  font-family: "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei", "MyFont";
+  src: url(Font/font.ttf);
 }
 @media screen and (min-width: 1280px) {
   .is-2-column .container {
@@ -58,7 +59,7 @@ textarea {
 }
 .card {
   border-radius: 4px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05), 0 0 1px rgba(0,0,0,0.1);
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .card + .card,
 .card + .column-right-shadow {
@@ -166,6 +167,7 @@ img.thumbnail {
 }
 .post-navigation {
   justify-content: space-around;
+
 }
 .post-navigation .level-item {
   margin-bottom: 0;
@@ -399,7 +401,7 @@ img.thumbnail {
 }
 .content code,
 .content pre {
-  font-family: "Source Code Pro", monospace, "Microsoft YaHei";
+  font-family: "MyFont";
 }
 .content pre {
   font-size: 0.85em;
@@ -466,7 +468,7 @@ figure.highlight figcaption {
 }
 figure.highlight figcaption span {
   font-weight: 500;
-  font-family: "Source Code Pro", monospace, "Microsoft YaHei";
+  font-family: "MyFont";
 }
 figure.highlight figcaption .fold,
 figure.highlight figcaption a {
