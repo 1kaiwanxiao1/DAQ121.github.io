@@ -2,7 +2,7 @@
  *       Override CSS Framework
  * --------------------------------- */
 html {
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 body {
   background-color: #f7f7f7;
@@ -12,11 +12,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "MyFont";
-}
-@font-face{
-  font-family: "MyFont";
-  src: url('/font.ttf');
+  font-family: "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei", sans-serif;
 }
 @media screen and (min-width: 1280px) {
   .is-2-column .container {
@@ -404,7 +400,7 @@ img.thumbnail {
 }
 .content code,
 .content pre {
-  font-family: "MyFont";
+  font-family: "Source Code Pro", monospace, "Microsoft YaHei";
 }
 .content pre {
   font-size: 0.85em;
@@ -471,7 +467,7 @@ figure.highlight figcaption {
 }
 figure.highlight figcaption span {
   font-weight: 500;
-  font-family: "MyFont";
+  font-family: "Source Code Pro", monospace, "Microsoft YaHei";
 }
 figure.highlight figcaption .fold,
 figure.highlight figcaption a {
