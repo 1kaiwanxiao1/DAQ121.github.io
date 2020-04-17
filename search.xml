@@ -1082,7 +1082,7 @@
 <li>但也不可能无限制装下去，在JDK1.8中，桶满时，链表会变成平衡二叉树，也就是所说的红黑树。</li>
 </ol>
 <h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><ul>
-<li>在另一篇文章中我有单独将HashMap拿出来分析，并且分为了JDK1.7和JDK1.8时的HashMap的结构，<a href="https://blog.csdn.net/weixin_44861399/article/details/105303268">HashMap源码分析</a></li>
+<li>在另一篇文章中我有单独将HashMap拿出来分析，并且分为了JDK1.7和JDK1.8时的HashMap的结构，<a href="http://daqwt.top/HashMap/">HashMap源码分析</a></li>
 </ul>
 <h2 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h2><p><img src="https://img-blog.csdnimg.cn/20200415193829403.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
@@ -3786,6 +3786,34 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </categories>
       <tags>
         <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaSE---Object类</title>
+    <url>/Object/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object类是所有类的父类，位于java.lang包中。这也是面试的一个小考点吧，这篇文章看看Object中有哪些方法。</p>
+<a id="more"></a>
+
+<h2 id="Object类概述"><a href="#Object类概述" class="headerlink" title="Object类概述"></a>Object类概述</h2><ul>
+<li>Object类是JDK默认提供的一个类。java中除了Object类，所有类都存在继承，默认会继承Object父类</li>
+<li>所有类的对象都可以使用 Object 接收。</li>
+<li>Object 达到最高参数统一化。</li>
+</ul>
+<h2 id="什么时候使用Object类"><a href="#什么时候使用Object类" class="headerlink" title="什么时候使用Object类?"></a>什么时候使用Object类?</h2><ul>
+<li>对于Object类的使用可以分为两个阶段：JDK 1.5以前，以及JDK 1.5之后。</li>
+<li>Object之所以会被大量的进行参数的接收处理，很大的一部分原因在于：你的程序里面需要接受的类型很多，并不固定，可是现在的开发理念中强调的问题不再是这一点了，而是如何可以避免向下转型（如果避无可避，那么就用），因为从JDK1.5之后引入了泛型机制（在基础课程讲解泛型机制的时候重点分析了Object缺陷）。</li>
+<li>现在的设计思想是用泛型来避免向下转型的操作（ClassCastException），如果你要认真读了API文档你会发现，可以接收Object类型的方法是越来越少了，开发中尽量回避Object接收的项目为主。</li>
+</ul>
+<h2 id="Object类有哪些方法？"><a href="#Object类有哪些方法？" class="headerlink" title="Object类有哪些方法？"></a>Object类有哪些方法？</h2><ul>
+<li>可以看到里面都是用native关键字修饰的方法。都是原生函数，得调用C++的函数。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/2020041711473684.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>JavaSE基础知识</category>
+      </categories>
+      <tags>
+        <tag>javaSE</tag>
       </tags>
   </entry>
 </search>

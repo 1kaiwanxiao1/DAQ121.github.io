@@ -8,18 +8,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>分类: 区块链+比特币 - DAQ&#39;s Blog - 一个简简单单的博客</title>
+<title>JavaSE---Object类 - DAQ&#39;s Blog - 一个简简单单的博客</title>
 
 
-    <meta name="description" content="用来存储学习笔记！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DAQ&#39;s Blog - 一个简简单单的博客">
-<meta property="og:url" content="http://daqwt.top/categories/%E5%8C%BA%E5%9D%97%E9%93%BE-%E6%AF%94%E7%89%B9%E5%B8%81/page/2/index.html">
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Object类是所有类的父类，位于java.lang包中。这也是面试的一个小考点吧，这篇文章看看Object中有哪些方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaSE---Object类">
+<meta property="og:url" content="http://daqwt.top/Object/index.html">
 <meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
-<meta property="og:description" content="用来存储学习笔记！">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Object类是所有类的父类，位于java.lang包中。这也是面试的一个小考点吧，这篇文章看看Object中有哪些方法。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://daqwt.top/images/og_image.png">
+<meta property="article:published_time" content="2020-04-17T03:51:07.000Z">
+<meta property="article:modified_time" content="2020-04-17T03:54:29.442Z">
 <meta property="article:author" content="黑心市民">
+<meta property="article:tag" content="javaSE">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://daqwt.top/images/og_image.png">
 
@@ -27,7 +30,7 @@
 
 
 
-<link rel="alternative" href="/rss.xml" title="DAQ&#39;s Blog - 一个简简单单的博客" type="application/atom+xml">
+<link rel="alternative" href="/rss.xml" title="JavaSE---Object类" type="application/atom+xml">
 
 
 
@@ -81,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="DAQ&#39;s Blog - 一个简简单单的博客" height="28">
+                <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="JavaSE---Object类" height="28">
             
             </a>
         </div>
@@ -123,6 +126,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -136,201 +143,158 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+       
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
+            
+                JavaSE---Object类
+            
+        </h1>
+         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-17T03:51:07.000Z">2020-04-17</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JavaSE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">JavaSE基础知识</a>
+                </div>
+                
+                                                            
+                <span class="level-item has-text-grey">                    
+                    
+                    
+                    3 分钟 读完 (大约 448 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object类是所有类的父类，位于java.lang包中。这也是面试的一个小考点吧，这篇文章看看Object中有哪些方法。</p>
+<a id="more"></a>
+
+<h2 id="Object类概述"><a href="#Object类概述" class="headerlink" title="Object类概述"></a>Object类概述</h2><ul>
+<li>Object类是JDK默认提供的一个类。java中除了Object类，所有类都存在继承，默认会继承Object父类</li>
+<li>所有类的对象都可以使用 Object 接收。</li>
+<li>Object 达到最高参数统一化。</li>
+</ul>
+<h2 id="什么时候使用Object类"><a href="#什么时候使用Object类" class="headerlink" title="什么时候使用Object类?"></a>什么时候使用Object类?</h2><ul>
+<li>对于Object类的使用可以分为两个阶段：JDK 1.5以前，以及JDK 1.5之后。</li>
+<li>Object之所以会被大量的进行参数的接收处理，很大的一部分原因在于：你的程序里面需要接受的类型很多，并不固定，可是现在的开发理念中强调的问题不再是这一点了，而是如何可以避免向下转型（如果避无可避，那么就用），因为从JDK1.5之后引入了泛型机制（在基础课程讲解泛型机制的时候重点分析了Object缺陷）。</li>
+<li>现在的设计思想是用泛型来避免向下转型的操作（ClassCastException），如果你要认真读了API文档你会发现，可以接收Object类型的方法是越来越少了，开发中尽量回避Object接收的项目为主。</li>
+</ul>
+<h2 id="Object类有哪些方法？"><a href="#Object类有哪些方法？" class="headerlink" title="Object类有哪些方法？"></a>Object类有哪些方法？</h2><ul>
+<li>可以看到里面都是用native关键字修饰的方法。都是原生函数，得调用C++的函数。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/2020041711473684.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+        </div>
+        
+        <ul class="post-copyright">
+        <li><strong>本文标题：</strong><a href="http://daqwt.top/Object/">JavaSE---Object类</a></li>
+        <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
+        <li><strong>本文链接：</strong><a href="http://daqwt.top/Object/">http://daqwt.top/Object/</a></li>
+        <li><strong>发布时间：</strong>2020-04-17</li>
+        <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </li>
+        </ul>
+    
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
+                    <a class="has-link-grey -link" href="/tags/javaSE/" rel="tag">javaSE</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">分类</a></li>
+        <h3 class="menu-label has-text-centered">乞人不受嗟来之食,哎嘛，真香~</h3>
+        <div class="buttons is-centered">
             
-            <li class="is-active"><a href="#" aria-current="page">区块链+比特币</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="http://q8khsi9j4.bkt.clouddn.com/alipay.jpg" alt="支付宝"></div>
+</a>
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-       
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
-            
-                <a class="has-link-black-ter" href="/undefined/">股票基本术语</a>
-            
-        </h1>
-         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-11T02:19:20.000Z">2020-02-11</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE-%E6%AF%94%E7%89%B9%E5%B8%81/">区块链+比特币</a>
-                </div>
-                
-                                                            
-                <span class="level-item has-text-grey">                    
-                    
-                    
-                    22 分钟 读完 (大约 3338 个字)
-                </span>
                 
                 
-            </div>
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="http://q8khsi9j4.bkt.clouddn.com/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
         </div>
-        
-        <div class="content">
-            <p>股票基本术语了解。</p>
-        </div>
-        
-        
-        
-        <div class="level is-mobile" style="padding-left: 42%;">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/undefined/#more" >阅读全文</a>
-                </div>
-            </div>
-        </div>
-        
-        
     </div>
 </div>
 
 
 
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-       
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
-            
-                <a class="has-link-black-ter" href="/2670976354/">比特币的两种交易方式</a>
-            
-        </h1>
-         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-11T02:19:20.000Z">2020-02-11</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE-%E6%AF%94%E7%89%B9%E5%B8%81/">区块链+比特币</a>
-                </div>
-                
-                                                            
-                <span class="level-item has-text-grey">                    
-                    
-                    
-                    3 分钟 读完 (大约 471 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>比特币的交易有很多种，本文了解一下</p>
-        </div>
-        
-        
-        
-        <div class="level is-mobile" style="padding-left: 42%;">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2670976354/#more" >阅读全文</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-       
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
-            
-                <a class="has-link-black-ter" href="/undefined/">区块链技术的应用领域</a>
-            
-        </h1>
-         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-11T02:19:20.000Z">2020-02-11</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE-%E6%AF%94%E7%89%B9%E5%B8%81/">区块链+比特币</a>
-                </div>
-                
-                                                            
-                <span class="level-item has-text-grey">                    
-                    
-                    
-                    8 分钟 读完 (大约 1263 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>-</p>
-        </div>
-        
-        
-        
-        <div class="level is-mobile" style="padding-left: 42%;">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/undefined/#more" >阅读全文</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE-%E6%AF%94%E7%89%B9%E5%B8%81/">上一页</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/HashMap/">
+                <span class="level-item">HashMap源码分析</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <div class="pagination-next is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE-%E6%AF%94%E7%89%B9%E5%B8%81/page/3/">下一页</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link has-text-black-ter" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE-%E6%AF%94%E7%89%B9%E5%B8%81/">1</a></li>
-            
-            <li><a class="pagination-link is-current" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE-%E6%AF%94%E7%89%B9%E5%B8%81/page/2/">2</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'AGGG1bgO42sEaVaFqWL1IWdu-gzGzoHsz',
+        app_key: 'IdOMlYlWz8QYnB5YDBSWuTBi',
+        placeholder: '随便你说点啥，但请不要出现虎狼之词...'
+    });
+</script>
+
+    </div>
 </div>
 </div>
                 
@@ -455,177 +419,31 @@
 </div>
     
         
-    
-        <div class="card widget is-hidden-mobile">
-    <div class="card-content">
 
-        <h3 class="menu-label">
-            <i class="iconfont icon-zuixinwenzhang"></i>
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-17T03:51:07.000Z">2020-04-17</time></div>
-                    <a href="/Object/" class="title has-link-black-ter is-size-6 has-text-weight-normal">JavaSE---Object类</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaSE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">JavaSE基础知识</a>
-                    </p>
-                </div>
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Object类概述">
+        <span class="has-mr-6">1</span>
+        <span>Object类概述</span>
+        </a></li><li>
+        <a class="is-flex" href="#什么时候使用Object类">
+        <span class="has-mr-6">2</span>
+        <span>什么时候使用Object类?</span>
+        </a></li><li>
+        <a class="is-flex" href="#Object类有哪些方法？">
+        <span class="has-mr-6">3</span>
+        <span>Object类有哪些方法？</span>
+        </a></li></ul>
             </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-17T03:27:37.000Z">2020-04-17</time></div>
-                    <a href="/HashMap/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HashMap源码分析</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98/">每天一道面试题</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-14T03:35:45.000Z">2020-04-14</time></div>
-                    <a href="/read.html/" class="title has-link-black-ter is-size-6 has-text-weight-normal">&lt;&lt;小狗钱钱&gt;&gt;</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E8%AF%BB%E5%90%8E%E6%84%9F/">读后感</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-24T01:42:10.000Z">2020-03-24</time></div>
-                    <a href="/2774241439/" class="title has-link-black-ter is-size-6 has-text-weight-normal">try-catch-finally总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98/">每天一道面试题</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-23T15:07:08.000Z">2020-03-23</time></div>
-                    <a href="/1622515277/" class="title has-link-black-ter is-size-6 has-text-weight-normal">操作系统---中断机制</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                <i class="iconfont icon-leimupinleifenleileibie"></i>
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Hexo%E5%BB%BA%E7%AB%99%E7%B3%BB%E5%88%97/">
-            <span class="level-start">
-                <span class="level-item">Hexo建站系列</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Java-Web/">
-            <span class="level-start">
-                <span class="level-item">Java Web</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">9</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/JavaSE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
-            <span class="level-start">
-                <span class="level-item">JavaSE基础知识</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/git-github/">
-            <span class="level-start">
-                <span class="level-item">git+github</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-            <span class="level-start">
-                <span class="level-item">linux学习笔记</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE-%E6%AF%94%E7%89%B9%E5%B8%81/">
-            <span class="level-start">
-                <span class="level-item">区块链+比特币</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">8</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-            <span class="level-start">
-                <span class="level-item">数据库</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">8</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98/">
-            <span class="level-start">
-                <span class="level-item">每天一道面试题</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">6</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-            <span class="level-start">
-                <span class="level-item">计算机操作系统</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">9</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E8%AF%BB%E5%90%8E%E6%84%9F/">
-            <span class="level-start">
-                <span class="level-item">读后感</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
         </div>
     </div>
-</div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -644,7 +462,7 @@
             <div class="level-start has-text-centered-mobile" align="center" style="margin:auto">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="DAQ&#39;s Blog - 一个简简单单的博客" height="28">
+                    <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="JavaSE---Object类" height="28">
                 
                 </a>
                 <p class="is-size-7">
