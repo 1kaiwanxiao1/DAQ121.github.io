@@ -8,21 +8,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>DBUtils学习笔记 - DAQ&#39;s Blog - 一个简简单单的博客</title>
+<title>JavaSE---四种内部类 - DAQ&#39;s Blog - 一个简简单单的博客</title>
 
 
-    <meta name="description" content="DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。并且简化了增删改查的操作。">
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在Java中，可以将一个类定义在另一个类里面或者一个方法里边，这样的类称为内部类，广泛意义上的内部类一般包括四种：成员内部类，局部内部类，匿名内部类，静态内部类 。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DBUtils学习笔记">
-<meta property="og:url" content="http://daqwt.top/2524199830/index.html">
+<meta property="og:title" content="JavaSE---四种内部类">
+<meta property="og:url" content="http://daqwt.top/517577219/index.html">
 <meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
-<meta property="og:description" content="DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。并且简化了增删改查的操作。">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在Java中，可以将一个类定义在另一个类里面或者一个方法里边，这样的类称为内部类，广泛意义上的内部类一般包括四种：成员内部类，局部内部类，匿名内部类，静态内部类 。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://daqwt.top/images/og_image.png">
-<meta property="article:published_time" content="2020-02-06T12:05:03.000Z">
-<meta property="article:modified_time" content="2020-04-17T03:13:58.992Z">
+<meta property="article:published_time" content="2020-04-17T04:34:50.000Z">
+<meta property="article:modified_time" content="2020-04-17T04:54:36.513Z">
 <meta property="article:author" content="黑心市民">
-<meta property="article:tag" content="MySql,DBUtils">
+<meta property="article:tag" content="JavaSE">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://daqwt.top/images/og_image.png">
 
@@ -30,7 +30,7 @@
 
 
 
-<link rel="alternative" href="/rss.xml" title="DBUtils学习笔记" type="application/atom+xml">
+<link rel="alternative" href="/rss.xml" title="JavaSE---四种内部类" type="application/atom+xml">
 
 
 
@@ -84,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="DBUtils学习笔记" height="28">
+                <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="JavaSE---四种内部类" height="28">
             
             </a>
         </div>
@@ -154,22 +154,22 @@
        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
             
-                DBUtils学习笔记
+                JavaSE---四种内部类
             
         </h1>
          <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-06T12:05:03.000Z">2020-02-06</time>
+                <time class="level-item has-text-grey" datetime="2020-04-17T04:34:50.000Z">2020-04-17</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                <a class="has-link-grey -link" href="/categories/JavaSE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">JavaSE基础知识</a>
                 </div>
                 
                                                             
                 <span class="level-item has-text-grey">                    
                     
                     
-                    4 分钟 读完 (大约 526 个字)
+                    10 分钟 读完 (大约 1428 个字)
                 </span>
                 
                 
@@ -182,51 +182,36 @@
         </div>
         
         <div class="content">
-            <p>DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。并且简化了增删改查的操作。</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Java中，<strong>可以将一个类定义在另一个类里面或者一个方法里边</strong>，这样的类称为<strong>内部类</strong>，广泛意义上的内部类一般包括四种：成员内部类，局部内部类，匿名内部类，静态内部类 。</p>
 <a id="more"></a>
-<h1 id="使用开源的DBUtils"><a href="#使用开源的DBUtils" class="headerlink" title="使用开源的DBUtils"></a>使用开源的DBUtils</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
-<li>Commons DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。</li>
-<li>简化了增删改查的操作。</li>
+
+<p> <strong>1. 成员内部类</strong><br>（1）该类像是外部类的一个成员，可以无条件的访问外部类的所有成员属性和成员方法（包括private成员和静态成员）；<br>（2）成员内部类拥有与外部类同名的成员变量时，会发生隐藏现象，即默认情况下访问的是成员内部类中的成员。如果要访问外部类中的成员，需要以下形式访问：【外部类.this.成员变量  或  外部类.this.成员方法】；<br>（3）在外部类中如果要访问成员内部类的成员，必须先创建一个成员内部类的对象，再通过指向这个对象的引用来访问；<br>（4）成员内部类是依附外部类而存在的，也就是说，如果要创建成员内部类的对象，前提是必须存在一个外部类的对象；<br>（5）内部类可以拥有private访问权限、protected访问权限、public访问权限及包访问权限。如果成员内部类用private修饰，则只能在外部类的内部访问；如果用public修饰，则任何地方都能访问；如果用protected修饰，则只能在同一个包下或者继承外部类的情况下访问；如果是默认访问权限，则只能在同一个包下访问。外部类只能被public和包访问两种权限修饰。</p>
+<p> <strong>2.  局部内部类</strong><br>（1）局部内部类是定义在一个方法或者一个作用域里面的类，它和成员内部类的区别在于局部内部类的访问仅限于方法内或者该作用域内；<br>（2）局部内部类就像是方法里面的一个局部变量一样，是不能有public、protected、private以及static修饰符的。</p>
+<p><strong>3.匿名内部类</strong><br>（1）一般使用匿名内部类的方法来编写事件监听代码；<br>（2）匿名内部类是不能有访问修饰符和static修饰符的；<br>（3）匿名内部类是唯一一种没有构造器的类；<br>（4）匿名内部类用于继承其他类或是实现接口，并不需要增加额外的方法，只是对继承方法的实现或是重写。</p>
+<p><strong>4.静态内部类</strong><br>（1）静态内部类是不需要依赖于外部类的，这点和类的静态成员属性有点类似；<br>（2）不能使用外部类的非static成员变量或者方法。</p>
+<h2 id="内部类的共性："><a href="#内部类的共性：" class="headerlink" title="内部类的共性："></a>内部类的共性：</h2><ul>
+<li>内部类仍然是一个独立的类，在编译之后内部类会被编译成独立的.class文件，但是前面冠以外部类的类名和$符号。</li>
+<li>内部类不能用普通的方式访问。</li>
+<li>内部类声明成静态的，就不能随便的访问外部类的成员变量了，此时内部类只能访问外部类的静态成员变量。</li>
+<li>外部类不能直接访问内部类的的成员，但可以通过内部类对象来访问。</li>
 </ul>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><ul>
-<li>增删改</li>
+<h2 id="内部类的作用："><a href="#内部类的作用：" class="headerlink" title="内部类的作用："></a>内部类的作用：</h2><ul>
+<li>内部类方法可以访问该类定义所在的作用域的数据，包括私有的数据。</li>
+<li>内部类可以对同一个包中的其他类隐藏起来,一般的非内部类，是不允许有 private 与protected权限的，但内部类可以。</li>
+<li>可以实现多重继承。</li>
+<li>当想要定义一个回调函数且不想编写大量代码时，使用匿名内部类比较便捷。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1.导入jar包  commons-dbutils-1.4.jar</span><br><span class="line">public class TestDBUtils &#123;</span><br><span class="line">	@Test</span><br><span class="line">	public void testInsert() throws SQLException &#123;</span><br><span class="line">		ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">		// dbutils 只是帮我们简化了CRUD 的代码， 但是连接的创建以及获取工作。 不在他的考虑范围</span><br><span class="line">		QueryRunner queryRunner = new QueryRunner(dataSource);</span><br><span class="line">		// 增加</span><br><span class="line">		queryRunner.update(<span class="string">"insert into category values (null , ? , ? )"</span>, <span class="string">"a"</span>, 1000);</span><br><span class="line">		// 删除</span><br><span class="line">		queryRunner.update(<span class="string">"delete from account where id = ?"</span>, 5);</span><br><span class="line">		// 更新</span><br><span class="line">		queryRunner.update(<span class="string">"update account set money = ? where id = ?"</span>, 10000000, 6);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>查</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">1.直接new接口的匿名实现类</span><br><span class="line">QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());</span><br><span class="line">	Account  account =  queryRunner.query(<span class="string">"select * from account where id = ?"</span>, new ResultSetHandler&lt;Account&gt;()&#123;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public Account handle(ResultSet rs) throws SQLException &#123;</span><br><span class="line">			Account account  =  new Account();</span><br><span class="line">			<span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">				String name = rs.getString(<span class="string">"name"</span>);</span><br><span class="line">				int money = rs.getInt(<span class="string">"money"</span>);</span><br><span class="line">					</span><br><span class="line">				account.setName(name);</span><br><span class="line">				account.setMoney(money);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> account;</span><br><span class="line">		&#125; </span><br><span class="line">	 &#125;, 6);</span><br><span class="line">	System.out.println(account.toString());</span><br><span class="line"></span><br><span class="line">2. 直接使用框架已经写好的实现类。（最常用）</span><br><span class="line">	QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());</span><br><span class="line">	//查询单个对象</span><br><span class="line">Account account = queryRunner.query(<span class="string">"select * from account where id = ?"</span>, </span><br><span class="line">			new BeanHandler&lt;Account&gt;(Account.class), 8);</span><br><span class="line">	System.out.println(category.toString());</span><br><span class="line">	</span><br><span class="line">	* 查询多个对象</span><br><span class="line">List&lt;Category&gt; list = queryRunner.query(<span class="string">"select * from category"</span>, new BeanListHandler&lt;Category&gt;(Category.class));</span><br><span class="line">	<span class="keyword">for</span> (Category category : list) &#123;</span><br><span class="line">		System.out.println(category.toString());</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="ResultSetHandler-常用的实现类"><a href="#ResultSetHandler-常用的实现类" class="headerlink" title="ResultSetHandler 常用的实现类"></a>ResultSetHandler 常用的实现类</h1><ul>
-<li>以下两个是使用频率最高的</li>
-</ul>
-<ol>
-<li><p>BeanHandler          查询到的<strong>单个</strong>数据封装成一个对象</p>
-</li>
-<li><p>BeanListHandler    查询到的<strong>多个</strong>数据封装 成一个List&lt;对象&gt;</p>
-</li>
-<li><p>ArrayHandler,  查询到的单个数据封装成一个数组。</p>
-</li>
-<li><p>ArrayListHandler,  查询到的多个数据封装成一个集合 ，集合里面的元素是数组。 </p>
-</li>
-<li><p>MapHandler,  查询到的单个数据封装成一个map</p>
-</li>
-<li><p>MapListHandler,查询到的多个数据封装成一个集合 ，集合里面的元素是map。 </p>
-</li>
-<li><p>ColumnListHandler</p>
-</li>
-<li><p>KeyedHandler</p>
-</li>
-<li><p>ScalarHandler</p>
-</li>
-</ol>
+<h1 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h1><p><strong>每个内部类都能独立地继承自一个（接口的）实现，所以无论外围类是否已经继承了某个（接口的）实现，对于内部类都没有影响。大家都知道Java只能继承一个类，它的多重继承在我们没有学习内部类之前是用接口来实现的。但使用接口有时候有很多不方便的地方。比如我们实现一个接口就必须实现它里面的所有方法。而有了内部类就不一样了。它可以使我们的类继承多个具体类或抽象类。</strong></p>
+<h2 id="外部类："><a href="#外部类：" class="headerlink" title="外部类："></a>外部类：</h2><p>外部的类。定义一个类A，在A的内部再定义一个类B，则A就是外部类，B就是内部类。</p>
+<h2 id="内部类与外部类区别与联系"><a href="#内部类与外部类区别与联系" class="headerlink" title="内部类与外部类区别与联系"></a>内部类与外部类区别与联系</h2><p>内部类可以访问外部类所有的方法和属性，如果内部类和外部类有相同的成员方法和成员属性，内部类的成员方法调用要优先于外部类即内部类的优先级比较高（只限于类内部，在主方法内，内部类对象不能访问外部类的成员方法和成员属性），外部类只能访问内部类的静态常量或者通过创建内部类来访问内部类的成员属性和方法。</p>
 
         </div>
         
         <ul class="post-copyright">
-        <li><strong>本文标题：</strong><a href="http://daqwt.top/2524199830/">DBUtils学习笔记</a></li>
+        <li><strong>本文标题：</strong><a href="http://daqwt.top/517577219/">JavaSE---四种内部类</a></li>
         <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
-        <li><strong>本文链接：</strong><a href="http://daqwt.top/2524199830/">http://daqwt.top/2524199830/</a></li>
-        <li><strong>发布时间：</strong>2020-02-06</li>
+        <li><strong>本文链接：</strong><a href="http://daqwt.top/517577219/">http://daqwt.top/517577219/</a></li>
+        <li><strong>发布时间：</strong>2020-04-17</li>
         <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
         </li>
         </ul>
@@ -236,7 +221,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
-                    <a class="has-link-grey -link" href="/tags/MySql-DBUtils/" rel="tag">MySql,DBUtils</a>
+                    <a class="has-link-grey -link" href="/tags/JavaSE/" rel="tag">JavaSE</a>
                 </div>
             </div>
         </div>
@@ -286,17 +271,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/629938038/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">认识web服务器&amp;Eclipse配置部署Tomcat</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/1680230579/">
-                <span class="level-item">事务-学习笔记</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/Object/">
+                <span class="level-item">JavaSE---Object类</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -457,23 +435,27 @@
                     <i class="iconfont icon-mulu"></i>
                     目录
                 </h3>
-                <ul class="menu-list"><li>
-        <a class="is-flex" href="#使用开源的DBUtils">
-        <span class="has-mr-6">1</span>
-        <span>使用开源的DBUtils</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#概述">
+                <ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#内部类的共性：">
         <span class="has-mr-6">1.1</span>
-        <span>概述</span>
+        <span>内部类的共性：</span>
         </a></li><li>
-        <a class="is-flex" href="#用法">
+        <a class="is-flex" href="#内部类的作用：">
         <span class="has-mr-6">1.2</span>
-        <span>用法</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#ResultSetHandler-常用的实现类">
+        <span>内部类的作用：</span>
+        </a></li></ul><li>
+        <a class="is-flex" href="#补充：">
         <span class="has-mr-6">2</span>
-        <span>ResultSetHandler 常用的实现类</span>
-        </a></li></ul>
+        <span>补充：</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#外部类：">
+        <span class="has-mr-6">2.1</span>
+        <span>外部类：</span>
+        </a></li><li>
+        <a class="is-flex" href="#内部类与外部类区别与联系">
+        <span class="has-mr-6">2.2</span>
+        <span>内部类与外部类区别与联系</span>
+        </a></li></ul></li></ul>
             </div>
         </div>
     </div>
@@ -496,11 +478,11 @@
             <div class="level-start has-text-centered-mobile" align="center" style="margin:auto">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="DBUtils学习笔记" height="28">
+                    <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="JavaSE---四种内部类" height="28">
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2020 代澳旗&nbsp;
+                &copy; 2020 黑心市民&nbsp;
                 <i class="fas fa-balance-scale"></i>
                 <a href="http://www.beian.miit.gov.cn/" target="_blank">鄂ICP备20003594</a>
                 
