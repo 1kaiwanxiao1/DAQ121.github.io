@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<script src="js/clicklove.js"></script>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>操作系统---进程管理 - DAQ&#39;s Blog - 一个简简单单的博客</title>
+
+
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;进程，也就是任务，这里有必要说一下进程和线程的区别：进程是资源分配的最小单位，线程是程序执行的最小单位，通俗来讲，一个爹可以有很多儿子，但儿子之后一个爹，并且还遗传这个爹，爹能做大事，而儿子，做一些杂七杂八的给爹打下手，你细细品。这篇文章主要讲进程管理的策略。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统---进程管理">
+<meta property="og:url" content="http://daqwt.top/853277148/index.html">
+<meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;进程，也就是任务，这里有必要说一下进程和线程的区别：进程是资源分配的最小单位，线程是程序执行的最小单位，通俗来讲，一个爹可以有很多儿子，但儿子之后一个爹，并且还遗传这个爹，爹能做大事，而儿子，做一些杂七杂八的给爹打下手，你细细品。这篇文章主要讲进程管理的策略。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://daqwt.top/images/og_image.png">
+<meta property="article:published_time" content="2020-03-19T14:46:46.000Z">
+<meta property="article:modified_time" content="2020-04-17T03:13:59.009Z">
+<meta property="article:author" content="黑心市民">
+<meta property="article:tag" content="OS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://daqwt.top/images/og_image.png">
+
+
+
+
+
+<link rel="alternative" href="/rss.xml" title="操作系统---进程管理" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/wangzhantubiao-32.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="操作系统---进程管理" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/photo">相册</a>
+                
+                <a class="navbar-item"
+                href="/book">读书</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+                <a class="navbar-item"
+                href="/friends">友链</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="RSS" href="/rss.xml">
+                        
+                        <i class="fas fa-rss"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+       
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
+            
+                操作系统---进程管理
+            
+        </h1>
+         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-19T14:46:46.000Z">2020-03-19</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a>
+                </div>
+                
+                                                            
+                <span class="level-item has-text-grey">                    
+                    
+                    
+                    14 分钟 读完 (大约 2170 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程，也就是任务，这里有必要说一下进程和线程的区别：进程是资源分配的最小单位，线程是程序执行的最小单位，通俗来讲，一个爹可以有很多儿子，但儿子之后一个爹，并且还遗传这个爹，爹能做大事，而儿子，做一些杂七杂八的给爹打下手，你细细品。这篇文章主要讲进程管理的策略。</p>
+<a id="more"></a>
+
+<h2 id="进程概念"><a href="#进程概念" class="headerlink" title="进程概念"></a>进程概念</h2><ul>
+<li>进程：打开任务管理器，里面正在执行的任务，一个程序运行起来了，它就是一个进程。</li>
+<li><code>jobs</code>是最早的进程原型，也就是单道批处理系统，cpu一次只运行一个程序，其他的程序要事先放在内存中，等待上一个程序执行完了，他再去执行。</li>
+<li>后来出现了分时操作系统，大家轮着执行。使用cpu，称之为任务。</li>
+</ul>
+<h2 id="进程组成"><a href="#进程组成" class="headerlink" title="进程组成"></a>进程组成</h2><p><img src="https://img-blog.csdnimg.cn/20200319160008644.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>程序计数器（pc）和各种寄存器</li>
+<li>数据段</li>
+<li>代码段</li>
+<li>栈</li>
+<li>堆</li>
+<li>栈内存，堆内存慢慢增长，到一定程度，会导致内存不足的情况。</li>
+</ul>
+<h2 id="进程状态"><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h2><ul>
+<li>操作系统就是通过切换进程的状态，达到进程控制的目的。也实现了很多进程同时运行，周而复始。有条不紊</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200319161707691.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>new（新建）</li>
+<li>ready（就绪态）：一个进程是完全可以运行的，万事俱备，只差cpu。</li>
+<li>running（运行态）：拥有cpu的进程，一个cpu上只能运行一个进程，什么时候它会把cpu交出去？<br>①中断interrupt：她本可以继续运行下去的，但是操作系统觉得它运行的太久了。或者是有更重要的要做，所以就把他给中断了，打回到就绪态。<br>②主动让出cpu：这个进程要去做一个io操作，或者是等待一个事件（等不到这个指令，他就不知道要做什么），这个时候就会让出cpu。进入就绪状态。</li>
+<li>waiting（等待态）：被唤醒（有响应了，知道自己该做什么了）之后进入就绪态。</li>
+<li>terminated（结束）</li>
+</ul>
+<h2 id="进程控制块PCB"><a href="#进程控制块PCB" class="headerlink" title="进程控制块PCB"></a>进程控制块PCB</h2><ul>
+<li>进程控制块PCB（Process Control  Block）是一个结构体，通过它来控制进程。每个进程都有一个PCB。通过PCB能找到这个进程的位置，状态，信息。</li>
+<li>进程1切换的时候，将这个进程的所有信息保存到PCB寄存器中，以保证下次在运行的时候，就是上次停止的状态。</li>
+<li>如何挑选下一个进程来执行呢，这就涉及到内核的调度算法了。</li>
+<li>所有的PCB结构体，在一起构成了一个队列。</li>
+<li>进程是在不同的队列之间，来回迁移。例如：就绪队列，I/O等待队列。</li>
+<li>用一个大数组来装所有的PCB结构体，用一个指针来指向PCB数组中的这个进程。</li>
+<li>软件做不了的事，硬件可以做。</li>
+</ul>
+<h2 id="进程的创建"><a href="#进程的创建" class="headerlink" title="进程的创建"></a>进程的创建</h2><ul>
+<li>一开机就会发现有进程，这些都是系统级的进程 ，如shell，资源管理器，一些应用程序设置的开机自启动就是通过shell来启动的，相当于捆绑销售一样 。</li>
+<li>打开应用程序，双击，这个命令给了资源管理器，或者命令行下，是把指令给了shell</li>
+<li>父进程与子进程</li>
+<li>unix创建进程：fork（）生成一个子进程 </li>
+<li>top 命令，监视现在所有进程的状态，每隔一秒种刷新一次。</li>
+<li>windows创建进程：create process </li>
+<li>msdn—微软的百科全书。 </li>
+<li>杀死进程：kill</li>
+</ul>
+<h2 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h2><p>多进程模式模块化</p>
+<ul>
+<li><strong>消息传递（Mwssage passing）</strong> ：A进程把消息从自己的内存空间复制一份到内核中，然后内核再把消息复制一份给进程B。用系统调用进行信息传递。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200319194014153.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>共享内存（Shared memory）：</strong> 每个进程都有自己独立的地址空间，但是两个进程，甚至更多的进程通过协商（也是系统调用来协商）划分出来一块儿共享内存。在每个进程的地址空间都有。A在这块儿空间里一写数据，B马上就可以读取到。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200319194244682.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>共享内存在协商的时候，要经过一系列的系统调用。而且还要约定好，过程很麻烦。如果进程之间共享内存，就要负责任，实现同步，不要同时写在同一个地方。</li>
+<li><strong>消息传递</strong> 很方便。经常用到。分为两种：<br>①阻塞型：（更好用）<br>当你调了这个系统调用之后，如果你请求的结果不能立即得到。那么你当前这个进程就会被挂起，被放到等待状态，被阻塞。<br>②非阻塞型：（考虑的比较多 ）<br>当你调了这个系统调用之后，如果你请求的结果不能立即得到。那么这个请求会在后台去操作，同时这个系统调用会返回，空闲时候会回到你的进程，这个系统调用的返回值会告诉你，这个操作没有完成，进程根据这个返回值来判断是否完成操作，并做其他操作。</li>
+</ul>
+<h2 id="多进程编程"><a href="#多进程编程" class="headerlink" title="多进程编程"></a>多进程编程</h2><ul>
+<li>父进程会把所有的信息复制一份给子进程，自此变成两个独立的进程，互相不影响。</li>
+<li>以我们的角度来看，这样的子进程，父进程是不是太浪费内存了，但是，操作系统只是表面上让你看到它是把父进程复制给了子进程，但其实，他可以做到父进程和子进程之间完全相同的部分之间共享内存。所以大可不必担心这个问题。</li>
+<li>多进程编程最重要的一个特性，也是我们首先要了解到的，独立性，直观上来看，他们两个进程之间互相不干扰。</li>
+</ul>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><ul>
+<li><p>进程的特点是分离，而线程就是不分离。 互相协作的关系</p>
+</li>
+<li><p>线程有： 线程ID，PC寄存器，栈 。。。 </p>
+</li>
+<li><p>引入进程的目的就是让一个进程里面同时有多条执行路线，同时发挥作用。</p>
+</li>
+<li><p>多线程优点：<br>①快速的响应能力：有比较耗时的操作是，创建线程去做，主线程用来和用户 交互。<br>②资源共享：协作更方便，数据传递更方便<br>③经济实惠：线程更加节约资源。 </p>
+</li>
+<li><p>用户级线程：<br>①优点：效率高，可定制性好，。<br>②缺点：用户线程中任何一个线程，如果调用了阻塞性的系统调用，那么所有用户线程就全被阻塞。因为在操作系统看来，这么这个线程就是同一个线程，就会被阻塞掉。用户线程不能在多个处理器上并行运行。</p>
+</li>
+<li><p>内核级线程：操作系统提供的线程。</p>
+</li>
+<li><p>线程池：先创建多少个线程，要用的时候 就去拿，但是也有缺点。 </p>
+</li>
+</ul>
+
+        </div>
+        
+        <ul class="post-copyright">
+        <li><strong>本文标题：</strong><a href="http://daqwt.top/853277148/">操作系统---进程管理</a></li>
+        <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
+        <li><strong>本文链接：</strong><a href="http://daqwt.top/853277148/">http://daqwt.top/853277148/</a></li>
+        <li><strong>发布时间：</strong>2020-03-19</li>
+        <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </li>
+        </ul>
+    
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
+                    <a class="has-link-grey -link" href="/tags/OS/" rel="tag">OS</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">乞人不受嗟来之食,哎嘛，真香~</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="http://q8khsi9j4.bkt.clouddn.com/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="http://q8khsi9j4.bkt.clouddn.com/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/1483407090/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">HTPP中的GET和POST</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/1179211128/">
+                <span class="level-item">操作系统---死锁</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'AGGG1bgO42sEaVaFqWL1IWdu-gzGzoHsz',
+        app_key: 'IdOMlYlWz8QYnB5YDBSWuTBi',
+        placeholder: '随便你说点啥，但请不要出现虎狼之词...'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="http://q8khsi9j4.bkt.clouddn.com/touxiang.jpg" alt="彭鱼晏">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        彭鱼晏
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        no pain , no gain！！！
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>武汉 中国</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            51
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            9
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            25
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://blog.csdn.net/weixin_44861399" target="_blank" rel="noopener">
+                别犹豫,关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="Github" href="https://github.com/DAQ121">
+                
+                <i class="iconfont icon-git"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="微信" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2829025551&amp;site=qq&amp;menu=yes">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="网易云" href="https://music.163.com/#/djradio?id=791862420">
+                
+                <i class="iconfont icon-wangyiyun"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="CSDN" href="http://q8khsi9j4.bkt.clouddn.com/weixin.jpg">
+                
+                <i class="iconfont icon-csdn"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#进程概念">
+        <span class="has-mr-6">1</span>
+        <span>进程概念</span>
+        </a></li><li>
+        <a class="is-flex" href="#进程组成">
+        <span class="has-mr-6">2</span>
+        <span>进程组成</span>
+        </a></li><li>
+        <a class="is-flex" href="#进程状态">
+        <span class="has-mr-6">3</span>
+        <span>进程状态</span>
+        </a></li><li>
+        <a class="is-flex" href="#进程控制块PCB">
+        <span class="has-mr-6">4</span>
+        <span>进程控制块PCB</span>
+        </a></li><li>
+        <a class="is-flex" href="#进程的创建">
+        <span class="has-mr-6">5</span>
+        <span>进程的创建</span>
+        </a></li><li>
+        <a class="is-flex" href="#进程间通信">
+        <span class="has-mr-6">6</span>
+        <span>进程间通信</span>
+        </a></li><li>
+        <a class="is-flex" href="#多进程编程">
+        <span class="has-mr-6">7</span>
+        <span>多进程编程</span>
+        </a></li><li>
+        <a class="is-flex" href="#线程">
+        <span class="has-mr-6">8</span>
+        <span>线程</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile" align="center" style="margin:auto">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="操作系统---进程管理" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 黑心市民&nbsp;
+                <i class="fas fa-balance-scale"></i>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">鄂ICP备20003594</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">本站访客<span id="busuanzi_value_site_uv"></span>人</span>
+                <span><i class="fas fa-globe-asia"></i></span>
+				<span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("02/14/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+                setInterval("createtime()",250);
+            </script>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://daqwt.top',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

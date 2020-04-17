@@ -8,21 +8,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>MySql基础操作 - DAQ&#39;s Blog - 一个简简单单的博客</title>
+<title>火币网--币币交易图解 - DAQ&#39;s Blog - 一个简简单单的博客</title>
 
 
-    <meta name="description" content="本文简单介绍了数据库，和一些基本操作。">
+    <meta name="description" content="如何在火币网上执行币币交易">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySql基础操作">
+<meta property="og:title" content="火币网--币币交易图解">
 <meta property="og:url" content="http://daqwt.top/undefined/index.html">
 <meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
-<meta property="og:description" content="本文简单介绍了数据库，和一些基本操作。">
+<meta property="og:description" content="如何在火币网上执行币币交易">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://daqwt.top/images/og_image.png">
-<meta property="article:published_time" content="2020-02-01T12:05:03.000Z">
-<meta property="article:modified_time" content="2020-03-27T05:23:19.677Z">
+<meta property="article:published_time" content="2020-02-11T02:19:20.000Z">
+<meta property="article:modified_time" content="2020-03-27T05:24:42.134Z">
 <meta property="article:author" content="黑心市民">
-<meta property="article:tag" content="MySql">
+<meta property="article:tag" content="区块链，比特币">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://daqwt.top/images/og_image.png">
 
@@ -30,7 +30,7 @@
 
 
 
-<link rel="alternative" href="/rss.xml" title="MySql基础操作" type="application/atom+xml">
+<link rel="alternative" href="/rss.xml" title="火币网--币币交易图解" type="application/atom+xml">
 
 
 
@@ -84,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="MySql基础操作" height="28">
+                <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="火币网--币币交易图解" height="28">
             
             </a>
         </div>
@@ -126,10 +126,6 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -151,22 +147,22 @@
        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
             
-                MySql基础操作
+                火币网--币币交易图解
             
         </h1>
          <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-01T12:05:03.000Z">2020-02-01</time>
+                <time class="level-item has-text-grey" datetime="2020-02-11T02:19:20.000Z">2020-02-11</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                <a class="has-link-grey -link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE-%E6%AF%94%E7%89%B9%E5%B8%81/">区块链+比特币</a>
                 </div>
                 
                                                             
                 <span class="level-item has-text-grey">                    
                     
                     
-                    15 分钟 读完 (大约 2252 个字)
+                    3 分钟 读完 (大约 444 个字)
                 </span>
                 
                 
@@ -179,154 +175,40 @@
         </div>
         
         <div class="content">
-            <p>本文简单介绍了数据库，和一些基本操作。</p>
+            <p>如何在火币网上执行币币交易</p>
 <a id="more"></a>
-<h1 id="什么是数据库？"><a href="#什么是数据库？" class="headerlink" title="什么是数据库？"></a>什么是数据库？</h1><ul>
-<li>数据库就是一个文件系统，只不过我们需要通过SQL命令来操作这个文件系统。</li>
-<li>数据库（DataBase）是按照数据结构来组织，存储和管理数据的建立在计算机存储设备上的仓库。</li>
-<li>作用：存储数据，数据的仓库，带有访问权限，限制不同的人可以有不同的操作。</li>
-<li>java EE操作的都是后台数据，取到后台数据进行封装，然后交给前端去展现。</li>
-</ul>
-<h1 id="有哪些数据库"><a href="#有哪些数据库" class="headerlink" title="有哪些数据库"></a>有哪些数据库</h1><ul>
-<li>mysql：开源免费，适用于中小企业的免费数据库。</li>
-<li>oracle：甲骨文公司，收费软件，适用于大型网站。</li>
-<li>db2：IBM公司，做解决方案，软件和硬件，服务器架构，银行系统。</li>
-<li>sqlserver：windows里，政府网站。asp.net  大学教学，图形化做得好。</li>
-</ul>
-<h1 id="Mysql的sql语句有哪些？"><a href="#Mysql的sql语句有哪些？" class="headerlink" title="Mysql的sql语句有哪些？"></a>Mysql的sql语句有哪些？</h1><ul>
-<li>SQL(Structure Query Language)结构化查询语言</li>
-<li>DDL数据定义语言：定义数据库，数据表他们的结构，create（创建），drop（删除），alert（修改）</li>
-<li>DML数据操纵语言：主要用来操作数据，insert（插入），update（修改），delete（删除）</li>
-<li>DCL数据控制语言：定义访问权限，取消访问权限，安全设置，grant</li>
-<li>DQL数据查询语言：select（查询） from子句 where子句</li>
-</ul>
-<h1 id="数据库的CRUD操作-增删改查"><a href="#数据库的CRUD操作-增删改查" class="headerlink" title="数据库的CRUD操作(增删改查)"></a>数据库的CRUD操作(增删改查)</h1><ul>
-<li>登录数据库服务器</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -pdaq</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200205111557755.png" alt="在这里插入图片描述"></p>
 <ul>
-<li>创建数据库：</li>
+<li><p>BTC/USDT：BTC对USDT的交易对，相当于平均1个BTC当前需要9211.76个USDT来购买，后面的64574.43CNY是说9211.76个USDT约等于64574.43人民币。</p>
+</li>
+<li><p>涨幅+0.01%是今天此时此刻比特币的价格相对于昨天的这个时候价格涨了0.01%，如果是红色的-0.01%就代表跌了0.01%。</p>
+</li>
+<li><p>高9320.00 低9100.00是<strong>过去24小时</strong>最高9320.00USDT最低9100.00USDT。</p>
+</li>
+<li><p>24H量：是过去24小时火币网交易了28878个比特币。这只是在火币网交易的数量。<br><img src="https://img-blog.csdnimg.cn/2020020511252911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+<li><p>上面一排时间是，选择显示这个时间段的数据，比如我选择的是1min，那么k线图中每一个红色或者绿色的柱就代表这一分钟内的走势。</p>
+</li>
+<li><p>时间下面的一排：11：24这个时间点的开盘价，最高价，最低价，收盘价，成交量。</p>
+</li>
+<li><p>MA均线：<strong>（MA）理论是股市最常见的一种技术分析方法，它对股市操作具有神奇的指导作用。</strong></p>
+</li>
+<li><p>绿色柱状：柱底代表开盘价，柱顶代表收盘价，红色则相反。</p>
+</li>
+<li><p>柱上下的细线：上影线，下影线，分别代表在这一分钟内的最高价和最低价。</p>
+</li>
+<li><p>图中标有今日最高，和今日最低。严谨理解为：从今日凌晨到目前为止的最高价与最低价。</p>
+<h2 id="均线分析方法："><a href="#均线分析方法：" class="headerlink" title="均线分析方法："></a>均线分析方法：</h2></li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> 数据库的名字;</span><br></pre></td></tr></table></figure>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> 数据库的名字 <span class="built_in">character</span> <span class="keyword">set</span> 字符集;//指定字符集</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看所有数据库</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">databases</span>;</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/2020022018024091.png" alt="在这里插入图片描述"></p>
-<ul>
-<li>查看指定数据库：</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">database</span> 数据库的名字;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改数据库的字符集</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">database</span> 数据库的名字<span class="built_in">character</span> <span class="keyword">set</span> 字符集;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>删除数据库</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">database</span> 数据库的名字;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>切换数据库（选中数据库）</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> 数据库的名字;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>查看当前正在使用的数据库</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">database</span>();</span><br></pre></td></tr></table></figure>
-<h1 id="表的创建"><a href="#表的创建" class="headerlink" title="表的创建"></a>表的创建</h1><ul>
-<li>创建表</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> 表名（列名 列的类型(长度) 约束，列名<span class="number">2</span> 列的类型(长度) 约束）;</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">列的类型：</span><br><span class="line">java     sql</span><br><span class="line">int      int</span><br><span class="line">char     char（固定长度）</span><br><span class="line">String   varchar（可变长度）长度代表字符的个数</span><br><span class="line">         </span><br><span class="line">         text：主要用来存放文本</span><br><span class="line">         blob：存放的是二进制</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">列的约束：</span><br><span class="line">	主键约束：primary key</span><br><span class="line">	唯一约束：unique</span><br><span class="line">	非空约束：not null</span><br></pre></td></tr></table></figure>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> student(</span><br><span class="line">	<span class="keyword">sid</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">	sname <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">	sex <span class="built_in">int</span>,</span><br><span class="line">	age <span class="built_in">int</span>);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看所有表：</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">tables</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>查看表的定义：</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> 表名;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>查看表结构：</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc 表名;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改表：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- 添加列（add）：</span><br><span class="line">alter table 表名 add 列名 列的类型 列的约束;</span><br><span class="line">alter table student add greade int not null;</span><br><span class="line"></span><br><span class="line">- 修改列（modify）：</span><br><span class="line">alter table 表名 modify sex varchar（2）;</span><br><span class="line"></span><br><span class="line">- 修改列名（change）：</span><br><span class="line">alter table 表名 change sex gender varchar（2）;</span><br><span class="line"></span><br><span class="line">- 删除列（drop）</span><br><span class="line">alter table 表名 drop greade;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改表名（rename）</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">rename</span> <span class="keyword">table</span> student <span class="keyword">to</span> 新表名;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改表的字符集</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="built_in">character</span> <span class="keyword">set</span> 字符集;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>删除表</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> 表名;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Sql完成对表中数据的CRUD操作"><a href="#Sql完成对表中数据的CRUD操作" class="headerlink" title="Sql完成对表中数据的CRUD操作"></a>Sql完成对表中数据的CRUD操作</h1><ul>
-<li>插入数据</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名（列名<span class="number">1</span>，列名<span class="number">2</span>，列名<span class="number">3</span>）<span class="keyword">values</span>(值<span class="number">1</span>，值<span class="number">2</span>，值<span class="number">3</span>);</span><br><span class="line">如：<span class="keyword">insert</span> <span class="keyword">into</span> student(<span class="keyword">sid</span>,sname,sex,age)<span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'zhangsan'</span>,<span class="number">1</span>,<span class="number">23</span>);</span><br><span class="line"></span><br><span class="line">简单写法：插入的是全列名的数据，表名后面的列名可以省略</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名<span class="keyword">values</span>(值<span class="number">1</span>，值<span class="number">2</span>，值<span class="number">3</span>);</span><br><span class="line">如:<span class="keyword">insert</span> <span class="keyword">into</span> student <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'zhangsan'</span>,<span class="number">1</span>,<span class="number">23</span>);</span><br><span class="line"></span><br><span class="line">如果插入的是部分数据，列名不能省略</span><br><span class="line">如：<span class="keyword">insert</span> <span class="keyword">into</span> student(<span class="keyword">sid</span>,sname,sex)<span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'zhangsan'</span>,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">批量插入：效率比单条插入效率高。但不能出错</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'zhangsan'</span>,<span class="number">1</span>，<span class="number">23</span>),</span><br><span class="line">						     (<span class="number">2</span>,<span class="string">'lisi'</span>,<span class="number">0</span>，<span class="number">22</span>),</span><br><span class="line">						     (<span class="number">3</span>,<span class="string">'wangwu'</span>,<span class="number">1</span>，<span class="number">24</span>);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>查看表中数据</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>表中插入数据中文乱码问题</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.暂停Mysql服务</span><br><span class="line">2.在Mysql安装路径中找到my.ini配置文件</span><br><span class="line">3.将57行的编码改成GBK。</span><br><span class="line">4.保存，退出，启动mysql服务</span><br></pre></td></tr></table></figure>
-<ul>
-<li>删除记录</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> 表名[<span class="keyword">where</span> 条件]</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> student <span class="keyword">where</span> <span class="keyword">sid</span>=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> student;  如果没有指定条件，会将表中数据一条一条全部删除掉。</span><br></pre></td></tr></table></figure>
-<ul>
-<li>面试问题：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">请说一下delete 删除数据和truncate删除数据有什么差别？</span><br><span class="line">答：delete：属于DML数据操纵语言，一条一条删除表中的数据。</span><br><span class="line">	truncate：属于DDL数据定义语言，先删除表，在重建表。 </span><br><span class="line"></span><br><span class="line">关于那条执行效率高：具体要看表中的数据量。</span><br><span class="line">	如果数据比较少，delete比较高效。</span><br><span class="line">	如果数据比较多，truncate比较高效。</span><br></pre></td></tr></table></figure>
-<ul>
-<li>更新表记录</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> 表名 <span class="keyword">set</span> 列名=列的值，列名<span class="number">2</span>=列的值<span class="number">2</span> [<span class="keyword">where</span> 条件]</span><br><span class="line"></span><br><span class="line">需求：将<span class="keyword">sid</span>为<span class="number">5</span>的名字改成李四</span><br><span class="line"><span class="keyword">update</span> student <span class="keyword">set</span> sname=<span class="string">'李四'</span> <span class="keyword">where</span> <span class="keyword">sid</span>=<span class="number">5</span>;</span><br><span class="line">//如果参数是字符串或者日期，要加上单引号</span><br></pre></td></tr></table></figure>
-<h1 id="select查询的简单查询"><a href="#select查询的简单查询" class="headerlink" title="select查询的简单查询"></a>select查询的简单查询</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> [<span class="keyword">distinct</span>] [ * ] [列名，列名<span class="number">2</span>] <span class="keyword">from</span> 表名 [<span class="keyword">where</span> 条件]</span><br><span class="line"><span class="keyword">distinct</span>：去除重复的数据</span><br><span class="line"></span><br><span class="line"><span class="comment">--简单商品：手机数码，鞋靴箱包</span></span><br><span class="line"><span class="number">1.</span>分类的<span class="keyword">ID</span></span><br><span class="line"><span class="number">2.</span>分类名称</span><br><span class="line"><span class="number">3.</span>分类描述</span><br><span class="line"></span><br><span class="line">//创建表</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">category</span>(</span><br><span class="line">	cid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">	cname <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">	cdesc <span class="built_in">varchar</span>(<span class="number">31</span>)</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line">//插入数据	</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'手机数码'</span>,<span class="string">'电子产品'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'鞋靴箱包'</span>,<span class="string">'江南皮鞋厂'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'香烟酒水'</span>,<span class="string">'黄鹤楼'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'酸奶饼干'</span>,<span class="string">'安慕希'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'家用电器'</span>,<span class="string">'美的空调'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">--所有商品</span></span><br><span class="line">1.商品ID</span><br><span class="line">2.商品名称</span><br><span class="line">3.商品价格</span><br><span class="line">4，生产日期</span><br><span class="line">5，商品分类ID</span><br><span class="line"></span><br><span class="line">//创建表</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> product(</span><br><span class="line">	pid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">	pname <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">	price <span class="keyword">double</span>,</span><br><span class="line">	pdate <span class="built_in">timestamp</span>,</span><br><span class="line">	cno <span class="built_in">int</span> </span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line">//插入数据</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'xiaomi'</span>,<span class="number">998</span>,<span class="literal">null</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'chuizi'</span>,<span class="number">2998</span>,<span class="literal">null</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'nike'</span>,<span class="number">888</span>,<span class="literal">null</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'laocunzhang'</span>,<span class="number">88</span>,<span class="literal">null</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'jingjiu'</span>,<span class="number">32</span>,<span class="literal">null</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'xiaoxiong'</span>,<span class="number">3</span>,<span class="literal">null</span>,<span class="number">4</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'weilong'</span>,<span class="number">0.5</span>,<span class="literal">null</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'wangwang'</span>,<span class="number">0.5</span>,<span class="literal">null</span>,<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>简单查询</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">1.查询所有的商品：</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> product;</span><br><span class="line"></span><br><span class="line">2.查询商品名称和商品价格</span><br><span class="line"><span class="keyword">select</span> pname,price <span class="keyword">from</span> product;</span><br><span class="line"></span><br><span class="line">3.别名查询，as 的关键字 ，as关键字可以省略</span><br><span class="line">	-表别名：<span class="keyword">select</span> p.pname,p.price,<span class="keyword">from</span> product p;(主要用在多表查询)</span><br><span class="line">	<span class="keyword">select</span> p.pname,p.price </span><br><span class="line">	<span class="keyword">from</span> product <span class="keyword">as</span> p;</span><br><span class="line">	-列别名：<span class="keyword">select</span> pname <span class="keyword">as</span> 商品名称,price <span class="keyword">as</span> 商品价格 <span class="keyword">from</span> product;</span><br><span class="line">	<span class="keyword">select</span> pname <span class="keyword">as</span> 商品名称,price <span class="keyword">as</span> 商品价格 <span class="keyword">from</span> product;</span><br><span class="line"></span><br><span class="line">4.去掉重复的值</span><br><span class="line">	-查询商品所有的价格</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">distinct</span> price <span class="keyword">from</span> product;</span><br><span class="line"></span><br><span class="line">5.select运算查询</span><br><span class="line">	<span class="keyword">select</span> *,price*<span class="number">1.5</span> <span class="keyword">as</span> 折后价 <span class="keyword">from</span> product; </span><br><span class="line"></span><br><span class="line">6.条件查询[where关键字]</span><br><span class="line">	指定条件，确定要操作的记录</span><br><span class="line">	-查询商品价格大于60元的所有商品信息</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> price&gt;<span class="number">60</span>;</span><br><span class="line"></span><br><span class="line">7.where 后的条件写法</span><br><span class="line">	-关系运算符：&gt;  &gt;=  &lt;  &lt;=   =  !=  &lt;&gt;</span><br><span class="line">		&lt;&gt; : 不等于   ：标准SQL语法</span><br><span class="line">		!= : 不等于   ：非标准SQL语法</span><br><span class="line">	-查询商品价格不等于88的所有商品</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> price &lt;&gt; <span class="number">88</span>;</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> price != <span class="number">88</span>;</span><br><span class="line">	-查询商品价格在10到100之间的商品</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> price&lt;<span class="number">100</span> <span class="keyword">and</span> price &gt;<span class="number">10</span>;</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> price <span class="keyword">between</span> <span class="number">10</span> <span class="keyword">and</span> <span class="number">100</span>;</span><br><span class="line">	-逻辑运算：and   or   not</span><br><span class="line">	-查询出商品价格 小于100 或者大于900</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> price &lt;<span class="number">100</span> <span class="keyword">or</span> price &gt;<span class="number">900</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>复杂查询</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">1.like :模糊查询</span><br><span class="line">	_ ：代表的是一个字符</span><br><span class="line">	% ：代表的是多个字符</span><br><span class="line">	in：在某个范围内获得值</span><br><span class="line">	-查询出名字中带有饼的所有商品  ‘%饼%’</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> pname <span class="keyword">like</span> <span class="string">'%饼%'</span>;</span><br><span class="line">	-查询第二名字是熊的所有商品  '_熊%'</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> pname <span class="keyword">like</span> <span class="string">'_熊%'</span>;</span><br><span class="line">	-查询出商品分类ID在1，4，5里面的所有商品</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> cno <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">2.排序查询: order by  关键字</span><br><span class="line">	asc:   ascend  升序（默认的排序方式）</span><br><span class="line">	desc： descend 降序</span><br><span class="line">	-查询所有商品，按照降序排序</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">desc</span>;</span><br><span class="line">	-查询名称有“小”的商品，按照升序排序</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> product <span class="keyword">where</span> pname <span class="keyword">like</span> <span class="string">'%小%'</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>;</span><br><span class="line"></span><br><span class="line">3.聚合函数：</span><br><span class="line">	-获得所有商品价格总和：</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">sum</span>(price) <span class="keyword">from</span> product;</span><br><span class="line">	-获得所有商品价格平均值：</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">avg</span>(price) <span class="keyword">from</span> product;</span><br><span class="line">	-获得所有商品的个数：</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> product;</span><br><span class="line"></span><br><span class="line">4.分组：group by</span><br><span class="line">	-根据cno字段分组，分组后统计商品的个数</span><br><span class="line">	<span class="keyword">select</span> cno,<span class="keyword">count</span>(*) <span class="keyword">from</span> product <span class="keyword">group</span> <span class="keyword">by</span> cno; </span><br><span class="line">	-根据cno字段分组，分组后统计商品的平均价格，并且商品平均价格 &gt;60</span><br><span class="line">	<span class="keyword">select</span> cno,<span class="keyword">avg</span>(price) <span class="keyword">from</span> product <span class="keyword">group</span> <span class="keyword">by</span> cno <span class="keyword">having</span> <span class="keyword">avg</span>(price) &gt;<span class="number">60</span>;</span><br><span class="line">	-having 关键字，他可以接聚合函数的，  出现在分组之后</span><br><span class="line">	-where 关键字，他不可以接聚合函数，出现在分组之前</span><br></pre></td></tr></table></figure>
-<p><strong>补充：</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">编写顺序：</span><br><span class="line">S..F..W..G..H..O</span><br><span class="line">select..from..where..group by..having..drder <span class="keyword">by</span></span><br><span class="line">执行顺序：</span><br><span class="line">F..W..G..H..S..O</span><br><span class="line">from..where..group by..having..select..drder <span class="keyword">by</span></span><br></pre></td></tr></table></figure>
 
         </div>
         
-        <ul class="post-copyright">
-        <li><strong>本文标题：</strong><a href="http://daqwt.top/undefined/">MySql基础操作</a></li>
-        <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
-        <li><strong>本文链接：</strong><a href="http://daqwt.top/undefined/">http://daqwt.top/undefined/</a></li>
-        <li><strong>发布时间：</strong>2020-02-01</li>
-        <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
-        </li>
-        </ul>
-    
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
-                    <a class="has-link-grey -link" href="/tags/MySql/" rel="tag">MySql</a>
+                    <a class="has-link-grey -link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE%EF%BC%8C%E6%AF%94%E7%89%B9%E5%B8%81/" rel="tag">区块链，比特币</a>
                 </div>
             </div>
         </div>
@@ -379,10 +261,17 @@
         <div class="level-start">
             <a class="level level-item has-link-grey  article-nav-prev" href="/undefined/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">MySql安装与卸载</span>
+                <span class="level-item">股票基本术语</span>
             </a>
         </div>
         
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/887317365/">
+                <span class="level-item">客户端会话技术：Cookie</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
         
     </div>
 </div>
@@ -532,47 +421,169 @@
 </div>
     
         
+    
+        <div class="card widget is-hidden-mobile">
+    <div class="card-content">
 
-    <div class="card widget column-left is-sticky" id="toc">
-        <div class="card-content">
-            <div class="menu">
-                <h3 class="menu-label">
-                    <i class="iconfont icon-mulu"></i>
-                    目录
-                </h3>
-                <ul class="menu-list"><li>
-        <a class="is-flex" href="#什么是数据库？">
-        <span class="has-mr-6">1</span>
-        <span>什么是数据库？</span>
-        </a></li><li>
-        <a class="is-flex" href="#有哪些数据库">
-        <span class="has-mr-6">2</span>
-        <span>有哪些数据库</span>
-        </a></li><li>
-        <a class="is-flex" href="#Mysql的sql语句有哪些？">
-        <span class="has-mr-6">3</span>
-        <span>Mysql的sql语句有哪些？</span>
-        </a></li><li>
-        <a class="is-flex" href="#数据库的CRUD操作-增删改查">
-        <span class="has-mr-6">4</span>
-        <span>数据库的CRUD操作(增删改查)</span>
-        </a></li><li>
-        <a class="is-flex" href="#表的创建">
-        <span class="has-mr-6">5</span>
-        <span>表的创建</span>
-        </a></li><li>
-        <a class="is-flex" href="#Sql完成对表中数据的CRUD操作">
-        <span class="has-mr-6">6</span>
-        <span>Sql完成对表中数据的CRUD操作</span>
-        </a></li><li>
-        <a class="is-flex" href="#select查询的简单查询">
-        <span class="has-mr-6">7</span>
-        <span>select查询的简单查询</span>
-        </a></li></ul>
+        <h3 class="menu-label">
+            <i class="iconfont icon-zuixinwenzhang"></i>
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-14T03:35:45.000Z">2020-04-14</time></div>
+                    <a href="/read.html/" class="title has-link-black-ter is-size-6 has-text-weight-normal">&lt;&lt;小狗钱钱&gt;&gt;</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E8%AF%BB%E5%90%8E%E6%84%9F/">读后感</a>
+                    </p>
+                </div>
             </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-24T01:42:10.000Z">2020-03-24</time></div>
+                    <a href="/2774241439/" class="title has-link-black-ter is-size-6 has-text-weight-normal">try-catch-finally总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98/">每天一道面试题</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-23T15:07:08.000Z">2020-03-23</time></div>
+                    <a href="/1622515277/" class="title has-link-black-ter is-size-6 has-text-weight-normal">操作系统---中断机制</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-22T15:04:29.000Z">2020-03-22</time></div>
+                    <a href="/2892727560/" class="title has-link-black-ter is-size-6 has-text-weight-normal">操作系统---文件系统</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-21T15:00:41.000Z">2020-03-21</time></div>
+                    <a href="/1080640073/" class="title has-link-black-ter is-size-6 has-text-weight-normal">操作系统---虚拟内存</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                <i class="iconfont icon-leimupinleifenleileibie"></i>
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Hexo%E5%BB%BA%E7%AB%99%E7%B3%BB%E5%88%97/">
+            <span class="level-start">
+                <span class="level-item">Hexo建站系列</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Java-Web/">
+            <span class="level-start">
+                <span class="level-item">Java Web</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/git-github/">
+            <span class="level-start">
+                <span class="level-item">git+github</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+            <span class="level-start">
+                <span class="level-item">linux学习笔记</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE-%E6%AF%94%E7%89%B9%E5%B8%81/">
+            <span class="level-start">
+                <span class="level-item">区块链+比特币</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+            <span class="level-start">
+                <span class="level-item">数据库</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98/">
+            <span class="level-start">
+                <span class="level-item">每天一道面试题</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+            <span class="level-start">
+                <span class="level-item">计算机操作系统</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E8%AF%BB%E5%90%8E%E6%84%9F/">
+            <span class="level-start">
+                <span class="level-item">读后感</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
         </div>
     </div>
-
+</div>
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -591,11 +602,11 @@
             <div class="level-start has-text-centered-mobile" align="center" style="margin:auto">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="MySql基础操作" height="28">
+                    <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="火币网--币币交易图解" height="28">
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2020 代澳旗&nbsp;
+                &copy; 2020 黑心市民&nbsp;
                 <i class="fas fa-balance-scale"></i>
                 <a href="http://www.beian.miit.gov.cn/" target="_blank">鄂ICP备20003594</a>
                 

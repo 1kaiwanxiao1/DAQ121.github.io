@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<script src="js/clicklove.js"></script>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>事务-学习笔记 - DAQ&#39;s Blog - 一个简简单单的博客</title>
+
+
+    <meta name="description" content="事务（Transaction），一般是指要做的或所做的事情。在计算机术语中是指访问并可能更新数据库中各种数据项的一个程序执行单元(unit)。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="事务-学习笔记">
+<meta property="og:url" content="http://daqwt.top/1680230579/index.html">
+<meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
+<meta property="og:description" content="事务（Transaction），一般是指要做的或所做的事情。在计算机术语中是指访问并可能更新数据库中各种数据项的一个程序执行单元(unit)。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://daqwt.top/images/og_image.png">
+<meta property="article:published_time" content="2020-02-05T12:05:03.000Z">
+<meta property="article:modified_time" content="2020-04-17T03:13:58.992Z">
+<meta property="article:author" content="黑心市民">
+<meta property="article:tag" content="MySql">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://daqwt.top/images/og_image.png">
+
+
+
+
+
+<link rel="alternative" href="/rss.xml" title="事务-学习笔记" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/wangzhantubiao-32.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="事务-学习笔记" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/photo">相册</a>
+                
+                <a class="navbar-item"
+                href="/book">读书</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+                <a class="navbar-item"
+                href="/friends">友链</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="RSS" href="/rss.xml">
+                        
+                        <i class="fas fa-rss"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+       
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
+            
+                事务-学习笔记
+            
+        </h1>
+         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-05T12:05:03.000Z">2020-02-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                </div>
+                
+                                                            
+                <span class="level-item has-text-grey">                    
+                    
+                    
+                    19 分钟 读完 (大约 2884 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>事务（Transaction），一般是指要做的或所做的事情。在计算机术语中是指访问并可能更新数据库中各种数据项的一个程序执行单元(unit)。</p>
+<a id="more"></a>
+<h1 id="一、事务（Transaction）概述"><a href="#一、事务（Transaction）概述" class="headerlink" title="一、事务（Transaction）概述"></a>一、事务（Transaction）概述</h1><ul>
+<li>其实指的一组操作，里面包含许多个单一的逻辑。只要有一个逻辑没有执行成功，那么都算失败。 所有的数据都回归到最初的状态(<strong>回滚</strong>)。</li>
+<li><strong>为什么要有事务?</strong><br>为了确保逻辑的成功。 如： 银行转账。 </li>
+</ul>
+<h1 id="二、演示事务"><a href="#二、演示事务" class="headerlink" title="二、演示事务"></a>二、演示事务</h1><ul>
+<li>命令行方式</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">开启事务：</span><br><span class="line">	start transaction;</span><br><span class="line">提交：</span><br><span class="line">	commit; 提交事务， 数据将会写到磁盘上的数据库</span><br><span class="line">回滚：</span><br><span class="line">	rollback ;  数据回滚，回到最初的状态。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>代码里面的事务，主要是针对连接来的。 </li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-通过conn.setAutoCommit（<span class="literal">false</span> ）来关闭自动提交的设置。</span><br><span class="line">-提交事务  conn.commit();</span><br><span class="line">-回滚事务 conn.rollback();</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void <span class="function"><span class="title">testTransaction</span></span>()&#123;</span><br><span class="line">	Connection conn = null;</span><br><span class="line">	PreparedStatement ps = null;</span><br><span class="line">	ResultSet rs = null;</span><br><span class="line">	try &#123;</span><br><span class="line">		conn = JDBCUtil.getConn();</span><br><span class="line">		</span><br><span class="line">		//连接，事务默认就是自动提交的。 关闭自动提交。</span><br><span class="line">		conn.setAutoCommit(<span class="literal">false</span>);</span><br><span class="line">			</span><br><span class="line">		String sql = <span class="string">"update account set money = money - ? where id = ?"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">			</span><br><span class="line">		//扣钱， 扣ID为1 的100块钱</span><br><span class="line">		ps.setInt(1, 100);</span><br><span class="line">		ps.setInt(2, 1);</span><br><span class="line">		ps.executeUpdate();</span><br><span class="line">			</span><br><span class="line">		int a = 10 /0 ;//有了异常，下面代码就不会执行了</span><br><span class="line">			</span><br><span class="line">		//加钱， 给ID为2 加100块钱</span><br><span class="line">		ps.setInt(1, -100);</span><br><span class="line">		ps.setInt(2, 2);</span><br><span class="line">		ps.executeUpdate();</span><br><span class="line">			</span><br><span class="line">		//成功： 提交事务。</span><br><span class="line">		conn.commit();</span><br><span class="line">			</span><br><span class="line">	&#125; catch (SQLException e) &#123;</span><br><span class="line">		try &#123;</span><br><span class="line">			//失败： 回滚事务</span><br><span class="line">			conn.rollback();</span><br><span class="line">		&#125; catch (SQLException e1) &#123;</span><br><span class="line">			e1.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">			</span><br><span class="line">	&#125;finally &#123;</span><br><span class="line">		JDBCUtil.release(conn, ps, rs);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="三、事务特性ACID（面试）"><a href="#三、事务特性ACID（面试）" class="headerlink" title="三、事务特性ACID（面试）"></a>三、事务特性ACID（面试）</h1><ul>
+<li>原子性（Atom）<br>指的是 事务中包含的逻辑，不可分割。 </li>
+<li>一致性（Consistent）<br>指的是 事务执行前后，数据完整性。</li>
+<li>隔离性（Isolate）<br>指的是 事务在执行期间不应该受到其他事务的影响。</li>
+<li>持久性（Durable）<br>指的是 事务执行成功，那么数据应该持久保存到磁盘上。</li>
+</ul>
+<h1 id="四、安全问题-amp-隔离级别（面试）"><a href="#四、安全问题-amp-隔离级别（面试）" class="headerlink" title="四、安全问题&amp;隔离级别（面试）"></a>四、安全问题&amp;隔离级别（面试）</h1><ul>
+<li><strong>不考虑隔离级别设置</strong>，那么会出现以下问题。</li>
+</ul>
+<h2 id="读-问题"><a href="#读-问题" class="headerlink" title="读  问题"></a>读  问题</h2><ul>
+<li>脏读<br>一个事务读到另外一个事务还未提交的数据。</li>
+<li>不可重复读<br>一个事务读到了另外一个事务提交的数据 ，造成了前后两次查询结果不一致。</li>
+<li>幻读<br>一个事务读到了另一个事务已提交的插入的数据，导致多次查询结果不一致。</li>
+</ul>
+<h2 id="写-问题"><a href="#写-问题" class="headerlink" title="写  问题"></a>写  问题</h2><ol>
+<li><p>丢失更新：<br>B事务如果提交，会造成A事务的操作无效。<br>B事务回滚，也会造成A事务更新失效。</p>
+</li>
+<li><p>解决方法：悲观锁，乐观锁</p>
+</li>
+</ol>
+<ul>
+<li><strong>悲观锁</strong><br>指事务在一开始就认为丢失更新一定会发生， 这是一件很悲观的事情。 具体操作步骤如下：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.所以事务在执行操作前，先查询一次数据， 查询语句如下：</span><br><span class="line">	select * from student  <span class="keyword">for</span> update  ;           </span><br><span class="line">	后面的<span class="keyword">for</span> update 其实是数据库锁机制 、 一种排他锁。</span><br><span class="line"></span><br><span class="line">2.哪个事务先执行这个语句， 哪个事务就持有了这把锁， 可以查询出来数据， 后面的事务想再执行这条语句，不会有任何数据显示，就只能等着。 </span><br><span class="line"></span><br><span class="line">3.一直等到前面的那个事务提交数据后， 后面的事务数据才会出来，那么才可以往下接着操作。</span><br><span class="line"> </span><br><span class="line">4.补充：就像排队上厕所一样，只有里面的人出来了，才能进去。 这其实就是 java 中的同步的概念。</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>乐观锁</strong><br>乐观锁是指，从来不会觉得丢失更新会发生。要求程序员在数据库中添加字段，然后在后续更新的时候，对该字段进行判定比对， 如果一致才允许更新。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">例：</span><br><span class="line">1.数据库表中，额外添加了一个version字段， 用于记录版本， 默认从0 开始， 只要有针对表中数据进行修改的，那么version就+1.</span><br><span class="line"></span><br><span class="line">2.开启A事务， 然后开启B事务 。</span><br><span class="line"></span><br><span class="line">3.A 先执行数据库表操作。 因为以前都没有人修改过。 所以是允许A事务修改数据库的，但是修改完毕，就把version的值变成  1 了 。</span><br><span class="line"></span><br><span class="line">4.B事务， 这时候如果想执行修改，那么是不允许修改的。 因为B事务以前是没有查询过数据库内容的，所以它认为数据库版本还是0 。 但是数据库的版本经过A修改，已经是1了。</span><br><span class="line">所以这时候不允许修改， 要求其重新查询 。</span><br><span class="line"></span><br><span class="line">5.B重新查询后， 将会得到version 为 1的数据，这份数据就是之前A 事务修改的数据了， B 在进行修改，也是在A的基础上修改的。 所以就不会有丢失更新的情况出现了。</span><br><span class="line"></span><br><span class="line">补充：乐观锁的机制 ，其实是通过比对版本或者比对字段的方式来实现的，与版本控制软件【SVN , GIT】机制是一样的。</span><br></pre></td></tr></table></figure>
+
+<h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- 按效率划分，从高到低</span><br><span class="line">	读未提交  &gt; 读已提交  &gt; 可重复读  &gt; 可串行化</span><br><span class="line"></span><br><span class="line">- 按拦截程度 ，从高到底</span><br><span class="line">	可串行化 &gt; 可重复读  &gt; 读已提交  &gt;  读未提交</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Read Uncommited【读未提交】<br>指的是 ： 一个事务可以读取到另一个事务还未提交的数据。 这就会引发 “脏读” 读取到的是数据库<strong>内存</strong>中的数据，而并非真正磁盘上的数据。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">例子： </span><br><span class="line">1.开启一个命令行窗口A， 开始事务，然后查询表中记录。  </span><br><span class="line">设置当前窗口的事务隔离级别为：读未提交  命令如下：</span><br><span class="line">	<span class="built_in">set</span> session transaction isolation level <span class="built_in">read</span> uncommitted;</span><br><span class="line">2.另外在打开一个窗口B， 也开启事务， 然后执行 sql 语句， 但是不提交</span><br><span class="line">3.在A窗口重新执行查询， 会看到B窗口没有提交的数据。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Read Commited 【读已提交】<br>与前面的读未提交刚好相反，这个隔离级别是 ，只能读取到其他事务已经提交的数据，那些没有提交的数据是读不出来的。屏蔽了脏读的情况，但是这会造成一个问题是： 前后读取到的结果不一样。 发生了不可重复!!!, 所谓的不可重复读，就是不能执行多次读取，否则出现结果不一样。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">例子：</span><br><span class="line">1. 开启一个命令行窗口A， 开始事务，然后查询表中记录。  </span><br><span class="line"> 设置当前窗口的事务隔离级别为：读已提交  命令如下：</span><br><span class="line">	<span class="built_in">set</span> session transaction isolation level <span class="built_in">read</span> committed;</span><br><span class="line">2. 另外在打开一个窗口B， 也开启事务， 然后执行 sql 语句， 但是不提交 </span><br><span class="line">3. 在A窗口重新执行查询， 是不会看到B窗口刚才执行sql 语句的结果，因为它还没有提交。</span><br><span class="line">4. 在B窗口执行提交。</span><br><span class="line">5. 在A窗口中执行查看， 这时候才会看到B窗口已经修改的结果。</span><br><span class="line">6. 但是这会造成一个问题是： 在A窗口中， 第一次查看数据和第二次查看数据，结果不一样。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Repeatable Read 【重复读】<br>MySql 默认的隔离级别就是这个。该隔离级别， 可以让事务在自己的会话中重复读取数据，并且不会出现结果不一样的状况，即使其他事务已经提交了，也依然还是显示以前的数据。（读到的不是最新更新的数据，确保本事务不受其他事务影响）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">例子：</span><br><span class="line">1. 开启一个命令行窗口A， 开始事务，然后查询表中记录。  </span><br><span class="line">2. 设置当前窗口的事务隔离级别为：重复读  命令如下：</span><br><span class="line">	<span class="built_in">set</span> session transaction isolation level repeatable <span class="built_in">read</span>;</span><br><span class="line">3. 另外在打开一个窗口B， 也开启事务， 然后执行 sql 语句， 但是不提交 </span><br><span class="line">4. 在A窗口重新执行查询， 是不会看到B窗口刚才执行sql 语句的结果，因为它还没有提交。</span><br><span class="line">5. 在B窗口执行提交。</span><br><span class="line">6. 在A窗口中执行查看， 这时候查询结果，和以前的查询结果一致。不会发生改变。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Serializable 【可串行化（序列化）】<br>该事务级别是最高级的事务级别了，如果有一个连接设置隔离级别为可串行化，那么谁先打开事务，谁就有了先执行的权利，谁后打开事务，就只能等着，等前面的那个事务，提交或者回滚后才会执行。这种隔离级别比前面几种都要强大一点，也就是前面几种的问题【脏读、不可重复读、幻读】都能够解决。但是都使用该隔离级别也会有些问题。 比如造成并发的性能问题。 其他的事务必须得等当前正在操作表的事务先提交，才能接着往下，否则只能一直在等着。所以比较少用，容易造成性能上的问题，效率比较低。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">例子：</span><br><span class="line">1.开启一个命令行窗口A， 开始事务，然后查询表中记录。  </span><br><span class="line">2.设置当前窗口的事务隔离级别为：serializable 命令如下：</span><br><span class="line">	<span class="built_in">set</span> session transaction isolation level <span class="built_in">read</span> serializable;</span><br><span class="line">3.另外在打开一个窗口B， 也开启事务， 然后执行 sql 语句， 但是不提交 </span><br><span class="line">4.在A窗口重新执行查询， 会卡主，没有任何信息显示。 </span><br><span class="line">5.在B窗口执行提交。</span><br><span class="line">6.在A窗口中执行查看， 这时候才会显示结果。</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h1><p>1.在代码里面使用事务 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conn.setAutoCommit(<span class="literal">false</span>);</span><br><span class="line">conn.commit();</span><br><span class="line">conn.rollback();</span><br></pre></td></tr></table></figure>
+<p>2.事务只是针对连接连接对象，如果再开一个连接对象，那么那是默认的提交。<br>3.事务是会自动提交的。<br>4.安全隐患：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">读</span><br><span class="line">	脏读：一个事务读到了另一个事务未提交的数据。</span><br><span class="line">	不可重复读：一个事务读到了另一个事务已提交的数据，造成前后两次查询结果不一致。</span><br><span class="line">	幻读：一个事务读到了另一个事务insert的数据 ，造成前后查询结果不一致 。</span><br><span class="line">写</span><br><span class="line">	丢失更新。</span><br></pre></td></tr></table></figure>
+
+<p>5.隔离级别</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">读未提交</span><br><span class="line">&gt; 引发问题： 脏读 </span><br><span class="line">读已提交</span><br><span class="line">&gt; 解决： 脏读 ， 引发： 不可重复读</span><br><span class="line">可重复读</span><br><span class="line">&gt; 解决： 脏读 、 不可重复读 ， 未解决： 幻读</span><br><span class="line">可串行化</span><br><span class="line">&gt; 解决： 脏读、 不可重复读 、 幻读。  导致：性能下降</span><br></pre></td></tr></table></figure>
+<p>6.补充：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mySql 默认的隔离级别是 可重复读</span><br><span class="line">Oracle 默认的隔离级别是  读已提交</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <ul class="post-copyright">
+        <li><strong>本文标题：</strong><a href="http://daqwt.top/1680230579/">事务-学习笔记</a></li>
+        <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
+        <li><strong>本文链接：</strong><a href="http://daqwt.top/1680230579/">http://daqwt.top/1680230579/</a></li>
+        <li><strong>发布时间：</strong>2020-02-05</li>
+        <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </li>
+        </ul>
+    
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
+                    <a class="has-link-grey -link" href="/tags/MySql/" rel="tag">MySql</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">乞人不受嗟来之食,哎嘛，真香~</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="http://q8khsi9j4.bkt.clouddn.com/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="http://q8khsi9j4.bkt.clouddn.com/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2524199830/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">DBUtils学习笔记</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/1664209794/">
+                <span class="level-item">数据库连接池</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'AGGG1bgO42sEaVaFqWL1IWdu-gzGzoHsz',
+        app_key: 'IdOMlYlWz8QYnB5YDBSWuTBi',
+        placeholder: '随便你说点啥，但请不要出现虎狼之词...'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="http://q8khsi9j4.bkt.clouddn.com/touxiang.jpg" alt="彭鱼晏">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        彭鱼晏
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        no pain , no gain！！！
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>武汉 中国</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            51
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            9
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            25
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://blog.csdn.net/weixin_44861399" target="_blank" rel="noopener">
+                别犹豫,关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="Github" href="https://github.com/DAQ121">
+                
+                <i class="iconfont icon-git"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="微信" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2829025551&amp;site=qq&amp;menu=yes">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="网易云" href="https://music.163.com/#/djradio?id=791862420">
+                
+                <i class="iconfont icon-wangyiyun"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="CSDN" href="http://q8khsi9j4.bkt.clouddn.com/weixin.jpg">
+                
+                <i class="iconfont icon-csdn"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#一、事务（Transaction）概述">
+        <span class="has-mr-6">1</span>
+        <span>一、事务（Transaction）概述</span>
+        </a></li><li>
+        <a class="is-flex" href="#二、演示事务">
+        <span class="has-mr-6">2</span>
+        <span>二、演示事务</span>
+        </a></li><li>
+        <a class="is-flex" href="#三、事务特性ACID（面试）">
+        <span class="has-mr-6">3</span>
+        <span>三、事务特性ACID（面试）</span>
+        </a></li><li>
+        <a class="is-flex" href="#四、安全问题-amp-隔离级别（面试）">
+        <span class="has-mr-6">4</span>
+        <span>四、安全问题&隔离级别（面试）</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#读-问题">
+        <span class="has-mr-6">4.1</span>
+        <span>读  问题</span>
+        </a></li><li>
+        <a class="is-flex" href="#写-问题">
+        <span class="has-mr-6">4.2</span>
+        <span>写  问题</span>
+        </a></li><li>
+        <a class="is-flex" href="#隔离级别">
+        <span class="has-mr-6">4.3</span>
+        <span>隔离级别</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#五、总结">
+        <span class="has-mr-6">5</span>
+        <span>五、总结</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile" align="center" style="margin:auto">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="事务-学习笔记" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 代澳旗&nbsp;
+                <i class="fas fa-balance-scale"></i>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">鄂ICP备20003594</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">本站访客<span id="busuanzi_value_site_uv"></span>人</span>
+                <span><i class="fas fa-globe-asia"></i></span>
+				<span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("02/14/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+                setInterval("createtime()",250);
+            </script>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://daqwt.top',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

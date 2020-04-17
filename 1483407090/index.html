@@ -8,21 +8,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>linux启动过程和目录结构 - DAQ&#39;s Blog - 一个简简单单的博客</title>
+<title>HTPP中的GET和POST - DAQ&#39;s Blog - 一个简简单单的博客</title>
 
 
-    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;安装好了linux系统之后，第一步当然要对linux有一个基本的了解，它有哪些特点，应用场景有哪些，为什么要用linux，了解了这些，然后在作具体深入的命令行操作。">
+    <meta name="description" content="当我们在浏览器点击某个按钮，会向服务器发送一个请求（request），服务器收到请求之后，会返回给我们一个响应（response），那这个请求是如何发送的呢。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux启动过程和目录结构">
-<meta property="og:url" content="http://daqwt.top/null/index.html">
+<meta property="og:title" content="HTPP中的GET和POST">
+<meta property="og:url" content="http://daqwt.top/1483407090/index.html">
 <meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
-<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;安装好了linux系统之后，第一步当然要对linux有一个基本的了解，它有哪些特点，应用场景有哪些，为什么要用linux，了解了这些，然后在作具体深入的命令行操作。">
+<meta property="og:description" content="当我们在浏览器点击某个按钮，会向服务器发送一个请求（request），服务器收到请求之后，会返回给我们一个响应（response），那这个请求是如何发送的呢。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://daqwt.top/images/og_image.png">
-<meta property="article:published_time" content="2020-02-15T15:04:41.000Z">
-<meta property="article:modified_time" content="2020-04-14T15:27:28.962Z">
+<meta property="article:published_time" content="2020-03-20T03:50:00.000Z">
+<meta property="article:modified_time" content="2020-04-17T03:13:58.975Z">
 <meta property="article:author" content="黑心市民">
-<meta property="article:tag" content="linux">
+<meta property="article:tag" content="https">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://daqwt.top/images/og_image.png">
 
@@ -30,7 +30,7 @@
 
 
 
-<link rel="alternative" href="/rss.xml" title="linux启动过程和目录结构" type="application/atom+xml">
+<link rel="alternative" href="/rss.xml" title="HTPP中的GET和POST" type="application/atom+xml">
 
 
 
@@ -84,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="linux启动过程和目录结构" height="28">
+                <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="HTPP中的GET和POST" height="28">
             
             </a>
         </div>
@@ -151,22 +151,22 @@
        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
             
-                linux启动过程和目录结构
+                HTPP中的GET和POST
             
         </h1>
          <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-15T15:04:41.000Z">2020-02-15</time>
+                <time class="level-item has-text-grey" datetime="2020-03-20T03:50:00.000Z">2020-03-20</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">linux学习笔记</a>
+                <a class="has-link-grey -link" href="/categories/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98/">每天一道面试题</a>
                 </div>
                 
                                                             
                 <span class="level-item has-text-grey">                    
                     
                     
-                    7 分钟 读完 (大约 1074 个字)
+                    8 分钟 读完 (大约 1192 个字)
                 </span>
                 
                 
@@ -179,61 +179,47 @@
         </div>
         
         <div class="content">
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装好了linux系统之后，第一步当然要对linux有一个基本的了解，它有哪些特点，应用场景有哪些，为什么要用linux，了解了这些，然后在作具体深入的命令行操作。</p>
+            <p>当我们在浏览器点击某个按钮，会向服务器发送一个请求（request），服务器收到请求之后，会返回给我们一个响应（response），那这个请求是如何发送的呢。</p>
 <a id="more"></a>
 
-<h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><p><img src="https://img-blog.csdnimg.cn/20200401183454555.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><code>bin</code>：存放二进制可执行文件</li>
-<li><code>sbin</code>：存放二进制可执行文件，只有<code>root</code>才可以访问。</li>
-<li><code>etc</code>：存放系统配置文件</li>
-<li><code>usr</code>：用于存放共享的系统资源</li>
-<li><code>home</code>：存放用户文件的根目录</li>
-<li><code>root</code>：超级用户目录</li>
-<li><code>dev</code>：用于存放设备文件</li>
-<li><code>lib</code>：存放跟文件系统中的程序运行所需要的共享库以及内核模块</li>
-<li><code>mnt</code>：系统管理员安装临时文件的安装点</li>
-<li><code>boot</code>：存放用于系统引导时使用的各种文件</li>
-<li><code>tmp</code>：用于存放各种临时文件</li>
-<li><code>var</code>：用于存放运行时需要改变数据的文件</li>
+<h2 id="一、基础概念"><a href="#一、基础概念" class="headerlink" title="一、基础概念"></a>一、基础概念</h2><ul>
+<li>HTTP是什么？<br>HTTP基于TCP/IP，它是关于<strong>数据如何在万维网中通讯</strong> 的协议。</li>
+<li>GET和POST是什么？<br>HTTP协议中的两种<strong>发送请求</strong> 的方法。</li>
 </ul>
-<h1 id="启动过程"><a href="#启动过程" class="headerlink" title="启动过程"></a>启动过程</h1><ol>
-<li>BIOS自检</li>
-<li>启动GRUB 2</li>
-<li>加载内核</li>
-<li>执行systemd进程</li>
-<li>初始化系统环境</li>
-</ol>
-<h1 id="linux和windows的区别？"><a href="#linux和windows的区别？" class="headerlink" title="linux和windows的区别？"></a>linux和windows的区别？</h1><p><strong>从使用情况来看：</strong></p>
-<ul>
-<li>windows比较倾向于给非专业办公人士用，图形化界面使办公更方便。linux面向开发人员。</li>
-<li>windows平台：数量和质量的优势，不过大部分为收费软件；由微软官方提供重要支持和服务 </li>
-<li>linux平台：大都为开源自由软件，用户可以修改定制和再发布，由于基本免费没有资金支持，部分软件质量和体验欠缺；有全球所有的Linux开发者和自由软件社区提供支持。</li>
+<h2 id="二、简单理解"><a href="#二、简单理解" class="headerlink" title="二、简单理解"></a>二、简单理解</h2><ul>
+<li><p>把万维网传输线路比作一条高速公路，公路上的汽车就相当于一个个<strong>TCP</strong> ，用他们来实现可靠数据传输，但是车也有不同车型，如果全都一样，送急件的汽车可能被前面满载货物的汽车拦堵在路上，整个交通就会瘫痪。为了避免这种情况发生，需要制定好交通规则，也就是<strong>HTTP</strong>协议。</p>
+</li>
+<li><p>HTTP给汽车运输设定了好几个服务类别，有GET, POST, PUT, DELETE等等。<br>①当执行GET请求的时候，要给汽车贴上GET的标签（设置method为GET），而且要求把传送的数据放在车顶上（url中）以方便记录。<br>②如果是POST请求，就要在车上贴上POST的标签，并把货物放在车厢里。当然，你也可以在GET的时候往车厢内偷偷藏点货物；也可以在POST的时候在车顶上也放一些数据。<strong>HTTP只是个行为准则，而TCP才是GET和POST怎么实现的基本。</strong></p>
+</li>
+<li><p>不同的浏览器（发起http请求）和服务器（接受http请求），虽然理论上，你可以在车顶上无限的堆货物（url中无限加参数）。但是数据量太大对浏览器和服务器都是很大负担。 于是大多数浏览器通常都会限制url长度在2K个字节，而（大多数）服务器最多处理64K大小的url。超过的部分不处理。如果使用GET服务，在request body偷偷藏了数据，不同服务器的处理方式也是不同的，有些服务器会读出数据，有些服务器直接忽略，所以，虽然GET可以带request body，也不能保证一定能被接收到。</p>
+</li>
+<li><p>所以可以这么理解：GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中体现出一些不同。</p>
+</li>
 </ul>
-<p><strong>从安全性上来看：</strong></p>
-<ul>
-<li>Windows平台：三天两头打补丁安装系统安全更新，还是会中病毒木马什么的，各位用户自己感受。 </li>
-<li>Linux平台：要说linux没有安全问题，那当然是不可能的，不会中病毒什么的，也不可能，这一点仁者见仁智者见智，相对来说肯定比Windows平台要更加安全，使用linux你也不用装杀毒软件了。</li>
+<h2 id="三、标准答案"><a href="#三、标准答案" class="headerlink" title="三、标准答案"></a>三、标准答案</h2><ul>
+<li>GET参数通过URL传递，POST放在Request body中。</li>
+<li>GET在浏览器回退时是无害的，而POST会再次提交请求。</li>
+<li>GET产生的URL地址可以被Bookmark，而POST不可以。</li>
+<li>GET请求会被浏览器主动cache，而POST不会，除非手动设置。</li>
+<li>GET请求只能进行url编码，而POST支持多种编码方式。</li>
+<li>GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。</li>
+<li>GET请求在URL中传送的参数是有长度限制的，而POST没有</li>
+<li>对参数的数据类型，GET只接受ASCII字符，而POST没有限制。</li>
+<li>GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。</li>
 </ul>
-<h1 id="linux的特点是什么？"><a href="#linux的特点是什么？" class="headerlink" title="linux的特点是什么？"></a>linux的特点是什么？</h1><ul>
-<li><strong>稳定的系统 ：</strong>安装Linux的主机连续运行一年以上不曾宕机、不必关机是很平常的事。</li>
-<li><strong>安全性和漏洞的快速修补 ：</strong>Linux是开发人员在使用，所以维护者众多，更新维护很快。</li>
-<li><strong>多任务，多用户 ：</strong>你可以在一个Linux主机上规划出不同等级的用户，而且每个用户登录系统时工作环境可以不同，还可以允许不同用户在同一时间登陆主机以使用主机的资源。</li>
-<li><strong>相对较少的系统资源占用 ：</strong>这是最吸引眼球的地方，目前市面上任何一款个人计算机都可以达到使用Linux搭建一个服务上百人以上的主机。</li>
-<li><strong>模块化程度高：</strong>Linux的内核设计非常精巧，分成进程调度、内存管理、进程间通信、虚拟文件系统和网络接口五大部分;其独特的模块机制可根据用户的需要，实时地将某些模块插入或从内核中移走，使得Linux系统内核可以裁剪得非常小巧，很适合于嵌入式系统的需要。</li>
-</ul>
-<h1 id="linux可以做什么？"><a href="#linux可以做什么？" class="headerlink" title="linux可以做什么？"></a>linux可以做什么？</h1><ul>
-<li>linux简直太适合不过做服务器了，百分之95的服务器都是基于linux平台的，我自己也有一台云服务器，搭载的就是centOS7系统，目前这个博客网站就是运行在这台云服务器上的，它可以保证一年不关机，不宕机。</li>
-<li>当然，除此之外，作为开发人员的开发工具也是很常见的。</li>
+<h2 id="四、关键区别"><a href="#四、关键区别" class="headerlink" title="四、关键区别"></a>四、关键区别</h2><ul>
+<li>GET产生一个TCP数据包；POST产生两个TCP数据包。</li>
+<li>通俗来讲就是：<br>①对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）。<br>②对于POST方式的请求，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。</li>
+<li>因为POST需要两步，时间上消耗的要多一点，看起来GET比POST更有效。但是！！！！<br>①GET与POST都有自己的语义，不能随便混用。<br>②在网络环境好的情况下，发一次包的时间和发两次包的时间差别基本可以无视。而在网络环境差的情况下，两次包的TCP在验证数据包完整性上，有非常大的优点。<br>③并不是所有浏览器都会在POST中发送两次包，Firefox就只发送一次。</li>
 </ul>
 
         </div>
         
         <ul class="post-copyright">
-        <li><strong>本文标题：</strong><a href="http://daqwt.top/null/">linux启动过程和目录结构</a></li>
+        <li><strong>本文标题：</strong><a href="http://daqwt.top/1483407090/">HTPP中的GET和POST</a></li>
         <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
-        <li><strong>本文链接：</strong><a href="http://daqwt.top/null/">http://daqwt.top/null/</a></li>
-        <li><strong>发布时间：</strong>2020-02-15</li>
+        <li><strong>本文链接：</strong><a href="http://daqwt.top/1483407090/">http://daqwt.top/1483407090/</a></li>
+        <li><strong>发布时间：</strong>2020-03-20</li>
         <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
         </li>
         </ul>
@@ -243,7 +229,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
-                    <a class="has-link-grey -link" href="/tags/linux/" rel="tag">linux</a>
+                    <a class="has-link-grey -link" href="/tags/https/" rel="tag">https</a>
                 </div>
             </div>
         </div>
@@ -294,16 +280,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/null/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/4128545857/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">linux安装常用环境</span>
+                <span class="level-item">操作系统---内存管理</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/linux/">
-                <span class="level-item">Ubuntu18.04系统安装，修改源</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/853277148/">
+                <span class="level-item">操作系统---进程管理</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -465,25 +451,21 @@
                     目录
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#目录结构">
+        <a class="is-flex" href="#一、基础概念">
         <span class="has-mr-6">1</span>
-        <span>目录结构</span>
+        <span>一、基础概念</span>
         </a></li><li>
-        <a class="is-flex" href="#启动过程">
+        <a class="is-flex" href="#二、简单理解">
         <span class="has-mr-6">2</span>
-        <span>启动过程</span>
+        <span>二、简单理解</span>
         </a></li><li>
-        <a class="is-flex" href="#linux和windows的区别？">
+        <a class="is-flex" href="#三、标准答案">
         <span class="has-mr-6">3</span>
-        <span>linux和windows的区别？</span>
+        <span>三、标准答案</span>
         </a></li><li>
-        <a class="is-flex" href="#linux的特点是什么？">
+        <a class="is-flex" href="#四、关键区别">
         <span class="has-mr-6">4</span>
-        <span>linux的特点是什么？</span>
-        </a></li><li>
-        <a class="is-flex" href="#linux可以做什么？">
-        <span class="has-mr-6">5</span>
-        <span>linux可以做什么？</span>
+        <span>四、关键区别</span>
         </a></li></ul>
             </div>
         </div>
@@ -507,7 +489,7 @@
             <div class="level-start has-text-centered-mobile" align="center" style="margin:auto">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="linux启动过程和目录结构" height="28">
+                    <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="HTPP中的GET和POST" height="28">
                 
                 </a>
                 <p class="is-size-7">

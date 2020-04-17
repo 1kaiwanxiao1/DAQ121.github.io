@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<script src="js/clicklove.js"></script>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>建站系列之---部署网站到云服务器 - DAQ&#39;s Blog - 一个简简单单的博客</title>
+
+
+    <meta name="description" content="由于这次的疫情，最爱的马云爸爸的阿里云推出了学生在家上机实践的活动，免费领六个月的ECS云服务器，天呐，2核4G啊，六个月之后还可续费六个月，整整一年呐，市场价780软妹币呢，不过投放量少，而且还是每天早上八点领，连续7:55闹钟起早，终于，在第三个早上，马云爸爸眷顾了我，我领到了。领到了就不能让他吃灰吧，于是先部署个博客再说。因为之前博客是托管在github上面的。而github的服务器又在国外">
+<meta property="og:type" content="article">
+<meta property="og:title" content="建站系列之---部署网站到云服务器">
+<meta property="og:url" content="http://daqwt.top/3010328778/index.html">
+<meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
+<meta property="og:description" content="由于这次的疫情，最爱的马云爸爸的阿里云推出了学生在家上机实践的活动，免费领六个月的ECS云服务器，天呐，2核4G啊，六个月之后还可续费六个月，整整一年呐，市场价780软妹币呢，不过投放量少，而且还是每天早上八点领，连续7:55闹钟起早，终于，在第三个早上，马云爸爸眷顾了我，我领到了。领到了就不能让他吃灰吧，于是先部署个博客再说。因为之前博客是托管在github上面的。而github的服务器又在国外">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://daqwt.top/images/og_image.png">
+<meta property="article:published_time" content="2020-03-17T08:49:31.000Z">
+<meta property="article:modified_time" content="2020-04-17T03:13:59.028Z">
+<meta property="article:author" content="黑心市民">
+<meta property="article:tag" content="hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://daqwt.top/images/og_image.png">
+
+
+
+
+
+<link rel="alternative" href="/rss.xml" title="建站系列之---部署网站到云服务器" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/wangzhantubiao-32.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="建站系列之---部署网站到云服务器" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/photo">相册</a>
+                
+                <a class="navbar-item"
+                href="/book">读书</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+                <a class="navbar-item"
+                href="/friends">友链</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="RSS" href="/rss.xml">
+                        
+                        <i class="fas fa-rss"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+       
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
+            
+                建站系列之---部署网站到云服务器
+            
+        </h1>
+         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-17T08:49:31.000Z">2020-03-17</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Hexo%E5%BB%BA%E7%AB%99%E7%B3%BB%E5%88%97/">Hexo建站系列</a>
+                </div>
+                
+                                                            
+                <span class="level-item has-text-grey">                    
+                    
+                    
+                    15 分钟 读完 (大约 2236 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>由于这次的疫情，最爱的马云爸爸的阿里云推出了学生在家上机实践的活动，免费领六个月的ECS云服务器，天呐，2核4G啊，六个月之后还可续费六个月，整整一年呐，市场价780软妹币呢，不过投放量少，而且还是每天早上八点领，连续7:55闹钟起早，终于，在第三个早上，马云爸爸眷顾了我，我领到了。领到了就不能让他吃灰吧，于是先部署个博客再说。因为之前博客是托管在github上面的。而github的服务器又在国外，所以访问速度十分感人，但是有了国内的服务器就不一样了，瞬间嗖嗖嗖。。。</p>
+<a id="more"></a>
+
+<p><strong>写在开头的话：</strong> 对于一个刚接触的门外汉来说，搭建博客，到部署到服务器真的让人崩溃，但是在不断地排错过程中，也渐渐弄懂了一些东西。很值得！由于我的域名还在备案中，DNS解析已经停掉了，所以暂时只能用公网IP访问：<a href="https://123.57.60.151">123.57.60.151</a>，后期等备案成功后再做修改，并且进一步优化。还想做一点SEO的东西。</p>
+<h1 id="一、云服务器配置"><a href="#一、云服务器配置" class="headerlink" title="一、云服务器配置"></a>一、云服务器配置</h1><h2 id="①建立博客存放的目录"><a href="#①建立博客存放的目录" class="headerlink" title="①建立博客存放的目录"></a>①建立博客存放的目录</h2><ul>
+<li>我的目录是：<code>home/www/blog</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home</span><br><span class="line">mkdir www</span><br><span class="line"><span class="built_in">cd</span> /www</span><br><span class="line">mkdir /blog</span><br></pre></td></tr></table></figure>
+
+<h2 id="②安装nginx"><a href="#②安装nginx" class="headerlink" title="②安装nginx"></a>②安装nginx</h2><ul>
+<li><strong>搭建服务器环境，以nginx做服务器。</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.安装</span><br><span class="line">yum install -y nginx</span><br><span class="line"></span><br><span class="line">2.启动服务器</span><br><span class="line">systemctl start nginx</span><br><span class="line">systemctl <span class="built_in">enable</span> nginx</span><br><span class="line"></span><br><span class="line">3.在浏览器地址栏中输入你的公网ip，如果打开了有内容网页，说明成功了。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>配置服务器的路由：</strong><br>通过公网ip访问，这个地址指向的是nginx，得让他指向我们的博客，就要修改配置文件，找到配置文件<code>etc/nginx/nginx.conf</code>,并不建议直接修改配置文件，应该先创建一个新的文件，然后采用<code>include</code>的方式，将这个文件包含进<code>nginx.conf</code>中。</li>
+</ul>
+<p>1.新建配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/nginx/</span><br><span class="line">mkdir vhost</span><br><span class="line"><span class="built_in">cd</span> vhost</span><br><span class="line">vim blog.conf</span><br></pre></td></tr></table></figure>
+
+<p>2.编写配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">编辑blog.conf 如下：</span><br><span class="line">server&#123;</span><br><span class="line">	listen  80;</span><br><span class="line">	root /home/www/blog;这里填博客目录存放的地址</span><br><span class="line">	server_name 这里填域名如(www.baidu.com) 如果暂时没有域名就填阿里云的公网ip，以后有了再改回来;</span><br><span class="line">	location /&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.用<code>include</code>插入到<code>nginx.conf</code>中</p>
+<p><img src="https://img-blog.csdnimg.cn/20200317193028631.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>4.如果以后还想添加新的网站，也可以在vhost目录下新建一个conf配置文件。然后再用<code>include</code>装入到<code>nginx.conf</code>中。<br>5.（<strong>先跳过这一步，等到最后有问题了，再回来</strong>）最后可能会出现只能访问centOS的怪相，所以，如果出现那个问题了，请你回到这一步，增加一个操作，就是上图中那个<code>server</code>里面的<code>root</code>后面的路径，替换成你的博客存放位置：例如我的是<code>/home/www/blog</code>（这是我经验所得，可能你就会卡在这一步）。</p>
+<h2 id="③安装Nodejs"><a href="#③安装Nodejs" class="headerlink" title="③安装Nodejs"></a>③安装Nodejs</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.换源</span><br><span class="line">curl -sL https://rpm.nodesource.com/setup_10.x | bash -</span><br><span class="line"></span><br><span class="line">2.安装</span><br><span class="line">yum install -y nodejs</span><br><span class="line"></span><br><span class="line">3.检查版本</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<h2 id="④安装Git以及配置仓库"><a href="#④安装Git以及配置仓库" class="headerlink" title="④安装Git以及配置仓库"></a>④安装Git以及配置仓库</h2><ul>
+<li><strong>目的：</strong> 使本地主机可以通过<code>ssh</code>方式连接到云服务器，我们就可以在本地使用<code>git</code>将我们的博客部署到服务器上。</li>
+</ul>
+<p>1.安装<code>git</code>并查看版本。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.安装</span><br><span class="line">yum install git</span><br><span class="line">2.查看版本</span><br><span class="line">git --version</span><br><span class="line">git version 1.8.3.1</span><br></pre></td></tr></table></figure>
+<p>2.新建<code>git</code>用户，并修改权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.新建git用户</span><br><span class="line">adduser -m  git</span><br><span class="line">2.修改用户权限</span><br><span class="line">chmod 740 /etc/sudoers</span><br><span class="line">vi /etc/sudoers</span><br></pre></td></tr></table></figure>
+<p>3.添加<code>Git  ALL=(ALL)   ALL</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200317200019229.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>4.保存退出后，将权限改回去。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 400 /etc/sudoers</span><br></pre></td></tr></table></figure>
+<p>5.设置<code>git</code>密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd git</span><br></pre></td></tr></table></figure>
+
+<p>6.切换到<code>git</code>用户，在<code>~</code>目录下，可以看到有一个<code>.ssh</code>文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">su git</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">mkdir .ssh</span><br><span class="line"><span class="built_in">cd</span> /.ssh</span><br></pre></td></tr></table></figure>
+<p>7.生成公钥密钥文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br><span class="line">此时在目录下就会有两个文件，分别是id_rsa 和 id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>8.id_rsa.pub 就是公钥文件，将他复制一份。目录下就会多出一个authorized_keys文件，它和id_rsa.pub一模一样。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp id_rsa.pub authorized_keys</span><br></pre></td></tr></table></figure>
+<p>9.修改权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 600 ~/.ssh/authorized_keys</span><br><span class="line">chmod 700 ~/.ssh</span><br></pre></td></tr></table></figure>
+<p>10.在<strong>本地主机</strong>上打开<code>cmd</code>，使用<code>ssh</code>方式连接云服务器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -v git@123.57.60.151(这里填的是服务器公网ip)</span><br></pre></td></tr></table></figure>
+<p>11.输入密码之后，看到如图，即代表成功！！！！</p>
+<p><img src="https://img-blog.csdnimg.cn/20200317202421490.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>12.创建一个<code>git</code>的仓库，并且新建一个<code>post-receive</code>文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.创建并初始化Git仓库</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">git init --bare blog.git</span><br><span class="line"></span><br><span class="line">2.新建post—receive文件</span><br><span class="line">vi ~/blog.git/hooks/post-receive</span><br><span class="line"></span><br><span class="line">3.输入以下内容：</span><br><span class="line">git --work-tree=/home/www/website --git-dir=/home/git/blog.git checkout -f</span><br><span class="line"></span><br><span class="line">4.保存退出之后赋予可执行权限</span><br><span class="line">chmod +x ~/blog.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
+<p><strong>至此，服务器端的配置完成！！！！！！！！</strong></p>
+<h1 id="二、本地主机配置"><a href="#二、本地主机配置" class="headerlink" title="二、本地主机配置"></a>二、本地主机配置</h1><p><strong>说明：</strong> 因为我之前没有云服务器的时候，是把博客部署在<strong>github</strong>仓库中的，所以，在下面的<code>config.yml</code>中会出现两个仓库，这并不影响，他会同时部署到<code>github</code>中和云服务器上，想要了解的话可以去看这篇文章：<a href="https://blog.csdn.net/weixin_44861399/article/details/104673527">https://blog.csdn.net/weixin_44861399/article/details/104673527</a>，下面就是正式的，将本地主机与服务器连接起来的具体步骤了。</p>
+<h2 id="①安装git"><a href="#①安装git" class="headerlink" title="①安装git"></a>①安装git</h2><p>下载地址：<a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></p>
+<h2 id="②安装Node-js"><a href="#②安装Node-js" class="headerlink" title="②安装Node.js"></a>②安装Node.js</h2><p>下载地址：<a href="http://nodejs.org/download/">http://nodejs.org/download/</a></p>
+<ul>
+<li>安装的时候，选择<code>add to path</code>，他会自动配置环境变量。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">出现版本号说明安装成功</span><br></pre></td></tr></table></figure>
+<ul>
+<li>换镜像（亲身体验，可以省去以后好多麻烦）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="③安装Hexo"><a href="#③安装Hexo" class="headerlink" title="③安装Hexo"></a>③安装Hexo</h2><ul>
+<li>用cnpm全局安装，在桌面右键打开<code>Git bash here</code>输入：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装完成后，在命令行里输入<code>hexo -v</code>检查是否安装成功。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305155050299.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="④hexo本地部署"><a href="#④hexo本地部署" class="headerlink" title="④hexo本地部署"></a>④hexo本地部署</h2><ul>
+<li>在本地新建一个文件夹，我命名它为blog</li>
+<li>在这个文件夹下，右键打开<code>Git Bash here</code>，输入<code>hexo init</code>，我在这个地方出现了一个<code>WARN</code>，暂时不用管它。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305135143147.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>继续输入<code>cnpm install</code>可以看到blog文件夹里出现：</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305155919286.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>输入：<code>hexo g</code></li>
+<li>输入：<code>hexo s</code> </li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305135917128.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>打开浏览器输入<code>localhost：4000</code>，可以看到部署好了，有一篇<code>hello World</code>的博客</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305154439378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="⑤连接到远端服务器"><a href="#⑤连接到远端服务器" class="headerlink" title="⑤连接到远端服务器"></a>⑤连接到远端服务器</h2><ul>
+<li>安装 <code>deployer</code> 插件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<ul>
+<li>打开<code>F:\blog\_config.yml</code>,找到 <code>deploy</code>。填写你自己的仓库名字。不能同时又相同的<code>repo</code>，需要删除一个。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200317204903306.png" alt="在这里插入图片描述"><br><strong>至此，本地主机的配置也完毕了！！！！</strong></p>
+<h1 id="三、发布文章"><a href="#三、发布文章" class="headerlink" title="三、发布文章"></a>三、发布文章</h1><ul>
+<li>写一篇文章：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.新建文章，并编写，如何编写，百度</span><br><span class="line">hexo new <span class="string">"Hello My First Blog"</span></span><br><span class="line"></span><br><span class="line">2. 发布(要在blog文件夹下打开git)</span><br><span class="line">hexo clean &amp;&amp; hexo generate --deploy</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重启服务器的nginx</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
+<ul>
+<li>浏览器地址栏中输入公网ip查看成果。</li>
+</ul>
+<h1 id="四、美化博客"><a href="#四、美化博客" class="headerlink" title="四、美化博客"></a>四、美化博客</h1><p>请参考我的这篇文章：<a href="https://blog.csdn.net/weixin_44861399/article/details/104646946">https://blog.csdn.net/weixin_44861399/article/details/104646946</a></p>
+
+        </div>
+        
+        <ul class="post-copyright">
+        <li><strong>本文标题：</strong><a href="http://daqwt.top/3010328778/">建站系列之---部署网站到云服务器</a></li>
+        <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
+        <li><strong>本文链接：</strong><a href="http://daqwt.top/3010328778/">http://daqwt.top/3010328778/</a></li>
+        <li><strong>发布时间：</strong>2020-03-17</li>
+        <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </li>
+        </ul>
+    
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
+                    <a class="has-link-grey -link" href="/tags/hexo/" rel="tag">hexo</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">乞人不受嗟来之食,哎嘛，真香~</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="http://q8khsi9j4.bkt.clouddn.com/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="http://q8khsi9j4.bkt.clouddn.com/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/789539749/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">操作系统---CPU调度</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/3546768407/">
+                <span class="level-item">操作系统的结构与功能</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'AGGG1bgO42sEaVaFqWL1IWdu-gzGzoHsz',
+        app_key: 'IdOMlYlWz8QYnB5YDBSWuTBi',
+        placeholder: '随便你说点啥，但请不要出现虎狼之词...'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="http://q8khsi9j4.bkt.clouddn.com/touxiang.jpg" alt="彭鱼晏">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        彭鱼晏
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        no pain , no gain！！！
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>武汉 中国</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            51
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            9
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            25
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://blog.csdn.net/weixin_44861399" target="_blank" rel="noopener">
+                别犹豫,关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="Github" href="https://github.com/DAQ121">
+                
+                <i class="iconfont icon-git"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="微信" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2829025551&amp;site=qq&amp;menu=yes">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="网易云" href="https://music.163.com/#/djradio?id=791862420">
+                
+                <i class="iconfont icon-wangyiyun"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="CSDN" href="http://q8khsi9j4.bkt.clouddn.com/weixin.jpg">
+                
+                <i class="iconfont icon-csdn"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#一、云服务器配置">
+        <span class="has-mr-6">1</span>
+        <span>一、云服务器配置</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#①建立博客存放的目录">
+        <span class="has-mr-6">1.1</span>
+        <span>①建立博客存放的目录</span>
+        </a></li><li>
+        <a class="is-flex" href="#②安装nginx">
+        <span class="has-mr-6">1.2</span>
+        <span>②安装nginx</span>
+        </a></li><li>
+        <a class="is-flex" href="#③安装Nodejs">
+        <span class="has-mr-6">1.3</span>
+        <span>③安装Nodejs</span>
+        </a></li><li>
+        <a class="is-flex" href="#④安装Git以及配置仓库">
+        <span class="has-mr-6">1.4</span>
+        <span>④安装Git以及配置仓库</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#二、本地主机配置">
+        <span class="has-mr-6">2</span>
+        <span>二、本地主机配置</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#①安装git">
+        <span class="has-mr-6">2.1</span>
+        <span>①安装git</span>
+        </a></li><li>
+        <a class="is-flex" href="#②安装Node-js">
+        <span class="has-mr-6">2.2</span>
+        <span>②安装Node.js</span>
+        </a></li><li>
+        <a class="is-flex" href="#③安装Hexo">
+        <span class="has-mr-6">2.3</span>
+        <span>③安装Hexo</span>
+        </a></li><li>
+        <a class="is-flex" href="#④hexo本地部署">
+        <span class="has-mr-6">2.4</span>
+        <span>④hexo本地部署</span>
+        </a></li><li>
+        <a class="is-flex" href="#⑤连接到远端服务器">
+        <span class="has-mr-6">2.5</span>
+        <span>⑤连接到远端服务器</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#三、发布文章">
+        <span class="has-mr-6">3</span>
+        <span>三、发布文章</span>
+        </a></li><li>
+        <a class="is-flex" href="#四、美化博客">
+        <span class="has-mr-6">4</span>
+        <span>四、美化博客</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile" align="center" style="margin:auto">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="建站系列之---部署网站到云服务器" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 黑心市民&nbsp;
+                <i class="fas fa-balance-scale"></i>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">鄂ICP备20003594</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">本站访客<span id="busuanzi_value_site_uv"></span>人</span>
+                <span><i class="fas fa-globe-asia"></i></span>
+				<span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("02/14/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+                setInterval("createtime()",250);
+            </script>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://daqwt.top',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<script src="js/clicklove.js"></script>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>linux安装常用环境 - DAQ&#39;s Blog - 一个简简单单的博客</title>
+
+
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;手里有一台免费的阿里云服务器是真的很香，但是我也不能让他就这样只放一个博客网站吧，于是乎，我想在这片几乎空白的区域，开拓出一块儿良好的开发环境，也顺便熟悉一下linux系统的操作。这篇主要就是讲了，如何在云服务器上安装JDK，MySql，Tomcat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux安装常用环境">
+<meta property="og:url" content="http://daqwt.top/2004179649/index.html">
+<meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;手里有一台免费的阿里云服务器是真的很香，但是我也不能让他就这样只放一个博客网站吧，于是乎，我想在这片几乎空白的区域，开拓出一块儿良好的开发环境，也顺便熟悉一下linux系统的操作。这篇主要就是讲了，如何在云服务器上安装JDK，MySql，Tomcat">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://daqwt.top/images/og_image.png">
+<meta property="article:published_time" content="2020-02-16T15:11:29.000Z">
+<meta property="article:modified_time" content="2020-04-17T03:13:58.992Z">
+<meta property="article:author" content="黑心市民">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://daqwt.top/images/og_image.png">
+
+
+
+
+
+<link rel="alternative" href="/rss.xml" title="linux安装常用环境" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/wangzhantubiao-32.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="linux安装常用环境" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/photo">相册</a>
+                
+                <a class="navbar-item"
+                href="/book">读书</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+                <a class="navbar-item"
+                href="/friends">友链</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="RSS" href="/rss.xml">
+                        
+                        <i class="fas fa-rss"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+       
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
+            
+                linux安装常用环境
+            
+        </h1>
+         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-16T15:11:29.000Z">2020-02-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">linux学习笔记</a>
+                </div>
+                
+                                                            
+                <span class="level-item has-text-grey">                    
+                    
+                    
+                    12 分钟 读完 (大约 1739 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手里有一台免费的阿里云服务器是真的很香，但是我也不能让他就这样只放一个博客网站吧，于是乎，我想在这片几乎空白的区域，开拓出一块儿良好的开发环境，也顺便熟悉一下linux系统的操作。这篇主要就是讲了，如何在云服务器上安装JDK，MySql，Tomcat</p>
+<a id="more"></a>
+
+<h1 id="一、安装JDK1-8"><a href="#一、安装JDK1-8" class="headerlink" title="一、安装JDK1.8"></a>一、安装JDK1.8</h1><h2 id="①查看有无自带的JDK"><a href="#①查看有无自带的JDK" class="headerlink" title="①查看有无自带的JDK"></a>①查看有无自带的JDK</h2><ul>
+<li>有很多linux系统自带了<code>OpenJDK</code>，<code>OpenJDK</code>不包含<code>Deployment</code>（部署）功能，源代码不完整，而且精简化，只适合个人使用。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. 查看有无jdk，如果有，则会出现openjdk</span><br><span class="line">java -version</span><br><span class="line"></span><br><span class="line">2.查看关于java的所有文件</span><br><span class="line">rpm -qa | grep java</span><br><span class="line"></span><br><span class="line">3. 删除掉openjdk（后面跟你自己的版本进行删除）</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.111-2.6.7.8.el7.x86_64</span><br></pre></td></tr></table></figure>
+
+<h2 id="②下载JDK"><a href="#②下载JDK" class="headerlink" title="②下载JDK"></a>②下载JDK</h2><ul>
+<li>去<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">ORACLE官网</a>下载对应的linux版本。记得后缀是<code>.tar.gz</code>结尾。先下载到本地，再通过工具上传到linux上。这里推荐使用的工具是finalshell。详情使用请另参考。</li>
+</ul>
+<h2 id="③安装JDK"><a href="#③安装JDK" class="headerlink" title="③安装JDK"></a>③安装JDK</h2><ul>
+<li>在<code>usr/local/src</code>目录下新建一个文件夹<code>jdk</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/<span class="built_in">local</span>/src/jdk</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将本地JDK上传到这个目录下。</li>
+<li>进入文件夹，并解压</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src/jdk</span><br><span class="line">tar zvxf 你的压缩包</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装完成</li>
+</ul>
+<h2 id="④配置环境变量"><a href="#④配置环境变量" class="headerlink" title="④配置环境变量"></a>④配置环境变量</h2><ul>
+<li>进入环境变量的配置文件,编辑</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在最下面添加以下代码：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/src/jdk/jdk1.8.0_161 （这里填写你自己的文件路径）</span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre  </span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib  </span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>编写完之后：<code>ESC-&gt;:wq</code>退出。</li>
+<li>查看是否安装成功</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+<h1 id="二、安装Tomcat"><a href="#二、安装Tomcat" class="headerlink" title="二、安装Tomcat"></a>二、安装Tomcat</h1><h2 id="①下载tomcat"><a href="#①下载tomcat" class="headerlink" title="①下载tomcat"></a>①下载tomcat</h2><p>我下载的是Tomcat8.5，和安装JDK几乎一样的步骤，<a href="http://mirrors.ustc.edu.cn/apache/tomcat/">点击下载</a>对应的版本。</p>
+<h2 id="②上传，解压"><a href="#②上传，解压" class="headerlink" title="②上传，解压"></a>②上传，解压</h2><ul>
+<li>新建存放目录</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/<span class="built_in">local</span>/src/Tomcat</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>用工具上传到该目录中。</li>
+<li>解压</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> //usr/<span class="built_in">local</span>/src/Tomcat</span><br><span class="line">tar zvxf 你的安装包</span><br></pre></td></tr></table></figure>
+<h2 id="③配置环境变量"><a href="#③配置环境变量" class="headerlink" title="③配置环境变量"></a>③配置环境变量</h2><ul>
+<li>修改/etc/profile，加入Tomcat环境变量</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">vim /etc/profile</span><br><span class="line"></span><br><span class="line">2.加入以下代码：</span><br><span class="line"><span class="built_in">export</span> CATALINA_HOME=你的tomcat路径</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$&#123;CATALINA_HOME&#125;</span>/bin</span><br><span class="line"></span><br><span class="line">3.刷新环境变量</span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h2 id="④启动tomcat"><a href="#④启动tomcat" class="headerlink" title="④启动tomcat"></a>④启动tomcat</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src/Tomcat/apache-tomcat-8.5.53/bin</span><br><span class="line">sh start.sh</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看端口号和日志</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.查看端口号</span><br><span class="line">ss -tan</span><br><span class="line"></span><br><span class="line">2.查看日志</span><br><span class="line">tail -f ../logs/catalina.out</span><br></pre></td></tr></table></figure>
+
+<h1 id="三、安装Mysql"><a href="#三、安装Mysql" class="headerlink" title="三、安装Mysql"></a>三、安装Mysql</h1><h2 id="①查看自带版本"><a href="#①查看自带版本" class="headerlink" title="①查看自带版本"></a>①查看自带版本</h2><ul>
+<li>查看有没有<code>mysql</code>，有则卸载。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 查看</span><br><span class="line">rpm -qa | grep mysql</span><br><span class="line">2. 卸载</span><br><span class="line">rpm -e --nodeps 查出来的mysql</span><br></pre></td></tr></table></figure>
+<h2 id="②命令下载mysql"><a href="#②命令下载mysql" class="headerlink" title="②命令下载mysql"></a>②命令下载mysql</h2><ul>
+<li>如果直接去官网下载，不知道要等多久，于是我找到了一个<a href="http://mirrors.sohu.com/mysql/MySQL-5.6/">镜像网站</a>，点击找到你的对应版本，这里以<code>mysql-5.6.44-linux-glibc2.12-x86_64.tar.gz</code>为例</li>
+<li>命令安装：既然找到了具体网址，那我们就用<code>wget</code>命令安装，省去上传的时间。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://mirrors.sohu.com/mysql/MySQL-5.6/mysql-5.6.44-linux-glibc2.12-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解压</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf mysql-5.6.44-linux-glibc2.12-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建mysql用户组及用户</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd mysql</span><br><span class="line">useradd -r -g mysql mysql</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改配置文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/<span class="built_in">local</span>/mysql/support-files/my-default.cnf /etc/my.cnf</span><br><span class="line">vi my.cnf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[mysqld] </span><br><span class="line"></span><br><span class="line">#设置3306端口 </span><br><span class="line">port = <span class="number">3306</span>  </span><br><span class="line"></span><br><span class="line"># 设置mysql的安装目录 根据实际目录进行配置</span><br><span class="line">basedir=/usr/local/mysql </span><br><span class="line"></span><br><span class="line"># 设置mysql数据库的数据的存放目录 根据实际目录进行配置</span><br><span class="line">datadir=/usr/local/mysql/data </span><br><span class="line"></span><br><span class="line"># 允许最大连接数 </span><br><span class="line">max_connections=<span class="number">200</span> </span><br><span class="line"></span><br><span class="line"># 服务端使用的字符集默认为8比特编码的latin1字符集 </span><br><span class="line">character-set-server=utf8 </span><br><span class="line"></span><br><span class="line"># 创建新表时将使用的默认存储引擎 </span><br><span class="line"><span class="keyword">default</span>-storage-engine=INNODB </span><br><span class="line"></span><br><span class="line">max_allowed_packet=<span class="number">16</span>M</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装autoconf库，赋权并执行初始化数据库</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install autoconf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chown -R mysql.mysql /usr/<span class="built_in">local</span>/src/mysql5.6</span><br><span class="line">/usr/<span class="built_in">local</span>/src/mysql5.6/scripts/mysql_install_db --verbose --user=mysql --defaults-file=/etc/my.cnf --datadir=/usr/<span class="built_in">local</span>/src/mysql5.6/data --basedir=/usr/<span class="built_in">local</span>/src/mysql5.6</span><br></pre></td></tr></table></figure>
+
+<h2 id="③-启动msyql："><a href="#③-启动msyql：" class="headerlink" title="③ 启动msyql："></a>③ 启动msyql：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysql start</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果出现以下情况：请按照以下步骤来</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed to start mysql.service: Unit not found.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.查询/etc/init.d/下是否存在mysql，一般都没有，如果有的话，记得备份</span><br><span class="line">ll /etc/init.d/ | grep mysql</span><br><span class="line"></span><br><span class="line">2. 到你的mysql安装目录下，查看是否有mysql.server</span><br><span class="line">find / -name mysql.server</span><br><span class="line"></span><br><span class="line">3.如果有，把他复制到/etc/init.d/mysql</span><br><span class="line">cp /usr/<span class="built_in">local</span>/src/mysql5.6/support-files/mysql.server /etc/init.d/mysql</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>再次启动mysql</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysql start</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看mysql运行状态</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysql status</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置环境变量</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.vim ~/.bash_profile</span><br><span class="line">添加：<span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/src/mysql5.6/bin</span><br><span class="line"></span><br><span class="line">2.source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<h2 id="③登录"><a href="#③登录" class="headerlink" title="③登录"></a>③登录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p </span><br><span class="line">Enter password: 直接回车</span><br></pre></td></tr></table></figure>
+
+<p>-出现如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 2</span><br><span class="line">Server version: 5.7.29</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="④修改密码"><a href="#④修改密码" class="headerlink" title="④修改密码"></a>④修改密码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> password <span class="keyword">for</span> root@localhost = password(<span class="string">'new password'</span>);;</span><br><span class="line">new password替换成你要设置的密码</span><br><span class="line">注意:密码设置必须要大小写字母数字和特殊符号（,/<span class="string">';:等）,不然不能配置成功</span></span><br></pre></td></tr></table></figure>
+<h2 id="开启远程连接"><a href="#开启远程连接" class="headerlink" title="开启远程连接"></a>开启远程连接</h2><h3 id="前提："><a href="#前提：" class="headerlink" title="前提："></a>前提：</h3><ul>
+<li>必须要开启了3306端口才可以</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.开启端口</span><br><span class="line">firewall-cmd --zone=public --add-port=3306/tcp --permanent </span><br><span class="line"></span><br><span class="line">2.重启</span><br><span class="line">firewall-cmd --reload</span><br><span class="line"></span><br><span class="line">3.查看是否有3306</span><br><span class="line">firewall-cmd --zone=public --list-ports</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法一：（不建议）"><a href="#方法一：（不建议）" class="headerlink" title="方法一：（不建议）"></a>方法一：（不建议）</h3><ul>
+<li>在linux上登陆mysql，登陆成功后，依次执行命令：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">update user <span class="built_in">set</span> host = <span class="string">'%'</span> <span class="built_in">where</span> user = <span class="string">'root'</span> and host =<span class="string">'localhost'</span>; </span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>并不建议对root账户进行开启远程访问权限，因为一旦拿到root权限之后，就可以对数据库执行任何操作，不安全。</li>
+</ul>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><ul>
+<li>新建一个用户并开启远程访问权限：</li>
+<li>登录MySQL</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">grant all privileges on 库名.表名 to <span class="string">'用户名'</span>@<span class="string">'IP地址'</span> identified by <span class="string">'密码'</span> with grant option;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>详细参数解释<br><code>库名</code>要远程访问的数据库名称,所有的数据库使用<code>*</code><br><code>表名</code>    要远程访问的数据库下的表的名称，所有的表使用<code>*</code><br><code>用户名</code>    要赋给远程访问权限的用户名称（这里写一个你自己创建的用户）<br><code>IP地址</code>    可以远程访问的电脑的IP地址，所有的地址使用<code>%</code><br><code>密码</code>要赋给远程访问权限的用户对应使用的密码</li>
+</ul>
+<h2 id="本地连接"><a href="#本地连接" class="headerlink" title="本地连接"></a>本地连接</h2><ul>
+<li>保证本地mysql服务是打开的，3306端口是开的。</li>
+<li>打开sqlyong，新建连接，填入以下数据</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200403172306622.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="大功告成！！！"><a href="#大功告成！！！" class="headerlink" title="大功告成！！！"></a>大功告成！！！</h2>
+        </div>
+        
+        <ul class="post-copyright">
+        <li><strong>本文标题：</strong><a href="http://daqwt.top/2004179649/">linux安装常用环境</a></li>
+        <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
+        <li><strong>本文链接：</strong><a href="http://daqwt.top/2004179649/">http://daqwt.top/2004179649/</a></li>
+        <li><strong>发布时间：</strong>2020-02-16</li>
+        <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </li>
+        </ul>
+    
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
+                    <a class="has-link-grey -link" href="/tags/linux/" rel="tag">linux</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">乞人不受嗟来之食,哎嘛，真香~</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="http://q8khsi9j4.bkt.clouddn.com/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="http://q8khsi9j4.bkt.clouddn.com/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/1657072496/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Github使用学习</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/3247955720/">
+                <span class="level-item">linux启动过程和目录结构</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'AGGG1bgO42sEaVaFqWL1IWdu-gzGzoHsz',
+        app_key: 'IdOMlYlWz8QYnB5YDBSWuTBi',
+        placeholder: '随便你说点啥，但请不要出现虎狼之词...'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="http://q8khsi9j4.bkt.clouddn.com/touxiang.jpg" alt="彭鱼晏">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        彭鱼晏
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        no pain , no gain！！！
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>武汉 中国</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            51
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            9
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            25
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://blog.csdn.net/weixin_44861399" target="_blank" rel="noopener">
+                别犹豫,关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="Github" href="https://github.com/DAQ121">
+                
+                <i class="iconfont icon-git"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="微信" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2829025551&amp;site=qq&amp;menu=yes">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="网易云" href="https://music.163.com/#/djradio?id=791862420">
+                
+                <i class="iconfont icon-wangyiyun"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="CSDN" href="http://q8khsi9j4.bkt.clouddn.com/weixin.jpg">
+                
+                <i class="iconfont icon-csdn"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#一、安装JDK1-8">
+        <span class="has-mr-6">1</span>
+        <span>一、安装JDK1.8</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#①查看有无自带的JDK">
+        <span class="has-mr-6">1.1</span>
+        <span>①查看有无自带的JDK</span>
+        </a></li><li>
+        <a class="is-flex" href="#②下载JDK">
+        <span class="has-mr-6">1.2</span>
+        <span>②下载JDK</span>
+        </a></li><li>
+        <a class="is-flex" href="#③安装JDK">
+        <span class="has-mr-6">1.3</span>
+        <span>③安装JDK</span>
+        </a></li><li>
+        <a class="is-flex" href="#④配置环境变量">
+        <span class="has-mr-6">1.4</span>
+        <span>④配置环境变量</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#二、安装Tomcat">
+        <span class="has-mr-6">2</span>
+        <span>二、安装Tomcat</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#①下载tomcat">
+        <span class="has-mr-6">2.1</span>
+        <span>①下载tomcat</span>
+        </a></li><li>
+        <a class="is-flex" href="#②上传，解压">
+        <span class="has-mr-6">2.2</span>
+        <span>②上传，解压</span>
+        </a></li><li>
+        <a class="is-flex" href="#③配置环境变量">
+        <span class="has-mr-6">2.3</span>
+        <span>③配置环境变量</span>
+        </a></li><li>
+        <a class="is-flex" href="#④启动tomcat">
+        <span class="has-mr-6">2.4</span>
+        <span>④启动tomcat</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#三、安装Mysql">
+        <span class="has-mr-6">3</span>
+        <span>三、安装Mysql</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#①查看自带版本">
+        <span class="has-mr-6">3.1</span>
+        <span>①查看自带版本</span>
+        </a></li><li>
+        <a class="is-flex" href="#②命令下载mysql">
+        <span class="has-mr-6">3.2</span>
+        <span>②命令下载mysql</span>
+        </a></li><li>
+        <a class="is-flex" href="#③-启动msyql：">
+        <span class="has-mr-6">3.3</span>
+        <span>③ 启动msyql：</span>
+        </a></li><li>
+        <a class="is-flex" href="#③登录">
+        <span class="has-mr-6">3.4</span>
+        <span>③登录</span>
+        </a></li><li>
+        <a class="is-flex" href="#④修改密码">
+        <span class="has-mr-6">3.5</span>
+        <span>④修改密码</span>
+        </a></li><li>
+        <a class="is-flex" href="#开启远程连接">
+        <span class="has-mr-6">3.6</span>
+        <span>开启远程连接</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#前提：">
+        <span class="has-mr-6">3.6.1</span>
+        <span>前提：</span>
+        </a></li><li>
+        <a class="is-flex" href="#方法一：（不建议）">
+        <span class="has-mr-6">3.6.2</span>
+        <span>方法一：（不建议）</span>
+        </a></li><li>
+        <a class="is-flex" href="#方法二">
+        <span class="has-mr-6">3.6.3</span>
+        <span>方法二</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#本地连接">
+        <span class="has-mr-6">3.7</span>
+        <span>本地连接</span>
+        </a></li><li>
+        <a class="is-flex" href="#大功告成！！！">
+        <span class="has-mr-6">3.8</span>
+        <span>大功告成！！！</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile" align="center" style="margin:auto">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="linux安装常用环境" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 黑心市民&nbsp;
+                <i class="fas fa-balance-scale"></i>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">鄂ICP备20003594</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">本站访客<span id="busuanzi_value_site_uv"></span>人</span>
+                <span><i class="fas fa-globe-asia"></i></span>
+				<span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("02/14/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+                setInterval("createtime()",250);
+            </script>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://daqwt.top',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
