@@ -269,6 +269,122 @@
        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
             
+                <a class="has-link-black-ter" href="/%E6%B3%9B%E5%9E%8B/">JavaSE---泛型</a>
+            
+        </h1>
+         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-12T05:45:03.000Z">2020-03-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JavaSE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">JavaSE基础知识</a>
+                </div>
+                
+                                                            
+                <span class="level-item has-text-grey">                    
+                    
+                    
+                    10 分钟 读完 (大约 1488 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <h2 id="泛型是什么？"><a href="#泛型是什么？" class="headerlink" title="泛型是什么？"></a>泛型是什么？</h2><ul>
+<li>JDK1.5，引进泛型这个概念。</li>
+<li><strong>泛型：</strong> 在创建对象或者调用方法的时候，再去明确类型。即参数化类型，简单来说，就是把类型当作一种参数来传递，只不过一般情况下参数写在（）中，而类型写在&lt;&gt;中。并且在&lt;&gt;中只能是引用类型。</li>
+<li><strong>引用类型（reference type）：</strong> 指向一个对象，而不是原始值，指向对象的变量是引用变量。在java里面除去基本数据类型的其它类型都是引用数据类型，自己定义的class类都是引用类型，可以像基本类型一样使用。</li>
+<li><strong>泛型的设计原则：</strong>  只要在编译时期没有出现警告，那么运行时期就不会出现<code>ClassCastException</code>异常。<h2 id="泛型对比测试"><a href="#泛型对比测试" class="headerlink" title="泛型对比测试"></a>泛型对比测试</h2></li>
+<li>首先来看不加泛型的情况下，在list集合中添加不同类型的数据，并且在遍历的时候强转，编译的时候注定会报<code>ClassCastException</code>异常的。这就是由于集合中元素类型不统一造成的。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">List arrayList = <span class="keyword">new</span> ArrayList();</span><br><span class="line"><span class="comment">//添加一个String类型的元素</span></span><br><span class="line">arrayList.add(<span class="string">"aaaa"</span>);</span><br><span class="line"><span class="comment">//添加一个Integer类型的元素</span></span><br><span class="line">arrayList.add(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt; arrayList.size();i++)&#123;</span><br><span class="line">	<span class="comment">//都强转成String类型</span></span><br><span class="line">    String item = (String)arrayList.get(i);</span><br><span class="line">    Log.d(<span class="string">"泛型测试"</span>,<span class="string">"item = "</span> + item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>加上泛型之后的，就规定了，这个集合中只能装这个类型的元素，要是装别的，在敲代码的时候就会报错，因为你加入的元素，跟规定的类型不一致，不让你加。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么要使用泛型？"><a href="#为什么要使用泛型？" class="headerlink" title="为什么要使用泛型？"></a>为什么要使用泛型？</h2><ul>
+<li>早期用Object来代替任意类型，但是这样做，有的时候就要进行向下强转，这样做不太安全。</li>
+<li>没有泛型的话，像<code>Collection</code>，<code>Map</code>这种不限制元素类型的集合，你可以往里面丟任何元素，并且不会报语法错误，但是集合不知道这个元素是什么类型的，默认都是<code>Object</code>类型，等你取出来的时候，就给你返<code>Object</code>类型的，可谓乱丢一时爽，<code>get</code>火葬场。</li>
+<li>有了泛型呢，就不用强制转换了，因为你在事先就规定好了，这个集合中装什么类型的元素，使代码更加简洁。程序也更加健壮（这才是猛男该做得事），因为只要编译没有警告，那么运行的时候就不会出现<code>ClassCastException</code>异常了。</li>
+</ul>
+<h2 id="使用泛型有什么好处？"><a href="#使用泛型有什么好处？" class="headerlink" title="使用泛型有什么好处？"></a>使用泛型有什么好处？</h2><ul>
+<li>上面通过对比已经看出，泛型有哪些好处，这里在总结一下。<br>①代码更简洁<br>②程序更健壮<br>③可读性和稳定性<br>④配合增强for循环遍历集合</li>
+</ul>
+<h2 id="怎么使用泛型？"><a href="#怎么使用泛型？" class="headerlink" title="怎么使用泛型？"></a>怎么使用泛型？</h2><h3 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h3><ul>
+<li>把泛型定义在类上，也可以定义在方法上，在使用该类或者方法的时候，才根据自己的需要，将类型明确下来。<strong>注意：</strong> <strong>类上声明的泛型，只对非静态成员有效。</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.定义</span><br><span class="line"><span class="comment">//把泛型定义在类上</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectTool</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> object;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">getObj</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> object;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setObj</span><span class="params">(T object)</span></span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.object=object;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>.使用</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main（String[] args）&#123;</span><br><span class="line">	<span class="comment">//创建对象，并指定其元素类型(这里是String型)</span></span><br><span class="line">	ObjectTool&lt;String&gt; tool1 = <span class="keyword">new</span> ObjectTool&lt;&gt;();</span><br><span class="line">	</span><br><span class="line">	tool1.setObj(<span class="keyword">new</span> String(<span class="string">"张三"</span>));</span><br><span class="line">	String s=tool.getObj();</span><br><span class="line">	System.Out.println(s);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//创建对象，并指定其元素类型(这里是Integer型)</span></span><br><span class="line">	ObjectTool&lt;Integer&gt; tool2 = <span class="keyword">new</span> ObjectTool&lt;&gt;();</span><br><span class="line">	</span><br><span class="line">	tool2.setObj(<span class="number">10</span>);</span><br><span class="line">	<span class="keyword">int</span> i=tool2.getObj();</span><br><span class="line">	System.Out.println(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h3><ul>
+<li>如果外界仅仅对一个方法感兴趣，而不关心类中的其他属性，那么将泛型定义在类上就有些小题大做，这里直接定义在方法上，精准打击！！</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.定义泛型方法</span><br><span class="line">	<span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">(T t)</span></span>&#123;</span><br><span class="line">	System.Out.println(t);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>.泛型方法的使用</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	<span class="comment">//创建对象</span></span><br><span class="line">	ObjectTool obj = <span class="keyword">new</span> ObjectTool();</span><br><span class="line"></span><br><span class="line">	<span class="comment">//调用方法，传进来什么类型，返回值就是什么类型</span></span><br><span class="line">	obj.show(<span class="string">"hello"</span>);</span><br><span class="line">	obj.show(<span class="number">4</span>);</span><br><span class="line">	obj.show(<span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="泛型类派生出的子类"><a href="#泛型类派生出的子类" class="headerlink" title="泛型类派生出的子类"></a>泛型类派生出的子类</h3><ul>
+<li>换上马甲他还是王八，虽然加了泛型，但说到底，他还是个类，既然是个类，那么他就可以被继承。然而泛型类的继承也分两种。</li>
+</ul>
+<p>①<strong>子类明确泛型类的类型参数变量(泛型接口)</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//把泛型定义在接口上</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Inter</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//子类明确泛型类的类型参数变量:</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InterImpl</span> <span class="keyword">implements</span> <span class="title">Inter</span>&lt;<span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>②<strong>子类不明确泛型类的类型参数变量</strong></p>
+<ul>
+<li>此时，外界使用子类的时候，也需要传递类型参数变量进来，在实现类上需要定义出类型参数变量。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现类要定义出&lt;T&gt;类型</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InterImpl</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Inter</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">        System.out.println(t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="类型通配符"><a href="#类型通配符" class="headerlink" title="类型通配符"></a>类型通配符</h3><ul>
+<li><strong>问题：</strong> 方法接收一个集合参数，遍历集合并把集合元素打印出来</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">普通解决办法：</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(List list)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;list.size();i++)&#123;</span><br><span class="line">        System.out.println(list.get(i));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">加类型通配符？</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(List&lt;?&gt; list)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;list.size();i++)&#123;</span><br><span class="line">        System.out.println(list.get(i));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>就加了一个问号？，能有什么作用<br>答案是：更优雅~</li>
+<li>还有一个问题是设置通配符上限和下限。这个问题很绕，搞不清楚，当然，大多时候，使用泛型方法来替代通配符，条条大路通罗马嘛。</li>
+<li><strong>注意：加了？就只能调用与对象无关的方法，不能调用对象与类型有关的方法。因为直到外界使用才知道具体的类型是什么。也就是说，在上面的List集合，是不能使用add()方法的。因为add()方法是把对象丢进集合中，而现在不知道对象的类型。</strong></li>
+</ul>
+<h3 id="泛型擦除"><a href="#泛型擦除" class="headerlink" title="泛型擦除"></a>泛型擦除</h3><ul>
+<li>因为泛型是提供给javac编译器使用的，它用于限定集合的输入类型，让编译器在源代码级别上，即<strong>挡住向集合中插入非法数据</strong>。但编译器编译完带有泛形的java程序后，生成的class文件中将不再带有泛形信息，以此使程序运行效率不受到影响，这个过程称之为“泛型擦除”。这一点应用在兼容老版本上，因为JDK1.5之前没有泛型，当把带有泛型特性的集合赋值给老版本的集合时候，就会把泛型擦除掉，amazing！</li>
+</ul>
+<h2 id="应用场景有哪些？"><a href="#应用场景有哪些？" class="headerlink" title="应用场景有哪些？"></a>应用场景有哪些？</h2><ul>
+<li><strong>场景一：</strong>最常用的还是应用于限制集合的参数类型。</li>
+<li><strong>场景二：</strong>项目中，每次都要写好几个DAO，会显得臃肿。</li>
+<li><strong>优化办法–抽象DAO：</strong> 在抽象DAO中，是不知道哪一个DAO会继承它，所以是不知道其具体的类型的。而泛型就是在创建的时候才指定其具体的类型。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">抽象DAO</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseDao</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Session session;</span><br><span class="line">    <span class="keyword">private</span> Class clazz;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//哪个子类调的这个方法，得到的class就是子类处理的类型（非常重要）</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BaseDao</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Class clazz = <span class="keyword">this</span>.getClass();  <span class="comment">//拿到的是子类</span></span><br><span class="line">        ParameterizedType  pt = (ParameterizedType) clazz.getGenericSuperclass(); </span><br><span class="line">         <span class="comment">//BaseDao&lt;Category&gt;</span></span><br><span class="line">        clazz = (Class) pt.getActualTypeArguments()[<span class="number">0</span>];</span><br><span class="line">        System.out.println(clazz);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(T t)</span></span>&#123;</span><br><span class="line">        session.save(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">find</span><span class="params">(String id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (T) session.get(clazz, id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(T t)</span></span>&#123;</span><br><span class="line">        session.update(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(String id)</span></span>&#123;</span><br><span class="line">        T t = (T) session.get(clazz, id);</span><br><span class="line">        session.delete(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">继承抽象DAO</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CategoryDao</span> <span class="keyword">extends</span> <span class="title">BaseDao</span>&lt;<span class="title">Category</span>&gt; </span>&#123;</span><br><span class="line">	将抽象DAO中的方法继承了下来</span><br><span class="line">	<span class="meta">@override</span></span><br><span class="line">	...</span><br><span class="line">	...</span><br><span class="line">	...</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookDao</span> <span class="keyword">extends</span> <span class="title">BaseDao</span>&lt;<span class="title">Book</span>&gt; </span>&#123;</span><br><span class="line">	<span class="meta">@override</span></span><br><span class="line">	...</span><br><span class="line">	...</span><br><span class="line">	...</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+       
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
+            
                 <a class="has-link-black-ter" href="/%E9%9B%86%E5%90%88/">JavaSE---集合</a>
             
         </h1>
@@ -361,7 +477,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            55
+                            56
                         </p>
                     </a>
                 </div>
@@ -547,7 +663,7 @@
                 <span class="level-item">JavaSE基础知识</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/git-github/">
