@@ -989,39 +989,6 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </tags>
   </entry>
   <entry>
-    <title>JavaSE---四种内部类</title>
-    <url>/517577219/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Java中，<strong>可以将一个类定义在另一个类里面或者一个方法里边</strong>，这样的类称为<strong>内部类</strong>，广泛意义上的内部类一般包括四种：成员内部类，局部内部类，匿名内部类，静态内部类 。</p>
-<a id="more"></a>
-
-<p> <strong>1. 成员内部类</strong><br>（1）该类像是外部类的一个成员，可以无条件的访问外部类的所有成员属性和成员方法（包括private成员和静态成员）；<br>（2）成员内部类拥有与外部类同名的成员变量时，会发生隐藏现象，即默认情况下访问的是成员内部类中的成员。如果要访问外部类中的成员，需要以下形式访问：【外部类.this.成员变量  或  外部类.this.成员方法】；<br>（3）在外部类中如果要访问成员内部类的成员，必须先创建一个成员内部类的对象，再通过指向这个对象的引用来访问；<br>（4）成员内部类是依附外部类而存在的，也就是说，如果要创建成员内部类的对象，前提是必须存在一个外部类的对象；<br>（5）内部类可以拥有private访问权限、protected访问权限、public访问权限及包访问权限。如果成员内部类用private修饰，则只能在外部类的内部访问；如果用public修饰，则任何地方都能访问；如果用protected修饰，则只能在同一个包下或者继承外部类的情况下访问；如果是默认访问权限，则只能在同一个包下访问。外部类只能被public和包访问两种权限修饰。</p>
-<p> <strong>2.  局部内部类</strong><br>（1）局部内部类是定义在一个方法或者一个作用域里面的类，它和成员内部类的区别在于局部内部类的访问仅限于方法内或者该作用域内；<br>（2）局部内部类就像是方法里面的一个局部变量一样，是不能有public、protected、private以及static修饰符的。</p>
-<p><strong>3.匿名内部类</strong><br>（1）一般使用匿名内部类的方法来编写事件监听代码；<br>（2）匿名内部类是不能有访问修饰符和static修饰符的；<br>（3）匿名内部类是唯一一种没有构造器的类；<br>（4）匿名内部类用于继承其他类或是实现接口，并不需要增加额外的方法，只是对继承方法的实现或是重写。</p>
-<p><strong>4.静态内部类</strong><br>（1）静态内部类是不需要依赖于外部类的，这点和类的静态成员属性有点类似；<br>（2）不能使用外部类的非static成员变量或者方法。</p>
-<h2 id="内部类的共性："><a href="#内部类的共性：" class="headerlink" title="内部类的共性："></a>内部类的共性：</h2><ul>
-<li>内部类仍然是一个独立的类，在编译之后内部类会被编译成独立的.class文件，但是前面冠以外部类的类名和$符号。</li>
-<li>内部类不能用普通的方式访问。</li>
-<li>内部类声明成静态的，就不能随便的访问外部类的成员变量了，此时内部类只能访问外部类的静态成员变量。</li>
-<li>外部类不能直接访问内部类的的成员，但可以通过内部类对象来访问。</li>
-</ul>
-<h2 id="内部类的作用："><a href="#内部类的作用：" class="headerlink" title="内部类的作用："></a>内部类的作用：</h2><ul>
-<li>内部类方法可以访问该类定义所在的作用域的数据，包括私有的数据。</li>
-<li>内部类可以对同一个包中的其他类隐藏起来,一般的非内部类，是不允许有 private 与protected权限的，但内部类可以。</li>
-<li>可以实现多重继承。</li>
-<li>当想要定义一个回调函数且不想编写大量代码时，使用匿名内部类比较便捷。</li>
-</ul>
-<h1 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h1><p><strong>每个内部类都能独立地继承自一个（接口的）实现，所以无论外围类是否已经继承了某个（接口的）实现，对于内部类都没有影响。大家都知道Java只能继承一个类，它的多重继承在我们没有学习内部类之前是用接口来实现的。但使用接口有时候有很多不方便的地方。比如我们实现一个接口就必须实现它里面的所有方法。而有了内部类就不一样了。它可以使我们的类继承多个具体类或抽象类。</strong></p>
-<h2 id="外部类："><a href="#外部类：" class="headerlink" title="外部类："></a>外部类：</h2><p>外部的类。定义一个类A，在A的内部再定义一个类B，则A就是外部类，B就是内部类。</p>
-<h2 id="内部类与外部类区别与联系"><a href="#内部类与外部类区别与联系" class="headerlink" title="内部类与外部类区别与联系"></a>内部类与外部类区别与联系</h2><p>内部类可以访问外部类所有的方法和属性，如果内部类和外部类有相同的成员方法和成员属性，内部类的成员方法调用要优先于外部类即内部类的优先级比较高（只限于类内部，在主方法内，内部类对象不能访问外部类的成员方法和成员属性），外部类只能访问内部类的静态常量或者通过创建内部类来访问内部类的成员属性和方法。</p>
-]]></content>
-      <categories>
-        <category>JavaSE基础知识</category>
-      </categories>
-      <tags>
-        <tag>JavaSE</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySql基础操作</title>
     <url>/81592902/</url>
     <content><![CDATA[<p>本文简单介绍了数据库，和一些基本操作。</p>
@@ -1160,6 +1127,39 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </categories>
       <tags>
         <tag>MySql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaSE---四种内部类</title>
+    <url>/517577219/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Java中，<strong>可以将一个类定义在另一个类里面或者一个方法里边</strong>，这样的类称为<strong>内部类</strong>，广泛意义上的内部类一般包括四种：成员内部类，局部内部类，匿名内部类，静态内部类 。</p>
+<a id="more"></a>
+
+<p> <strong>1. 成员内部类</strong><br>（1）该类像是外部类的一个成员，可以无条件的访问外部类的所有成员属性和成员方法（包括private成员和静态成员）；<br>（2）成员内部类拥有与外部类同名的成员变量时，会发生隐藏现象，即默认情况下访问的是成员内部类中的成员。如果要访问外部类中的成员，需要以下形式访问：【外部类.this.成员变量  或  外部类.this.成员方法】；<br>（3）在外部类中如果要访问成员内部类的成员，必须先创建一个成员内部类的对象，再通过指向这个对象的引用来访问；<br>（4）成员内部类是依附外部类而存在的，也就是说，如果要创建成员内部类的对象，前提是必须存在一个外部类的对象；<br>（5）内部类可以拥有private访问权限、protected访问权限、public访问权限及包访问权限。如果成员内部类用private修饰，则只能在外部类的内部访问；如果用public修饰，则任何地方都能访问；如果用protected修饰，则只能在同一个包下或者继承外部类的情况下访问；如果是默认访问权限，则只能在同一个包下访问。外部类只能被public和包访问两种权限修饰。</p>
+<p> <strong>2.  局部内部类</strong><br>（1）局部内部类是定义在一个方法或者一个作用域里面的类，它和成员内部类的区别在于局部内部类的访问仅限于方法内或者该作用域内；<br>（2）局部内部类就像是方法里面的一个局部变量一样，是不能有public、protected、private以及static修饰符的。</p>
+<p><strong>3.匿名内部类</strong><br>（1）一般使用匿名内部类的方法来编写事件监听代码；<br>（2）匿名内部类是不能有访问修饰符和static修饰符的；<br>（3）匿名内部类是唯一一种没有构造器的类；<br>（4）匿名内部类用于继承其他类或是实现接口，并不需要增加额外的方法，只是对继承方法的实现或是重写。</p>
+<p><strong>4.静态内部类</strong><br>（1）静态内部类是不需要依赖于外部类的，这点和类的静态成员属性有点类似；<br>（2）不能使用外部类的非static成员变量或者方法。</p>
+<h2 id="内部类的共性："><a href="#内部类的共性：" class="headerlink" title="内部类的共性："></a>内部类的共性：</h2><ul>
+<li>内部类仍然是一个独立的类，在编译之后内部类会被编译成独立的.class文件，但是前面冠以外部类的类名和$符号。</li>
+<li>内部类不能用普通的方式访问。</li>
+<li>内部类声明成静态的，就不能随便的访问外部类的成员变量了，此时内部类只能访问外部类的静态成员变量。</li>
+<li>外部类不能直接访问内部类的的成员，但可以通过内部类对象来访问。</li>
+</ul>
+<h2 id="内部类的作用："><a href="#内部类的作用：" class="headerlink" title="内部类的作用："></a>内部类的作用：</h2><ul>
+<li>内部类方法可以访问该类定义所在的作用域的数据，包括私有的数据。</li>
+<li>内部类可以对同一个包中的其他类隐藏起来,一般的非内部类，是不允许有 private 与protected权限的，但内部类可以。</li>
+<li>可以实现多重继承。</li>
+<li>当想要定义一个回调函数且不想编写大量代码时，使用匿名内部类比较便捷。</li>
+</ul>
+<h1 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h1><p><strong>每个内部类都能独立地继承自一个（接口的）实现，所以无论外围类是否已经继承了某个（接口的）实现，对于内部类都没有影响。大家都知道Java只能继承一个类，它的多重继承在我们没有学习内部类之前是用接口来实现的。但使用接口有时候有很多不方便的地方。比如我们实现一个接口就必须实现它里面的所有方法。而有了内部类就不一样了。它可以使我们的类继承多个具体类或抽象类。</strong></p>
+<h2 id="外部类："><a href="#外部类：" class="headerlink" title="外部类："></a>外部类：</h2><p>外部的类。定义一个类A，在A的内部再定义一个类B，则A就是外部类，B就是内部类。</p>
+<h2 id="内部类与外部类区别与联系"><a href="#内部类与外部类区别与联系" class="headerlink" title="内部类与外部类区别与联系"></a>内部类与外部类区别与联系</h2><p>内部类可以访问外部类所有的方法和属性，如果内部类和外部类有相同的成员方法和成员属性，内部类的成员方法调用要优先于外部类即内部类的优先级比较高（只限于类内部，在主方法内，内部类对象不能访问外部类的成员方法和成员属性），外部类只能访问内部类的静态常量或者通过创建内部类来访问内部类的成员属性和方法。</p>
+]]></content>
+      <categories>
+        <category>JavaSE基础知识</category>
+      </categories>
+      <tags>
+        <tag>JavaSE</tag>
       </tags>
   </entry>
   <entry>
@@ -1577,30 +1577,6 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </tags>
   </entry>
   <entry>
-    <title>MySql安装与卸载</title>
-    <url>/3168578773/</url>
-    <content><![CDATA[<p>MySql的卸载与安装</p>
-<a id="more"></a>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ul>
-<li>运行安装程序，在启动配置教程之前，一路下一步，没有下一步的话就直接<code>finish</code></li>
-<li>第一次<code>finish</code>之后启动服务器配置教程</li>
-<li>第一个注意：<code>include mysql bin directory to windows path</code></li>
-<li>第二个注意：端口号不要修改，字符集选择UTF-8</li>
-</ul>
-<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><ul>
-<li>打开控制面板，删除软件</li>
-<li>删除mysql安装目录的所有文件</li>
-<li>删除mysql数据存放文件，C盘下面的<code>Programe data</code>里，它是隐藏文件，要点击查看隐藏文件。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>MySql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Tomcat发布项目的三种方式</title>
     <url>/2665853047/</url>
     <content><![CDATA[<p>本文介绍Tomcat发布项目到服务器上的三种方式</p>
@@ -1649,6 +1625,30 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </tags>
   </entry>
   <entry>
+    <title>MySql安装与卸载</title>
+    <url>/3168578773/</url>
+    <content><![CDATA[<p>MySql的卸载与安装</p>
+<a id="more"></a>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ul>
+<li>运行安装程序，在启动配置教程之前，一路下一步，没有下一步的话就直接<code>finish</code></li>
+<li>第一次<code>finish</code>之后启动服务器配置教程</li>
+<li>第一个注意：<code>include mysql bin directory to windows path</code></li>
+<li>第二个注意：端口号不要修改，字符集选择UTF-8</li>
+</ul>
+<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><ul>
+<li>打开控制面板，删除软件</li>
+<li>删除mysql安装目录的所有文件</li>
+<li>删除mysql数据存放文件，C盘下面的<code>Programe data</code>里，它是隐藏文件，要点击查看隐藏文件。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>MySql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>github下载项目加速</title>
     <url>/3770390475/</url>
     <content><![CDATA[<p>在github上面找好的开源项目，想要clone到本地，自己调试运行一下，但是由于github的服务器在国外，所以下载速度真的是惊人的慢，有的时候2k/s，如果是一个小项目的话。那还好，等个两三分钟，但是项目大一点的，那就很鸡肋了，这里就介绍一个投机取巧的方法，来加速git clone</p>
@@ -1679,64 +1679,6 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </categories>
       <tags>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>linux启动过程和目录结构</title>
-    <url>/3247955720/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装好了linux系统之后，第一步当然要对linux有一个基本的了解，它有哪些特点，应用场景有哪些，为什么要用linux，了解了这些，然后在作具体深入的命令行操作。</p>
-<a id="more"></a>
-
-<h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><p><img src="https://img-blog.csdnimg.cn/20200401183454555.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><code>bin</code>：存放二进制可执行文件</li>
-<li><code>sbin</code>：存放二进制可执行文件，只有<code>root</code>才可以访问。</li>
-<li><code>etc</code>：存放系统配置文件</li>
-<li><code>usr</code>：用于存放共享的系统资源</li>
-<li><code>home</code>：存放用户文件的根目录</li>
-<li><code>root</code>：超级用户目录</li>
-<li><code>dev</code>：用于存放设备文件</li>
-<li><code>lib</code>：存放跟文件系统中的程序运行所需要的共享库以及内核模块</li>
-<li><code>mnt</code>：系统管理员安装临时文件的安装点</li>
-<li><code>boot</code>：存放用于系统引导时使用的各种文件</li>
-<li><code>tmp</code>：用于存放各种临时文件</li>
-<li><code>var</code>：用于存放运行时需要改变数据的文件</li>
-</ul>
-<h1 id="启动过程"><a href="#启动过程" class="headerlink" title="启动过程"></a>启动过程</h1><ol>
-<li>BIOS自检</li>
-<li>启动GRUB 2</li>
-<li>加载内核</li>
-<li>执行systemd进程</li>
-<li>初始化系统环境</li>
-</ol>
-<h1 id="linux和windows的区别？"><a href="#linux和windows的区别？" class="headerlink" title="linux和windows的区别？"></a>linux和windows的区别？</h1><p><strong>从使用情况来看：</strong></p>
-<ul>
-<li>windows比较倾向于给非专业办公人士用，图形化界面使办公更方便。linux面向开发人员。</li>
-<li>windows平台：数量和质量的优势，不过大部分为收费软件；由微软官方提供重要支持和服务 </li>
-<li>linux平台：大都为开源自由软件，用户可以修改定制和再发布，由于基本免费没有资金支持，部分软件质量和体验欠缺；有全球所有的Linux开发者和自由软件社区提供支持。</li>
-</ul>
-<p><strong>从安全性上来看：</strong></p>
-<ul>
-<li>Windows平台：三天两头打补丁安装系统安全更新，还是会中病毒木马什么的，各位用户自己感受。 </li>
-<li>Linux平台：要说linux没有安全问题，那当然是不可能的，不会中病毒什么的，也不可能，这一点仁者见仁智者见智，相对来说肯定比Windows平台要更加安全，使用linux你也不用装杀毒软件了。</li>
-</ul>
-<h1 id="linux的特点是什么？"><a href="#linux的特点是什么？" class="headerlink" title="linux的特点是什么？"></a>linux的特点是什么？</h1><ul>
-<li><strong>稳定的系统 ：</strong>安装Linux的主机连续运行一年以上不曾宕机、不必关机是很平常的事。</li>
-<li><strong>安全性和漏洞的快速修补 ：</strong>Linux是开发人员在使用，所以维护者众多，更新维护很快。</li>
-<li><strong>多任务，多用户 ：</strong>你可以在一个Linux主机上规划出不同等级的用户，而且每个用户登录系统时工作环境可以不同，还可以允许不同用户在同一时间登陆主机以使用主机的资源。</li>
-<li><strong>相对较少的系统资源占用 ：</strong>这是最吸引眼球的地方，目前市面上任何一款个人计算机都可以达到使用Linux搭建一个服务上百人以上的主机。</li>
-<li><strong>模块化程度高：</strong>Linux的内核设计非常精巧，分成进程调度、内存管理、进程间通信、虚拟文件系统和网络接口五大部分;其独特的模块机制可根据用户的需要，实时地将某些模块插入或从内核中移走，使得Linux系统内核可以裁剪得非常小巧，很适合于嵌入式系统的需要。</li>
-</ul>
-<h1 id="linux可以做什么？"><a href="#linux可以做什么？" class="headerlink" title="linux可以做什么？"></a>linux可以做什么？</h1><ul>
-<li>linux简直太适合不过做服务器了，百分之95的服务器都是基于linux平台的，我自己也有一台云服务器，搭载的就是centOS7系统，目前这个博客网站就是运行在这台云服务器上的，它可以保证一年不关机，不宕机。</li>
-<li>当然，除此之外，作为开发人员的开发工具也是很常见的。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>linux学习笔记</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1887,107 +1829,61 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </tags>
   </entry>
   <entry>
-    <title>XML学习</title>
-    <url>/4122240603/</url>
-    <content><![CDATA[<p><strong>XML:  extendsible  markup  labguage  可扩展的标记语言</strong></p>
+    <title>linux启动过程和目录结构</title>
+    <url>/3247955720/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装好了linux系统之后，第一步当然要对linux有一个基本的了解，它有哪些特点，应用场景有哪些，为什么要用linux，了解了这些，然后在作具体深入的命令行操作。</p>
 <a id="more"></a>
 
-<h2 id="一、XML的作用？"><a href="#一、XML的作用？" class="headerlink" title="一、XML的作用？"></a>一、XML的作用？</h2><ol>
-<li>可以用来保存数据（数据多的时候用数据库，少量时候用XML）</li>
-<li>可以用来做配置文件</li>
-<li>数据传输载体</li>
-</ol>
-<h2 id="二、XML文档结构-倒状树形结构"><a href="#二、XML文档结构-倒状树形结构" class="headerlink" title="二、XML文档结构_倒状树形结构"></a>二、XML文档结构_倒状树形结构</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;stus&gt;</span><br><span class="line">	&lt;stu&gt;</span><br><span class="line">		&lt;name&gt;daiaoqi&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;18&lt;/age&gt;</span><br><span class="line">		&lt;desc&gt;我要学编程&lt;/desc&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">	&lt;stu&gt;</span><br><span class="line">		&lt;name&gt;wt&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;20&lt;/age&gt;</span><br><span class="line">		&lt;desc&gt;我要找工作&lt;/desc&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">&lt;/stus&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、文档定义-amp-声明"><a href="#三、文档定义-amp-声明" class="headerlink" title="三、文档定义&amp;声明"></a>三、文档定义&amp;声明</h2><ul>
-<li>定义：其实就是一个文件，文件的后缀为 <strong>.xml</strong></li>
-<li>声明：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"gbk"</span> standalone=<span class="string">"no"</span> ?&gt;</span><br><span class="line">version : 解析这个xml的时候，使用什么版本的解析器解析</span><br><span class="line">encoding : 解析xml中的文字的时候，使用什么编码来翻译</span><br><span class="line">standalone  : no：该文档会依赖关联其他文档，yes：这是一个独立的文档</span><br></pre></td></tr></table></figure>
+<h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><p><img src="https://img-blog.csdnimg.cn/20200401183454555.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
-<li>encoding：默认文件保存的时候，使用的是GBK的编码保存。<br>要想让我们的xml能够正常的显示中文，有以下解决办法：<ol>
-<li>让encoding也是GBK 或者 gb2312 。</li>
-<li>如果encoding是 utf-8 ， 那么保存文件的时候也必须使用utf-8。</li>
-<li>保存的时候见到的ANSI 对应的其实是我们的本地编码 GBK。</li>
-<li>为了通用，建议使用UTF-8编码保存，以及encoding 都是 utf-8。</li>
+<li><code>bin</code>：存放二进制可执行文件</li>
+<li><code>sbin</code>：存放二进制可执行文件，只有<code>root</code>才可以访问。</li>
+<li><code>etc</code>：存放系统配置文件</li>
+<li><code>usr</code>：用于存放共享的系统资源</li>
+<li><code>home</code>：存放用户文件的根目录</li>
+<li><code>root</code>：超级用户目录</li>
+<li><code>dev</code>：用于存放设备文件</li>
+<li><code>lib</code>：存放跟文件系统中的程序运行所需要的共享库以及内核模块</li>
+<li><code>mnt</code>：系统管理员安装临时文件的安装点</li>
+<li><code>boot</code>：存放用于系统引导时使用的各种文件</li>
+<li><code>tmp</code>：用于存放各种临时文件</li>
+<li><code>var</code>：用于存放运行时需要改变数据的文件</li>
+</ul>
+<h1 id="启动过程"><a href="#启动过程" class="headerlink" title="启动过程"></a>启动过程</h1><ol>
+<li>BIOS自检</li>
+<li>启动GRUB 2</li>
+<li>加载内核</li>
+<li>执行systemd进程</li>
+<li>初始化系统环境</li>
 </ol>
-</li>
-</ul>
-<h2 id="四、元素定义"><a href="#四、元素定义" class="headerlink" title="四、元素定义"></a>四、元素定义</h2><p>1.其实就是里面的标签， &lt;&gt; 括起来的都叫元素 。 成对出现。  如下： </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;stu&gt; &lt;/stu&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.文档声明下来的第一个元素叫做根元素 (根标签)<br>3.标签里面可以嵌套标签<br>4.空标签：既是开始也是结束， 一般配合属性来用。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;age/&gt;</span><br><span class="line">		&lt;stu&gt;</span><br><span class="line">			&lt;name&gt;张三&lt;/name&gt;</span><br><span class="line">			&lt;age/&gt;</span><br><span class="line">		&lt;/stu&gt;</span><br></pre></td></tr></table></figure>
-<p>5.标签可以自定义。<br>XML 元素必须遵循以下命名规则：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.名称可以含字母、数字以及其他的字符 </span><br><span class="line">2.名称不能以数字或者标点符号开始 </span><br><span class="line">3.名称不能以字符 “xml”（或者 XML、Xml）开始 </span><br><span class="line">4.名称不能包含空格 </span><br><span class="line">5.命名尽量简单，做到见名知义</span><br></pre></td></tr></table></figure>
-
-<h2 id="五、元素定义"><a href="#五、元素定义" class="headerlink" title="五、元素定义"></a>五、元素定义</h2><ul>
-<li>简单元素：元素里面包含了普通的文字</li>
-<li>复杂元素：元素里面还可以嵌套其他的元素</li>
-</ul>
-<h2 id="六、属性定义"><a href="#六、属性定义" class="headerlink" title="六、属性定义"></a>六、属性定义</h2><ul>
-<li>定义在元素里面， &lt;元素名称  属性名称=”属性的值”&gt;&lt;/元素名称&gt;</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;stus&gt;</span><br><span class="line">	&lt;stu id=<span class="string">"10086"</span>&gt;</span><br><span class="line">		&lt;name&gt;张三&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;18&lt;/age&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">	&lt;stu id=<span class="string">"10087"</span>&gt;</span><br><span class="line">		&lt;name&gt;李四&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;28&lt;/age&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">&lt;/stus&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="七、xml注释"><a href="#七、xml注释" class="headerlink" title="七、xml注释"></a>七、xml注释</h2><p>与html的注释一样。 xml的注释，不允许放置在文档的第一行。 必须在文档声明的下面。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!-- --&gt; </span><br><span class="line">	如： </span><br><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">	&lt;!-- </span><br><span class="line">		//这里有两个学生</span><br><span class="line">		//一个学生，名字叫张三， 年龄18岁， 学号：10086</span><br><span class="line">		//另外一个学生叫李四  。。。</span><br><span class="line">	--&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="八、CDATA区"><a href="#八、CDATA区" class="headerlink" title="八、CDATA区"></a>八、CDATA区</h2><ul>
-<li>所有 XML 文档中的文本均会被解析器解析，只有 CDATA 区段（CDATA section）中的文本会被解析器忽略。<br>在 XML 元素中，”&lt;” 和 “&amp;” 是非法的。”&lt;” 会产生错误，因为解析器会把该字符解释为新元素的开始，”&amp;” 也会产生错误，因为解析器会把该字符解释为字符实体的开始。<br>在html中，某些文本，比如 JavaScript 代码，包含大量 “&lt;” 或 “&amp;” 字符。为了避免错误，可以将脚本代码定义为 CDATA。</li>
-<li>一般在数据传输的时候会出现，比如说服务器给客户端传数据。</li>
-<li>严格地讲，在 XML 中仅有字符 “&lt;”和”&amp;” 是非法的。省略号、引号和大于号是合法的，但是把它们替换为实体引用是个好的习惯。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;   &amp;lt;</span><br><span class="line">&amp;   &amp;amp;</span><br></pre></td></tr></table></figure>
+<h1 id="linux和windows的区别？"><a href="#linux和windows的区别？" class="headerlink" title="linux和windows的区别？"></a>linux和windows的区别？</h1><p><strong>从使用情况来看：</strong></p>
 <ul>
-<li>CDATA区写法</li>
+<li>windows比较倾向于给非专业办公人士用，图形化界面使办公更方便。linux面向开发人员。</li>
+<li>windows平台：数量和质量的优势，不过大部分为收费软件；由微软官方提供重要支持和服务 </li>
+<li>linux平台：大都为开源自由软件，用户可以修改定制和再发布，由于基本免费没有资金支持，部分软件质量和体验欠缺；有全球所有的Linux开发者和自由软件社区提供支持。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">CDATA区 开始于 <span class="string">"&lt;![CDATA["</span></span><br><span class="line">        结束于 <span class="string">"]]&gt;"</span></span><br><span class="line">    如：</span><br><span class="line">&lt;des&gt;&lt;![CDATA[&lt;a href=<span class="string">"http://www.baidu.com"</span>&gt;我要学编程&lt;/a&gt;]]&gt;&lt;/des&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="九、XML解析"><a href="#九、XML解析" class="headerlink" title="九、XML解析"></a>九、XML解析</h2><ul>
-<li>其实就是获取元素里面的字符数据或者属性数据。</li>
-<li>XML解析方式(<strong>面试常问</strong>)有很多种，常用的有两种（DOM和SAX）。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200224114632758.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>从安全性上来看：</strong></p>
 <ul>
-<li>针对以上两种解析方式，给出的解决方案有哪些？</li>
+<li>Windows平台：三天两头打补丁安装系统安全更新，还是会中病毒木马什么的，各位用户自己感受。 </li>
+<li>Linux平台：要说linux没有安全问题，那当然是不可能的，不会中病毒什么的，也不可能，这一点仁者见仁智者见智，相对来说肯定比Windows平台要更加安全，使用linux你也不用装杀毒软件了。</li>
 </ul>
-<ol>
-<li>jaxp  sun公司自带的， 比较繁琐</li>
-<li>jdom        </li>
-<li>dom4j  （常用）使用比较广泛<br>补充：jdom和dom4j的故事：刚开始都是一伙人做的，后来产生了分歧，另外一批人就做了dom4j，把jdom挤下去了。</li>
-</ol>
-<h2 id="十、Dom4j-基本用法"><a href="#十、Dom4j-基本用法" class="headerlink" title="十、Dom4j 基本用法"></a>十、Dom4j 基本用法</h2><p><img src="https://img-blog.csdnimg.cn/20200224140840458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">element.element(<span class="string">"stu"</span>) : 返回该元素下的第一个stu元素</span><br><span class="line">element.elements(); 返回该元素下的所有子元素。</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>创建SaxReader对象</li>
-<li>指定解析的xml</li>
-<li>获取根元素。</li>
-<li>根据根元素获取子元素或者下面的子孙元素</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">javapackage com.daq.test;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> org.dom4j.Document;</span><br><span class="line"><span class="keyword">import</span> org.dom4j.Element;</span><br><span class="line"><span class="keyword">import</span> org.dom4j.io.SAXReader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainTest</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//1.创建sax读取对象</span></span><br><span class="line">			SAXReader reader = <span class="keyword">new</span> SAXReader();<span class="comment">//jdbc--classloader</span></span><br><span class="line">			<span class="comment">//2.指定解析的xml源</span></span><br><span class="line">			Document document=reader.read(<span class="keyword">new</span> File(<span class="string">"src/xml/stus.xml"</span>));</span><br><span class="line">			<span class="comment">//3.得到元素</span></span><br><span class="line">			<span class="comment">//得到根元素</span></span><br><span class="line">			Element rootElement=document.getRootElement();</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//4.获取根元素下面的子元素age</span></span><br><span class="line"><span class="comment">//			rootElement.element("age");</span></span><br><span class="line"><span class="comment">//			System.out.println(rootElement.element("stu").element("age").getStringValue());</span></span><br><span class="line">			</span><br><span class="line">			List&lt;Element&gt; elements=rootElement.elements();</span><br><span class="line">			<span class="comment">//遍历所有的stu元素</span></span><br><span class="line">			<span class="keyword">for</span> (Element element : elements) &#123;</span><br><span class="line">				<span class="comment">//获取stu下面的name元素</span></span><br><span class="line">				String name=element.element(<span class="string">"name"</span>).getText();</span><br><span class="line">				String age=element.element(<span class="string">"age"</span>).getText();</span><br><span class="line">				String adress=element.element(<span class="string">"adress"</span>).getText();</span><br><span class="line">				System.out.println(<span class="string">"name="</span>+name+<span class="string">"age="</span>+age+<span class="string">"adress="</span>+adress);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="十一、Dom4j-的-Xpath使用"><a href="#十一、Dom4j-的-Xpath使用" class="headerlink" title="十一、Dom4j 的 Xpath使用"></a>十一、Dom4j 的 Xpath使用</h2><ul>
-<li>dom4j里面支持Xpath的写法。 xpath其实是<strong>xml的路径语言</strong>，支持我们在解析xml的时候，能够快速的定位到具体的某一个元素。<ol>
-<li>添加jar包依赖 ：jaxen-1.1-beta-6.jar</li>
-<li>在查找指定节点的时候，根据XPath语法规则来查找</li>
-<li>后续的代码与以前的解析代码一样。</li>
-</ol>
-</li>
+<h1 id="linux的特点是什么？"><a href="#linux的特点是什么？" class="headerlink" title="linux的特点是什么？"></a>linux的特点是什么？</h1><ul>
+<li><strong>稳定的系统 ：</strong>安装Linux的主机连续运行一年以上不曾宕机、不必关机是很平常的事。</li>
+<li><strong>安全性和漏洞的快速修补 ：</strong>Linux是开发人员在使用，所以维护者众多，更新维护很快。</li>
+<li><strong>多任务，多用户 ：</strong>你可以在一个Linux主机上规划出不同等级的用户，而且每个用户登录系统时工作环境可以不同，还可以允许不同用户在同一时间登陆主机以使用主机的资源。</li>
+<li><strong>相对较少的系统资源占用 ：</strong>这是最吸引眼球的地方，目前市面上任何一款个人计算机都可以达到使用Linux搭建一个服务上百人以上的主机。</li>
+<li><strong>模块化程度高：</strong>Linux的内核设计非常精巧，分成进程调度、内存管理、进程间通信、虚拟文件系统和网络接口五大部分;其独特的模块机制可根据用户的需要，实时地将某些模块插入或从内核中移走，使得Linux系统内核可以裁剪得非常小巧，很适合于嵌入式系统的需要。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//要想使用Xpath， 还得添加支持的jar 获取的是第一个 只返回一个。 </span></span><br><span class="line">Element nameElement = (Element) rootElement.selectSingleNode(<span class="string">"//name"</span>);</span><br><span class="line">	System.out.println(nameElement.getText());</span><br><span class="line"></span><br><span class="line">	System.out.println(<span class="string">"----------------"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//获取文档里面的所有name元素 </span></span><br><span class="line">	List&lt;Element&gt; list = rootElement.selectNodes(<span class="string">"//name"</span>);</span><br><span class="line">	<span class="keyword">for</span> (Element element : list) &#123;</span><br><span class="line">		System.out.println(element.getText());</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="十二、XML-约束（了解即可）"><a href="#十二、XML-约束（了解即可）" class="headerlink" title="十二、XML 约束（了解即可）"></a>十二、XML 约束（了解即可）</h2><p>如下的文档， 属性的ID值是一样的。 这在生活中是不可能出现的。 并且第二个学生的姓名有好几个。 一般也很少。那么怎么规定ID的值唯一， 或者是元素只能出现一次，不能出现多次？ 甚至是规定里面只能出现具体的元素名字。 </p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;stus&gt;</span><br><span class="line">	&lt;stu id=<span class="string">"10086"</span>&gt;</span><br><span class="line">		&lt;name&gt;张三&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;18&lt;/age&gt;</span><br><span class="line">		&lt;address&gt;深圳&lt;/address&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">	&lt;stu id=<span class="string">"10086"</span>&gt;</span><br><span class="line">		&lt;name&gt;李四&lt;/name&gt;</span><br><span class="line">		&lt;name&gt;李五&lt;/name&gt;</span><br><span class="line">		&lt;name&gt;李六&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;28&lt;/age&gt;</span><br><span class="line">		&lt;address&gt;北京&lt;/address&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">&lt;/stus&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>约束：</strong></p>
-<ul>
-<li>DTD：语法自成一派， 早前就出现的。 可读性比较差。 </li>
-<li>Schema：其实就是一个xml ， 使用xml的语法规则， xml解析器解析起来比较方便 ， 是为了替代DTD 。但是Schema 约束文本内容比DTD的内容还要多。 所以目前也没有真正意义上的替代DTD</li>
+<h1 id="linux可以做什么？"><a href="#linux可以做什么？" class="headerlink" title="linux可以做什么？"></a>linux可以做什么？</h1><ul>
+<li>linux简直太适合不过做服务器了，百分之95的服务器都是基于linux平台的，我自己也有一台云服务器，搭载的就是centOS7系统，目前这个博客网站就是运行在这台云服务器上的，它可以保证一年不关机，不宕机。</li>
+<li>当然，除此之外，作为开发人员的开发工具也是很常见的。</li>
 </ul>
 ]]></content>
       <categories>
-        <category>Java Web</category>
+        <category>linux学习笔记</category>
       </categories>
       <tags>
-        <tag>XML</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -2144,6 +2040,110 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </tags>
   </entry>
   <entry>
+    <title>XML学习</title>
+    <url>/4122240603/</url>
+    <content><![CDATA[<p><strong>XML:  extendsible  markup  labguage  可扩展的标记语言</strong></p>
+<a id="more"></a>
+
+<h2 id="一、XML的作用？"><a href="#一、XML的作用？" class="headerlink" title="一、XML的作用？"></a>一、XML的作用？</h2><ol>
+<li>可以用来保存数据（数据多的时候用数据库，少量时候用XML）</li>
+<li>可以用来做配置文件</li>
+<li>数据传输载体</li>
+</ol>
+<h2 id="二、XML文档结构-倒状树形结构"><a href="#二、XML文档结构-倒状树形结构" class="headerlink" title="二、XML文档结构_倒状树形结构"></a>二、XML文档结构_倒状树形结构</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;stus&gt;</span><br><span class="line">	&lt;stu&gt;</span><br><span class="line">		&lt;name&gt;daiaoqi&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;18&lt;/age&gt;</span><br><span class="line">		&lt;desc&gt;我要学编程&lt;/desc&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">	&lt;stu&gt;</span><br><span class="line">		&lt;name&gt;wt&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;20&lt;/age&gt;</span><br><span class="line">		&lt;desc&gt;我要找工作&lt;/desc&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">&lt;/stus&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、文档定义-amp-声明"><a href="#三、文档定义-amp-声明" class="headerlink" title="三、文档定义&amp;声明"></a>三、文档定义&amp;声明</h2><ul>
+<li>定义：其实就是一个文件，文件的后缀为 <strong>.xml</strong></li>
+<li>声明：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"gbk"</span> standalone=<span class="string">"no"</span> ?&gt;</span><br><span class="line">version : 解析这个xml的时候，使用什么版本的解析器解析</span><br><span class="line">encoding : 解析xml中的文字的时候，使用什么编码来翻译</span><br><span class="line">standalone  : no：该文档会依赖关联其他文档，yes：这是一个独立的文档</span><br></pre></td></tr></table></figure>
+<ul>
+<li>encoding：默认文件保存的时候，使用的是GBK的编码保存。<br>要想让我们的xml能够正常的显示中文，有以下解决办法：<ol>
+<li>让encoding也是GBK 或者 gb2312 。</li>
+<li>如果encoding是 utf-8 ， 那么保存文件的时候也必须使用utf-8。</li>
+<li>保存的时候见到的ANSI 对应的其实是我们的本地编码 GBK。</li>
+<li>为了通用，建议使用UTF-8编码保存，以及encoding 都是 utf-8。</li>
+</ol>
+</li>
+</ul>
+<h2 id="四、元素定义"><a href="#四、元素定义" class="headerlink" title="四、元素定义"></a>四、元素定义</h2><p>1.其实就是里面的标签， &lt;&gt; 括起来的都叫元素 。 成对出现。  如下： </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;stu&gt; &lt;/stu&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.文档声明下来的第一个元素叫做根元素 (根标签)<br>3.标签里面可以嵌套标签<br>4.空标签：既是开始也是结束， 一般配合属性来用。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;age/&gt;</span><br><span class="line">		&lt;stu&gt;</span><br><span class="line">			&lt;name&gt;张三&lt;/name&gt;</span><br><span class="line">			&lt;age/&gt;</span><br><span class="line">		&lt;/stu&gt;</span><br></pre></td></tr></table></figure>
+<p>5.标签可以自定义。<br>XML 元素必须遵循以下命名规则：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.名称可以含字母、数字以及其他的字符 </span><br><span class="line">2.名称不能以数字或者标点符号开始 </span><br><span class="line">3.名称不能以字符 “xml”（或者 XML、Xml）开始 </span><br><span class="line">4.名称不能包含空格 </span><br><span class="line">5.命名尽量简单，做到见名知义</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、元素定义"><a href="#五、元素定义" class="headerlink" title="五、元素定义"></a>五、元素定义</h2><ul>
+<li>简单元素：元素里面包含了普通的文字</li>
+<li>复杂元素：元素里面还可以嵌套其他的元素</li>
+</ul>
+<h2 id="六、属性定义"><a href="#六、属性定义" class="headerlink" title="六、属性定义"></a>六、属性定义</h2><ul>
+<li>定义在元素里面， &lt;元素名称  属性名称=”属性的值”&gt;&lt;/元素名称&gt;</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;stus&gt;</span><br><span class="line">	&lt;stu id=<span class="string">"10086"</span>&gt;</span><br><span class="line">		&lt;name&gt;张三&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;18&lt;/age&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">	&lt;stu id=<span class="string">"10087"</span>&gt;</span><br><span class="line">		&lt;name&gt;李四&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;28&lt;/age&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">&lt;/stus&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="七、xml注释"><a href="#七、xml注释" class="headerlink" title="七、xml注释"></a>七、xml注释</h2><p>与html的注释一样。 xml的注释，不允许放置在文档的第一行。 必须在文档声明的下面。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!-- --&gt; </span><br><span class="line">	如： </span><br><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">	&lt;!-- </span><br><span class="line">		//这里有两个学生</span><br><span class="line">		//一个学生，名字叫张三， 年龄18岁， 学号：10086</span><br><span class="line">		//另外一个学生叫李四  。。。</span><br><span class="line">	--&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="八、CDATA区"><a href="#八、CDATA区" class="headerlink" title="八、CDATA区"></a>八、CDATA区</h2><ul>
+<li>所有 XML 文档中的文本均会被解析器解析，只有 CDATA 区段（CDATA section）中的文本会被解析器忽略。<br>在 XML 元素中，”&lt;” 和 “&amp;” 是非法的。”&lt;” 会产生错误，因为解析器会把该字符解释为新元素的开始，”&amp;” 也会产生错误，因为解析器会把该字符解释为字符实体的开始。<br>在html中，某些文本，比如 JavaScript 代码，包含大量 “&lt;” 或 “&amp;” 字符。为了避免错误，可以将脚本代码定义为 CDATA。</li>
+<li>一般在数据传输的时候会出现，比如说服务器给客户端传数据。</li>
+<li>严格地讲，在 XML 中仅有字符 “&lt;”和”&amp;” 是非法的。省略号、引号和大于号是合法的，但是把它们替换为实体引用是个好的习惯。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;   &amp;lt;</span><br><span class="line">&amp;   &amp;amp;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>CDATA区写法</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">CDATA区 开始于 <span class="string">"&lt;![CDATA["</span></span><br><span class="line">        结束于 <span class="string">"]]&gt;"</span></span><br><span class="line">    如：</span><br><span class="line">&lt;des&gt;&lt;![CDATA[&lt;a href=<span class="string">"http://www.baidu.com"</span>&gt;我要学编程&lt;/a&gt;]]&gt;&lt;/des&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="九、XML解析"><a href="#九、XML解析" class="headerlink" title="九、XML解析"></a>九、XML解析</h2><ul>
+<li>其实就是获取元素里面的字符数据或者属性数据。</li>
+<li>XML解析方式(<strong>面试常问</strong>)有很多种，常用的有两种（DOM和SAX）。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200224114632758.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>针对以上两种解析方式，给出的解决方案有哪些？</li>
+</ul>
+<ol>
+<li>jaxp  sun公司自带的， 比较繁琐</li>
+<li>jdom        </li>
+<li>dom4j  （常用）使用比较广泛<br>补充：jdom和dom4j的故事：刚开始都是一伙人做的，后来产生了分歧，另外一批人就做了dom4j，把jdom挤下去了。</li>
+</ol>
+<h2 id="十、Dom4j-基本用法"><a href="#十、Dom4j-基本用法" class="headerlink" title="十、Dom4j 基本用法"></a>十、Dom4j 基本用法</h2><p><img src="https://img-blog.csdnimg.cn/20200224140840458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">element.element(<span class="string">"stu"</span>) : 返回该元素下的第一个stu元素</span><br><span class="line">element.elements(); 返回该元素下的所有子元素。</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>创建SaxReader对象</li>
+<li>指定解析的xml</li>
+<li>获取根元素。</li>
+<li>根据根元素获取子元素或者下面的子孙元素</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">javapackage com.daq.test;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> org.dom4j.Document;</span><br><span class="line"><span class="keyword">import</span> org.dom4j.Element;</span><br><span class="line"><span class="keyword">import</span> org.dom4j.io.SAXReader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainTest</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//1.创建sax读取对象</span></span><br><span class="line">			SAXReader reader = <span class="keyword">new</span> SAXReader();<span class="comment">//jdbc--classloader</span></span><br><span class="line">			<span class="comment">//2.指定解析的xml源</span></span><br><span class="line">			Document document=reader.read(<span class="keyword">new</span> File(<span class="string">"src/xml/stus.xml"</span>));</span><br><span class="line">			<span class="comment">//3.得到元素</span></span><br><span class="line">			<span class="comment">//得到根元素</span></span><br><span class="line">			Element rootElement=document.getRootElement();</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//4.获取根元素下面的子元素age</span></span><br><span class="line"><span class="comment">//			rootElement.element("age");</span></span><br><span class="line"><span class="comment">//			System.out.println(rootElement.element("stu").element("age").getStringValue());</span></span><br><span class="line">			</span><br><span class="line">			List&lt;Element&gt; elements=rootElement.elements();</span><br><span class="line">			<span class="comment">//遍历所有的stu元素</span></span><br><span class="line">			<span class="keyword">for</span> (Element element : elements) &#123;</span><br><span class="line">				<span class="comment">//获取stu下面的name元素</span></span><br><span class="line">				String name=element.element(<span class="string">"name"</span>).getText();</span><br><span class="line">				String age=element.element(<span class="string">"age"</span>).getText();</span><br><span class="line">				String adress=element.element(<span class="string">"adress"</span>).getText();</span><br><span class="line">				System.out.println(<span class="string">"name="</span>+name+<span class="string">"age="</span>+age+<span class="string">"adress="</span>+adress);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="十一、Dom4j-的-Xpath使用"><a href="#十一、Dom4j-的-Xpath使用" class="headerlink" title="十一、Dom4j 的 Xpath使用"></a>十一、Dom4j 的 Xpath使用</h2><ul>
+<li>dom4j里面支持Xpath的写法。 xpath其实是<strong>xml的路径语言</strong>，支持我们在解析xml的时候，能够快速的定位到具体的某一个元素。<ol>
+<li>添加jar包依赖 ：jaxen-1.1-beta-6.jar</li>
+<li>在查找指定节点的时候，根据XPath语法规则来查找</li>
+<li>后续的代码与以前的解析代码一样。</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//要想使用Xpath， 还得添加支持的jar 获取的是第一个 只返回一个。 </span></span><br><span class="line">Element nameElement = (Element) rootElement.selectSingleNode(<span class="string">"//name"</span>);</span><br><span class="line">	System.out.println(nameElement.getText());</span><br><span class="line"></span><br><span class="line">	System.out.println(<span class="string">"----------------"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//获取文档里面的所有name元素 </span></span><br><span class="line">	List&lt;Element&gt; list = rootElement.selectNodes(<span class="string">"//name"</span>);</span><br><span class="line">	<span class="keyword">for</span> (Element element : list) &#123;</span><br><span class="line">		System.out.println(element.getText());</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="十二、XML-约束（了解即可）"><a href="#十二、XML-约束（了解即可）" class="headerlink" title="十二、XML 约束（了解即可）"></a>十二、XML 约束（了解即可）</h2><p>如下的文档， 属性的ID值是一样的。 这在生活中是不可能出现的。 并且第二个学生的姓名有好几个。 一般也很少。那么怎么规定ID的值唯一， 或者是元素只能出现一次，不能出现多次？ 甚至是规定里面只能出现具体的元素名字。 </p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;stus&gt;</span><br><span class="line">	&lt;stu id=<span class="string">"10086"</span>&gt;</span><br><span class="line">		&lt;name&gt;张三&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;18&lt;/age&gt;</span><br><span class="line">		&lt;address&gt;深圳&lt;/address&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">	&lt;stu id=<span class="string">"10086"</span>&gt;</span><br><span class="line">		&lt;name&gt;李四&lt;/name&gt;</span><br><span class="line">		&lt;name&gt;李五&lt;/name&gt;</span><br><span class="line">		&lt;name&gt;李六&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;28&lt;/age&gt;</span><br><span class="line">		&lt;address&gt;北京&lt;/address&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">&lt;/stus&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>约束：</strong></p>
+<ul>
+<li>DTD：语法自成一派， 早前就出现的。 可读性比较差。 </li>
+<li>Schema：其实就是一个xml ， 使用xml的语法规则， xml解析器解析起来比较方便 ， 是为了替代DTD 。但是Schema 约束文本内容比DTD的内容还要多。 所以目前也没有真正意义上的替代DTD</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>XML</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySql多表操作</title>
     <url>/1663071716/</url>
     <content><![CDATA[<p><strong>问：</strong> 分类表和商品表之间是不是有关系? 如果有关系,在数据库中如何表示这种关系？</p>
@@ -2280,37 +2280,6 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </categories>
       <tags>
         <tag>Servlet</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>了解操作系统</title>
-    <url>/1988581478/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计算机三件套之一：计算机操作系统，我刚开始看学校发的教材的时候，根本看不进去，一是知识太过于理论化，而且关于底层的东西，动手实践起来真的很难。但是一些简单的东西还是要了解一下的。其实在我看来，没有太大追求的话，就了解一些基本的就可以了，操作系统就那点儿东西：CPU调度，死锁，中断机制，进程管理，内存管理，文件系统，虚拟内存，就没了<del>~</del></p>
-<a id="more"></a>
-<h1 id="操作系统有哪些？"><a href="#操作系统有哪些？" class="headerlink" title="操作系统有哪些？"></a>操作系统有哪些？</h1><h2 id="1-简单的批处理操作系统"><a href="#1-简单的批处理操作系统" class="headerlink" title="1.简单的批处理操作系统"></a>1.简单的批处理操作系统</h2><p>一批一批处理任务的系统，用户将一批作业提交给操作系统后便不再干预，由操作系统控制它们自动运行。用户一次可以提交多个作业，但系统一次只处理一个作业，处理完一个作业后，再调入下一个作业进行处理。这些调度、切换系统自动完成。</p>
-<h2 id="2-多道程序批处理操作系统"><a href="#2-多道程序批处理操作系统" class="headerlink" title="2.多道程序批处理操作系统"></a>2.多道程序批处理操作系统</h2><p>简单批处理系统一次只能处理一个作业，系统资源的利用率就不高，因此出现<strong>多道程序</strong>批处理系统。把同一个批次的作业调入内存，存放在内存的不同部分，当一个作业由于等待输入输出操作而让<strong>处理机</strong>出现空闲，系统自动进行切换，处理另一个作用，这就是多道程序批处理系统。相对简单批处理系统，由于充分利用了处理机的空闲时间，因此多道程序批处理系统的<strong>资源利用效率</strong>要高。</p>
-<h2 id="3-分时操作系统"><a href="#3-分时操作系统" class="headerlink" title="3.分时操作系统"></a>3.分时操作系统</h2><p>分时操作系统：“分时”的含义是指多个用户使用同一台计算机，多个程序分时（分时间片）共享硬件和软件资源。分时操作系统是指在一台主机上连接多个带有显示器和键盘的终端，同时允许多个用户通过主机的终端，以<strong>交互</strong>方式使用计算机，共享主机中的资源。分时操作系统将CPU的时间划分成若干个片段，称为<strong>时间片</strong>，操作系统以时间片为单位，轮流为每个终端用户服务 。</p>
-<ul>
-<li>总结：一个作业只能在<strong>一个</strong>时间片的时间内使用CPU,时间到时，系统将剥夺作业CPU的使用权，然后根据一定的算法将CPU分配给其他作业使用。</li>
-</ul>
-<h2 id="4-实时操作系统"><a href="#4-实时操作系统" class="headerlink" title="4.实时操作系统"></a>4.实时操作系统</h2><p>指当外界事件或数据产生时，能够接受并以足够快的速度予以处理，其处理的结果又能在规定的时间之内来控制生产过程或对处理系统作出快速响应，并控制所有实时任务协调一致运行的操作系统。</p>
-<h2 id="5-网络操作系统"><a href="#5-网络操作系统" class="headerlink" title="5.网络操作系统"></a>5.网络操作系统</h2><p>指的是一台计算机通过一个<strong>网络接口控制器</strong>(网卡)连接到网络上，可以进行网络通信功能，网络资源的管理和使用。根据使用环境的不同，操作系统又可以分为<strong>服务器操作系统</strong>、<strong>桌面操作系统</strong>、<strong>嵌入式操作系统</strong>等</p>
-<h1 id="操作系统的发展"><a href="#操作系统的发展" class="headerlink" title="操作系统的发展"></a>操作系统的发展</h1><h2 id="一、手工操作"><a href="#一、手工操作" class="headerlink" title="一、手工操作"></a>一、手工操作</h2><p><img src="https://img-blog.csdnimg.cn/20200312165529351.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="二、单道批处理"><a href="#二、单道批处理" class="headerlink" title="二、单道批处理"></a>二、单道批处理</h2><p><img src="https://img-blog.csdnimg.cn/20200312165540713.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200312165607449.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="三、多道批处理操作系统"><a href="#三、多道批处理操作系统" class="headerlink" title="三、多道批处理操作系统"></a>三、多道批处理操作系统</h2><p><img src="https://img-blog.csdnimg.cn/20200312165604663.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200312165623503.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200312165626625.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200312173008164.png" alt="在这里插入图片描述"></p>
-<h2 id="四、分时操作系统"><a href="#四、分时操作系统" class="headerlink" title="四、分时操作系统"></a>四、分时操作系统</h2><p><img src="https://img-blog.csdnimg.cn/20200312173731270.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200312173737316.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200312173740994.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>计算机操作系统</category>
-      </categories>
-      <tags>
-        <tag>OS</tag>
       </tags>
   </entry>
   <entry>
@@ -2486,6 +2455,37 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </tags>
   </entry>
   <entry>
+    <title>了解操作系统</title>
+    <url>/1988581478/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计算机三件套之一：计算机操作系统，我刚开始看学校发的教材的时候，根本看不进去，一是知识太过于理论化，而且关于底层的东西，动手实践起来真的很难。但是一些简单的东西还是要了解一下的。其实在我看来，没有太大追求的话，就了解一些基本的就可以了，操作系统就那点儿东西：CPU调度，死锁，中断机制，进程管理，内存管理，文件系统，虚拟内存，就没了<del>~</del></p>
+<a id="more"></a>
+<h1 id="操作系统有哪些？"><a href="#操作系统有哪些？" class="headerlink" title="操作系统有哪些？"></a>操作系统有哪些？</h1><h2 id="1-简单的批处理操作系统"><a href="#1-简单的批处理操作系统" class="headerlink" title="1.简单的批处理操作系统"></a>1.简单的批处理操作系统</h2><p>一批一批处理任务的系统，用户将一批作业提交给操作系统后便不再干预，由操作系统控制它们自动运行。用户一次可以提交多个作业，但系统一次只处理一个作业，处理完一个作业后，再调入下一个作业进行处理。这些调度、切换系统自动完成。</p>
+<h2 id="2-多道程序批处理操作系统"><a href="#2-多道程序批处理操作系统" class="headerlink" title="2.多道程序批处理操作系统"></a>2.多道程序批处理操作系统</h2><p>简单批处理系统一次只能处理一个作业，系统资源的利用率就不高，因此出现<strong>多道程序</strong>批处理系统。把同一个批次的作业调入内存，存放在内存的不同部分，当一个作业由于等待输入输出操作而让<strong>处理机</strong>出现空闲，系统自动进行切换，处理另一个作用，这就是多道程序批处理系统。相对简单批处理系统，由于充分利用了处理机的空闲时间，因此多道程序批处理系统的<strong>资源利用效率</strong>要高。</p>
+<h2 id="3-分时操作系统"><a href="#3-分时操作系统" class="headerlink" title="3.分时操作系统"></a>3.分时操作系统</h2><p>分时操作系统：“分时”的含义是指多个用户使用同一台计算机，多个程序分时（分时间片）共享硬件和软件资源。分时操作系统是指在一台主机上连接多个带有显示器和键盘的终端，同时允许多个用户通过主机的终端，以<strong>交互</strong>方式使用计算机，共享主机中的资源。分时操作系统将CPU的时间划分成若干个片段，称为<strong>时间片</strong>，操作系统以时间片为单位，轮流为每个终端用户服务 。</p>
+<ul>
+<li>总结：一个作业只能在<strong>一个</strong>时间片的时间内使用CPU,时间到时，系统将剥夺作业CPU的使用权，然后根据一定的算法将CPU分配给其他作业使用。</li>
+</ul>
+<h2 id="4-实时操作系统"><a href="#4-实时操作系统" class="headerlink" title="4.实时操作系统"></a>4.实时操作系统</h2><p>指当外界事件或数据产生时，能够接受并以足够快的速度予以处理，其处理的结果又能在规定的时间之内来控制生产过程或对处理系统作出快速响应，并控制所有实时任务协调一致运行的操作系统。</p>
+<h2 id="5-网络操作系统"><a href="#5-网络操作系统" class="headerlink" title="5.网络操作系统"></a>5.网络操作系统</h2><p>指的是一台计算机通过一个<strong>网络接口控制器</strong>(网卡)连接到网络上，可以进行网络通信功能，网络资源的管理和使用。根据使用环境的不同，操作系统又可以分为<strong>服务器操作系统</strong>、<strong>桌面操作系统</strong>、<strong>嵌入式操作系统</strong>等</p>
+<h1 id="操作系统的发展"><a href="#操作系统的发展" class="headerlink" title="操作系统的发展"></a>操作系统的发展</h1><h2 id="一、手工操作"><a href="#一、手工操作" class="headerlink" title="一、手工操作"></a>一、手工操作</h2><p><img src="https://img-blog.csdnimg.cn/20200312165529351.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="二、单道批处理"><a href="#二、单道批处理" class="headerlink" title="二、单道批处理"></a>二、单道批处理</h2><p><img src="https://img-blog.csdnimg.cn/20200312165540713.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200312165607449.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="三、多道批处理操作系统"><a href="#三、多道批处理操作系统" class="headerlink" title="三、多道批处理操作系统"></a>三、多道批处理操作系统</h2><p><img src="https://img-blog.csdnimg.cn/20200312165604663.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200312165623503.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200312165626625.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200312173008164.png" alt="在这里插入图片描述"></p>
+<h2 id="四、分时操作系统"><a href="#四、分时操作系统" class="headerlink" title="四、分时操作系统"></a>四、分时操作系统</h2><p><img src="https://img-blog.csdnimg.cn/20200312173731270.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200312173737316.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200312173740994.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>计算机操作系统</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>操作系统---中断机制</title>
     <url>/1622515277/</url>
     <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中断机制可以说是操作系统里程碑上最划时代的一次变革。它在系统中起着通信网络的作用，协调系统对各种外部事件的响应和处理，中断是实现多道程序设计的必要条件，中断是CPU 对系统发生的某个事件作出的一种反应。因为有了它，我们才可以有条不紊的使用电脑！</p>
@@ -2510,54 +2510,6 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </categories>
       <tags>
         <tag>OS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>try-catch-finally总结</title>
-    <url>/2774241439/</url>
-    <content><![CDATA[<p>在日常编译运行程序出错的时候，编译器就会抛出异常，抛出异常要比终止程序灵活的多，这是因为Java提供了一个”捕获”异常的处理器对异常情况进行处理，如果没有提供处理器机制，程序就会终止，try-catch-finally可以保证程序发生错误的时候继续执行下去。下面就谈一下使用的总结，和注意事项。</p>
-<a id="more"></a>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>try，catch，finally语句中，如果try语句有return语句，此后做任何修改，都不影响try中return的返回值。</li>
-<li>如果finally块中有return语句，则try或catch中中的返回语句忽略。</li>
-<li>如果finally块中抛出异常，则整个try，catch，finally块中抛出异常。</li>
-</ul>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
-<li>在使用try- catch-finally的时候，要注意以下问题：<br>①尽量在try或者catch中使用return语句。通过finally块中达到对try或者catch返回值修改是不可行的。<br>②finally块中避免使用return语句，因为finally块中如果使用return语句，会显式的消化掉try，catch块中的异常信息，屏蔽错误的发生。<br>③finally块中避免再次抛出异常，否则整个包含try语句块的方法会抛出异常，并且会消化掉try，catch块中的异常。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>每天一道面试题</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>区块链的架构模型以及核心技术</title>
-    <url>/714656305/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-<h2 id="一-架构模型"><a href="#一-架构模型" class="headerlink" title="一.架构模型"></a>一.架构模型</h2><p>一般说来，区块链系统由数据层、网络层、共识层、激励层、合约层，应用层组成。</p>
-<ol>
-<li><strong>数据层：</strong> 封装了底层数据区块以及相关的数据加密和时间戳等基础数据和基本算法。</li>
-<li><strong>网络层：</strong> 则包括分布式组网机制、数据传播机制和数据验证机制等。</li>
-<li><strong>共识层：</strong> 主要封装网络节点的各类共识算法。</li>
-<li><strong>激励层：</strong> 将经济因素集成到区块链技术体系中来，主要包括经济激励的发行机制和分配机制等。</li>
-<li><strong>合约层：</strong> 主要封装各类脚本、算法和智能合约，是区块链可编程特性的基础。</li>
-<li><strong>应用层：</strong> 则封装了区块链的各种应用场景和案例。</li>
-</ol>
-<p><strong>区块链技术最具代表性的创新点：</strong></p>
-<ol>
-<li>基于时间戳的链式区块结构、分布式节点的共识机制。</li>
-<li>基于共识算力的经济激励和灵活可编程的智能合约。</li>
-</ol>
-<h2 id="二-核心技术"><a href="#二-核心技术" class="headerlink" title="二.核心技术"></a>二.核心技术</h2><p> 1.<strong>分布式账本：</strong>分布式账本指的是交易记账由分布在不同地方的多个节点共同完成，而且每一个节点记录的是完整的账目，因此它们都可以参与监督交易合法性，同时也可以共同为其作证 。跟传统的分布式存储有所不同，区块链的分布式存储的独特性主要体现在两个方面：一是区块链每个节点都按照块链式结构存储完整的数据，传统分布式存储一般是将数据按照一定的规则分成多份进行存储。二是区块链每个节点存储都是独立的、地位等同的，依靠共识机制保证存储的一致性，而传统分布式存储一般是通过中心节点往其他备份节点同步数据。没有任何一个节点可以单独记录账本数据，从而避免了单一记账人被控制或者被贿赂而记假账的可能性。也由记账节点足够多，理论上讲除非所有的节点被破坏，否则账目就不会丢失，从而保证了账目数据的安全性。</p>
-<p>2.<strong>非对称加密：</strong>存储在区块链上的交易信息是公开的，但是账户身份信息是高度加密的，只有在数据拥有者授权的情况下才能访问到，从而保证了数据的安全和个人的隐私。<br>3.<strong>共识机制</strong>就是所有记账节点之间怎么达成共识，去认定一个记录的有效性，这既是认定的手段，也是防止篡改的手段。区块链提出了四种不同的共识机制，适用于不同的应用场景，在效率和安全性之间取得平衡 。<br>区块链的共识机制具备“少数服从多数”以及“人人平等”的特点，其中“少数服从多数”并不完全指节点个数，也可以是计算能力、股权数或者其他的计算机可以比较的特征量。“人人平等”是当节点满足条件时，所有节点都有权优先提出共识结果、直接被其他节点认同后并最后有可能成为最终共识结果。以比特币为例，采用的是工作量证明，只有在控制了全网超过51%的记账节点的情况下，才有可能伪造出一条不存在的记录。当加入区块链的节点足够多的时候，这基本上不可能，从而杜绝了造假的可能。<br>4.<strong>智能合约：</strong>基于这些可信的不可篡改的数据，可以自动化的执行一些预先定义好的规则和条款。以保险为例，如果说每个人的信息（包括医疗信息和风险发生的信息）都是真实可信的，那就很容易的在一些标准化的保险产品中，去进行自动化的理赔。在保险公司的日常业务中，虽然交易不像银行和证券行业那样频繁，但是对可信数据的依赖是有增无减。因此，笔者认为利用区块链技术，从数据管理的角度切入，能够有效地帮助保险公司提高风险管理能力。具体来讲主要分投保人风险管理和保险公司的风险监督。</p>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
       </tags>
   </entry>
   <entry>
@@ -2645,111 +2597,23 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </tags>
   </entry>
   <entry>
-    <title>建站系列之---基于github搭建hexo网站</title>
-    <url>/167674660/</url>
-    <content><![CDATA[<p>日常在网上找答案的时候，发现了一种干干净净的，类似于个人主页的网站，就很好奇，后来深入了解了一下，原来这是基于hexo博客框架搭建起来的网站，用github的page服务托管博文，于是我也想上手整一个，于是乎，就花了前前后后大概半个月的时间，搭建起来网站，并买了域名部署到了服务器上面，此时怀着欣慰的心情，写下了这个系列！！！！</p>
+    <title>try-catch-finally总结</title>
+    <url>/2774241439/</url>
+    <content><![CDATA[<p>在日常编译运行程序出错的时候，编译器就会抛出异常，抛出异常要比终止程序灵活的多，这是因为Java提供了一个”捕获”异常的处理器对异常情况进行处理，如果没有提供处理器机制，程序就会终止，try-catch-finally可以保证程序发生错误的时候继续执行下去。下面就谈一下使用的总结，和注意事项。</p>
 <a id="more"></a>
 
-<p><strong>概述：</strong> 本文主要讲的是基于github，利用hexo博客框架搭建网站。购买域名（9块）并绑定。实现效果：可以看到网站首页。</p>
-<h2 id="一、下载安装Git"><a href="#一、下载安装Git" class="headerlink" title="一、下载安装Git"></a>一、下载安装Git</h2><p>下载地址：<a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a><br>安装过程就不赘述了！</p>
-<h2 id="二、下载安装Node-js"><a href="#二、下载安装Node-js" class="headerlink" title="二、下载安装Node.js"></a>二、下载安装Node.js</h2><p>下载地址：<a href="http://nodejs.org/download/">http://nodejs.org/download/</a><br>安装的时候，选择<code>add to path</code>，他会自动配置环境变量。</p>
-<ul>
-<li>换镜像（亲身体验，可以省去以后好多麻烦）</li>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>try，catch，finally语句中，如果try语句有return语句，此后做任何修改，都不影响try中return的返回值。</li>
+<li>如果finally块中有return语句，则try或catch中中的返回语句忽略。</li>
+<li>如果finally块中抛出异常，则整个try，catch，finally块中抛出异常。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、安装Hexo"><a href="#三、安装Hexo" class="headerlink" title="三、安装Hexo"></a>三、安装Hexo</h2><ul>
-<li>用cnpm全局安装，在桌面右键打开<code>Git bash here</code>输入：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>安装完成后，在命令行里输入<code>hexo -v</code>检查是否安装成功。</li>
-</ul>
-<p> <img src="https://img-blog.csdnimg.cn/20200305155050299.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="四、配置hexo"><a href="#四、配置hexo" class="headerlink" title="四、配置hexo"></a>四、配置hexo</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">基本命令了解：</span><br><span class="line">	1. hexo -v			//查看版本		</span><br><span class="line">	2. hexo init		//初始化一个项目</span><br><span class="line">	3. cnpm install		</span><br><span class="line">	4. hexo clean		//清理生成的文件</span><br><span class="line">	5. hexo g			//生成静态网页文件，g是generate的缩写</span><br><span class="line">	6. hexo s			//运行到服务器端，s是server的缩写</span><br><span class="line">	7. hexo d			//部署到远端GitHub, d是deploy的缩写</span><br><span class="line">	8. hexo s -p 5000	//在4000端口被占用的时候，修改指定端口</span><br><span class="line">	9. cnpm uninstall hexo-cli -g       //卸载hexo</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在本地新建一个文件夹，我命名它为blog</li>
-<li>在这个文件夹下，右键打开<code>Git Bash here</code>，输入<code>hexo init</code>，我在这个地方出现了一个<code>WARN</code>，暂时不用管它。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200305135143147.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>继续输入<code>cnpm install</code>可以看到blog文件夹里出现：</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200305155919286.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">目录介绍：</span><br><span class="line">	1. node_modules <span class="comment">#本地依赖模块</span></span><br><span class="line">	2. public <span class="comment">#hexo g生成的目录，包含静态网页文件，就是看到的博客</span></span><br><span class="line">	2. <span class="built_in">source</span> <span class="comment">#源文件，用来存放我们的写好的博客源文件</span></span><br><span class="line">	3. themes <span class="comment">#主题文件夹，里面存放主题</span></span><br><span class="line">	4. _config.yml <span class="comment">#站点配置文件，用来配置博客具体的显示内容等</span></span><br><span class="line">	5. db.json <span class="comment">#存储一些用到的数据</span></span><br><span class="line">	6.package.json <span class="comment">#依赖配置</span></span><br><span class="line"></span><br><span class="line">	.deploy_git <span class="comment">#hexo s部署到远端的时候会生成的文件夹，是根据public文件夹生成的，内容是差不多的</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>输入：<code>hexo g</code></li>
-<li>输入：<code>hexo s</code> </li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200305135917128.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>打开浏览器输入<code>localhost：4000</code>，可以看到部署好了，有一篇<code>hello World</code>的博客</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200305154439378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>到这一步，本地部署就已经成功了！！</li>
-</ul>
-<h2 id="五、连接到远端Github"><a href="#五、连接到远端Github" class="headerlink" title="五、连接到远端Github"></a>五、连接到远端Github</h2><ul>
-<li>安装 <code>deployer</code> 插件</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<ul>
-<li>打开<code>F:\blog\_config.yml</code>,找到 <code>deploy</code>。修改如下，其中<code>repo</code>填写你自己的仓库名字。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200305161344694.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>生成公私钥</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"注册git使用的邮箱"</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20200305161705454.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>找到生成的 <code>id_rsa.pub</code> 公钥文件（在<code>C:\Users\pc\.ssh</code>下），复制公钥内容。</li>
-<li>到Github你的网站仓库界面：<code>Setting -&gt; Deploy keys -&gt; add deploy key -&gt; Add
-key</code>，选择<code>Allow write access</code>（允许推送），这样方便以后推送的时候，不用每次都输入密码。</li>
-<li>开始推送</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-<p>这样在博客和github都可以看到推送的内容。</p>
-<h2 id="六、购买绑定域名"><a href="#六、购买绑定域名" class="headerlink" title="六、购买绑定域名"></a>六、购买绑定域名</h2><p>阿里云：<a href="https://wanwang.aliyun.com/domain/">https://wanwang.aliyun.com/domain/</a></p>
-<ul>
-<li>在阿里云或者腾讯云购买一个域名，我买的是阿里云的<code>.top</code>后缀名的，后缀名不同，价格不同，top最便宜，一年只要九块。</li>
-<li>如何买域名以及解析域名不做描述，注意要是实名认证，解析域名的意思就是，把ip地址和域名做一个映射，它让你填的<code>ip地址</code>就是你github网站仓库的<code>ip</code>。如何得到这个<code>ip</code>：</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200305163101123.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>填入<code>ip</code>，完成解析。</li>
-<li>在<code>F:\blog\source</code>下新建一个<code>CNAME.txt</code>,在里面写入你的域名，不要前缀，如：</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200305163539152.png" alt="在这里插入图片描述"></p>
-<ul>
-<li>去掉<code>.txt</code>后缀</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200305163544455.png" alt="在这里插入图片描述"></p>
-<ul>
-<li>绑定域名，到github，找到你的仓库，找到<code>Setting</code>，一直拉到最先面下面。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200305164627522.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/2020030516473779.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>这样就绑定好了。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">每次部署的执行次序</span><br><span class="line">	1. hexo clean</span><br><span class="line"> 	2. hexo g</span><br><span class="line">	3. hexo d</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li>执行一次，查看效果。</li>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
+<li>在使用try- catch-finally的时候，要注意以下问题：<br>①尽量在try或者catch中使用return语句。通过finally块中达到对try或者catch返回值修改是不可行的。<br>②finally块中避免使用return语句，因为finally块中如果使用return语句，会显式的消化掉try，catch块中的异常信息，屏蔽错误的发生。<br>③finally块中避免再次抛出异常，否则整个包含try语句块的方法会抛出异常，并且会消化掉try，catch块中的异常。</li>
 </ul>
 ]]></content>
       <categories>
-        <category>Hexo建站系列</category>
+        <category>每天一道面试题</category>
       </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
   </entry>
   <entry>
     <title>操作系统---内存管理</title>
@@ -2890,6 +2754,142 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </categories>
       <tags>
         <tag>OS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>区块链的架构模型以及核心技术</title>
+    <url>/714656305/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<h2 id="一-架构模型"><a href="#一-架构模型" class="headerlink" title="一.架构模型"></a>一.架构模型</h2><p>一般说来，区块链系统由数据层、网络层、共识层、激励层、合约层，应用层组成。</p>
+<ol>
+<li><strong>数据层：</strong> 封装了底层数据区块以及相关的数据加密和时间戳等基础数据和基本算法。</li>
+<li><strong>网络层：</strong> 则包括分布式组网机制、数据传播机制和数据验证机制等。</li>
+<li><strong>共识层：</strong> 主要封装网络节点的各类共识算法。</li>
+<li><strong>激励层：</strong> 将经济因素集成到区块链技术体系中来，主要包括经济激励的发行机制和分配机制等。</li>
+<li><strong>合约层：</strong> 主要封装各类脚本、算法和智能合约，是区块链可编程特性的基础。</li>
+<li><strong>应用层：</strong> 则封装了区块链的各种应用场景和案例。</li>
+</ol>
+<p><strong>区块链技术最具代表性的创新点：</strong></p>
+<ol>
+<li>基于时间戳的链式区块结构、分布式节点的共识机制。</li>
+<li>基于共识算力的经济激励和灵活可编程的智能合约。</li>
+</ol>
+<h2 id="二-核心技术"><a href="#二-核心技术" class="headerlink" title="二.核心技术"></a>二.核心技术</h2><p> 1.<strong>分布式账本：</strong>分布式账本指的是交易记账由分布在不同地方的多个节点共同完成，而且每一个节点记录的是完整的账目，因此它们都可以参与监督交易合法性，同时也可以共同为其作证 。跟传统的分布式存储有所不同，区块链的分布式存储的独特性主要体现在两个方面：一是区块链每个节点都按照块链式结构存储完整的数据，传统分布式存储一般是将数据按照一定的规则分成多份进行存储。二是区块链每个节点存储都是独立的、地位等同的，依靠共识机制保证存储的一致性，而传统分布式存储一般是通过中心节点往其他备份节点同步数据。没有任何一个节点可以单独记录账本数据，从而避免了单一记账人被控制或者被贿赂而记假账的可能性。也由记账节点足够多，理论上讲除非所有的节点被破坏，否则账目就不会丢失，从而保证了账目数据的安全性。</p>
+<p>2.<strong>非对称加密：</strong>存储在区块链上的交易信息是公开的，但是账户身份信息是高度加密的，只有在数据拥有者授权的情况下才能访问到，从而保证了数据的安全和个人的隐私。<br>3.<strong>共识机制</strong>就是所有记账节点之间怎么达成共识，去认定一个记录的有效性，这既是认定的手段，也是防止篡改的手段。区块链提出了四种不同的共识机制，适用于不同的应用场景，在效率和安全性之间取得平衡 。<br>区块链的共识机制具备“少数服从多数”以及“人人平等”的特点，其中“少数服从多数”并不完全指节点个数，也可以是计算能力、股权数或者其他的计算机可以比较的特征量。“人人平等”是当节点满足条件时，所有节点都有权优先提出共识结果、直接被其他节点认同后并最后有可能成为最终共识结果。以比特币为例，采用的是工作量证明，只有在控制了全网超过51%的记账节点的情况下，才有可能伪造出一条不存在的记录。当加入区块链的节点足够多的时候，这基本上不可能，从而杜绝了造假的可能。<br>4.<strong>智能合约：</strong>基于这些可信的不可篡改的数据，可以自动化的执行一些预先定义好的规则和条款。以保险为例，如果说每个人的信息（包括医疗信息和风险发生的信息）都是真实可信的，那就很容易的在一些标准化的保险产品中，去进行自动化的理赔。在保险公司的日常业务中，虽然交易不像银行和证券行业那样频繁，但是对可信数据的依赖是有增无减。因此，笔者认为利用区块链技术，从数据管理的角度切入，能够有效地帮助保险公司提高风险管理能力。具体来讲主要分投保人风险管理和保险公司的风险监督。</p>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>建站系列之---基于github搭建hexo网站</title>
+    <url>/167674660/</url>
+    <content><![CDATA[<p>日常在网上找答案的时候，发现了一种干干净净的，类似于个人主页的网站，就很好奇，后来深入了解了一下，原来这是基于hexo博客框架搭建起来的网站，用github的page服务托管博文，于是我也想上手整一个，于是乎，就花了前前后后大概半个月的时间，搭建起来网站，并买了域名部署到了服务器上面，此时怀着欣慰的心情，写下了这个系列！！！！</p>
+<a id="more"></a>
+
+<p><strong>概述：</strong> 本文主要讲的是基于github，利用hexo博客框架搭建网站。购买域名（9块）并绑定。实现效果：可以看到网站首页。</p>
+<h2 id="一、下载安装Git"><a href="#一、下载安装Git" class="headerlink" title="一、下载安装Git"></a>一、下载安装Git</h2><p>下载地址：<a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a><br>安装过程就不赘述了！</p>
+<h2 id="二、下载安装Node-js"><a href="#二、下载安装Node-js" class="headerlink" title="二、下载安装Node.js"></a>二、下载安装Node.js</h2><p>下载地址：<a href="http://nodejs.org/download/">http://nodejs.org/download/</a><br>安装的时候，选择<code>add to path</code>，他会自动配置环境变量。</p>
+<ul>
+<li>换镜像（亲身体验，可以省去以后好多麻烦）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、安装Hexo"><a href="#三、安装Hexo" class="headerlink" title="三、安装Hexo"></a>三、安装Hexo</h2><ul>
+<li>用cnpm全局安装，在桌面右键打开<code>Git bash here</code>输入：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装完成后，在命令行里输入<code>hexo -v</code>检查是否安装成功。</li>
+</ul>
+<p> <img src="https://img-blog.csdnimg.cn/20200305155050299.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="四、配置hexo"><a href="#四、配置hexo" class="headerlink" title="四、配置hexo"></a>四、配置hexo</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">基本命令了解：</span><br><span class="line">	1. hexo -v			//查看版本		</span><br><span class="line">	2. hexo init		//初始化一个项目</span><br><span class="line">	3. cnpm install		</span><br><span class="line">	4. hexo clean		//清理生成的文件</span><br><span class="line">	5. hexo g			//生成静态网页文件，g是generate的缩写</span><br><span class="line">	6. hexo s			//运行到服务器端，s是server的缩写</span><br><span class="line">	7. hexo d			//部署到远端GitHub, d是deploy的缩写</span><br><span class="line">	8. hexo s -p 5000	//在4000端口被占用的时候，修改指定端口</span><br><span class="line">	9. cnpm uninstall hexo-cli -g       //卸载hexo</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在本地新建一个文件夹，我命名它为blog</li>
+<li>在这个文件夹下，右键打开<code>Git Bash here</code>，输入<code>hexo init</code>，我在这个地方出现了一个<code>WARN</code>，暂时不用管它。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305135143147.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>继续输入<code>cnpm install</code>可以看到blog文件夹里出现：</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305155919286.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">目录介绍：</span><br><span class="line">	1. node_modules <span class="comment">#本地依赖模块</span></span><br><span class="line">	2. public <span class="comment">#hexo g生成的目录，包含静态网页文件，就是看到的博客</span></span><br><span class="line">	2. <span class="built_in">source</span> <span class="comment">#源文件，用来存放我们的写好的博客源文件</span></span><br><span class="line">	3. themes <span class="comment">#主题文件夹，里面存放主题</span></span><br><span class="line">	4. _config.yml <span class="comment">#站点配置文件，用来配置博客具体的显示内容等</span></span><br><span class="line">	5. db.json <span class="comment">#存储一些用到的数据</span></span><br><span class="line">	6.package.json <span class="comment">#依赖配置</span></span><br><span class="line"></span><br><span class="line">	.deploy_git <span class="comment">#hexo s部署到远端的时候会生成的文件夹，是根据public文件夹生成的，内容是差不多的</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>输入：<code>hexo g</code></li>
+<li>输入：<code>hexo s</code> </li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305135917128.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>打开浏览器输入<code>localhost：4000</code>，可以看到部署好了，有一篇<code>hello World</code>的博客</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305154439378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>到这一步，本地部署就已经成功了！！</li>
+</ul>
+<h2 id="五、连接到远端Github"><a href="#五、连接到远端Github" class="headerlink" title="五、连接到远端Github"></a>五、连接到远端Github</h2><ul>
+<li>安装 <code>deployer</code> 插件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<ul>
+<li>打开<code>F:\blog\_config.yml</code>,找到 <code>deploy</code>。修改如下，其中<code>repo</code>填写你自己的仓库名字。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305161344694.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>生成公私钥</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"注册git使用的邮箱"</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20200305161705454.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>找到生成的 <code>id_rsa.pub</code> 公钥文件（在<code>C:\Users\pc\.ssh</code>下），复制公钥内容。</li>
+<li>到Github你的网站仓库界面：<code>Setting -&gt; Deploy keys -&gt; add deploy key -&gt; Add
+key</code>，选择<code>Allow write access</code>（允许推送），这样方便以后推送的时候，不用每次都输入密码。</li>
+<li>开始推送</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<p>这样在博客和github都可以看到推送的内容。</p>
+<h2 id="六、购买绑定域名"><a href="#六、购买绑定域名" class="headerlink" title="六、购买绑定域名"></a>六、购买绑定域名</h2><p>阿里云：<a href="https://wanwang.aliyun.com/domain/">https://wanwang.aliyun.com/domain/</a></p>
+<ul>
+<li>在阿里云或者腾讯云购买一个域名，我买的是阿里云的<code>.top</code>后缀名的，后缀名不同，价格不同，top最便宜，一年只要九块。</li>
+<li>如何买域名以及解析域名不做描述，注意要是实名认证，解析域名的意思就是，把ip地址和域名做一个映射，它让你填的<code>ip地址</code>就是你github网站仓库的<code>ip</code>。如何得到这个<code>ip</code>：</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305163101123.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>填入<code>ip</code>，完成解析。</li>
+<li>在<code>F:\blog\source</code>下新建一个<code>CNAME.txt</code>,在里面写入你的域名，不要前缀，如：</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305163539152.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>去掉<code>.txt</code>后缀</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305163544455.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>绑定域名，到github，找到你的仓库，找到<code>Setting</code>，一直拉到最先面下面。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200305164627522.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/2020030516473779.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>这样就绑定好了。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">每次部署的执行次序</span><br><span class="line">	1. hexo clean</span><br><span class="line"> 	2. hexo g</span><br><span class="line">	3. hexo d</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>执行一次，查看效果。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Hexo建站系列</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -3154,6 +3154,122 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
+    <title>&lt;&lt;小狗钱钱&gt;&gt;</title>
+    <url>/read.html/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在B站看了半佛仙人一期关于理财的视频，视频里面也推荐了很多值得一看的书，有《小狗钱钱》，《海龟交易法则》，《经济学原理》，我首先看的是小狗钱钱，写下了这篇读后感。</p>
+<a id="more"></a>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这本书是美国的一版儿童理财读物，虽然说是儿童读物，但在我看来，实际上就是用孩子能够理解的故事，讲述一些大人都未必清楚的一些道理，这些道理可能直白的说出来，成人都懂，可是又有谁能够贯彻到生活中呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大致内容讲的是，小女孩吉娅的爸爸妈妈陷入了财政窘迫的时期，吉娅意外的捡到了一条狗，而这是一条会说话的狗，名字就叫钱钱，机缘巧合，钱钱开始教吉娅理财知识，吉娅一步一步富有了起来，并且也帮助爸爸妈妈摆脱了财政窘境。我看完这本书，并不能说从中学到了什么知识，知识把以前了解到的理财观念加深了，就像那句话：道理咱都懂！！！可他并没有深入你的骨髓，这才是关键。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我将重要的理念罗列以下：</p>
+<h2 id="一-做自己喜欢做的事"><a href="#一-做自己喜欢做的事" class="headerlink" title="(一)做自己喜欢做的事"></a>(一)做自己喜欢做的事</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不要为了挣钱而去挣钱，尤其是在我们这个年纪，通过打工，兼职挣来的钱，如果只是满足自己的消费欲望，那将毫无意义，如果将这些钱用在正道上，比如说买书，买课程，提高自己的修养与知识积累，那暂且还花对了地方，对我们这个年纪的学生，真正的意义是提升自己的能力，然后再去赚钱，换句话说，就是用自己的专业技能变现，如果专业技能达不到要求，那就将赚钱一事先放在一边，提升技能放在第一位，毕竟以后还是要靠本事吃饭，当你的专业技能足够好时，就不愁赚不到钱，这个时候就要找渠道了。</p>
+<h2 id="二-把钱分成日常开销。梦想目标，和账户三部分"><a href="#二-把钱分成日常开销。梦想目标，和账户三部分" class="headerlink" title="(二)把钱分成日常开销。梦想目标，和账户三部分"></a>(二)把钱分成日常开销。梦想目标，和账户三部分</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日常开销是刚需，这个必不可少，但也不要追求过高的消费，如果超出了自己经济承担范围，那么将所剩无几，梦想目标是指，心中有一个或者多个明确的目标，并且用小本本将他们记下来，估计达成这个目标需要多少钱，多少时间。单独为他们开一个账户，当然这里的账户是指形式上的，目的就是为了实现这些目标而去存钱。</p>
+<h2 id="三-进行明智的投资"><a href="#三-进行明智的投资" class="headerlink" title="(三)进行明智的投资"></a>(三)进行明智的投资</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投资是一门高深的学问，我觉得入个门还是很有必要的，毕竟等到以后，人到中年了，还是靠着储蓄过日子，并不是理想的生活，我身边有很多长辈有观念上的错误，他们就是将挣到的钱定期存进银行里，一存就是五到十年，吃定期的利息，然而他们并想不清楚，你吃银行的利息，通货膨胀在吃你的本金，对于他们那一代人，这个观念既然不能扭转，那就从我们这一代人做起吧，培养理财意识，学习投资方式，也是一种赚钱的利器，万年亘古不变的道理：投资有风险！！！明智的投资会帮你入账不少，而一旦看错了眼，亏损也是常有的事，这就需要长期的积累经验，形成意识了，投资—得先从韭菜做起。</p>
+<h2 id="四-关键在于自信程度"><a href="#四-关键在于自信程度" class="headerlink" title="(四) 关键在于自信程度"></a>(四) 关键在于自信程度</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这是一个老生常谈的话题，听过很多道理，喝过很多鸡汤，尝试过很多次，然而至少就我个人而言，我是一个没有自信的人，我顶多算是一个脸皮比较厚的人，自信和自卑是对立的，但是他们同样都是骨子里的东西，我们都活了二十多年了，经历的事也不少了，生活环境等等因素，到底是帮我们养成了自信，还是形成了自卑，只有我们自己清楚，深入骨髓的东西很难完全改变，但未必是坏事，在做任何事情的时候，保持谦逊的同时，也要掌握50%的主动权。</p>
+<h2 id="五-你最好想清楚你喜欢做什么，然后再考虑怎么用它来挣钱"><a href="#五-你最好想清楚你喜欢做什么，然后再考虑怎么用它来挣钱" class="headerlink" title="(五) 你最好想清楚你喜欢做什么，然后再考虑怎么用它来挣钱"></a>(五) 你最好想清楚你喜欢做什么，然后再考虑怎么用它来挣钱</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正如上面所说的，不为挣钱而做一些没有意义的事，年轻人，多提升以下自己。花时间花精力修炼内功，学习，比什么都重要。</p>
+<h2 id="六-欠债的人应该毁掉所有的信用卡"><a href="#六-欠债的人应该毁掉所有的信用卡" class="headerlink" title="(六)欠债的人应该毁掉所有的信用卡"></a>(六)欠债的人应该毁掉所有的信用卡</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里毁掉信用卡，并不是真正意义上的毁掉，就像那些段子：只要你卸载掉支付宝，你就不用还花呗了，对于花呗这个东西，该怎么去形容你最贴切？拿什么跟你作比较才算特别？还是要看用途的，如果是为了缓解经济压力，（这里的经济压力是指，你做了某些有意义的事后，欠下的债），有短期之内不要利息的钱用，何乐而不为呢？但是如果要是为了用这个花呗满足自己的消费欲望，那我觉得还是大可不必了，个人觉得，这种做法，是最low的，买不起我就不买。又不是必需品。还花呗的时候，也要在不收取利息的时候，还最低还款，但是要保证，最终能还清。</p>
+<h2 id="七-真的有必要吗？"><a href="#七-真的有必要吗？" class="headerlink" title="(七)真的有必要吗？"></a>(七)真的有必要吗？</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;花钱买一样东西的时候，事先考虑有没有必要，你是真的需要他吗？买了之后有什么用？能给你带来你预期的效果吗？能用多久？有更好的替代品吗?一般，扪心自问这些问题之后，你就应该知道，该不该买了。得出买不买的结论之后，就要考虑，买什么样的？现在这个信息错综复杂的互联网时代，各种测评，各种推荐，各种大数据分析，最后到你手里的，也许达不到你的预期，什么性价比乱七八糟的，哪儿有什么性价比，都是些商家搞出来唬人的噱头，你真的能看准东西吗？所谓性价比，大部分就是低价配low货，想买的东西，就别去占便宜。你占的便宜最终都会反映在产品上。</p>
+<h2 id="八-当你定下大目标的时候，就意味着你必须付出比别人更多的努力。"><a href="#八-当你定下大目标的时候，就意味着你必须付出比别人更多的努力。" class="headerlink" title="(八)当你定下大目标的时候，就意味着你必须付出比别人更多的努力。"></a>(八)当你定下大目标的时候，就意味着你必须付出比别人更多的努力。</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我以前考四级的时候，考教师资格证，都没过，包括这次四级430分险过，是因为我没有努力吗？不是，我努力了，周围也有人裸考过了的，并且分比我高多了，羨慕吗？不羡慕，因为我努力过，我没过的原因是我的方法不对，也是努力的不够，你努力了不一定会成功，但你不努力，一定不会有结果，当然也有幸存者偏差，对于天生聪明，基础好的人，可能有些时候会听到这样说：没那个必要，这个也没什么实际意义。但是我始终会坚持自己的理念：当我定下大目标的时候，就意味着必须付出比别人更多的努力。幸运其实是充分准备加上努力工作的结果。</p>
+<h2 id="九-克服畏惧心理"><a href="#九-克服畏惧心理" class="headerlink" title="(九)克服畏惧心理"></a>(九)克服畏惧心理</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;恐惧总是在我们设想事情会如何不顺利的时候出现，我们对失败的可能性想得越多，就越害怕，当你朝着积极地目标去思考的时候，就不会心生畏惧，我从小一直到现在，都没有真正意义上上台讲演过，我永远都是那个坐在台下为他人喝彩的观众，感叹她们真有魄力啊，就连在班级里做个自我介绍我都会脸红，我害怕面对很多人，害怕出糗，也不是没有过讲演的机会，因为我的畏惧，我也不知道我什么时候能踏出这一步，但是我会尽力克服自己的恐惧，等下次机会到来的时候，我不会拱手让人的。</p>
+<h2 id="十-72定理"><a href="#十-72定理" class="headerlink" title="(十)72定理"></a>(十)72定理</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;72定理：用72除以投资的年收益率的百分比，得出的数字就是这笔钱翻一倍所需要的年数，用72除以通货膨胀率的百分比，得出的数字就是这笔钱贬值一倍所需要的年数。还补充一点就是挑选基金时注意哪些问题：<br>1.基金至少有十年历史，也就是所谓的老基金<br>2.选择大型的跨国股票基金，以分散投资风险<br>3.了解基金的走势图，合理利用72定理</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其实之前说看完这本书，我并没有学到多少知识，这句话太过于自大，文章写到这里，我才发现，原来小狗钱钱教会我的东西并不少。去合理利用自己的<code>money</code>吧！！！</p>
+]]></content>
+      <categories>
+        <category>读后感</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>区块链技术的应用领域</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<h2 id="金融领域"><a href="#金融领域" class="headerlink" title="金融领域"></a>金融领域</h2><p>区块链在<strong>国际汇兑</strong>、<strong>信用证</strong>、<strong>股权登记</strong>和<strong>证券交易所</strong>等金融领域有着潜在的巨大应用价值。将区块链技术应用在金融行业中，能够省去第三方中介环节，实现<strong>点对点</strong>的直接对接，从而在大大降低成本的同时，快速完成交易支付。<br>比如Visa推出基于区块链技术的 Visa B2B Connect，它能为机构提供一种费用更低、更快速和安全的跨境支付方式来处理全球范围的企业对企业的交易。要知道传统的跨境支付需要等3-5天，并为此支付1-3%的交易费用。Visa 还联合 Coinbase 推出了首张比特币借记卡，<strong>花旗银行</strong>则在区块链上测试运行加密货币“<strong>花旗币</strong>”。</p>
+<h2 id="物联网和物流领域"><a href="#物联网和物流领域" class="headerlink" title="物联网和物流领域"></a>物联网和物流领域</h2><p>区块链在物联网和物流领域也可以天然结合。通过区块链可以降低物流成本，追溯物品的生产和运送过程，并且提高供应链管理的效率。该领域被认为是区块链一个很有前景的应用方向。<br>区块链通过结点连接的散状网络分层结构，能够在整个网络中实现信息的全面传递，并能够检验信息的准确程度。这种特性一 定程度上提高了物联网交易的便利性和智能化。<strong>区块链</strong>+<strong>大数据</strong>的解决方案就利用了大数据的自动筛选过滤模式，在区块链中建立信用资源，可双重提高交易的安全性，并提高物联网交易便利程度。为智能物流模式应用节约时间成本。区块链结点具有十分自由的进出能力，可独立的参与或离开区块链体系，不对整个区块链体系有任何干扰。区块链 +大数据解决方案就利用了大数据的整合能力，促使物联网基础用户拓展更具有方向性，便于在智能物流的分散用户之间实现用户拓展。</p>
+<h2 id="公共服务领域"><a href="#公共服务领域" class="headerlink" title="公共服务领域"></a>公共服务领域</h2><p>区块链在公共管理、能源、交通等领域都与民众的生产生活息息相关，但是这些领域的中心化特质也带来了一些问题，可以用区块链来改造。区块链提供的去中心化的完全分布式DNS服务通过网络中各个节点之间的点对点数据传输服务就能实现域名的查询和解析，可用于确保某个重要的基础设施的操作系统和固件没有被篡改，可以监控软件的状态和完整性，发现不良的篡改，并确保使用了物联网技术的系统所传输的数据没用经过篡改。</p>
+<h2 id="数字版权领域"><a href="#数字版权领域" class="headerlink" title="数字版权领域"></a>数字版权领域</h2><p>通过区块链技术，可以对作品进行鉴权，证明文字、视频、音频等作品的存在，保证权属的真实、唯一性。作品在区块链上被确权后，后续交易都会进行实时记录，实现数字版权全生命周期管理，也可作为司法取证中的技术性保障。例如，美国纽约一家创业公司Mine Labs开发了一个基于区块链的元数据协议，这个名为Mediachain的系统利用IPFS文件系统，实现数字作品版权保护，主要是面向数字图片的版权保护应用。</p>
+<h2 id="保险领域"><a href="#保险领域" class="headerlink" title="保险领域"></a>保险领域</h2><p>在保险理赔方面，保险机构负责资金归集、投资、理赔，往往管理和运营成本较高。通过智能合约的应用，既无需投保人申请，也无需保险公司批准，只要触发理赔条件，实现保单自动理赔。一个典型的应用案例就是LenderBot, 是 2016 年由区块链企业 Stratumn、德勤与支付服务商 Lemonway 合作推出，它允许人们通过 Facebook Messenger 的聊天功能，注册定制化的微保险产品， 为个人之间交换的高价值物品进行投保，而区块链在贷款合同中代替了第三方角色 。</p>
+<h2 id="公益领域"><a href="#公益领域" class="headerlink" title="公益领域"></a>公益领域</h2><p>区块链上存储的数据，高可靠且不可篡改，天然适合用在社会公益场景。公益流程中的相关信息，如捐赠项目、募集明细、资金流向、受助人反馈等，均可以存放于区块链上，并且有条件地进行透明公开公示，方便社会监督。</p>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu18.04系统安装，修改源</title>
+    <url>/linux/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于疫情在家，看着家里有一台吃了一两年灰的台式电脑，大概是初三的时候买的，抹一下灰就跟新的一样，哈哈，于是突然心生一计，就开始动手整理这台电脑，首先重装系统，不过这次，我装的是win10+Ubuntu18.04双系统。</p>
+<a id="more"></a>
+
+<h1 id="一-准备："><a href="#一-准备：" class="headerlink" title="一. 准备："></a>一. 准备：</h1><ul>
+<li><strong>终端如何复制粘贴？</strong><br>在文本区域左键复制，到终端里面直接按下鼠标滚轮即可。</li>
+<li><strong>如何切换root权限？</strong><br>安装之后root是不设置密码的，以普通用户输入su  root按照步骤设置自己的密码</li>
+</ul>
+<h2 id="工具："><a href="#工具：" class="headerlink" title="工具："></a>工具：</h2><ul>
+<li>大于4G的U盘一只，事先将里面的文件备份到电脑中。</li>
+</ul>
+<h3 id="第一步："><a href="#第一步：" class="headerlink" title="第一步："></a>第一步：</h3><p>下载Ubuntu系统镜像——-后缀.iso的配置文件。因为是外网，所以去官网下载需要自备**（真是把我累伤心了），于是我找到了国内的开源网站：<a href="http://mirrors.163.com/ubuntu-releases/14.04/">https://blog.csdn.net/davidhzq/article/details/102575343</a></p>
+<h3 id="第二步："><a href="#第二步：" class="headerlink" title="第二步："></a>第二步：</h3><p>  制作U盘启动盘—–需要下载USBWiter这个工具用来写入ISO镜像，下载地址：<a href="http://mydown.yesky.com/pcsoft/413551662.html">http://mydown.yesky.com/pcsoft/413551662.html</a><br> 解压后打开小工具：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200209220859288.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h3 id="第三步："><a href="#第三步：" class="headerlink" title="第三步："></a>第三步：</h3><p> 还要在硬盘腾出一块空间用来安装Ubuntu系统，具体操作如下：以管理的身份打开“我的电脑”，如图所示：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200209221926433.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> <img src="https://img-blog.csdnimg.cn/20200209222255142.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p> 压缩完之后，就不用管了，会看到你刚才压缩的那个卷之后，会有一块空闲的空间。</p>
+<h1 id="二-开始安装："><a href="#二-开始安装：" class="headerlink" title="二.开始安装："></a>二.开始安装：</h1><h3 id="第四步："><a href="#第四步：" class="headerlink" title="第四步："></a>第四步：</h3><ul>
+<li>拿着你做好的U盘，插到你要安装系统的电脑上，在开机的时候，会看到：</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/2020021012440214.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>如果没有的话，可能是你开机设置里不允许用U盘启动，我当时就遇到了这种情况，然后狂点F12，进入BIOS，主要是为了进入BIOS，不同型号的电脑按键不一样，自己上网查，按如下图设置后，按F10，保存并重启。<br><img src="https://img-blog.csdnimg.cn/2020021012462934.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+<h3 id="第五步："><a href="#第五步：" class="headerlink" title="第五步："></a>第五步：</h3><p><img src="https://img-blog.csdnimg.cn/202002092238476.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200209223948185.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200209224129521.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200209224527382.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200209224741212.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/2020020922495535.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>后面就一步一步点击继续就可以了，最后等待安装完成</strong></p>
+<h2 id="在安装过程中遇到的问题："><a href="#在安装过程中遇到的问题：" class="headerlink" title="在安装过程中遇到的问题："></a>在安装过程中遇到的问题：</h2><p><img src="https://img-blog.csdnimg.cn/20200210125455148.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200210125505598.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200210125606591.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>最后的最后，还是一个人抗下了所有，安装崩溃了，我心态也奔溃了，但是重振旗鼓，找到问题：GRUB的引导问题，也找到了解决方案：<a href="https://blog.csdn.net/weixin_44123547/article/details/103243238">https://blog.csdn.net/weixin_44123547/article/details/103243238</a><br>最终还是安装完成了：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200210125944723.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="三-修改源："><a href="#三-修改源：" class="headerlink" title="三. 修改源："></a>三. 修改源：</h1><p>因为Ubuntu默认下载源是国外源，我们修改为国内源，我改的是清华的源。<br>打开终端，<strong>切换到root权限</strong>输入以下命令：</p>
+<h2 id="1、备份"><a href="#1、备份" class="headerlink" title="1、备份"></a>1、备份</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp /etc/apt/sources.list /etc/apt/sources.list.bak</span><br></pre></td></tr></table></figure>
+<h2 id="2、修改sources-list文件"><a href="#2、修改sources-list文件" class="headerlink" title="2、修改sources.list文件"></a>2、修改sources.list文件</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi sources.list</span><br></pre></td></tr></table></figure>
+<h2 id="3、修改源（复制进去）"><a href="#3、修改源（复制进去）" class="headerlink" title="3、修改源（复制进去）"></a>3、修改源（复制进去）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial universe</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates universe</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial multiverse</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates multiverse</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security universe</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security multiverse</span><br></pre></td></tr></table></figure>
+<h2 id="4、-更新源"><a href="#4、-更新源" class="headerlink" title="4、 更新源"></a>4、 更新源</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<p>完成后，输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+<h2 id="5、大功告成"><a href="#5、大功告成" class="headerlink" title="5、大功告成"></a>5、大功告成</h2>]]></content>
+      <categories>
+        <category>linux学习笔记</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数字货币的种类</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<p>当前的数字货币大致有以下几种。</p>
+<a id="more"></a>
+<p><img src="https://img-blog.csdnimg.cn/20200204160645330.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>BTC：</strong> 比特币</li>
+<li><strong>ETH：</strong> 以太币</li>
+<li><strong>USDT：</strong> 泰达币（与同数量的美元是等值的）</li>
+<li><strong>EOS：</strong> 为商用分布式应用设计的一款区块链操作系统。EOS是引入的一种新的区块链架构，旨在实现分布式应用的性能扩展。注意，它并不是像比特币和以太坊那样的货币，而是基于EOS软件项目之上发布的代币，被称为区块链3.0 。</li>
+<li><strong>XRP：</strong> 瑞波币。它是基于Ripple协议的虚拟货币，主要功能有二：1.防止恶意攻击；2.桥梁货币。</li>
+<li><strong>LTC：</strong> 莱特币。<img src="https://img-blog.csdnimg.cn/20200204161448813.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li><strong>HT：</strong> 火币<br><img src="https://img-blog.csdnimg.cn/20200204161631662.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li><strong>HUSD：</strong> 稳定币<img src="https://img-blog.csdnimg.cn/20200204162140418.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li><strong>BCH：</strong><img src="https://img-blog.csdnimg.cn/20200204162243770.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>操作系统的结构与功能</title>
     <url>/3546768407/</url>
     <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对操作系统的种类和发展历史有了一个基本了解之后，就正式开始学习操作系统了，首先要明白操作系统是做什么的，它的结构是什么样的，我粗略总结出以下知识点。</p>
@@ -3246,6 +3362,44 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
+    <title>服务器端会话技术：Session</title>
+    <url>/3004142873/</url>
+    <content><![CDATA[<p>Session对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的Web页之间跳转时，存储在Session对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。他是用来解决Cookie带来的安全问题。</p>
+<a id="more"></a>
+<h2 id="一、Session概述"><a href="#一、Session概述" class="headerlink" title="一、Session概述"></a>一、Session概述</h2><ul>
+<li>会话 ， Session是基于Cookie的一种会话机制。 </li>
+<li>Cookie是服务器返回一小份数据给客户端。并且存放在客户端上。 </li>
+<li>Session是，数据存放在服务器端。</li>
+</ul>
+<h2 id="二、常用方法"><a href="#二、常用方法" class="headerlink" title="二、常用方法"></a>二、常用方法</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//得到会话ID</span><br><span class="line">String id = session.getId();</span><br><span class="line"></span><br><span class="line">//存值</span><br><span class="line">session.setAttribute(name, value);</span><br><span class="line">	</span><br><span class="line">//取值</span><br><span class="line">session.getAttribute(name);</span><br><span class="line">	</span><br><span class="line">//移除值</span><br><span class="line">session.removeAttribute(name);</span><br></pre></td></tr></table></figure>
+<h2 id="三、Session的创建与销毁。"><a href="#三、Session的创建与销毁。" class="headerlink" title="三、Session的创建与销毁。"></a>三、Session的创建与销毁。</h2><ul>
+<li>创建<br>如果有在servlet里面调用了 request.getSession()</li>
+<li>销毁<br>session 是存放在服务器的内存中的一份数据。 当然可以持久化. Redis . 即使关了浏览器，session也不会销毁。</li>
+</ul>
+<ol>
+<li>关闭服务器</li>
+<li>session会话时间过期。 有效期过了，默认有效期： 30分钟。</li>
+</ol>
+<h2 id="四、移除Session中的元素"><a href="#四、移除Session中的元素" class="headerlink" title="四、移除Session中的元素"></a>四、移除Session中的元素</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//强制干掉会话，里面存放的任何数据就都没有了。</span><br><span class="line">session.invalidate();</span><br><span class="line">	</span><br><span class="line">//从session中移除某一个数据</span><br><span class="line">session.removeAttribute(<span class="string">"cart"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><ul>
+<li>Session： 也是基于cookie的一种会话技术，  数据存放存放在服务器端。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">会在cookie里面添加一个字段 JSESSIONID . 是tomcat服务器生成。 </span><br><span class="line">setAttribute 存数据</span><br><span class="line">getAttribute 取数据</span><br><span class="line">removeAttribute  移除数据</span><br><span class="line">getSessionId();  获取会话id</span><br><span class="line">invalidate() 强制让会话失效。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建和销毁<br>  调用<strong>request.getSesion</strong>创建<br>   服务器关闭 ， 会话超时（30分）</li>
+</ul>
+<ul>
+<li>setAttribute 存放的值， 在浏览器关闭后，依然不会丢失！</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>Session</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>手写链表</title>
     <url>/3274828756/</url>
     <content><![CDATA[<p>看过很多面经，看得出来，数据结构和算法在面试中是很重要的，在之前也听说过，面试过程中，出现手撕代码的场景，而我刚好又看到链表这一章，顺便对链表做一下巩固，也打个预防针，万一真遇到要手写代码的时候，也有了一手准备。</p>
@@ -3307,6 +3461,61 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
+    <title>操作系统---死锁</title>
+    <url>/1179211128/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;死锁是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象，若无外力作用，它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程。<br><strong>简单理解就是：</strong> 我想要你手里的东西，同时你也想要我手里的资源，我俩同时都不让出来，谁也拿不到。</p>
+<a id="more"></a>
+
+<h2 id="为什么会产生死锁？"><a href="#为什么会产生死锁？" class="headerlink" title="为什么会产生死锁？"></a>为什么会产生死锁？</h2><ul>
+<li><strong>系统资源的竞争：</strong> 当系统中供多个进程共享的资源如打印机、公用队列的等，其数目不足以满足诸进程的需要时，会引起诸进程对资源的竞争而产生死锁。</li>
+<li><strong>进程运行推进顺序不当引起死锁：</strong> 　　若P1保持了资源R1,P2保持了资源R2，系统处于不安全状态，因为这两个进程再向前推进，便可能发生死锁。例如，当P1运行到P1：Request（R2）时，将因R2已被P2占用而阻塞；当P2运行到P2：Request（R1）时，也将因R1已被P1占用而阻塞，于是发生进程死锁。</li>
+</ul>
+<h2 id="产生死锁的必要条件"><a href="#产生死锁的必要条件" class="headerlink" title="产生死锁的必要条件"></a>产生死锁的必要条件</h2><ol>
+<li><p><strong>互斥条件：</strong> 指进程对所分配到的资源进行排它性使用，即在一段时间内某资源只由一个进程占用。如果此时还有其它进程请求资源，则请求者只能等待，直至占有资源的进程用毕释放。</p>
+</li>
+<li><p><strong>请求与保持条件：</strong> 进程已经保持了至少一个资源，但又提出了新的资源请求，而该资源 已被其他进程占有，此时请求进程被阻塞，但对自己已获得的资源保持不放。</p>
+</li>
+<li><p><strong>不可剥夺条件：</strong> 进程所获得的资源在未使用完毕之前，不能被其他进程强行夺走，即只能 由获得该资源的进程自己来释放（只能是主动释放)。</p>
+</li>
+<li><p><strong>循环等待条件：</strong> 指在发生死锁时，必然存在一个进程——资源的环形链，即进程集合{P0，P1，P2，···，Pn}中的P0正在等待一个P1占用的资源；P1正在等待P2占用的资源，……，Pn正在等待已被P0占用的资源。</p>
+</li>
+</ol>
+<ul>
+<li>这四个条件是死锁的必要条件，只要系统发生死锁，这些条件必然成立，而只要上述条件之一不满足，就不会发生死锁。</li>
+</ul>
+<h2 id="解决策略："><a href="#解决策略：" class="headerlink" title="解决策略："></a>解决策略：</h2><h3 id="死锁的避免与预防"><a href="#死锁的避免与预防" class="headerlink" title="死锁的避免与预防"></a>死锁的避免与预防</h3><p>死锁避免的基本思想：系统对进程发出每一个系统能够满足的资源申请进行动态检查，并根据检查结果决定是否分配资源，如果分配后系统可能发生死锁,则不予分配，否则予以分配。这是一种保证系统不进入死锁状态的动态策略。理解了死锁的原因，尤其是产生死锁的四个必要条件，就可以最大可能地避免、预防和解除死锁。只要打破四个必要条件之一就能有效预防死锁的发生：</p>
+<ol>
+<li><p>打破互斥条件：改造独占性资源为虚拟资源，大部分资源已无法改造。</p>
+</li>
+<li><p>打破不可抢占条件：当一进程占有一独占性资源后又申请一独占性资源而无法满足，则退出原占有的资源。</p>
+</li>
+<li><p>打破占有且申请条件：采用资源预先分配策略，即进程运行前申请全部资源，满足则运行，不然就等待，这样就不会占有且申请。</p>
+</li>
+<li><p>打破循环等待条件：实现资源有序分配策略，对所有设备实现分类编号，所有进程只能采用按序号递增的形式申请资源。</p>
+</li>
+<li><p>死锁预防和避免的区别</p>
+</li>
+</ol>
+<ul>
+<li>死锁预防是设法至少破坏产生死锁的四个必要条件之一，严格的防止死锁的出现。</li>
+<li>死锁避免则不那么严格的限制产生死锁的必要条件的存在，因为即使死锁的必要条件存在，也不一定发生死锁。死锁避免是在系统运行过程中注意避免死锁的最终发生。</li>
+</ul>
+<h3 id="死锁的检测和恢复"><a href="#死锁的检测和恢复" class="headerlink" title="死锁的检测和恢复"></a>死锁的检测和恢复</h3><ul>
+<li>并没有实际卵用</li>
+</ul>
+<h3 id="鸵鸟算法"><a href="#鸵鸟算法" class="headerlink" title="鸵鸟算法"></a>鸵鸟算法</h3><ul>
+<li><strong>核心思想：</strong> 装作没看见</li>
+<li><strong>为什么会用鸵鸟算法？</strong><br>上面的一些做法，组织啊，恢复啊，无一例外会给系统带来很多沉重的负担。一方面给系统添加，另一方面解决的问题发生的概率不大，吃力还不讨好。而且，死锁发生的原因是由于程序设计人员写出来的问题，操作系统当然不会予以理会。所以死锁的问题都是交给程序设计人员来解决。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机操作系统</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据库连接池</title>
     <url>/1664209794/</url>
     <content><![CDATA[<p>数据库连接池负责分配、管理和释放数据库连接，它允许应用程序重复使用一个现有的数据库连接，而不是再重新建立一个；释放空闲时间超过最大空闲时间的数据库连接来避免因为没有释放数据库连接而引起的数据库连接遗漏。这项技术能明显提高对数据库操作的性能。</p>
@@ -3365,63 +3574,27 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
-    <title>&lt;&lt;小狗钱钱&gt;&gt;</title>
-    <url>/read.html/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在B站看了半佛仙人一期关于理财的视频，视频里面也推荐了很多值得一看的书，有《小狗钱钱》，《海龟交易法则》，《经济学原理》，我首先看的是小狗钱钱，写下了这篇读后感。</p>
+    <title>比特币的价格是怎么算出来的</title>
+    <url>/2526071924/</url>
+    <content><![CDATA[<p>-</p>
 <a id="more"></a>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这本书是美国的一版儿童理财读物，虽然说是儿童读物，但在我看来，实际上就是用孩子能够理解的故事，讲述一些大人都未必清楚的一些道理，这些道理可能直白的说出来，成人都懂，可是又有谁能够贯彻到生活中呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大致内容讲的是，小女孩吉娅的爸爸妈妈陷入了财政窘迫的时期，吉娅意外的捡到了一条狗，而这是一条会说话的狗，名字就叫钱钱，机缘巧合，钱钱开始教吉娅理财知识，吉娅一步一步富有了起来，并且也帮助爸爸妈妈摆脱了财政窘境。我看完这本书，并不能说从中学到了什么知识，知识把以前了解到的理财观念加深了，就像那句话：道理咱都懂！！！可他并没有深入你的骨髓，这才是关键。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我将重要的理念罗列以下：</p>
-<h2 id="一-做自己喜欢做的事"><a href="#一-做自己喜欢做的事" class="headerlink" title="(一)做自己喜欢做的事"></a>(一)做自己喜欢做的事</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不要为了挣钱而去挣钱，尤其是在我们这个年纪，通过打工，兼职挣来的钱，如果只是满足自己的消费欲望，那将毫无意义，如果将这些钱用在正道上，比如说买书，买课程，提高自己的修养与知识积累，那暂且还花对了地方，对我们这个年纪的学生，真正的意义是提升自己的能力，然后再去赚钱，换句话说，就是用自己的专业技能变现，如果专业技能达不到要求，那就将赚钱一事先放在一边，提升技能放在第一位，毕竟以后还是要靠本事吃饭，当你的专业技能足够好时，就不愁赚不到钱，这个时候就要找渠道了。</p>
-<h2 id="二-把钱分成日常开销。梦想目标，和账户三部分"><a href="#二-把钱分成日常开销。梦想目标，和账户三部分" class="headerlink" title="(二)把钱分成日常开销。梦想目标，和账户三部分"></a>(二)把钱分成日常开销。梦想目标，和账户三部分</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日常开销是刚需，这个必不可少，但也不要追求过高的消费，如果超出了自己经济承担范围，那么将所剩无几，梦想目标是指，心中有一个或者多个明确的目标，并且用小本本将他们记下来，估计达成这个目标需要多少钱，多少时间。单独为他们开一个账户，当然这里的账户是指形式上的，目的就是为了实现这些目标而去存钱。</p>
-<h2 id="三-进行明智的投资"><a href="#三-进行明智的投资" class="headerlink" title="(三)进行明智的投资"></a>(三)进行明智的投资</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投资是一门高深的学问，我觉得入个门还是很有必要的，毕竟等到以后，人到中年了，还是靠着储蓄过日子，并不是理想的生活，我身边有很多长辈有观念上的错误，他们就是将挣到的钱定期存进银行里，一存就是五到十年，吃定期的利息，然而他们并想不清楚，你吃银行的利息，通货膨胀在吃你的本金，对于他们那一代人，这个观念既然不能扭转，那就从我们这一代人做起吧，培养理财意识，学习投资方式，也是一种赚钱的利器，万年亘古不变的道理：投资有风险！！！明智的投资会帮你入账不少，而一旦看错了眼，亏损也是常有的事，这就需要长期的积累经验，形成意识了，投资—得先从韭菜做起。</p>
-<h2 id="四-关键在于自信程度"><a href="#四-关键在于自信程度" class="headerlink" title="(四) 关键在于自信程度"></a>(四) 关键在于自信程度</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这是一个老生常谈的话题，听过很多道理，喝过很多鸡汤，尝试过很多次，然而至少就我个人而言，我是一个没有自信的人，我顶多算是一个脸皮比较厚的人，自信和自卑是对立的，但是他们同样都是骨子里的东西，我们都活了二十多年了，经历的事也不少了，生活环境等等因素，到底是帮我们养成了自信，还是形成了自卑，只有我们自己清楚，深入骨髓的东西很难完全改变，但未必是坏事，在做任何事情的时候，保持谦逊的同时，也要掌握50%的主动权。</p>
-<h2 id="五-你最好想清楚你喜欢做什么，然后再考虑怎么用它来挣钱"><a href="#五-你最好想清楚你喜欢做什么，然后再考虑怎么用它来挣钱" class="headerlink" title="(五) 你最好想清楚你喜欢做什么，然后再考虑怎么用它来挣钱"></a>(五) 你最好想清楚你喜欢做什么，然后再考虑怎么用它来挣钱</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正如上面所说的，不为挣钱而做一些没有意义的事，年轻人，多提升以下自己。花时间花精力修炼内功，学习，比什么都重要。</p>
-<h2 id="六-欠债的人应该毁掉所有的信用卡"><a href="#六-欠债的人应该毁掉所有的信用卡" class="headerlink" title="(六)欠债的人应该毁掉所有的信用卡"></a>(六)欠债的人应该毁掉所有的信用卡</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里毁掉信用卡，并不是真正意义上的毁掉，就像那些段子：只要你卸载掉支付宝，你就不用还花呗了，对于花呗这个东西，该怎么去形容你最贴切？拿什么跟你作比较才算特别？还是要看用途的，如果是为了缓解经济压力，（这里的经济压力是指，你做了某些有意义的事后，欠下的债），有短期之内不要利息的钱用，何乐而不为呢？但是如果要是为了用这个花呗满足自己的消费欲望，那我觉得还是大可不必了，个人觉得，这种做法，是最low的，买不起我就不买。又不是必需品。还花呗的时候，也要在不收取利息的时候，还最低还款，但是要保证，最终能还清。</p>
-<h2 id="七-真的有必要吗？"><a href="#七-真的有必要吗？" class="headerlink" title="(七)真的有必要吗？"></a>(七)真的有必要吗？</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;花钱买一样东西的时候，事先考虑有没有必要，你是真的需要他吗？买了之后有什么用？能给你带来你预期的效果吗？能用多久？有更好的替代品吗?一般，扪心自问这些问题之后，你就应该知道，该不该买了。得出买不买的结论之后，就要考虑，买什么样的？现在这个信息错综复杂的互联网时代，各种测评，各种推荐，各种大数据分析，最后到你手里的，也许达不到你的预期，什么性价比乱七八糟的，哪儿有什么性价比，都是些商家搞出来唬人的噱头，你真的能看准东西吗？所谓性价比，大部分就是低价配low货，想买的东西，就别去占便宜。你占的便宜最终都会反映在产品上。</p>
-<h2 id="八-当你定下大目标的时候，就意味着你必须付出比别人更多的努力。"><a href="#八-当你定下大目标的时候，就意味着你必须付出比别人更多的努力。" class="headerlink" title="(八)当你定下大目标的时候，就意味着你必须付出比别人更多的努力。"></a>(八)当你定下大目标的时候，就意味着你必须付出比别人更多的努力。</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我以前考四级的时候，考教师资格证，都没过，包括这次四级430分险过，是因为我没有努力吗？不是，我努力了，周围也有人裸考过了的，并且分比我高多了，羨慕吗？不羡慕，因为我努力过，我没过的原因是我的方法不对，也是努力的不够，你努力了不一定会成功，但你不努力，一定不会有结果，当然也有幸存者偏差，对于天生聪明，基础好的人，可能有些时候会听到这样说：没那个必要，这个也没什么实际意义。但是我始终会坚持自己的理念：当我定下大目标的时候，就意味着必须付出比别人更多的努力。幸运其实是充分准备加上努力工作的结果。</p>
-<h2 id="九-克服畏惧心理"><a href="#九-克服畏惧心理" class="headerlink" title="(九)克服畏惧心理"></a>(九)克服畏惧心理</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;恐惧总是在我们设想事情会如何不顺利的时候出现，我们对失败的可能性想得越多，就越害怕，当你朝着积极地目标去思考的时候，就不会心生畏惧，我从小一直到现在，都没有真正意义上上台讲演过，我永远都是那个坐在台下为他人喝彩的观众，感叹她们真有魄力啊，就连在班级里做个自我介绍我都会脸红，我害怕面对很多人，害怕出糗，也不是没有过讲演的机会，因为我的畏惧，我也不知道我什么时候能踏出这一步，但是我会尽力克服自己的恐惧，等下次机会到来的时候，我不会拱手让人的。</p>
-<h2 id="十-72定理"><a href="#十-72定理" class="headerlink" title="(十)72定理"></a>(十)72定理</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;72定理：用72除以投资的年收益率的百分比，得出的数字就是这笔钱翻一倍所需要的年数，用72除以通货膨胀率的百分比，得出的数字就是这笔钱贬值一倍所需要的年数。还补充一点就是挑选基金时注意哪些问题：<br>1.基金至少有十年历史，也就是所谓的老基金<br>2.选择大型的跨国股票基金，以分散投资风险<br>3.了解基金的走势图，合理利用72定理</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其实之前说看完这本书，我并没有学到多少知识，这句话太过于自大，文章写到这里，我才发现，原来小狗钱钱教会我的东西并不少。去合理利用自己的<code>money</code>吧！！！</p>
+<h2 id="首先了解一下拍卖"><a href="#首先了解一下拍卖" class="headerlink" title="首先了解一下拍卖"></a>首先了解一下拍卖</h2><ul>
+<li><strong>英式拍卖：</strong> 如果拍卖方（卖方）要卖一个商品，那么买方则通过集体竞价的方式进行拍卖，价高者得，最后和卖方成交的一定只有一个买家，而这个买家一定是出价最高的那位。</li>
+<li><strong>荷兰式拍卖：</strong> 假如有一个买家想要买一个商品，但是卖方有很多，那么卖方递减报出新的价位，最终和买方成交的一定是卖价最低的那位。</li>
+</ul>
+<h2 id="实际定价方式"><a href="#实际定价方式" class="headerlink" title="实际定价方式"></a>实际定价方式</h2><p>在交易所看到的一排排红色的数字和一排排绿色的数字其实就是许多的买方和许多的卖方不断报出的<strong>买进价</strong>和<strong>卖出价</strong>，价格随供求变化而不断变动。买者和卖者彼此竞争，<strong>双向拍卖</strong>，买者对想要买进的出价，通过竞争以最低价买入;卖者也互相竞争，试图以最高价格出售，然而最新成交价一定是买卖双方达成一致的那个价格。买卖双方不断成交，最新一笔的成交价就是我们看到的不断变化的价格，这就是为什么价格在一直变化的原因。报价后面的数量，即代表当前的买方或者卖方想要购买或者卖出的币的数量。买卖一旦成交，则不得反悔。在未成交以前，也可以撤单，撤单程序与买卖委托的过程基本相同。</p>
+<h2 id="限价，市价，止盈止损"><a href="#限价，市价，止盈止损" class="headerlink" title="限价，市价，止盈止损"></a>限价，市价，止盈止损</h2><ul>
+<li>限价：是<strong>自己设定</strong>价格进行挂单，需价格波动到设定价格并有对手愿意交易才可以成交。</li>
+<li>市价：市价是以<strong>当前最新</strong>成交价挂单，一般马上成交。</li>
+<li>止盈止损：止盈止损即是<strong>带有预期</strong>的未来买入或者卖出行为，比如当价格跌破某一价位时进行止损（你预期跌破此价格可能还会继续跌），或者当价格突破某一价位时进行买入（你预期价格一旦突破该价位时将会继续上涨）。</li>
+</ul>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>如果你是买方，想要<strong>尽快</strong>购入比特币，当然是设置买入价格与当前最低卖出价格一致，这样双方就可以达成交易了，想要尽快卖出比特币，那就设置卖出价格与当前最高买入价格一致。但是市场上的人并不是都急切的想要卖出或者买入，会带有预期的进行买入卖出报价。</p>
 ]]></content>
       <categories>
-        <category>读后感</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>服务器端会话技术：Session</title>
-    <url>/3004142873/</url>
-    <content><![CDATA[<p>Session对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的Web页之间跳转时，存储在Session对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。他是用来解决Cookie带来的安全问题。</p>
-<a id="more"></a>
-<h2 id="一、Session概述"><a href="#一、Session概述" class="headerlink" title="一、Session概述"></a>一、Session概述</h2><ul>
-<li>会话 ， Session是基于Cookie的一种会话机制。 </li>
-<li>Cookie是服务器返回一小份数据给客户端。并且存放在客户端上。 </li>
-<li>Session是，数据存放在服务器端。</li>
-</ul>
-<h2 id="二、常用方法"><a href="#二、常用方法" class="headerlink" title="二、常用方法"></a>二、常用方法</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//得到会话ID</span><br><span class="line">String id = session.getId();</span><br><span class="line"></span><br><span class="line">//存值</span><br><span class="line">session.setAttribute(name, value);</span><br><span class="line">	</span><br><span class="line">//取值</span><br><span class="line">session.getAttribute(name);</span><br><span class="line">	</span><br><span class="line">//移除值</span><br><span class="line">session.removeAttribute(name);</span><br></pre></td></tr></table></figure>
-<h2 id="三、Session的创建与销毁。"><a href="#三、Session的创建与销毁。" class="headerlink" title="三、Session的创建与销毁。"></a>三、Session的创建与销毁。</h2><ul>
-<li>创建<br>如果有在servlet里面调用了 request.getSession()</li>
-<li>销毁<br>session 是存放在服务器的内存中的一份数据。 当然可以持久化. Redis . 即使关了浏览器，session也不会销毁。</li>
-</ul>
-<ol>
-<li>关闭服务器</li>
-<li>session会话时间过期。 有效期过了，默认有效期： 30分钟。</li>
-</ol>
-<h2 id="四、移除Session中的元素"><a href="#四、移除Session中的元素" class="headerlink" title="四、移除Session中的元素"></a>四、移除Session中的元素</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//强制干掉会话，里面存放的任何数据就都没有了。</span><br><span class="line">session.invalidate();</span><br><span class="line">	</span><br><span class="line">//从session中移除某一个数据</span><br><span class="line">session.removeAttribute(<span class="string">"cart"</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><ul>
-<li>Session： 也是基于cookie的一种会话技术，  数据存放存放在服务器端。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">会在cookie里面添加一个字段 JSESSIONID . 是tomcat服务器生成。 </span><br><span class="line">setAttribute 存数据</span><br><span class="line">getAttribute 取数据</span><br><span class="line">removeAttribute  移除数据</span><br><span class="line">getSessionId();  获取会话id</span><br><span class="line">invalidate() 强制让会话失效。</span><br></pre></td></tr></table></figure>
-<ul>
-<li>创建和销毁<br>  调用<strong>request.getSesion</strong>创建<br>   服务器关闭 ， 会话超时（30分）</li>
-</ul>
-<ul>
-<li>setAttribute 存放的值， 在浏览器关闭后，依然不会丢失！</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java Web</category>
+        <category>区块链+比特币</category>
       </categories>
       <tags>
-        <tag>Session</tag>
+        <tag>区块链，比特币</tag>
       </tags>
   </entry>
   <entry>
@@ -3449,70 +3622,184 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
-    <title>区块链技术的应用领域</title>
-    <url>/undefined/</url>
-    <content><![CDATA[<p>-</p>
+    <title>认识web服务器&amp;Eclipse配置部署Tomcat</title>
+    <url>/629938038/</url>
+    <content><![CDATA[<p>Web服务器一般指网站服务器，是指驻留于因特网上某种类型计算机的程序，可以向浏览器等Web客户端提供文档，也可以放置网站文件，让全世界浏览；可以放置数据文件，让全世界下载。目前最主流的三个Web服务器是Apache、 Nginx 、IIS。</p>
 <a id="more"></a>
-<h2 id="金融领域"><a href="#金融领域" class="headerlink" title="金融领域"></a>金融领域</h2><p>区块链在<strong>国际汇兑</strong>、<strong>信用证</strong>、<strong>股权登记</strong>和<strong>证券交易所</strong>等金融领域有着潜在的巨大应用价值。将区块链技术应用在金融行业中，能够省去第三方中介环节，实现<strong>点对点</strong>的直接对接，从而在大大降低成本的同时，快速完成交易支付。<br>比如Visa推出基于区块链技术的 Visa B2B Connect，它能为机构提供一种费用更低、更快速和安全的跨境支付方式来处理全球范围的企业对企业的交易。要知道传统的跨境支付需要等3-5天，并为此支付1-3%的交易费用。Visa 还联合 Coinbase 推出了首张比特币借记卡，<strong>花旗银行</strong>则在区块链上测试运行加密货币“<strong>花旗币</strong>”。</p>
-<h2 id="物联网和物流领域"><a href="#物联网和物流领域" class="headerlink" title="物联网和物流领域"></a>物联网和物流领域</h2><p>区块链在物联网和物流领域也可以天然结合。通过区块链可以降低物流成本，追溯物品的生产和运送过程，并且提高供应链管理的效率。该领域被认为是区块链一个很有前景的应用方向。<br>区块链通过结点连接的散状网络分层结构，能够在整个网络中实现信息的全面传递，并能够检验信息的准确程度。这种特性一 定程度上提高了物联网交易的便利性和智能化。<strong>区块链</strong>+<strong>大数据</strong>的解决方案就利用了大数据的自动筛选过滤模式，在区块链中建立信用资源，可双重提高交易的安全性，并提高物联网交易便利程度。为智能物流模式应用节约时间成本。区块链结点具有十分自由的进出能力，可独立的参与或离开区块链体系，不对整个区块链体系有任何干扰。区块链 +大数据解决方案就利用了大数据的整合能力，促使物联网基础用户拓展更具有方向性，便于在智能物流的分散用户之间实现用户拓展。</p>
-<h2 id="公共服务领域"><a href="#公共服务领域" class="headerlink" title="公共服务领域"></a>公共服务领域</h2><p>区块链在公共管理、能源、交通等领域都与民众的生产生活息息相关，但是这些领域的中心化特质也带来了一些问题，可以用区块链来改造。区块链提供的去中心化的完全分布式DNS服务通过网络中各个节点之间的点对点数据传输服务就能实现域名的查询和解析，可用于确保某个重要的基础设施的操作系统和固件没有被篡改，可以监控软件的状态和完整性，发现不良的篡改，并确保使用了物联网技术的系统所传输的数据没用经过篡改。</p>
-<h2 id="数字版权领域"><a href="#数字版权领域" class="headerlink" title="数字版权领域"></a>数字版权领域</h2><p>通过区块链技术，可以对作品进行鉴权，证明文字、视频、音频等作品的存在，保证权属的真实、唯一性。作品在区块链上被确权后，后续交易都会进行实时记录，实现数字版权全生命周期管理，也可作为司法取证中的技术性保障。例如，美国纽约一家创业公司Mine Labs开发了一个基于区块链的元数据协议，这个名为Mediachain的系统利用IPFS文件系统，实现数字作品版权保护，主要是面向数字图片的版权保护应用。</p>
-<h2 id="保险领域"><a href="#保险领域" class="headerlink" title="保险领域"></a>保险领域</h2><p>在保险理赔方面，保险机构负责资金归集、投资、理赔，往往管理和运营成本较高。通过智能合约的应用，既无需投保人申请，也无需保险公司批准，只要触发理赔条件，实现保单自动理赔。一个典型的应用案例就是LenderBot, 是 2016 年由区块链企业 Stratumn、德勤与支付服务商 Lemonway 合作推出，它允许人们通过 Facebook Messenger 的聊天功能，注册定制化的微保险产品， 为个人之间交换的高价值物品进行投保，而区块链在贷款合同中代替了第三方角色 。</p>
-<h2 id="公益领域"><a href="#公益领域" class="headerlink" title="公益领域"></a>公益领域</h2><p>区块链上存储的数据，高可靠且不可篡改，天然适合用在社会公益场景。公益流程中的相关信息，如捐赠项目、募集明细、资金流向、受助人反馈等，均可以存放于区块链上，并且有条件地进行透明公开公示，方便社会监督。</p>
+<h2 id="一、程序架构"><a href="#一、程序架构" class="headerlink" title="一、程序架构"></a>一、程序架构</h2><ul>
+<li>C /  S (client / server)<br>如：QQ  微信   LOL<br>优点：有一部分代码写在客户端，用户体验比较好。<br>缺点：占用资源大，比较吃硬盘，服务器更新，客户端也要随之更新。</li>
+<li>B / S (browser / server)<br>如：网页QQ，  网页游戏。<br>优点：客户端只要浏览器就可以了，占用资源小，不用更新。<br>缺点：用户体验不佳。</li>
+</ul>
+<h2 id="二、web服务器"><a href="#二、web服务器" class="headerlink" title="二、web服务器"></a>二、web服务器</h2><ul>
+<li><strong>服务器：其实服务器就是一台电脑。 配置比一般的要好。</strong></li>
+<li>Web服务器软件 ：客户端在浏览器的地址栏上输入地址 ，然后web服务器软件，接收请求，然后响应消息。 </li>
+</ul>
+<ul>
+<li>处理客户端的请求， 返回资源 | 信息</li>
+</ul>
+<ul>
+<li>Web应用  需要服务器支撑。 index.html</li>
+</ul>
+<ul>
+<li>常用web服务器：<br> Tomcat  —–apache 免费<br> WebLogic —–BEA  收费<br> Websphere —–IBM 收费<br> IIS   —–微软<h2 id="三、安装tomcat"><a href="#三、安装tomcat" class="headerlink" title="三、安装tomcat"></a>三、安装tomcat</h2></li>
+<li>直接解压 ，然后找到bin/startup.bat</li>
+<li>安装启动之后，如果能够正常看到黑窗口，表明已经成功安装。 为了确保万无一失， 最好在浏览器的地址栏上输入 ： <a href="http://localhost:8080">http://localhost:8080</a> , 如果有看到内容 就表明成功了。在黑窗口开着的同时输入网址。</li>
+<li>出现控制台乱码问题，右键控制台，查看是GBK，还是UTF-8。然后在安装目录中找到conf–logging.properties文件，修改里面的编码方式，保持一致即可。</li>
+<li>如果双击了startup.bat,  看到一闪而过的情形，一般都是 JDK的环境变量没有配置。<h2 id="四、Tomcat目录介绍"><a href="#四、Tomcat目录介绍" class="headerlink" title="四、Tomcat目录介绍"></a>四、Tomcat目录介绍</h2></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200225115238417.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><p>bin： 包含了一些jar ,  bat文件 。  startup.bat。</p>
+</li>
+<li><p>conf：tomcat的配置   server.xml ，  web.xml。</p>
+</li>
+<li><p>lib：tomcat运行所需的jar文件。</p>
+</li>
+<li><p>logs：运行的日志文件。</p>
+</li>
+<li><p>temp：临时文件。</p>
+</li>
+<li><p>webapps：发布到tomcat服务器上的项目，就存放在这个目录。</p>
+</li>
+<li><p>work：jsp翻译成class文件存放地。</p>
+</li>
+</ul>
+<h2 id="五、Eclipse配置Tomcat"><a href="#五、Eclipse配置Tomcat" class="headerlink" title="五、Eclipse配置Tomcat"></a>五、Eclipse配置Tomcat</h2><ol>
+<li>Java EE 的视图下，在server里面，右键新建一个服务器， 选择到apache分类， 找到对应的tomcat版本， 接着一步一步配置即可。</li>
+<li>配置完毕后， 在server 里面， 右键刚才的服务器，然后open  ， 找到上面的Server Location , 选择中间的 Use Tomcat installation…</li>
+<li>创建web工程， 在WebContent下新建html文件， 右击工程， run as server<br><img src="https://img-blog.csdnimg.cn/20200225140218529.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li>至此成功！！！</li>
+</ol>
 ]]></content>
       <categories>
-        <category>区块链+比特币</category>
+        <category>Java Web</category>
       </categories>
       <tags>
-        <tag>区块链，比特币</tag>
+        <tag>web</tag>
+        <tag>Tomcat</tag>
       </tags>
   </entry>
   <entry>
-    <title>操作系统---死锁</title>
-    <url>/1179211128/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;死锁是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象，若无外力作用，它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程。<br><strong>简单理解就是：</strong> 我想要你手里的东西，同时你也想要我手里的资源，我俩同时都不让出来，谁也拿不到。</p>
+    <title>操作系统---虚拟内存</title>
+    <url>/1080640073/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是不是经常听到虚拟内存这个名词，尤其是在玩Linux的时候，其实不然，哪个是交换分区，跟虚拟内存还是有差别的。</p>
+<a id="more"></a>
+<ul>
+<li><p>对一个程序来说，他在某一段时间内，只有某一些部分是需要在内存里面的。（局部性原理），虚拟内存管理，属于一个完全黑盒的封装，我们在使用的时候，几乎不需要考虑他的存在。</p>
+</li>
+<li><p>虚拟内存的两种实现方式：请求页，请求段。</p>
+</li>
+<li><p>请求页：如果有一个页面，只有当你真正需要他的时候，才把他加载到内存中来，有很多好处：降低IO操作，</p>
+</li>
+<li><p><strong>虚拟内存也是一种缓存思想</strong>：虚拟内存将主存看成是一个磁盘的高速缓存，主存中只保存活动区域，并根据需要在磁盘和主存之间来回传送数据。</p>
+</li>
+<li><p>从概念上来说，虚拟内存被组织成为一个由存放在磁盘上的 N 个连续的字节大小的单元组成的数组，也就是字节数组。每个字节都有一个唯一的虚拟地址作为数组的索引。虚拟内存的地址和磁盘的地址之间建立影射关系。磁盘上活动的数组内容被缓存在主存中。在存储器层次结构中，磁盘(较低层L5，参见我们上篇文章图4)的数据被分割成块(block)，这些块作为和主存(较高层,L4)之间的传输单元。主存作为虚拟内存(或者说磁盘)的缓存。</p>
+</li>
+<li><p>虚拟内存（VM）系统将虚拟内存分割成称为大小固定的虚拟页（Virtual Page,VP），每个虚拟页的大小为固定字节。同样的，物理内存被分割为物理页（Physical Page,PP）,大小也为固定字节（物理页也称作页帧，page frame）。</p>
+</li>
+<li><p>在任意时刻，虚拟页面都分为三个不相交的部分：<br>①<strong>未分配的(Unallocated)</strong> ：VM 系统还未分配（或者创建）的页，未分配的页没有任何数据和它们关联，因此不占用任何内存/磁盘空间。<br>②<strong>缓存的(Cached)</strong>： 当前已缓存在物理内存中的已分配页。<br>③<strong>未缓存的(UnCached)</strong> ：该页已经映射到磁盘上了，但是还没缓存在物理内存中。</p>
+</li>
+</ul>
+<h2 id="swap分区的作用"><a href="#swap分区的作用" class="headerlink" title="swap分区的作用"></a>swap分区的作用</h2><ul>
+<li><p>linux有一个swap分区。Swap空间的作用可简单描述为：当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间中的信息被临时保存到Swap空间中，等到那些程序要运行时，再从Swap中恢复保存的数据到内存中。系统总是在物理内存不够时，才进行Swap交换。</p>
+</li>
+<li><p>电脑开着一个进程，几天不关机，也一直没关闭这个进程，随着运行的程序越来越多，内存快不够用了，所以操作系统就选择将这个音乐播放器的内存状态(包括堆栈状态等)都写到磁盘上的swap区进行保存。这样就腾出来一部分内存供其他需要运行的程序使用。等你要使用到这个进程了。此时， 系统会从磁盘中的swap区重新读取该进程的相关信息，送回内存接着运行。</p>
+</li>
+</ul>
+<h2 id="补充注意"><a href="#补充注意" class="headerlink" title="补充注意"></a>补充注意</h2><p><strong>在window下也有类作用的硬盘空间，属于对用户不可见的匿名磁盘空间(在C盘)。</strong></p>
+<p>特别注意：按照字面意思，swap交换区也可以称为虚拟内存<br>硬盘上的swap交换区，其实就相当于承担了内存的作用(只是速度很慢罢了)。swap交换区起到了扩大内存的作用。所以从某些意义上来讲，swap区也可以叫做虚拟内存，但是这个虚拟内存是字面意思。和我们本文当中站在计算机系统的角度来解释的虚拟内存不是一个概念。所以特别注意这一点。因为有些人理解的虚拟内存，就是swap交互区。此虚拟内存非彼虚拟内存，所以明白各自的概念和作用。</p>
+<p><strong>linux环境下叫做swap分区，window下这块区域不叫swap分区，就直接按照字面意思叫做”虚拟内存”了。所以两个含义不同的虚拟内存</strong></p>
+]]></content>
+      <categories>
+        <category>计算机操作系统</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统---进程管理</title>
+    <url>/853277148/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程，也就是任务，这里有必要说一下进程和线程的区别：进程是资源分配的最小单位，线程是程序执行的最小单位，通俗来讲，一个爹可以有很多儿子，但儿子之后一个爹，并且还遗传这个爹，爹能做大事，而儿子，做一些杂七杂八的给爹打下手，你细细品。这篇文章主要讲进程管理的策略。</p>
 <a id="more"></a>
 
-<h2 id="为什么会产生死锁？"><a href="#为什么会产生死锁？" class="headerlink" title="为什么会产生死锁？"></a>为什么会产生死锁？</h2><ul>
-<li><strong>系统资源的竞争：</strong> 当系统中供多个进程共享的资源如打印机、公用队列的等，其数目不足以满足诸进程的需要时，会引起诸进程对资源的竞争而产生死锁。</li>
-<li><strong>进程运行推进顺序不当引起死锁：</strong> 　　若P1保持了资源R1,P2保持了资源R2，系统处于不安全状态，因为这两个进程再向前推进，便可能发生死锁。例如，当P1运行到P1：Request（R2）时，将因R2已被P2占用而阻塞；当P2运行到P2：Request（R1）时，也将因R1已被P1占用而阻塞，于是发生进程死锁。</li>
+<h2 id="进程概念"><a href="#进程概念" class="headerlink" title="进程概念"></a>进程概念</h2><ul>
+<li>进程：打开任务管理器，里面正在执行的任务，一个程序运行起来了，它就是一个进程。</li>
+<li><code>jobs</code>是最早的进程原型，也就是单道批处理系统，cpu一次只运行一个程序，其他的程序要事先放在内存中，等待上一个程序执行完了，他再去执行。</li>
+<li>后来出现了分时操作系统，大家轮着执行。使用cpu，称之为任务。</li>
 </ul>
-<h2 id="产生死锁的必要条件"><a href="#产生死锁的必要条件" class="headerlink" title="产生死锁的必要条件"></a>产生死锁的必要条件</h2><ol>
-<li><p><strong>互斥条件：</strong> 指进程对所分配到的资源进行排它性使用，即在一段时间内某资源只由一个进程占用。如果此时还有其它进程请求资源，则请求者只能等待，直至占有资源的进程用毕释放。</p>
-</li>
-<li><p><strong>请求与保持条件：</strong> 进程已经保持了至少一个资源，但又提出了新的资源请求，而该资源 已被其他进程占有，此时请求进程被阻塞，但对自己已获得的资源保持不放。</p>
-</li>
-<li><p><strong>不可剥夺条件：</strong> 进程所获得的资源在未使用完毕之前，不能被其他进程强行夺走，即只能 由获得该资源的进程自己来释放（只能是主动释放)。</p>
-</li>
-<li><p><strong>循环等待条件：</strong> 指在发生死锁时，必然存在一个进程——资源的环形链，即进程集合{P0，P1，P2，···，Pn}中的P0正在等待一个P1占用的资源；P1正在等待P2占用的资源，……，Pn正在等待已被P0占用的资源。</p>
-</li>
-</ol>
+<h2 id="进程组成"><a href="#进程组成" class="headerlink" title="进程组成"></a>进程组成</h2><p><img src="https://img-blog.csdnimg.cn/20200319160008644.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
-<li>这四个条件是死锁的必要条件，只要系统发生死锁，这些条件必然成立，而只要上述条件之一不满足，就不会发生死锁。</li>
+<li>程序计数器（pc）和各种寄存器</li>
+<li>数据段</li>
+<li>代码段</li>
+<li>栈</li>
+<li>堆</li>
+<li>栈内存，堆内存慢慢增长，到一定程度，会导致内存不足的情况。</li>
 </ul>
-<h2 id="解决策略："><a href="#解决策略：" class="headerlink" title="解决策略："></a>解决策略：</h2><h3 id="死锁的避免与预防"><a href="#死锁的避免与预防" class="headerlink" title="死锁的避免与预防"></a>死锁的避免与预防</h3><p>死锁避免的基本思想：系统对进程发出每一个系统能够满足的资源申请进行动态检查，并根据检查结果决定是否分配资源，如果分配后系统可能发生死锁,则不予分配，否则予以分配。这是一种保证系统不进入死锁状态的动态策略。理解了死锁的原因，尤其是产生死锁的四个必要条件，就可以最大可能地避免、预防和解除死锁。只要打破四个必要条件之一就能有效预防死锁的发生：</p>
-<ol>
-<li><p>打破互斥条件：改造独占性资源为虚拟资源，大部分资源已无法改造。</p>
-</li>
-<li><p>打破不可抢占条件：当一进程占有一独占性资源后又申请一独占性资源而无法满足，则退出原占有的资源。</p>
-</li>
-<li><p>打破占有且申请条件：采用资源预先分配策略，即进程运行前申请全部资源，满足则运行，不然就等待，这样就不会占有且申请。</p>
-</li>
-<li><p>打破循环等待条件：实现资源有序分配策略，对所有设备实现分类编号，所有进程只能采用按序号递增的形式申请资源。</p>
-</li>
-<li><p>死锁预防和避免的区别</p>
-</li>
-</ol>
+<h2 id="进程状态"><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h2><ul>
+<li>操作系统就是通过切换进程的状态，达到进程控制的目的。也实现了很多进程同时运行，周而复始。有条不紊</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200319161707691.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
-<li>死锁预防是设法至少破坏产生死锁的四个必要条件之一，严格的防止死锁的出现。</li>
-<li>死锁避免则不那么严格的限制产生死锁的必要条件的存在，因为即使死锁的必要条件存在，也不一定发生死锁。死锁避免是在系统运行过程中注意避免死锁的最终发生。</li>
+<li>new（新建）</li>
+<li>ready（就绪态）：一个进程是完全可以运行的，万事俱备，只差cpu。</li>
+<li>running（运行态）：拥有cpu的进程，一个cpu上只能运行一个进程，什么时候它会把cpu交出去？<br>①中断interrupt：她本可以继续运行下去的，但是操作系统觉得它运行的太久了。或者是有更重要的要做，所以就把他给中断了，打回到就绪态。<br>②主动让出cpu：这个进程要去做一个io操作，或者是等待一个事件（等不到这个指令，他就不知道要做什么），这个时候就会让出cpu。进入就绪状态。</li>
+<li>waiting（等待态）：被唤醒（有响应了，知道自己该做什么了）之后进入就绪态。</li>
+<li>terminated（结束）</li>
 </ul>
-<h3 id="死锁的检测和恢复"><a href="#死锁的检测和恢复" class="headerlink" title="死锁的检测和恢复"></a>死锁的检测和恢复</h3><ul>
-<li>并没有实际卵用</li>
+<h2 id="进程控制块PCB"><a href="#进程控制块PCB" class="headerlink" title="进程控制块PCB"></a>进程控制块PCB</h2><ul>
+<li>进程控制块PCB（Process Control  Block）是一个结构体，通过它来控制进程。每个进程都有一个PCB。通过PCB能找到这个进程的位置，状态，信息。</li>
+<li>进程1切换的时候，将这个进程的所有信息保存到PCB寄存器中，以保证下次在运行的时候，就是上次停止的状态。</li>
+<li>如何挑选下一个进程来执行呢，这就涉及到内核的调度算法了。</li>
+<li>所有的PCB结构体，在一起构成了一个队列。</li>
+<li>进程是在不同的队列之间，来回迁移。例如：就绪队列，I/O等待队列。</li>
+<li>用一个大数组来装所有的PCB结构体，用一个指针来指向PCB数组中的这个进程。</li>
+<li>软件做不了的事，硬件可以做。</li>
 </ul>
-<h3 id="鸵鸟算法"><a href="#鸵鸟算法" class="headerlink" title="鸵鸟算法"></a>鸵鸟算法</h3><ul>
-<li><strong>核心思想：</strong> 装作没看见</li>
-<li><strong>为什么会用鸵鸟算法？</strong><br>上面的一些做法，组织啊，恢复啊，无一例外会给系统带来很多沉重的负担。一方面给系统添加，另一方面解决的问题发生的概率不大，吃力还不讨好。而且，死锁发生的原因是由于程序设计人员写出来的问题，操作系统当然不会予以理会。所以死锁的问题都是交给程序设计人员来解决。</li>
+<h2 id="进程的创建"><a href="#进程的创建" class="headerlink" title="进程的创建"></a>进程的创建</h2><ul>
+<li>一开机就会发现有进程，这些都是系统级的进程 ，如shell，资源管理器，一些应用程序设置的开机自启动就是通过shell来启动的，相当于捆绑销售一样 。</li>
+<li>打开应用程序，双击，这个命令给了资源管理器，或者命令行下，是把指令给了shell</li>
+<li>父进程与子进程</li>
+<li>unix创建进程：fork（）生成一个子进程 </li>
+<li>top 命令，监视现在所有进程的状态，每隔一秒种刷新一次。</li>
+<li>windows创建进程：create process </li>
+<li>msdn—微软的百科全书。 </li>
+<li>杀死进程：kill</li>
+</ul>
+<h2 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h2><p>多进程模式模块化</p>
+<ul>
+<li><strong>消息传递（Mwssage passing）</strong> ：A进程把消息从自己的内存空间复制一份到内核中，然后内核再把消息复制一份给进程B。用系统调用进行信息传递。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200319194014153.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>共享内存（Shared memory）：</strong> 每个进程都有自己独立的地址空间，但是两个进程，甚至更多的进程通过协商（也是系统调用来协商）划分出来一块儿共享内存。在每个进程的地址空间都有。A在这块儿空间里一写数据，B马上就可以读取到。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200319194244682.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>共享内存在协商的时候，要经过一系列的系统调用。而且还要约定好，过程很麻烦。如果进程之间共享内存，就要负责任，实现同步，不要同时写在同一个地方。</li>
+<li><strong>消息传递</strong> 很方便。经常用到。分为两种：<br>①阻塞型：（更好用）<br>当你调了这个系统调用之后，如果你请求的结果不能立即得到。那么你当前这个进程就会被挂起，被放到等待状态，被阻塞。<br>②非阻塞型：（考虑的比较多 ）<br>当你调了这个系统调用之后，如果你请求的结果不能立即得到。那么这个请求会在后台去操作，同时这个系统调用会返回，空闲时候会回到你的进程，这个系统调用的返回值会告诉你，这个操作没有完成，进程根据这个返回值来判断是否完成操作，并做其他操作。</li>
+</ul>
+<h2 id="多进程编程"><a href="#多进程编程" class="headerlink" title="多进程编程"></a>多进程编程</h2><ul>
+<li>父进程会把所有的信息复制一份给子进程，自此变成两个独立的进程，互相不影响。</li>
+<li>以我们的角度来看，这样的子进程，父进程是不是太浪费内存了，但是，操作系统只是表面上让你看到它是把父进程复制给了子进程，但其实，他可以做到父进程和子进程之间完全相同的部分之间共享内存。所以大可不必担心这个问题。</li>
+<li>多进程编程最重要的一个特性，也是我们首先要了解到的，独立性，直观上来看，他们两个进程之间互相不干扰。</li>
+</ul>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><ul>
+<li><p>进程的特点是分离，而线程就是不分离。 互相协作的关系</p>
+</li>
+<li><p>线程有： 线程ID，PC寄存器，栈 。。。 </p>
+</li>
+<li><p>引入进程的目的就是让一个进程里面同时有多条执行路线，同时发挥作用。</p>
+</li>
+<li><p>多线程优点：<br>①快速的响应能力：有比较耗时的操作是，创建线程去做，主线程用来和用户 交互。<br>②资源共享：协作更方便，数据传递更方便<br>③经济实惠：线程更加节约资源。 </p>
+</li>
+<li><p>用户级线程：<br>①优点：效率高，可定制性好，。<br>②缺点：用户线程中任何一个线程，如果调用了阻塞性的系统调用，那么所有用户线程就全被阻塞。因为在操作系统看来，这么这个线程就是同一个线程，就会被阻塞掉。用户线程不能在多个处理器上并行运行。</p>
+</li>
+<li><p>内核级线程：操作系统提供的线程。</p>
+</li>
+<li><p>线程池：先创建多少个线程，要用的时候 就去拿，但是也有缺点。 </p>
+</li>
 </ul>
 ]]></content>
       <categories>
@@ -3523,72 +3810,22 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
-    <title>Ubuntu18.04系统安装，修改源</title>
-    <url>/linux/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于疫情在家，看着家里有一台吃了一两年灰的台式电脑，大概是初三的时候买的，抹一下灰就跟新的一样，哈哈，于是突然心生一计，就开始动手整理这台电脑，首先重装系统，不过这次，我装的是win10+Ubuntu18.04双系统。</p>
+    <title>比特币的两种交易方式</title>
+    <url>/2670976354/</url>
+    <content><![CDATA[<p>比特币的交易有很多种，本文了解一下</p>
 <a id="more"></a>
-
-<h1 id="一-准备："><a href="#一-准备：" class="headerlink" title="一. 准备："></a>一. 准备：</h1><ul>
-<li><strong>终端如何复制粘贴？</strong><br>在文本区域左键复制，到终端里面直接按下鼠标滚轮即可。</li>
-<li><strong>如何切换root权限？</strong><br>安装之后root是不设置密码的，以普通用户输入su  root按照步骤设置自己的密码</li>
-</ul>
-<h2 id="工具："><a href="#工具：" class="headerlink" title="工具："></a>工具：</h2><ul>
-<li>大于4G的U盘一只，事先将里面的文件备份到电脑中。</li>
-</ul>
-<h3 id="第一步："><a href="#第一步：" class="headerlink" title="第一步："></a>第一步：</h3><p>下载Ubuntu系统镜像——-后缀.iso的配置文件。因为是外网，所以去官网下载需要自备**（真是把我累伤心了），于是我找到了国内的开源网站：<a href="http://mirrors.163.com/ubuntu-releases/14.04/">https://blog.csdn.net/davidhzq/article/details/102575343</a></p>
-<h3 id="第二步："><a href="#第二步：" class="headerlink" title="第二步："></a>第二步：</h3><p>  制作U盘启动盘—–需要下载USBWiter这个工具用来写入ISO镜像，下载地址：<a href="http://mydown.yesky.com/pcsoft/413551662.html">http://mydown.yesky.com/pcsoft/413551662.html</a><br> 解压后打开小工具：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200209220859288.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h3 id="第三步："><a href="#第三步：" class="headerlink" title="第三步："></a>第三步：</h3><p> 还要在硬盘腾出一块空间用来安装Ubuntu系统，具体操作如下：以管理的身份打开“我的电脑”，如图所示：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200209221926433.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> <img src="https://img-blog.csdnimg.cn/20200209222255142.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p> 压缩完之后，就不用管了，会看到你刚才压缩的那个卷之后，会有一块空闲的空间。</p>
-<h1 id="二-开始安装："><a href="#二-开始安装：" class="headerlink" title="二.开始安装："></a>二.开始安装：</h1><h3 id="第四步："><a href="#第四步：" class="headerlink" title="第四步："></a>第四步：</h3><ul>
-<li>拿着你做好的U盘，插到你要安装系统的电脑上，在开机的时候，会看到：</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/2020021012440214.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>如果没有的话，可能是你开机设置里不允许用U盘启动，我当时就遇到了这种情况，然后狂点F12，进入BIOS，主要是为了进入BIOS，不同型号的电脑按键不一样，自己上网查，按如下图设置后，按F10，保存并重启。<br><img src="https://img-blog.csdnimg.cn/2020021012462934.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-</ul>
-<h3 id="第五步："><a href="#第五步：" class="headerlink" title="第五步："></a>第五步：</h3><p><img src="https://img-blog.csdnimg.cn/202002092238476.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200209223948185.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200209224129521.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200209224527382.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200209224741212.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/2020020922495535.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><strong>后面就一步一步点击继续就可以了，最后等待安装完成</strong></p>
-<h2 id="在安装过程中遇到的问题："><a href="#在安装过程中遇到的问题：" class="headerlink" title="在安装过程中遇到的问题："></a>在安装过程中遇到的问题：</h2><p><img src="https://img-blog.csdnimg.cn/20200210125455148.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200210125505598.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200210125606591.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>最后的最后，还是一个人抗下了所有，安装崩溃了，我心态也奔溃了，但是重振旗鼓，找到问题：GRUB的引导问题，也找到了解决方案：<a href="https://blog.csdn.net/weixin_44123547/article/details/103243238">https://blog.csdn.net/weixin_44123547/article/details/103243238</a><br>最终还是安装完成了：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200210125944723.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h1 id="三-修改源："><a href="#三-修改源：" class="headerlink" title="三. 修改源："></a>三. 修改源：</h1><p>因为Ubuntu默认下载源是国外源，我们修改为国内源，我改的是清华的源。<br>打开终端，<strong>切换到root权限</strong>输入以下命令：</p>
-<h2 id="1、备份"><a href="#1、备份" class="headerlink" title="1、备份"></a>1、备份</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp /etc/apt/sources.list /etc/apt/sources.list.bak</span><br></pre></td></tr></table></figure>
-<h2 id="2、修改sources-list文件"><a href="#2、修改sources-list文件" class="headerlink" title="2、修改sources.list文件"></a>2、修改sources.list文件</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi sources.list</span><br></pre></td></tr></table></figure>
-<h2 id="3、修改源（复制进去）"><a href="#3、修改源（复制进去）" class="headerlink" title="3、修改源（复制进去）"></a>3、修改源（复制进去）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial universe</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates universe</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial multiverse</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates multiverse</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security universe</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security multiverse</span><br></pre></td></tr></table></figure>
-<h2 id="4、-更新源"><a href="#4、-更新源" class="headerlink" title="4、 更新源"></a>4、 更新源</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-
-<p>完成后，输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
-<h2 id="5、大功告成"><a href="#5、大功告成" class="headerlink" title="5、大功告成"></a>5、大功告成</h2>]]></content>
-      <categories>
-        <category>linux学习笔记</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数字货币的种类</title>
-    <url>/undefined/</url>
-    <content><![CDATA[<p>当前的数字货币大致有以下几种。</p>
-<a id="more"></a>
-<p><img src="https://img-blog.csdnimg.cn/20200204160645330.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><strong>BTC：</strong> 比特币</li>
-<li><strong>ETH：</strong> 以太币</li>
-<li><strong>USDT：</strong> 泰达币（与同数量的美元是等值的）</li>
-<li><strong>EOS：</strong> 为商用分布式应用设计的一款区块链操作系统。EOS是引入的一种新的区块链架构，旨在实现分布式应用的性能扩展。注意，它并不是像比特币和以太坊那样的货币，而是基于EOS软件项目之上发布的代币，被称为区块链3.0 。</li>
-<li><strong>XRP：</strong> 瑞波币。它是基于Ripple协议的虚拟货币，主要功能有二：1.防止恶意攻击；2.桥梁货币。</li>
-<li><strong>LTC：</strong> 莱特币。<img src="https://img-blog.csdnimg.cn/20200204161448813.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li><strong>HT：</strong> 火币<br><img src="https://img-blog.csdnimg.cn/20200204161631662.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li><strong>HUSD：</strong> 稳定币<img src="https://img-blog.csdnimg.cn/20200204162140418.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li><strong>BCH：</strong><img src="https://img-blog.csdnimg.cn/20200204162243770.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-</ul>
+<h2 id="比特币交易的几种种方式："><a href="#比特币交易的几种种方式：" class="headerlink" title="比特币交易的几种种方式："></a>比特币交易的几种种方式：</h2><p><img src="https://img-blog.csdnimg.cn/20200204170527575.png" alt="在这里插入图片描述"></p>
+<ol>
+<li><strong>场外交易：</strong> 也称为<strong>法币交易</strong>，法币就是<strong>法定货币</strong>，人民币就是我们国家的法定货币，顾名思义，法币交易就是由法币（人民币）直接与比特币（数字货币）进行交易的行为（购买/出售),可以简单理解为网购。</li>
+<li><strong>场内交易：</strong> 也称之为<strong>币币交易</strong>，就是用一种币交易兑换另一种币。</li>
+<li><strong>杠杆交易：</strong> 利用小额的资金来进行数倍于原始金额的投资。以期望获取相对投资标的物波动的数倍收益率，抑或亏损。由于保证金（该笔小额资金）的增减不以标的资产的波动比例来运动，<strong>风险很高</strong>。不推荐。</li>
+<li><strong>合约交易：</strong> 合约交易是指交易双方，在交易所通过买卖合约，并根据约定在未来某一特定时间和地点，以特定价格买卖规定数量商品的行为。合约交易是在现货远期合约交易基础上发展起来的，在交易所内买卖标准化合约的一种新型交易方式。</li>
+</ol>
+<h2 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h2><ol>
+<li>法币交易很耗时间，即使交易双方操作熟练，但是还是不排除人为因素造成交易时间拖长，不利于双方观察局势，很有可能在分分钟内错过行情。</li>
+<li>币币交易可以在极短时间内成交（按下买入键的瞬间与对手成交）且支持购买的币种更多。</li>
+</ol>
+<p>，</p>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>
@@ -3743,243 +3980,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </categories>
       <tags>
         <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>比特币的两种交易方式</title>
-    <url>/2670976354/</url>
-    <content><![CDATA[<p>比特币的交易有很多种，本文了解一下</p>
-<a id="more"></a>
-<h2 id="比特币交易的几种种方式："><a href="#比特币交易的几种种方式：" class="headerlink" title="比特币交易的几种种方式："></a>比特币交易的几种种方式：</h2><p><img src="https://img-blog.csdnimg.cn/20200204170527575.png" alt="在这里插入图片描述"></p>
-<ol>
-<li><strong>场外交易：</strong> 也称为<strong>法币交易</strong>，法币就是<strong>法定货币</strong>，人民币就是我们国家的法定货币，顾名思义，法币交易就是由法币（人民币）直接与比特币（数字货币）进行交易的行为（购买/出售),可以简单理解为网购。</li>
-<li><strong>场内交易：</strong> 也称之为<strong>币币交易</strong>，就是用一种币交易兑换另一种币。</li>
-<li><strong>杠杆交易：</strong> 利用小额的资金来进行数倍于原始金额的投资。以期望获取相对投资标的物波动的数倍收益率，抑或亏损。由于保证金（该笔小额资金）的增减不以标的资产的波动比例来运动，<strong>风险很高</strong>。不推荐。</li>
-<li><strong>合约交易：</strong> 合约交易是指交易双方，在交易所通过买卖合约，并根据约定在未来某一特定时间和地点，以特定价格买卖规定数量商品的行为。合约交易是在现货远期合约交易基础上发展起来的，在交易所内买卖标准化合约的一种新型交易方式。</li>
-</ol>
-<h2 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h2><ol>
-<li>法币交易很耗时间，即使交易双方操作熟练，但是还是不排除人为因素造成交易时间拖长，不利于双方观察局势，很有可能在分分钟内错过行情。</li>
-<li>币币交易可以在极短时间内成交（按下买入键的瞬间与对手成交）且支持购买的币种更多。</li>
-</ol>
-<p>，</p>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>操作系统---进程管理</title>
-    <url>/853277148/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程，也就是任务，这里有必要说一下进程和线程的区别：进程是资源分配的最小单位，线程是程序执行的最小单位，通俗来讲，一个爹可以有很多儿子，但儿子之后一个爹，并且还遗传这个爹，爹能做大事，而儿子，做一些杂七杂八的给爹打下手，你细细品。这篇文章主要讲进程管理的策略。</p>
-<a id="more"></a>
-
-<h2 id="进程概念"><a href="#进程概念" class="headerlink" title="进程概念"></a>进程概念</h2><ul>
-<li>进程：打开任务管理器，里面正在执行的任务，一个程序运行起来了，它就是一个进程。</li>
-<li><code>jobs</code>是最早的进程原型，也就是单道批处理系统，cpu一次只运行一个程序，其他的程序要事先放在内存中，等待上一个程序执行完了，他再去执行。</li>
-<li>后来出现了分时操作系统，大家轮着执行。使用cpu，称之为任务。</li>
-</ul>
-<h2 id="进程组成"><a href="#进程组成" class="headerlink" title="进程组成"></a>进程组成</h2><p><img src="https://img-blog.csdnimg.cn/20200319160008644.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>程序计数器（pc）和各种寄存器</li>
-<li>数据段</li>
-<li>代码段</li>
-<li>栈</li>
-<li>堆</li>
-<li>栈内存，堆内存慢慢增长，到一定程度，会导致内存不足的情况。</li>
-</ul>
-<h2 id="进程状态"><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h2><ul>
-<li>操作系统就是通过切换进程的状态，达到进程控制的目的。也实现了很多进程同时运行，周而复始。有条不紊</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200319161707691.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>new（新建）</li>
-<li>ready（就绪态）：一个进程是完全可以运行的，万事俱备，只差cpu。</li>
-<li>running（运行态）：拥有cpu的进程，一个cpu上只能运行一个进程，什么时候它会把cpu交出去？<br>①中断interrupt：她本可以继续运行下去的，但是操作系统觉得它运行的太久了。或者是有更重要的要做，所以就把他给中断了，打回到就绪态。<br>②主动让出cpu：这个进程要去做一个io操作，或者是等待一个事件（等不到这个指令，他就不知道要做什么），这个时候就会让出cpu。进入就绪状态。</li>
-<li>waiting（等待态）：被唤醒（有响应了，知道自己该做什么了）之后进入就绪态。</li>
-<li>terminated（结束）</li>
-</ul>
-<h2 id="进程控制块PCB"><a href="#进程控制块PCB" class="headerlink" title="进程控制块PCB"></a>进程控制块PCB</h2><ul>
-<li>进程控制块PCB（Process Control  Block）是一个结构体，通过它来控制进程。每个进程都有一个PCB。通过PCB能找到这个进程的位置，状态，信息。</li>
-<li>进程1切换的时候，将这个进程的所有信息保存到PCB寄存器中，以保证下次在运行的时候，就是上次停止的状态。</li>
-<li>如何挑选下一个进程来执行呢，这就涉及到内核的调度算法了。</li>
-<li>所有的PCB结构体，在一起构成了一个队列。</li>
-<li>进程是在不同的队列之间，来回迁移。例如：就绪队列，I/O等待队列。</li>
-<li>用一个大数组来装所有的PCB结构体，用一个指针来指向PCB数组中的这个进程。</li>
-<li>软件做不了的事，硬件可以做。</li>
-</ul>
-<h2 id="进程的创建"><a href="#进程的创建" class="headerlink" title="进程的创建"></a>进程的创建</h2><ul>
-<li>一开机就会发现有进程，这些都是系统级的进程 ，如shell，资源管理器，一些应用程序设置的开机自启动就是通过shell来启动的，相当于捆绑销售一样 。</li>
-<li>打开应用程序，双击，这个命令给了资源管理器，或者命令行下，是把指令给了shell</li>
-<li>父进程与子进程</li>
-<li>unix创建进程：fork（）生成一个子进程 </li>
-<li>top 命令，监视现在所有进程的状态，每隔一秒种刷新一次。</li>
-<li>windows创建进程：create process </li>
-<li>msdn—微软的百科全书。 </li>
-<li>杀死进程：kill</li>
-</ul>
-<h2 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h2><p>多进程模式模块化</p>
-<ul>
-<li><strong>消息传递（Mwssage passing）</strong> ：A进程把消息从自己的内存空间复制一份到内核中，然后内核再把消息复制一份给进程B。用系统调用进行信息传递。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200319194014153.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><strong>共享内存（Shared memory）：</strong> 每个进程都有自己独立的地址空间，但是两个进程，甚至更多的进程通过协商（也是系统调用来协商）划分出来一块儿共享内存。在每个进程的地址空间都有。A在这块儿空间里一写数据，B马上就可以读取到。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200319194244682.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>共享内存在协商的时候，要经过一系列的系统调用。而且还要约定好，过程很麻烦。如果进程之间共享内存，就要负责任，实现同步，不要同时写在同一个地方。</li>
-<li><strong>消息传递</strong> 很方便。经常用到。分为两种：<br>①阻塞型：（更好用）<br>当你调了这个系统调用之后，如果你请求的结果不能立即得到。那么你当前这个进程就会被挂起，被放到等待状态，被阻塞。<br>②非阻塞型：（考虑的比较多 ）<br>当你调了这个系统调用之后，如果你请求的结果不能立即得到。那么这个请求会在后台去操作，同时这个系统调用会返回，空闲时候会回到你的进程，这个系统调用的返回值会告诉你，这个操作没有完成，进程根据这个返回值来判断是否完成操作，并做其他操作。</li>
-</ul>
-<h2 id="多进程编程"><a href="#多进程编程" class="headerlink" title="多进程编程"></a>多进程编程</h2><ul>
-<li>父进程会把所有的信息复制一份给子进程，自此变成两个独立的进程，互相不影响。</li>
-<li>以我们的角度来看，这样的子进程，父进程是不是太浪费内存了，但是，操作系统只是表面上让你看到它是把父进程复制给了子进程，但其实，他可以做到父进程和子进程之间完全相同的部分之间共享内存。所以大可不必担心这个问题。</li>
-<li>多进程编程最重要的一个特性，也是我们首先要了解到的，独立性，直观上来看，他们两个进程之间互相不干扰。</li>
-</ul>
-<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><ul>
-<li><p>进程的特点是分离，而线程就是不分离。 互相协作的关系</p>
-</li>
-<li><p>线程有： 线程ID，PC寄存器，栈 。。。 </p>
-</li>
-<li><p>引入进程的目的就是让一个进程里面同时有多条执行路线，同时发挥作用。</p>
-</li>
-<li><p>多线程优点：<br>①快速的响应能力：有比较耗时的操作是，创建线程去做，主线程用来和用户 交互。<br>②资源共享：协作更方便，数据传递更方便<br>③经济实惠：线程更加节约资源。 </p>
-</li>
-<li><p>用户级线程：<br>①优点：效率高，可定制性好，。<br>②缺点：用户线程中任何一个线程，如果调用了阻塞性的系统调用，那么所有用户线程就全被阻塞。因为在操作系统看来，这么这个线程就是同一个线程，就会被阻塞掉。用户线程不能在多个处理器上并行运行。</p>
-</li>
-<li><p>内核级线程：操作系统提供的线程。</p>
-</li>
-<li><p>线程池：先创建多少个线程，要用的时候 就去拿，但是也有缺点。 </p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机操作系统</category>
-      </categories>
-      <tags>
-        <tag>OS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>操作系统---虚拟内存</title>
-    <url>/1080640073/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是不是经常听到虚拟内存这个名词，尤其是在玩Linux的时候，其实不然，哪个是交换分区，跟虚拟内存还是有差别的。</p>
-<a id="more"></a>
-<ul>
-<li><p>对一个程序来说，他在某一段时间内，只有某一些部分是需要在内存里面的。（局部性原理），虚拟内存管理，属于一个完全黑盒的封装，我们在使用的时候，几乎不需要考虑他的存在。</p>
-</li>
-<li><p>虚拟内存的两种实现方式：请求页，请求段。</p>
-</li>
-<li><p>请求页：如果有一个页面，只有当你真正需要他的时候，才把他加载到内存中来，有很多好处：降低IO操作，</p>
-</li>
-<li><p><strong>虚拟内存也是一种缓存思想</strong>：虚拟内存将主存看成是一个磁盘的高速缓存，主存中只保存活动区域，并根据需要在磁盘和主存之间来回传送数据。</p>
-</li>
-<li><p>从概念上来说，虚拟内存被组织成为一个由存放在磁盘上的 N 个连续的字节大小的单元组成的数组，也就是字节数组。每个字节都有一个唯一的虚拟地址作为数组的索引。虚拟内存的地址和磁盘的地址之间建立影射关系。磁盘上活动的数组内容被缓存在主存中。在存储器层次结构中，磁盘(较低层L5，参见我们上篇文章图4)的数据被分割成块(block)，这些块作为和主存(较高层,L4)之间的传输单元。主存作为虚拟内存(或者说磁盘)的缓存。</p>
-</li>
-<li><p>虚拟内存（VM）系统将虚拟内存分割成称为大小固定的虚拟页（Virtual Page,VP），每个虚拟页的大小为固定字节。同样的，物理内存被分割为物理页（Physical Page,PP）,大小也为固定字节（物理页也称作页帧，page frame）。</p>
-</li>
-<li><p>在任意时刻，虚拟页面都分为三个不相交的部分：<br>①<strong>未分配的(Unallocated)</strong> ：VM 系统还未分配（或者创建）的页，未分配的页没有任何数据和它们关联，因此不占用任何内存/磁盘空间。<br>②<strong>缓存的(Cached)</strong>： 当前已缓存在物理内存中的已分配页。<br>③<strong>未缓存的(UnCached)</strong> ：该页已经映射到磁盘上了，但是还没缓存在物理内存中。</p>
-</li>
-</ul>
-<h2 id="swap分区的作用"><a href="#swap分区的作用" class="headerlink" title="swap分区的作用"></a>swap分区的作用</h2><ul>
-<li><p>linux有一个swap分区。Swap空间的作用可简单描述为：当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间中的信息被临时保存到Swap空间中，等到那些程序要运行时，再从Swap中恢复保存的数据到内存中。系统总是在物理内存不够时，才进行Swap交换。</p>
-</li>
-<li><p>电脑开着一个进程，几天不关机，也一直没关闭这个进程，随着运行的程序越来越多，内存快不够用了，所以操作系统就选择将这个音乐播放器的内存状态(包括堆栈状态等)都写到磁盘上的swap区进行保存。这样就腾出来一部分内存供其他需要运行的程序使用。等你要使用到这个进程了。此时， 系统会从磁盘中的swap区重新读取该进程的相关信息，送回内存接着运行。</p>
-</li>
-</ul>
-<h2 id="补充注意"><a href="#补充注意" class="headerlink" title="补充注意"></a>补充注意</h2><p><strong>在window下也有类作用的硬盘空间，属于对用户不可见的匿名磁盘空间(在C盘)。</strong></p>
-<p>特别注意：按照字面意思，swap交换区也可以称为虚拟内存<br>硬盘上的swap交换区，其实就相当于承担了内存的作用(只是速度很慢罢了)。swap交换区起到了扩大内存的作用。所以从某些意义上来讲，swap区也可以叫做虚拟内存，但是这个虚拟内存是字面意思。和我们本文当中站在计算机系统的角度来解释的虚拟内存不是一个概念。所以特别注意这一点。因为有些人理解的虚拟内存，就是swap交互区。此虚拟内存非彼虚拟内存，所以明白各自的概念和作用。</p>
-<p><strong>linux环境下叫做swap分区，window下这块区域不叫swap分区，就直接按照字面意思叫做”虚拟内存”了。所以两个含义不同的虚拟内存</strong></p>
-]]></content>
-      <categories>
-        <category>计算机操作系统</category>
-      </categories>
-      <tags>
-        <tag>OS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>比特币的价格是怎么算出来的</title>
-    <url>/2526071924/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-<h2 id="首先了解一下拍卖"><a href="#首先了解一下拍卖" class="headerlink" title="首先了解一下拍卖"></a>首先了解一下拍卖</h2><ul>
-<li><strong>英式拍卖：</strong> 如果拍卖方（卖方）要卖一个商品，那么买方则通过集体竞价的方式进行拍卖，价高者得，最后和卖方成交的一定只有一个买家，而这个买家一定是出价最高的那位。</li>
-<li><strong>荷兰式拍卖：</strong> 假如有一个买家想要买一个商品，但是卖方有很多，那么卖方递减报出新的价位，最终和买方成交的一定是卖价最低的那位。</li>
-</ul>
-<h2 id="实际定价方式"><a href="#实际定价方式" class="headerlink" title="实际定价方式"></a>实际定价方式</h2><p>在交易所看到的一排排红色的数字和一排排绿色的数字其实就是许多的买方和许多的卖方不断报出的<strong>买进价</strong>和<strong>卖出价</strong>，价格随供求变化而不断变动。买者和卖者彼此竞争，<strong>双向拍卖</strong>，买者对想要买进的出价，通过竞争以最低价买入;卖者也互相竞争，试图以最高价格出售，然而最新成交价一定是买卖双方达成一致的那个价格。买卖双方不断成交，最新一笔的成交价就是我们看到的不断变化的价格，这就是为什么价格在一直变化的原因。报价后面的数量，即代表当前的买方或者卖方想要购买或者卖出的币的数量。买卖一旦成交，则不得反悔。在未成交以前，也可以撤单，撤单程序与买卖委托的过程基本相同。</p>
-<h2 id="限价，市价，止盈止损"><a href="#限价，市价，止盈止损" class="headerlink" title="限价，市价，止盈止损"></a>限价，市价，止盈止损</h2><ul>
-<li>限价：是<strong>自己设定</strong>价格进行挂单，需价格波动到设定价格并有对手愿意交易才可以成交。</li>
-<li>市价：市价是以<strong>当前最新</strong>成交价挂单，一般马上成交。</li>
-<li>止盈止损：止盈止损即是<strong>带有预期</strong>的未来买入或者卖出行为，比如当价格跌破某一价位时进行止损（你预期跌破此价格可能还会继续跌），或者当价格突破某一价位时进行买入（你预期价格一旦突破该价位时将会继续上涨）。</li>
-</ul>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>如果你是买方，想要<strong>尽快</strong>购入比特币，当然是设置买入价格与当前最低卖出价格一致，这样双方就可以达成交易了，想要尽快卖出比特币，那就设置卖出价格与当前最高买入价格一致。但是市场上的人并不是都急切的想要卖出或者买入，会带有预期的进行买入卖出报价。</p>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>认识web服务器&amp;Eclipse配置部署Tomcat</title>
-    <url>/629938038/</url>
-    <content><![CDATA[<p>Web服务器一般指网站服务器，是指驻留于因特网上某种类型计算机的程序，可以向浏览器等Web客户端提供文档，也可以放置网站文件，让全世界浏览；可以放置数据文件，让全世界下载。目前最主流的三个Web服务器是Apache、 Nginx 、IIS。</p>
-<a id="more"></a>
-<h2 id="一、程序架构"><a href="#一、程序架构" class="headerlink" title="一、程序架构"></a>一、程序架构</h2><ul>
-<li>C /  S (client / server)<br>如：QQ  微信   LOL<br>优点：有一部分代码写在客户端，用户体验比较好。<br>缺点：占用资源大，比较吃硬盘，服务器更新，客户端也要随之更新。</li>
-<li>B / S (browser / server)<br>如：网页QQ，  网页游戏。<br>优点：客户端只要浏览器就可以了，占用资源小，不用更新。<br>缺点：用户体验不佳。</li>
-</ul>
-<h2 id="二、web服务器"><a href="#二、web服务器" class="headerlink" title="二、web服务器"></a>二、web服务器</h2><ul>
-<li><strong>服务器：其实服务器就是一台电脑。 配置比一般的要好。</strong></li>
-<li>Web服务器软件 ：客户端在浏览器的地址栏上输入地址 ，然后web服务器软件，接收请求，然后响应消息。 </li>
-</ul>
-<ul>
-<li>处理客户端的请求， 返回资源 | 信息</li>
-</ul>
-<ul>
-<li>Web应用  需要服务器支撑。 index.html</li>
-</ul>
-<ul>
-<li>常用web服务器：<br> Tomcat  —–apache 免费<br> WebLogic —–BEA  收费<br> Websphere —–IBM 收费<br> IIS   —–微软<h2 id="三、安装tomcat"><a href="#三、安装tomcat" class="headerlink" title="三、安装tomcat"></a>三、安装tomcat</h2></li>
-<li>直接解压 ，然后找到bin/startup.bat</li>
-<li>安装启动之后，如果能够正常看到黑窗口，表明已经成功安装。 为了确保万无一失， 最好在浏览器的地址栏上输入 ： <a href="http://localhost:8080">http://localhost:8080</a> , 如果有看到内容 就表明成功了。在黑窗口开着的同时输入网址。</li>
-<li>出现控制台乱码问题，右键控制台，查看是GBK，还是UTF-8。然后在安装目录中找到conf–logging.properties文件，修改里面的编码方式，保持一致即可。</li>
-<li>如果双击了startup.bat,  看到一闪而过的情形，一般都是 JDK的环境变量没有配置。<h2 id="四、Tomcat目录介绍"><a href="#四、Tomcat目录介绍" class="headerlink" title="四、Tomcat目录介绍"></a>四、Tomcat目录介绍</h2></li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200225115238417.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><p>bin： 包含了一些jar ,  bat文件 。  startup.bat。</p>
-</li>
-<li><p>conf：tomcat的配置   server.xml ，  web.xml。</p>
-</li>
-<li><p>lib：tomcat运行所需的jar文件。</p>
-</li>
-<li><p>logs：运行的日志文件。</p>
-</li>
-<li><p>temp：临时文件。</p>
-</li>
-<li><p>webapps：发布到tomcat服务器上的项目，就存放在这个目录。</p>
-</li>
-<li><p>work：jsp翻译成class文件存放地。</p>
-</li>
-</ul>
-<h2 id="五、Eclipse配置Tomcat"><a href="#五、Eclipse配置Tomcat" class="headerlink" title="五、Eclipse配置Tomcat"></a>五、Eclipse配置Tomcat</h2><ol>
-<li>Java EE 的视图下，在server里面，右键新建一个服务器， 选择到apache分类， 找到对应的tomcat版本， 接着一步一步配置即可。</li>
-<li>配置完毕后， 在server 里面， 右键刚才的服务器，然后open  ， 找到上面的Server Location , 选择中间的 Use Tomcat installation…</li>
-<li>创建web工程， 在WebContent下新建html文件， 右击工程， run as server<br><img src="https://img-blog.csdnimg.cn/20200225140218529.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li>至此成功！！！</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>web</tag>
-        <tag>Tomcat</tag>
       </tags>
   </entry>
 </search>
