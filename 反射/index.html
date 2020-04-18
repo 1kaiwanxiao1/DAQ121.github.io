@@ -8,18 +8,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>标签: EL - DAQ&#39;s Blog - 一个简简单单的博客</title>
+<title>JavaSE---反射 - DAQ&#39;s Blog - 一个简简单单的博客</title>
 
 
-    <meta name="description" content="用来存储学习笔记！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DAQ&#39;s Blog - 一个简简单单的博客">
-<meta property="og:url" content="http://daqwt.top/tags/EL/index.html">
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;反射就像是一面镜子，这面镜子其实就是JVM，他能照出你的类的所有属性和方法，也能调用你所有对象的属性和方法，crazy~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaSE---反射">
+<meta property="og:url" content="http://daqwt.top/%E5%8F%8D%E5%B0%84/index.html">
 <meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
-<meta property="og:description" content="用来存储学习笔记！">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;反射就像是一面镜子，这面镜子其实就是JVM，他能照出你的类的所有属性和方法，也能调用你所有对象的属性和方法，crazy~">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://daqwt.top/images/og_image.png">
+<meta property="article:published_time" content="2020-04-18T12:26:21.000Z">
+<meta property="article:modified_time" content="2020-04-18T12:32:39.905Z">
 <meta property="article:author" content="黑心市民">
+<meta property="article:tag" content="JavaSE">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://daqwt.top/images/og_image.png">
 
@@ -27,7 +30,7 @@
 
 
 
-<link rel="alternative" href="/rss.xml" title="DAQ&#39;s Blog - 一个简简单单的博客" type="application/atom+xml">
+<link rel="alternative" href="/rss.xml" title="JavaSE---反射" type="application/atom+xml">
 
 
 
@@ -81,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="DAQ&#39;s Blog - 一个简简单单的博客" height="28">
+                <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="JavaSE---反射" height="28">
             
             </a>
         </div>
@@ -126,6 +129,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -139,18 +146,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">EL</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-content article ">
@@ -158,53 +154,164 @@
        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
             
-                <a class="has-link-black-ter" href="/1540231261/">JSP&amp;EL&amp;JSTL</a>
+                JavaSE---反射
             
         </h1>
          <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-11T05:01:53.000Z">2020-02-11</time>
+                <time class="level-item has-text-grey" datetime="2020-04-18T12:26:21.000Z">2020-04-18</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Java-Web/">Java Web</a>
+                <a class="has-link-grey -link" href="/categories/JavaSE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">JavaSE基础知识</a>
                 </div>
                 
                                                             
                 <span class="level-item has-text-grey">                    
                     
                     
-                    14 分钟 读完 (大约 2162 个字)
+                    8 分钟 读完 (大约 1173 个字)
                 </span>
                 
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
                 
             </div>
         </div>
         
         <div class="content">
-            <p>JSP，EL表达式，JSTL介绍</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;反射就像是一面镜子，这面镜子其实就是JVM，他能照出你的类的所有属性和方法，也能调用你所有对象的属性和方法，<strong>crazy~</strong></p>
+<a id="more"></a>
+<h1 id="反射是什么？"><a href="#反射是什么？" class="headerlink" title="反射是什么？"></a>反射是什么？</h1><ul>
+<li>先说<strong>正</strong>是怎么一回事。我要使用某个类，我必须要知道它是什么类，有何作用？用的时候，要先实例化。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实例化一个对象，实例化的过程牵扯太多，不赘述</span></span><br><span class="line">Student stu = <span class="keyword">new</span> Studnt();</span><br><span class="line">Class c1 = stu.getClass();</span><br><span class="line">System.out.println(c1.getName());</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上面这个Student类，JVM在加载的时候这个类的时候，其实会在JAVA堆中创建一个<code>java.lang.class类</code>的对象，就是上面的<code>c1</code>，这个class对象代表类的相关信息。可以使用这个对象的一些方法来获取类的相关信息，这里也体现出了<strong>万物皆对象</strong>的理念，连类都是对象。</li>
+<li>看看class类，这还只是一小部分方法，跟类相关的都可以在Class类中找到。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/202004181940283.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>那说了这么多，反射到底是什么呢？</li>
+</ul>
+<p>我的理解：在运行状态中，可以知道任意一个类的属性和方法，也可以调用任意一个对象的属性和方法，也就是动态获取信息，动态获取对象方法和属性，然而这些底层的实现细节都被屏蔽了，只留下API库给我们使用，也就是<code>java.lang.reflect</code>类库，这些API学习并不难，难在理解反射这个概念，由于实现细节都被屏蔽了，我们也就很少写到反射的代码。</p>
+<h1 id="反射有什么意义？"><a href="#反射有什么意义？" class="headerlink" title="反射有什么意义？"></a>反射有什么意义？</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我直接<code>new</code>出来一个对象不就可以了，为什么用反射，要兜个大圈子？其实出去这些浅显表面的，反射真正的意义在于提高程序的灵活性，屏蔽底层实现细节，便于使用。</p>
+<h1 id="反射如何使用？"><a href="#反射如何使用？" class="headerlink" title="反射如何使用？"></a>反射如何使用？</h1><p>这个在使用的时候直接查API即可，常用的有以下几种。</p>
+<ul>
+<li>通过一个对象获得完整的包名和类名。</li>
+<li>实例化Class对象。</li>
+<li>获取一个对象的父类与实现的接口。</li>
+<li>获取某个类的全部构造函数。</li>
+<li>通过反射机制实例化一个对象。</li>
+<li>获取某个类的全部属性</li>
+<li>获取某个类的全部方法<h1 id="反射的应用场景"><a href="#反射的应用场景" class="headerlink" title="反射的应用场景"></a>反射的应用场景</h1></li>
+<li>JDBC（连接数据库与后端的桥梁），这其中就牵扯到一个连接的问题，我们将数据库的连接信息（用户名，用户密码，库名…）写在配置文件里，而不是写在代码里，为什么？因为这样我们更换数据库的时候，只需要改配置信息，而不是去改代码。而这里的由配置文件到代码，就是由反射来加载驱动的。</li>
+<li>Spring MVC，学<code>servlet</code>的时候各种<code>getParameter()</code>获取信息，但是在SpringMVC框架中只需要在<code>javaBean</code>中约定好字段名，就可以把值填充进去。这就是反射的好处。</li>
+<li>Spring，这个我学的还不多，但是涉及到一个自动组装的问题，只要字段名的顺序是约定一致的，就可使实现自动组装的效果，就像一个萝卜一个坑一样。如果顺序颠倒，可能在你想象中组装出来的是超跑，但是现实却是拖拉机。</li>
+<li>Java的反射用的最多的地方就是在框架里面。比如说有两个程序员，他们各自创建了两个类，第一个程序员现在需要第二个程序员创建的类，可是现在第二个程序员创建的类还没有完成。那么第一个程序员编译自然不成功，但是现在第一个程序员又要使用第二个程序员的类，这个时候，反射就可以完成这个任务。因为反射是在类运行的时候获取对象的各个信息，所以第一个程序员的类就可以完成编译了。</li>
+</ul>
+
         </div>
         
+        <ul class="post-copyright">
+        <li><strong>本文标题：</strong><a href="http://daqwt.top/%E5%8F%8D%E5%B0%84/">JavaSE---反射</a></li>
+        <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
+        <li><strong>本文链接：</strong><a href="http://daqwt.top/%E5%8F%8D%E5%B0%84/">http://daqwt.top/%E5%8F%8D%E5%B0%84/</a></li>
+        <li><strong>发布时间：</strong>2020-04-18</li>
+        <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </li>
+        </ul>
+    
         
-        
-        <div class="level is-mobile" style="padding-left: 42%;">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/1540231261/#more" >阅读全文</a>
+                    <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
+                    <a class="has-link-grey -link" href="/tags/JavaSE/" rel="tag">JavaSE</a>
                 </div>
             </div>
         </div>
         
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
         
     </div>
 </div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">乞人不受嗟来之食,哎嘛，真香~</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="http://q8khsi9j4.bkt.clouddn.com/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="http://q8khsi9j4.bkt.clouddn.com/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/517577219/">
+                <span class="level-item">JavaSE---四种内部类</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'AGGG1bgO42sEaVaFqWL1IWdu-gzGzoHsz',
+        app_key: 'IdOMlYlWz8QYnB5YDBSWuTBi',
+        placeholder: '请不要出现虎狼之词...否则我将代表网络正义重拳出击'
+    });
+</script>
+
+    </div>
+</div>
 </div>
                 
 
@@ -328,177 +435,35 @@
 </div>
     
         
-    
-        <div class="card widget is-hidden-mobile">
-    <div class="card-content">
 
-        <h3 class="menu-label">
-            <i class="iconfont icon-zuixinwenzhang"></i>
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-18T12:26:21.000Z">2020-04-18</time></div>
-                    <a href="/%E5%8F%8D%E5%B0%84/" class="title has-link-black-ter is-size-6 has-text-weight-normal">JavaSE---反射</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaSE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">JavaSE基础知识</a>
-                    </p>
-                </div>
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#反射是什么？">
+        <span class="has-mr-6">1</span>
+        <span>反射是什么？</span>
+        </a></li><li>
+        <a class="is-flex" href="#反射有什么意义？">
+        <span class="has-mr-6">2</span>
+        <span>反射有什么意义？</span>
+        </a></li><li>
+        <a class="is-flex" href="#反射如何使用？">
+        <span class="has-mr-6">3</span>
+        <span>反射如何使用？</span>
+        </a></li><li>
+        <a class="is-flex" href="#反射的应用场景">
+        <span class="has-mr-6">4</span>
+        <span>反射的应用场景</span>
+        </a></li></ul>
             </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-17T04:34:50.000Z">2020-04-17</time></div>
-                    <a href="/517577219/" class="title has-link-black-ter is-size-6 has-text-weight-normal">JavaSE---四种内部类</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaSE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">JavaSE基础知识</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-17T03:51:07.000Z">2020-04-17</time></div>
-                    <a href="/Object/" class="title has-link-black-ter is-size-6 has-text-weight-normal">JavaSE---Object类</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaSE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">JavaSE基础知识</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-17T03:27:37.000Z">2020-04-17</time></div>
-                    <a href="/HashMap/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HashMap源码分析</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98/">每天一道面试题</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-14T03:35:45.000Z">2020-04-14</time></div>
-                    <a href="/read.html/" class="title has-link-black-ter is-size-6 has-text-weight-normal">&lt;&lt;小狗钱钱&gt;&gt;</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E8%AF%BB%E5%90%8E%E6%84%9F/">读后感</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                <i class="iconfont icon-leimupinleifenleileibie"></i>
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Hexo%E5%BB%BA%E7%AB%99%E7%B3%BB%E5%88%97/">
-            <span class="level-start">
-                <span class="level-item">Hexo建站系列</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Java-Web/">
-            <span class="level-start">
-                <span class="level-item">Java Web</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">9</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/JavaSE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
-            <span class="level-start">
-                <span class="level-item">JavaSE基础知识</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/git-github/">
-            <span class="level-start">
-                <span class="level-item">git+github</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-            <span class="level-start">
-                <span class="level-item">linux学习笔记</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE-%E6%AF%94%E7%89%B9%E5%B8%81/">
-            <span class="level-start">
-                <span class="level-item">区块链+比特币</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">8</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-            <span class="level-start">
-                <span class="level-item">数据库</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">8</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98/">
-            <span class="level-start">
-                <span class="level-item">每天一道面试题</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">6</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-            <span class="level-start">
-                <span class="level-item">计算机操作系统</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">9</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E8%AF%BB%E5%90%8E%E6%84%9F/">
-            <span class="level-start">
-                <span class="level-item">读后感</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
         </div>
     </div>
-</div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -517,7 +482,7 @@
             <div class="level-start has-text-centered-mobile" align="center" style="margin:auto">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="DAQ&#39;s Blog - 一个简简单单的博客" height="28">
+                    <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="JavaSE---反射" height="28">
                 
                 </a>
                 <p class="is-size-7">
