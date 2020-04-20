@@ -19,8 +19,8 @@
 <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;之前有一篇关于HashMap底层原理的分析，由于没有结合源码，所以只停留在浅显的层面，这篇结合JDK1.7和1.8的源码，分析一下HashMap的底层实现。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://daqwt.top/images/og_image.png">
-<meta property="article:published_time" content="2020-04-17T03:27:37.000Z">
-<meta property="article:modified_time" content="2020-04-17T03:33:42.315Z">
+<meta property="article:published_time" content="2020-04-20T03:27:37.000Z">
+<meta property="article:modified_time" content="2020-04-20T01:35:09.824Z">
 <meta property="article:author" content="黑心市民">
 <meta property="article:tag" content="HashMap">
 <meta name="twitter:card" content="summary">
@@ -159,7 +159,7 @@
         </h1>
          <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-17T03:27:37.000Z">2020-04-17</time>
+                <time class="level-item has-text-grey" datetime="2020-04-20T03:27:37.000Z">2020-04-20</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98/">每天一道面试题</a>
@@ -169,7 +169,7 @@
                 <span class="level-item has-text-grey">                    
                     
                     
-                    34 分钟 读完 (大约 5050 个字)
+                    35 分钟 读完 (大约 5323 个字)
                 </span>
                 
                 
@@ -184,7 +184,48 @@
         <div class="content">
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;之前有一篇关于HashMap底层原理的分析，由于没有结合源码，所以只停留在浅显的层面，这篇结合JDK1.7和1.8的源码，分析一下HashMap的底层实现。</p>
 <a id="more"></a>
-
+<ul>
+<li><strong>全文概要</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>1.7</th>
+<th>1.8</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>底层实现</td>
+<td>数组+链表</td>
+<td>数组+链表/红黑树</td>
+</tr>
+<tr>
+<td>存值</td>
+<td>Entry&lt;key，value&gt;对象</td>
+<td>Node（key，value）节点</td>
+</tr>
+<tr>
+<td>初始容量</td>
+<td>小于传入数的2的幂次方数（移位运算）</td>
+<td>大于传入数的2的幂次方数</td>
+</tr>
+<tr>
+<td>哈希值</td>
+<td>高低位混合运算（异或和移位）</td>
+<td>高低位混合运算</td>
+</tr>
+<tr>
+<td>扩容机制</td>
+<td>头插法</td>
+<td>尾插法/链表长度大于8时转化为红黑树</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>链表反转，形成循环链表，线程不安全</td>
+<td>高度依赖hash算法，如果key是自定义类害得重写hashcode（），线程不安全</td>
+</tr>
+</tbody></table>
 <h2 id="JDK1-7"><a href="#JDK1-7" class="headerlink" title="JDK1.7"></a>JDK1.7</h2><h3 id="大致了解"><a href="#大致了解" class="headerlink" title="大致了解"></a>大致了解</h3><ul>
 <li><code>JDK1.7</code>：数组+链表</li>
 <li><code>key</code>和<code>value</code>组合成一个<code>entry</code>对象，将这个对象的引用地址存放在数组中。</li>
@@ -226,7 +267,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">indexFor</span><span class="params">(<span class="keyword">int</span> h, <span class="keyword">int</span> length)</span> </span>&#123;</span><br><span class="line"><span class="comment">// assert Integer.bitCount(length) == 1 : "length must be a non-zero power of 2";</span></span><br><span class="line">        <span class="keyword">return</span> h &amp; (length-<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">思考为什么要length-<span class="number">1</span>？</span><br><span class="line">因为length是<span class="number">2</span>的幂次方数</span><br><span class="line">经过与运算之后，只得到低四位有效，有效的低四位取值范围就是<span class="number">0</span>-<span class="number">15</span></span><br><span class="line">就得出了下标在<span class="number">0</span>-<span class="number">15</span>这个范围之内。</span><br></pre></td></tr></table></figure>
 <ul>
 <li>这就可以解决以上的一个问题了，为什么hashmap在初始化一个数组的容量的时候，要是一个2的幂次方数，因为要配合<code>indexFor()</code>计算出数组下标，对应存储。但是这样算出来的<code>hash值</code>会覆盖掉很多种情况，这就导致了很多元素算出来的下标值一样，存储在同一链表上，链表就会很长，进而影响到<code>get()</code>的效率，因为<code>get()</code>要循环链表嘛，所以回到上一步，可以看到<code>hash()方法</code>。</li>
-<li>再看<code>hash()</code>方法（并不是<code>hashcode()方法哦</code>），它里面有异或和移位运算（这样高位就参与到运算了），可以理解为<code>再次哈希</code>，这样就增加了散列性。解决了的单条链表很长的问题。如果我们要改写<code>hashcode（）</code>，但是我们水平不行，改了之后导致返回的<code>hashcode值</code>非常不均匀，那么这个<code>hash()方法</code>就会帮我们容错。</li>
+<li>再看<code>hash()</code>方法（并不是<code>hashcode()方法哦</code>），它里面有异或和移位运算（这样高位就参与到运算了–高低位混合运算），可以理解为<code>再次哈希</code>，这样就增加了散列性。解决了的单条链表很长的问题。如果我们要改写<code>hashcode（）</code>，但是我们水平不行，改了之后导致返回的<code>hashcode值</code>非常不均匀，那么这个<code>hash()方法</code>就会帮我们容错。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object k)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> h = hashSeed;</span><br><span class="line">       <span class="keyword">if</span> (<span class="number">0</span> != h &amp;&amp; k <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">           <span class="keyword">return</span> sun.misc.Hashing.stringHash32((String) k);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       h ^= k.hashCode();</span><br><span class="line"></span><br><span class="line">       <span class="comment">// This function ensures that hashCodes that differ only by</span></span><br><span class="line">       <span class="comment">// constant multiples at each bit position have a bounded</span></span><br><span class="line">       <span class="comment">// number of collisions (approximately 8 at default load factor).</span></span><br><span class="line">       h ^= (h &gt;&gt;&gt; <span class="number">20</span>) ^ (h &gt;&gt;&gt; <span class="number">12</span>);</span><br><span class="line">       <span class="keyword">return</span> h ^ (h &gt;&gt;&gt; <span class="number">7</span>) ^ (h &gt;&gt;&gt; <span class="number">4</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <ul>
@@ -264,9 +305,14 @@
 <p><img src="https://img-blog.csdnimg.cn/20200416091904314.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><img src="https://img-blog.csdnimg.cn/20200416094525420.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
-<li>在1.8中采用尾插法加入元素，这是因为，每次加入元素的时候，本来就要遍历一下链表，看有没有超过八个结点，超过了就变成红黑树，总之是要遍历的，直接用尾插法，一举两得。</li>
-<li>在遍历的过程中，还要看有没有与老元素key值相同的，相同则覆盖掉，除此之外还要判断是否为红黑树。</li>
-<li><strong>关于树化:</strong> 点开treeifyBin方法发现：在链表上的结点大于八个的时候，不会第一时间去树化，而是先判断是否需要扩容，然后再去决定要不要树化，其实扩容大概率能减少链表的长度了。一举两得，扩容比树化优点好多了。基于对内存的一个节省，不能扩容的太大，就用红黑树。</li>
+<li><p>在1.8中初始化容量的时候，和1.7有不同，如果你传入的一个数字，会调用<code>tableSizeFor()</code>方法进行移位运算，最终得到一个大于你传入的这个数字的数（这个数依旧是2的次幂），而1.7中得到的这个数字是小于你传入的这个数。这个数用来作为数组的初始容量。</p>
+</li>
+<li><p>在1.8中采用尾插法加入元素，这是因为，每次加入元素的时候，本来就要遍历一下链表，看有没有超过八个结点，超过了就变成红黑树，总之是要遍历的，直接用尾插法，一举两得。</p>
+</li>
+<li><p>在遍历的过程中，还要看有没有与老元素key值相同的，相同则覆盖掉，除此之外还要判断是否为红黑树。</p>
+</li>
+<li><p><strong>关于树化:</strong> 点开treeifyBin方法发现：在链表上的结点大于八个的时候，不会第一时间去树化，而是先判断是否需要扩容，然后再去决定要不要树化，其实扩容大概率能减少链表的长度了。一举两得，扩容比树化优点好多了。基于对内存的一个节省，不能扩容的太大，就用红黑树。</p>
+</li>
 </ul>
 <p><img src="https://img-blog.csdnimg.cn/2020041609544419.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
@@ -356,7 +402,7 @@
         <li><strong>本文标题：</strong><a href="http://daqwt.top/HashMap/">HashMap源码分析</a></li>
         <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
         <li><strong>本文链接：</strong><a href="http://daqwt.top/HashMap/">http://daqwt.top/HashMap/</a></li>
-        <li><strong>发布时间：</strong>2020-04-17</li>
+        <li><strong>发布时间：</strong>2020-04-20</li>
         <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
         </li>
         </ul>
@@ -416,17 +462,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/Object/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">JavaSE---Object类</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/read.html/">
-                <span class="level-item">&lt;&lt;小狗钱钱&gt;&gt;</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/%E5%8F%8D%E5%B0%84/">
+                <span class="level-item">JavaSE---反射</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>

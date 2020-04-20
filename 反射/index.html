@@ -20,7 +20,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://daqwt.top/images/og_image.png">
 <meta property="article:published_time" content="2020-04-18T12:26:21.000Z">
-<meta property="article:modified_time" content="2020-04-18T12:32:39.905Z">
+<meta property="article:modified_time" content="2020-04-20T01:35:59.020Z">
 <meta property="article:author" content="黑心市民">
 <meta property="article:tag" content="JavaSE">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,9 @@
 <li>获取某个类的全部构造函数。</li>
 <li>通过反射机制实例化一个对象。</li>
 <li>获取某个类的全部属性</li>
-<li>获取某个类的全部方法<h1 id="反射的应用场景"><a href="#反射的应用场景" class="headerlink" title="反射的应用场景"></a>反射的应用场景</h1></li>
+<li>获取某个类的全部方法</li>
+</ul>
+<h1 id="反射的应用场景"><a href="#反射的应用场景" class="headerlink" title="反射的应用场景"></a>反射的应用场景</h1><ul>
 <li>JDBC（连接数据库与后端的桥梁），这其中就牵扯到一个连接的问题，我们将数据库的连接信息（用户名，用户密码，库名…）写在配置文件里，而不是写在代码里，为什么？因为这样我们更换数据库的时候，只需要改配置信息，而不是去改代码。而这里的由配置文件到代码，就是由反射来加载驱动的。</li>
 <li>Spring MVC，学<code>servlet</code>的时候各种<code>getParameter()</code>获取信息，但是在SpringMVC框架中只需要在<code>javaBean</code>中约定好字段名，就可以把值填充进去。这就是反射的好处。</li>
 <li>Spring，这个我学的还不多，但是涉及到一个自动组装的问题，只要字段名的顺序是约定一致的，就可使实现自动组装的效果，就像一个萝卜一个坑一样。如果顺序颠倒，可能在你想象中组装出来的是超跑，但是现实却是拖拉机。</li>
@@ -278,6 +280,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/HashMap/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">HashMap源码分析</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
