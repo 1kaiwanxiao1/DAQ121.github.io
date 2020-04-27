@@ -296,6 +296,81 @@
       </tags>
   </entry>
   <entry>
+    <title>一、HashMap的底层实现原理</title>
+    <url>/2744944506/</url>
+    <content><![CDATA[<p>HeshMap是基于哈希表的Map接口的实现，此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了非同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。 此实现假定哈希函数将元素适当地分布在各桶之间，可为基本操作（get 和 put）提供稳定的性能。迭代 collection 视图所需的时间与 HashMap 实例的“容量”（桶的数量）及其大小（键-值映射关系数）成比例。所以，如果迭代性能很重要，则不要将初始容量设置得太高（或将加载因子设置得太低）。在面试中也经常出现这道考题，记录一下！</p>
+<a id="more"></a>
+
+
+<h1 id="HsahMap的实现原理"><a href="#HsahMap的实现原理" class="headerlink" title="HsahMap的实现原理"></a>HsahMap的实现原理</h1><h2 id="简要概括"><a href="#简要概括" class="headerlink" title="简要概括"></a>简要概括</h2><ul>
+<li>HashMap 基于 Hash 算法实现的，底层是由数组+链表/红黑树构成的，我们通过 put(key,value)存储，get(key)来获取。当传入 key 时，HashMap 会根据 key. hashCode() 计算出 hash 值，根据 hash 值将 value 保存在 bucket 里。当计算出的 hash 值相同时，我们称之为 hash 冲突，HashMap 的做法是用链表和红黑树存储相同 hash 值的 value。当 hash 冲突的个数比较少时，使用链表，否则使用红黑树。</li>
+</ul>
+<h2 id="HashMap的存取实现"><a href="#HashMap的存取实现" class="headerlink" title="HashMap的存取实现"></a>HashMap的存取实现</h2><ul>
+<li>HashMap通过<strong>键值对</strong>实现存取。</li>
+<li><code>put（）</code>方法：对key做null检查。如果key是null，会被存储到table[0]，因为null的hash值总是0。 key的hashcode()方法会被调用，然后计算hash值。hash值用来找到存储Entry对象的数组的索引。有时候hash函数可能写的很不好，所以JDK的设计者添加了另一个叫做hash()的方法，它接收刚才计算的hash值作为参数。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> putVal(hash(key), key, value, <span class="keyword">false</span>, <span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Implements Map.put and related methods.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> hash hash for key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key the key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> value the value to put</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> onlyIfAbsent if true, don't change existing value</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> evict if false, the table is in creation mode.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> previous value, or null if none</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">boolean</span> onlyIfAbsent,<span class="keyword">boolean</span> evict)</span> </span>&#123;</span><br><span class="line">  		 Node&lt;K,V&gt;[] tab; </span><br><span class="line">  		 Node&lt;K,V&gt; p; </span><br><span class="line">  		 <span class="keyword">int</span> n, i;</span><br><span class="line">        <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">            n = (tab = resize()).length;</span><br><span class="line">        <span class="keyword">if</span> ((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == <span class="keyword">null</span>)</span><br><span class="line">            tab[i] = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            Node&lt;K,V&gt; e; K k;</span><br><span class="line">            <span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">                ((k = p.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                e = p;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="keyword">this</span>, tab, hash, key, value);</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> binCount = <span class="number">0</span>; ; ++binCount) &#123;</span><br><span class="line">                    <span class="keyword">if</span> ((e = p.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                        p.next = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">                        <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st</span></span><br><span class="line">                            treeifyBin(tab, hash);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                        ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    p = e;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123; <span class="comment">// existing mapping for key</span></span><br><span class="line">                V oldValue = e.value;</span><br><span class="line">                <span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="keyword">null</span>)</span><br><span class="line">                    e.value = value;</span><br><span class="line">                afterNodeAccess(e);</span><br><span class="line">                <span class="keyword">return</span> oldValue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ++modCount;</span><br><span class="line">        <span class="keyword">if</span> (++size &gt; threshold)</span><br><span class="line">            resize();</span><br><span class="line">        afterNodeInsertion(evict);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Get（）</code>：对key进行null检查。如果key是null，table[0]这个位置的元素将被返回。<br>key的hashcode()方法被调用，然后计算hash值。indexFor(hash,table.length)用来计算要获取的Entry对象在table数组中的精确的位置，使用刚才计算的hash值。在获取了table数组的索引之后，会迭代链表，调用equals()方法检查key的相等性，如果equals()方法返回true，get方法返回Entry对象的value，否则，返回null。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public V get(Object key) &#123;</span><br><span class="line">       Node&lt;K,V&gt; e;</span><br><span class="line">       <span class="built_in">return</span> (e = getNode(<span class="built_in">hash</span>(key), key)) == null ? null : e.value;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   /**</span><br><span class="line">    * Implements Map.get and related methods.</span><br><span class="line">    *</span><br><span class="line">    * @param <span class="built_in">hash</span> <span class="built_in">hash</span> <span class="keyword">for</span> key</span><br><span class="line">    * @param key the key</span><br><span class="line">    * @<span class="built_in">return</span> the node, or null <span class="keyword">if</span> none</span><br><span class="line">    */</span><br><span class="line">   final Node&lt;K,V&gt; getNode(int <span class="built_in">hash</span>, Object key) &#123;</span><br><span class="line">       Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; first, e; int n; K k;</span><br><span class="line">       <span class="keyword">if</span> ((tab = table) != null &amp;&amp; (n = tab.length) &gt; 0 &amp;&amp;</span><br><span class="line">           (first = tab[(n - 1) &amp; <span class="built_in">hash</span>]) != null) &#123;</span><br><span class="line">           <span class="keyword">if</span> (first.hash == <span class="built_in">hash</span> &amp;&amp; // always check first node</span><br><span class="line">               ((k = first.key) == key || (key != null &amp;&amp; key.equals(k))))</span><br><span class="line">               <span class="built_in">return</span> first;</span><br><span class="line">           <span class="keyword">if</span> ((e = first.next) != null) &#123;</span><br><span class="line">               <span class="keyword">if</span> (first instanceof TreeNode)</span><br><span class="line">                   <span class="built_in">return</span> ((TreeNode&lt;K,V&gt;)first).getTreeNode(<span class="built_in">hash</span>, key);</span><br><span class="line">               <span class="keyword">do</span> &#123;</span><br><span class="line">                   <span class="keyword">if</span> (e.hash == <span class="built_in">hash</span> &amp;&amp;</span><br><span class="line">                       ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))</span><br><span class="line">                       <span class="built_in">return</span> e;</span><br><span class="line">               &#125; <span class="keyword">while</span> ((e = e.next) != null);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">return</span> null;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>补充：</p>
+<ol>
+<li>HashMap有一个叫做Entry的内部类，它用来存储key-value对。</li>
+<li>上面的Entry对象是存储在一个叫做table的Entry数组中。</li>
+<li>table的索引在逻辑上叫做“桶”(bucket)，它存储了链表的第一个元素。</li>
+<li>key的hashcode()方法用来找到Entry对象所在的桶。</li>
+<li>如果两个key有相同的hash值，他们会被放在table数组的同一个桶里面。</li>
+<li>key的equals()方法用来确保key的唯一性。</li>
+</ol>
+<h1 id="有关知识的具体解析"><a href="#有关知识的具体解析" class="headerlink" title="有关知识的具体解析"></a>有关知识的具体解析</h1><h2 id="一、Map的几种类型"><a href="#一、Map的几种类型" class="headerlink" title="一、Map的几种类型"></a>一、Map的几种类型</h2><p><img src="https://img-blog.csdnimg.cn/20200314144530842.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>Map就是一个值key对应一个value。</li>
+<li>Hashtable（线程安全）和HashMap（非线程安全）在代码实现上，基本上是一样的。现在Hashtable已经过时了(小写的t，因为sun当时的一个失误，因为是JDK1.0的产物，所以不方便改)。</li>
+<li>ConcurrentHashMap也是线程安全的，但性能比HashTable好很多，Hashtable是锁整个Map对象，而ConcurrentHashMap是锁Map的部分结构。</li>
+</ul>
+<h2 id="二、什么是哈希表？"><a href="#二、什么是哈希表？" class="headerlink" title="二、什么是哈希表？"></a>二、什么是哈希表？</h2><ul>
+<li>利用<strong>数组</strong>寻址容易，但插入和删除困难。而<strong>链表</strong>是：寻址困难，插入和删除容易。而<strong>哈希表</strong>便综合两者的特性，是一种寻址容易，插入删除也容易的数据结构。</li>
+<li>哈希表有多种不同的实现方法，最常用的方法—— 拉链法，可以理解为“链表的数组”<br><img src="https://img-blog.csdnimg.cn/20200314161134205.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li>一个长度为16的数组中，每个元素存储的是一个链表的头结点。这些元素是按照什么样的规则存储到数组中呢？一般情况是通过<code>hash(key)%len</code>获得，也就是元素的key的哈希值对数组长度取模得到。</li>
+<li>比如上述哈希表中12%16=12 , 28%16=12 , 108%16=12 , 140%16=12。所以12、28、108，140都存储在数组下标为12的位置。</li>
+<li><strong>HashMap其实也是一个线性数组（<code>Entry[]</code>）实现的,所以可以理解为其存储数据的容器就是一个线性数组。但是一个线性的数组怎么实现按键值对来存取数据呢？这里HashMap是做了一些处理的。</strong></li>
+</ul>
+<h2 id="三、什么是哈希算法？"><a href="#三、什么是哈希算法？" class="headerlink" title="三、什么是哈希算法？"></a>三、什么是哈希算法？</h2><ul>
+<li>Hash算法虽然被称为算法，但实际上它更像是一种思想。Hash算法没有一个固定的公式，只要符合散列思想的算法都可以被称为是Hash算法。</li>
+<li>哈希（hash）算法又称为散列算法，通过hash算法，可以将任意长度的信息转换成一个固定长度的二进制数据，我们经常会使用十六进制值来表示转换后的信息。</li>
+<li>比如，数字123，使用md5的hash算法后，得到十六进制的值：202cb962ac59075b964b07152d234b70</li>
+<li>哈希算法的特点：<br>（1）不同的信息，理论上得到的hash值不同，我们称之为“无碰撞”，或者发生“碰撞”的概率非常小。<br>（2）不可逆，hash算法是单向的，从hash值反向推导出原始信息是很困难的。所以，有些系统中，我们可以使用hash算法对密码进行处理后保存。</li>
+<li>哈希算法的应用<br>①</li>
+</ul>
+<h2 id="四、什么是红黑树？"><a href="#四、什么是红黑树？" class="headerlink" title="四、什么是红黑树？"></a>四、什么是红黑树？</h2><ul>
+<li><strong>二叉树（BST）</strong>：<br>①左子树结点的值小于等于根节点的值。<br>②右子树结点的值大于等于根节点的值。<br>③左右子树分开来也是单独的二叉树。<br><img src="https://img-blog.csdnimg.cn/20200314174010980.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><ul>
+<li><strong>红黑树（RBT）</strong>：红黑树是一种自平衡的二叉树，除了符合二叉树的基本特征之外还引入了一些附加的条件。<br>①节点是红色或黑色。<br>②根节点是黑色。<br>③每个叶子节点都是黑色的空节点（NIL节点）。<br>④每个红色节点的两个子节点都是黑色。(从每个叶子到根的所有路径上不能有两个连续的红色节点)。<br>⑥从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点。<br><img src="https://img-blog.csdnimg.cn/20200314174041551.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+</ul>
+<h2 id="五、HashMap-和-Hashtable-有什么区别？"><a href="#五、HashMap-和-Hashtable-有什么区别？" class="headerlink" title="五、HashMap 和 Hashtable 有什么区别？"></a>五、HashMap 和 Hashtable 有什么区别？</h2><ul>
+<li>HashMap是非线程安全的，HashMap是Map的一个实现类，是将键映射到值的对象，不允许键值重复。允许空键和空值；由于非线程安全，HashMap的效率要较 Hashtable 的效率高一些。</li>
+<li>Hashtable 是线程安全的一个集合，不允许 null 值作为一个 key 值或者value 值。             </li>
+<li>Hashtable是sychronized，多个线程访问时不需要自己为它的方法实现同步，而HashMap 在被多个线程访问的时候需要自己为它的方法实现同步。</li>
+<li>一般现在不建议用Hashtable：<br>①注意是小写的t，这是sun公司的一个失误，但是由于是JDK1.0的产物，所以没有改<br>②是Hashtable是遗留类，内部实现很多没优化和冗余。<br>③即使在多线程环境下，现在也有同步的ConcurrentHashMap替代，没有必要因为是多线程而用HashTable。</li>
+</ul>
+<h1 id="如何解决hash冲突"><a href="#如何解决hash冲突" class="headerlink" title="如何解决hash冲突"></a>如何解决hash冲突</h1><h2 id="产生hash冲突的原因"><a href="#产生hash冲突的原因" class="headerlink" title="产生hash冲突的原因"></a>产生hash冲突的原因</h2><ul>
+<li>当我们通过put(key, value)向hashmap中添加元素时，需要通过hash函数确定元素究竟应该放置在数组中的哪个位置，因为不同的元素可能通过hashcode（）计算得到的哈希值相同，那么不同的元素被放置在了数据的同一个位置时，后放入的元素会以链表的形式，插在前一个元素的尾部，这个时候我们称发生了hash冲突。</li>
+</ul>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>
+<li>事实上，想让hash冲突完全不发生，是不太可能的，我们能做的只是尽可能的降低hash冲突发生的概率。<br>①开放定址法<br>②链地址法（拉链法）<br>Java 中 HashMap 解决 Hash 冲突就是利用了这个方法，具体实现这里暂时不做详解，可以参考 Jdk HashMap 源码进行理解。<br>③再哈希法<br>④建立公共溢出区</li>
+</ul>
+]]></content>
+      <categories>
+        <category>每天一道面试题</category>
+      </categories>
+      <tags>
+        <tag>HashMap</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HashMap源码分析</title>
     <url>/HashMap/</url>
     <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;之前有一篇关于HashMap底层原理的分析，由于没有结合源码，所以只停留在浅显的层面，这篇结合JDK1.7和1.8的源码，分析一下HashMap的底层实现。</p>
@@ -511,81 +586,6 @@
 <li>hashtable:使用一把锁处理并发问题，当有多个线程访问时，需要多个线程竞争一把锁，导致阻塞。</li>
 <li>concurrentHashMap则使用分段，相当于把一个hashmap分成多个，然后每个部分分配一把锁，这样就可以支持多线程访问。</li>
 </ol>
-]]></content>
-      <categories>
-        <category>每天一道面试题</category>
-      </categories>
-      <tags>
-        <tag>HashMap</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一、HashMap的底层实现原理</title>
-    <url>/2744944506/</url>
-    <content><![CDATA[<p>HeshMap是基于哈希表的Map接口的实现，此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了非同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。 此实现假定哈希函数将元素适当地分布在各桶之间，可为基本操作（get 和 put）提供稳定的性能。迭代 collection 视图所需的时间与 HashMap 实例的“容量”（桶的数量）及其大小（键-值映射关系数）成比例。所以，如果迭代性能很重要，则不要将初始容量设置得太高（或将加载因子设置得太低）。在面试中也经常出现这道考题，记录一下！</p>
-<a id="more"></a>
-
-
-<h1 id="HsahMap的实现原理"><a href="#HsahMap的实现原理" class="headerlink" title="HsahMap的实现原理"></a>HsahMap的实现原理</h1><h2 id="简要概括"><a href="#简要概括" class="headerlink" title="简要概括"></a>简要概括</h2><ul>
-<li>HashMap 基于 Hash 算法实现的，底层是由数组+链表/红黑树构成的，我们通过 put(key,value)存储，get(key)来获取。当传入 key 时，HashMap 会根据 key. hashCode() 计算出 hash 值，根据 hash 值将 value 保存在 bucket 里。当计算出的 hash 值相同时，我们称之为 hash 冲突，HashMap 的做法是用链表和红黑树存储相同 hash 值的 value。当 hash 冲突的个数比较少时，使用链表，否则使用红黑树。</li>
-</ul>
-<h2 id="HashMap的存取实现"><a href="#HashMap的存取实现" class="headerlink" title="HashMap的存取实现"></a>HashMap的存取实现</h2><ul>
-<li>HashMap通过<strong>键值对</strong>实现存取。</li>
-<li><code>put（）</code>方法：对key做null检查。如果key是null，会被存储到table[0]，因为null的hash值总是0。 key的hashcode()方法会被调用，然后计算hash值。hash值用来找到存储Entry对象的数组的索引。有时候hash函数可能写的很不好，所以JDK的设计者添加了另一个叫做hash()的方法，它接收刚才计算的hash值作为参数。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> putVal(hash(key), key, value, <span class="keyword">false</span>, <span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Implements Map.put and related methods.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> hash hash for key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key the key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> value the value to put</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> onlyIfAbsent if true, don't change existing value</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> evict if false, the table is in creation mode.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> previous value, or null if none</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">boolean</span> onlyIfAbsent,<span class="keyword">boolean</span> evict)</span> </span>&#123;</span><br><span class="line">  		 Node&lt;K,V&gt;[] tab; </span><br><span class="line">  		 Node&lt;K,V&gt; p; </span><br><span class="line">  		 <span class="keyword">int</span> n, i;</span><br><span class="line">        <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">            n = (tab = resize()).length;</span><br><span class="line">        <span class="keyword">if</span> ((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == <span class="keyword">null</span>)</span><br><span class="line">            tab[i] = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            Node&lt;K,V&gt; e; K k;</span><br><span class="line">            <span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">                ((k = p.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                e = p;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="keyword">this</span>, tab, hash, key, value);</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> binCount = <span class="number">0</span>; ; ++binCount) &#123;</span><br><span class="line">                    <span class="keyword">if</span> ((e = p.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                        p.next = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">                        <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st</span></span><br><span class="line">                            treeifyBin(tab, hash);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                        ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    p = e;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123; <span class="comment">// existing mapping for key</span></span><br><span class="line">                V oldValue = e.value;</span><br><span class="line">                <span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="keyword">null</span>)</span><br><span class="line">                    e.value = value;</span><br><span class="line">                afterNodeAccess(e);</span><br><span class="line">                <span class="keyword">return</span> oldValue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ++modCount;</span><br><span class="line">        <span class="keyword">if</span> (++size &gt; threshold)</span><br><span class="line">            resize();</span><br><span class="line">        afterNodeInsertion(evict);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>Get（）</code>：对key进行null检查。如果key是null，table[0]这个位置的元素将被返回。<br>key的hashcode()方法被调用，然后计算hash值。indexFor(hash,table.length)用来计算要获取的Entry对象在table数组中的精确的位置，使用刚才计算的hash值。在获取了table数组的索引之后，会迭代链表，调用equals()方法检查key的相等性，如果equals()方法返回true，get方法返回Entry对象的value，否则，返回null。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public V get(Object key) &#123;</span><br><span class="line">       Node&lt;K,V&gt; e;</span><br><span class="line">       <span class="built_in">return</span> (e = getNode(<span class="built_in">hash</span>(key), key)) == null ? null : e.value;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   /**</span><br><span class="line">    * Implements Map.get and related methods.</span><br><span class="line">    *</span><br><span class="line">    * @param <span class="built_in">hash</span> <span class="built_in">hash</span> <span class="keyword">for</span> key</span><br><span class="line">    * @param key the key</span><br><span class="line">    * @<span class="built_in">return</span> the node, or null <span class="keyword">if</span> none</span><br><span class="line">    */</span><br><span class="line">   final Node&lt;K,V&gt; getNode(int <span class="built_in">hash</span>, Object key) &#123;</span><br><span class="line">       Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; first, e; int n; K k;</span><br><span class="line">       <span class="keyword">if</span> ((tab = table) != null &amp;&amp; (n = tab.length) &gt; 0 &amp;&amp;</span><br><span class="line">           (first = tab[(n - 1) &amp; <span class="built_in">hash</span>]) != null) &#123;</span><br><span class="line">           <span class="keyword">if</span> (first.hash == <span class="built_in">hash</span> &amp;&amp; // always check first node</span><br><span class="line">               ((k = first.key) == key || (key != null &amp;&amp; key.equals(k))))</span><br><span class="line">               <span class="built_in">return</span> first;</span><br><span class="line">           <span class="keyword">if</span> ((e = first.next) != null) &#123;</span><br><span class="line">               <span class="keyword">if</span> (first instanceof TreeNode)</span><br><span class="line">                   <span class="built_in">return</span> ((TreeNode&lt;K,V&gt;)first).getTreeNode(<span class="built_in">hash</span>, key);</span><br><span class="line">               <span class="keyword">do</span> &#123;</span><br><span class="line">                   <span class="keyword">if</span> (e.hash == <span class="built_in">hash</span> &amp;&amp;</span><br><span class="line">                       ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))</span><br><span class="line">                       <span class="built_in">return</span> e;</span><br><span class="line">               &#125; <span class="keyword">while</span> ((e = e.next) != null);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">return</span> null;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>补充：</p>
-<ol>
-<li>HashMap有一个叫做Entry的内部类，它用来存储key-value对。</li>
-<li>上面的Entry对象是存储在一个叫做table的Entry数组中。</li>
-<li>table的索引在逻辑上叫做“桶”(bucket)，它存储了链表的第一个元素。</li>
-<li>key的hashcode()方法用来找到Entry对象所在的桶。</li>
-<li>如果两个key有相同的hash值，他们会被放在table数组的同一个桶里面。</li>
-<li>key的equals()方法用来确保key的唯一性。</li>
-</ol>
-<h1 id="有关知识的具体解析"><a href="#有关知识的具体解析" class="headerlink" title="有关知识的具体解析"></a>有关知识的具体解析</h1><h2 id="一、Map的几种类型"><a href="#一、Map的几种类型" class="headerlink" title="一、Map的几种类型"></a>一、Map的几种类型</h2><p><img src="https://img-blog.csdnimg.cn/20200314144530842.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>Map就是一个值key对应一个value。</li>
-<li>Hashtable（线程安全）和HashMap（非线程安全）在代码实现上，基本上是一样的。现在Hashtable已经过时了(小写的t，因为sun当时的一个失误，因为是JDK1.0的产物，所以不方便改)。</li>
-<li>ConcurrentHashMap也是线程安全的，但性能比HashTable好很多，Hashtable是锁整个Map对象，而ConcurrentHashMap是锁Map的部分结构。</li>
-</ul>
-<h2 id="二、什么是哈希表？"><a href="#二、什么是哈希表？" class="headerlink" title="二、什么是哈希表？"></a>二、什么是哈希表？</h2><ul>
-<li>利用<strong>数组</strong>寻址容易，但插入和删除困难。而<strong>链表</strong>是：寻址困难，插入和删除容易。而<strong>哈希表</strong>便综合两者的特性，是一种寻址容易，插入删除也容易的数据结构。</li>
-<li>哈希表有多种不同的实现方法，最常用的方法—— 拉链法，可以理解为“链表的数组”<br><img src="https://img-blog.csdnimg.cn/20200314161134205.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li>一个长度为16的数组中，每个元素存储的是一个链表的头结点。这些元素是按照什么样的规则存储到数组中呢？一般情况是通过<code>hash(key)%len</code>获得，也就是元素的key的哈希值对数组长度取模得到。</li>
-<li>比如上述哈希表中12%16=12 , 28%16=12 , 108%16=12 , 140%16=12。所以12、28、108，140都存储在数组下标为12的位置。</li>
-<li><strong>HashMap其实也是一个线性数组（<code>Entry[]</code>）实现的,所以可以理解为其存储数据的容器就是一个线性数组。但是一个线性的数组怎么实现按键值对来存取数据呢？这里HashMap是做了一些处理的。</strong></li>
-</ul>
-<h2 id="三、什么是哈希算法？"><a href="#三、什么是哈希算法？" class="headerlink" title="三、什么是哈希算法？"></a>三、什么是哈希算法？</h2><ul>
-<li>Hash算法虽然被称为算法，但实际上它更像是一种思想。Hash算法没有一个固定的公式，只要符合散列思想的算法都可以被称为是Hash算法。</li>
-<li>哈希（hash）算法又称为散列算法，通过hash算法，可以将任意长度的信息转换成一个固定长度的二进制数据，我们经常会使用十六进制值来表示转换后的信息。</li>
-<li>比如，数字123，使用md5的hash算法后，得到十六进制的值：202cb962ac59075b964b07152d234b70</li>
-<li>哈希算法的特点：<br>（1）不同的信息，理论上得到的hash值不同，我们称之为“无碰撞”，或者发生“碰撞”的概率非常小。<br>（2）不可逆，hash算法是单向的，从hash值反向推导出原始信息是很困难的。所以，有些系统中，我们可以使用hash算法对密码进行处理后保存。</li>
-<li>哈希算法的应用<br>①</li>
-</ul>
-<h2 id="四、什么是红黑树？"><a href="#四、什么是红黑树？" class="headerlink" title="四、什么是红黑树？"></a>四、什么是红黑树？</h2><ul>
-<li><strong>二叉树（BST）</strong>：<br>①左子树结点的值小于等于根节点的值。<br>②右子树结点的值大于等于根节点的值。<br>③左右子树分开来也是单独的二叉树。<br><img src="https://img-blog.csdnimg.cn/20200314174010980.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><ul>
-<li><strong>红黑树（RBT）</strong>：红黑树是一种自平衡的二叉树，除了符合二叉树的基本特征之外还引入了一些附加的条件。<br>①节点是红色或黑色。<br>②根节点是黑色。<br>③每个叶子节点都是黑色的空节点（NIL节点）。<br>④每个红色节点的两个子节点都是黑色。(从每个叶子到根的所有路径上不能有两个连续的红色节点)。<br>⑥从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点。<br><img src="https://img-blog.csdnimg.cn/20200314174041551.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-</ul>
-</li>
-</ul>
-<h2 id="五、HashMap-和-Hashtable-有什么区别？"><a href="#五、HashMap-和-Hashtable-有什么区别？" class="headerlink" title="五、HashMap 和 Hashtable 有什么区别？"></a>五、HashMap 和 Hashtable 有什么区别？</h2><ul>
-<li>HashMap是非线程安全的，HashMap是Map的一个实现类，是将键映射到值的对象，不允许键值重复。允许空键和空值；由于非线程安全，HashMap的效率要较 Hashtable 的效率高一些。</li>
-<li>Hashtable 是线程安全的一个集合，不允许 null 值作为一个 key 值或者value 值。             </li>
-<li>Hashtable是sychronized，多个线程访问时不需要自己为它的方法实现同步，而HashMap 在被多个线程访问的时候需要自己为它的方法实现同步。</li>
-<li>一般现在不建议用Hashtable：<br>①注意是小写的t，这是sun公司的一个失误，但是由于是JDK1.0的产物，所以没有改<br>②是Hashtable是遗留类，内部实现很多没优化和冗余。<br>③即使在多线程环境下，现在也有同步的ConcurrentHashMap替代，没有必要因为是多线程而用HashTable。</li>
-</ul>
-<h1 id="如何解决hash冲突"><a href="#如何解决hash冲突" class="headerlink" title="如何解决hash冲突"></a>如何解决hash冲突</h1><h2 id="产生hash冲突的原因"><a href="#产生hash冲突的原因" class="headerlink" title="产生hash冲突的原因"></a>产生hash冲突的原因</h2><ul>
-<li>当我们通过put(key, value)向hashmap中添加元素时，需要通过hash函数确定元素究竟应该放置在数组中的哪个位置，因为不同的元素可能通过hashcode（）计算得到的哈希值相同，那么不同的元素被放置在了数据的同一个位置时，后放入的元素会以链表的形式，插在前一个元素的尾部，这个时候我们称发生了hash冲突。</li>
-</ul>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>
-<li>事实上，想让hash冲突完全不发生，是不太可能的，我们能做的只是尽可能的降低hash冲突发生的概率。<br>①开放定址法<br>②链地址法（拉链法）<br>Java 中 HashMap 解决 Hash 冲突就是利用了这个方法，具体实现这里暂时不做详解，可以参考 Jdk HashMap 源码进行理解。<br>③再哈希法<br>④建立公共溢出区</li>
-</ul>
 ]]></content>
       <categories>
         <category>每天一道面试题</category>
@@ -935,6 +935,34 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaSE---Object类</title>
+    <url>/Object/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object类是所有类的父类，位于java.lang包中。这也是面试的一个小考点吧，这篇文章看看Object中有哪些方法。</p>
+<a id="more"></a>
+
+<h2 id="Object类概述"><a href="#Object类概述" class="headerlink" title="Object类概述"></a>Object类概述</h2><ul>
+<li>Object类是JDK默认提供的一个类。java中除了Object类，所有类都存在继承，默认会继承Object父类</li>
+<li>所有类的对象都可以使用 Object 接收。</li>
+<li>Object 达到最高参数统一化。</li>
+</ul>
+<h2 id="什么时候使用Object类"><a href="#什么时候使用Object类" class="headerlink" title="什么时候使用Object类?"></a>什么时候使用Object类?</h2><ul>
+<li>对于Object类的使用可以分为两个阶段：JDK 1.5以前，以及JDK 1.5之后。</li>
+<li>Object之所以会被大量的进行参数的接收处理，很大的一部分原因在于：你的程序里面需要接受的类型很多，并不固定，可是现在的开发理念中强调的问题不再是这一点了，而是如何可以避免向下转型（如果避无可避，那么就用），因为从JDK1.5之后引入了泛型机制（在基础课程讲解泛型机制的时候重点分析了Object缺陷）。</li>
+<li>现在的设计思想是用泛型来避免向下转型的操作（ClassCastException），如果你要认真读了API文档你会发现，可以接收Object类型的方法是越来越少了，开发中尽量回避Object接收的项目为主。</li>
+</ul>
+<h2 id="Object类有哪些方法？"><a href="#Object类有哪些方法？" class="headerlink" title="Object类有哪些方法？"></a>Object类有哪些方法？</h2><ul>
+<li>可以看到里面都是用native关键字修饰的方法。都是原生函数，得调用C++的函数。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/2020041711473684.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>JavaSE基础知识</category>
+      </categories>
+      <tags>
+        <tag>javaSE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JSP模式&amp;&amp;MVC模式</title>
     <url>/2199266903/</url>
     <content><![CDATA[<p>一个项目有一个好的设计模式很重要，有一个好的设计模式，使得开发和维护也变得简单。MVC是一种程序开发设计模式，他实现了显示模块与功能模块分离，提高了程序的可维护性，可移植性，可扩展性，可重用性，降低了程序的开发难度。</p>
@@ -977,34 +1005,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaSE---Object类</title>
-    <url>/Object/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object类是所有类的父类，位于java.lang包中。这也是面试的一个小考点吧，这篇文章看看Object中有哪些方法。</p>
-<a id="more"></a>
-
-<h2 id="Object类概述"><a href="#Object类概述" class="headerlink" title="Object类概述"></a>Object类概述</h2><ul>
-<li>Object类是JDK默认提供的一个类。java中除了Object类，所有类都存在继承，默认会继承Object父类</li>
-<li>所有类的对象都可以使用 Object 接收。</li>
-<li>Object 达到最高参数统一化。</li>
-</ul>
-<h2 id="什么时候使用Object类"><a href="#什么时候使用Object类" class="headerlink" title="什么时候使用Object类?"></a>什么时候使用Object类?</h2><ul>
-<li>对于Object类的使用可以分为两个阶段：JDK 1.5以前，以及JDK 1.5之后。</li>
-<li>Object之所以会被大量的进行参数的接收处理，很大的一部分原因在于：你的程序里面需要接受的类型很多，并不固定，可是现在的开发理念中强调的问题不再是这一点了，而是如何可以避免向下转型（如果避无可避，那么就用），因为从JDK1.5之后引入了泛型机制（在基础课程讲解泛型机制的时候重点分析了Object缺陷）。</li>
-<li>现在的设计思想是用泛型来避免向下转型的操作（ClassCastException），如果你要认真读了API文档你会发现，可以接收Object类型的方法是越来越少了，开发中尽量回避Object接收的项目为主。</li>
-</ul>
-<h2 id="Object类有哪些方法？"><a href="#Object类有哪些方法？" class="headerlink" title="Object类有哪些方法？"></a>Object类有哪些方法？</h2><ul>
-<li>可以看到里面都是用native关键字修饰的方法。都是原生函数，得调用C++的函数。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/2020041711473684.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>JavaSE基础知识</category>
-      </categories>
-      <tags>
-        <tag>javaSE</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaSE---反射</title>
     <url>/%E5%8F%8D%E5%B0%84/</url>
     <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;反射就像是一面镜子，这面镜子其实就是JVM，他能照出你的类的所有属性和方法，也能调用你所有对象的属性和方法，<strong>crazy~</strong></p>
@@ -1039,39 +1039,6 @@
 <li>Spring，这个我学的还不多，但是涉及到一个自动组装的问题，只要字段名的顺序是约定一致的，就可使实现自动组装的效果，就像一个萝卜一个坑一样。如果顺序颠倒，可能在你想象中组装出来的是超跑，但是现实却是拖拉机。</li>
 <li>Java的反射用的最多的地方就是在框架里面。比如说有两个程序员，他们各自创建了两个类，第一个程序员现在需要第二个程序员创建的类，可是现在第二个程序员创建的类还没有完成。那么第一个程序员编译自然不成功，但是现在第一个程序员又要使用第二个程序员的类，这个时候，反射就可以完成这个任务。因为反射是在类运行的时候获取对象的各个信息，所以第一个程序员的类就可以完成编译了。</li>
 </ul>
-]]></content>
-      <categories>
-        <category>JavaSE基础知识</category>
-      </categories>
-      <tags>
-        <tag>JavaSE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaSE---四种内部类</title>
-    <url>/517577219/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Java中，<strong>可以将一个类定义在另一个类里面或者一个方法里边</strong>，这样的类称为<strong>内部类</strong>，广泛意义上的内部类一般包括四种：成员内部类，局部内部类，匿名内部类，静态内部类 。</p>
-<a id="more"></a>
-
-<p> <strong>1. 成员内部类</strong><br>（1）该类像是外部类的一个成员，可以无条件的访问外部类的所有成员属性和成员方法（包括private成员和静态成员）；<br>（2）成员内部类拥有与外部类同名的成员变量时，会发生隐藏现象，即默认情况下访问的是成员内部类中的成员。如果要访问外部类中的成员，需要以下形式访问：【外部类.this.成员变量  或  外部类.this.成员方法】；<br>（3）在外部类中如果要访问成员内部类的成员，必须先创建一个成员内部类的对象，再通过指向这个对象的引用来访问；<br>（4）成员内部类是依附外部类而存在的，也就是说，如果要创建成员内部类的对象，前提是必须存在一个外部类的对象；<br>（5）内部类可以拥有private访问权限、protected访问权限、public访问权限及包访问权限。如果成员内部类用private修饰，则只能在外部类的内部访问；如果用public修饰，则任何地方都能访问；如果用protected修饰，则只能在同一个包下或者继承外部类的情况下访问；如果是默认访问权限，则只能在同一个包下访问。外部类只能被public和包访问两种权限修饰。</p>
-<p> <strong>2.  局部内部类</strong><br>（1）局部内部类是定义在一个方法或者一个作用域里面的类，它和成员内部类的区别在于局部内部类的访问仅限于方法内或者该作用域内；<br>（2）局部内部类就像是方法里面的一个局部变量一样，是不能有public、protected、private以及static修饰符的。</p>
-<p><strong>3.匿名内部类</strong><br>（1）一般使用匿名内部类的方法来编写事件监听代码；<br>（2）匿名内部类是不能有访问修饰符和static修饰符的；<br>（3）匿名内部类是唯一一种没有构造器的类；<br>（4）匿名内部类用于继承其他类或是实现接口，并不需要增加额外的方法，只是对继承方法的实现或是重写。</p>
-<p><strong>4.静态内部类</strong><br>（1）静态内部类是不需要依赖于外部类的，这点和类的静态成员属性有点类似；<br>（2）不能使用外部类的非static成员变量或者方法。</p>
-<h2 id="内部类的共性："><a href="#内部类的共性：" class="headerlink" title="内部类的共性："></a>内部类的共性：</h2><ul>
-<li>内部类仍然是一个独立的类，在编译之后内部类会被编译成独立的.class文件，但是前面冠以外部类的类名和$符号。</li>
-<li>内部类不能用普通的方式访问。</li>
-<li>内部类声明成静态的，就不能随便的访问外部类的成员变量了，此时内部类只能访问外部类的静态成员变量。</li>
-<li>外部类不能直接访问内部类的的成员，但可以通过内部类对象来访问。</li>
-</ul>
-<h2 id="内部类的作用："><a href="#内部类的作用：" class="headerlink" title="内部类的作用："></a>内部类的作用：</h2><ul>
-<li>内部类方法可以访问该类定义所在的作用域的数据，包括私有的数据。</li>
-<li>内部类可以对同一个包中的其他类隐藏起来,一般的非内部类，是不允许有 private 与protected权限的，但内部类可以。</li>
-<li>可以实现多重继承。</li>
-<li>当想要定义一个回调函数且不想编写大量代码时，使用匿名内部类比较便捷。</li>
-</ul>
-<h1 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h1><p><strong>每个内部类都能独立地继承自一个（接口的）实现，所以无论外围类是否已经继承了某个（接口的）实现，对于内部类都没有影响。大家都知道Java只能继承一个类，它的多重继承在我们没有学习内部类之前是用接口来实现的。但使用接口有时候有很多不方便的地方。比如我们实现一个接口就必须实现它里面的所有方法。而有了内部类就不一样了。它可以使我们的类继承多个具体类或抽象类。</strong></p>
-<h2 id="外部类："><a href="#外部类：" class="headerlink" title="外部类："></a>外部类：</h2><p>外部的类。定义一个类A，在A的内部再定义一个类B，则A就是外部类，B就是内部类。</p>
-<h2 id="内部类与外部类区别与联系"><a href="#内部类与外部类区别与联系" class="headerlink" title="内部类与外部类区别与联系"></a>内部类与外部类区别与联系</h2><p>内部类可以访问外部类所有的方法和属性，如果内部类和外部类有相同的成员方法和成员属性，内部类的成员方法调用要优先于外部类即内部类的优先级比较高（只限于类内部，在主方法内，内部类对象不能访问外部类的成员方法和成员属性），外部类只能访问内部类的静态常量或者通过创建内部类来访问内部类的成员属性和方法。</p>
 ]]></content>
       <categories>
         <category>JavaSE基础知识</category>
@@ -1164,6 +1131,39 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">抽象DAO</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseDao</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Session session;</span><br><span class="line">    <span class="keyword">private</span> Class clazz;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//哪个子类调的这个方法，得到的class就是子类处理的类型（非常重要）</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BaseDao</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Class clazz = <span class="keyword">this</span>.getClass();  <span class="comment">//拿到的是子类</span></span><br><span class="line">        ParameterizedType  pt = (ParameterizedType) clazz.getGenericSuperclass(); </span><br><span class="line">         <span class="comment">//BaseDao&lt;Category&gt;</span></span><br><span class="line">        clazz = (Class) pt.getActualTypeArguments()[<span class="number">0</span>];</span><br><span class="line">        System.out.println(clazz);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(T t)</span></span>&#123;</span><br><span class="line">        session.save(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">find</span><span class="params">(String id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (T) session.get(clazz, id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(T t)</span></span>&#123;</span><br><span class="line">        session.update(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(String id)</span></span>&#123;</span><br><span class="line">        T t = (T) session.get(clazz, id);</span><br><span class="line">        session.delete(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">继承抽象DAO</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CategoryDao</span> <span class="keyword">extends</span> <span class="title">BaseDao</span>&lt;<span class="title">Category</span>&gt; </span>&#123;</span><br><span class="line">	将抽象DAO中的方法继承了下来</span><br><span class="line">	<span class="meta">@override</span></span><br><span class="line">	...</span><br><span class="line">	...</span><br><span class="line">	...</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookDao</span> <span class="keyword">extends</span> <span class="title">BaseDao</span>&lt;<span class="title">Book</span>&gt; </span>&#123;</span><br><span class="line">	<span class="meta">@override</span></span><br><span class="line">	...</span><br><span class="line">	...</span><br><span class="line">	...</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JavaSE基础知识</category>
+      </categories>
+      <tags>
+        <tag>JavaSE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaSE---四种内部类</title>
+    <url>/517577219/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Java中，<strong>可以将一个类定义在另一个类里面或者一个方法里边</strong>，这样的类称为<strong>内部类</strong>，广泛意义上的内部类一般包括四种：成员内部类，局部内部类，匿名内部类，静态内部类 。</p>
+<a id="more"></a>
+
+<p> <strong>1. 成员内部类</strong><br>（1）该类像是外部类的一个成员，可以无条件的访问外部类的所有成员属性和成员方法（包括private成员和静态成员）；<br>（2）成员内部类拥有与外部类同名的成员变量时，会发生隐藏现象，即默认情况下访问的是成员内部类中的成员。如果要访问外部类中的成员，需要以下形式访问：【外部类.this.成员变量  或  外部类.this.成员方法】；<br>（3）在外部类中如果要访问成员内部类的成员，必须先创建一个成员内部类的对象，再通过指向这个对象的引用来访问；<br>（4）成员内部类是依附外部类而存在的，也就是说，如果要创建成员内部类的对象，前提是必须存在一个外部类的对象；<br>（5）内部类可以拥有private访问权限、protected访问权限、public访问权限及包访问权限。如果成员内部类用private修饰，则只能在外部类的内部访问；如果用public修饰，则任何地方都能访问；如果用protected修饰，则只能在同一个包下或者继承外部类的情况下访问；如果是默认访问权限，则只能在同一个包下访问。外部类只能被public和包访问两种权限修饰。</p>
+<p> <strong>2.  局部内部类</strong><br>（1）局部内部类是定义在一个方法或者一个作用域里面的类，它和成员内部类的区别在于局部内部类的访问仅限于方法内或者该作用域内；<br>（2）局部内部类就像是方法里面的一个局部变量一样，是不能有public、protected、private以及static修饰符的。</p>
+<p><strong>3.匿名内部类</strong><br>（1）一般使用匿名内部类的方法来编写事件监听代码；<br>（2）匿名内部类是不能有访问修饰符和static修饰符的；<br>（3）匿名内部类是唯一一种没有构造器的类；<br>（4）匿名内部类用于继承其他类或是实现接口，并不需要增加额外的方法，只是对继承方法的实现或是重写。</p>
+<p><strong>4.静态内部类</strong><br>（1）静态内部类是不需要依赖于外部类的，这点和类的静态成员属性有点类似；<br>（2）不能使用外部类的非static成员变量或者方法。</p>
+<h2 id="内部类的共性："><a href="#内部类的共性：" class="headerlink" title="内部类的共性："></a>内部类的共性：</h2><ul>
+<li>内部类仍然是一个独立的类，在编译之后内部类会被编译成独立的.class文件，但是前面冠以外部类的类名和$符号。</li>
+<li>内部类不能用普通的方式访问。</li>
+<li>内部类声明成静态的，就不能随便的访问外部类的成员变量了，此时内部类只能访问外部类的静态成员变量。</li>
+<li>外部类不能直接访问内部类的的成员，但可以通过内部类对象来访问。</li>
+</ul>
+<h2 id="内部类的作用："><a href="#内部类的作用：" class="headerlink" title="内部类的作用："></a>内部类的作用：</h2><ul>
+<li>内部类方法可以访问该类定义所在的作用域的数据，包括私有的数据。</li>
+<li>内部类可以对同一个包中的其他类隐藏起来,一般的非内部类，是不允许有 private 与protected权限的，但内部类可以。</li>
+<li>可以实现多重继承。</li>
+<li>当想要定义一个回调函数且不想编写大量代码时，使用匿名内部类比较便捷。</li>
+</ul>
+<h1 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h1><p><strong>每个内部类都能独立地继承自一个（接口的）实现，所以无论外围类是否已经继承了某个（接口的）实现，对于内部类都没有影响。大家都知道Java只能继承一个类，它的多重继承在我们没有学习内部类之前是用接口来实现的。但使用接口有时候有很多不方便的地方。比如我们实现一个接口就必须实现它里面的所有方法。而有了内部类就不一样了。它可以使我们的类继承多个具体类或抽象类。</strong></p>
+<h2 id="外部类："><a href="#外部类：" class="headerlink" title="外部类："></a>外部类：</h2><p>外部的类。定义一个类A，在A的内部再定义一个类B，则A就是外部类，B就是内部类。</p>
+<h2 id="内部类与外部类区别与联系"><a href="#内部类与外部类区别与联系" class="headerlink" title="内部类与外部类区别与联系"></a>内部类与外部类区别与联系</h2><p>内部类可以访问外部类所有的方法和属性，如果内部类和外部类有相同的成员方法和成员属性，内部类的成员方法调用要优先于外部类即内部类的优先级比较高（只限于类内部，在主方法内，内部类对象不能访问外部类的成员方法和成员属性），外部类只能访问内部类的静态常量或者通过创建内部类来访问内部类的成员属性和方法。</p>
 ]]></content>
       <categories>
         <category>JavaSE基础知识</category>
@@ -2188,6 +2188,25 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </tags>
   </entry>
   <entry>
+    <title>try-catch-finally总结</title>
+    <url>/2774241439/</url>
+    <content><![CDATA[<p>在日常编译运行程序出错的时候，编译器就会抛出异常，抛出异常要比终止程序灵活的多，这是因为Java提供了一个”捕获”异常的处理器对异常情况进行处理，如果没有提供处理器机制，程序就会终止，try-catch-finally可以保证程序发生错误的时候继续执行下去。下面就谈一下使用的总结，和注意事项。</p>
+<a id="more"></a>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>try，catch，finally语句中，如果try语句有return语句，此后做任何修改，都不影响try中return的返回值。</li>
+<li>如果finally块中有return语句，则try或catch中中的返回语句忽略。</li>
+<li>如果finally块中抛出异常，则整个try，catch，finally块中抛出异常。</li>
+</ul>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
+<li>在使用try- catch-finally的时候，要注意以下问题：<br>①尽量在try或者catch中使用return语句。通过finally块中达到对try或者catch返回值修改是不可行的。<br>②finally块中避免使用return语句，因为finally块中如果使用return语句，会显式的消化掉try，catch块中的异常信息，屏蔽错误的发生。<br>③finally块中避免再次抛出异常，否则整个包含try语句块的方法会抛出异常，并且会消化掉try，catch块中的异常。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>每天一道面试题</category>
+      </categories>
+  </entry>
+  <entry>
     <title>linux安装常用环境</title>
     <url>/2004179649/</url>
     <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手里有一台免费的阿里云服务器是真的很香，但是我也不能让他就这样只放一个博客网站吧，于是乎，我想在这片几乎空白的区域，开拓出一块儿良好的开发环境，也顺便熟悉一下linux系统的操作。这篇主要就是讲了，如何在云服务器上安装JDK，MySql，Tomcat</p>
@@ -2339,25 +2358,6 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       <tags>
         <tag>linux</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>try-catch-finally总结</title>
-    <url>/2774241439/</url>
-    <content><![CDATA[<p>在日常编译运行程序出错的时候，编译器就会抛出异常，抛出异常要比终止程序灵活的多，这是因为Java提供了一个”捕获”异常的处理器对异常情况进行处理，如果没有提供处理器机制，程序就会终止，try-catch-finally可以保证程序发生错误的时候继续执行下去。下面就谈一下使用的总结，和注意事项。</p>
-<a id="more"></a>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>try，catch，finally语句中，如果try语句有return语句，此后做任何修改，都不影响try中return的返回值。</li>
-<li>如果finally块中有return语句，则try或catch中中的返回语句忽略。</li>
-<li>如果finally块中抛出异常，则整个try，catch，finally块中抛出异常。</li>
-</ul>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
-<li>在使用try- catch-finally的时候，要注意以下问题：<br>①尽量在try或者catch中使用return语句。通过finally块中达到对try或者catch返回值修改是不可行的。<br>②finally块中避免使用return语句，因为finally块中如果使用return语句，会显式的消化掉try，catch块中的异常信息，屏蔽错误的发生。<br>③finally块中避免再次抛出异常，否则整个包含try语句块的方法会抛出异常，并且会消化掉try，catch块中的异常。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>每天一道面试题</category>
-      </categories>
   </entry>
   <entry>
     <title>Ubuntu18.04系统安装，修改源</title>
@@ -3601,6 +3601,31 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
+    <title>比特币的两种交易方式</title>
+    <url>/2670976354/</url>
+    <content><![CDATA[<p>比特币的交易有很多种，本文了解一下</p>
+<a id="more"></a>
+<h2 id="比特币交易的几种种方式："><a href="#比特币交易的几种种方式：" class="headerlink" title="比特币交易的几种种方式："></a>比特币交易的几种种方式：</h2><p><img src="https://img-blog.csdnimg.cn/20200204170527575.png" alt="在这里插入图片描述"></p>
+<ol>
+<li><strong>场外交易：</strong> 也称为<strong>法币交易</strong>，法币就是<strong>法定货币</strong>，人民币就是我们国家的法定货币，顾名思义，法币交易就是由法币（人民币）直接与比特币（数字货币）进行交易的行为（购买/出售),可以简单理解为网购。</li>
+<li><strong>场内交易：</strong> 也称之为<strong>币币交易</strong>，就是用一种币交易兑换另一种币。</li>
+<li><strong>杠杆交易：</strong> 利用小额的资金来进行数倍于原始金额的投资。以期望获取相对投资标的物波动的数倍收益率，抑或亏损。由于保证金（该笔小额资金）的增减不以标的资产的波动比例来运动，<strong>风险很高</strong>。不推荐。</li>
+<li><strong>合约交易：</strong> 合约交易是指交易双方，在交易所通过买卖合约，并根据约定在未来某一特定时间和地点，以特定价格买卖规定数量商品的行为。合约交易是在现货远期合约交易基础上发展起来的，在交易所内买卖标准化合约的一种新型交易方式。</li>
+</ol>
+<h2 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h2><ol>
+<li>法币交易很耗时间，即使交易双方操作熟练，但是还是不排除人为因素造成交易时间拖长，不利于双方观察局势，很有可能在分分钟内错过行情。</li>
+<li>币币交易可以在极短时间内成交（按下买入键的瞬间与对手成交）且支持购买的币种更多。</li>
+</ol>
+<p>，</p>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>操作系统---死锁</title>
     <url>/1179211128/</url>
     <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;死锁是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象，若无外力作用，它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程。<br><strong>简单理解就是：</strong> 我想要你手里的东西，同时你也想要我手里的资源，我俩同时都不让出来，谁也拿不到。</p>
@@ -3653,31 +3678,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </categories>
       <tags>
         <tag>OS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>比特币的两种交易方式</title>
-    <url>/2670976354/</url>
-    <content><![CDATA[<p>比特币的交易有很多种，本文了解一下</p>
-<a id="more"></a>
-<h2 id="比特币交易的几种种方式："><a href="#比特币交易的几种种方式：" class="headerlink" title="比特币交易的几种种方式："></a>比特币交易的几种种方式：</h2><p><img src="https://img-blog.csdnimg.cn/20200204170527575.png" alt="在这里插入图片描述"></p>
-<ol>
-<li><strong>场外交易：</strong> 也称为<strong>法币交易</strong>，法币就是<strong>法定货币</strong>，人民币就是我们国家的法定货币，顾名思义，法币交易就是由法币（人民币）直接与比特币（数字货币）进行交易的行为（购买/出售),可以简单理解为网购。</li>
-<li><strong>场内交易：</strong> 也称之为<strong>币币交易</strong>，就是用一种币交易兑换另一种币。</li>
-<li><strong>杠杆交易：</strong> 利用小额的资金来进行数倍于原始金额的投资。以期望获取相对投资标的物波动的数倍收益率，抑或亏损。由于保证金（该笔小额资金）的增减不以标的资产的波动比例来运动，<strong>风险很高</strong>。不推荐。</li>
-<li><strong>合约交易：</strong> 合约交易是指交易双方，在交易所通过买卖合约，并根据约定在未来某一特定时间和地点，以特定价格买卖规定数量商品的行为。合约交易是在现货远期合约交易基础上发展起来的，在交易所内买卖标准化合约的一种新型交易方式。</li>
-</ol>
-<h2 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h2><ol>
-<li>法币交易很耗时间，即使交易双方操作熟练，但是还是不排除人为因素造成交易时间拖长，不利于双方观察局势，很有可能在分分钟内错过行情。</li>
-<li>币币交易可以在极短时间内成交（按下买入键的瞬间与对手成交）且支持购买的币种更多。</li>
-</ol>
-<p>，</p>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
       </tags>
   </entry>
   <entry>
