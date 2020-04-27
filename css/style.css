@@ -564,3 +564,8 @@ figure.highlight .section {
   border-left: 3px solid #ff1700;
   background-color: #f9f9f9;
 }
+.markdown_views code {
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: -9px;
+}

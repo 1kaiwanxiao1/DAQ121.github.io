@@ -20,7 +20,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://daqwt.top/images/og_image.png">
 <meta property="article:published_time" content="2020-03-11T03:35:14.000Z">
-<meta property="article:modified_time" content="2020-04-17T04:37:06.560Z">
+<meta property="article:modified_time" content="2020-04-26T05:34:14.454Z">
 <meta property="article:author" content="黑心市民">
 <meta property="article:tag" content="JavaSE">
 <meta name="twitter:card" content="summary">
@@ -114,6 +114,9 @@
                 href="/friends">友链</a>
                 
                 <a class="navbar-item"
+                href="/games">游戏</a>
+                
+                <a class="navbar-item"
                 href="/books">书单</a>
                 
             </div>
@@ -169,7 +172,7 @@
                 <span class="level-item has-text-grey">                    
                     
                     
-                    17 分钟 读完 (大约 2601 个字)
+                    21 分钟 读完 (大约 3149 个字)
                 </span>
                 
                 
@@ -225,7 +228,16 @@
 </ul>
 <p><img src="https://img-blog.csdnimg.cn/20200415140320803.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h2 id="迭代器iterator"><a href="#迭代器iterator" class="headerlink" title="迭代器iterator"></a>迭代器iterator</h2><ul>
-<li>查看Iterable接口源码：可以看到有iterator这个方法，还有一个forEach（）方法，也就是我们所说的增强for循环，这也是javaSE5.0以后，for循环一种优雅的写法。</li>
+<li><p><code>Iterator iterator()</code>方法是<code>Collection</code>从<code>Iterable</code>(可迭代的)接口继承下来，用于返回一个<code>Iterator</code>对象，<code>Iterator</code>也是接口，而且是集合框架的成员，他的作用不是用来存放对象，而是遍历集合中的元素，所以称之为迭代器。</p>
+</li>
+<li><p><strong>使用迭代器的好处：</strong><br>迭代模式是访问集合类的通用方法，只要集合类实现了Iterator接口，就可以用迭代的方式来访问集合类内部的数据，Iterator访问方式把对不同集合类的访问逻辑抽象出来，使得不用暴露集合内部的结构而达到循环遍历集合的效果。 <code>Iterator接口屏蔽了迭代的底层实现，向用户提供了遍历Collection的统一接口</code>。</p>
+</li>
+<li><p><strong>为什么会有迭代器？</strong><br>如果没有使用Iterator，遍历一个数组的方法是使用索引，这种方法的缺点就是事先必须知道集合的数据结构，而且当我换了一种集合的话代码不可重用，要修改，比如我用set，就不能通过索引来遍历了。访问代码和集合是紧耦合，无法将访问逻辑从集合类和客户端代码中剥离出来，每一种集合类对应一种访问方式，代码不可重用。 </p>
+</li>
+<li><p>为解决以上问题，Iterator模式总是用同一种逻辑来遍历集合， 每一种集合类返回的Iterator具体类型可能不同，Array可能返回ArrayIterator，Set可能返回SetIterator，Tree 可能返回TreeIterator，但是它们都实现了Iterator接口，因此，客户端不关心到底是哪种Iterator，它只需要获得这个 Iterator接口即可，<code>这就是面向对象的威力。 针对抽象编程的原则：对具体类的依赖性最小。</code></p>
+</li>
+<li><p>查看Iterable接口源码：可以看到有iterator这个方法，还有一个forEach（）方法，也就是我们所说的增强for循环，这也是javaSE5.0以后，for循环一种优雅的写法。</p>
+</li>
 </ul>
 <p><img src="https://img-blog.csdnimg.cn/20200415140947956.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
@@ -233,9 +245,10 @@
 </ul>
 <p><img src="https://img-blog.csdnimg.cn/20200415140954694.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
-<li>iterator迭代器怎么用？<br>说到底，迭代器的作用就是遍历集合而已。</li>
+<li>iterator迭代器怎么用？<br>说到底，迭代器的最大作用就是遍历集合。但是他可以在遍历的时候删除元素。注意使用的<code>remove()</code>方法是<code>Iterator</code>的，而不是<code>Collection</code>的。有<code>remove()</code>必有<code>next()</code>在前。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Collection c = <span class="keyword">new</span> ArrayList();</span><br><span class="line"><span class="comment">//向ArrayList中添加元素</span></span><br><span class="line">c.add(<span class="string">"DAQ"</span>);</span><br><span class="line">c.add(<span class="string">"LOVE"</span>);</span><br><span class="line">c.add(<span class="string">"WT"</span>);</span><br><span class="line"><span class="comment">//获取到迭代器</span></span><br><span class="line">Iterator it = c.iterator();</span><br><span class="line"><span class="comment">//遍历集合</span></span><br><span class="line"><span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">	String element=(String)it.next();</span><br><span class="line">	System.Out.Println(element);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
 <h2 id="List集合"><a href="#List集合" class="headerlink" title="List集合"></a>List集合</h2><ul>
 <li>List是线性表结构，包括顺序表Arraylist和链表LinkedList两种实现方式</li>
