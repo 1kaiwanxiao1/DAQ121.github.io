@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<script src="js/clicklove.js"></script>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>结构型---代理模式 - DAQ&#39;s Blog - 一个简简单单的博客</title>
+
+
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;给某一个对象提供一个代理或者占位符，并由代理对象来控制对原对象的访问。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="结构型---代理模式">
+<meta property="og:url" content="http://daqwt.top/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;给某一个对象提供一个代理或者占位符，并由代理对象来控制对原对象的访问。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://daqwt.top/images/og_image.png">
+<meta property="article:published_time" content="2020-04-22T13:55:59.000Z">
+<meta property="article:modified_time" content="2020-05-06T14:05:29.440Z">
+<meta property="article:author" content="黑心市民">
+<meta property="article:tag" content="设计模式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://daqwt.top/images/og_image.png">
+
+
+
+
+
+<link rel="alternative" href="/rss.xml" title="结构型---代理模式" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/wangzhantubiao-32.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="结构型---代理模式" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/photo">相册</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+                <a class="navbar-item"
+                href="/share">分享</a>
+                
+                <a class="navbar-item"
+                href="/friends">友链</a>
+                
+                <a class="navbar-item"
+                href="/games">游戏</a>
+                
+                <a class="navbar-item"
+                href="/books">书单</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="RSS" href="/rss.xml">
+                        
+                        <i class="fas fa-rss"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+       
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
+            
+                结构型---代理模式
+            
+        </h1>
+         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-22T13:55:59.000Z">2020-04-22</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+                </div>
+                
+                                                            
+                <span class="level-item has-text-grey">                    
+                    
+                    
+                    17 分钟 读完 (大约 2587 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;给某一个对象提供一个代理或者占位符，并由代理对象来控制对原对象的访问。</p>
+<a id="more"></a>
+
+<h2 id="什么是代理模式？"><a href="#什么是代理模式？" class="headerlink" title="什么是代理模式？"></a>什么是代理模式？</h2><ul>
+<li>当无法直接访问某个对象或者访问某个对象有一些困难时，可以通过代理对象来间接访问，为了保证客户端使用的透明性，所访问的真实对象与代理对象需要实现相同的接口。这就是代理模式。</li>
+<li><strong>例如：</strong> 用户执行了某一简单的注册操作，当然在客户端代码中不仅仅只有注册这一功能的方法，还有其他的方法，比如说打印日志：<code>XXX于几月几日注册</code>，当然这些日志是不会返回给用户看到，这些是给开发人员看的，但是用户看到的注册功能和开发人员看到的日志功能要实现同一个接口，这时候就需要一个代理对象来松耦合，真实对象处理业务代码，代理对象处理非业务代码。</li>
+<li><strong>定义：</strong> 给某一个对象提供一个代理或者占位符，并由代理对象来控制对原对象的访问。它去掉客户不能看到的内容和服务或者增加客户需要的额外的新服务。</li>
+</ul>
+<h2 id="代理模式的结构"><a href="#代理模式的结构" class="headerlink" title="代理模式的结构"></a>代理模式的结构</h2><ul>
+<li>代理模式的核心结构就是代理类，<strong>为了使客户端 可以一致性的对待真实对象和代理对象，引入了抽象层</strong></li>
+<li>真实类和代理类都实现了抽象接口，并且在代理类中维持一个真实类的引用<br>①在任何可以使用真实类的地方，都可以使用代理类。<br>②代理类还可以控制真实类的使用，因为代理类中有真实类的引用。<br>③实现了松耦合：真实类处理业务代码，代理类处理非业务代码。</li>
+</ul>
+<h2 id="代理模式的实现"><a href="#代理模式的实现" class="headerlink" title="代理模式的实现"></a>代理模式的实现</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><ul>
+<li>在一个商务查询的基础上加<strong>身份验证</strong>和<strong>打印日志</strong>的功能。当然，用户是看不到任何改变的，还是使用之前的用户查询功能。</li>
+</ul>
+<h3 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h3><ol>
+<li><code>AccessValidator</code>身份验证类（业务类），提供<code>validate()</code>方法实现身份验证。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.daq.proxy;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * AccessValidator身份验证类（业务类），提供validate()方法实现身份验证。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccessValidator</span> </span>&#123;</span><br><span class="line">	<span class="comment">//模拟实现登录验证</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">validate</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(userId.equals(<span class="string">"代澳旗"</span>)) &#123;</span><br><span class="line">			System.out.println(<span class="string">"欢迎"</span>+userId+<span class="string">"回来！！"</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"请重新登录！"</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.<code>Logger</code>日志记录类，提供<code>log()</code>方法来保存日志</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.daq.proxy;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Logger:日志记录类，提供log()方法来保存日志</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Logger</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> num=<span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">log</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line">		num++;</span><br><span class="line">		System.out.println(userId+<span class="string">"第"</span>+num+<span class="string">"次查询"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.<code>Searcher</code>：抽象查询接口，充当抽象类，声明<code>doSeacrh()</code>方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.daq.proxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Searcher</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">doSearcher</span><span class="params">(String userId,String keyword)</span> </span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4.<code>RealSearcher</code>:具体查询类，充当真实类，只实现查询功能。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.daq.proxy;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * RealSearcher:具体查询类，充当真实类，只实现查询功能。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RealSearcher</span> <span class="keyword">implements</span> <span class="title">Searcher</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">doSearcher</span><span class="params">(String userId, String keyword)</span> </span>&#123;</span><br><span class="line">		System.out.println(userId+<span class="string">"使用"</span>+keyword+<span class="string">"关键词查询！"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"返回的详细信息"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5.<code>ProxySearcher</code>代理查询类，维持了<code>RealSearcher对象</code>，<code>AccessValidator对象</code>，<code>Logger对象</code>的引用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.daq.proxy;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * ProxySearcher：代理查询类，</span></span><br><span class="line"><span class="comment"> * 维持了RealSearcher对象</span></span><br><span class="line"><span class="comment"> * AccessValidator对象</span></span><br><span class="line"><span class="comment"> * Logger对象的引用。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxySearcher</span> <span class="keyword">implements</span> <span class="title">Searcher</span></span>&#123;</span><br><span class="line">	<span class="comment">//维持了RealSearcher对象的引用。可以控制真实对象</span></span><br><span class="line">	<span class="keyword">private</span> RealSearcher realcher=<span class="keyword">new</span> RealSearcher();</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//维持了AccessValidator对象，Logger对象的引用。</span></span><br><span class="line">    <span class="comment">//如果真实对象挂掉了，代理对象可以顶。</span></span><br><span class="line">	<span class="keyword">private</span> AccessValidator validator;</span><br><span class="line">	<span class="keyword">private</span> Logger logger;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">doSearch</span><span class="params">(String userId, String keyword)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//身份验证成功，执行查询</span></span><br><span class="line">		<span class="keyword">if</span>(<span class="keyword">this</span>.validate(userId)) &#123;</span><br><span class="line">			<span class="comment">//调用真实类对象，执行查询方法</span></span><br><span class="line">			String result=searcher.doSearch(userId,keyword);</span><br><span class="line">			<span class="comment">//记录日志</span></span><br><span class="line">			<span class="keyword">this</span>.log(userId);</span><br><span class="line">			<span class="comment">//返回结果</span></span><br><span class="line">			<span class="keyword">return</span> result;</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//创建验证访问对象，并调用其validate方法实现身份验证</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">validate</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line">		validator=<span class="keyword">new</span> AccessValidator();</span><br><span class="line">		<span class="keyword">return</span> validator.validate(userId);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//创建日志对象，并调用其log方法实现打印日志</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">log</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line">		logger=<span class="keyword">new</span> Logger();</span><br><span class="line">		logger.log(userId);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6.配置<code>config.xml</code>,在配置文件中存储代理主题类的全类名</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;config&gt;</span><br><span class="line">	&lt;className&gt;com.daq.proxy.ProxySearcher&lt;/className&gt;</span><br><span class="line">&lt;/config&gt;</span><br></pre></td></tr></table></figure>
+<p>7.<code>XMLUtil</code>：工具类，提供<code>getBean（）</code>方法，用于从XML配置文件中提取该具体类的名字，并返回一个实例对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.daq.proxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.xml.parsers.DocumentBuilder;</span><br><span class="line"><span class="keyword">import</span> javax.xml.parsers.DocumentBuilderFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.w3c.dom.Document;</span><br><span class="line"><span class="keyword">import</span> org.w3c.dom.Node;</span><br><span class="line"><span class="keyword">import</span> org.w3c.dom.NodeList;</span><br><span class="line"><span class="keyword">import</span> org.xml.sax.SAXException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XMLUtil</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 该方法用于从XML配置文件中提取该具体类的名字，并返回一个实例对象</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getBean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// 创建DOM文档对象</span></span><br><span class="line">			DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();</span><br><span class="line">			DocumentBuilder builder = dFactory.newDocumentBuilder();</span><br><span class="line">			Document doc;</span><br><span class="line">			doc = builder.parse(<span class="keyword">new</span> File(<span class="string">"src//designpatterns//Proxy//conf.xml"</span>));</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//获取包含类名的文本结点</span></span><br><span class="line">			NodeList nl=doc.getElementsByTagName(<span class="string">"className"</span>);</span><br><span class="line">			Node classNode=nl.item(<span class="number">0</span>).getFirstChild();</span><br><span class="line">			String cName=classNode.getNodeValue();</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//通过类名生成实例对象并返回</span></span><br><span class="line">			Class c= Class.forName(cName);</span><br><span class="line">			Object obj = c.newInstance();</span><br><span class="line">			<span class="keyword">return</span> obj;</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>8.客户端测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.daq.proxy;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Searcher searcher;</span><br><span class="line">		searcher=(Searcher)XMLUtil.getBean();</span><br><span class="line">		String result=searcher.doSearch(<span class="string">"代澳旗"</span>, <span class="string">"https://daqwt.top"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>代理类和真实类都是事先存在的，接口和代理方法也明确指定了，每个代理类编译之后都会生成class文件，这叫做<code>静态代理（Static Proxy）</code>新增功能也会增加类的个数，不利于管理，也会增加系统开销。</li>
+<li>以上就是静态代理的实现思想了：在代理类中实现对真实类的权限控制，如果想新增功能，只需要增加一个相应的代理类，在修改配置文件，不用修改源码，但是这种静态代理的方式，实现起来，还是比较困难的。Java的动态代理，就可以很好地解决这个问题，在Spring框架的AOP中得以运用，而且整合封装之后使用更加简洁。</li>
+</ul>
+<h2 id="Java动态代理"><a href="#Java动态代理" class="headerlink" title="Java动态代理"></a>Java动态代理</h2><ul>
+<li>可以让系统在运行时根据实际需要来动态创建代理类，让同一个代理类能够代理多个不同的真实类，并且可以代理不同的方法，动态代理比较高级，在事务管理,AOP，都有着很大的作用。具体的动态代理实现方法，在后续学习AOP的时候去写。</li>
+<li>通过动态代理可以实现对多个真实主题类的统一代理和集中控制</li>
+<li>JDK中的动态代理只能代理一个或者多个接口，如果要动态代理某些具体类或者是抽象类，可以使用<code>GGLib</code>等工具，它是一款代码生成包。</li>
+</ul>
+<h2 id="远程代理"><a href="#远程代理" class="headerlink" title="远程代理"></a>远程代理</h2><ul>
+<li>它使客户端程序可以访问到远程主机上的对象，远程业务在本地主机有一个代理对象，该代理对象负责对远程业务对象的访问和网络通信，客户端无需关心是谁来实现具体业务，只需要按照服务接口所定义的方式直接与本地主机中的代理对象交互即可。在Java中通过<code>RMI机制</code>实现远程代理。（就是Java虚拟机中的对象调用另一个java虚拟机中的对象）</li>
+</ul>
+<h2 id="虚拟代理"><a href="#虚拟代理" class="headerlink" title="虚拟代理"></a>虚拟代理</h2><ul>
+<li>对于一些占用系统资源比较多的或者加载时间长的对象，可以提供虚拟代理，在真实对象创建之前虚拟代理扮演真实对象的替身，而当真实对象创建之后虚拟代理将用户的请求转发给真实对象。</li>
+<li><strong>以下两种情况下使用虚拟代理：</strong><br>①由于各种原因，对象的创建时间比较长，在实现是结合多线程，一个对象用于显示代理对象，其他线程用于加载真实对象。在程序启动的时候，用代理对象代替真实对象初始化，加速系统的启动时间，这种方式可以缩短用户等待的时间。<br>②当一个对象加载非常消耗资源的时候，虚拟代理可以让那些占用大量内存或处理起来比较麻烦的对象推迟到使用他们的时候在创建。访问对象时要进行存在性检测，这可能需要消耗系统时间，但是节省了内存空间，以时间换空间。</li>
+</ul>
+<h2 id="各模式的优缺点"><a href="#各模式的优缺点" class="headerlink" title="各模式的优缺点"></a>各模式的优缺点</h2><ul>
+<li><p><strong>优点：</strong>  解耦，可扩展，灵活。</p>
+</li>
+<li><p><strong>远程代理：</strong> 为两个不同地址空间的对象提供一种实现机制，可以将一些资源消耗比较多的对象和操作移动至性能更好的计算机上，提高系统的整体运行效率。</p>
+</li>
+<li><p><strong>虚拟代理：</strong> 通过一个消耗资源比较少的对象来替代一个消耗资源比较多的对象，可以在一定程度上节约系统运行开销。</p>
+</li>
+<li><p><strong>缓冲代理:</strong> 为某一个操作的结果提供临时的缓存存储空间，以便在后续使用中能够共享这个结果，优化系统性能，缩短执行时间。</p>
+</li>
+<li><p><strong>保护代理：</strong> 控制一个对象的访问权限，为不同的用户提供不同的使用权限。</p>
+</li>
+<li><p><strong>缺点：</strong><br>①由于在客户端和真实类之间增加了代理对象，因此有些类型的代理模式可能会造成请求的处理速度慢，例如保护代理。<br>②代理的实现比较复杂。</p>
+</li>
+</ul>
+
+        </div>
+        
+        <ul class="post-copyright">
+        <li><strong>本文标题：</strong><a href="http://daqwt.top/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">结构型---代理模式</a></li>
+        <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
+        <li><strong>本文链接：</strong><a href="http://daqwt.top/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">http://daqwt.top/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</a></li>
+        <li><strong>发布时间：</strong>2020-04-22</li>
+        <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </li>
+        </ul>
+    
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
+                    <a class="has-link-grey -link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">乞人不受嗟来之食,哎嘛，真香~</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="http://q8khsi9j4.bkt.clouddn.com/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="http://q8khsi9j4.bkt.clouddn.com/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
+                <span class="level-item">创建型---抽象工厂模式</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'AGGG1bgO42sEaVaFqWL1IWdu-gzGzoHsz',
+        app_key: 'IdOMlYlWz8QYnB5YDBSWuTBi',
+        placeholder: '请不要出现虎狼之词...否则我将代表网络正义重拳出击'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="http://q8khsi9j4.bkt.clouddn.com/touxiang.jpg" alt="彭鱼晏">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        彭鱼晏
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        no pain , no gain
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>武汉 中国</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            67
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            11
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            28
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://blog.csdn.net/weixin_44861399" target="_blank" rel="noopener">
+                别犹豫,关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="Github" href="https://github.com/DAQ121">
+                
+                <i class="iconfont icon-git"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2829025551&amp;site=qq&amp;menu=yes">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="网易云" href="https://music.163.com/#/djradio?id=791862420">
+                
+                <i class="iconfont icon-wangyiyun"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="CSDN" href="https://blog.csdn.net/weixin_44861399">
+                
+                <i class="iconfont icon-csdn"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#什么是代理模式？">
+        <span class="has-mr-6">1</span>
+        <span>什么是代理模式？</span>
+        </a></li><li>
+        <a class="is-flex" href="#代理模式的结构">
+        <span class="has-mr-6">2</span>
+        <span>代理模式的结构</span>
+        </a></li><li>
+        <a class="is-flex" href="#代理模式的实现">
+        <span class="has-mr-6">3</span>
+        <span>代理模式的实现</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#需求">
+        <span class="has-mr-6">3.1</span>
+        <span>需求</span>
+        </a></li><li>
+        <a class="is-flex" href="#实现代码">
+        <span class="has-mr-6">3.2</span>
+        <span>实现代码</span>
+        </a></li><li>
+        <a class="is-flex" href="#总结">
+        <span class="has-mr-6">3.3</span>
+        <span>总结</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Java动态代理">
+        <span class="has-mr-6">4</span>
+        <span>Java动态代理</span>
+        </a></li><li>
+        <a class="is-flex" href="#远程代理">
+        <span class="has-mr-6">5</span>
+        <span>远程代理</span>
+        </a></li><li>
+        <a class="is-flex" href="#虚拟代理">
+        <span class="has-mr-6">6</span>
+        <span>虚拟代理</span>
+        </a></li><li>
+        <a class="is-flex" href="#各模式的优缺点">
+        <span class="has-mr-6">7</span>
+        <span>各模式的优缺点</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile" align="center" style="margin:auto">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://q8khsi9j4.bkt.clouddn.com/logoo.png" alt="结构型---代理模式" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 黑心市民&nbsp;
+                <i class="fas fa-balance-scale"></i>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">鄂ICP备20003594</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">本站访客<span id="busuanzi_value_site_uv"></span>人</span>
+                <span><i class="fas fa-globe-asia"></i></span>
+				<span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("02/14/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+                setInterval("createtime()",250);
+            </script>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://daqwt.top',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
