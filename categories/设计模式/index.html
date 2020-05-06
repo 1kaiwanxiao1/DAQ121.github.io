@@ -232,7 +232,7 @@
                 <span class="level-item has-text-grey">                    
                     
                     
-                    5 分钟 读完 (大约 822 个字)
+                    5 分钟 读完 (大约 823 个字)
                 </span>
                 
                 
@@ -241,40 +241,17 @@
         
         <div class="content">
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提供一个创建一系列相关和相互依赖对象的接口，而无需指定他们具体的类。</p>
-<h2 id="模式概述"><a href="#模式概述" class="headerlink" title="模式概述"></a>模式概述</h2><ul>
-<li>工厂方法模式通过引入工厂等级结构，解决了简单工厂模式中工厂类职责太重的问题。</li>
-<li>但是由于工厂方法模式中每个具体工厂只能产生一个单一的对象，如果需要工厂提供多种产品对象，那么会存在大量的工厂类，加大系统的开销。</li>
-<li>可以考虑将一些相关的产品组成一个<code>产品族</code>，由同一个工厂来统一生产，这就是抽象工厂模式的基本思想。</li>
-<li><strong>例如：</strong> 我需要生产<code>海尔电视机，海尔冰箱，海尔空调，海信冰箱，海信空调，海信电视机，Tcl电视机，TCL冰箱，TCL空调，</code>如果用工厂方法模式的话，就要创建9个具体工厂类，但是如果使用抽象工厂模式的话，只需要按照产品等级结构（海尔，海信，TCL）和产品族（电视机，冰箱，空调，）划分，只需要提供三个具体工厂，极大的减少了系统种类的歌个数。</li>
-<li><strong>定义：</strong> <strong>提供一个创建一系列相关或相互依赖对象的接口，而无需指定他们具体的类，抽象工厂模式又成为工具模式。</strong></li>
-</ul>
-<h2 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h2><ul>
-<li><code>AbstractFactory</code>(抽象工厂)：我们一组用于创建一<code>族</code>产品的方法，一个方法对应一种产品。</li>
-<li><code>ConcreteFactory</code>（具体工厂）：生成一组具体产品，这些产品构成了一个产品族。</li>
-<li><code>AbstractProduct</code>(抽象产品)：声明产品所具有的业务方法。</li>
-<li><code>ConcreteProduct</code>(具体产品)：具体产品对象。</li>
-</ul>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p><strong>需求：</strong> 设计一款皮肤库，有不同风格，每种风格又分种类。风格就是<strong>等级结构</strong>，后面的就是<strong>产品族</strong>。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200503152520604.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200503164112458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
-<li>优点：</li>
-</ul>
-<ol>
-<li>隔离了具体类的生成，用户并不需要知道什么被创建，只需改变具体工厂的实例，就可以在某种程度上改变整个软件系统行为。</li>
-<li>当一个产品族中多个对象被设计成一起工作时，他能够保证客户端是终止使用同一个产品族中的对象。</li>
-<li>增加新的产品族很方便，无需修改已有系统。</li>
-</ol>
-<ul>
-<li>缺点：</li>
-</ul>
-<ol>
-<li>增加新的产品等级结构很麻烦，需要对原有系统进行较大的修改，甚至需要修改抽象层代码，这显然会带来很大的不便，违背了开闭原则。</li>
-</ol>
-
         </div>
         
         
+        
+        <div class="level is-mobile" style="padding-left: 42%;">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/#more" >阅读全文</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -420,7 +397,7 @@
                 <span class="level-item has-text-grey">                    
                     
                     
-                    17 分钟 读完 (大约 2521 个字)
+                    17 分钟 读完 (大约 2522 个字)
                 </span>
                 
                 
@@ -429,94 +406,17 @@
         
         <div class="content">
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单例模式（<strong>Singleton Pattern</strong>）：确保一个类只有一个实例，并提供一个全局访问点来访问这一个唯一实例。</p>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
-<li><strong>定义：</strong> 某个类只能有一个对象实例，并且这个类只提供一个获取该对象实例的方法（静态方法）。</li>
-<li>单例设计模式涉及到的知识点还是特别多的，比如：类加载机制，JVM的指令重排，序列化之类的知识。这就很让人头痛。</li>
-<li>核心思想：类内创建，类外获取，使用时创建（懒加载）。</li>
-</ul>
-<h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><p>①应用中某个实例对象需要频繁的被访问，如线程池，工具类对象，数据源，session工厂。<br>②应用中每次启动只会存在一个实例。如账号系统，数据库系统。</p>
-<h1 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h1><ul>
-<li>优点：<br>①对于一些需要频繁创建和销毁的对象，（如工具类对象，数据源，session工厂等…）使用单例模式提高新能，节省系统资源。<br>②只new一次即可，这就大大降低了系统内存的使用频率，减轻了GC的压力。<br>③有些核心类，控制着重要流程，如果该类可以创建多个的话，系统就会混乱。只有使用单例模式，才能保证核心服务器独立控制整个流程。</li>
-<li>缺点：<br>①由于单例模式没有抽象层，因此单例类的扩展就有很大困难。<br>②单例类职责过重，一定程度上违背了单一职责原则。<br>③在垃圾回收的情况下，如果长时间不用，会被当做是垃圾回收掉。</li>
-</ul>
-<h1 id="五种写法"><a href="#五种写法" class="headerlink" title="五种写法"></a>五种写法</h1><h2 id="饿汉式（两种写法）"><a href="#饿汉式（两种写法）" class="headerlink" title="饿汉式（两种写法）"></a>饿汉式（两种写法）</h2><h3 id="（一）静态常量"><a href="#（一）静态常量" class="headerlink" title="（一）静态常量"></a>（一）静态常量</h3><ul>
-<li><strong>写法步骤</strong></li>
-</ul>
-<ol>
-<li>构造器私有化（防止new）</li>
-<li>在类的内部创建对象</li>
-<li>向外暴露一个静态的公共方法：getInstance（）</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonTest1</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//饿汉式（静态变量）	</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//1.构造器私有化，外部不能new</span></span><br><span class="line">		<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2.本地内部创建对象实例</span></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> Singleton instance=<span class="keyword">new</span> Singleton();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//3.提供一个公有的静态方法，返回对象实例</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> instance;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//测试</span></span><br><span class="line">		Singleton instance = Singleton.getInstance();</span><br><span class="line">		Singleton instance1 = Singleton.getInstance();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//结果为true，说明这两个对象是完全一样的</span></span><br><span class="line">		System.out.println(instance==instance1);	</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//这两个new出来的对象HashCode值也一样</span></span><br><span class="line">		System.out.println(instance.hashCode());</span><br><span class="line">		System.out.println(instance1.hashCode());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>优点：写法简单，在类装载的时候就完成了实例化（上述第二步），避免了线程同步的问题。</li>
-<li>正是由于在类装载的时候就完成了实例化，没有达到懒加载（lazy loading）的效果，那么如果从始至终都未使用这个实例，就会造成内存浪费。</li>
-<li>在JDK中有用到，在<code>java.lang.Runtime</code>下。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200419202904706.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>总结：<strong>如果你确定能够用到这个实例，那么没问题，但是你不能确定是否会用到，就会造成内存浪费的问题。</strong></li>
-</ul>
-<h3 id="（二）静态代码块"><a href="#（二）静态代码块" class="headerlink" title="（二）静态代码块"></a>（二）静态代码块</h3><ul>
-<li>写法：在静态代码块中创建单例对象</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//饿汉式（静态代码块）	</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//1.构造器私有化，外部不能new</span></span><br><span class="line">		<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2.本地内部创建对象实例</span></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">static</span> &#123;<span class="comment">//在静态代码块中创建单例对象</span></span><br><span class="line">			instance=<span class="keyword">new</span> Singleton();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//3.提供一个公有的静态方法，返回对象实例</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> instance;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>这与静态变量是一样的，也同样是在类装载的时候创建实例。优缺点也一样，可能会造成内存浪费。</li>
-</ul>
-<h2 id="懒汉式（三种写法）"><a href="#懒汉式（三种写法）" class="headerlink" title="懒汉式（三种写法）"></a>懒汉式（三种写法）</h2><h3 id="（一）线程不安全"><a href="#（一）线程不安全" class="headerlink" title="（一）线程不安全"></a>（一）线程不安全</h3><ul>
-<li>起到了懒加载的效果，但是只能在单线程下使用</li>
-<li>如果多线程下，一个线程进入<code>if(instance==null)</code>判断语句块，还没来得及往下执行，另一个线程又进来了，这样会产生多个实例，所以多线程情况下，不使用这种方式</li>
-<li><strong>在实际开发中，不要使用懒汉式！！！</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton3</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton3 instance;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//1.构造器私有化，外部不能new</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton3</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//提供一个静态的公有方法，当使用该方法时，才去创建instance，即懒汉式</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton3 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(instance==<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">//如果instance为空，则说明还没创建，此时才去创建。</span></span><br><span class="line">			instance=<span class="keyword">new</span> Singleton3();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> instance;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="（二）线程安全，同步方法"><a href="#（二）线程安全，同步方法" class="headerlink" title="（二）线程安全，同步方法"></a>（二）线程安全，同步方法</h3><ul>
-<li>解决了线程不安全的问题，但是同时也带来了效率低下的问题。每个线程想获得类的实例，执行<code>getInstance（）</code>都需要进行同步。</li>
-<li><strong>所以实际开发中不使用这种方式！！！</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在这个获取实例的公有方法上加一个`synchronized`关键字，就解决了线程安全的问题。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton3 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(instance==<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">//如果instance为空，则说明还没创建，此时才去创建。</span></span><br><span class="line">			instance=<span class="keyword">new</span> Singleton3();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> instance;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="（三）线程安全，同步代码块"><a href="#（三）线程安全，同步代码块" class="headerlink" title="（三）线程安全，同步代码块"></a>（三）线程安全，同步代码块</h3><ul>
-<li><p>这种方式本意是想通过同步代码块来改善同步方法带来的效率低下的问题。但是并没有什么卵用。</p>
-</li>
-<li><p>其实也没有太大的意义，还是线程不安全的，<strong>开发中一定不能用！！！</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton3 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(instance==<span class="keyword">null</span>) &#123;<span class="comment">//如果instance为空，则说明还没创建，此时才去创建。</span></span><br><span class="line">			<span class="keyword">synchronized</span>(Singleton3<span class="class">.<span class="keyword">class</span>)</span>&#123;</span><br><span class="line">			instance = <span class="keyword">new</span> Singleton3();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">		<span class="keyword">return</span> instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>优点：延迟加载（需要的时候才去加载）</p>
-</li>
-<li><p>缺点： 线程不安全，在多线程中很容易出现不同步的情况，如在数据库对象进行的频繁读写操作时。</p>
-</li>
-</ul>
-<h2 id="双重检查-推荐使用"><a href="#双重检查-推荐使用" class="headerlink" title="双重检查(推荐使用)"></a>双重检查(推荐使用)</h2><ul>
-<li>使用<code>volatile</code>关键字，这个<code>instance</code>变量就共享了，一旦有改变，就会刷新到内存中，可以理解为轻量级的<code>synchronized</code>，</li>
-<li>解决了线程安全和懒加载的问题，同时保留了效率，它或许可以在并发量不多，安全性不太高的情况能完美运行。</li>
-<li>但是，问题就是出现在这句 <code>instance = new Singleton();</code> 在JVM编译的过程中会出现指令重排的优化过程，这就会导致当 instance实际上还没初始化，就可能被分配了内存空间，也就是说会出现 instance !=null 但是又没初始化的情况，这样就会导致返回的 instance 不完整。</li>
-<li>优点：在并发量不多，安全性不高的情况下或许能很完美运行单例模式</li>
-<li>缺点：不同平台编译过程中可能会存在严重安全隐患。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton4</span></span>&#123;</span><br><span class="line"><span class="comment">//使用volatile关键字，这个instance变量就共享了，一旦有改变，就会刷新到内存中</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton4 instance;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton4</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//提供一个静态的公有方法，加入双重检查代码，解决线程安全问题，同时解决懒加载问题。</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton4 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(instance==<span class="keyword">null</span>) &#123;<span class="comment">//如果instance为空，则说明还没创建，此时才去创建。</span></span><br><span class="line">			<span class="keyword">synchronized</span>(Singleton3<span class="class">.<span class="keyword">class</span>)</span>&#123;</span><br><span class="line">			  <span class="keyword">if</span>(instance==<span class="keyword">null</span>) &#123;</span><br><span class="line">				instance = <span class="keyword">new</span> Singleton4();</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">		<span class="keyword">return</span> instance;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="静态内部类（推荐使用）"><a href="#静态内部类（推荐使用）" class="headerlink" title="静态内部类（推荐使用）"></a>静态内部类（推荐使用）</h2><ul>
-<li>这个主类装载的时候，它里面的内部类不会被装载的，但是如果主类中的方法使用到了这个静态内部类的静态变量的时候，这个类才会装载，（以此实现延迟加载），而且只会装载一次，并且还是线程安全的。</li>
-<li>利用了JVM装载类的时候是线程安全的这个特点，因为在类初始化的时候，别的线程是无法进入的。</li>
-<li><strong>推荐使用！！！</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//静态内部类实现单例模式</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton5</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span>  <span class="keyword">volatile</span> Singleton5 instance;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//构造器私有化</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton5</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//写一个静态内部类，这个类中有一个静态属性Singleton</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonTnstance</span></span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton5 instance = <span class="keyword">new</span> Singleton5();</span><br><span class="line">	&#125; </span><br><span class="line">	</span><br><span class="line">	<span class="comment">//提供一个静态的公有方法,直接返回这个实例。</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton5 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> Singleton5.instance;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="枚举的方法（强烈推荐）"><a href="#枚举的方法（强烈推荐）" class="headerlink" title="枚举的方法（强烈推荐）"></a>枚举的方法（强烈推荐）</h2><ul>
-<li>借助JDK1.5中添加的枚举来实现单例，不仅避免了多线程同步的问题，而且还能够防止反序列化重新创建新的对象。</li>
-<li>枚举方式也是JAVA作者推荐使用的。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonTest6</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">			<span class="comment">//测试</span></span><br><span class="line">			Singleton6 instance = Singleton6.INSTANCE;</span><br><span class="line">			Singleton6 instance1 = Singleton6.INSTANCE;</span><br><span class="line">				</span><br><span class="line">			<span class="comment">//结果为true，说明这两个对象是完全一样的</span></span><br><span class="line">			System.out.println(instance==instance1);</span><br><span class="line">				</span><br><span class="line">			<span class="comment">//这两个new出来的对象HashCode值也一样</span></span><br><span class="line">			System.out.println(instance.hashCode());</span><br><span class="line">			System.out.println(instance1.hashCode());</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//使用枚举，可以实现单例</span></span><br><span class="line">	<span class="keyword">enum</span> Singleton6&#123;</span><br><span class="line">		INSTANCE;<span class="comment">//属性</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayOk</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			System.out.println(<span class="string">"ok~"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
-<li>在实际开发中：<br>①<strong>饿汉式</strong>————————–单线程情况下并且知道一定会用到这个实例的时候采用<br>②<strong>懒汉式的</strong>———————–三种写法都不推荐<br>③<strong>双重检查</strong>和<strong>静态内部类</strong>—–多线程情况下推荐使用的写法。<br>④<strong>枚举</strong>—————————–最最推荐的是的方法，写法简单，安全，高效！</li>
-<li><strong>注意：</strong> synchronized关键字锁定的是对象，在用的时候，一定要在恰当的地方使用（注意需要使用锁的对象和过程，可能有的时候并不是整个对象及整个过程都需要锁）。</li>
-</ul>
-
         </div>
         
         
+        
+        <div class="level is-mobile" style="padding-left: 42%;">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/#more" >阅读全文</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
