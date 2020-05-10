@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>DBUtils学习笔记</title>
+    <url>/2524199830/</url>
+    <content><![CDATA[<p>DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。并且简化了增删改查的操作。</p>
+<a id="more"></a>
+<h1 id="使用开源的DBUtils"><a href="#使用开源的DBUtils" class="headerlink" title="使用开源的DBUtils"></a>使用开源的DBUtils</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>Commons DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。</li>
+<li>简化了增删改查的操作。</li>
+</ul>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><ul>
+<li>增删改</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.导入jar包  commons-dbutils-1.4.jar</span><br><span class="line">public class TestDBUtils &#123;</span><br><span class="line">	@Test</span><br><span class="line">	public void testInsert() throws SQLException &#123;</span><br><span class="line">		ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">		// dbutils 只是帮我们简化了CRUD 的代码， 但是连接的创建以及获取工作。 不在他的考虑范围</span><br><span class="line">		QueryRunner queryRunner = new QueryRunner(dataSource);</span><br><span class="line">		// 增加</span><br><span class="line">		queryRunner.update(<span class="string">"insert into category values (null , ? , ? )"</span>, <span class="string">"a"</span>, 1000);</span><br><span class="line">		// 删除</span><br><span class="line">		queryRunner.update(<span class="string">"delete from account where id = ?"</span>, 5);</span><br><span class="line">		// 更新</span><br><span class="line">		queryRunner.update(<span class="string">"update account set money = ? where id = ?"</span>, 10000000, 6);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.直接new接口的匿名实现类</span><br><span class="line">QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());</span><br><span class="line">	Account  account =  queryRunner.query(<span class="string">"select * from account where id = ?"</span>, new ResultSetHandler&lt;Account&gt;()&#123;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public Account handle(ResultSet rs) throws SQLException &#123;</span><br><span class="line">			Account account  =  new Account();</span><br><span class="line">			<span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">				String name = rs.getString(<span class="string">"name"</span>);</span><br><span class="line">				int money = rs.getInt(<span class="string">"money"</span>);</span><br><span class="line">					</span><br><span class="line">				account.setName(name);</span><br><span class="line">				account.setMoney(money);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> account;</span><br><span class="line">		&#125; </span><br><span class="line">	 &#125;, 6);</span><br><span class="line">	System.out.println(account.toString());</span><br><span class="line"></span><br><span class="line">2. 直接使用框架已经写好的实现类。（最常用）</span><br><span class="line">	QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());</span><br><span class="line">	//查询单个对象</span><br><span class="line">Account account = queryRunner.query(<span class="string">"select * from account where id = ?"</span>, </span><br><span class="line">			new BeanHandler&lt;Account&gt;(Account.class), 8);</span><br><span class="line">	System.out.println(category.toString());</span><br><span class="line">	</span><br><span class="line">	* 查询多个对象</span><br><span class="line">List&lt;Category&gt; list = queryRunner.query(<span class="string">"select * from category"</span>, new BeanListHandler&lt;Category&gt;(Category.class));</span><br><span class="line">	<span class="keyword">for</span> (Category category : list) &#123;</span><br><span class="line">		System.out.println(category.toString());</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="ResultSetHandler-常用的实现类"><a href="#ResultSetHandler-常用的实现类" class="headerlink" title="ResultSetHandler 常用的实现类"></a>ResultSetHandler 常用的实现类</h1><ul>
+<li>以下两个是使用频率最高的</li>
+</ul>
+<ol>
+<li><p>BeanHandler          查询到的<strong>单个</strong>数据封装成一个对象</p>
+</li>
+<li><p>BeanListHandler    查询到的<strong>多个</strong>数据封装 成一个List&lt;对象&gt;</p>
+</li>
+<li><p>ArrayHandler,  查询到的单个数据封装成一个数组。</p>
+</li>
+<li><p>ArrayListHandler,  查询到的多个数据封装成一个集合 ，集合里面的元素是数组。 </p>
+</li>
+<li><p>MapHandler,  查询到的单个数据封装成一个map</p>
+</li>
+<li><p>MapListHandler,查询到的多个数据封装成一个集合 ，集合里面的元素是map。 </p>
+</li>
+<li><p>ColumnListHandler</p>
+</li>
+<li><p>KeyedHandler</p>
+</li>
+<li><p>ScalarHandler</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>MySql,DBUtils</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Github使用学习</title>
     <url>/1657072496/</url>
     <content><![CDATA[<p>刚开始上手使用github的时候，真是一头雾水，不仅看不懂英文，而且也不懂如何使用，一番研究之后，基本了解了如何使用github的功能。</p>
@@ -55,95 +103,180 @@
       </tags>
   </entry>
   <entry>
-    <title>DBUtils学习笔记</title>
-    <url>/2524199830/</url>
-    <content><![CDATA[<p>DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。并且简化了增删改查的操作。</p>
+    <title>Http协议&amp;C/S通讯抓包</title>
+    <url>/678909362/</url>
+    <content><![CDATA[<p>http协议：针对网络上的客户端 与 服务器端在执行http请求的时候，遵守的一种规范。 规定了客户端在访问服务器端的时候,服务器端返回数据的时候，要带上什么东西。</p>
 <a id="more"></a>
-<h1 id="使用开源的DBUtils"><a href="#使用开源的DBUtils" class="headerlink" title="使用开源的DBUtils"></a>使用开源的DBUtils</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
-<li>Commons DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。</li>
-<li>简化了增删改查的操作。</li>
+<h1 id="一、Http协议"><a href="#一、Http协议" class="headerlink" title="一、Http协议"></a>一、Http协议</h1><ul>
+<li>什么是协议？<br>双方在交互、通讯的时候， 遵守的一种规范、规则。</li>
+<li>http协议概述<br>针对网络上的客户端 与 服务器端在执行http请求的时候，遵守的一种规范。 其实就是规定了客户端在访问服务器端的时候，要带上哪些东西， 服务器端返回数据的时候，也要带上什么东西。 </li>
+<li>版本<br> 1.0：请求数据，服务器返回后， 将会断开连接。<br> 1.1：请求数据，服务器返回后， 连接还会保持着。 除非服务器 | 客户端 关掉。 有一定的时间限制，如果都空着这个连接，那么后面会自己断掉。</li>
 </ul>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><ul>
-<li>增删改</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.导入jar包  commons-dbutils-1.4.jar</span><br><span class="line">public class TestDBUtils &#123;</span><br><span class="line">	@Test</span><br><span class="line">	public void testInsert() throws SQLException &#123;</span><br><span class="line">		ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">		// dbutils 只是帮我们简化了CRUD 的代码， 但是连接的创建以及获取工作。 不在他的考虑范围</span><br><span class="line">		QueryRunner queryRunner = new QueryRunner(dataSource);</span><br><span class="line">		// 增加</span><br><span class="line">		queryRunner.update(<span class="string">"insert into category values (null , ? , ? )"</span>, <span class="string">"a"</span>, 1000);</span><br><span class="line">		// 删除</span><br><span class="line">		queryRunner.update(<span class="string">"delete from account where id = ?"</span>, 5);</span><br><span class="line">		// 更新</span><br><span class="line">		queryRunner.update(<span class="string">"update account set money = ? where id = ?"</span>, 10000000, 6);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="二、演示客户端-如何-与服务器端通讯。"><a href="#二、演示客户端-如何-与服务器端通讯。" class="headerlink" title="二、演示客户端 如何 与服务器端通讯。"></a>二、演示客户端 如何 与服务器端通讯。</h1><p>问题： 在地址栏中键入网络地址 回车  或者是平常注册的时候，点击了注册按钮 ， 浏览器都能显示出来一些东西。那么背地里到底浏览器和服务器是怎么通讯。 它们都传输了哪些数据？</p>
 <ul>
-<li>查</li>
+<li><p>安装抓包工具 HttpWatch (IE插件)</p>
+</li>
+<li><p>打开tomcat. 输入localhost:8080 打开首页</p>
+</li>
+<li><p>在首页上找到Example—&gt;选择 Servlet Examples—&gt; Request Parameter</p>
+</li>
+<li><p>接着点击Request  Parameters 的 Execute超链接，会出现请求参数示例</p>
+</li>
+<li><p>执行tomcat的例子，然后查看浏览器和 tomcat服务器的对接细节</p>
+</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.直接new接口的匿名实现类</span><br><span class="line">QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());</span><br><span class="line">	Account  account =  queryRunner.query(<span class="string">"select * from account where id = ?"</span>, new ResultSetHandler&lt;Account&gt;()&#123;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public Account handle(ResultSet rs) throws SQLException &#123;</span><br><span class="line">			Account account  =  new Account();</span><br><span class="line">			<span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">				String name = rs.getString(<span class="string">"name"</span>);</span><br><span class="line">				int money = rs.getInt(<span class="string">"money"</span>);</span><br><span class="line">					</span><br><span class="line">				account.setName(name);</span><br><span class="line">				account.setMoney(money);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> account;</span><br><span class="line">		&#125; </span><br><span class="line">	 &#125;, 6);</span><br><span class="line">	System.out.println(account.toString());</span><br><span class="line"></span><br><span class="line">2. 直接使用框架已经写好的实现类。（最常用）</span><br><span class="line">	QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());</span><br><span class="line">	//查询单个对象</span><br><span class="line">Account account = queryRunner.query(<span class="string">"select * from account where id = ?"</span>, </span><br><span class="line">			new BeanHandler&lt;Account&gt;(Account.class), 8);</span><br><span class="line">	System.out.println(category.toString());</span><br><span class="line">	</span><br><span class="line">	* 查询多个对象</span><br><span class="line">List&lt;Category&gt; list = queryRunner.query(<span class="string">"select * from category"</span>, new BeanListHandler&lt;Category&gt;(Category.class));</span><br><span class="line">	<span class="keyword">for</span> (Category category : list) &#123;</span><br><span class="line">		System.out.println(category.toString());</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="ResultSetHandler-常用的实现类"><a href="#ResultSetHandler-常用的实现类" class="headerlink" title="ResultSetHandler 常用的实现类"></a>ResultSetHandler 常用的实现类</h1><ul>
-<li>以下两个是使用频率最高的</li>
+<h1 id="三、Http请求数据解释"><a href="#三、Http请求数据解释" class="headerlink" title="三、Http请求数据解释"></a>三、Http请求数据解释</h1><ul>
+<li><strong>请求的数据里面包含三个部分内容 ： 请求行 、 请求头 、请求体</strong></li>
+<li>请求行：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST /examples/servlets/servlet/RequestParamExample HTTP/1.1 </span><br><span class="line"></span><br><span class="line">		POST ： 请求方式 ，以post去提交数据</span><br><span class="line">			</span><br><span class="line">		/examples/servlets/servlet/RequestParamExample</span><br><span class="line">		请求的地址路径 ， 就是要访问哪个地方。</span><br><span class="line">	</span><br><span class="line">		HTTP/1.1 协议版本</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>请求头：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Accept: application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, */*</span><br><span class="line">		Referer: http://localhost:8080/examples/servlets/servlet/RequestParamExample</span><br><span class="line">		Accept-Language: zh-CN</span><br><span class="line">		User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)</span><br><span class="line">		Content-Type: application/x-www-form-urlencoded</span><br><span class="line">		Accept-Encoding: gzip, deflate</span><br><span class="line">		Host: localhost:8080</span><br><span class="line">		Content-Length: 31</span><br><span class="line">		Connection: Keep-Alive</span><br><span class="line">		Cache-Control: no-cache</span><br><span class="line"></span><br><span class="line">		Accept: 客户端向服务器端表示，我能支持什么类型的数据。 </span><br><span class="line">		Referer ： 真正请求的地址路径，全路径</span><br><span class="line">		Accept-Language: 支持语言格式</span><br><span class="line">		User-Agent: 用户代理 向服务器表明，当前来访的客户端信息。 </span><br><span class="line">		Content-Type： 提交的数据类型。经过urlencoding编码的form表单的数据</span><br><span class="line">		Accept-Encoding： gzip, deflate ： 压缩算法 。 </span><br><span class="line">		Host ： 主机地址</span><br><span class="line">		Content-Length： 数据长度</span><br><span class="line">		Connection : Keep-Alive 保持连接</span><br><span class="line">		Cache-Control ： 对缓存的操作</span><br></pre></td></tr></table></figure>
+<ul>
+<li>请求体：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">浏览器真正发送给服务器的数据 </span><br><span class="line">	</span><br><span class="line">	发送的数据呈现的是key=value ,如果存在多个数据，那么使用 &amp;</span><br><span class="line"></span><br><span class="line">	firstname=zhang&amp;lastname=sansan</span><br></pre></td></tr></table></figure>
+<h1 id="四、Http响应数据解析"><a href="#四、Http响应数据解析" class="headerlink" title="四、Http响应数据解析"></a>四、Http响应数据解析</h1><ul>
+<li><strong>请求的数据里面包含三个部分内容 ： 响应行 、 响应头 、响应体</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: Apache-Coyote/1.1</span><br><span class="line">Content-Type: text/html;charset=ISO-8859-1</span><br><span class="line">Content-Length: 673</span><br><span class="line">Date: Fri, 17 Feb 2017 02:53:02 GMT</span><br><span class="line"></span><br><span class="line">...这里还有很多数据...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>响应行：第一行</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line"></span><br><span class="line">		协议版本  </span><br><span class="line">		状态码 </span><br><span class="line">			咱们这次交互到底是什么样结果的一个code. </span><br><span class="line">			200 : 成功，正常处理，得到数据。</span><br><span class="line">			403  : <span class="keyword">for</span> bidden  拒绝</span><br><span class="line">			404 ： Not Found</span><br><span class="line">			500 ： 服务器异常</span><br><span class="line">		OK</span><br><span class="line">			对应前面的状态码</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>响应头</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Server:  服务器是哪一种类型。  Tomcat</span><br><span class="line">		Content-Type ： 服务器返回给客户端你的内容类型</span><br><span class="line">		Content-Length ： 返回的数据长度</span><br><span class="line">		Date ： 通讯的日期，响应的时间</span><br></pre></td></tr></table></figure>
+
+<h1 id="五、Get-和-Post请求区别"><a href="#五、Get-和-Post请求区别" class="headerlink" title="五、Get 和  Post请求区别"></a>五、Get 和  Post请求区别</h1><ul>
+<li>post</li>
 </ul>
 <ol>
-<li><p>BeanHandler          查询到的<strong>单个</strong>数据封装成一个对象</p>
-</li>
-<li><p>BeanListHandler    查询到的<strong>多个</strong>数据封装 成一个List&lt;对象&gt;</p>
-</li>
-<li><p>ArrayHandler,  查询到的单个数据封装成一个数组。</p>
-</li>
-<li><p>ArrayListHandler,  查询到的多个数据封装成一个集合 ，集合里面的元素是数组。 </p>
-</li>
-<li><p>MapHandler,  查询到的单个数据封装成一个map</p>
-</li>
-<li><p>MapListHandler,查询到的多个数据封装成一个集合 ，集合里面的元素是map。 </p>
-</li>
-<li><p>ColumnListHandler</p>
-</li>
-<li><p>KeyedHandler</p>
-</li>
-<li><p>ScalarHandler</p>
-</li>
+<li>数据是以流的方式写过去，不会在地址栏上面显示。  现在一般提交数据到服务器使用的都是POST。</li>
+<li>以流的方式写数据，所以数据没有大小限制。</li>
+</ol>
+<ul>
+<li>get</li>
+</ul>
+<ol>
+<li>会在地址栏后面拼接数据，所以有安全隐患。 一般从服务器获取数据，并且客户端也不用提交上面数据的时候，可以使用GET。</li>
+<li>能够带的数据有限， 1kb大小。</li>
 </ol>
 ]]></content>
       <categories>
-        <category>数据库</category>
+        <category>Java Web</category>
       </categories>
       <tags>
-        <tag>MySql,DBUtils</tag>
+        <tag>Http协议</tag>
       </tags>
   </entry>
   <entry>
-    <title>HTPP中的GET和POST</title>
-    <url>/1483407090/</url>
-    <content><![CDATA[<p>当我们在浏览器点击某个按钮，会向服务器发送一个请求（request），服务器收到请求之后，会返回给我们一个响应（response），那这个请求是如何发送的呢。</p>
+    <title>Git使用学习</title>
+    <url>/339957974/</url>
+    <content><![CDATA[<p>Git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。也是程序员最常用工具之一，连接本地仓库与github仓库，提高了开发效率，github也是开源项目宝库。</p>
 <a id="more"></a>
+<h2 id="一、概述原理"><a href="#一、概述原理" class="headerlink" title="一、概述原理"></a>一、概述原理</h2><p>Git是目前世界上最先进的分布式版本控制工具。</p>
+<ul>
+<li>工作原理：</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200325163944876.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>概念：</li>
+</ul>
+<ol>
+<li>Workspace：工作区</li>
+<li>Index/Stage：暂存区</li>
+<li>Respository：仓库区（本地仓库）</li>
+<li>Remote：远程仓库</li>
+</ol>
+<ul>
+<li>SVN与Git的区别</li>
+</ul>
+<ol>
+<li><p>SVN是集中式版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器哪里得到最新的版本，然后干活，干完后，需要把自己做完的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网还可以，带宽够大，速度够快，如果在互联网下，如果网速慢的话，有时就得等很久了。</p>
+</li>
+<li><p>Git是分布式版本控制系统，那么它就没有中央服务器的，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己的电脑上。既然每个人的电脑都有一个完整的版本库，那多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。</p>
+</li>
+</ol>
+<p>##二、使用目的</p>
+<p>通过git管理github托管项目代码。<br>##三、下载安装</p>
+<p>下载地址：<a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a><br>##四、Git工作区域</p>
+<ul>
+<li>工作区（Working Directory）： 添加、编辑、修改文件。</li>
+<li>暂存区 ： 暂存已经修改的文件最后统一提交到git仓库中。 留一个回旋的余地，没改好接着改，改好了再提交到仓库。</li>
+<li>Git Repository （Git 仓库）：最终确定的文件保留到仓库，成为一个新的版本，并且对他人可见。</li>
+</ul>
+<p>##五、初始化配置 Git</p>
+<ul>
+<li>设置用户名：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">'DAQ121'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置用户名邮箱：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.email <span class="string">'2829025551@qq.com'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看设置</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
 
-<h2 id="一、基础概念"><a href="#一、基础概念" class="headerlink" title="一、基础概念"></a>一、基础概念</h2><ul>
-<li>HTTP是什么？<br>HTTP基于TCP/IP，它是关于<strong>数据如何在万维网中通讯</strong> 的协议。</li>
-<li>GET和POST是什么？<br>HTTP协议中的两种<strong>发送请求</strong> 的方法。</li>
+<p><strong>注意：</strong> 该设置在github仓库主页显示谁提交了该文件。</p>
+<ul>
+<li>创建相对应的仓库并初始化：</li>
 </ul>
-<h2 id="二、简单理解"><a href="#二、简单理解" class="headerlink" title="二、简单理解"></a>二、简单理解</h2><ul>
-<li><p>把万维网传输线路比作一条高速公路，公路上的汽车就相当于一个个<strong>TCP</strong> ，用他们来实现可靠数据传输，但是车也有不同车型，如果全都一样，送急件的汽车可能被前面满载货物的汽车拦堵在路上，整个交通就会瘫痪。为了避免这种情况发生，需要制定好交通规则，也就是<strong>HTTP</strong>协议。</p>
-</li>
-<li><p>HTTP给汽车运输设定了好几个服务类别，有GET, POST, PUT, DELETE等等。<br>①当执行GET请求的时候，要给汽车贴上GET的标签（设置method为GET），而且要求把传送的数据放在车顶上（url中）以方便记录。<br>②如果是POST请求，就要在车上贴上POST的标签，并把货物放在车厢里。当然，你也可以在GET的时候往车厢内偷偷藏点货物；也可以在POST的时候在车顶上也放一些数据。<strong>HTTP只是个行为准则，而TCP才是GET和POST怎么实现的基本。</strong></p>
-</li>
-<li><p>不同的浏览器（发起http请求）和服务器（接受http请求），虽然理论上，你可以在车顶上无限的堆货物（url中无限加参数）。但是数据量太大对浏览器和服务器都是很大负担。 于是大多数浏览器通常都会限制url长度在2K个字节，而（大多数）服务器最多处理64K大小的url。超过的部分不处理。如果使用GET服务，在request body偷偷藏了数据，不同服务器的处理方式也是不同的，有些服务器会读出数据，有些服务器直接忽略，所以，虽然GET可以带request body，也不能保证一定能被接收到。</p>
-</li>
-<li><p>所以可以这么理解：GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中体现出一些不同。</p>
-</li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir <span class="built_in">test</span>;//创建仓库</span><br><span class="line"><span class="built_in">cd</span> <span class="built_in">test</span>;</span><br><span class="line">git init;//初始化仓库</span><br><span class="line">操作完之后会在<span class="built_in">test</span>目录下出现一个.git的隐藏文件。</span><br></pre></td></tr></table></figure>
+
+<p> ##六、向仓库中添加文件</p>
+<ul>
+<li>在test仓库里新建文件a1.java</li>
 </ul>
-<h2 id="三、标准答案"><a href="#三、标准答案" class="headerlink" title="三、标准答案"></a>三、标准答案</h2><ul>
-<li>GET参数通过URL传递，POST放在Request body中。</li>
-<li>GET在浏览器回退时是无害的，而POST会再次提交请求。</li>
-<li>GET产生的URL地址可以被Bookmark，而POST不可以。</li>
-<li>GET请求会被浏览器主动cache，而POST不会，除非手动设置。</li>
-<li>GET请求只能进行url编码，而POST支持多种编码方式。</li>
-<li>GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。</li>
-<li>GET请求在URL中传送的参数是有长度限制的，而POST没有</li>
-<li>对参数的数据类型，GET只接受ASCII字符，而POST没有限制。</li>
-<li>GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。</li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">touch a1.java//创建</span><br><span class="line">git status //查看</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200222170530502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>添加到暂存区</li>
 </ul>
-<h2 id="四、关键区别"><a href="#四、关键区别" class="headerlink" title="四、关键区别"></a>四、关键区别</h2><ul>
-<li>GET产生一个TCP数据包；POST产生两个TCP数据包。</li>
-<li>通俗来讲就是：<br>①对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）。<br>②对于POST方式的请求，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。</li>
-<li>因为POST需要两步，时间上消耗的要多一点，看起来GET比POST更有效。但是！！！！<br>①GET与POST都有自己的语义，不能随便混用。<br>②在网络环境好的情况下，发一次包的时间和发两次包的时间差别基本可以无视。而在网络环境差的情况下，两次包的TCP在验证数据包完整性上，有非常大的优点。<br>③并不是所有浏览器都会在POST中发送两次包，Firefox就只发送一次。</li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add a1.java</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200222170537166.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>将文件从暂存区提交到仓库</li>
 </ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">'add a1.java'</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200222170859545.png" alt="在这里插入图片描述"><br>##七、修改仓库文件</p>
+<ul>
+<li>修改后，a1.java 还要add到暂存区中。</li>
+<li>然后再从暂存区提交到仓库。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200222172151350.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>##八、删除仓库文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.删除文件</span><br><span class="line">rm a1.java</span><br><span class="line">2.从Git中删除文件</span><br><span class="line">git rm a1.java</span><br><span class="line">3.提交操作</span><br><span class="line">git commit -m <span class="string">'描述'</span></span><br></pre></td></tr></table></figure>
+
+<p> ##九、Git管理远程仓库</p>
+<ul>
+<li>使用远程仓库的目的：<br>作用：备份，实现代码共享集中化管理。</li>
+<li><strong>Git克隆操作</strong><br>目的：将远程仓库（github对应的项目）复制到本地</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> 仓库地址</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200222174133376.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>将仓库里的内容克隆到本地，在本地修改之后，添加到暂存区，然后在提交到仓库。</li>
+<li><strong>将本地仓库同步到git远程仓库</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
+<ul>
+<li>无法同步，没有权限怎么办？或者想要设置权限，防止乱入</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi .git/config</span><br><span class="line">将[remote <span class="string">"origin"</span>]</span><br><span class="line">	url = https://github.com/用户名/仓库名.git</span><br><span class="line">修改为：</span><br><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">	url = https://用户名：密码@github.com/用户名/仓库名.git</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>每天一道面试题</category>
+        <category>git+github</category>
       </categories>
       <tags>
-        <tag>https</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -371,180 +504,122 @@
       </tags>
   </entry>
   <entry>
-    <title>Http协议&amp;C/S通讯抓包</title>
-    <url>/678909362/</url>
-    <content><![CDATA[<p>http协议：针对网络上的客户端 与 服务器端在执行http请求的时候，遵守的一种规范。 规定了客户端在访问服务器端的时候,服务器端返回数据的时候，要带上什么东西。</p>
+    <title>一、HashMap的底层实现原理</title>
+    <url>/2744944506/</url>
+    <content><![CDATA[<p>HeshMap是基于哈希表的Map接口的实现，此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了非同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。 此实现假定哈希函数将元素适当地分布在各桶之间，可为基本操作（get 和 put）提供稳定的性能。迭代 collection 视图所需的时间与 HashMap 实例的“容量”（桶的数量）及其大小（键-值映射关系数）成比例。所以，如果迭代性能很重要，则不要将初始容量设置得太高（或将加载因子设置得太低）。在面试中也经常出现这道考题，记录一下！</p>
 <a id="more"></a>
-<h1 id="一、Http协议"><a href="#一、Http协议" class="headerlink" title="一、Http协议"></a>一、Http协议</h1><ul>
-<li>什么是协议？<br>双方在交互、通讯的时候， 遵守的一种规范、规则。</li>
-<li>http协议概述<br>针对网络上的客户端 与 服务器端在执行http请求的时候，遵守的一种规范。 其实就是规定了客户端在访问服务器端的时候，要带上哪些东西， 服务器端返回数据的时候，也要带上什么东西。 </li>
-<li>版本<br> 1.0：请求数据，服务器返回后， 将会断开连接。<br> 1.1：请求数据，服务器返回后， 连接还会保持着。 除非服务器 | 客户端 关掉。 有一定的时间限制，如果都空着这个连接，那么后面会自己断掉。</li>
+
+
+<h1 id="HsahMap的实现原理"><a href="#HsahMap的实现原理" class="headerlink" title="HsahMap的实现原理"></a>HsahMap的实现原理</h1><h2 id="简要概括"><a href="#简要概括" class="headerlink" title="简要概括"></a>简要概括</h2><ul>
+<li>HashMap 基于 Hash 算法实现的，底层是由数组+链表/红黑树构成的，我们通过 put(key,value)存储，get(key)来获取。当传入 key 时，HashMap 会根据 key. hashCode() 计算出 hash 值，根据 hash 值将 value 保存在 bucket 里。当计算出的 hash 值相同时，我们称之为 hash 冲突，HashMap 的做法是用链表和红黑树存储相同 hash 值的 value。当 hash 冲突的个数比较少时，使用链表，否则使用红黑树。</li>
 </ul>
-<h1 id="二、演示客户端-如何-与服务器端通讯。"><a href="#二、演示客户端-如何-与服务器端通讯。" class="headerlink" title="二、演示客户端 如何 与服务器端通讯。"></a>二、演示客户端 如何 与服务器端通讯。</h1><p>问题： 在地址栏中键入网络地址 回车  或者是平常注册的时候，点击了注册按钮 ， 浏览器都能显示出来一些东西。那么背地里到底浏览器和服务器是怎么通讯。 它们都传输了哪些数据？</p>
-<ul>
-<li><p>安装抓包工具 HttpWatch (IE插件)</p>
-</li>
-<li><p>打开tomcat. 输入localhost:8080 打开首页</p>
-</li>
-<li><p>在首页上找到Example—&gt;选择 Servlet Examples—&gt; Request Parameter</p>
-</li>
-<li><p>接着点击Request  Parameters 的 Execute超链接，会出现请求参数示例</p>
-</li>
-<li><p>执行tomcat的例子，然后查看浏览器和 tomcat服务器的对接细节</p>
-</li>
+<h2 id="HashMap的存取实现"><a href="#HashMap的存取实现" class="headerlink" title="HashMap的存取实现"></a>HashMap的存取实现</h2><ul>
+<li>HashMap通过<strong>键值对</strong>实现存取。</li>
+<li><code>put（）</code>方法：对key做null检查。如果key是null，会被存储到table[0]，因为null的hash值总是0。 key的hashcode()方法会被调用，然后计算hash值。hash值用来找到存储Entry对象的数组的索引。有时候hash函数可能写的很不好，所以JDK的设计者添加了另一个叫做hash()的方法，它接收刚才计算的hash值作为参数。</li>
 </ul>
-<h1 id="三、Http请求数据解释"><a href="#三、Http请求数据解释" class="headerlink" title="三、Http请求数据解释"></a>三、Http请求数据解释</h1><ul>
-<li><strong>请求的数据里面包含三个部分内容 ： 请求行 、 请求头 、请求体</strong></li>
-<li>请求行：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST /examples/servlets/servlet/RequestParamExample HTTP/1.1 </span><br><span class="line"></span><br><span class="line">		POST ： 请求方式 ，以post去提交数据</span><br><span class="line">			</span><br><span class="line">		/examples/servlets/servlet/RequestParamExample</span><br><span class="line">		请求的地址路径 ， 就是要访问哪个地方。</span><br><span class="line">	</span><br><span class="line">		HTTP/1.1 协议版本</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> putVal(hash(key), key, value, <span class="keyword">false</span>, <span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Implements Map.put and related methods.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> hash hash for key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key the key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> value the value to put</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> onlyIfAbsent if true, don't change existing value</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> evict if false, the table is in creation mode.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> previous value, or null if none</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">boolean</span> onlyIfAbsent,<span class="keyword">boolean</span> evict)</span> </span>&#123;</span><br><span class="line">  		 Node&lt;K,V&gt;[] tab; </span><br><span class="line">  		 Node&lt;K,V&gt; p; </span><br><span class="line">  		 <span class="keyword">int</span> n, i;</span><br><span class="line">        <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">            n = (tab = resize()).length;</span><br><span class="line">        <span class="keyword">if</span> ((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == <span class="keyword">null</span>)</span><br><span class="line">            tab[i] = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            Node&lt;K,V&gt; e; K k;</span><br><span class="line">            <span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">                ((k = p.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                e = p;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="keyword">this</span>, tab, hash, key, value);</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> binCount = <span class="number">0</span>; ; ++binCount) &#123;</span><br><span class="line">                    <span class="keyword">if</span> ((e = p.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                        p.next = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">                        <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st</span></span><br><span class="line">                            treeifyBin(tab, hash);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                        ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    p = e;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123; <span class="comment">// existing mapping for key</span></span><br><span class="line">                V oldValue = e.value;</span><br><span class="line">                <span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="keyword">null</span>)</span><br><span class="line">                    e.value = value;</span><br><span class="line">                afterNodeAccess(e);</span><br><span class="line">                <span class="keyword">return</span> oldValue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ++modCount;</span><br><span class="line">        <span class="keyword">if</span> (++size &gt; threshold)</span><br><span class="line">            resize();</span><br><span class="line">        afterNodeInsertion(evict);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>请求头：</li>
+<li><code>Get（）</code>：对key进行null检查。如果key是null，table[0]这个位置的元素将被返回。<br>key的hashcode()方法被调用，然后计算hash值。indexFor(hash,table.length)用来计算要获取的Entry对象在table数组中的精确的位置，使用刚才计算的hash值。在获取了table数组的索引之后，会迭代链表，调用equals()方法检查key的相等性，如果equals()方法返回true，get方法返回Entry对象的value，否则，返回null。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Accept: application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, */*</span><br><span class="line">		Referer: http://localhost:8080/examples/servlets/servlet/RequestParamExample</span><br><span class="line">		Accept-Language: zh-CN</span><br><span class="line">		User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)</span><br><span class="line">		Content-Type: application/x-www-form-urlencoded</span><br><span class="line">		Accept-Encoding: gzip, deflate</span><br><span class="line">		Host: localhost:8080</span><br><span class="line">		Content-Length: 31</span><br><span class="line">		Connection: Keep-Alive</span><br><span class="line">		Cache-Control: no-cache</span><br><span class="line"></span><br><span class="line">		Accept: 客户端向服务器端表示，我能支持什么类型的数据。 </span><br><span class="line">		Referer ： 真正请求的地址路径，全路径</span><br><span class="line">		Accept-Language: 支持语言格式</span><br><span class="line">		User-Agent: 用户代理 向服务器表明，当前来访的客户端信息。 </span><br><span class="line">		Content-Type： 提交的数据类型。经过urlencoding编码的form表单的数据</span><br><span class="line">		Accept-Encoding： gzip, deflate ： 压缩算法 。 </span><br><span class="line">		Host ： 主机地址</span><br><span class="line">		Content-Length： 数据长度</span><br><span class="line">		Connection : Keep-Alive 保持连接</span><br><span class="line">		Cache-Control ： 对缓存的操作</span><br></pre></td></tr></table></figure>
-<ul>
-<li>请求体：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">浏览器真正发送给服务器的数据 </span><br><span class="line">	</span><br><span class="line">	发送的数据呈现的是key=value ,如果存在多个数据，那么使用 &amp;</span><br><span class="line"></span><br><span class="line">	firstname=zhang&amp;lastname=sansan</span><br></pre></td></tr></table></figure>
-<h1 id="四、Http响应数据解析"><a href="#四、Http响应数据解析" class="headerlink" title="四、Http响应数据解析"></a>四、Http响应数据解析</h1><ul>
-<li><strong>请求的数据里面包含三个部分内容 ： 响应行 、 响应头 、响应体</strong></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: Apache-Coyote/1.1</span><br><span class="line">Content-Type: text/html;charset=ISO-8859-1</span><br><span class="line">Content-Length: 673</span><br><span class="line">Date: Fri, 17 Feb 2017 02:53:02 GMT</span><br><span class="line"></span><br><span class="line">...这里还有很多数据...</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>响应行：第一行</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line"></span><br><span class="line">		协议版本  </span><br><span class="line">		状态码 </span><br><span class="line">			咱们这次交互到底是什么样结果的一个code. </span><br><span class="line">			200 : 成功，正常处理，得到数据。</span><br><span class="line">			403  : <span class="keyword">for</span> bidden  拒绝</span><br><span class="line">			404 ： Not Found</span><br><span class="line">			500 ： 服务器异常</span><br><span class="line">		OK</span><br><span class="line">			对应前面的状态码</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>响应头</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Server:  服务器是哪一种类型。  Tomcat</span><br><span class="line">		Content-Type ： 服务器返回给客户端你的内容类型</span><br><span class="line">		Content-Length ： 返回的数据长度</span><br><span class="line">		Date ： 通讯的日期，响应的时间</span><br></pre></td></tr></table></figure>
-
-<h1 id="五、Get-和-Post请求区别"><a href="#五、Get-和-Post请求区别" class="headerlink" title="五、Get 和  Post请求区别"></a>五、Get 和  Post请求区别</h1><ul>
-<li>post</li>
-</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public V get(Object key) &#123;</span><br><span class="line">       Node&lt;K,V&gt; e;</span><br><span class="line">       <span class="built_in">return</span> (e = getNode(<span class="built_in">hash</span>(key), key)) == null ? null : e.value;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   /**</span><br><span class="line">    * Implements Map.get and related methods.</span><br><span class="line">    *</span><br><span class="line">    * @param <span class="built_in">hash</span> <span class="built_in">hash</span> <span class="keyword">for</span> key</span><br><span class="line">    * @param key the key</span><br><span class="line">    * @<span class="built_in">return</span> the node, or null <span class="keyword">if</span> none</span><br><span class="line">    */</span><br><span class="line">   final Node&lt;K,V&gt; getNode(int <span class="built_in">hash</span>, Object key) &#123;</span><br><span class="line">       Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; first, e; int n; K k;</span><br><span class="line">       <span class="keyword">if</span> ((tab = table) != null &amp;&amp; (n = tab.length) &gt; 0 &amp;&amp;</span><br><span class="line">           (first = tab[(n - 1) &amp; <span class="built_in">hash</span>]) != null) &#123;</span><br><span class="line">           <span class="keyword">if</span> (first.hash == <span class="built_in">hash</span> &amp;&amp; // always check first node</span><br><span class="line">               ((k = first.key) == key || (key != null &amp;&amp; key.equals(k))))</span><br><span class="line">               <span class="built_in">return</span> first;</span><br><span class="line">           <span class="keyword">if</span> ((e = first.next) != null) &#123;</span><br><span class="line">               <span class="keyword">if</span> (first instanceof TreeNode)</span><br><span class="line">                   <span class="built_in">return</span> ((TreeNode&lt;K,V&gt;)first).getTreeNode(<span class="built_in">hash</span>, key);</span><br><span class="line">               <span class="keyword">do</span> &#123;</span><br><span class="line">                   <span class="keyword">if</span> (e.hash == <span class="built_in">hash</span> &amp;&amp;</span><br><span class="line">                       ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))</span><br><span class="line">                       <span class="built_in">return</span> e;</span><br><span class="line">               &#125; <span class="keyword">while</span> ((e = e.next) != null);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">return</span> null;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>补充：</p>
 <ol>
-<li>数据是以流的方式写过去，不会在地址栏上面显示。  现在一般提交数据到服务器使用的都是POST。</li>
-<li>以流的方式写数据，所以数据没有大小限制。</li>
+<li>HashMap有一个叫做Entry的内部类，它用来存储key-value对。</li>
+<li>上面的Entry对象是存储在一个叫做table的Entry数组中。</li>
+<li>table的索引在逻辑上叫做“桶”(bucket)，它存储了链表的第一个元素。</li>
+<li>key的hashcode()方法用来找到Entry对象所在的桶。</li>
+<li>如果两个key有相同的hash值，他们会被放在table数组的同一个桶里面。</li>
+<li>key的equals()方法用来确保key的唯一性。</li>
 </ol>
+<h1 id="有关知识的具体解析"><a href="#有关知识的具体解析" class="headerlink" title="有关知识的具体解析"></a>有关知识的具体解析</h1><h2 id="一、Map的几种类型"><a href="#一、Map的几种类型" class="headerlink" title="一、Map的几种类型"></a>一、Map的几种类型</h2><p><img src="https://img-blog.csdnimg.cn/20200314144530842.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
-<li>get</li>
+<li>Map就是一个值key对应一个value。</li>
+<li>Hashtable（线程安全）和HashMap（非线程安全）在代码实现上，基本上是一样的。现在Hashtable已经过时了(小写的t，因为sun当时的一个失误，因为是JDK1.0的产物，所以不方便改)。</li>
+<li>ConcurrentHashMap也是线程安全的，但性能比HashTable好很多，Hashtable是锁整个Map对象，而ConcurrentHashMap是锁Map的部分结构。</li>
 </ul>
-<ol>
-<li>会在地址栏后面拼接数据，所以有安全隐患。 一般从服务器获取数据，并且客户端也不用提交上面数据的时候，可以使用GET。</li>
-<li>能够带的数据有限， 1kb大小。</li>
-</ol>
+<h2 id="二、什么是哈希表？"><a href="#二、什么是哈希表？" class="headerlink" title="二、什么是哈希表？"></a>二、什么是哈希表？</h2><ul>
+<li>利用<strong>数组</strong>寻址容易，但插入和删除困难。而<strong>链表</strong>是：寻址困难，插入和删除容易。而<strong>哈希表</strong>便综合两者的特性，是一种寻址容易，插入删除也容易的数据结构。</li>
+<li>哈希表有多种不同的实现方法，最常用的方法—— 拉链法，可以理解为“链表的数组”<br><img src="https://img-blog.csdnimg.cn/20200314161134205.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li>一个长度为16的数组中，每个元素存储的是一个链表的头结点。这些元素是按照什么样的规则存储到数组中呢？一般情况是通过<code>hash(key)%len</code>获得，也就是元素的key的哈希值对数组长度取模得到。</li>
+<li>比如上述哈希表中12%16=12 , 28%16=12 , 108%16=12 , 140%16=12。所以12、28、108，140都存储在数组下标为12的位置。</li>
+<li><strong>HashMap其实也是一个线性数组（<code>Entry[]</code>）实现的,所以可以理解为其存储数据的容器就是一个线性数组。但是一个线性的数组怎么实现按键值对来存取数据呢？这里HashMap是做了一些处理的。</strong></li>
+</ul>
+<h2 id="三、什么是哈希算法？"><a href="#三、什么是哈希算法？" class="headerlink" title="三、什么是哈希算法？"></a>三、什么是哈希算法？</h2><ul>
+<li>Hash算法虽然被称为算法，但实际上它更像是一种思想。Hash算法没有一个固定的公式，只要符合散列思想的算法都可以被称为是Hash算法。</li>
+<li>哈希（hash）算法又称为散列算法，通过hash算法，可以将任意长度的信息转换成一个固定长度的二进制数据，我们经常会使用十六进制值来表示转换后的信息。</li>
+<li>比如，数字123，使用md5的hash算法后，得到十六进制的值：202cb962ac59075b964b07152d234b70</li>
+<li>哈希算法的特点：<br>（1）不同的信息，理论上得到的hash值不同，我们称之为“无碰撞”，或者发生“碰撞”的概率非常小。<br>（2）不可逆，hash算法是单向的，从hash值反向推导出原始信息是很困难的。所以，有些系统中，我们可以使用hash算法对密码进行处理后保存。</li>
+<li>哈希算法的应用<br>①</li>
+</ul>
+<h2 id="四、什么是红黑树？"><a href="#四、什么是红黑树？" class="headerlink" title="四、什么是红黑树？"></a>四、什么是红黑树？</h2><ul>
+<li><strong>二叉树（BST）</strong>：<br>①左子树结点的值小于等于根节点的值。<br>②右子树结点的值大于等于根节点的值。<br>③左右子树分开来也是单独的二叉树。<br><img src="https://img-blog.csdnimg.cn/20200314174010980.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><ul>
+<li><strong>红黑树（RBT）</strong>：红黑树是一种自平衡的二叉树，除了符合二叉树的基本特征之外还引入了一些附加的条件。<br>①节点是红色或黑色。<br>②根节点是黑色。<br>③每个叶子节点都是黑色的空节点（NIL节点）。<br>④每个红色节点的两个子节点都是黑色。(从每个叶子到根的所有路径上不能有两个连续的红色节点)。<br>⑥从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点。<br><img src="https://img-blog.csdnimg.cn/20200314174041551.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+</ul>
+<h2 id="五、HashMap-和-Hashtable-有什么区别？"><a href="#五、HashMap-和-Hashtable-有什么区别？" class="headerlink" title="五、HashMap 和 Hashtable 有什么区别？"></a>五、HashMap 和 Hashtable 有什么区别？</h2><ul>
+<li>HashMap是非线程安全的，HashMap是Map的一个实现类，是将键映射到值的对象，不允许键值重复。允许空键和空值；由于非线程安全，HashMap的效率要较 Hashtable 的效率高一些。</li>
+<li>Hashtable 是线程安全的一个集合，不允许 null 值作为一个 key 值或者value 值。             </li>
+<li>Hashtable是sychronized，多个线程访问时不需要自己为它的方法实现同步，而HashMap 在被多个线程访问的时候需要自己为它的方法实现同步。</li>
+<li>一般现在不建议用Hashtable：<br>①注意是小写的t，这是sun公司的一个失误，但是由于是JDK1.0的产物，所以没有改<br>②是Hashtable是遗留类，内部实现很多没优化和冗余。<br>③即使在多线程环境下，现在也有同步的ConcurrentHashMap替代，没有必要因为是多线程而用HashTable。</li>
+</ul>
+<h1 id="如何解决hash冲突"><a href="#如何解决hash冲突" class="headerlink" title="如何解决hash冲突"></a>如何解决hash冲突</h1><h2 id="产生hash冲突的原因"><a href="#产生hash冲突的原因" class="headerlink" title="产生hash冲突的原因"></a>产生hash冲突的原因</h2><ul>
+<li>当我们通过put(key, value)向hashmap中添加元素时，需要通过hash函数确定元素究竟应该放置在数组中的哪个位置，因为不同的元素可能通过hashcode（）计算得到的哈希值相同，那么不同的元素被放置在了数据的同一个位置时，后放入的元素会以链表的形式，插在前一个元素的尾部，这个时候我们称发生了hash冲突。</li>
+</ul>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>
+<li>事实上，想让hash冲突完全不发生，是不太可能的，我们能做的只是尽可能的降低hash冲突发生的概率。<br>①开放定址法<br>②链地址法（拉链法）<br>Java 中 HashMap 解决 Hash 冲突就是利用了这个方法，具体实现这里暂时不做详解，可以参考 Jdk HashMap 源码进行理解。<br>③再哈希法<br>④建立公共溢出区</li>
+</ul>
 ]]></content>
       <categories>
-        <category>Java Web</category>
+        <category>每天一道面试题</category>
       </categories>
       <tags>
-        <tag>Http协议</tag>
+        <tag>HashMap</tag>
       </tags>
   </entry>
   <entry>
-    <title>Git使用学习</title>
-    <url>/339957974/</url>
-    <content><![CDATA[<p>Git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。也是程序员最常用工具之一，连接本地仓库与github仓库，提高了开发效率，github也是开源项目宝库。</p>
+    <title>HTPP中的GET和POST</title>
+    <url>/1483407090/</url>
+    <content><![CDATA[<p>当我们在浏览器点击某个按钮，会向服务器发送一个请求（request），服务器收到请求之后，会返回给我们一个响应（response），那这个请求是如何发送的呢。</p>
 <a id="more"></a>
-<h2 id="一、概述原理"><a href="#一、概述原理" class="headerlink" title="一、概述原理"></a>一、概述原理</h2><p>Git是目前世界上最先进的分布式版本控制工具。</p>
-<ul>
-<li>工作原理：</li>
+
+<h2 id="一、基础概念"><a href="#一、基础概念" class="headerlink" title="一、基础概念"></a>一、基础概念</h2><ul>
+<li>HTTP是什么？<br>HTTP基于TCP/IP，它是关于<strong>数据如何在万维网中通讯</strong> 的协议。</li>
+<li>GET和POST是什么？<br>HTTP协议中的两种<strong>发送请求</strong> 的方法。</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/20200325163944876.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>概念：</li>
-</ul>
-<ol>
-<li>Workspace：工作区</li>
-<li>Index/Stage：暂存区</li>
-<li>Respository：仓库区（本地仓库）</li>
-<li>Remote：远程仓库</li>
-</ol>
-<ul>
-<li>SVN与Git的区别</li>
-</ul>
-<ol>
-<li><p>SVN是集中式版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器哪里得到最新的版本，然后干活，干完后，需要把自己做完的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网还可以，带宽够大，速度够快，如果在互联网下，如果网速慢的话，有时就得等很久了。</p>
+<h2 id="二、简单理解"><a href="#二、简单理解" class="headerlink" title="二、简单理解"></a>二、简单理解</h2><ul>
+<li><p>把万维网传输线路比作一条高速公路，公路上的汽车就相当于一个个<strong>TCP</strong> ，用他们来实现可靠数据传输，但是车也有不同车型，如果全都一样，送急件的汽车可能被前面满载货物的汽车拦堵在路上，整个交通就会瘫痪。为了避免这种情况发生，需要制定好交通规则，也就是<strong>HTTP</strong>协议。</p>
 </li>
-<li><p>Git是分布式版本控制系统，那么它就没有中央服务器的，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己的电脑上。既然每个人的电脑都有一个完整的版本库，那多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。</p>
+<li><p>HTTP给汽车运输设定了好几个服务类别，有GET, POST, PUT, DELETE等等。<br>①当执行GET请求的时候，要给汽车贴上GET的标签（设置method为GET），而且要求把传送的数据放在车顶上（url中）以方便记录。<br>②如果是POST请求，就要在车上贴上POST的标签，并把货物放在车厢里。当然，你也可以在GET的时候往车厢内偷偷藏点货物；也可以在POST的时候在车顶上也放一些数据。<strong>HTTP只是个行为准则，而TCP才是GET和POST怎么实现的基本。</strong></p>
 </li>
-</ol>
-<p>##二、使用目的</p>
-<p>通过git管理github托管项目代码。<br>##三、下载安装</p>
-<p>下载地址：<a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a><br>##四、Git工作区域</p>
-<ul>
-<li>工作区（Working Directory）： 添加、编辑、修改文件。</li>
-<li>暂存区 ： 暂存已经修改的文件最后统一提交到git仓库中。 留一个回旋的余地，没改好接着改，改好了再提交到仓库。</li>
-<li>Git Repository （Git 仓库）：最终确定的文件保留到仓库，成为一个新的版本，并且对他人可见。</li>
+<li><p>不同的浏览器（发起http请求）和服务器（接受http请求），虽然理论上，你可以在车顶上无限的堆货物（url中无限加参数）。但是数据量太大对浏览器和服务器都是很大负担。 于是大多数浏览器通常都会限制url长度在2K个字节，而（大多数）服务器最多处理64K大小的url。超过的部分不处理。如果使用GET服务，在request body偷偷藏了数据，不同服务器的处理方式也是不同的，有些服务器会读出数据，有些服务器直接忽略，所以，虽然GET可以带request body，也不能保证一定能被接收到。</p>
+</li>
+<li><p>所以可以这么理解：GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中体现出一些不同。</p>
+</li>
 </ul>
-<p>##五、初始化配置 Git</p>
-<ul>
-<li>设置用户名：</li>
+<h2 id="三、标准答案"><a href="#三、标准答案" class="headerlink" title="三、标准答案"></a>三、标准答案</h2><ul>
+<li>GET参数通过URL传递，POST放在Request body中。</li>
+<li>GET在浏览器回退时是无害的，而POST会再次提交请求。</li>
+<li>GET产生的URL地址可以被Bookmark，而POST不可以。</li>
+<li>GET请求会被浏览器主动cache，而POST不会，除非手动设置。</li>
+<li>GET请求只能进行url编码，而POST支持多种编码方式。</li>
+<li>GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。</li>
+<li>GET请求在URL中传送的参数是有长度限制的，而POST没有</li>
+<li>对参数的数据类型，GET只接受ASCII字符，而POST没有限制。</li>
+<li>GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">'DAQ121'</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>设置用户名邮箱：</li>
+<h2 id="四、关键区别"><a href="#四、关键区别" class="headerlink" title="四、关键区别"></a>四、关键区别</h2><ul>
+<li>GET产生一个TCP数据包；POST产生两个TCP数据包。</li>
+<li>通俗来讲就是：<br>①对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）。<br>②对于POST方式的请求，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。</li>
+<li>因为POST需要两步，时间上消耗的要多一点，看起来GET比POST更有效。但是！！！！<br>①GET与POST都有自己的语义，不能随便混用。<br>②在网络环境好的情况下，发一次包的时间和发两次包的时间差别基本可以无视。而在网络环境差的情况下，两次包的TCP在验证数据包完整性上，有非常大的优点。<br>③并不是所有浏览器都会在POST中发送两次包，Firefox就只发送一次。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.email <span class="string">'2829025551@qq.com'</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>查看设置</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：</strong> 该设置在github仓库主页显示谁提交了该文件。</p>
-<ul>
-<li>创建相对应的仓库并初始化：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir <span class="built_in">test</span>;//创建仓库</span><br><span class="line"><span class="built_in">cd</span> <span class="built_in">test</span>;</span><br><span class="line">git init;//初始化仓库</span><br><span class="line">操作完之后会在<span class="built_in">test</span>目录下出现一个.git的隐藏文件。</span><br></pre></td></tr></table></figure>
-
-<p> ##六、向仓库中添加文件</p>
-<ul>
-<li>在test仓库里新建文件a1.java</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">touch a1.java//创建</span><br><span class="line">git status //查看</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200222170530502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>添加到暂存区</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add a1.java</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200222170537166.png" alt="在这里插入图片描述"></p>
-<ul>
-<li>将文件从暂存区提交到仓库</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">'add a1.java'</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200222170859545.png" alt="在这里插入图片描述"><br>##七、修改仓库文件</p>
-<ul>
-<li>修改后，a1.java 还要add到暂存区中。</li>
-<li>然后再从暂存区提交到仓库。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200222172151350.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>##八、删除仓库文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.删除文件</span><br><span class="line">rm a1.java</span><br><span class="line">2.从Git中删除文件</span><br><span class="line">git rm a1.java</span><br><span class="line">3.提交操作</span><br><span class="line">git commit -m <span class="string">'描述'</span></span><br></pre></td></tr></table></figure>
-
-<p> ##九、Git管理远程仓库</p>
-<ul>
-<li>使用远程仓库的目的：<br>作用：备份，实现代码共享集中化管理。</li>
-<li><strong>Git克隆操作</strong><br>目的：将远程仓库（github对应的项目）复制到本地</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> 仓库地址</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200222174133376.png" alt="在这里插入图片描述"></p>
-<ul>
-<li>将仓库里的内容克隆到本地，在本地修改之后，添加到暂存区，然后在提交到仓库。</li>
-<li><strong>将本地仓库同步到git远程仓库</strong></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
-<ul>
-<li>无法同步，没有权限怎么办？或者想要设置权限，防止乱入</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi .git/config</span><br><span class="line">将[remote <span class="string">"origin"</span>]</span><br><span class="line">	url = https://github.com/用户名/仓库名.git</span><br><span class="line">修改为：</span><br><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">	url = https://用户名：密码@github.com/用户名/仓库名.git</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>git+github</category>
+        <category>每天一道面试题</category>
       </categories>
       <tags>
-        <tag>git</tag>
+        <tag>https</tag>
       </tags>
   </entry>
   <entry>
@@ -710,81 +785,6 @@
       </tags>
   </entry>
   <entry>
-    <title>一、HashMap的底层实现原理</title>
-    <url>/2744944506/</url>
-    <content><![CDATA[<p>HeshMap是基于哈希表的Map接口的实现，此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了非同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。 此实现假定哈希函数将元素适当地分布在各桶之间，可为基本操作（get 和 put）提供稳定的性能。迭代 collection 视图所需的时间与 HashMap 实例的“容量”（桶的数量）及其大小（键-值映射关系数）成比例。所以，如果迭代性能很重要，则不要将初始容量设置得太高（或将加载因子设置得太低）。在面试中也经常出现这道考题，记录一下！</p>
-<a id="more"></a>
-
-
-<h1 id="HsahMap的实现原理"><a href="#HsahMap的实现原理" class="headerlink" title="HsahMap的实现原理"></a>HsahMap的实现原理</h1><h2 id="简要概括"><a href="#简要概括" class="headerlink" title="简要概括"></a>简要概括</h2><ul>
-<li>HashMap 基于 Hash 算法实现的，底层是由数组+链表/红黑树构成的，我们通过 put(key,value)存储，get(key)来获取。当传入 key 时，HashMap 会根据 key. hashCode() 计算出 hash 值，根据 hash 值将 value 保存在 bucket 里。当计算出的 hash 值相同时，我们称之为 hash 冲突，HashMap 的做法是用链表和红黑树存储相同 hash 值的 value。当 hash 冲突的个数比较少时，使用链表，否则使用红黑树。</li>
-</ul>
-<h2 id="HashMap的存取实现"><a href="#HashMap的存取实现" class="headerlink" title="HashMap的存取实现"></a>HashMap的存取实现</h2><ul>
-<li>HashMap通过<strong>键值对</strong>实现存取。</li>
-<li><code>put（）</code>方法：对key做null检查。如果key是null，会被存储到table[0]，因为null的hash值总是0。 key的hashcode()方法会被调用，然后计算hash值。hash值用来找到存储Entry对象的数组的索引。有时候hash函数可能写的很不好，所以JDK的设计者添加了另一个叫做hash()的方法，它接收刚才计算的hash值作为参数。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> putVal(hash(key), key, value, <span class="keyword">false</span>, <span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Implements Map.put and related methods.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> hash hash for key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key the key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> value the value to put</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> onlyIfAbsent if true, don't change existing value</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> evict if false, the table is in creation mode.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> previous value, or null if none</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">boolean</span> onlyIfAbsent,<span class="keyword">boolean</span> evict)</span> </span>&#123;</span><br><span class="line">  		 Node&lt;K,V&gt;[] tab; </span><br><span class="line">  		 Node&lt;K,V&gt; p; </span><br><span class="line">  		 <span class="keyword">int</span> n, i;</span><br><span class="line">        <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">            n = (tab = resize()).length;</span><br><span class="line">        <span class="keyword">if</span> ((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == <span class="keyword">null</span>)</span><br><span class="line">            tab[i] = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            Node&lt;K,V&gt; e; K k;</span><br><span class="line">            <span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">                ((k = p.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                e = p;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="keyword">this</span>, tab, hash, key, value);</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> binCount = <span class="number">0</span>; ; ++binCount) &#123;</span><br><span class="line">                    <span class="keyword">if</span> ((e = p.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                        p.next = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">                        <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st</span></span><br><span class="line">                            treeifyBin(tab, hash);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                        ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    p = e;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123; <span class="comment">// existing mapping for key</span></span><br><span class="line">                V oldValue = e.value;</span><br><span class="line">                <span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="keyword">null</span>)</span><br><span class="line">                    e.value = value;</span><br><span class="line">                afterNodeAccess(e);</span><br><span class="line">                <span class="keyword">return</span> oldValue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ++modCount;</span><br><span class="line">        <span class="keyword">if</span> (++size &gt; threshold)</span><br><span class="line">            resize();</span><br><span class="line">        afterNodeInsertion(evict);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>Get（）</code>：对key进行null检查。如果key是null，table[0]这个位置的元素将被返回。<br>key的hashcode()方法被调用，然后计算hash值。indexFor(hash,table.length)用来计算要获取的Entry对象在table数组中的精确的位置，使用刚才计算的hash值。在获取了table数组的索引之后，会迭代链表，调用equals()方法检查key的相等性，如果equals()方法返回true，get方法返回Entry对象的value，否则，返回null。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public V get(Object key) &#123;</span><br><span class="line">       Node&lt;K,V&gt; e;</span><br><span class="line">       <span class="built_in">return</span> (e = getNode(<span class="built_in">hash</span>(key), key)) == null ? null : e.value;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   /**</span><br><span class="line">    * Implements Map.get and related methods.</span><br><span class="line">    *</span><br><span class="line">    * @param <span class="built_in">hash</span> <span class="built_in">hash</span> <span class="keyword">for</span> key</span><br><span class="line">    * @param key the key</span><br><span class="line">    * @<span class="built_in">return</span> the node, or null <span class="keyword">if</span> none</span><br><span class="line">    */</span><br><span class="line">   final Node&lt;K,V&gt; getNode(int <span class="built_in">hash</span>, Object key) &#123;</span><br><span class="line">       Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; first, e; int n; K k;</span><br><span class="line">       <span class="keyword">if</span> ((tab = table) != null &amp;&amp; (n = tab.length) &gt; 0 &amp;&amp;</span><br><span class="line">           (first = tab[(n - 1) &amp; <span class="built_in">hash</span>]) != null) &#123;</span><br><span class="line">           <span class="keyword">if</span> (first.hash == <span class="built_in">hash</span> &amp;&amp; // always check first node</span><br><span class="line">               ((k = first.key) == key || (key != null &amp;&amp; key.equals(k))))</span><br><span class="line">               <span class="built_in">return</span> first;</span><br><span class="line">           <span class="keyword">if</span> ((e = first.next) != null) &#123;</span><br><span class="line">               <span class="keyword">if</span> (first instanceof TreeNode)</span><br><span class="line">                   <span class="built_in">return</span> ((TreeNode&lt;K,V&gt;)first).getTreeNode(<span class="built_in">hash</span>, key);</span><br><span class="line">               <span class="keyword">do</span> &#123;</span><br><span class="line">                   <span class="keyword">if</span> (e.hash == <span class="built_in">hash</span> &amp;&amp;</span><br><span class="line">                       ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))</span><br><span class="line">                       <span class="built_in">return</span> e;</span><br><span class="line">               &#125; <span class="keyword">while</span> ((e = e.next) != null);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">return</span> null;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>补充：</p>
-<ol>
-<li>HashMap有一个叫做Entry的内部类，它用来存储key-value对。</li>
-<li>上面的Entry对象是存储在一个叫做table的Entry数组中。</li>
-<li>table的索引在逻辑上叫做“桶”(bucket)，它存储了链表的第一个元素。</li>
-<li>key的hashcode()方法用来找到Entry对象所在的桶。</li>
-<li>如果两个key有相同的hash值，他们会被放在table数组的同一个桶里面。</li>
-<li>key的equals()方法用来确保key的唯一性。</li>
-</ol>
-<h1 id="有关知识的具体解析"><a href="#有关知识的具体解析" class="headerlink" title="有关知识的具体解析"></a>有关知识的具体解析</h1><h2 id="一、Map的几种类型"><a href="#一、Map的几种类型" class="headerlink" title="一、Map的几种类型"></a>一、Map的几种类型</h2><p><img src="https://img-blog.csdnimg.cn/20200314144530842.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>Map就是一个值key对应一个value。</li>
-<li>Hashtable（线程安全）和HashMap（非线程安全）在代码实现上，基本上是一样的。现在Hashtable已经过时了(小写的t，因为sun当时的一个失误，因为是JDK1.0的产物，所以不方便改)。</li>
-<li>ConcurrentHashMap也是线程安全的，但性能比HashTable好很多，Hashtable是锁整个Map对象，而ConcurrentHashMap是锁Map的部分结构。</li>
-</ul>
-<h2 id="二、什么是哈希表？"><a href="#二、什么是哈希表？" class="headerlink" title="二、什么是哈希表？"></a>二、什么是哈希表？</h2><ul>
-<li>利用<strong>数组</strong>寻址容易，但插入和删除困难。而<strong>链表</strong>是：寻址困难，插入和删除容易。而<strong>哈希表</strong>便综合两者的特性，是一种寻址容易，插入删除也容易的数据结构。</li>
-<li>哈希表有多种不同的实现方法，最常用的方法—— 拉链法，可以理解为“链表的数组”<br><img src="https://img-blog.csdnimg.cn/20200314161134205.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li>一个长度为16的数组中，每个元素存储的是一个链表的头结点。这些元素是按照什么样的规则存储到数组中呢？一般情况是通过<code>hash(key)%len</code>获得，也就是元素的key的哈希值对数组长度取模得到。</li>
-<li>比如上述哈希表中12%16=12 , 28%16=12 , 108%16=12 , 140%16=12。所以12、28、108，140都存储在数组下标为12的位置。</li>
-<li><strong>HashMap其实也是一个线性数组（<code>Entry[]</code>）实现的,所以可以理解为其存储数据的容器就是一个线性数组。但是一个线性的数组怎么实现按键值对来存取数据呢？这里HashMap是做了一些处理的。</strong></li>
-</ul>
-<h2 id="三、什么是哈希算法？"><a href="#三、什么是哈希算法？" class="headerlink" title="三、什么是哈希算法？"></a>三、什么是哈希算法？</h2><ul>
-<li>Hash算法虽然被称为算法，但实际上它更像是一种思想。Hash算法没有一个固定的公式，只要符合散列思想的算法都可以被称为是Hash算法。</li>
-<li>哈希（hash）算法又称为散列算法，通过hash算法，可以将任意长度的信息转换成一个固定长度的二进制数据，我们经常会使用十六进制值来表示转换后的信息。</li>
-<li>比如，数字123，使用md5的hash算法后，得到十六进制的值：202cb962ac59075b964b07152d234b70</li>
-<li>哈希算法的特点：<br>（1）不同的信息，理论上得到的hash值不同，我们称之为“无碰撞”，或者发生“碰撞”的概率非常小。<br>（2）不可逆，hash算法是单向的，从hash值反向推导出原始信息是很困难的。所以，有些系统中，我们可以使用hash算法对密码进行处理后保存。</li>
-<li>哈希算法的应用<br>①</li>
-</ul>
-<h2 id="四、什么是红黑树？"><a href="#四、什么是红黑树？" class="headerlink" title="四、什么是红黑树？"></a>四、什么是红黑树？</h2><ul>
-<li><strong>二叉树（BST）</strong>：<br>①左子树结点的值小于等于根节点的值。<br>②右子树结点的值大于等于根节点的值。<br>③左右子树分开来也是单独的二叉树。<br><img src="https://img-blog.csdnimg.cn/20200314174010980.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><ul>
-<li><strong>红黑树（RBT）</strong>：红黑树是一种自平衡的二叉树，除了符合二叉树的基本特征之外还引入了一些附加的条件。<br>①节点是红色或黑色。<br>②根节点是黑色。<br>③每个叶子节点都是黑色的空节点（NIL节点）。<br>④每个红色节点的两个子节点都是黑色。(从每个叶子到根的所有路径上不能有两个连续的红色节点)。<br>⑥从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点。<br><img src="https://img-blog.csdnimg.cn/20200314174041551.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-</ul>
-</li>
-</ul>
-<h2 id="五、HashMap-和-Hashtable-有什么区别？"><a href="#五、HashMap-和-Hashtable-有什么区别？" class="headerlink" title="五、HashMap 和 Hashtable 有什么区别？"></a>五、HashMap 和 Hashtable 有什么区别？</h2><ul>
-<li>HashMap是非线程安全的，HashMap是Map的一个实现类，是将键映射到值的对象，不允许键值重复。允许空键和空值；由于非线程安全，HashMap的效率要较 Hashtable 的效率高一些。</li>
-<li>Hashtable 是线程安全的一个集合，不允许 null 值作为一个 key 值或者value 值。             </li>
-<li>Hashtable是sychronized，多个线程访问时不需要自己为它的方法实现同步，而HashMap 在被多个线程访问的时候需要自己为它的方法实现同步。</li>
-<li>一般现在不建议用Hashtable：<br>①注意是小写的t，这是sun公司的一个失误，但是由于是JDK1.0的产物，所以没有改<br>②是Hashtable是遗留类，内部实现很多没优化和冗余。<br>③即使在多线程环境下，现在也有同步的ConcurrentHashMap替代，没有必要因为是多线程而用HashTable。</li>
-</ul>
-<h1 id="如何解决hash冲突"><a href="#如何解决hash冲突" class="headerlink" title="如何解决hash冲突"></a>如何解决hash冲突</h1><h2 id="产生hash冲突的原因"><a href="#产生hash冲突的原因" class="headerlink" title="产生hash冲突的原因"></a>产生hash冲突的原因</h2><ul>
-<li>当我们通过put(key, value)向hashmap中添加元素时，需要通过hash函数确定元素究竟应该放置在数组中的哪个位置，因为不同的元素可能通过hashcode（）计算得到的哈希值相同，那么不同的元素被放置在了数据的同一个位置时，后放入的元素会以链表的形式，插在前一个元素的尾部，这个时候我们称发生了hash冲突。</li>
-</ul>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>
-<li>事实上，想让hash冲突完全不发生，是不太可能的，我们能做的只是尽可能的降低hash冲突发生的概率。<br>①开放定址法<br>②链地址法（拉链法）<br>Java 中 HashMap 解决 Hash 冲突就是利用了这个方法，具体实现这里暂时不做详解，可以参考 Jdk HashMap 源码进行理解。<br>③再哈希法<br>④建立公共溢出区</li>
-</ul>
-]]></content>
-      <categories>
-        <category>每天一道面试题</category>
-      </categories>
-      <tags>
-        <tag>HashMap</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>操作系统---CPU调度</title>
     <url>/789539749/</url>
     <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计算机的三大核心部件：CPU，存储器，I/O设备，其中CPU作为操作系统的运算和控制核心，是信息处理、程序运行的最终执行单元，起到了大脑的作用。CPU又包括两部分：控制器、运算器。众所周知，在某一个时间段，CPU只能被一个进程占用，这篇文章就认识一下CPU的调度策略。</p>
@@ -828,49 +828,6 @@
       </categories>
       <tags>
         <tag>OS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaSE---反射</title>
-    <url>/%E5%8F%8D%E5%B0%84/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;反射就像是一面镜子，这面镜子其实就是JVM，他能照出你的类的所有属性和方法，也能调用你所有对象的属性和方法，<strong>crazy~</strong></p>
-<a id="more"></a>
-<h1 id="反射是什么？"><a href="#反射是什么？" class="headerlink" title="反射是什么？"></a>反射是什么？</h1><ul>
-<li>先说<strong>正</strong>是怎么一回事。我要使用某个类，我必须要知道它是什么类，有何作用？用的时候，要先实例化。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//实例化一个对象，实例化的过程牵扯太多，不赘述</span></span><br><span class="line">Student stu = <span class="keyword">new</span> Studnt();</span><br><span class="line">Class c1 = stu.getClass();</span><br><span class="line">System.out.println(c1.getName());</span><br></pre></td></tr></table></figure>
-<ul>
-<li>上面这个Student类，JVM在加载的时候这个类的时候，其实会在JAVA堆中创建一个<code>java.lang.class类</code>的对象，就是上面的<code>c1</code>，这个class对象代表类的相关信息。可以使用这个对象的一些方法来获取类的相关信息，这里也体现出了<strong>万物皆对象</strong>的理念，连类都是对象。</li>
-<li>看看class类，这还只是一小部分方法，跟类相关的都可以在Class类中找到。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/202004181940283.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>那说了这么多，反射到底是什么呢？</li>
-</ul>
-<p>我的理解：在运行状态中，可以知道任意一个类的属性和方法，也可以调用任意一个对象的属性和方法，也就是动态获取信息，动态获取对象方法和属性，然而这些底层的实现细节都被屏蔽了，只留下API库给我们使用，也就是<code>java.lang.reflect</code>类库，这些API学习并不难，难在理解反射这个概念，由于实现细节都被屏蔽了，我们也就很少写到反射的代码。</p>
-<h1 id="反射有什么意义？"><a href="#反射有什么意义？" class="headerlink" title="反射有什么意义？"></a>反射有什么意义？</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我直接<code>new</code>出来一个对象不就可以了，为什么用反射，要兜个大圈子？其实出去这些浅显表面的，反射真正的意义在于提高程序的灵活性，屏蔽底层实现细节，便于使用。</p>
-<h1 id="反射如何使用？"><a href="#反射如何使用？" class="headerlink" title="反射如何使用？"></a>反射如何使用？</h1><p>这个在使用的时候直接查API即可，常用的有以下几种。</p>
-<ul>
-<li>通过一个对象获得完整的包名和类名。</li>
-<li>实例化Class对象。</li>
-<li>获取一个对象的父类与实现的接口。</li>
-<li>获取某个类的全部构造函数。</li>
-<li>通过反射机制实例化一个对象。</li>
-<li>获取某个类的全部属性</li>
-<li>获取某个类的全部方法</li>
-</ul>
-<h1 id="反射的应用场景"><a href="#反射的应用场景" class="headerlink" title="反射的应用场景"></a>反射的应用场景</h1><ul>
-<li>JDBC（连接数据库与后端的桥梁），这其中就牵扯到一个连接的问题，我们将数据库的连接信息（用户名，用户密码，库名…）写在配置文件里，而不是写在代码里，为什么？因为这样我们更换数据库的时候，只需要改配置信息，而不是去改代码。而这里的由配置文件到代码，就是由反射来加载驱动的。</li>
-<li>Spring MVC，学<code>servlet</code>的时候各种<code>getParameter()</code>获取信息，但是在SpringMVC框架中只需要在<code>javaBean</code>中约定好字段名，就可以把值填充进去。这就是反射的好处。</li>
-<li>Spring，这个我学的还不多，但是涉及到一个自动组装的问题，只要字段名的顺序是约定一致的，就可使实现自动组装的效果，就像一个萝卜一个坑一样。如果顺序颠倒，可能在你想象中组装出来的是超跑，但是现实却是拖拉机。</li>
-<li>Java的反射用的最多的地方就是在框架里面。比如说有两个程序员，他们各自创建了两个类，第一个程序员现在需要第二个程序员创建的类，可是现在第二个程序员创建的类还没有完成。那么第一个程序员编译自然不成功，但是现在第一个程序员又要使用第二个程序员的类，这个时候，反射就可以完成这个任务。因为反射是在类运行的时候获取对象的各个信息，所以第一个程序员的类就可以完成编译了。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaSE基础知识</category>
-      </categories>
-      <tags>
-        <tag>JavaSE</tag>
       </tags>
   </entry>
   <entry>
@@ -975,6 +932,49 @@
       </categories>
       <tags>
         <tag>JDBC,MySql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaSE---反射</title>
+    <url>/%E5%8F%8D%E5%B0%84/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;反射就像是一面镜子，这面镜子其实就是JVM，他能照出你的类的所有属性和方法，也能调用你所有对象的属性和方法，<strong>crazy~</strong></p>
+<a id="more"></a>
+<h1 id="反射是什么？"><a href="#反射是什么？" class="headerlink" title="反射是什么？"></a>反射是什么？</h1><ul>
+<li>先说<strong>正</strong>是怎么一回事。我要使用某个类，我必须要知道它是什么类，有何作用？用的时候，要先实例化。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//实例化一个对象，实例化的过程牵扯太多，不赘述</span></span><br><span class="line">Student stu = <span class="keyword">new</span> Studnt();</span><br><span class="line">Class c1 = stu.getClass();</span><br><span class="line">System.out.println(c1.getName());</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上面这个Student类，JVM在加载的时候这个类的时候，其实会在JAVA堆中创建一个<code>java.lang.class类</code>的对象，就是上面的<code>c1</code>，这个class对象代表类的相关信息。可以使用这个对象的一些方法来获取类的相关信息，这里也体现出了<strong>万物皆对象</strong>的理念，连类都是对象。</li>
+<li>看看class类，这还只是一小部分方法，跟类相关的都可以在Class类中找到。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/202004181940283.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>那说了这么多，反射到底是什么呢？</li>
+</ul>
+<p>我的理解：在运行状态中，可以知道任意一个类的属性和方法，也可以调用任意一个对象的属性和方法，也就是动态获取信息，动态获取对象方法和属性，然而这些底层的实现细节都被屏蔽了，只留下API库给我们使用，也就是<code>java.lang.reflect</code>类库，这些API学习并不难，难在理解反射这个概念，由于实现细节都被屏蔽了，我们也就很少写到反射的代码。</p>
+<h1 id="反射有什么意义？"><a href="#反射有什么意义？" class="headerlink" title="反射有什么意义？"></a>反射有什么意义？</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我直接<code>new</code>出来一个对象不就可以了，为什么用反射，要兜个大圈子？其实出去这些浅显表面的，反射真正的意义在于提高程序的灵活性，屏蔽底层实现细节，便于使用。</p>
+<h1 id="反射如何使用？"><a href="#反射如何使用？" class="headerlink" title="反射如何使用？"></a>反射如何使用？</h1><p>这个在使用的时候直接查API即可，常用的有以下几种。</p>
+<ul>
+<li>通过一个对象获得完整的包名和类名。</li>
+<li>实例化Class对象。</li>
+<li>获取一个对象的父类与实现的接口。</li>
+<li>获取某个类的全部构造函数。</li>
+<li>通过反射机制实例化一个对象。</li>
+<li>获取某个类的全部属性</li>
+<li>获取某个类的全部方法</li>
+</ul>
+<h1 id="反射的应用场景"><a href="#反射的应用场景" class="headerlink" title="反射的应用场景"></a>反射的应用场景</h1><ul>
+<li>JDBC（连接数据库与后端的桥梁），这其中就牵扯到一个连接的问题，我们将数据库的连接信息（用户名，用户密码，库名…）写在配置文件里，而不是写在代码里，为什么？因为这样我们更换数据库的时候，只需要改配置信息，而不是去改代码。而这里的由配置文件到代码，就是由反射来加载驱动的。</li>
+<li>Spring MVC，学<code>servlet</code>的时候各种<code>getParameter()</code>获取信息，但是在SpringMVC框架中只需要在<code>javaBean</code>中约定好字段名，就可以把值填充进去。这就是反射的好处。</li>
+<li>Spring，这个我学的还不多，但是涉及到一个自动组装的问题，只要字段名的顺序是约定一致的，就可使实现自动组装的效果，就像一个萝卜一个坑一样。如果顺序颠倒，可能在你想象中组装出来的是超跑，但是现实却是拖拉机。</li>
+<li>Java的反射用的最多的地方就是在框架里面。比如说有两个程序员，他们各自创建了两个类，第一个程序员现在需要第二个程序员创建的类，可是现在第二个程序员创建的类还没有完成。那么第一个程序员编译自然不成功，但是现在第一个程序员又要使用第二个程序员的类，这个时候，反射就可以完成这个任务。因为反射是在类运行的时候获取对象的各个信息，所以第一个程序员的类就可以完成编译了。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaSE基础知识</category>
+      </categories>
+      <tags>
+        <tag>JavaSE</tag>
       </tags>
   </entry>
   <entry>
@@ -1366,77 +1366,6 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </tags>
   </entry>
   <entry>
-    <title>Servlet学习笔记</title>
-    <url>/441652674/</url>
-    <content><![CDATA[<p>java Web离不开Servlet，它其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </p>
-<a id="more"></a>
-<h2 id="一、Web资源介绍"><a href="#一、Web资源介绍" class="headerlink" title="一、Web资源介绍"></a>一、Web资源介绍</h2><ul>
-<li><strong>在http协议当中，规定了请求和响应双方， 客户端和服务器端。与web相关的资源。</strong></li>
-<li>有两种分类：</li>
-<li>静态资源：html 、 js、 css</li>
-<li>动态资源：servlet/jsp</li>
-</ul>
-<h2 id="二、Servlet介绍"><a href="#二、Servlet介绍" class="headerlink" title="二、Servlet介绍"></a>二、Servlet介绍</h2><ul>
-<li><strong>servlet是什么?</strong><ol>
-<li>其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </li>
-<li>更多的是配合动态资源来做。 当然静态资源也需要使用到servlet，只不过是Tomcat里面已经定义好了一个 DefaultServlet</li>
-</ol>
-</li>
-</ul>
-<h2 id="三、Selvlet简单使用Web工程"><a href="#三、Selvlet简单使用Web工程" class="headerlink" title="三、Selvlet简单使用Web工程"></a>三、Selvlet简单使用Web工程</h2><ol>
-<li><p>得写一个Web工程 ， 要有一个服务器。</p>
-</li>
-<li><p>测试运行Web工程：</p>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">得写一个Web工程 ， 要有一个服务器。</span><br><span class="line">测试运行Web工程</span><br><span class="line">	1. 新建一个类， 实现Servlet接口`public class HelloServlet implements Servlet&#123;&#125;`</span><br><span class="line"></span><br><span class="line">	2. 配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。</span><br><span class="line">		在webContent/WEB-INF/web.xml里面写上以下内容：</span><br><span class="line">		</span><br><span class="line">		  &lt;!-- 向tomcat报告， 我这个应用里面有这个servlet， 名字叫做HelloServlet , 具体的路径是com.itheima.servlet.HelloServlet --&gt;</span><br><span class="line">		  &lt;servlet&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet&lt;/servlet-class&gt;</span><br><span class="line">		  &lt;/servlet&gt;</span><br><span class="line">		  </span><br><span class="line">		  &lt;!-- 注册servlet的映射。  servletName : 找到上面注册的具体servlet，  url-pattern: 在地址栏上的path 一定要以/打头 --&gt;</span><br><span class="line">		  &lt;servlet-mapping&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;url-pattern&gt;/a&lt;/url-pattern&gt;</span><br><span class="line">		  &lt;/servlet-mapping&gt;</span><br><span class="line"></span><br><span class="line">		3. 在地址栏上输入 http://localhost:8080/项目名称/a</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20200226115856385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="四、Servlet执行过程"><a href="#四、Servlet执行过程" class="headerlink" title="四、Servlet执行过程"></a>四、Servlet执行过程</h2><p><img src="https://img-blog.csdnimg.cn/20200226120652999.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="五、Servlet的通用写法"><a href="#五、Servlet的通用写法" class="headerlink" title="五、Servlet的通用写法"></a>五、Servlet的通用写法</h2><ul>
-<li>实现Servlet接口，但接口里的方法很多，有些用不到。</li>
-</ul>
-<ol>
-<li>Servlet (接口)        </li>
-<li>GenericServlet    </li>
-<li>HttpServlet （用于处理http的请求）</li>
-</ol>
-<ul>
-<li>定义一个类，继承HttpServlet ,复写doGet 和 doPost</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200226124900942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="六、Servlet的生命周期方法"><a href="#六、Servlet的生命周期方法" class="headerlink" title="六、Servlet的生命周期方法"></a>六、Servlet的生命周期方法</h2><ul>
-<li>生命周期： 从创建到销毁的一段时间</li>
-<li>生命周期方法： 从创建到销毁，所调用的那些方法。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. init方法</span><br><span class="line">	在创建该servlet的实例时，就执行该方法。</span><br><span class="line">	一个servlet只会初始化一次， init方法只会执行一次</span><br><span class="line">	默认情况下是 ： 初次访问该servlet，才会创建实例。 </span><br><span class="line">		</span><br><span class="line">2.service方法</span><br><span class="line">	只要客户端来了一个请求，那么就执行这个方法了。</span><br><span class="line">	该方法可以被执行很多次。 一次请求，对应一次service方法的调用</span><br><span class="line">	</span><br><span class="line">3.destroy方法</span><br><span class="line">	servlet销毁的时候，就会执行该方法</span><br><span class="line">			1. 该项目从tomcat的里面移除。</span><br><span class="line">		  	2. 正常关闭tomcat就会执行 shutdown.bat</span><br><span class="line"></span><br><span class="line">4. doGet 和 doPost不算生命周期方法。</span><br><span class="line">所谓的生命周期方法是指，从对象的创建到销毁一定会执行的方法， 但是这两个方法，不一定会执行。</span><br><span class="line">```	 </span><br><span class="line"><span class="comment">## 七、让Servlet创建实例的时机提前。</span></span><br><span class="line">1. 默认情况下，只有在初次访问servlet的时候，才会执行init方法。 有的时候，我们可能需要在这个方法里面执行一些初始化工作，甚至是做一些比较耗时的逻辑。 </span><br><span class="line"></span><br><span class="line">2. 那么这个时候，初次访问，可能会在init方法中逗留太久的时间。 为了提升用户的体验，需要让这个初始化的时机提前一点。 </span><br><span class="line"></span><br><span class="line">3. 在配置的时候， 使用load-on-startup元素来指定， 给定的数字越小，启动的时机就越早。 一般不写负数， 从2开始即可。 </span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet04&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet04&lt;/servlet-class&gt;</span><br><span class="line">	&lt;load-on-startup&gt;2&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="八、ServletConfig"><a href="#八、ServletConfig" class="headerlink" title="八、ServletConfig"></a>八、ServletConfig</h2><ul>
-<li><strong>Servlet的配置，通过这个对象，可以获取servlet在配置的时候一些信息。</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1. 得到servlet配置对象 专门用于在配置servlet的信息</span></span><br><span class="line">ServletConfig config = getServletConfig();</span><br><span class="line">	</span><br><span class="line"><span class="comment">//获取到的是配置servlet里面servlet-name 的文本内容</span></span><br><span class="line">String servletName = config.getServletName();</span><br><span class="line">System.out.println(<span class="string">"servletName="</span>+servletName);</span><br><span class="line">	</span><br><span class="line"><span class="comment">//2. 可以获取具体的某一个参数。 </span></span><br><span class="line">String address = config.getInitParameter(<span class="string">"address"</span>);</span><br><span class="line">System.out.println(<span class="string">"address="</span>+address);</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.获取所有的参数名称</span></span><br><span class="line">Enumeration&lt;String&gt; names = config.getInitParameterNames();</span><br><span class="line"><span class="comment">//遍历取出所有的参数名称</span></span><br><span class="line"><span class="keyword">while</span> (names.hasMoreElements()) &#123;</span><br><span class="line">	String key = (String) names.nextElement();</span><br><span class="line">	String value = config.getInitParameter(key);</span><br><span class="line">	System.out.println(<span class="string">"key==="</span>+key + <span class="string">"   value="</span>+value);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>参数在哪里配置？在web.xml中</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;aa&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.daq.servlet.HelloServletConfig&lt;/servlet-class&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 可以添加初始化参数 --&gt;</span><br><span class="line">	&lt;init-param&gt;</span><br><span class="line">		&lt;param-name&gt;adress&lt;/param-name&gt;</span><br><span class="line">		&lt;param-value&gt;bejing&lt;/param-value&gt;</span><br><span class="line">	&lt;/init-param&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">	</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet02&lt;/servlet-name&gt;</span><br><span class="line">	&lt;url-pattern&gt;/HelloServlet02&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="九、为什么需要有ServletConfig？"><a href="#九、为什么需要有ServletConfig？" class="headerlink" title="九、为什么需要有ServletConfig？"></a>九、为什么需要有ServletConfig？</h2><ol>
-<li><p>未来我们自己开发的一些应用，使用到了一些技术，或者一些代码，我们不会。 但是有人写出来了。做成了jar包，它的代码放置在了自己的servlet类里面。 </p>
-</li>
-<li><p>刚好这个servlet 里面需要一个数字或者叫做变量值。 但是这个值不能是固定了。 所以要求使用到这个servlet的公司，在注册servlet的时候，必须要在web.xml里面，声明init-params</p>
-</li>
-<li><p>在开发当中比较少用。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>Servlet</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySql基础操作</title>
     <url>/81592902/</url>
     <content><![CDATA[<p>本文简单介绍了数据库，和一些基本操作。</p>
@@ -1575,6 +1504,77 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </categories>
       <tags>
         <tag>MySql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Servlet学习笔记</title>
+    <url>/441652674/</url>
+    <content><![CDATA[<p>java Web离不开Servlet，它其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </p>
+<a id="more"></a>
+<h2 id="一、Web资源介绍"><a href="#一、Web资源介绍" class="headerlink" title="一、Web资源介绍"></a>一、Web资源介绍</h2><ul>
+<li><strong>在http协议当中，规定了请求和响应双方， 客户端和服务器端。与web相关的资源。</strong></li>
+<li>有两种分类：</li>
+<li>静态资源：html 、 js、 css</li>
+<li>动态资源：servlet/jsp</li>
+</ul>
+<h2 id="二、Servlet介绍"><a href="#二、Servlet介绍" class="headerlink" title="二、Servlet介绍"></a>二、Servlet介绍</h2><ul>
+<li><strong>servlet是什么?</strong><ol>
+<li>其实就是一个java程序，运行在我们的web服务器上，用于<strong>接收和响应</strong> 客户端的http请求。 </li>
+<li>更多的是配合动态资源来做。 当然静态资源也需要使用到servlet，只不过是Tomcat里面已经定义好了一个 DefaultServlet</li>
+</ol>
+</li>
+</ul>
+<h2 id="三、Selvlet简单使用Web工程"><a href="#三、Selvlet简单使用Web工程" class="headerlink" title="三、Selvlet简单使用Web工程"></a>三、Selvlet简单使用Web工程</h2><ol>
+<li><p>得写一个Web工程 ， 要有一个服务器。</p>
+</li>
+<li><p>测试运行Web工程：</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">得写一个Web工程 ， 要有一个服务器。</span><br><span class="line">测试运行Web工程</span><br><span class="line">	1. 新建一个类， 实现Servlet接口`public class HelloServlet implements Servlet&#123;&#125;`</span><br><span class="line"></span><br><span class="line">	2. 配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。</span><br><span class="line">		在webContent/WEB-INF/web.xml里面写上以下内容：</span><br><span class="line">		</span><br><span class="line">		  &lt;!-- 向tomcat报告， 我这个应用里面有这个servlet， 名字叫做HelloServlet , 具体的路径是com.itheima.servlet.HelloServlet --&gt;</span><br><span class="line">		  &lt;servlet&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet&lt;/servlet-class&gt;</span><br><span class="line">		  &lt;/servlet&gt;</span><br><span class="line">		  </span><br><span class="line">		  &lt;!-- 注册servlet的映射。  servletName : 找到上面注册的具体servlet，  url-pattern: 在地址栏上的path 一定要以/打头 --&gt;</span><br><span class="line">		  &lt;servlet-mapping&gt;</span><br><span class="line">		  	&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">		  	&lt;url-pattern&gt;/a&lt;/url-pattern&gt;</span><br><span class="line">		  &lt;/servlet-mapping&gt;</span><br><span class="line"></span><br><span class="line">		3. 在地址栏上输入 http://localhost:8080/项目名称/a</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20200226115856385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="四、Servlet执行过程"><a href="#四、Servlet执行过程" class="headerlink" title="四、Servlet执行过程"></a>四、Servlet执行过程</h2><p><img src="https://img-blog.csdnimg.cn/20200226120652999.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="五、Servlet的通用写法"><a href="#五、Servlet的通用写法" class="headerlink" title="五、Servlet的通用写法"></a>五、Servlet的通用写法</h2><ul>
+<li>实现Servlet接口，但接口里的方法很多，有些用不到。</li>
+</ul>
+<ol>
+<li>Servlet (接口)        </li>
+<li>GenericServlet    </li>
+<li>HttpServlet （用于处理http的请求）</li>
+</ol>
+<ul>
+<li>定义一个类，继承HttpServlet ,复写doGet 和 doPost</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200226124900942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="六、Servlet的生命周期方法"><a href="#六、Servlet的生命周期方法" class="headerlink" title="六、Servlet的生命周期方法"></a>六、Servlet的生命周期方法</h2><ul>
+<li>生命周期： 从创建到销毁的一段时间</li>
+<li>生命周期方法： 从创建到销毁，所调用的那些方法。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. init方法</span><br><span class="line">	在创建该servlet的实例时，就执行该方法。</span><br><span class="line">	一个servlet只会初始化一次， init方法只会执行一次</span><br><span class="line">	默认情况下是 ： 初次访问该servlet，才会创建实例。 </span><br><span class="line">		</span><br><span class="line">2.service方法</span><br><span class="line">	只要客户端来了一个请求，那么就执行这个方法了。</span><br><span class="line">	该方法可以被执行很多次。 一次请求，对应一次service方法的调用</span><br><span class="line">	</span><br><span class="line">3.destroy方法</span><br><span class="line">	servlet销毁的时候，就会执行该方法</span><br><span class="line">			1. 该项目从tomcat的里面移除。</span><br><span class="line">		  	2. 正常关闭tomcat就会执行 shutdown.bat</span><br><span class="line"></span><br><span class="line">4. doGet 和 doPost不算生命周期方法。</span><br><span class="line">所谓的生命周期方法是指，从对象的创建到销毁一定会执行的方法， 但是这两个方法，不一定会执行。</span><br><span class="line">```	 </span><br><span class="line"><span class="comment">## 七、让Servlet创建实例的时机提前。</span></span><br><span class="line">1. 默认情况下，只有在初次访问servlet的时候，才会执行init方法。 有的时候，我们可能需要在这个方法里面执行一些初始化工作，甚至是做一些比较耗时的逻辑。 </span><br><span class="line"></span><br><span class="line">2. 那么这个时候，初次访问，可能会在init方法中逗留太久的时间。 为了提升用户的体验，需要让这个初始化的时机提前一点。 </span><br><span class="line"></span><br><span class="line">3. 在配置的时候， 使用load-on-startup元素来指定， 给定的数字越小，启动的时机就越早。 一般不写负数， 从2开始即可。 </span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet04&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet04&lt;/servlet-class&gt;</span><br><span class="line">	&lt;load-on-startup&gt;2&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="八、ServletConfig"><a href="#八、ServletConfig" class="headerlink" title="八、ServletConfig"></a>八、ServletConfig</h2><ul>
+<li><strong>Servlet的配置，通过这个对象，可以获取servlet在配置的时候一些信息。</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1. 得到servlet配置对象 专门用于在配置servlet的信息</span></span><br><span class="line">ServletConfig config = getServletConfig();</span><br><span class="line">	</span><br><span class="line"><span class="comment">//获取到的是配置servlet里面servlet-name 的文本内容</span></span><br><span class="line">String servletName = config.getServletName();</span><br><span class="line">System.out.println(<span class="string">"servletName="</span>+servletName);</span><br><span class="line">	</span><br><span class="line"><span class="comment">//2. 可以获取具体的某一个参数。 </span></span><br><span class="line">String address = config.getInitParameter(<span class="string">"address"</span>);</span><br><span class="line">System.out.println(<span class="string">"address="</span>+address);</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.获取所有的参数名称</span></span><br><span class="line">Enumeration&lt;String&gt; names = config.getInitParameterNames();</span><br><span class="line"><span class="comment">//遍历取出所有的参数名称</span></span><br><span class="line"><span class="keyword">while</span> (names.hasMoreElements()) &#123;</span><br><span class="line">	String key = (String) names.nextElement();</span><br><span class="line">	String value = config.getInitParameter(key);</span><br><span class="line">	System.out.println(<span class="string">"key==="</span>+key + <span class="string">"   value="</span>+value);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>参数在哪里配置？在web.xml中</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;aa&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;com.daq.servlet.HelloServletConfig&lt;/servlet-class&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 可以添加初始化参数 --&gt;</span><br><span class="line">	&lt;init-param&gt;</span><br><span class="line">		&lt;param-name&gt;adress&lt;/param-name&gt;</span><br><span class="line">		&lt;param-value&gt;bejing&lt;/param-value&gt;</span><br><span class="line">	&lt;/init-param&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">	</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServlet02&lt;/servlet-name&gt;</span><br><span class="line">	&lt;url-pattern&gt;/HelloServlet02&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="九、为什么需要有ServletConfig？"><a href="#九、为什么需要有ServletConfig？" class="headerlink" title="九、为什么需要有ServletConfig？"></a>九、为什么需要有ServletConfig？</h2><ol>
+<li><p>未来我们自己开发的一些应用，使用到了一些技术，或者一些代码，我们不会。 但是有人写出来了。做成了jar包，它的代码放置在了自己的servlet类里面。 </p>
+</li>
+<li><p>刚好这个servlet 里面需要一个数字或者叫做变量值。 但是这个值不能是固定了。 所以要求使用到这个servlet的公司，在注册servlet的时候，必须要在web.xml里面，声明init-params</p>
+</li>
+<li><p>在开发当中比较少用。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>Servlet</tag>
       </tags>
   </entry>
   <entry>
@@ -3000,25 +3000,6 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </tags>
   </entry>
   <entry>
-    <title>区块链技术的应用领域</title>
-    <url>/undefined/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-<h2 id="金融领域"><a href="#金融领域" class="headerlink" title="金融领域"></a>金融领域</h2><p>区块链在<strong>国际汇兑</strong>、<strong>信用证</strong>、<strong>股权登记</strong>和<strong>证券交易所</strong>等金融领域有着潜在的巨大应用价值。将区块链技术应用在金融行业中，能够省去第三方中介环节，实现<strong>点对点</strong>的直接对接，从而在大大降低成本的同时，快速完成交易支付。<br>比如Visa推出基于区块链技术的 Visa B2B Connect，它能为机构提供一种费用更低、更快速和安全的跨境支付方式来处理全球范围的企业对企业的交易。要知道传统的跨境支付需要等3-5天，并为此支付1-3%的交易费用。Visa 还联合 Coinbase 推出了首张比特币借记卡，<strong>花旗银行</strong>则在区块链上测试运行加密货币“<strong>花旗币</strong>”。</p>
-<h2 id="物联网和物流领域"><a href="#物联网和物流领域" class="headerlink" title="物联网和物流领域"></a>物联网和物流领域</h2><p>区块链在物联网和物流领域也可以天然结合。通过区块链可以降低物流成本，追溯物品的生产和运送过程，并且提高供应链管理的效率。该领域被认为是区块链一个很有前景的应用方向。<br>区块链通过结点连接的散状网络分层结构，能够在整个网络中实现信息的全面传递，并能够检验信息的准确程度。这种特性一 定程度上提高了物联网交易的便利性和智能化。<strong>区块链</strong>+<strong>大数据</strong>的解决方案就利用了大数据的自动筛选过滤模式，在区块链中建立信用资源，可双重提高交易的安全性，并提高物联网交易便利程度。为智能物流模式应用节约时间成本。区块链结点具有十分自由的进出能力，可独立的参与或离开区块链体系，不对整个区块链体系有任何干扰。区块链 +大数据解决方案就利用了大数据的整合能力，促使物联网基础用户拓展更具有方向性，便于在智能物流的分散用户之间实现用户拓展。</p>
-<h2 id="公共服务领域"><a href="#公共服务领域" class="headerlink" title="公共服务领域"></a>公共服务领域</h2><p>区块链在公共管理、能源、交通等领域都与民众的生产生活息息相关，但是这些领域的中心化特质也带来了一些问题，可以用区块链来改造。区块链提供的去中心化的完全分布式DNS服务通过网络中各个节点之间的点对点数据传输服务就能实现域名的查询和解析，可用于确保某个重要的基础设施的操作系统和固件没有被篡改，可以监控软件的状态和完整性，发现不良的篡改，并确保使用了物联网技术的系统所传输的数据没用经过篡改。</p>
-<h2 id="数字版权领域"><a href="#数字版权领域" class="headerlink" title="数字版权领域"></a>数字版权领域</h2><p>通过区块链技术，可以对作品进行鉴权，证明文字、视频、音频等作品的存在，保证权属的真实、唯一性。作品在区块链上被确权后，后续交易都会进行实时记录，实现数字版权全生命周期管理，也可作为司法取证中的技术性保障。例如，美国纽约一家创业公司Mine Labs开发了一个基于区块链的元数据协议，这个名为Mediachain的系统利用IPFS文件系统，实现数字作品版权保护，主要是面向数字图片的版权保护应用。</p>
-<h2 id="保险领域"><a href="#保险领域" class="headerlink" title="保险领域"></a>保险领域</h2><p>在保险理赔方面，保险机构负责资金归集、投资、理赔，往往管理和运营成本较高。通过智能合约的应用，既无需投保人申请，也无需保险公司批准，只要触发理赔条件，实现保单自动理赔。一个典型的应用案例就是LenderBot, 是 2016 年由区块链企业 Stratumn、德勤与支付服务商 Lemonway 合作推出，它允许人们通过 Facebook Messenger 的聊天功能，注册定制化的微保险产品， 为个人之间交换的高价值物品进行投保，而区块链在贷款合同中代替了第三方角色 。</p>
-<h2 id="公益领域"><a href="#公益领域" class="headerlink" title="公益领域"></a>公益领域</h2><p>区块链上存储的数据，高可靠且不可篡改，天然适合用在社会公益场景。公益流程中的相关信息，如捐赠项目、募集明细、资金流向、受助人反馈等，均可以存放于区块链上，并且有条件地进行透明公开公示，方便社会监督。</p>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>创建型---单例模式</title>
     <url>/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单例模式（<strong>Singleton Pattern</strong>）：确保一个类只有一个实例，并提供一个全局访问点来访问这一个唯一实例。</p>
@@ -3114,6 +3095,25 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </categories>
       <tags>
         <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>区块链技术的应用领域</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<h2 id="金融领域"><a href="#金融领域" class="headerlink" title="金融领域"></a>金融领域</h2><p>区块链在<strong>国际汇兑</strong>、<strong>信用证</strong>、<strong>股权登记</strong>和<strong>证券交易所</strong>等金融领域有着潜在的巨大应用价值。将区块链技术应用在金融行业中，能够省去第三方中介环节，实现<strong>点对点</strong>的直接对接，从而在大大降低成本的同时，快速完成交易支付。<br>比如Visa推出基于区块链技术的 Visa B2B Connect，它能为机构提供一种费用更低、更快速和安全的跨境支付方式来处理全球范围的企业对企业的交易。要知道传统的跨境支付需要等3-5天，并为此支付1-3%的交易费用。Visa 还联合 Coinbase 推出了首张比特币借记卡，<strong>花旗银行</strong>则在区块链上测试运行加密货币“<strong>花旗币</strong>”。</p>
+<h2 id="物联网和物流领域"><a href="#物联网和物流领域" class="headerlink" title="物联网和物流领域"></a>物联网和物流领域</h2><p>区块链在物联网和物流领域也可以天然结合。通过区块链可以降低物流成本，追溯物品的生产和运送过程，并且提高供应链管理的效率。该领域被认为是区块链一个很有前景的应用方向。<br>区块链通过结点连接的散状网络分层结构，能够在整个网络中实现信息的全面传递，并能够检验信息的准确程度。这种特性一 定程度上提高了物联网交易的便利性和智能化。<strong>区块链</strong>+<strong>大数据</strong>的解决方案就利用了大数据的自动筛选过滤模式，在区块链中建立信用资源，可双重提高交易的安全性，并提高物联网交易便利程度。为智能物流模式应用节约时间成本。区块链结点具有十分自由的进出能力，可独立的参与或离开区块链体系，不对整个区块链体系有任何干扰。区块链 +大数据解决方案就利用了大数据的整合能力，促使物联网基础用户拓展更具有方向性，便于在智能物流的分散用户之间实现用户拓展。</p>
+<h2 id="公共服务领域"><a href="#公共服务领域" class="headerlink" title="公共服务领域"></a>公共服务领域</h2><p>区块链在公共管理、能源、交通等领域都与民众的生产生活息息相关，但是这些领域的中心化特质也带来了一些问题，可以用区块链来改造。区块链提供的去中心化的完全分布式DNS服务通过网络中各个节点之间的点对点数据传输服务就能实现域名的查询和解析，可用于确保某个重要的基础设施的操作系统和固件没有被篡改，可以监控软件的状态和完整性，发现不良的篡改，并确保使用了物联网技术的系统所传输的数据没用经过篡改。</p>
+<h2 id="数字版权领域"><a href="#数字版权领域" class="headerlink" title="数字版权领域"></a>数字版权领域</h2><p>通过区块链技术，可以对作品进行鉴权，证明文字、视频、音频等作品的存在，保证权属的真实、唯一性。作品在区块链上被确权后，后续交易都会进行实时记录，实现数字版权全生命周期管理，也可作为司法取证中的技术性保障。例如，美国纽约一家创业公司Mine Labs开发了一个基于区块链的元数据协议，这个名为Mediachain的系统利用IPFS文件系统，实现数字作品版权保护，主要是面向数字图片的版权保护应用。</p>
+<h2 id="保险领域"><a href="#保险领域" class="headerlink" title="保险领域"></a>保险领域</h2><p>在保险理赔方面，保险机构负责资金归集、投资、理赔，往往管理和运营成本较高。通过智能合约的应用，既无需投保人申请，也无需保险公司批准，只要触发理赔条件，实现保单自动理赔。一个典型的应用案例就是LenderBot, 是 2016 年由区块链企业 Stratumn、德勤与支付服务商 Lemonway 合作推出，它允许人们通过 Facebook Messenger 的聊天功能，注册定制化的微保险产品， 为个人之间交换的高价值物品进行投保，而区块链在贷款合同中代替了第三方角色 。</p>
+<h2 id="公益领域"><a href="#公益领域" class="headerlink" title="公益领域"></a>公益领域</h2><p>区块链上存储的数据，高可靠且不可篡改，天然适合用在社会公益场景。公益流程中的相关信息，如捐赠项目、募集明细、资金流向、受助人反馈等，均可以存放于区块链上，并且有条件地进行透明公开公示，方便社会监督。</p>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
       </tags>
   </entry>
   <entry>
@@ -3361,6 +3361,25 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
+    <title>try-catch-finally总结</title>
+    <url>/2774241439/</url>
+    <content><![CDATA[<p>在日常编译运行程序出错的时候，编译器就会抛出异常，抛出异常要比终止程序灵活的多，这是因为Java提供了一个”捕获”异常的处理器对异常情况进行处理，如果没有提供处理器机制，程序就会终止，try-catch-finally可以保证程序发生错误的时候继续执行下去。下面就谈一下使用的总结，和注意事项。</p>
+<a id="more"></a>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>try，catch，finally语句中，如果try语句有return语句，此后做任何修改，都不影响try中return的返回值。</li>
+<li>如果finally块中有return语句，则try或catch中中的返回语句忽略。</li>
+<li>如果finally块中抛出异常，则整个try，catch，finally块中抛出异常。</li>
+</ul>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
+<li>在使用try- catch-finally的时候，要注意以下问题：<br>①尽量在try或者catch中使用return语句。通过finally块中达到对try或者catch返回值修改是不可行的。<br>②finally块中避免使用return语句，因为finally块中如果使用return语句，会显式的消化掉try，catch块中的异常信息，屏蔽错误的发生。<br>③finally块中避免再次抛出异常，否则整个包含try语句块的方法会抛出异常，并且会消化掉try，catch块中的异常。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>每天一道面试题</category>
+      </categories>
+  </entry>
+  <entry>
     <title>区块链的架构模型以及核心技术</title>
     <url>/714656305/</url>
     <content><![CDATA[<p>-</p>
@@ -3388,25 +3407,6 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       <tags>
         <tag>区块链，比特币</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>try-catch-finally总结</title>
-    <url>/2774241439/</url>
-    <content><![CDATA[<p>在日常编译运行程序出错的时候，编译器就会抛出异常，抛出异常要比终止程序灵活的多，这是因为Java提供了一个”捕获”异常的处理器对异常情况进行处理，如果没有提供处理器机制，程序就会终止，try-catch-finally可以保证程序发生错误的时候继续执行下去。下面就谈一下使用的总结，和注意事项。</p>
-<a id="more"></a>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>try，catch，finally语句中，如果try语句有return语句，此后做任何修改，都不影响try中return的返回值。</li>
-<li>如果finally块中有return语句，则try或catch中中的返回语句忽略。</li>
-<li>如果finally块中抛出异常，则整个try，catch，finally块中抛出异常。</li>
-</ul>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
-<li>在使用try- catch-finally的时候，要注意以下问题：<br>①尽量在try或者catch中使用return语句。通过finally块中达到对try或者catch返回值修改是不可行的。<br>②finally块中避免使用return语句，因为finally块中如果使用return语句，会显式的消化掉try，catch块中的异常信息，屏蔽错误的发生。<br>③finally块中避免再次抛出异常，否则整个包含try语句块的方法会抛出异常，并且会消化掉try，catch块中的异常。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>每天一道面试题</category>
-      </categories>
   </entry>
   <entry>
     <title>创建型---工厂方法模式</title>
@@ -3847,6 +3847,108 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
+    <title>创建型---抽象工厂模式</title>
+    <url>/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提供一个创建一系列相关和相互依赖对象的接口，而无需指定他们具体的类。</p>
+<a id="more"></a>
+
+<h2 id="模式概述"><a href="#模式概述" class="headerlink" title="模式概述"></a>模式概述</h2><ul>
+<li>工厂方法模式通过引入工厂等级结构，解决了简单工厂模式中工厂类职责太重的问题。</li>
+<li>但是由于工厂方法模式中每个具体工厂只能产生一个单一的对象，如果需要工厂提供多种产品对象，那么会存在大量的工厂类，加大系统的开销。</li>
+<li>可以考虑将一些相关的产品组成一个<code>产品族</code>，由同一个工厂来统一生产，这就是抽象工厂模式的基本思想。</li>
+<li><strong>例如：</strong> 我需要生产<code>海尔电视机，海尔冰箱，海尔空调，海信冰箱，海信空调，海信电视机，Tcl电视机，TCL冰箱，TCL空调，</code>如果用工厂方法模式的话，就要创建9个具体工厂类，但是如果使用抽象工厂模式的话，只需要按照产品等级结构（海尔，海信，TCL）和产品族（电视机，冰箱，空调，）划分，只需要提供三个具体工厂，极大的减少了系统种类的歌个数。</li>
+<li><strong>定义：</strong> <strong>提供一个创建一系列相关或相互依赖对象的接口，而无需指定他们具体的类，抽象工厂模式又成为工具模式。</strong></li>
+</ul>
+<h2 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h2><ul>
+<li><code>AbstractFactory</code>(抽象工厂)：我们一组用于创建一<code>族</code>产品的方法，一个方法对应一种产品。</li>
+<li><code>ConcreteFactory</code>（具体工厂）：生成一组具体产品，这些产品构成了一个产品族。</li>
+<li><code>AbstractProduct</code>(抽象产品)：声明产品所具有的业务方法。</li>
+<li><code>ConcreteProduct</code>(具体产品)：具体产品对象。</li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p><strong>需求：</strong> 设计一款皮肤库，有不同风格，每种风格又分种类。风格就是<strong>等级结构</strong>，后面的就是<strong>产品族</strong>。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200503152520604.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200503164112458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
+<li>优点：</li>
+</ul>
+<ol>
+<li>隔离了具体类的生成，用户并不需要知道什么被创建，只需改变具体工厂的实例，就可以在某种程度上改变整个软件系统行为。</li>
+<li>当一个产品族中多个对象被设计成一起工作时，他能够保证客户端是终止使用同一个产品族中的对象。</li>
+<li>增加新的产品族很方便，无需修改已有系统。</li>
+</ol>
+<ul>
+<li>缺点：</li>
+</ul>
+<ol>
+<li>增加新的产品等级结构很麻烦，需要对原有系统进行较大的修改，甚至需要修改抽象层代码，这显然会带来很大的不便，违背了开闭原则。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据库连接池</title>
+    <url>/1664209794/</url>
+    <content><![CDATA[<p>数据库连接池负责分配、管理和释放数据库连接，它允许应用程序重复使用一个现有的数据库连接，而不是再重新建立一个；释放空闲时间超过最大空闲时间的数据库连接来避免因为没有释放数据库连接而引起的数据库连接遗漏。这项技术能明显提高对数据库操作的性能。</p>
+<a id="more"></a>
+<h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><ul>
+<li><strong>数据库的连接对象创建工作，比较消耗性能。</strong> </li>
+<li>一开始现在内存中开辟一块空间（集合） ， 一开先往池子里面放置 多个连接对象。  后面需要连接的话，直接从池子里面去。不要去自己创建连接了。  使用完毕， 要记得归还连接。确保连接对象能循环利用。</li>
+</ul>
+<ul>
+<li>连接池指：创建一个池子（容器） ， 专门用来管理连接对象。<br><img src="https://img-blog.csdnimg.cn/20200301155401842.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+<h2 id="二、作用"><a href="#二、作用" class="headerlink" title="二、作用"></a>二、作用</h2><ul>
+<li>创建和管理连接，对数据的操作没有影响。</li>
+<li>更快响应速度，连接池里的连接在一开始就已经创建好了，后面如果需要直接拿就可以了，无需创建。</li>
+<li>资源的重复利用、避免重复创建对象，连接对象使用完毕后，再归还到池子中进行统一管理即可。</li>
+</ul>
+<h2 id="三、自定义数据库连接池"><a href="#三、自定义数据库连接池" class="headerlink" title="三、自定义数据库连接池"></a>三、自定义数据库连接池</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 这是一个数据库连接池</span><br><span class="line"> * 一开始先往池子里面放十个连接</span><br><span class="line"> */</span><br><span class="line">public class MyDataSource implements DataSource &#123;</span><br><span class="line">//创建一个集合用来存放连接对象</span><br><span class="line">	List&lt;Connection&gt; list=new ArrayList&lt;Connection&gt;();</span><br><span class="line">	//用一个构造方法，刚开始就给这个池子里放入10个连接对象</span><br><span class="line">	public <span class="function"><span class="title">MyDataSource</span></span>() &#123;</span><br><span class="line">		<span class="keyword">for</span> (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">			Connection conn = JDBCUtil.getconn();</span><br><span class="line">			list.add(conn);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 该连接池对外公布的获取连接的方法</span><br><span class="line">	@Override</span><br><span class="line">	public Connection getConnection() throws SQLException &#123;</span><br><span class="line">		//来拿连接的时候，先看看，池子里面有没有，没有了就再添加，扩容</span><br><span class="line">		<span class="keyword">if</span>(list.size()==0) &#123;</span><br><span class="line">			<span class="keyword">for</span> (int i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">				Connection conn = JDBCUtil.getconn();</span><br><span class="line">				list.add(conn);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Connection conn=list.remove(0);</span><br><span class="line">		<span class="built_in">return</span> null;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//用完之后返回连接对象</span><br><span class="line">	public void addBack(Connection conn) &#123;</span><br><span class="line">		list.add(conn);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用连接池</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class TestPool &#123;</span><br><span class="line">	@Test</span><br><span class="line">	public void <span class="function"><span class="title">testPool</span></span>() &#123;</span><br><span class="line">		Connection conn=null;</span><br><span class="line">		PreparedStatement ps=null;</span><br><span class="line">		MyDataSource dataSource=new MyDataSource();</span><br><span class="line">		try &#123;</span><br><span class="line">			conn=dataSource.getConnection();</span><br><span class="line">			</span><br><span class="line">			String sql=<span class="string">"insert into category values(null,'lisi',daq)"</span>;</span><br><span class="line">			ps=conn.prepareStatement(sql);</span><br><span class="line">			ps.executeUpdate();</span><br><span class="line">			</span><br><span class="line">		&#125; catch (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;finally &#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				ps.close();</span><br><span class="line">			&#125; catch (Exception e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			//归还连接对象</span><br><span class="line">			dataSource.addBack(conn);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h3><ul>
+<li>对象没有做成单例。<br>在哪里使用，都需要new MyDataSource().  这就会造成有多个对象的情况出现， 那就不只一个池子了。</li>
+<li>需要额外记住 addBack方法。<br>由于sun公司定义的数据库连接池里面并没有这个addBack方法，所以要用这个连接池的时候，需要记住这个方法是用来回收连接对象的。</li>
+<li>无法面向接口编程。<br>由于连接池直接定义成了一个类，并且里面还额外添加了一个addBack方法，这就造成了无法面向接口编程。</li>
+</ul>
+<p><strong>解决思路：</strong><br>由于多了一个addBack 方法，所以使用这个连接池的地方，需要额外记住这个方法，并且不能面向接口编程。</p>
+<ol>
+<li>修改接口中的close方法。  原来的Connection对象的close方法，是真的关闭连接。 </li>
+<li>修改此close方法，以后在调用close， 并不是真的关闭，而是归还连接对象。如何扩展某一个方法?</li>
+</ol>
+<p>原有的方法逻辑，不是我们想要的。 想修改方法的逻辑，怎么办？</p>
+<ol>
+<li>直接改源码  无法实现。</li>
+<li>继承， 必须得知道这个接口的具体实现是谁。 </li>
+<li>使用装饰者模式。 </li>
+<li>动态代理</li>
+</ol>
+<h3 id="解决方式：装饰者模式"><a href="#解决方式：装饰者模式" class="headerlink" title="解决方式：装饰者模式"></a>解决方式：装饰者模式</h3><p>两个不同的人，去实现同一个接口，先把我的方法执行了，再执行你的。</p>
+<h2 id="四、开源连接池"><a href="#四、开源连接池" class="headerlink" title="四、开源连接池"></a>四、开源连接池</h2><h3 id="DBCP"><a href="#DBCP" class="headerlink" title="DBCP"></a>DBCP</h3><ul>
+<li>DBCP（DataBase Connection Pool）数据库连接池，是java数据库连接池的一种，由Apache开发，通过数据库连接池，可以让程序自动管理数据库连接的释放和断开。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.导入jar包  commons-dbcp.jar和commons-pool.jar</span><br><span class="line">2.不使用配置文件方式（不常用）</span><br><span class="line">		// 1.构建数据源对象</span><br><span class="line">		BasicDataSource dataSource = new BasicDataSource();</span><br><span class="line">		</span><br><span class="line">		dataSource.setDriverClassName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		//Url格式-主协议：子协议：//本地//数据库</span><br><span class="line">		dataSource.setUrl(<span class="string">"jdbc:mysql://localhost/users"</span>);</span><br><span class="line">		dataSource.setUsername(<span class="string">"root"</span>);</span><br><span class="line">		dataSource.setPassword(<span class="string">"daq"</span>);</span><br><span class="line">		// 2.得到连接对象</span><br><span class="line">		conn = dataSource.getConnection();</span><br><span class="line">		String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">		ps.setInt(2,23);</span><br><span class="line">		</span><br><span class="line">		ps.executeUpdate();</span><br><span class="line">		...</span><br><span class="line">3.使用配置文件方式。(常用)</span><br><span class="line">		1. 在 src 下定义配置文件 dbcp.properties. 内容如下： </span><br><span class="line">			//连接设置</span><br><span class="line">			driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">			url=jdbc:mysql://localhost:3306/jdbc</span><br><span class="line">			username=root</span><br><span class="line">			password=daq</span><br><span class="line">			...</span><br><span class="line">		2. 使用代码读取配置文件，即可获取连接池</span><br><span class="line">			BasicDataSourceFactory factory=new BasicDataSourceFactory();</span><br><span class="line">			Properties properties = new Properties();</span><br><span class="line">			properties.load(new FileInputStream(<span class="string">"src/dbcp.properties"</span>));</span><br><span class="line">			DataSource dataSource =factory.createDataSource(properties);</span><br><span class="line"></span><br><span class="line">			conn = dataSource.getConnection();</span><br><span class="line">			String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">			ps = conn.prepareStatement(sql);</span><br><span class="line">			ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">			ps.setInt(2,23);</span><br><span class="line"></span><br><span class="line">			ps.executeUpdate();</span><br><span class="line">			...</span><br></pre></td></tr></table></figure>
+
+<h3 id="C3P0（重点）"><a href="#C3P0（重点）" class="headerlink" title="C3P0（重点）"></a>C3P0（重点）</h3><ul>
+<li>C3P0是一个开源的JDBC连接池，它实现了数据源和JNDI绑定，支持JDBC3规范和JDBC2的标准扩展。目前使用它的开源项目有Hibernate，Spring等。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. 拷贝jar 文件   c3p0-0.9.1.2.jar</span><br><span class="line">2. 不使用配置文件方式（开发的时候不会用）</span><br><span class="line">		//默认会找 xml 中的 default-config 分支。 </span><br><span class="line">		ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">		//2. 设置连接数据的信息</span><br><span class="line">		dataSource.setDriverClass(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		dataSource.setJdbcUrl(<span class="string">"jdbc:mysql://localhost/users"</span>);</span><br><span class="line">		dataSource.setUser(<span class="string">"root"</span>);</span><br><span class="line">		dataSource.setPassword(<span class="string">"daq"</span>);</span><br><span class="line">		//3. 获取连接对象</span><br><span class="line">		conn = dataSource.getConnection();</span><br><span class="line">		String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">		ps.setInt(2,23);</span><br><span class="line"></span><br><span class="line">		ps.executeUpdate();</span><br><span class="line">		...</span><br><span class="line">		</span><br><span class="line">3. 使用配置文件方式。（开发常用）</span><br><span class="line">c3p0的配置文件 支持 properties , 也支持 xml 方式。 不过开发中，一般使用xml方式来配置</span><br><span class="line"></span><br><span class="line">	1.  src下， 创建xml文件，名为：c3p0-config.xml 　注意此处，名字需要固定了。</span><br><span class="line">	&lt;c3p0-config&gt;</span><br><span class="line">  		&lt;default-config&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"driverClass"</span>&gt;com.mysql.jdbc.Driver&lt;/property&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"jdbcUrl"</span>&gt;jdbc:mysql://localhost/user&lt;/property&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"user"</span>&gt;root&lt;/property&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"password"</span>&gt;daq&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">  			&lt;!-- 可选配置 --&gt;</span><br><span class="line">			&lt;property name=<span class="string">"initialPoolSize"</span>&gt;10&lt;/property&gt;   //初始容量</span><br><span class="line">			&lt;property name=<span class="string">"maxIdleTime"</span>&gt;30&lt;/property&gt;		 //</span><br><span class="line">			&lt;property name=<span class="string">"maxPoolSize"</span>&gt;100&lt;/property&gt;		 //最大容量</span><br><span class="line">			&lt;property name=<span class="string">"minPoolSize"</span>&gt;10&lt;/property&gt;		 //最小容量</span><br><span class="line">			&lt;property name=<span class="string">"maxStatement"</span>&gt;200&lt;/property&gt;	 //</span><br><span class="line">  		&lt;/default-config&gt;</span><br><span class="line">	&lt;/c3p0-config&gt;</span><br><span class="line"></span><br><span class="line">		//1. 代码中获取连接dataSource对象</span><br><span class="line">		ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">		//2. 获取连接对象</span><br><span class="line">		conn = dataSource.getConnection();</span><br><span class="line">		String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">		ps.setInt(2,23);</span><br><span class="line">		</span><br><span class="line">		ps.executeUpdate();</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>MySql,连接池</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>建站系列之---更换icarus主题</title>
     <url>/hexo/</url>
     <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;看惯了next的主题，出现了审美疲劳，在逛知乎的时候，发现了一款很不错的主题<code>icarus</code>，就试着更换了主题，发现还真挺漂亮的，于是就在做一个主题吧，哪天审美又疲劳了，再换回来呗。</p>
@@ -4002,108 +4104,6 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </categories>
       <tags>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>创建型---抽象工厂模式</title>
-    <url>/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提供一个创建一系列相关和相互依赖对象的接口，而无需指定他们具体的类。</p>
-<a id="more"></a>
-
-<h2 id="模式概述"><a href="#模式概述" class="headerlink" title="模式概述"></a>模式概述</h2><ul>
-<li>工厂方法模式通过引入工厂等级结构，解决了简单工厂模式中工厂类职责太重的问题。</li>
-<li>但是由于工厂方法模式中每个具体工厂只能产生一个单一的对象，如果需要工厂提供多种产品对象，那么会存在大量的工厂类，加大系统的开销。</li>
-<li>可以考虑将一些相关的产品组成一个<code>产品族</code>，由同一个工厂来统一生产，这就是抽象工厂模式的基本思想。</li>
-<li><strong>例如：</strong> 我需要生产<code>海尔电视机，海尔冰箱，海尔空调，海信冰箱，海信空调，海信电视机，Tcl电视机，TCL冰箱，TCL空调，</code>如果用工厂方法模式的话，就要创建9个具体工厂类，但是如果使用抽象工厂模式的话，只需要按照产品等级结构（海尔，海信，TCL）和产品族（电视机，冰箱，空调，）划分，只需要提供三个具体工厂，极大的减少了系统种类的歌个数。</li>
-<li><strong>定义：</strong> <strong>提供一个创建一系列相关或相互依赖对象的接口，而无需指定他们具体的类，抽象工厂模式又成为工具模式。</strong></li>
-</ul>
-<h2 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h2><ul>
-<li><code>AbstractFactory</code>(抽象工厂)：我们一组用于创建一<code>族</code>产品的方法，一个方法对应一种产品。</li>
-<li><code>ConcreteFactory</code>（具体工厂）：生成一组具体产品，这些产品构成了一个产品族。</li>
-<li><code>AbstractProduct</code>(抽象产品)：声明产品所具有的业务方法。</li>
-<li><code>ConcreteProduct</code>(具体产品)：具体产品对象。</li>
-</ul>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p><strong>需求：</strong> 设计一款皮肤库，有不同风格，每种风格又分种类。风格就是<strong>等级结构</strong>，后面的就是<strong>产品族</strong>。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200503152520604.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200503164112458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
-<li>优点：</li>
-</ul>
-<ol>
-<li>隔离了具体类的生成，用户并不需要知道什么被创建，只需改变具体工厂的实例，就可以在某种程度上改变整个软件系统行为。</li>
-<li>当一个产品族中多个对象被设计成一起工作时，他能够保证客户端是终止使用同一个产品族中的对象。</li>
-<li>增加新的产品族很方便，无需修改已有系统。</li>
-</ol>
-<ul>
-<li>缺点：</li>
-</ul>
-<ol>
-<li>增加新的产品等级结构很麻烦，需要对原有系统进行较大的修改，甚至需要修改抽象层代码，这显然会带来很大的不便，违背了开闭原则。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>设计模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据库连接池</title>
-    <url>/1664209794/</url>
-    <content><![CDATA[<p>数据库连接池负责分配、管理和释放数据库连接，它允许应用程序重复使用一个现有的数据库连接，而不是再重新建立一个；释放空闲时间超过最大空闲时间的数据库连接来避免因为没有释放数据库连接而引起的数据库连接遗漏。这项技术能明显提高对数据库操作的性能。</p>
-<a id="more"></a>
-<h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><ul>
-<li><strong>数据库的连接对象创建工作，比较消耗性能。</strong> </li>
-<li>一开始现在内存中开辟一块空间（集合） ， 一开先往池子里面放置 多个连接对象。  后面需要连接的话，直接从池子里面去。不要去自己创建连接了。  使用完毕， 要记得归还连接。确保连接对象能循环利用。</li>
-</ul>
-<ul>
-<li>连接池指：创建一个池子（容器） ， 专门用来管理连接对象。<br><img src="https://img-blog.csdnimg.cn/20200301155401842.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-</ul>
-<h2 id="二、作用"><a href="#二、作用" class="headerlink" title="二、作用"></a>二、作用</h2><ul>
-<li>创建和管理连接，对数据的操作没有影响。</li>
-<li>更快响应速度，连接池里的连接在一开始就已经创建好了，后面如果需要直接拿就可以了，无需创建。</li>
-<li>资源的重复利用、避免重复创建对象，连接对象使用完毕后，再归还到池子中进行统一管理即可。</li>
-</ul>
-<h2 id="三、自定义数据库连接池"><a href="#三、自定义数据库连接池" class="headerlink" title="三、自定义数据库连接池"></a>三、自定义数据库连接池</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 这是一个数据库连接池</span><br><span class="line"> * 一开始先往池子里面放十个连接</span><br><span class="line"> */</span><br><span class="line">public class MyDataSource implements DataSource &#123;</span><br><span class="line">//创建一个集合用来存放连接对象</span><br><span class="line">	List&lt;Connection&gt; list=new ArrayList&lt;Connection&gt;();</span><br><span class="line">	//用一个构造方法，刚开始就给这个池子里放入10个连接对象</span><br><span class="line">	public <span class="function"><span class="title">MyDataSource</span></span>() &#123;</span><br><span class="line">		<span class="keyword">for</span> (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">			Connection conn = JDBCUtil.getconn();</span><br><span class="line">			list.add(conn);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 该连接池对外公布的获取连接的方法</span><br><span class="line">	@Override</span><br><span class="line">	public Connection getConnection() throws SQLException &#123;</span><br><span class="line">		//来拿连接的时候，先看看，池子里面有没有，没有了就再添加，扩容</span><br><span class="line">		<span class="keyword">if</span>(list.size()==0) &#123;</span><br><span class="line">			<span class="keyword">for</span> (int i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">				Connection conn = JDBCUtil.getconn();</span><br><span class="line">				list.add(conn);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Connection conn=list.remove(0);</span><br><span class="line">		<span class="built_in">return</span> null;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//用完之后返回连接对象</span><br><span class="line">	public void addBack(Connection conn) &#123;</span><br><span class="line">		list.add(conn);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用连接池</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class TestPool &#123;</span><br><span class="line">	@Test</span><br><span class="line">	public void <span class="function"><span class="title">testPool</span></span>() &#123;</span><br><span class="line">		Connection conn=null;</span><br><span class="line">		PreparedStatement ps=null;</span><br><span class="line">		MyDataSource dataSource=new MyDataSource();</span><br><span class="line">		try &#123;</span><br><span class="line">			conn=dataSource.getConnection();</span><br><span class="line">			</span><br><span class="line">			String sql=<span class="string">"insert into category values(null,'lisi',daq)"</span>;</span><br><span class="line">			ps=conn.prepareStatement(sql);</span><br><span class="line">			ps.executeUpdate();</span><br><span class="line">			</span><br><span class="line">		&#125; catch (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;finally &#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				ps.close();</span><br><span class="line">			&#125; catch (Exception e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			//归还连接对象</span><br><span class="line">			dataSource.addBack(conn);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h3><ul>
-<li>对象没有做成单例。<br>在哪里使用，都需要new MyDataSource().  这就会造成有多个对象的情况出现， 那就不只一个池子了。</li>
-<li>需要额外记住 addBack方法。<br>由于sun公司定义的数据库连接池里面并没有这个addBack方法，所以要用这个连接池的时候，需要记住这个方法是用来回收连接对象的。</li>
-<li>无法面向接口编程。<br>由于连接池直接定义成了一个类，并且里面还额外添加了一个addBack方法，这就造成了无法面向接口编程。</li>
-</ul>
-<p><strong>解决思路：</strong><br>由于多了一个addBack 方法，所以使用这个连接池的地方，需要额外记住这个方法，并且不能面向接口编程。</p>
-<ol>
-<li>修改接口中的close方法。  原来的Connection对象的close方法，是真的关闭连接。 </li>
-<li>修改此close方法，以后在调用close， 并不是真的关闭，而是归还连接对象。如何扩展某一个方法?</li>
-</ol>
-<p>原有的方法逻辑，不是我们想要的。 想修改方法的逻辑，怎么办？</p>
-<ol>
-<li>直接改源码  无法实现。</li>
-<li>继承， 必须得知道这个接口的具体实现是谁。 </li>
-<li>使用装饰者模式。 </li>
-<li>动态代理</li>
-</ol>
-<h3 id="解决方式：装饰者模式"><a href="#解决方式：装饰者模式" class="headerlink" title="解决方式：装饰者模式"></a>解决方式：装饰者模式</h3><p>两个不同的人，去实现同一个接口，先把我的方法执行了，再执行你的。</p>
-<h2 id="四、开源连接池"><a href="#四、开源连接池" class="headerlink" title="四、开源连接池"></a>四、开源连接池</h2><h3 id="DBCP"><a href="#DBCP" class="headerlink" title="DBCP"></a>DBCP</h3><ul>
-<li>DBCP（DataBase Connection Pool）数据库连接池，是java数据库连接池的一种，由Apache开发，通过数据库连接池，可以让程序自动管理数据库连接的释放和断开。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.导入jar包  commons-dbcp.jar和commons-pool.jar</span><br><span class="line">2.不使用配置文件方式（不常用）</span><br><span class="line">		// 1.构建数据源对象</span><br><span class="line">		BasicDataSource dataSource = new BasicDataSource();</span><br><span class="line">		</span><br><span class="line">		dataSource.setDriverClassName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		//Url格式-主协议：子协议：//本地//数据库</span><br><span class="line">		dataSource.setUrl(<span class="string">"jdbc:mysql://localhost/users"</span>);</span><br><span class="line">		dataSource.setUsername(<span class="string">"root"</span>);</span><br><span class="line">		dataSource.setPassword(<span class="string">"daq"</span>);</span><br><span class="line">		// 2.得到连接对象</span><br><span class="line">		conn = dataSource.getConnection();</span><br><span class="line">		String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">		ps.setInt(2,23);</span><br><span class="line">		</span><br><span class="line">		ps.executeUpdate();</span><br><span class="line">		...</span><br><span class="line">3.使用配置文件方式。(常用)</span><br><span class="line">		1. 在 src 下定义配置文件 dbcp.properties. 内容如下： </span><br><span class="line">			//连接设置</span><br><span class="line">			driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">			url=jdbc:mysql://localhost:3306/jdbc</span><br><span class="line">			username=root</span><br><span class="line">			password=daq</span><br><span class="line">			...</span><br><span class="line">		2. 使用代码读取配置文件，即可获取连接池</span><br><span class="line">			BasicDataSourceFactory factory=new BasicDataSourceFactory();</span><br><span class="line">			Properties properties = new Properties();</span><br><span class="line">			properties.load(new FileInputStream(<span class="string">"src/dbcp.properties"</span>));</span><br><span class="line">			DataSource dataSource =factory.createDataSource(properties);</span><br><span class="line"></span><br><span class="line">			conn = dataSource.getConnection();</span><br><span class="line">			String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">			ps = conn.prepareStatement(sql);</span><br><span class="line">			ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">			ps.setInt(2,23);</span><br><span class="line"></span><br><span class="line">			ps.executeUpdate();</span><br><span class="line">			...</span><br></pre></td></tr></table></figure>
-
-<h3 id="C3P0（重点）"><a href="#C3P0（重点）" class="headerlink" title="C3P0（重点）"></a>C3P0（重点）</h3><ul>
-<li>C3P0是一个开源的JDBC连接池，它实现了数据源和JNDI绑定，支持JDBC3规范和JDBC2的标准扩展。目前使用它的开源项目有Hibernate，Spring等。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. 拷贝jar 文件   c3p0-0.9.1.2.jar</span><br><span class="line">2. 不使用配置文件方式（开发的时候不会用）</span><br><span class="line">		//默认会找 xml 中的 default-config 分支。 </span><br><span class="line">		ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">		//2. 设置连接数据的信息</span><br><span class="line">		dataSource.setDriverClass(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		dataSource.setJdbcUrl(<span class="string">"jdbc:mysql://localhost/users"</span>);</span><br><span class="line">		dataSource.setUser(<span class="string">"root"</span>);</span><br><span class="line">		dataSource.setPassword(<span class="string">"daq"</span>);</span><br><span class="line">		//3. 获取连接对象</span><br><span class="line">		conn = dataSource.getConnection();</span><br><span class="line">		String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">		ps.setInt(2,23);</span><br><span class="line"></span><br><span class="line">		ps.executeUpdate();</span><br><span class="line">		...</span><br><span class="line">		</span><br><span class="line">3. 使用配置文件方式。（开发常用）</span><br><span class="line">c3p0的配置文件 支持 properties , 也支持 xml 方式。 不过开发中，一般使用xml方式来配置</span><br><span class="line"></span><br><span class="line">	1.  src下， 创建xml文件，名为：c3p0-config.xml 　注意此处，名字需要固定了。</span><br><span class="line">	&lt;c3p0-config&gt;</span><br><span class="line">  		&lt;default-config&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"driverClass"</span>&gt;com.mysql.jdbc.Driver&lt;/property&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"jdbcUrl"</span>&gt;jdbc:mysql://localhost/user&lt;/property&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"user"</span>&gt;root&lt;/property&gt;</span><br><span class="line">    		&lt;property name=<span class="string">"password"</span>&gt;daq&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">  			&lt;!-- 可选配置 --&gt;</span><br><span class="line">			&lt;property name=<span class="string">"initialPoolSize"</span>&gt;10&lt;/property&gt;   //初始容量</span><br><span class="line">			&lt;property name=<span class="string">"maxIdleTime"</span>&gt;30&lt;/property&gt;		 //</span><br><span class="line">			&lt;property name=<span class="string">"maxPoolSize"</span>&gt;100&lt;/property&gt;		 //最大容量</span><br><span class="line">			&lt;property name=<span class="string">"minPoolSize"</span>&gt;10&lt;/property&gt;		 //最小容量</span><br><span class="line">			&lt;property name=<span class="string">"maxStatement"</span>&gt;200&lt;/property&gt;	 //</span><br><span class="line">  		&lt;/default-config&gt;</span><br><span class="line">	&lt;/c3p0-config&gt;</span><br><span class="line"></span><br><span class="line">		//1. 代码中获取连接dataSource对象</span><br><span class="line">		ComboPooledDataSource dataSource = new ComboPooledDataSource();</span><br><span class="line">		//2. 获取连接对象</span><br><span class="line">		conn = dataSource.getConnection();</span><br><span class="line">		String sql = <span class="string">"insert into user values(null,?,?)"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		ps.setString(1,<span class="string">"daq"</span>);</span><br><span class="line">		ps.setInt(2,23);</span><br><span class="line">		</span><br><span class="line">		ps.executeUpdate();</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>MySql,连接池</tag>
       </tags>
   </entry>
   <entry>
@@ -4276,6 +4276,44 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
+    <title>操作系统---虚拟内存</title>
+    <url>/1080640073/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是不是经常听到虚拟内存这个名词，尤其是在玩Linux的时候，其实不然，哪个是交换分区，跟虚拟内存还是有差别的。</p>
+<a id="more"></a>
+<ul>
+<li><p>对一个程序来说，他在某一段时间内，只有某一些部分是需要在内存里面的。（局部性原理），虚拟内存管理，属于一个完全黑盒的封装，我们在使用的时候，几乎不需要考虑他的存在。</p>
+</li>
+<li><p>虚拟内存的两种实现方式：请求页，请求段。</p>
+</li>
+<li><p>请求页：如果有一个页面，只有当你真正需要他的时候，才把他加载到内存中来，有很多好处：降低IO操作，</p>
+</li>
+<li><p><strong>虚拟内存也是一种缓存思想</strong>：虚拟内存将主存看成是一个磁盘的高速缓存，主存中只保存活动区域，并根据需要在磁盘和主存之间来回传送数据。</p>
+</li>
+<li><p>从概念上来说，虚拟内存被组织成为一个由存放在磁盘上的 N 个连续的字节大小的单元组成的数组，也就是字节数组。每个字节都有一个唯一的虚拟地址作为数组的索引。虚拟内存的地址和磁盘的地址之间建立影射关系。磁盘上活动的数组内容被缓存在主存中。在存储器层次结构中，磁盘(较低层L5，参见我们上篇文章图4)的数据被分割成块(block)，这些块作为和主存(较高层,L4)之间的传输单元。主存作为虚拟内存(或者说磁盘)的缓存。</p>
+</li>
+<li><p>虚拟内存（VM）系统将虚拟内存分割成称为大小固定的虚拟页（Virtual Page,VP），每个虚拟页的大小为固定字节。同样的，物理内存被分割为物理页（Physical Page,PP）,大小也为固定字节（物理页也称作页帧，page frame）。</p>
+</li>
+<li><p>在任意时刻，虚拟页面都分为三个不相交的部分：<br>①<strong>未分配的(Unallocated)</strong> ：VM 系统还未分配（或者创建）的页，未分配的页没有任何数据和它们关联，因此不占用任何内存/磁盘空间。<br>②<strong>缓存的(Cached)</strong>： 当前已缓存在物理内存中的已分配页。<br>③<strong>未缓存的(UnCached)</strong> ：该页已经映射到磁盘上了，但是还没缓存在物理内存中。</p>
+</li>
+</ul>
+<h2 id="swap分区的作用"><a href="#swap分区的作用" class="headerlink" title="swap分区的作用"></a>swap分区的作用</h2><ul>
+<li><p>linux有一个swap分区。Swap空间的作用可简单描述为：当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间中的信息被临时保存到Swap空间中，等到那些程序要运行时，再从Swap中恢复保存的数据到内存中。系统总是在物理内存不够时，才进行Swap交换。</p>
+</li>
+<li><p>电脑开着一个进程，几天不关机，也一直没关闭这个进程，随着运行的程序越来越多，内存快不够用了，所以操作系统就选择将这个音乐播放器的内存状态(包括堆栈状态等)都写到磁盘上的swap区进行保存。这样就腾出来一部分内存供其他需要运行的程序使用。等你要使用到这个进程了。此时， 系统会从磁盘中的swap区重新读取该进程的相关信息，送回内存接着运行。</p>
+</li>
+</ul>
+<h2 id="补充注意"><a href="#补充注意" class="headerlink" title="补充注意"></a>补充注意</h2><p><strong>在window下也有类作用的硬盘空间，属于对用户不可见的匿名磁盘空间(在C盘)。</strong></p>
+<p>特别注意：按照字面意思，swap交换区也可以称为虚拟内存<br>硬盘上的swap交换区，其实就相当于承担了内存的作用(只是速度很慢罢了)。swap交换区起到了扩大内存的作用。所以从某些意义上来讲，swap区也可以叫做虚拟内存，但是这个虚拟内存是字面意思。和我们本文当中站在计算机系统的角度来解释的虚拟内存不是一个概念。所以特别注意这一点。因为有些人理解的虚拟内存，就是swap交互区。此虚拟内存非彼虚拟内存，所以明白各自的概念和作用。</p>
+<p><strong>linux环境下叫做swap分区，window下这块区域不叫swap分区，就直接按照字面意思叫做”虚拟内存”了。所以两个含义不同的虚拟内存</strong></p>
+]]></content>
+      <categories>
+        <category>计算机操作系统</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>股票基本术语</title>
     <url>/undefined/</url>
     <content><![CDATA[<p>股票基本术语了解。</p>
@@ -4388,44 +4426,6 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
-    <title>操作系统---虚拟内存</title>
-    <url>/1080640073/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是不是经常听到虚拟内存这个名词，尤其是在玩Linux的时候，其实不然，哪个是交换分区，跟虚拟内存还是有差别的。</p>
-<a id="more"></a>
-<ul>
-<li><p>对一个程序来说，他在某一段时间内，只有某一些部分是需要在内存里面的。（局部性原理），虚拟内存管理，属于一个完全黑盒的封装，我们在使用的时候，几乎不需要考虑他的存在。</p>
-</li>
-<li><p>虚拟内存的两种实现方式：请求页，请求段。</p>
-</li>
-<li><p>请求页：如果有一个页面，只有当你真正需要他的时候，才把他加载到内存中来，有很多好处：降低IO操作，</p>
-</li>
-<li><p><strong>虚拟内存也是一种缓存思想</strong>：虚拟内存将主存看成是一个磁盘的高速缓存，主存中只保存活动区域，并根据需要在磁盘和主存之间来回传送数据。</p>
-</li>
-<li><p>从概念上来说，虚拟内存被组织成为一个由存放在磁盘上的 N 个连续的字节大小的单元组成的数组，也就是字节数组。每个字节都有一个唯一的虚拟地址作为数组的索引。虚拟内存的地址和磁盘的地址之间建立影射关系。磁盘上活动的数组内容被缓存在主存中。在存储器层次结构中，磁盘(较低层L5，参见我们上篇文章图4)的数据被分割成块(block)，这些块作为和主存(较高层,L4)之间的传输单元。主存作为虚拟内存(或者说磁盘)的缓存。</p>
-</li>
-<li><p>虚拟内存（VM）系统将虚拟内存分割成称为大小固定的虚拟页（Virtual Page,VP），每个虚拟页的大小为固定字节。同样的，物理内存被分割为物理页（Physical Page,PP）,大小也为固定字节（物理页也称作页帧，page frame）。</p>
-</li>
-<li><p>在任意时刻，虚拟页面都分为三个不相交的部分：<br>①<strong>未分配的(Unallocated)</strong> ：VM 系统还未分配（或者创建）的页，未分配的页没有任何数据和它们关联，因此不占用任何内存/磁盘空间。<br>②<strong>缓存的(Cached)</strong>： 当前已缓存在物理内存中的已分配页。<br>③<strong>未缓存的(UnCached)</strong> ：该页已经映射到磁盘上了，但是还没缓存在物理内存中。</p>
-</li>
-</ul>
-<h2 id="swap分区的作用"><a href="#swap分区的作用" class="headerlink" title="swap分区的作用"></a>swap分区的作用</h2><ul>
-<li><p>linux有一个swap分区。Swap空间的作用可简单描述为：当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间中的信息被临时保存到Swap空间中，等到那些程序要运行时，再从Swap中恢复保存的数据到内存中。系统总是在物理内存不够时，才进行Swap交换。</p>
-</li>
-<li><p>电脑开着一个进程，几天不关机，也一直没关闭这个进程，随着运行的程序越来越多，内存快不够用了，所以操作系统就选择将这个音乐播放器的内存状态(包括堆栈状态等)都写到磁盘上的swap区进行保存。这样就腾出来一部分内存供其他需要运行的程序使用。等你要使用到这个进程了。此时， 系统会从磁盘中的swap区重新读取该进程的相关信息，送回内存接着运行。</p>
-</li>
-</ul>
-<h2 id="补充注意"><a href="#补充注意" class="headerlink" title="补充注意"></a>补充注意</h2><p><strong>在window下也有类作用的硬盘空间，属于对用户不可见的匿名磁盘空间(在C盘)。</strong></p>
-<p>特别注意：按照字面意思，swap交换区也可以称为虚拟内存<br>硬盘上的swap交换区，其实就相当于承担了内存的作用(只是速度很慢罢了)。swap交换区起到了扩大内存的作用。所以从某些意义上来讲，swap区也可以叫做虚拟内存，但是这个虚拟内存是字面意思。和我们本文当中站在计算机系统的角度来解释的虚拟内存不是一个概念。所以特别注意这一点。因为有些人理解的虚拟内存，就是swap交互区。此虚拟内存非彼虚拟内存，所以明白各自的概念和作用。</p>
-<p><strong>linux环境下叫做swap分区，window下这块区域不叫swap分区，就直接按照字面意思叫做”虚拟内存”了。所以两个含义不同的虚拟内存</strong></p>
-]]></content>
-      <categories>
-        <category>计算机操作系统</category>
-      </categories>
-      <tags>
-        <tag>OS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>火币网--币币交易图解</title>
     <url>/undefined/</url>
     <content><![CDATA[<p>如何在火币网上执行币币交易</p>
@@ -4517,6 +4517,104 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       <tags>
         <tag>web</tag>
         <tag>Tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>比特币的价格是怎么算出来的</title>
+    <url>/2526071924/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<h2 id="首先了解一下拍卖"><a href="#首先了解一下拍卖" class="headerlink" title="首先了解一下拍卖"></a>首先了解一下拍卖</h2><ul>
+<li><strong>英式拍卖：</strong> 如果拍卖方（卖方）要卖一个商品，那么买方则通过集体竞价的方式进行拍卖，价高者得，最后和卖方成交的一定只有一个买家，而这个买家一定是出价最高的那位。</li>
+<li><strong>荷兰式拍卖：</strong> 假如有一个买家想要买一个商品，但是卖方有很多，那么卖方递减报出新的价位，最终和买方成交的一定是卖价最低的那位。</li>
+</ul>
+<h2 id="实际定价方式"><a href="#实际定价方式" class="headerlink" title="实际定价方式"></a>实际定价方式</h2><p>在交易所看到的一排排红色的数字和一排排绿色的数字其实就是许多的买方和许多的卖方不断报出的<strong>买进价</strong>和<strong>卖出价</strong>，价格随供求变化而不断变动。买者和卖者彼此竞争，<strong>双向拍卖</strong>，买者对想要买进的出价，通过竞争以最低价买入;卖者也互相竞争，试图以最高价格出售，然而最新成交价一定是买卖双方达成一致的那个价格。买卖双方不断成交，最新一笔的成交价就是我们看到的不断变化的价格，这就是为什么价格在一直变化的原因。报价后面的数量，即代表当前的买方或者卖方想要购买或者卖出的币的数量。买卖一旦成交，则不得反悔。在未成交以前，也可以撤单，撤单程序与买卖委托的过程基本相同。</p>
+<h2 id="限价，市价，止盈止损"><a href="#限价，市价，止盈止损" class="headerlink" title="限价，市价，止盈止损"></a>限价，市价，止盈止损</h2><ul>
+<li>限价：是<strong>自己设定</strong>价格进行挂单，需价格波动到设定价格并有对手愿意交易才可以成交。</li>
+<li>市价：市价是以<strong>当前最新</strong>成交价挂单，一般马上成交。</li>
+<li>止盈止损：止盈止损即是<strong>带有预期</strong>的未来买入或者卖出行为，比如当价格跌破某一价位时进行止损（你预期跌破此价格可能还会继续跌），或者当价格突破某一价位时进行买入（你预期价格一旦突破该价位时将会继续上涨）。</li>
+</ul>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>如果你是买方，想要<strong>尽快</strong>购入比特币，当然是设置买入价格与当前最低卖出价格一致，这样双方就可以达成交易了，想要尽快卖出比特币，那就设置卖出价格与当前最高买入价格一致。但是市场上的人并不是都急切的想要卖出或者买入，会带有预期的进行买入卖出报价。</p>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>建站系列之---网站安全配置</title>
+    <url>/hexo/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;建站并没有那么容易，搭建起来之后，还要考虑各种问题，例如网站安全，加载速度，资源压缩，用户体验之类的，虽然只是一个静态网站，但是能够做好一点也是挺不错的。</p>
+<a id="more"></a>
+
+
+<h2 id="一、添加备案号"><a href="#一、添加备案号" class="headerlink" title="一、添加备案号"></a>一、添加备案号</h2><ul>
+<li>我是在阿里云APP上备案成功的，等的时间也不长，六天左右，最后短信收到了工信局发来的备案号，需要把这个备案号添加在网站底部，并且指向工信局官网。</li>
+<li>找到<code>F:\blog\themes\next\layout\_partials</code>下的<code>footer.swig</code>文件，添加如下代码：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="string">"http://www.beian.miit.gov.cn/"</span>&gt;备案号&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20200321110819179.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="二、安装SSL证书"><a href="#二、安装SSL证书" class="headerlink" title="二、安装SSL证书"></a>二、安装SSL证书</h2><p>① <strong>购买证书：</strong> 阿里云提供的免费证书服务，购买页面：<a href="https://common-buy.aliyun.com/?spm=5176.2020520163.cas.2.15a156a7lzZrki&commodityCode=cas#/buy">阿里云ssl证书购买</a>选择免费的。足够个人博客用了。购买好了之后，按步骤申请验证</p>
+<p><img src="https://img-blog.csdnimg.cn/20200321184319504.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>②  <strong>下载证书：</strong> 进入阿里云证书控制台，选择下载证书<code>for nginx</code> ，下载好之后可以看到有两个文件夹，分别是：<code>.key</code>和<code>.pem</code>文件。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200321184329138.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>③<strong>安装证书：</strong></p>
+<ul>
+<li><p>服务器放置证书：创建目录:  <code>/etc/nginx/cert</code>,用于存放证书文件。我用的软件是<code>finalshell</code>。<br><img src="https://img-blog.csdnimg.cn/20200321185907359.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+<li><p>修改<code>nginx</code>配置，在<code>/etc/nginx/nginx.conf</code>在里面添加443端口，443端口用于https协议。不建议直接修改<code>nginx.conf</code>,可以在<code>nginx</code>目录下新建一个文件夹<code>vhost</code>，里面用来编写新加的修改，在<code>vhost</code>中新建<code>SSL.conf</code>写入以下内容：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl;</span><br><span class="line">    server_name staunchkai.com;     <span class="comment"># 填写绑定证书的域名</span></span><br><span class="line">    ssl_certificate /home/SSL/1_bundle.crt;<span class="comment">#这里填写你.pem文件的路径。</span></span><br><span class="line">    ssl_certificate_key /home/SSL/2_key.key;<span class="comment">#这里填写.key文件的路径。</span></span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;    <span class="comment"># 按照这个协议配置</span></span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;     <span class="comment"># 按照这个套件配置</span></span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line">    location / &#123;</span><br><span class="line">        root /home/www/blog;    <span class="comment"># 站点目录</span></span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>然后用一句代码将<code>SSL.conf</code>链入到<code>nginx.conf</code>。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">include /etc/nginx/vhost/*.conf;</span><br></pre></td></tr></table></figure>
+<p>这里的vhost是我自己创建的用来存放修改的参数，这句话的意思就是，将vhost中所有的配置文件加入进来。所以我的修改，一般都是在这个文件里面添加之后再链入。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200321193156899.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>如果用户使用<code>http协议</code>访问网站，要进行301跳转，以https协议访问，所以要修改原有端口80的监听位置。我是采用链入的方法。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200321194946704.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">return</span> 301 https://daqwt.top<span class="variable">$request_uri</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置完成后，使用 <code>nginx -t</code> 命令检测是否有误，正确无误后，使用 <code>systemctl restart nginx.service</code> 重启 Nignx。再使用带 https 的域名进行访问即可。</li>
+</ul>
+<h2 id="三、站点地图"><a href="#三、站点地图" class="headerlink" title="三、站点地图"></a>三、站点地图</h2><ul>
+<li>站点地图是一种文件，可以通过该文件列出您网站上的网页，从而将网站组织内容，高速其他浏览器。以便更加智能的抓取您的网站。</li>
+<li>安装插件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install hexo-generator-sitemap --save</span><br><span class="line">cnpm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在站点配置文件中添加以下代码：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#自动生成sitemap</span></span><br><span class="line">sitemap: </span><br><span class="line">    path: sitemap.xml</span><br><span class="line">baidusitemap:</span><br><span class="line">    path: baidusitemap.xml</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译博客</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果在<code>public</code>文件夹下发现了<code>sitemap.xml</code>就代表成功了。</li>
+</ul>
+<h2 id="四、谷歌收录"><a href="#四、谷歌收录" class="headerlink" title="四、谷歌收录"></a>四、谷歌收录</h2><ul>
+<li>注册<a href="https://search.google.com/search-console">google站长工具</a></li>
+<li>验证通过后，点击抓取–&gt;站点地图–&gt;添加新的站点题图–&gt;填入<code>https://daqwt.top/sitemap.xml</code>,很快谷歌就会收录。</li>
+</ul>
+<h2 id="五、百度收录"><a href="#五、百度收录" class="headerlink" title="五、百度收录"></a>五、百度收录</h2><ul>
+<li>注册<a href="https://ziyuan.baidu.com/">百度站长统计</a></li>
+<li>登录之后，找到用户中心，添加站点，按照提示完成验证，推荐使用<code>CNAME</code>验证。</li>
+<li>完成之后进入站点管理，找到网页抓取的<code>链接提交图</code>，点击详情</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Hexo建站系列</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -4612,101 +4710,27 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </tags>
   </entry>
   <entry>
-    <title>建站系列之---网站安全配置</title>
-    <url>/hexo/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;建站并没有那么容易，搭建起来之后，还要考虑各种问题，例如网站安全，加载速度，资源压缩，用户体验之类的，虽然只是一个静态网站，但是能够做好一点也是挺不错的。</p>
+    <title>操作系统---文件系统</title>
+    <url>/2892727560/</url>
+    <content><![CDATA[<p>正在更新中。。。。</p>
 <a id="more"></a>
-
-
-<h2 id="一、添加备案号"><a href="#一、添加备案号" class="headerlink" title="一、添加备案号"></a>一、添加备案号</h2><ul>
-<li>我是在阿里云APP上备案成功的，等的时间也不长，六天左右，最后短信收到了工信局发来的备案号，需要把这个备案号添加在网站底部，并且指向工信局官网。</li>
-<li>找到<code>F:\blog\themes\next\layout\_partials</code>下的<code>footer.swig</code>文件，添加如下代码：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="string">"http://www.beian.miit.gov.cn/"</span>&gt;备案号&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20200321110819179.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="二、安装SSL证书"><a href="#二、安装SSL证书" class="headerlink" title="二、安装SSL证书"></a>二、安装SSL证书</h2><p>① <strong>购买证书：</strong> 阿里云提供的免费证书服务，购买页面：<a href="https://common-buy.aliyun.com/?spm=5176.2020520163.cas.2.15a156a7lzZrki&commodityCode=cas#/buy">阿里云ssl证书购买</a>选择免费的。足够个人博客用了。购买好了之后，按步骤申请验证</p>
-<p><img src="https://img-blog.csdnimg.cn/20200321184319504.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>②  <strong>下载证书：</strong> 进入阿里云证书控制台，选择下载证书<code>for nginx</code> ，下载好之后可以看到有两个文件夹，分别是：<code>.key</code>和<code>.pem</code>文件。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200321184329138.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>③<strong>安装证书：</strong></p>
-<ul>
-<li><p>服务器放置证书：创建目录:  <code>/etc/nginx/cert</code>,用于存放证书文件。我用的软件是<code>finalshell</code>。<br><img src="https://img-blog.csdnimg.cn/20200321185907359.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="常见的文件系统"><a href="#常见的文件系统" class="headerlink" title="常见的文件系统"></a>常见的文件系统</h1><ul>
+<li><p>常见的文件系统有：：FAT、NTFS、ExtFAT、ext2、ext3、reiserFS、VFAT、APFS</p>
 </li>
-<li><p>修改<code>nginx</code>配置，在<code>/etc/nginx/nginx.conf</code>在里面添加443端口，443端口用于https协议。不建议直接修改<code>nginx.conf</code>,可以在<code>nginx</code>目录下新建一个文件夹<code>vhost</code>，里面用来编写新加的修改，在<code>vhost</code>中新建<code>SSL.conf</code>写入以下内容：</p>
+<li><p><strong>FAT:</strong> FAt12、FAT16、FAT32均是Fat文件系统，最初是为软盘设计的文件系统，但是后来随着微软推出dos和win 9x系统，FAT文件系统经过适配被逐渐用到了硬盘上。</p>
+</li>
+<li><p><strong>NTFS：</strong> 对FAT和HPFS作了若干改进，例如，支持元数据，并且使用了高级数据结构，以便于改善性能、可靠性和磁盘空间利用率，并提供了若干附加扩展功能。NTFS是一个<strong>日志文件系统</strong>，这意味着除了向磁盘中写入信息，该文件系统还会为所发生的所有改变保留一份日志。这一功能让NTFS文件系统在发生错误的时候（比如系统崩溃或电源供应中断）更容易恢复，也让这一系统更加强壮。在这些情况下，NTFS能够很快恢复正常，而且不会丢失任何数据。在很少出错情况下，微软表示你需要运行CHKDSK修复程序来对磁盘卷进行维护的概率特别低，其概率不到1%。</p>
+</li>
+<li><p><strong>ExFAT：</strong> 也是微软开发的文件系统，它是专门为闪存盘设计的文件系统，单个文件突破了4G的限制，而且分区的最大容量可达64ZB，建议512TB。 ExFAT在windows，Linux以及Mac系统上，都可以读写，<strong>作为U盘或者是移动硬盘的格式还是比较合适的。</strong></p>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl;</span><br><span class="line">    server_name staunchkai.com;     <span class="comment"># 填写绑定证书的域名</span></span><br><span class="line">    ssl_certificate /home/SSL/1_bundle.crt;<span class="comment">#这里填写你.pem文件的路径。</span></span><br><span class="line">    ssl_certificate_key /home/SSL/2_key.key;<span class="comment">#这里填写.key文件的路径。</span></span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;    <span class="comment"># 按照这个协议配置</span></span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;     <span class="comment"># 按照这个套件配置</span></span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line">    location / &#123;</span><br><span class="line">        root /home/www/blog;    <span class="comment"># 站点目录</span></span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>然后用一句代码将<code>SSL.conf</code>链入到<code>nginx.conf</code>。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">include /etc/nginx/vhost/*.conf;</span><br></pre></td></tr></table></figure>
-<p>这里的vhost是我自己创建的用来存放修改的参数，这句话的意思就是，将vhost中所有的配置文件加入进来。所以我的修改，一般都是在这个文件里面添加之后再链入。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200321193156899.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>如果用户使用<code>http协议</code>访问网站，要进行301跳转，以https协议访问，所以要修改原有端口80的监听位置。我是采用链入的方法。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200321194946704.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">return</span> 301 https://daqwt.top<span class="variable">$request_uri</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>配置完成后，使用 <code>nginx -t</code> 命令检测是否有误，正确无误后，使用 <code>systemctl restart nginx.service</code> 重启 Nignx。再使用带 https 的域名进行访问即可。</li>
-</ul>
-<h2 id="三、站点地图"><a href="#三、站点地图" class="headerlink" title="三、站点地图"></a>三、站点地图</h2><ul>
-<li>站点地图是一种文件，可以通过该文件列出您网站上的网页，从而将网站组织内容，高速其他浏览器。以便更加智能的抓取您的网站。</li>
-<li>安装插件</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install hexo-generator-sitemap --save</span><br><span class="line">cnpm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在站点配置文件中添加以下代码：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#自动生成sitemap</span></span><br><span class="line">sitemap: </span><br><span class="line">    path: sitemap.xml</span><br><span class="line">baidusitemap:</span><br><span class="line">    path: baidusitemap.xml</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>编译博客</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果在<code>public</code>文件夹下发现了<code>sitemap.xml</code>就代表成功了。</li>
-</ul>
-<h2 id="四、谷歌收录"><a href="#四、谷歌收录" class="headerlink" title="四、谷歌收录"></a>四、谷歌收录</h2><ul>
-<li>注册<a href="https://search.google.com/search-console">google站长工具</a></li>
-<li>验证通过后，点击抓取–&gt;站点地图–&gt;添加新的站点题图–&gt;填入<code>https://daqwt.top/sitemap.xml</code>,很快谷歌就会收录。</li>
-</ul>
-<h2 id="五、百度收录"><a href="#五、百度收录" class="headerlink" title="五、百度收录"></a>五、百度收录</h2><ul>
-<li>注册<a href="https://ziyuan.baidu.com/">百度站长统计</a></li>
-<li>登录之后，找到用户中心，添加站点，按照提示完成验证，推荐使用<code>CNAME</code>验证。</li>
-<li>完成之后进入站点管理，找到网页抓取的<code>链接提交图</code>，点击详情</li>
-</ul>
+<h1 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h1><p><strong>EFI 系统分区：</strong> 通常指数据存储介质中的一个分区，通常用于硬盘或固态硬盘。它通常应用于 Unified Extensible Firmware Interface (UEFI)。当电脑通电启动时，UEFI会读取ESP 用来安装操作系统和各种实用工具。ESP需要格式化成FAT文件系统并且挂载至UEFI指定的位置。<br><strong>UEFI：</strong> <strong>统一可扩展固件接口</strong>（Unified Extensible Firmware Interface）是一种个人<strong>电脑系统规格</strong>，用来定义操作系统与系统固件之间的软件界面，作为BIOS的替代方案。可扩展固件接口负责加电自检（POST）、联系操作系统以及提供连接操作系统与硬件的接口。</p>
 ]]></content>
       <categories>
-        <category>Hexo建站系列</category>
+        <category>计算机操作系统</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>比特币的价格是怎么算出来的</title>
-    <url>/2526071924/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-<h2 id="首先了解一下拍卖"><a href="#首先了解一下拍卖" class="headerlink" title="首先了解一下拍卖"></a>首先了解一下拍卖</h2><ul>
-<li><strong>英式拍卖：</strong> 如果拍卖方（卖方）要卖一个商品，那么买方则通过集体竞价的方式进行拍卖，价高者得，最后和卖方成交的一定只有一个买家，而这个买家一定是出价最高的那位。</li>
-<li><strong>荷兰式拍卖：</strong> 假如有一个买家想要买一个商品，但是卖方有很多，那么卖方递减报出新的价位，最终和买方成交的一定是卖价最低的那位。</li>
-</ul>
-<h2 id="实际定价方式"><a href="#实际定价方式" class="headerlink" title="实际定价方式"></a>实际定价方式</h2><p>在交易所看到的一排排红色的数字和一排排绿色的数字其实就是许多的买方和许多的卖方不断报出的<strong>买进价</strong>和<strong>卖出价</strong>，价格随供求变化而不断变动。买者和卖者彼此竞争，<strong>双向拍卖</strong>，买者对想要买进的出价，通过竞争以最低价买入;卖者也互相竞争，试图以最高价格出售，然而最新成交价一定是买卖双方达成一致的那个价格。买卖双方不断成交，最新一笔的成交价就是我们看到的不断变化的价格，这就是为什么价格在一直变化的原因。报价后面的数量，即代表当前的买方或者卖方想要购买或者卖出的币的数量。买卖一旦成交，则不得反悔。在未成交以前，也可以撤单，撤单程序与买卖委托的过程基本相同。</p>
-<h2 id="限价，市价，止盈止损"><a href="#限价，市价，止盈止损" class="headerlink" title="限价，市价，止盈止损"></a>限价，市价，止盈止损</h2><ul>
-<li>限价：是<strong>自己设定</strong>价格进行挂单，需价格波动到设定价格并有对手愿意交易才可以成交。</li>
-<li>市价：市价是以<strong>当前最新</strong>成交价挂单，一般马上成交。</li>
-<li>止盈止损：止盈止损即是<strong>带有预期</strong>的未来买入或者卖出行为，比如当价格跌破某一价位时进行止损（你预期跌破此价格可能还会继续跌），或者当价格突破某一价位时进行买入（你预期价格一旦突破该价位时将会继续上涨）。</li>
-</ul>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>如果你是买方，想要<strong>尽快</strong>购入比特币，当然是设置买入价格与当前最低卖出价格一致，这样双方就可以达成交易了，想要尽快卖出比特币，那就设置卖出价格与当前最高买入价格一致。但是市场上的人并不是都急切的想要卖出或者买入，会带有预期的进行买入卖出报价。</p>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
+        <tag>OS</tag>
       </tags>
   </entry>
   <entry>
@@ -4729,30 +4753,6 @@ key</code>，选择<code>Allow write access</code>（允许推送），这样方
       </categories>
       <tags>
         <tag>设计模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>操作系统---文件系统</title>
-    <url>/2892727560/</url>
-    <content><![CDATA[<p>正在更新中。。。。</p>
-<a id="more"></a>
-<h1 id="常见的文件系统"><a href="#常见的文件系统" class="headerlink" title="常见的文件系统"></a>常见的文件系统</h1><ul>
-<li><p>常见的文件系统有：：FAT、NTFS、ExtFAT、ext2、ext3、reiserFS、VFAT、APFS</p>
-</li>
-<li><p><strong>FAT:</strong> FAt12、FAT16、FAT32均是Fat文件系统，最初是为软盘设计的文件系统，但是后来随着微软推出dos和win 9x系统，FAT文件系统经过适配被逐渐用到了硬盘上。</p>
-</li>
-<li><p><strong>NTFS：</strong> 对FAT和HPFS作了若干改进，例如，支持元数据，并且使用了高级数据结构，以便于改善性能、可靠性和磁盘空间利用率，并提供了若干附加扩展功能。NTFS是一个<strong>日志文件系统</strong>，这意味着除了向磁盘中写入信息，该文件系统还会为所发生的所有改变保留一份日志。这一功能让NTFS文件系统在发生错误的时候（比如系统崩溃或电源供应中断）更容易恢复，也让这一系统更加强壮。在这些情况下，NTFS能够很快恢复正常，而且不会丢失任何数据。在很少出错情况下，微软表示你需要运行CHKDSK修复程序来对磁盘卷进行维护的概率特别低，其概率不到1%。</p>
-</li>
-<li><p><strong>ExFAT：</strong> 也是微软开发的文件系统，它是专门为闪存盘设计的文件系统，单个文件突破了4G的限制，而且分区的最大容量可达64ZB，建议512TB。 ExFAT在windows，Linux以及Mac系统上，都可以读写，<strong>作为U盘或者是移动硬盘的格式还是比较合适的。</strong></p>
-</li>
-</ul>
-<h1 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h1><p><strong>EFI 系统分区：</strong> 通常指数据存储介质中的一个分区，通常用于硬盘或固态硬盘。它通常应用于 Unified Extensible Firmware Interface (UEFI)。当电脑通电启动时，UEFI会读取ESP 用来安装操作系统和各种实用工具。ESP需要格式化成FAT文件系统并且挂载至UEFI指定的位置。<br><strong>UEFI：</strong> <strong>统一可扩展固件接口</strong>（Unified Extensible Firmware Interface）是一种个人<strong>电脑系统规格</strong>，用来定义操作系统与系统固件之间的软件界面，作为BIOS的替代方案。可扩展固件接口负责加电自检（POST）、联系操作系统以及提供连接操作系统与硬件的接口。</p>
-]]></content>
-      <categories>
-        <category>计算机操作系统</category>
-      </categories>
-      <tags>
-        <tag>OS</tag>
       </tags>
   </entry>
 </search>
