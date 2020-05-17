@@ -217,6 +217,99 @@
        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
             
+                <a class="has-link-black-ter" href="/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/">类的加载过程</a>
+            
+        </h1>
+         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-17T02:53:44.000Z">2020-04-17</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98/">每天一道面试题</a>
+                </div>
+                
+                                                            
+                <span class="level-item has-text-grey">                    
+                    
+                    
+                    6 分钟 读完 (大约 897 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <h2 id="Java内存分析"><a href="#Java内存分析" class="headerlink" title="Java内存分析"></a>Java内存分析</h2><p><img src="https://img-blog.csdnimg.cn/20200516134009962.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h2><p><img src="https://img-blog.csdnimg.cn/20200516134537454.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>加载：</strong> 将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区的运行时数据结构，<strong>并通过反射生成一个代表这个类的Class对象</strong>。</li>
+<li><strong>链接：</strong> 将java类的二进制代码合并到JVM的运行状态之中</li>
+</ul>
+<ol>
+<li>验证：确保加载的类信息符合jvm规范，没有安全方面的问题。</li>
+<li>准备：正式为类变量（static）分配内存并设置类变量默认初始值的，这些内存都将在方法区中进行分配。</li>
+<li>解析：虚拟机常量池内的符号引用（常量名）替换为直接引用（地址）的过程。</li>
+</ol>
+<ul>
+<li><strong>初始化：</strong></li>
+</ul>
+<ol>
+<li>执行类构造器<code>&lt;clinit&gt;()</code>方法的过程,类构造器<code>&lt;clinit&gt;()</code>方法是由编译器自动收集类中所有类变量的赋值动作和静态代码块中的语句合并产生的。（<strong>类构造器是构造类信息的，不是构造该对象的构造器</strong>）</li>
+<li>当初始化一个类的时候，如果发现其父类还没有进行初始化，则需要先触发其父类的初始化。</li>
+<li>虚拟机会保证一个类的<code>&lt;clinit&gt;()</code>方法在多线程环境中被正确加锁和同步</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20200516142155751.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><ul>
+<li>类加载器有哪些？</li>
+</ul>
+<ol>
+<li><strong>引导类加载器</strong>：C++编写，是JVM自带的类加载器，负责加载java平台核心库<code>rt.jar</code>,<strong>该加载器无法直接获取</strong>。</li>
+<li><strong>扩展类加载器（EXT）</strong>：负责<code>jre/lib/ext</code>目录下的jar包，以及我们引进的jar包。</li>
+<li><strong>系统类加载器（APP）</strong>： 负责<code>java-classpath</code>或<code>java.class.path</code>所指的目录下的类与jar包装入，是最常用的加载器。</li>
+</ol>
+<ul>
+<li>获取：<code>类.getClassLoader();</code></li>
+<li>作用：将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区的运行时数据结构，然后在堆中生成一个代表这个类的class对象，作为方法中类访问数据的入口。</li>
+<li>类缓存：标准的JavaSE类加载器可以按要求查找类，但一旦某个类被加载到类加载器中，它将维持加载（缓存）一段时间，不过JVM垃圾回收机制可以回收这些class对象<br><img src="https://img-blog.csdnimg.cn/20200516144741630.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+<h2 id="类的初始化"><a href="#类的初始化" class="headerlink" title="类的初始化"></a>类的初始化</h2><ul>
+<li>类的主动引用（<strong>一定会发生类的初始化</strong>）</li>
+</ul>
+<ol>
+<li>虚拟机启动，先初始化main方法所在的类。</li>
+<li>new一个类的对象</li>
+<li>调用类的静态成员和静态方法。</li>
+<li>使用反射调用</li>
+<li>初始化一个类，要先初始化其父类。</li>
+</ol>
+<ul>
+<li>类的被动引用（<strong>不会发生类的初始化</strong>）</li>
+</ul>
+
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+       
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
+            
                 <a class="has-link-black-ter" href="/2774241439/">try-catch-finally总结</a>
             
         </h1>
@@ -529,7 +622,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            67
+                            69
                         </p>
                     </a>
                 </div>
@@ -672,10 +765,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-19T13:25:07.000Z">2020-04-19</time></div>
-                    <a href="/%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">创建型---简单工厂模式</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-19T13:37:10.000Z">2020-04-19</time></div>
+                    <a href="/%E6%B3%A8%E8%A7%A3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">JavaSE---注解</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+                        <a class="has-link-grey -link" href="/categories/JavaSE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">JavaSE基础知识</a>
                     </p>
                 </div>
             </div>
@@ -715,7 +808,7 @@
                 <span class="level-item">JavaSE基础知识</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/git-github/">
@@ -755,7 +848,7 @@
                 <span class="level-item">每天一道面试题</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
