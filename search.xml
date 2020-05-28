@@ -1,52 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>操作系统---CPU调度</title>
-    <url>/789539749/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计算机的三大核心部件：CPU，存储器，I/O设备，其中CPU作为操作系统的运算和控制核心，是信息处理、程序运行的最终执行单元，起到了大脑的作用。CPU又包括两部分：控制器、运算器。众所周知，在某一个时间段，CPU只能被一个进程占用，这篇文章就认识一下CPU的调度策略。</p>
-<a id="more"></a>
-<h2 id="小概念"><a href="#小概念" class="headerlink" title="小概念"></a>小概念</h2><ul>
-<li>我们所做的多进程，多线程，多道程序设计，批处理等等一些操作的目的就是为了最大化cpu的利用率。</li>
-<li>用一会cpu，等待一会IO，循环往复，交替执行（通过IO获得数据，再通过CPU对数据进行处理，在通过IO将结果输出）</li>
-<li>通过考虑CPU和IO的占用，我们还可以将进程划分为两大类：<br>①：CPU绑定进程（对CPU使用的比较多，很少量的时间使用IO）<br>②：IO绑定进程（与之相反）</li>
-<li>调度：队列里面有好多个进程，选择哪一个去运行，决定下一个是谁。<br>①抢占式：（被动的）<br>②非抢占式：（自愿让出CPU）</li>
-<li>CPU的利用率：占了百分之多少，越多越好。</li>
-<li>吞吐率：单位时间内完成了多少进程。越多，效率越高。</li>
-<li>周转时间：一个进程从创建到结束，一共用了多少时间。</li>
-<li>等待时间：一个进程在等待状态多长时间，这个时间越短越好。</li>
-<li>响应时间：正在等待的进程，对已经发生的事件，的响应速度，越快越好。</li>
-</ul>
-<h2 id="调度策略"><a href="#调度策略" class="headerlink" title="调度策略"></a>调度策略</h2><ul>
-<li>但是看得不是单个进程的性能指标，看得是所有进程加在一起，算出来的平均周转时间，平均等待时间，平均响应时间。才能看出调度能力。</li>
-<li><strong>最短作业优先（SJF）</strong> ：谁运行时间最短谁来使用CPU。</li>
-<li><strong>最短剩余时间优先：</strong> 不看他以前运行了多久，只看他剩下多少时间。</li>
-<li>上面这两种调度策略是在已知需要在CPU上运行多少时间的情况，但是这个运行时间未知呢？调度最有效的依据是进程将来在CPU上消耗的时间，并期望用时最短的进程最优先执行。</li>
-<li><strong>预测未来：</strong> 基于统计过去这个进程对CPU的使用情况来 预测。根据统计IO的时间多，还是使用CPU的时间多。</li>
-<li><strong>先来先服务（FCFS）</strong> ：谁优先级高运行谁。会导致优先级低的进程饿死。</li>
-<li><strong>时间片轮转算法（Round Robin）</strong> ：广泛采用，给定每个进程一个时间片，用完了就去等待。这个时候就要考虑时间片的设置大小。越合理越好。如果时间片太大，那么他就近似成了一个先来先服务算法。</li>
-<li>将时间片轮转和优先级结合起来：时间片轮转就在就绪队列里选择优先级高的进程先运行。</li>
-<li><strong>多级队列（Multilevel  Queue）</strong> ：把整个系统所有的进程放在好多个队列中，这个队列里面的进程优先级是一样的，调度的时候，就按着这个队列找。<br>①系统级队列（最高优先级）：系统进程要应对很关键的问题，它负责系统的中断处理的。（中断指令一定要及时响应，否则下一个中断进来了，就会丢失一个中断）<br>② 交互式的进程：属于IO绑定的进程，很少使用CPU，随时给用户一个反馈。响应速度必须得快。<br>③批处理进程：频繁使用CPU的进程。</li>
-<li><strong>多级反馈队列（普遍采用）：</strong> 根据这个进程以前的行为的统计来预测以后怎么处置他，这个预测就是由反馈实现的。<br>①反馈怎么实现？：新来的进程首先设置他的优先级为最高，来根据他的行为，表现，来确定他的优先级，降级。<br>②只要长时间使用了CPU，就把你优先级降低，只要你做过一次IO操作，就把你优先级提一级，形成一个<strong>动态的变换</strong>。</li>
-</ul>
-<h2 id="多CPU调度"><a href="#多CPU调度" class="headerlink" title="多CPU调度"></a>多CPU调度</h2><ul>
-<li>多核，重核。每一个内核在任意时刻只能运行一个进程。未来可能会出现128核，实际上，会有备用的核，因为出厂的时候，也许会有坏核，备用核就顶上。</li>
-<li>特别之处：调度问题的复杂度增加了，如何去做负载均衡（比如说一个CPU太忙，一个CPU太闲,那这样多核就没有意义了）。</li>
-<li>同构（CPU完全一样的）<br>①非对称式的多处理器管理（现阶段用不到）：（每个内核的作用是不同的）让一个内核只运行操作系统，其他的内核只运行应用程序。好处：对操作系统简单多了，只用管理自己的内核。<br>②对称式的多处理器管理：所有的处理机都是完全平等的，每个内核既运行操作系统，也运行应用程序，完全由繁忙程度来决定。每一个处理器都有私有的队列。</li>
-<li>异构（CPU有不同之处，特别复杂，基本上用不到）</li>
-<li>负载均衡：通过迁移进程来实现，会产生cache刷新，但是利大于弊。</li>
-</ul>
-<h2 id="操作系统是如何实现多级反馈的"><a href="#操作系统是如何实现多级反馈的" class="headerlink" title="操作系统是如何实现多级反馈的"></a>操作系统是如何实现多级反馈的</h2><ul>
-<li>太难了，不想了解！！！</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机操作系统</category>
-      </categories>
-      <tags>
-        <tag>OS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>DBUtils学习笔记</title>
     <url>/2524199830/</url>
     <content><![CDATA[<p>DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源工具类库，使用它能够简化JDBC应用程序的开发，同时也不会影响程序的性能。并且简化了增删改查的操作。</p>
@@ -92,6 +46,52 @@
       </categories>
       <tags>
         <tag>MySql,DBUtils</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统---CPU调度</title>
+    <url>/789539749/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计算机的三大核心部件：CPU，存储器，I/O设备，其中CPU作为操作系统的运算和控制核心，是信息处理、程序运行的最终执行单元，起到了大脑的作用。CPU又包括两部分：控制器、运算器。众所周知，在某一个时间段，CPU只能被一个进程占用，这篇文章就认识一下CPU的调度策略。</p>
+<a id="more"></a>
+<h2 id="小概念"><a href="#小概念" class="headerlink" title="小概念"></a>小概念</h2><ul>
+<li>我们所做的多进程，多线程，多道程序设计，批处理等等一些操作的目的就是为了最大化cpu的利用率。</li>
+<li>用一会cpu，等待一会IO，循环往复，交替执行（通过IO获得数据，再通过CPU对数据进行处理，在通过IO将结果输出）</li>
+<li>通过考虑CPU和IO的占用，我们还可以将进程划分为两大类：<br>①：CPU绑定进程（对CPU使用的比较多，很少量的时间使用IO）<br>②：IO绑定进程（与之相反）</li>
+<li>调度：队列里面有好多个进程，选择哪一个去运行，决定下一个是谁。<br>①抢占式：（被动的）<br>②非抢占式：（自愿让出CPU）</li>
+<li>CPU的利用率：占了百分之多少，越多越好。</li>
+<li>吞吐率：单位时间内完成了多少进程。越多，效率越高。</li>
+<li>周转时间：一个进程从创建到结束，一共用了多少时间。</li>
+<li>等待时间：一个进程在等待状态多长时间，这个时间越短越好。</li>
+<li>响应时间：正在等待的进程，对已经发生的事件，的响应速度，越快越好。</li>
+</ul>
+<h2 id="调度策略"><a href="#调度策略" class="headerlink" title="调度策略"></a>调度策略</h2><ul>
+<li>但是看得不是单个进程的性能指标，看得是所有进程加在一起，算出来的平均周转时间，平均等待时间，平均响应时间。才能看出调度能力。</li>
+<li><strong>最短作业优先（SJF）</strong> ：谁运行时间最短谁来使用CPU。</li>
+<li><strong>最短剩余时间优先：</strong> 不看他以前运行了多久，只看他剩下多少时间。</li>
+<li>上面这两种调度策略是在已知需要在CPU上运行多少时间的情况，但是这个运行时间未知呢？调度最有效的依据是进程将来在CPU上消耗的时间，并期望用时最短的进程最优先执行。</li>
+<li><strong>预测未来：</strong> 基于统计过去这个进程对CPU的使用情况来 预测。根据统计IO的时间多，还是使用CPU的时间多。</li>
+<li><strong>先来先服务（FCFS）</strong> ：谁优先级高运行谁。会导致优先级低的进程饿死。</li>
+<li><strong>时间片轮转算法（Round Robin）</strong> ：广泛采用，给定每个进程一个时间片，用完了就去等待。这个时候就要考虑时间片的设置大小。越合理越好。如果时间片太大，那么他就近似成了一个先来先服务算法。</li>
+<li>将时间片轮转和优先级结合起来：时间片轮转就在就绪队列里选择优先级高的进程先运行。</li>
+<li><strong>多级队列（Multilevel  Queue）</strong> ：把整个系统所有的进程放在好多个队列中，这个队列里面的进程优先级是一样的，调度的时候，就按着这个队列找。<br>①系统级队列（最高优先级）：系统进程要应对很关键的问题，它负责系统的中断处理的。（中断指令一定要及时响应，否则下一个中断进来了，就会丢失一个中断）<br>② 交互式的进程：属于IO绑定的进程，很少使用CPU，随时给用户一个反馈。响应速度必须得快。<br>③批处理进程：频繁使用CPU的进程。</li>
+<li><strong>多级反馈队列（普遍采用）：</strong> 根据这个进程以前的行为的统计来预测以后怎么处置他，这个预测就是由反馈实现的。<br>①反馈怎么实现？：新来的进程首先设置他的优先级为最高，来根据他的行为，表现，来确定他的优先级，降级。<br>②只要长时间使用了CPU，就把你优先级降低，只要你做过一次IO操作，就把你优先级提一级，形成一个<strong>动态的变换</strong>。</li>
+</ul>
+<h2 id="多CPU调度"><a href="#多CPU调度" class="headerlink" title="多CPU调度"></a>多CPU调度</h2><ul>
+<li>多核，重核。每一个内核在任意时刻只能运行一个进程。未来可能会出现128核，实际上，会有备用的核，因为出厂的时候，也许会有坏核，备用核就顶上。</li>
+<li>特别之处：调度问题的复杂度增加了，如何去做负载均衡（比如说一个CPU太忙，一个CPU太闲,那这样多核就没有意义了）。</li>
+<li>同构（CPU完全一样的）<br>①非对称式的多处理器管理（现阶段用不到）：（每个内核的作用是不同的）让一个内核只运行操作系统，其他的内核只运行应用程序。好处：对操作系统简单多了，只用管理自己的内核。<br>②对称式的多处理器管理：所有的处理机都是完全平等的，每个内核既运行操作系统，也运行应用程序，完全由繁忙程度来决定。每一个处理器都有私有的队列。</li>
+<li>异构（CPU有不同之处，特别复杂，基本上用不到）</li>
+<li>负载均衡：通过迁移进程来实现，会产生cache刷新，但是利大于弊。</li>
+</ul>
+<h2 id="操作系统是如何实现多级反馈的"><a href="#操作系统是如何实现多级反馈的" class="headerlink" title="操作系统是如何实现多级反馈的"></a>操作系统是如何实现多级反馈的</h2><ul>
+<li>太难了，不想了解！！！</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机操作系统</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
       </tags>
   </entry>
   <entry>
@@ -644,6 +644,40 @@
       </tags>
   </entry>
   <entry>
+    <title>Hibernate基础了解</title>
+    <url>/Hibernate%E5%9F%BA%E7%A1%80%E4%BA%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在MVC三层架构中，后台与数据库之间的持久层，我们之前使用JDBC来连接，但是那样效率不高，并且功能单一，所以衍生出轻量级的ORM框架，常用的就有Mybatis，Hibernate。</p>
+<a id="more"></a>
+
+
+<h2 id="何为Hibernate？"><a href="#何为Hibernate？" class="headerlink" title="何为Hibernate？"></a>何为Hibernate？</h2><ul>
+<li><code>Hibernate</code>：一个开源的<code>对象关系映射框架</code>，对<code>JDBC</code>进行了非常轻量级的对象封装，将<code>POJO</code>与数据库表建立映射关系，以实现直接存取<code>java</code>对象。</li>
+</ul>
+<p><strong>注：</strong><code>POJO（Plain Ordinary Java Object）</code>：简单的Java对象，就是普通<code>JavaBeans</code>，是为了避免和<code>EJB</code>混淆所创造的简称。</p>
+<ul>
+<li><code>hibernate</code>是一个全自动的orm框架，可以<strong>自动生成SQL语句，自动执行</strong>，使得Java程序员可以随心所欲的使用对象编程思维来操纵数据库。 可以应用在任何使用JDBC的场合，既：可以在Java的客户端程序使用，也可以在<code>Servlet/JSP的Web应用</code>中使用</li>
+<li>最具革命意义的是，<code>Hibernate</code>可以在应用<code>EJB</code>的JaveEE架构中<code>取代CMP</code>，完成数据持久化的重任。</li>
+</ul>
+<p><strong>注：</strong><code>ORM（Object Relational Mapping）</code>框架采用元数据来描述对象与关系映射的细节，元数据一般采用<code>XML</code>格式，并且存放在专门的对象映射文件中。</p>
+<h2 id="为什么要使用Hibernate？"><a href="#为什么要使用Hibernate？" class="headerlink" title="为什么要使用Hibernate？"></a>为什么要使用Hibernate？</h2><p> <code>Hibernate</code>是关于java对象与数据库之间的联系，也就是<code>MVC</code>中的<strong>数据持久层</strong>，也就是<code>DAO</code>层。</p>
+<ul>
+<li>正常步骤：<br>①在<code>DAO</code>层操作<code>xml</code>，数据封装在<code>xml</code>上，读写<code>xml</code>文件来实现<code>CRUD</code>。<br>②<code>DAO</code>层使用原生<code>JDBC</code>连接数据库<br>③<code>JDBC</code>代码冗余，使用封装后的<code>JDBC</code>—》<code>DBUtils</code>来简化CRUD。</li>
+<li><code>DBUtils</code>的规律：<br>①插入数据时，将<code>javaBean</code>对象拆分，拼装成<code>SQL</code>语句。<br>②数据查询时，用<code>SQL</code>语句把数据库中的列组合，拼装成<code>javaBean</code>对象。</li>
+<li>使用<code>Hibernate</code>：<br>①根据<code>javaBean</code>对象和数据表中的列之间的映射关系，自动生成<code>SQL</code>语句。</li>
+</ul>
+<h2 id="Hibernate的优缺点"><a href="#Hibernate的优缺点" class="headerlink" title="Hibernate的优缺点"></a>Hibernate的优缺点</h2><ul>
+<li><strong>优点：</strong><br>①<code>Hibernate</code>直接提供相关支持，底层驱动可以随意切换数据库，快速简洁。<br>②使业务层与具体数据库分开，只针对Hibernate 进行开发，完成数据和对象的持久化。并且可以针对不同的数据库形成不同的SQL 查询语句，降低数据库之间迁移的成本。<br>③<code>Hibernate</code>支持多种缓存机制，可以适配多种数据库。<br>④非侵入式：<code>Hibernate</code>不要求持久化类实现任何接口或继承任何类，<code>POJO</code>即可。</li>
+<li><strong>缺点：</strong><br>①无法对<code>SQL</code>进行优化。虽然有<code>HQL</code>但性能还是很差。<br>②框架中遵循<code>ORM</code>原则，大型项目表多的话，会导致配置文件过于复杂，性能和维护问题就令人头疼。<br>③执行效率不高，比原生的<code>JDBC</code>差，尤其是在批量处理数据的时候。这也是<code>ORM</code>框架的弱点。<br>④不支持批量修改，删除。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>MyBatis+Hibernate</category>
+      </categories>
+      <tags>
+        <tag>Hibernate</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hibernate环境搭建及使用</title>
     <url>/Hibernate%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文记录Hibernate的环境搭建及使用。</p>
@@ -760,40 +794,6 @@
 <li>隔离性（多个事务同时操作，他们之间不会影响）</li>
 <li>持久性（当你提交，数据库里面就生效了）</li>
 </ol>
-]]></content>
-      <categories>
-        <category>MyBatis+Hibernate</category>
-      </categories>
-      <tags>
-        <tag>Hibernate</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hibernate基础了解</title>
-    <url>/Hibernate%E5%9F%BA%E7%A1%80%E4%BA%86%E8%A7%A3/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在MVC三层架构中，后台与数据库之间的持久层，我们之前使用JDBC来连接，但是那样效率不高，并且功能单一，所以衍生出轻量级的ORM框架，常用的就有Mybatis，Hibernate。</p>
-<a id="more"></a>
-
-
-<h2 id="何为Hibernate？"><a href="#何为Hibernate？" class="headerlink" title="何为Hibernate？"></a>何为Hibernate？</h2><ul>
-<li><code>Hibernate</code>：一个开源的<code>对象关系映射框架</code>，对<code>JDBC</code>进行了非常轻量级的对象封装，将<code>POJO</code>与数据库表建立映射关系，以实现直接存取<code>java</code>对象。</li>
-</ul>
-<p><strong>注：</strong><code>POJO（Plain Ordinary Java Object）</code>：简单的Java对象，就是普通<code>JavaBeans</code>，是为了避免和<code>EJB</code>混淆所创造的简称。</p>
-<ul>
-<li><code>hibernate</code>是一个全自动的orm框架，可以<strong>自动生成SQL语句，自动执行</strong>，使得Java程序员可以随心所欲的使用对象编程思维来操纵数据库。 可以应用在任何使用JDBC的场合，既：可以在Java的客户端程序使用，也可以在<code>Servlet/JSP的Web应用</code>中使用</li>
-<li>最具革命意义的是，<code>Hibernate</code>可以在应用<code>EJB</code>的JaveEE架构中<code>取代CMP</code>，完成数据持久化的重任。</li>
-</ul>
-<p><strong>注：</strong><code>ORM（Object Relational Mapping）</code>框架采用元数据来描述对象与关系映射的细节，元数据一般采用<code>XML</code>格式，并且存放在专门的对象映射文件中。</p>
-<h2 id="为什么要使用Hibernate？"><a href="#为什么要使用Hibernate？" class="headerlink" title="为什么要使用Hibernate？"></a>为什么要使用Hibernate？</h2><p> <code>Hibernate</code>是关于java对象与数据库之间的联系，也就是<code>MVC</code>中的<strong>数据持久层</strong>，也就是<code>DAO</code>层。</p>
-<ul>
-<li>正常步骤：<br>①在<code>DAO</code>层操作<code>xml</code>，数据封装在<code>xml</code>上，读写<code>xml</code>文件来实现<code>CRUD</code>。<br>②<code>DAO</code>层使用原生<code>JDBC</code>连接数据库<br>③<code>JDBC</code>代码冗余，使用封装后的<code>JDBC</code>—》<code>DBUtils</code>来简化CRUD。</li>
-<li><code>DBUtils</code>的规律：<br>①插入数据时，将<code>javaBean</code>对象拆分，拼装成<code>SQL</code>语句。<br>②数据查询时，用<code>SQL</code>语句把数据库中的列组合，拼装成<code>javaBean</code>对象。</li>
-<li>使用<code>Hibernate</code>：<br>①根据<code>javaBean</code>对象和数据表中的列之间的映射关系，自动生成<code>SQL</code>语句。</li>
-</ul>
-<h2 id="Hibernate的优缺点"><a href="#Hibernate的优缺点" class="headerlink" title="Hibernate的优缺点"></a>Hibernate的优缺点</h2><ul>
-<li><strong>优点：</strong><br>①<code>Hibernate</code>直接提供相关支持，底层驱动可以随意切换数据库，快速简洁。<br>②使业务层与具体数据库分开，只针对Hibernate 进行开发，完成数据和对象的持久化。并且可以针对不同的数据库形成不同的SQL 查询语句，降低数据库之间迁移的成本。<br>③<code>Hibernate</code>支持多种缓存机制，可以适配多种数据库。<br>④非侵入式：<code>Hibernate</code>不要求持久化类实现任何接口或继承任何类，<code>POJO</code>即可。</li>
-<li><strong>缺点：</strong><br>①无法对<code>SQL</code>进行优化。虽然有<code>HQL</code>但性能还是很差。<br>②框架中遵循<code>ORM</code>原则，大型项目表多的话，会导致配置文件过于复杂，性能和维护问题就令人头疼。<br>③执行效率不高，比原生的<code>JDBC</code>差，尤其是在批量处理数据的时候。这也是<code>ORM</code>框架的弱点。<br>④不支持批量修改，删除。</li>
-</ul>
 ]]></content>
       <categories>
         <category>MyBatis+Hibernate</category>
@@ -1812,6 +1812,43 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </tags>
   </entry>
   <entry>
+    <title>Maven项目的构建和部署</title>
+    <url>/Maven%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%9E%84%E5%BB%BA%E5%92%8C%E9%83%A8%E7%BD%B2/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们可以使用Maven命令，编译，执行，部署，等等，这一篇文章主要讲，maven的一件构建与部署。</p>
+<a id="more"></a>
+
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p><img src="https://img-blog.csdnimg.cn/20200518135620441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="一键构建"><a href="#一键构建" class="headerlink" title="一键构建"></a>一键构建</h2><ol>
+<li>构建：项目从编译–&gt;测试–&gt;运行–&gt;打包–&gt;安装，整个过程都交给<code>maven</code> 进行管理，这个过程称为构建。</li>
+<li>创建一个<code>maven</code>工程之后，在<code>cmd</code>中进入这个工程的本地文件夹下，然后输入一行代码：<code>mvn tomcat：run</code>，运行即可一键构建。</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20200504185147822.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
+<li><code>mvn clean</code>：删除<code>target/</code></li>
+<li><code>mvn compile</code>：编译,会在项目下生成一个<code>targe</code>文件夹。</li>
+<li><code>mvn test</code>：执行test/java 源码包中的所有的<code>Junit</code>测试方法</li>
+<li><code>mvn package</code>：将项目打成<code>war</code>包，会在<code>targe</code>下生成一个<code>war</code>包</li>
+<li><code>mvn install</code>：把项目install到本地仓库，在你<code>mvn</code>仓库中，会发现多出来一个文件夹，具体位置就要看控制台的提示了。</li>
+<li><code>mvn deploy</code> ： 部署，把打包后的文件安装到私服</li>
+</ul>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><ul>
+<li><code>jar</code>包和<code>war</code>包的区别</li>
+</ul>
+<ol>
+<li><code>jar包</code>：<strong>类的归档文件</strong>，我们没用<code>maven</code>之前，都是通过引入别人的<code>jar</code>包，简单来说，就是别人将已经写好的一些类封装起来打成<code>jar</code>包。我们将这些<code>jar</code>包放在lib目录下，可以直接使用这些jar包中的类和属性。</li>
+<li><code>war包</code>： 可以直接运行的web模块，通常用于网站，打成包部署到容器中。war包里面包括编译形成的class文件，依赖的包，配置文件，所有的网站页面，包括html，jsp等等。一个war包可以理解为是一个web项目，里面是项目的所有东西。</li>
+<li><code>区别</code>：<code>war</code>代表了一个Web应用程序，<code>jar</code>是类的归档文件。</li>
+<li>打<code>war</code>适用于产品发布阶段，因为这个时候，不需要做太大改动了，而平时修改项目的时候，每次都要打包，就很不方便，所以在开发阶段，通常将Servlet源文件放到Web应用程序目录的src子目录下，以便和Web资源文件区分。在最终建立WAR文件时，只需要将src目录从Web应用程序目录中移走，就可以打包了。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Git+Maven</category>
+      </categories>
+      <tags>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySql基础操作</title>
     <url>/81592902/</url>
     <content><![CDATA[<p>本文简单介绍了数据库，和一些基本操作。</p>
@@ -1950,43 +1987,6 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </categories>
       <tags>
         <tag>MySql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Maven项目的构建和部署</title>
-    <url>/Maven%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%9E%84%E5%BB%BA%E5%92%8C%E9%83%A8%E7%BD%B2/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们可以使用Maven命令，编译，执行，部署，等等，这一篇文章主要讲，maven的一件构建与部署。</p>
-<a id="more"></a>
-
-<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p><img src="https://img-blog.csdnimg.cn/20200518135620441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="一键构建"><a href="#一键构建" class="headerlink" title="一键构建"></a>一键构建</h2><ol>
-<li>构建：项目从编译–&gt;测试–&gt;运行–&gt;打包–&gt;安装，整个过程都交给<code>maven</code> 进行管理，这个过程称为构建。</li>
-<li>创建一个<code>maven</code>工程之后，在<code>cmd</code>中进入这个工程的本地文件夹下，然后输入一行代码：<code>mvn tomcat：run</code>，运行即可一键构建。</li>
-</ol>
-<p><img src="https://img-blog.csdnimg.cn/20200504185147822.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
-<li><code>mvn clean</code>：删除<code>target/</code></li>
-<li><code>mvn compile</code>：编译,会在项目下生成一个<code>targe</code>文件夹。</li>
-<li><code>mvn test</code>：执行test/java 源码包中的所有的<code>Junit</code>测试方法</li>
-<li><code>mvn package</code>：将项目打成<code>war</code>包，会在<code>targe</code>下生成一个<code>war</code>包</li>
-<li><code>mvn install</code>：把项目install到本地仓库，在你<code>mvn</code>仓库中，会发现多出来一个文件夹，具体位置就要看控制台的提示了。</li>
-<li><code>mvn deploy</code> ： 部署，把打包后的文件安装到私服</li>
-</ul>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><ul>
-<li><code>jar</code>包和<code>war</code>包的区别</li>
-</ul>
-<ol>
-<li><code>jar包</code>：<strong>类的归档文件</strong>，我们没用<code>maven</code>之前，都是通过引入别人的<code>jar</code>包，简单来说，就是别人将已经写好的一些类封装起来打成<code>jar</code>包。我们将这些<code>jar</code>包放在lib目录下，可以直接使用这些jar包中的类和属性。</li>
-<li><code>war包</code>： 可以直接运行的web模块，通常用于网站，打成包部署到容器中。war包里面包括编译形成的class文件，依赖的包，配置文件，所有的网站页面，包括html，jsp等等。一个war包可以理解为是一个web项目，里面是项目的所有东西。</li>
-<li><code>区别</code>：<code>war</code>代表了一个Web应用程序，<code>jar</code>是类的归档文件。</li>
-<li>打<code>war</code>适用于产品发布阶段，因为这个时候，不需要做太大改动了，而平时修改项目的时候，每次都要打包，就很不方便，所以在开发阶段，通常将Servlet源文件放到Web应用程序目录的src子目录下，以便和Web资源文件区分。在最终建立WAR文件时，只需要将src目录从Web应用程序目录中移走，就可以打包了。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Git+Maven</category>
-      </categories>
-      <tags>
-        <tag>Maven</tag>
       </tags>
   </entry>
   <entry>
@@ -2401,72 +2401,6 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </tags>
   </entry>
   <entry>
-    <title>Spring---使用注解自动装配</title>
-    <url>/Spring---%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spring使用注解自动装配</p>
-<a id="more"></a>
-
-
-<h2 id="通过注解，创建bean"><a href="#通过注解，创建bean" class="headerlink" title="通过注解，创建bean"></a>通过注解，创建bean</h2><ul>
-<li><code>applicationContext.xml</code>文件</li>
-</ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;!-- 通过注解，分别创建DAO，Servlice，Controller（控制器：控制网站跳转逻辑servlet） --&gt;</span><br><span class="line">	 &lt;!-- 通过给bean添加某些注解，可以快速将bean添加到ioc容器中 </span><br><span class="line">	 		在某个类上添加任何一个注解都能快速将这个组件加入到ioc容器中</span><br><span class="line">	 		Spring有四个注解：</span><br><span class="line">	 		<span class="meta">@Controller</span>：推荐给控制器层（servlet包下的这些）</span><br><span class="line">	 		<span class="meta">@Servlce</span>：业务逻辑，如：BookService</span><br><span class="line">	 		<span class="meta">@Repository</span>：给数据库层（持久层，dao层）的组件添加这个注解</span><br><span class="line">	 		<span class="meta">@Compontent</span>：给不属于以上几层的添加	 		</span><br><span class="line">	 		Spring底层不会去验证这个注解，各自层加各自的注解，Spring不会		</span><br><span class="line">	 --&gt;</span><br><span class="line">	 &lt;!-- </span><br><span class="line">	 步骤如下：</span><br><span class="line">	 	<span class="number">1</span>.加注解</span><br><span class="line">	 	<span class="number">2</span>.告诉Spring，自动扫描这个注解的组件，依赖context名称空间</span><br><span class="line">	 	<span class="number">3</span>.一定要导入aop包，它支持注解</span><br><span class="line">	 	context:component-scan(自动扫描组件)</span><br><span class="line">	 	base-<span class="keyword">package</span>（扫描指定的基础包，包以及包下的所有注解的类，自动扫描进ioc容器）</span><br><span class="line">	  --&gt;</span><br><span class="line">	  </span><br><span class="line">	  &lt;context:component-scan base-<span class="keyword">package</span>=<span class="string">"com.daq"</span>&gt;</span><br><span class="line">	  &lt;/context:component-scan&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>测试</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IocTest</span> </span>&#123;</span><br><span class="line">	ApplicationContext ioc =</span><br><span class="line">	 <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"applicationContext.xml"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用注解加入到容器中的组件，和使用配置加入到容器中是一样的</span></span><br><span class="line"><span class="number">1</span>.组件的id。默认就是组件的类名的首字母小写</span><br><span class="line"> 	也可以在注解里面自定义：</span><br><span class="line"> 	<span class="meta">@Respority</span>（<span class="string">"bookdaohaha"</span>）,这样获取的时候就要</span><br><span class="line"><span class="number">2</span>.组件的作用域，默认就是单例的。	</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">		Object bean = ioc.getBean(<span class="string">"bookDao"</span>);</span><br><span class="line">		Object bean2 = ioc.getBean(<span class="string">"bookDao"</span>);</span><br><span class="line">		System.out.println(bean==bean2);<span class="comment">//结果为true  </span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>注解并不能干所有的事，比如说，想要把引入的包中的某个类加到容器中，不能在引入的包中加注解，那么这个时候，就要手动配置bean了，所以，注解与bean相结合，就可以把任意的类加入到容器中。</li>
-</ul>
-<h2 id="扫描指定类"><a href="#扫描指定类" class="headerlink" title="扫描指定类"></a>扫描指定类</h2><figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;!-- 使用context: exclude-filter指定扫描包时不包含的类 --&gt;</span><br><span class="line"> &lt;!-- 扫描的时候可以排除一些不要的组件 </span><br><span class="line">	type=<span class="string">"annotation"</span>按照注解进行排除，标注了指定注解的类不要。</span><br><span class="line">		expression=<span class="string">""</span> 注解的全类名</span><br><span class="line">	type=<span class="string">"annotation"</span>按照类进行排除，指定的类不要。</span><br><span class="line">		expression=<span class="string">""</span> 类的全类名</span><br><span class="line"> --&gt;</span><br><span class="line"> &lt;context:component-scan base-<span class="keyword">package</span>=<span class="string">"com.daq"</span>&gt;</span><br><span class="line"> 	&lt;context:exclude-filter type=<span class="string">"annotation"</span> expression=<span class="string">"com.daq.service.BookService"</span>/&gt;</span><br><span class="line"> &lt;/context:component-scan&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;!-- 使用context: include-filter指定扫描包时不包含的类，使用时要禁用默认属性：</span><br><span class="line">	use-<span class="keyword">default</span>-filters=<span class="string">"false"</span></span><br><span class="line">	type=<span class="string">"annotation"</span>按照注解进行排除，标注了指定注解的类不要。</span><br><span class="line"> 		expression=<span class="string">""</span> 注解的全类名</span><br><span class="line"> 	type=<span class="string">"annotation"</span>按照类进行排除，指定的类不要。</span><br><span class="line"> 		expression=<span class="string">""</span> 类的全类名</span><br><span class="line"> 	--&gt;		</span><br><span class="line"> &lt;context:component-scan base-<span class="keyword">package</span>=<span class="string">"com.daq"</span> use-<span class="keyword">default</span>-filters=<span class="string">"false"</span>&gt;</span><br><span class="line">  	&lt;context:include-filter type=<span class="string">"annotation"</span> expression=<span class="string">"com.daq.service.BookService"</span>/&gt;</span><br><span class="line">  &lt;/context:component-scan&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="DL（依赖查找）"><a href="#DL（依赖查找）" class="headerlink" title="DL（依赖查找）"></a>DL（依赖查找）</h2><ul>
-<li>DL已经被抛弃，因为它需要用户自己去使用API进行查找资源和组装对象，具有侵略性。</li>
-</ul>
-<h2 id="DI（依赖注入）"><a href="#DI（依赖注入）" class="headerlink" title="DI（依赖注入）"></a>DI（依赖注入）</h2><ul>
-<li>DI是Spring使用的方式，容器负责组件的安装。</li>
-<li><code>@Autowired</code>注解：Spring会自动为这个属性赋值，一定是去容器中找到这个属性对应的组件。自动注入值只是对引用而言。</li>
-<li><code>@Autowired</code>原理：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> BookService bookService;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>先按照类型去容器中找到对应的组件<br><code>bookService = ioc.getBean(BookService.class);</code><pre><code>①. 找到一个，就直接赋值。
-②. 没找到:抛异常
-③. 找到多个，就按照变量名id继续匹配 ：bookService，bookServiceExt。
-如果没有匹配上，（是因为我们用变量名作为id继续匹配，没有那个变量名，就匹配不上）
-这时候，就要用到`@Qualifier(&quot;&quot;)`指定一个名作为id、</code></pre></li>
-<li>由此发现：<code>@Autowired</code>找得到就装配，找不到就拉到。</li>
-<li><code>@Autowired</code>注解的<strong>require</strong>的属性指定某个属性允许不被设置。这样就不会被强行装上。</li>
-</ol>
-<ul>
-<li>方法上有<code>@Autowired</code>注解那么<br>①这个方法也会在bean创建的时候自动运行。<br>②这个方法上的每一个参数都会自动注入值。</li>
-</ul>
-<h2 id="Autowired和Resource的区别"><a href="#Autowired和Resource的区别" class="headerlink" title="Autowired和Resource的区别"></a>Autowired和Resource的区别</h2><ul>
-<li><p><code>@Autowired</code>,<code>@Resource</code>,<code>@Inject</code>都是自动装配的意思。<br>①<code>@Autowired</code>：最强大，是Spring自己的注解。<br>②<code>@Resource</code>：j2ee，java的标准，功能一般。<br>③<code>@Inject</code>：EJB</p>
-</li>
-<li><p>区别：<br>①<code>@Autowired</code>离开Spring就没法用。<br>②<code>@Resource</code>扩展性强，因为他是java的标准，如果切换成另外一个容器框架，<code>@Resource</code>还是被支持的。</p>
-</li>
-</ul>
-<h2 id="Spring的单元测试"><a href="#Spring的单元测试" class="headerlink" title="Spring的单元测试"></a>Spring的单元测试</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Spring的单元测试</span></span><br><span class="line"><span class="comment"> * 1.导包</span></span><br><span class="line"><span class="comment"> * 2.@ContextConfiguration(locations="")指定Spring配置文件的位置</span></span><br><span class="line"><span class="comment"> * 3.@RunWith指定哪种驱动进行单元测试，默认就是junit</span></span><br><span class="line"><span class="comment"> * 	 @RunWith(SpringJUnit4ClassRunner.class)</span></span><br><span class="line"><span class="comment"> *   使用Spring的单元测试模块来执行了@Test注解的测试方法</span></span><br><span class="line"><span class="comment"> *   以前的@Test注解只是由Junit</span></span><br><span class="line"><span class="comment"> *	 好处：我们不用ioc.getBean()获取组件，直接用Autowired组件，Spring为我们自动装配</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ContextConfiguration</span>(locations=<span class="string">"classpath:applicationContext.xml"</span>)</span><br><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">IocTest</span> </span>&#123;</span><br><span class="line"><span class="comment">//	ApplicationContext ioc = new ClassPathXmlApplicationContext("applicationContext.xml");</span></span><br><span class="line">	</span><br><span class="line">	ApplicationContext ioc;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	BookServlet bookServlet;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test03</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(bookServlet);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="泛型依赖注入"><a href="#泛型依赖注入" class="headerlink" title="泛型依赖注入"></a>泛型依赖注入</h2><ul>
-<li>泛型依赖注入原理</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200421102311681.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>带泛型的父类类型</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//父类的类型：com.atguigu.service.BaseService</span></span><br><span class="line"><span class="comment">//带泛型的父类类型：com.atguigu.service.BaseService&lt;com.atguigu.bean.Book&gt;</span></span><br><span class="line"><span class="comment">//Spring中可以使用带泛型的父类类型来确定这个子类的类型</span></span><br><span class="line">	System.out.println(bookService.getClass().getGenericSuperclass());</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Spring全家桶</category>
-      </categories>
-      <tags>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Spring---bean的创建，赋值，获取</title>
     <url>/Spring---bean%E7%9A%84%E5%88%9B%E5%BB%BA%EF%BC%8C%E8%B5%8B%E5%80%BC%EF%BC%8C%E8%8E%B7%E5%8F%96/</url>
     <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spring中bean的创建，赋值，以及获取。</p>
@@ -2539,6 +2473,72 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;!--引用外部属性文件★依赖context名称空间  --&gt;</span><br><span class="line">	&lt;!-- 数据库连接池作为单实例是最好的；一个项目就一个连接池，连接池里面管理很多连接。连接是直接从连接池中拿 --&gt;</span><br><span class="line">	&lt;!-- 可以让Spring帮我们创建连接池对象，（管理连接池） --&gt;</span><br><span class="line">	&lt;!-- 加载外部配置文件    固定写法  classpath:，表示引用类路径下的一个资源--&gt;</span><br><span class="line">	&lt;context:property-placeholder location=<span class="string">"classpath:dbconfig.properties"</span>/&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- username是Spring的key中的一个关键字；</span><br><span class="line">	为了防止配置文件中的key和spring自己的关键字冲突。我们可以给配置文件中的key加上一个前缀 --&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"dataSource"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.mchange.v2.c3p0.ComboPooledDataSource"</span>&gt;</span><br><span class="line">		&lt;property name="user" value="$&#123;jdbc.username&#125;"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;!-- $&#123;key&#125;动态取出配置文件中某个key对应的值 --&gt;</span><br><span class="line">		&lt;property name="password" value="$&#123;jdbc.password&#125;"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name="jdbcUrl" value="$&#123;jdbc.jdbcUrl&#125;"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name="driverClass" value="$&#123;jdbc.driverClass&#125;"&gt;&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test02</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>&#123;</span><br><span class="line">		<span class="comment">//1、从容器中拿到连接池</span></span><br><span class="line">		<span class="comment">//DataSource bean = (DataSource) ioc.getBean("dataSource");</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2、按照类型获取组件，可以获取到这个类型下的所有实现类子类等等...</span></span><br><span class="line">		DataSource bean = ioc.getBean(DataSource<span class="class">.<span class="keyword">class</span>)</span>;	</span><br><span class="line">		System.out.println(bean.getConnection());</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Spring全家桶</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring---使用注解自动装配</title>
+    <url>/Spring---%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spring使用注解自动装配</p>
+<a id="more"></a>
+
+
+<h2 id="通过注解，创建bean"><a href="#通过注解，创建bean" class="headerlink" title="通过注解，创建bean"></a>通过注解，创建bean</h2><ul>
+<li><code>applicationContext.xml</code>文件</li>
+</ul>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;!-- 通过注解，分别创建DAO，Servlice，Controller（控制器：控制网站跳转逻辑servlet） --&gt;</span><br><span class="line">	 &lt;!-- 通过给bean添加某些注解，可以快速将bean添加到ioc容器中 </span><br><span class="line">	 		在某个类上添加任何一个注解都能快速将这个组件加入到ioc容器中</span><br><span class="line">	 		Spring有四个注解：</span><br><span class="line">	 		<span class="meta">@Controller</span>：推荐给控制器层（servlet包下的这些）</span><br><span class="line">	 		<span class="meta">@Servlce</span>：业务逻辑，如：BookService</span><br><span class="line">	 		<span class="meta">@Repository</span>：给数据库层（持久层，dao层）的组件添加这个注解</span><br><span class="line">	 		<span class="meta">@Compontent</span>：给不属于以上几层的添加	 		</span><br><span class="line">	 		Spring底层不会去验证这个注解，各自层加各自的注解，Spring不会		</span><br><span class="line">	 --&gt;</span><br><span class="line">	 &lt;!-- </span><br><span class="line">	 步骤如下：</span><br><span class="line">	 	<span class="number">1</span>.加注解</span><br><span class="line">	 	<span class="number">2</span>.告诉Spring，自动扫描这个注解的组件，依赖context名称空间</span><br><span class="line">	 	<span class="number">3</span>.一定要导入aop包，它支持注解</span><br><span class="line">	 	context:component-scan(自动扫描组件)</span><br><span class="line">	 	base-<span class="keyword">package</span>（扫描指定的基础包，包以及包下的所有注解的类，自动扫描进ioc容器）</span><br><span class="line">	  --&gt;</span><br><span class="line">	  </span><br><span class="line">	  &lt;context:component-scan base-<span class="keyword">package</span>=<span class="string">"com.daq"</span>&gt;</span><br><span class="line">	  &lt;/context:component-scan&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>测试</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IocTest</span> </span>&#123;</span><br><span class="line">	ApplicationContext ioc =</span><br><span class="line">	 <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"applicationContext.xml"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用注解加入到容器中的组件，和使用配置加入到容器中是一样的</span></span><br><span class="line"><span class="number">1</span>.组件的id。默认就是组件的类名的首字母小写</span><br><span class="line"> 	也可以在注解里面自定义：</span><br><span class="line"> 	<span class="meta">@Respority</span>（<span class="string">"bookdaohaha"</span>）,这样获取的时候就要</span><br><span class="line"><span class="number">2</span>.组件的作用域，默认就是单例的。	</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">		Object bean = ioc.getBean(<span class="string">"bookDao"</span>);</span><br><span class="line">		Object bean2 = ioc.getBean(<span class="string">"bookDao"</span>);</span><br><span class="line">		System.out.println(bean==bean2);<span class="comment">//结果为true  </span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注解并不能干所有的事，比如说，想要把引入的包中的某个类加到容器中，不能在引入的包中加注解，那么这个时候，就要手动配置bean了，所以，注解与bean相结合，就可以把任意的类加入到容器中。</li>
+</ul>
+<h2 id="扫描指定类"><a href="#扫描指定类" class="headerlink" title="扫描指定类"></a>扫描指定类</h2><figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;!-- 使用context: exclude-filter指定扫描包时不包含的类 --&gt;</span><br><span class="line"> &lt;!-- 扫描的时候可以排除一些不要的组件 </span><br><span class="line">	type=<span class="string">"annotation"</span>按照注解进行排除，标注了指定注解的类不要。</span><br><span class="line">		expression=<span class="string">""</span> 注解的全类名</span><br><span class="line">	type=<span class="string">"annotation"</span>按照类进行排除，指定的类不要。</span><br><span class="line">		expression=<span class="string">""</span> 类的全类名</span><br><span class="line"> --&gt;</span><br><span class="line"> &lt;context:component-scan base-<span class="keyword">package</span>=<span class="string">"com.daq"</span>&gt;</span><br><span class="line"> 	&lt;context:exclude-filter type=<span class="string">"annotation"</span> expression=<span class="string">"com.daq.service.BookService"</span>/&gt;</span><br><span class="line"> &lt;/context:component-scan&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;!-- 使用context: include-filter指定扫描包时不包含的类，使用时要禁用默认属性：</span><br><span class="line">	use-<span class="keyword">default</span>-filters=<span class="string">"false"</span></span><br><span class="line">	type=<span class="string">"annotation"</span>按照注解进行排除，标注了指定注解的类不要。</span><br><span class="line"> 		expression=<span class="string">""</span> 注解的全类名</span><br><span class="line"> 	type=<span class="string">"annotation"</span>按照类进行排除，指定的类不要。</span><br><span class="line"> 		expression=<span class="string">""</span> 类的全类名</span><br><span class="line"> 	--&gt;		</span><br><span class="line"> &lt;context:component-scan base-<span class="keyword">package</span>=<span class="string">"com.daq"</span> use-<span class="keyword">default</span>-filters=<span class="string">"false"</span>&gt;</span><br><span class="line">  	&lt;context:include-filter type=<span class="string">"annotation"</span> expression=<span class="string">"com.daq.service.BookService"</span>/&gt;</span><br><span class="line">  &lt;/context:component-scan&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="DL（依赖查找）"><a href="#DL（依赖查找）" class="headerlink" title="DL（依赖查找）"></a>DL（依赖查找）</h2><ul>
+<li>DL已经被抛弃，因为它需要用户自己去使用API进行查找资源和组装对象，具有侵略性。</li>
+</ul>
+<h2 id="DI（依赖注入）"><a href="#DI（依赖注入）" class="headerlink" title="DI（依赖注入）"></a>DI（依赖注入）</h2><ul>
+<li>DI是Spring使用的方式，容器负责组件的安装。</li>
+<li><code>@Autowired</code>注解：Spring会自动为这个属性赋值，一定是去容器中找到这个属性对应的组件。自动注入值只是对引用而言。</li>
+<li><code>@Autowired</code>原理：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> BookService bookService;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>先按照类型去容器中找到对应的组件<br><code>bookService = ioc.getBean(BookService.class);</code><pre><code>①. 找到一个，就直接赋值。
+②. 没找到:抛异常
+③. 找到多个，就按照变量名id继续匹配 ：bookService，bookServiceExt。
+如果没有匹配上，（是因为我们用变量名作为id继续匹配，没有那个变量名，就匹配不上）
+这时候，就要用到`@Qualifier(&quot;&quot;)`指定一个名作为id、</code></pre></li>
+<li>由此发现：<code>@Autowired</code>找得到就装配，找不到就拉到。</li>
+<li><code>@Autowired</code>注解的<strong>require</strong>的属性指定某个属性允许不被设置。这样就不会被强行装上。</li>
+</ol>
+<ul>
+<li>方法上有<code>@Autowired</code>注解那么<br>①这个方法也会在bean创建的时候自动运行。<br>②这个方法上的每一个参数都会自动注入值。</li>
+</ul>
+<h2 id="Autowired和Resource的区别"><a href="#Autowired和Resource的区别" class="headerlink" title="Autowired和Resource的区别"></a>Autowired和Resource的区别</h2><ul>
+<li><p><code>@Autowired</code>,<code>@Resource</code>,<code>@Inject</code>都是自动装配的意思。<br>①<code>@Autowired</code>：最强大，是Spring自己的注解。<br>②<code>@Resource</code>：j2ee，java的标准，功能一般。<br>③<code>@Inject</code>：EJB</p>
+</li>
+<li><p>区别：<br>①<code>@Autowired</code>离开Spring就没法用。<br>②<code>@Resource</code>扩展性强，因为他是java的标准，如果切换成另外一个容器框架，<code>@Resource</code>还是被支持的。</p>
+</li>
+</ul>
+<h2 id="Spring的单元测试"><a href="#Spring的单元测试" class="headerlink" title="Spring的单元测试"></a>Spring的单元测试</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Spring的单元测试</span></span><br><span class="line"><span class="comment"> * 1.导包</span></span><br><span class="line"><span class="comment"> * 2.@ContextConfiguration(locations="")指定Spring配置文件的位置</span></span><br><span class="line"><span class="comment"> * 3.@RunWith指定哪种驱动进行单元测试，默认就是junit</span></span><br><span class="line"><span class="comment"> * 	 @RunWith(SpringJUnit4ClassRunner.class)</span></span><br><span class="line"><span class="comment"> *   使用Spring的单元测试模块来执行了@Test注解的测试方法</span></span><br><span class="line"><span class="comment"> *   以前的@Test注解只是由Junit</span></span><br><span class="line"><span class="comment"> *	 好处：我们不用ioc.getBean()获取组件，直接用Autowired组件，Spring为我们自动装配</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ContextConfiguration</span>(locations=<span class="string">"classpath:applicationContext.xml"</span>)</span><br><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">IocTest</span> </span>&#123;</span><br><span class="line"><span class="comment">//	ApplicationContext ioc = new ClassPathXmlApplicationContext("applicationContext.xml");</span></span><br><span class="line">	</span><br><span class="line">	ApplicationContext ioc;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	BookServlet bookServlet;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test03</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(bookServlet);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="泛型依赖注入"><a href="#泛型依赖注入" class="headerlink" title="泛型依赖注入"></a>泛型依赖注入</h2><ul>
+<li>泛型依赖注入原理</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200421102311681.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>带泛型的父类类型</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//父类的类型：com.atguigu.service.BaseService</span></span><br><span class="line"><span class="comment">//带泛型的父类类型：com.atguigu.service.BaseService&lt;com.atguigu.bean.Book&gt;</span></span><br><span class="line"><span class="comment">//Spring中可以使用带泛型的父类类型来确定这个子类的类型</span></span><br><span class="line">	System.out.println(bookService.getClass().getGenericSuperclass());</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -2758,9 +2758,61 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </tags>
   </entry>
   <entry>
+    <title>SpringMVC---基础了解</title>
+    <url>/SpringMVC%E5%9F%BA%E7%A1%80%E4%BA%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SpringMVC三层架构</p>
+<a id="more"></a>
+
+<h2 id="回顾Servlet"><a href="#回顾Servlet" class="headerlink" title="回顾Servlet"></a>回顾Servlet</h2><p>正常的一个servlet编写是这样的</p>
+<ul>
+<li>继承<code>httpServlet</code>，重写<code>doGet()</code>方法，分为三步：</li>
+</ul>
+<ol>
+<li>获取前端参数</li>
+<li>调用业务层</li>
+<li>视图转发或者重定向（一般转发用的比较多）</li>
+</ol>
+<ul>
+<li>在<code>web.xml</code>中注册写好的<code>servlet</code></li>
+<li>写一个提交表单提交到该<code>servlet</code></li>
+</ul>
+<h2 id="SpringMVC是什么？"><a href="#SpringMVC是什么？" class="headerlink" title="SpringMVC是什么？"></a>SpringMVC是什么？</h2><ul>
+<li>Spring MVC是Spring Framework的一部分，是基于Java实现MVC的轻量级Web框架。</li>
+<li>Spring MVC框架像许多其他MVC框架一样, 以请求为驱动 , 围绕一个中心Servlet分派请求及提供其他功能，DispatcherServlet是一个实际的Servlet (它继承自HttpServlet 基类)。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200519152848155.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="SpringMVC的优点"><a href="#SpringMVC的优点" class="headerlink" title="SpringMVC的优点"></a>SpringMVC的优点</h2><ol>
+<li>轻量级，简单易学</li>
+<li>高效 , 基于请求响应的MVC框架</li>
+<li>与Spring兼容性好，无缝结合</li>
+<li>约定优于配置</li>
+<li>功能强大：RESTful、数据验证、格式化、本地化、主题等</li>
+<li>简洁灵活</li>
+</ol>
+<h2 id="SpringMVC原理"><a href="#SpringMVC原理" class="headerlink" title="SpringMVC原理"></a>SpringMVC原理</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当发起请求时被前置的控制器拦截到请求，根据请求参数生成<strong>代理请求</strong> ，找到请求对应的实际控制器，控制器处理请求，创建数据模型，访问数据库，将模型响应给中心控制器，控制器使用模型与视图渲染视图结果，将结果返回给中心控制器，再将结果返回给请求者。<br><img src="https://img-blog.csdnimg.cn/20200519152855498.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>虚线是我们要做的：</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200519160013111.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h2><p> 1.DispatcherServlet表示前置控制器，是整个SpringMVC的控制中心。用户发出请求，DispatcherServlet接收请求并拦截请求。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">假设请求的url为 : http://localhost:8080/SpringMVC/hello,拆分成三部分:</span><br><span class="line">	http://localhost:8080服务器域名</span><br><span class="line">    SpringMVC部署在服务器上的web站点</span><br><span class="line">    hello表示控制器</span><br></pre></td></tr></table></figure>
+<p>如上url表示为：请求位于服务器localhost:8080上的SpringMVC站点的hello控制器。</p>
+<p>2.HandlerMapping为处理器映射。DispatcherServlet调用HandlerMapping,然后HandlerMapping根据请求url查找Handler。</p>
+<p>3.HandlerExecution表示具体的Handler,其主要作用是根据url查找控制器，如上url被查找控制器为：hello。<br>4.HandlerExecution将解析后的信息传递给DispatcherServlet,如解析控制器映射等。<br>5.HandlerAdapter表示处理器适配器，其按照特定的规则去执行Handler。<br>6.Handler让具体的Controller执行。<br>7.Controller将具体的执行信息返回给HandlerAdapter,如ModelAndView。<br>8.HandlerAdapter将视图逻辑名或模型传递给DispatcherServlet。<br>9.DispatcherServlet调用视图解析器(ViewResolver)来解析HandlerAdapter传递的逻辑视图名。<br>10.视图解析器将解析的逻辑视图名传给DispatcherServlet。<br>11.DispatcherServlet根据视图解析器解析的视图结果，调用具体的视图。<br>12.最终视图呈现给用户</p>
+]]></content>
+      <categories>
+        <category>Spring全家桶</category>
+      </categories>
+      <tags>
+        <tag>SpringMVC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SpringMVC---数据处理及跳转</title>
     <url>/SpringMVC%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%8F%8A%E8%B7%B3%E8%BD%AC/</url>
-    <content><![CDATA[<h1 id="跳转方式（转发和重定向）"><a href="#跳转方式（转发和重定向）" class="headerlink" title="跳转方式（转发和重定向）"></a>跳转方式（转发和重定向）</h1><h3 id="ModelAndView"><a href="#ModelAndView" class="headerlink" title="ModelAndView"></a>ModelAndView</h3><ul>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;跳转就是转发和重定向，在SpringMVC中，只需要加一个单词就可以搞定，数据处理就要用到JSON了。这里涉及到JSON又是为Ajax而生的。</p>
+<a id="more"></a>
+<h1 id="跳转方式（转发和重定向）"><a href="#跳转方式（转发和重定向）" class="headerlink" title="跳转方式（转发和重定向）"></a>跳转方式（转发和重定向）</h1><h3 id="ModelAndView"><a href="#ModelAndView" class="headerlink" title="ModelAndView"></a>ModelAndView</h3><ul>
 <li>设置ModelAndView对象 , 根据view的名称 , 和视图解析器跳到指定的页面 .</li>
 <li>页面 : {视图解析器前缀} + viewName +{视图解析器后缀}</li>
 </ul>
@@ -2827,56 +2879,6 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
 
 
 
-]]></content>
-      <categories>
-        <category>Spring全家桶</category>
-      </categories>
-      <tags>
-        <tag>SpringMVC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SpringMVC---基础了解</title>
-    <url>/SpringMVC%E5%9F%BA%E7%A1%80%E4%BA%86%E8%A7%A3/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SpringMVC三层架构</p>
-<a id="more"></a>
-
-<h2 id="回顾Servlet"><a href="#回顾Servlet" class="headerlink" title="回顾Servlet"></a>回顾Servlet</h2><p>正常的一个servlet编写是这样的</p>
-<ul>
-<li>继承<code>httpServlet</code>，重写<code>doGet()</code>方法，分为三步：</li>
-</ul>
-<ol>
-<li>获取前端参数</li>
-<li>调用业务层</li>
-<li>视图转发或者重定向（一般转发用的比较多）</li>
-</ol>
-<ul>
-<li>在<code>web.xml</code>中注册写好的<code>servlet</code></li>
-<li>写一个提交表单提交到该<code>servlet</code></li>
-</ul>
-<h2 id="SpringMVC是什么？"><a href="#SpringMVC是什么？" class="headerlink" title="SpringMVC是什么？"></a>SpringMVC是什么？</h2><ul>
-<li>Spring MVC是Spring Framework的一部分，是基于Java实现MVC的轻量级Web框架。</li>
-<li>Spring MVC框架像许多其他MVC框架一样, 以请求为驱动 , 围绕一个中心Servlet分派请求及提供其他功能，DispatcherServlet是一个实际的Servlet (它继承自HttpServlet 基类)。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200519152848155.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="SpringMVC的优点"><a href="#SpringMVC的优点" class="headerlink" title="SpringMVC的优点"></a>SpringMVC的优点</h2><ol>
-<li>轻量级，简单易学</li>
-<li>高效 , 基于请求响应的MVC框架</li>
-<li>与Spring兼容性好，无缝结合</li>
-<li>约定优于配置</li>
-<li>功能强大：RESTful、数据验证、格式化、本地化、主题等</li>
-<li>简洁灵活</li>
-</ol>
-<h2 id="SpringMVC原理"><a href="#SpringMVC原理" class="headerlink" title="SpringMVC原理"></a>SpringMVC原理</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当发起请求时被前置的控制器拦截到请求，根据请求参数生成<strong>代理请求</strong> ，找到请求对应的实际控制器，控制器处理请求，创建数据模型，访问数据库，将模型响应给中心控制器，控制器使用模型与视图渲染视图结果，将结果返回给中心控制器，再将结果返回给请求者。<br><img src="https://img-blog.csdnimg.cn/20200519152855498.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>虚线是我们要做的：</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200519160013111.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h2><p> 1.DispatcherServlet表示前置控制器，是整个SpringMVC的控制中心。用户发出请求，DispatcherServlet接收请求并拦截请求。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">假设请求的url为 : http://localhost:8080/SpringMVC/hello,拆分成三部分:</span><br><span class="line">	http://localhost:8080服务器域名</span><br><span class="line">    SpringMVC部署在服务器上的web站点</span><br><span class="line">    hello表示控制器</span><br></pre></td></tr></table></figure>
-<p>如上url表示为：请求位于服务器localhost:8080上的SpringMVC站点的hello控制器。</p>
-<p>2.HandlerMapping为处理器映射。DispatcherServlet调用HandlerMapping,然后HandlerMapping根据请求url查找Handler。</p>
-<p>3.HandlerExecution表示具体的Handler,其主要作用是根据url查找控制器，如上url被查找控制器为：hello。<br>4.HandlerExecution将解析后的信息传递给DispatcherServlet,如解析控制器映射等。<br>5.HandlerAdapter表示处理器适配器，其按照特定的规则去执行Handler。<br>6.Handler让具体的Controller执行。<br>7.Controller将具体的执行信息返回给HandlerAdapter,如ModelAndView。<br>8.HandlerAdapter将视图逻辑名或模型传递给DispatcherServlet。<br>9.DispatcherServlet调用视图解析器(ViewResolver)来解析HandlerAdapter传递的逻辑视图名。<br>10.视图解析器将解析的逻辑视图名传给DispatcherServlet。<br>11.DispatcherServlet根据视图解析器解析的视图结果，调用具体的视图。<br>12.最终视图呈现给用户</p>
 ]]></content>
       <categories>
         <category>Spring全家桶</category>
@@ -3150,110 +3152,6 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </tags>
   </entry>
   <entry>
-    <title>XML学习</title>
-    <url>/4122240603/</url>
-    <content><![CDATA[<p><strong>XML:  extendsible  markup  labguage  可扩展的标记语言</strong></p>
-<a id="more"></a>
-
-<h2 id="一、XML的作用？"><a href="#一、XML的作用？" class="headerlink" title="一、XML的作用？"></a>一、XML的作用？</h2><ol>
-<li>可以用来保存数据（数据多的时候用数据库，少量时候用XML）</li>
-<li>可以用来做配置文件</li>
-<li>数据传输载体</li>
-</ol>
-<h2 id="二、XML文档结构-倒状树形结构"><a href="#二、XML文档结构-倒状树形结构" class="headerlink" title="二、XML文档结构_倒状树形结构"></a>二、XML文档结构_倒状树形结构</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;stus&gt;</span><br><span class="line">	&lt;stu&gt;</span><br><span class="line">		&lt;name&gt;daiaoqi&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;18&lt;/age&gt;</span><br><span class="line">		&lt;desc&gt;我要学编程&lt;/desc&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">	&lt;stu&gt;</span><br><span class="line">		&lt;name&gt;wt&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;20&lt;/age&gt;</span><br><span class="line">		&lt;desc&gt;我要找工作&lt;/desc&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">&lt;/stus&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、文档定义-amp-声明"><a href="#三、文档定义-amp-声明" class="headerlink" title="三、文档定义&amp;声明"></a>三、文档定义&amp;声明</h2><ul>
-<li>定义：其实就是一个文件，文件的后缀为 <strong>.xml</strong></li>
-<li>声明：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"gbk"</span> standalone=<span class="string">"no"</span> ?&gt;</span><br><span class="line">version : 解析这个xml的时候，使用什么版本的解析器解析</span><br><span class="line">encoding : 解析xml中的文字的时候，使用什么编码来翻译</span><br><span class="line">standalone  : no：该文档会依赖关联其他文档，yes：这是一个独立的文档</span><br></pre></td></tr></table></figure>
-<ul>
-<li>encoding：默认文件保存的时候，使用的是GBK的编码保存。<br>要想让我们的xml能够正常的显示中文，有以下解决办法：<ol>
-<li>让encoding也是GBK 或者 gb2312 。</li>
-<li>如果encoding是 utf-8 ， 那么保存文件的时候也必须使用utf-8。</li>
-<li>保存的时候见到的ANSI 对应的其实是我们的本地编码 GBK。</li>
-<li>为了通用，建议使用UTF-8编码保存，以及encoding 都是 utf-8。</li>
-</ol>
-</li>
-</ul>
-<h2 id="四、元素定义"><a href="#四、元素定义" class="headerlink" title="四、元素定义"></a>四、元素定义</h2><p>1.其实就是里面的标签， &lt;&gt; 括起来的都叫元素 。 成对出现。  如下： </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;stu&gt; &lt;/stu&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.文档声明下来的第一个元素叫做根元素 (根标签)<br>3.标签里面可以嵌套标签<br>4.空标签：既是开始也是结束， 一般配合属性来用。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;age/&gt;</span><br><span class="line">		&lt;stu&gt;</span><br><span class="line">			&lt;name&gt;张三&lt;/name&gt;</span><br><span class="line">			&lt;age/&gt;</span><br><span class="line">		&lt;/stu&gt;</span><br></pre></td></tr></table></figure>
-<p>5.标签可以自定义。<br>XML 元素必须遵循以下命名规则：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.名称可以含字母、数字以及其他的字符 </span><br><span class="line">2.名称不能以数字或者标点符号开始 </span><br><span class="line">3.名称不能以字符 “xml”（或者 XML、Xml）开始 </span><br><span class="line">4.名称不能包含空格 </span><br><span class="line">5.命名尽量简单，做到见名知义</span><br></pre></td></tr></table></figure>
-
-<h2 id="五、元素定义"><a href="#五、元素定义" class="headerlink" title="五、元素定义"></a>五、元素定义</h2><ul>
-<li>简单元素：元素里面包含了普通的文字</li>
-<li>复杂元素：元素里面还可以嵌套其他的元素</li>
-</ul>
-<h2 id="六、属性定义"><a href="#六、属性定义" class="headerlink" title="六、属性定义"></a>六、属性定义</h2><ul>
-<li>定义在元素里面， &lt;元素名称  属性名称=”属性的值”&gt;&lt;/元素名称&gt;</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;stus&gt;</span><br><span class="line">	&lt;stu id=<span class="string">"10086"</span>&gt;</span><br><span class="line">		&lt;name&gt;张三&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;18&lt;/age&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">	&lt;stu id=<span class="string">"10087"</span>&gt;</span><br><span class="line">		&lt;name&gt;李四&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;28&lt;/age&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">&lt;/stus&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="七、xml注释"><a href="#七、xml注释" class="headerlink" title="七、xml注释"></a>七、xml注释</h2><p>与html的注释一样。 xml的注释，不允许放置在文档的第一行。 必须在文档声明的下面。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!-- --&gt; </span><br><span class="line">	如： </span><br><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">	&lt;!-- </span><br><span class="line">		//这里有两个学生</span><br><span class="line">		//一个学生，名字叫张三， 年龄18岁， 学号：10086</span><br><span class="line">		//另外一个学生叫李四  。。。</span><br><span class="line">	--&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="八、CDATA区"><a href="#八、CDATA区" class="headerlink" title="八、CDATA区"></a>八、CDATA区</h2><ul>
-<li>所有 XML 文档中的文本均会被解析器解析，只有 CDATA 区段（CDATA section）中的文本会被解析器忽略。<br>在 XML 元素中，”&lt;” 和 “&amp;” 是非法的。”&lt;” 会产生错误，因为解析器会把该字符解释为新元素的开始，”&amp;” 也会产生错误，因为解析器会把该字符解释为字符实体的开始。<br>在html中，某些文本，比如 JavaScript 代码，包含大量 “&lt;” 或 “&amp;” 字符。为了避免错误，可以将脚本代码定义为 CDATA。</li>
-<li>一般在数据传输的时候会出现，比如说服务器给客户端传数据。</li>
-<li>严格地讲，在 XML 中仅有字符 “&lt;”和”&amp;” 是非法的。省略号、引号和大于号是合法的，但是把它们替换为实体引用是个好的习惯。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;   &amp;lt;</span><br><span class="line">&amp;   &amp;amp;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>CDATA区写法</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">CDATA区 开始于 <span class="string">"&lt;![CDATA["</span></span><br><span class="line">        结束于 <span class="string">"]]&gt;"</span></span><br><span class="line">    如：</span><br><span class="line">&lt;des&gt;&lt;![CDATA[&lt;a href=<span class="string">"http://www.baidu.com"</span>&gt;我要学编程&lt;/a&gt;]]&gt;&lt;/des&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="九、XML解析"><a href="#九、XML解析" class="headerlink" title="九、XML解析"></a>九、XML解析</h2><ul>
-<li>其实就是获取元素里面的字符数据或者属性数据。</li>
-<li>XML解析方式(<strong>面试常问</strong>)有很多种，常用的有两种（DOM和SAX）。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200224114632758.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li>针对以上两种解析方式，给出的解决方案有哪些？</li>
-</ul>
-<ol>
-<li>jaxp  sun公司自带的， 比较繁琐</li>
-<li>jdom        </li>
-<li>dom4j  （常用）使用比较广泛<br>补充：jdom和dom4j的故事：刚开始都是一伙人做的，后来产生了分歧，另外一批人就做了dom4j，把jdom挤下去了。</li>
-</ol>
-<h2 id="十、Dom4j-基本用法"><a href="#十、Dom4j-基本用法" class="headerlink" title="十、Dom4j 基本用法"></a>十、Dom4j 基本用法</h2><p><img src="https://img-blog.csdnimg.cn/20200224140840458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">element.element(<span class="string">"stu"</span>) : 返回该元素下的第一个stu元素</span><br><span class="line">element.elements(); 返回该元素下的所有子元素。</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>创建SaxReader对象</li>
-<li>指定解析的xml</li>
-<li>获取根元素。</li>
-<li>根据根元素获取子元素或者下面的子孙元素</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">javapackage com.daq.test;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> org.dom4j.Document;</span><br><span class="line"><span class="keyword">import</span> org.dom4j.Element;</span><br><span class="line"><span class="keyword">import</span> org.dom4j.io.SAXReader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainTest</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//1.创建sax读取对象</span></span><br><span class="line">			SAXReader reader = <span class="keyword">new</span> SAXReader();<span class="comment">//jdbc--classloader</span></span><br><span class="line">			<span class="comment">//2.指定解析的xml源</span></span><br><span class="line">			Document document=reader.read(<span class="keyword">new</span> File(<span class="string">"src/xml/stus.xml"</span>));</span><br><span class="line">			<span class="comment">//3.得到元素</span></span><br><span class="line">			<span class="comment">//得到根元素</span></span><br><span class="line">			Element rootElement=document.getRootElement();</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//4.获取根元素下面的子元素age</span></span><br><span class="line"><span class="comment">//			rootElement.element("age");</span></span><br><span class="line"><span class="comment">//			System.out.println(rootElement.element("stu").element("age").getStringValue());</span></span><br><span class="line">			</span><br><span class="line">			List&lt;Element&gt; elements=rootElement.elements();</span><br><span class="line">			<span class="comment">//遍历所有的stu元素</span></span><br><span class="line">			<span class="keyword">for</span> (Element element : elements) &#123;</span><br><span class="line">				<span class="comment">//获取stu下面的name元素</span></span><br><span class="line">				String name=element.element(<span class="string">"name"</span>).getText();</span><br><span class="line">				String age=element.element(<span class="string">"age"</span>).getText();</span><br><span class="line">				String adress=element.element(<span class="string">"adress"</span>).getText();</span><br><span class="line">				System.out.println(<span class="string">"name="</span>+name+<span class="string">"age="</span>+age+<span class="string">"adress="</span>+adress);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="十一、Dom4j-的-Xpath使用"><a href="#十一、Dom4j-的-Xpath使用" class="headerlink" title="十一、Dom4j 的 Xpath使用"></a>十一、Dom4j 的 Xpath使用</h2><ul>
-<li>dom4j里面支持Xpath的写法。 xpath其实是<strong>xml的路径语言</strong>，支持我们在解析xml的时候，能够快速的定位到具体的某一个元素。<ol>
-<li>添加jar包依赖 ：jaxen-1.1-beta-6.jar</li>
-<li>在查找指定节点的时候，根据XPath语法规则来查找</li>
-<li>后续的代码与以前的解析代码一样。</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//要想使用Xpath， 还得添加支持的jar 获取的是第一个 只返回一个。 </span></span><br><span class="line">Element nameElement = (Element) rootElement.selectSingleNode(<span class="string">"//name"</span>);</span><br><span class="line">	System.out.println(nameElement.getText());</span><br><span class="line"></span><br><span class="line">	System.out.println(<span class="string">"----------------"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//获取文档里面的所有name元素 </span></span><br><span class="line">	List&lt;Element&gt; list = rootElement.selectNodes(<span class="string">"//name"</span>);</span><br><span class="line">	<span class="keyword">for</span> (Element element : list) &#123;</span><br><span class="line">		System.out.println(element.getText());</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="十二、XML-约束（了解即可）"><a href="#十二、XML-约束（了解即可）" class="headerlink" title="十二、XML 约束（了解即可）"></a>十二、XML 约束（了解即可）</h2><p>如下的文档， 属性的ID值是一样的。 这在生活中是不可能出现的。 并且第二个学生的姓名有好几个。 一般也很少。那么怎么规定ID的值唯一， 或者是元素只能出现一次，不能出现多次？ 甚至是规定里面只能出现具体的元素名字。 </p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;stus&gt;</span><br><span class="line">	&lt;stu id=<span class="string">"10086"</span>&gt;</span><br><span class="line">		&lt;name&gt;张三&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;18&lt;/age&gt;</span><br><span class="line">		&lt;address&gt;深圳&lt;/address&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">	&lt;stu id=<span class="string">"10086"</span>&gt;</span><br><span class="line">		&lt;name&gt;李四&lt;/name&gt;</span><br><span class="line">		&lt;name&gt;李五&lt;/name&gt;</span><br><span class="line">		&lt;name&gt;李六&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;28&lt;/age&gt;</span><br><span class="line">		&lt;address&gt;北京&lt;/address&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">&lt;/stus&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>约束：</strong></p>
-<ul>
-<li>DTD：语法自成一派， 早前就出现的。 可读性比较差。 </li>
-<li>Schema：其实就是一个xml ， 使用xml的语法规则， xml解析器解析起来比较方便 ， 是为了替代DTD 。但是Schema 约束文本内容比DTD的内容还要多。 所以目前也没有真正意义上的替代DTD</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java Web</category>
-      </categories>
-      <tags>
-        <tag>XML</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git clone加速&amp;IDEA集成</title>
     <url>/git%20clone%E5%8A%A0%E9%80%9F&amp;IDEA%E9%9B%86%E6%88%90/</url>
     <content><![CDATA[<p>在github上面找好的开源项目，想要clone到本地，自己调试运行一下，但是由于github的服务器在国外，所以下载速度真的是惊人的慢，有的时候2k/s，这里就介绍一个投机取巧的方法，来加速git clone，还有IDEA集成git</p>
@@ -3434,6 +3332,110 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </categories>
       <tags>
         <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>XML学习</title>
+    <url>/4122240603/</url>
+    <content><![CDATA[<p><strong>XML:  extendsible  markup  labguage  可扩展的标记语言</strong></p>
+<a id="more"></a>
+
+<h2 id="一、XML的作用？"><a href="#一、XML的作用？" class="headerlink" title="一、XML的作用？"></a>一、XML的作用？</h2><ol>
+<li>可以用来保存数据（数据多的时候用数据库，少量时候用XML）</li>
+<li>可以用来做配置文件</li>
+<li>数据传输载体</li>
+</ol>
+<h2 id="二、XML文档结构-倒状树形结构"><a href="#二、XML文档结构-倒状树形结构" class="headerlink" title="二、XML文档结构_倒状树形结构"></a>二、XML文档结构_倒状树形结构</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;stus&gt;</span><br><span class="line">	&lt;stu&gt;</span><br><span class="line">		&lt;name&gt;daiaoqi&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;18&lt;/age&gt;</span><br><span class="line">		&lt;desc&gt;我要学编程&lt;/desc&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">	&lt;stu&gt;</span><br><span class="line">		&lt;name&gt;wt&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;20&lt;/age&gt;</span><br><span class="line">		&lt;desc&gt;我要找工作&lt;/desc&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">&lt;/stus&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、文档定义-amp-声明"><a href="#三、文档定义-amp-声明" class="headerlink" title="三、文档定义&amp;声明"></a>三、文档定义&amp;声明</h2><ul>
+<li>定义：其实就是一个文件，文件的后缀为 <strong>.xml</strong></li>
+<li>声明：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"gbk"</span> standalone=<span class="string">"no"</span> ?&gt;</span><br><span class="line">version : 解析这个xml的时候，使用什么版本的解析器解析</span><br><span class="line">encoding : 解析xml中的文字的时候，使用什么编码来翻译</span><br><span class="line">standalone  : no：该文档会依赖关联其他文档，yes：这是一个独立的文档</span><br></pre></td></tr></table></figure>
+<ul>
+<li>encoding：默认文件保存的时候，使用的是GBK的编码保存。<br>要想让我们的xml能够正常的显示中文，有以下解决办法：<ol>
+<li>让encoding也是GBK 或者 gb2312 。</li>
+<li>如果encoding是 utf-8 ， 那么保存文件的时候也必须使用utf-8。</li>
+<li>保存的时候见到的ANSI 对应的其实是我们的本地编码 GBK。</li>
+<li>为了通用，建议使用UTF-8编码保存，以及encoding 都是 utf-8。</li>
+</ol>
+</li>
+</ul>
+<h2 id="四、元素定义"><a href="#四、元素定义" class="headerlink" title="四、元素定义"></a>四、元素定义</h2><p>1.其实就是里面的标签， &lt;&gt; 括起来的都叫元素 。 成对出现。  如下： </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;stu&gt; &lt;/stu&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.文档声明下来的第一个元素叫做根元素 (根标签)<br>3.标签里面可以嵌套标签<br>4.空标签：既是开始也是结束， 一般配合属性来用。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;age/&gt;</span><br><span class="line">		&lt;stu&gt;</span><br><span class="line">			&lt;name&gt;张三&lt;/name&gt;</span><br><span class="line">			&lt;age/&gt;</span><br><span class="line">		&lt;/stu&gt;</span><br></pre></td></tr></table></figure>
+<p>5.标签可以自定义。<br>XML 元素必须遵循以下命名规则：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.名称可以含字母、数字以及其他的字符 </span><br><span class="line">2.名称不能以数字或者标点符号开始 </span><br><span class="line">3.名称不能以字符 “xml”（或者 XML、Xml）开始 </span><br><span class="line">4.名称不能包含空格 </span><br><span class="line">5.命名尽量简单，做到见名知义</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、元素定义"><a href="#五、元素定义" class="headerlink" title="五、元素定义"></a>五、元素定义</h2><ul>
+<li>简单元素：元素里面包含了普通的文字</li>
+<li>复杂元素：元素里面还可以嵌套其他的元素</li>
+</ul>
+<h2 id="六、属性定义"><a href="#六、属性定义" class="headerlink" title="六、属性定义"></a>六、属性定义</h2><ul>
+<li>定义在元素里面， &lt;元素名称  属性名称=”属性的值”&gt;&lt;/元素名称&gt;</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;stus&gt;</span><br><span class="line">	&lt;stu id=<span class="string">"10086"</span>&gt;</span><br><span class="line">		&lt;name&gt;张三&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;18&lt;/age&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">	&lt;stu id=<span class="string">"10087"</span>&gt;</span><br><span class="line">		&lt;name&gt;李四&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;28&lt;/age&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">&lt;/stus&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="七、xml注释"><a href="#七、xml注释" class="headerlink" title="七、xml注释"></a>七、xml注释</h2><p>与html的注释一样。 xml的注释，不允许放置在文档的第一行。 必须在文档声明的下面。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!-- --&gt; </span><br><span class="line">	如： </span><br><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">	&lt;!-- </span><br><span class="line">		//这里有两个学生</span><br><span class="line">		//一个学生，名字叫张三， 年龄18岁， 学号：10086</span><br><span class="line">		//另外一个学生叫李四  。。。</span><br><span class="line">	--&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="八、CDATA区"><a href="#八、CDATA区" class="headerlink" title="八、CDATA区"></a>八、CDATA区</h2><ul>
+<li>所有 XML 文档中的文本均会被解析器解析，只有 CDATA 区段（CDATA section）中的文本会被解析器忽略。<br>在 XML 元素中，”&lt;” 和 “&amp;” 是非法的。”&lt;” 会产生错误，因为解析器会把该字符解释为新元素的开始，”&amp;” 也会产生错误，因为解析器会把该字符解释为字符实体的开始。<br>在html中，某些文本，比如 JavaScript 代码，包含大量 “&lt;” 或 “&amp;” 字符。为了避免错误，可以将脚本代码定义为 CDATA。</li>
+<li>一般在数据传输的时候会出现，比如说服务器给客户端传数据。</li>
+<li>严格地讲，在 XML 中仅有字符 “&lt;”和”&amp;” 是非法的。省略号、引号和大于号是合法的，但是把它们替换为实体引用是个好的习惯。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;   &amp;lt;</span><br><span class="line">&amp;   &amp;amp;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>CDATA区写法</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">CDATA区 开始于 <span class="string">"&lt;![CDATA["</span></span><br><span class="line">        结束于 <span class="string">"]]&gt;"</span></span><br><span class="line">    如：</span><br><span class="line">&lt;des&gt;&lt;![CDATA[&lt;a href=<span class="string">"http://www.baidu.com"</span>&gt;我要学编程&lt;/a&gt;]]&gt;&lt;/des&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="九、XML解析"><a href="#九、XML解析" class="headerlink" title="九、XML解析"></a>九、XML解析</h2><ul>
+<li>其实就是获取元素里面的字符数据或者属性数据。</li>
+<li>XML解析方式(<strong>面试常问</strong>)有很多种，常用的有两种（DOM和SAX）。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200224114632758.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>针对以上两种解析方式，给出的解决方案有哪些？</li>
+</ul>
+<ol>
+<li>jaxp  sun公司自带的， 比较繁琐</li>
+<li>jdom        </li>
+<li>dom4j  （常用）使用比较广泛<br>补充：jdom和dom4j的故事：刚开始都是一伙人做的，后来产生了分歧，另外一批人就做了dom4j，把jdom挤下去了。</li>
+</ol>
+<h2 id="十、Dom4j-基本用法"><a href="#十、Dom4j-基本用法" class="headerlink" title="十、Dom4j 基本用法"></a>十、Dom4j 基本用法</h2><p><img src="https://img-blog.csdnimg.cn/20200224140840458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">element.element(<span class="string">"stu"</span>) : 返回该元素下的第一个stu元素</span><br><span class="line">element.elements(); 返回该元素下的所有子元素。</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>创建SaxReader对象</li>
+<li>指定解析的xml</li>
+<li>获取根元素。</li>
+<li>根据根元素获取子元素或者下面的子孙元素</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">javapackage com.daq.test;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> org.dom4j.Document;</span><br><span class="line"><span class="keyword">import</span> org.dom4j.Element;</span><br><span class="line"><span class="keyword">import</span> org.dom4j.io.SAXReader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainTest</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//1.创建sax读取对象</span></span><br><span class="line">			SAXReader reader = <span class="keyword">new</span> SAXReader();<span class="comment">//jdbc--classloader</span></span><br><span class="line">			<span class="comment">//2.指定解析的xml源</span></span><br><span class="line">			Document document=reader.read(<span class="keyword">new</span> File(<span class="string">"src/xml/stus.xml"</span>));</span><br><span class="line">			<span class="comment">//3.得到元素</span></span><br><span class="line">			<span class="comment">//得到根元素</span></span><br><span class="line">			Element rootElement=document.getRootElement();</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//4.获取根元素下面的子元素age</span></span><br><span class="line"><span class="comment">//			rootElement.element("age");</span></span><br><span class="line"><span class="comment">//			System.out.println(rootElement.element("stu").element("age").getStringValue());</span></span><br><span class="line">			</span><br><span class="line">			List&lt;Element&gt; elements=rootElement.elements();</span><br><span class="line">			<span class="comment">//遍历所有的stu元素</span></span><br><span class="line">			<span class="keyword">for</span> (Element element : elements) &#123;</span><br><span class="line">				<span class="comment">//获取stu下面的name元素</span></span><br><span class="line">				String name=element.element(<span class="string">"name"</span>).getText();</span><br><span class="line">				String age=element.element(<span class="string">"age"</span>).getText();</span><br><span class="line">				String adress=element.element(<span class="string">"adress"</span>).getText();</span><br><span class="line">				System.out.println(<span class="string">"name="</span>+name+<span class="string">"age="</span>+age+<span class="string">"adress="</span>+adress);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="十一、Dom4j-的-Xpath使用"><a href="#十一、Dom4j-的-Xpath使用" class="headerlink" title="十一、Dom4j 的 Xpath使用"></a>十一、Dom4j 的 Xpath使用</h2><ul>
+<li>dom4j里面支持Xpath的写法。 xpath其实是<strong>xml的路径语言</strong>，支持我们在解析xml的时候，能够快速的定位到具体的某一个元素。<ol>
+<li>添加jar包依赖 ：jaxen-1.1-beta-6.jar</li>
+<li>在查找指定节点的时候，根据XPath语法规则来查找</li>
+<li>后续的代码与以前的解析代码一样。</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//要想使用Xpath， 还得添加支持的jar 获取的是第一个 只返回一个。 </span></span><br><span class="line">Element nameElement = (Element) rootElement.selectSingleNode(<span class="string">"//name"</span>);</span><br><span class="line">	System.out.println(nameElement.getText());</span><br><span class="line"></span><br><span class="line">	System.out.println(<span class="string">"----------------"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//获取文档里面的所有name元素 </span></span><br><span class="line">	List&lt;Element&gt; list = rootElement.selectNodes(<span class="string">"//name"</span>);</span><br><span class="line">	<span class="keyword">for</span> (Element element : list) &#123;</span><br><span class="line">		System.out.println(element.getText());</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="十二、XML-约束（了解即可）"><a href="#十二、XML-约束（了解即可）" class="headerlink" title="十二、XML 约束（了解即可）"></a>十二、XML 约束（了解即可）</h2><p>如下的文档， 属性的ID值是一样的。 这在生活中是不可能出现的。 并且第二个学生的姓名有好几个。 一般也很少。那么怎么规定ID的值唯一， 或者是元素只能出现一次，不能出现多次？ 甚至是规定里面只能出现具体的元素名字。 </p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;stus&gt;</span><br><span class="line">	&lt;stu id=<span class="string">"10086"</span>&gt;</span><br><span class="line">		&lt;name&gt;张三&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;18&lt;/age&gt;</span><br><span class="line">		&lt;address&gt;深圳&lt;/address&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">	&lt;stu id=<span class="string">"10086"</span>&gt;</span><br><span class="line">		&lt;name&gt;李四&lt;/name&gt;</span><br><span class="line">		&lt;name&gt;李五&lt;/name&gt;</span><br><span class="line">		&lt;name&gt;李六&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;28&lt;/age&gt;</span><br><span class="line">		&lt;address&gt;北京&lt;/address&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">&lt;/stus&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>约束：</strong></p>
+<ul>
+<li>DTD：语法自成一派， 早前就出现的。 可读性比较差。 </li>
+<li>Schema：其实就是一个xml ， 使用xml的语法规则， xml解析器解析起来比较方便 ， 是为了替代DTD 。但是Schema 约束文本内容比DTD的内容还要多。 所以目前也没有真正意义上的替代DTD</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>XML</tag>
       </tags>
   </entry>
   <entry>
@@ -3881,6 +3883,33 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </tags>
   </entry>
   <entry>
+    <title>操作系统---中断机制</title>
+    <url>/1622515277/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中断机制可以说是操作系统里程碑上最划时代的一次变革。它在系统中起着通信网络的作用，协调系统对各种外部事件的响应和处理，中断是实现多道程序设计的必要条件，中断是CPU 对系统发生的某个事件作出的一种反应。因为有了它，我们才可以有条不紊的使用电脑！</p>
+<a id="more"></a>
+
+<ul>
+<li><p>举个例子，CPU老板是一家公司的光杆司令，所有的顾客都要他亲自跑去处理，还要跟有关部门打点关系，CPU觉得顾客和公关这两样事它一个人搞不来，这就是轮询；终于这家公司升级发展了，CPU老板请了一个秘书，所有的顾客都先由秘书经手，CPU心情好的时候就去看一下，大部分时间都忙着去公关了，这时它觉得轻松了很多，这就是中断了~~</p>
+</li>
+<li><p>也就是说，中断和轮询是从CPU老板的角度来看的，不管怎样，事件都还是有人来时刻跟踪才能被捕获处理，不过是老板还是秘书的问题。所有的中断（或者异步，回调等）背后都有一个轮询（循环，listener）。</p>
+</li>
+<li><p><strong>中断机制的本质：CPU执行完每条指令时，都会去检查一个中断标志位</strong></p>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200312181724601.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200312182615189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt=" "></p>
+<p><img src="https://img-blog.csdnimg.cn/20200312182607627.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200312183153533.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200312183251723.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>计算机操作系统</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>建站系列之---美化网站</title>
     <url>/551144596/</url>
     <content><![CDATA[<p><strong>说明：</strong> 展现在你眼前的，只是部分功能，很基础的，根据个人喜好，如果说追求美观，那么多去找一些方案，网上很多美化小技巧，装饰在自己博客上面，看着也赏心悦目，但是装饰太对，终究会拖加载速度的后腿，这就需要更多的技术来优化，例如SEO优化，但是博客嘛，以简洁为主还是很好的。不要太多了累赘，反而看着很舒服！</p>
@@ -4050,33 +4079,6 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </categories>
       <tags>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>操作系统---中断机制</title>
-    <url>/1622515277/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中断机制可以说是操作系统里程碑上最划时代的一次变革。它在系统中起着通信网络的作用，协调系统对各种外部事件的响应和处理，中断是实现多道程序设计的必要条件，中断是CPU 对系统发生的某个事件作出的一种反应。因为有了它，我们才可以有条不紊的使用电脑！</p>
-<a id="more"></a>
-
-<ul>
-<li><p>举个例子，CPU老板是一家公司的光杆司令，所有的顾客都要他亲自跑去处理，还要跟有关部门打点关系，CPU觉得顾客和公关这两样事它一个人搞不来，这就是轮询；终于这家公司升级发展了，CPU老板请了一个秘书，所有的顾客都先由秘书经手，CPU心情好的时候就去看一下，大部分时间都忙着去公关了，这时它觉得轻松了很多，这就是中断了~~</p>
-</li>
-<li><p>也就是说，中断和轮询是从CPU老板的角度来看的，不管怎样，事件都还是有人来时刻跟踪才能被捕获处理，不过是老板还是秘书的问题。所有的中断（或者异步，回调等）背后都有一个轮询（循环，listener）。</p>
-</li>
-<li><p><strong>中断机制的本质：CPU执行完每条指令时，都会去检查一个中断标志位</strong></p>
-</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20200312181724601.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200312182615189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt=" "></p>
-<p><img src="https://img-blog.csdnimg.cn/20200312182607627.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200312183153533.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200312183251723.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>计算机操作系统</category>
-      </categories>
-      <tags>
-        <tag>OS</tag>
       </tags>
   </entry>
   <entry>
@@ -4459,25 +4461,6 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
       </tags>
   </entry>
   <entry>
-    <title>区块链技术的应用领域</title>
-    <url>/undefined/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-<h2 id="金融领域"><a href="#金融领域" class="headerlink" title="金融领域"></a>金融领域</h2><p>区块链在<strong>国际汇兑</strong>、<strong>信用证</strong>、<strong>股权登记</strong>和<strong>证券交易所</strong>等金融领域有着潜在的巨大应用价值。将区块链技术应用在金融行业中，能够省去第三方中介环节，实现<strong>点对点</strong>的直接对接，从而在大大降低成本的同时，快速完成交易支付。<br>比如Visa推出基于区块链技术的 Visa B2B Connect，它能为机构提供一种费用更低、更快速和安全的跨境支付方式来处理全球范围的企业对企业的交易。要知道传统的跨境支付需要等3-5天，并为此支付1-3%的交易费用。Visa 还联合 Coinbase 推出了首张比特币借记卡，<strong>花旗银行</strong>则在区块链上测试运行加密货币“<strong>花旗币</strong>”。</p>
-<h2 id="物联网和物流领域"><a href="#物联网和物流领域" class="headerlink" title="物联网和物流领域"></a>物联网和物流领域</h2><p>区块链在物联网和物流领域也可以天然结合。通过区块链可以降低物流成本，追溯物品的生产和运送过程，并且提高供应链管理的效率。该领域被认为是区块链一个很有前景的应用方向。<br>区块链通过结点连接的散状网络分层结构，能够在整个网络中实现信息的全面传递，并能够检验信息的准确程度。这种特性一 定程度上提高了物联网交易的便利性和智能化。<strong>区块链</strong>+<strong>大数据</strong>的解决方案就利用了大数据的自动筛选过滤模式，在区块链中建立信用资源，可双重提高交易的安全性，并提高物联网交易便利程度。为智能物流模式应用节约时间成本。区块链结点具有十分自由的进出能力，可独立的参与或离开区块链体系，不对整个区块链体系有任何干扰。区块链 +大数据解决方案就利用了大数据的整合能力，促使物联网基础用户拓展更具有方向性，便于在智能物流的分散用户之间实现用户拓展。</p>
-<h2 id="公共服务领域"><a href="#公共服务领域" class="headerlink" title="公共服务领域"></a>公共服务领域</h2><p>区块链在公共管理、能源、交通等领域都与民众的生产生活息息相关，但是这些领域的中心化特质也带来了一些问题，可以用区块链来改造。区块链提供的去中心化的完全分布式DNS服务通过网络中各个节点之间的点对点数据传输服务就能实现域名的查询和解析，可用于确保某个重要的基础设施的操作系统和固件没有被篡改，可以监控软件的状态和完整性，发现不良的篡改，并确保使用了物联网技术的系统所传输的数据没用经过篡改。</p>
-<h2 id="数字版权领域"><a href="#数字版权领域" class="headerlink" title="数字版权领域"></a>数字版权领域</h2><p>通过区块链技术，可以对作品进行鉴权，证明文字、视频、音频等作品的存在，保证权属的真实、唯一性。作品在区块链上被确权后，后续交易都会进行实时记录，实现数字版权全生命周期管理，也可作为司法取证中的技术性保障。例如，美国纽约一家创业公司Mine Labs开发了一个基于区块链的元数据协议，这个名为Mediachain的系统利用IPFS文件系统，实现数字作品版权保护，主要是面向数字图片的版权保护应用。</p>
-<h2 id="保险领域"><a href="#保险领域" class="headerlink" title="保险领域"></a>保险领域</h2><p>在保险理赔方面，保险机构负责资金归集、投资、理赔，往往管理和运营成本较高。通过智能合约的应用，既无需投保人申请，也无需保险公司批准，只要触发理赔条件，实现保单自动理赔。一个典型的应用案例就是LenderBot, 是 2016 年由区块链企业 Stratumn、德勤与支付服务商 Lemonway 合作推出，它允许人们通过 Facebook Messenger 的聊天功能，注册定制化的微保险产品， 为个人之间交换的高价值物品进行投保，而区块链在贷款合同中代替了第三方角色 。</p>
-<h2 id="公益领域"><a href="#公益领域" class="headerlink" title="公益领域"></a>公益领域</h2><p>区块链上存储的数据，高可靠且不可篡改，天然适合用在社会公益场景。公益流程中的相关信息，如捐赠项目、募集明细、资金流向、受助人反馈等，均可以存放于区块链上，并且有条件地进行透明公开公示，方便社会监督。</p>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>区块链的架构模型以及核心技术</title>
     <url>/714656305/</url>
     <content><![CDATA[<p>-</p>
@@ -4498,6 +4481,25 @@ V：值（Value）</code></pre><h2 id="泛型对比测试"><a href="#泛型对�
 </ol>
 <h2 id="二-核心技术"><a href="#二-核心技术" class="headerlink" title="二.核心技术"></a>二.核心技术</h2><p> 1.<strong>分布式账本：</strong>分布式账本指的是交易记账由分布在不同地方的多个节点共同完成，而且每一个节点记录的是完整的账目，因此它们都可以参与监督交易合法性，同时也可以共同为其作证 。跟传统的分布式存储有所不同，区块链的分布式存储的独特性主要体现在两个方面：一是区块链每个节点都按照块链式结构存储完整的数据，传统分布式存储一般是将数据按照一定的规则分成多份进行存储。二是区块链每个节点存储都是独立的、地位等同的，依靠共识机制保证存储的一致性，而传统分布式存储一般是通过中心节点往其他备份节点同步数据。没有任何一个节点可以单独记录账本数据，从而避免了单一记账人被控制或者被贿赂而记假账的可能性。也由记账节点足够多，理论上讲除非所有的节点被破坏，否则账目就不会丢失，从而保证了账目数据的安全性。</p>
 <p>2.<strong>非对称加密：</strong>存储在区块链上的交易信息是公开的，但是账户身份信息是高度加密的，只有在数据拥有者授权的情况下才能访问到，从而保证了数据的安全和个人的隐私。<br>3.<strong>共识机制</strong>就是所有记账节点之间怎么达成共识，去认定一个记录的有效性，这既是认定的手段，也是防止篡改的手段。区块链提出了四种不同的共识机制，适用于不同的应用场景，在效率和安全性之间取得平衡 。<br>区块链的共识机制具备“少数服从多数”以及“人人平等”的特点，其中“少数服从多数”并不完全指节点个数，也可以是计算能力、股权数或者其他的计算机可以比较的特征量。“人人平等”是当节点满足条件时，所有节点都有权优先提出共识结果、直接被其他节点认同后并最后有可能成为最终共识结果。以比特币为例，采用的是工作量证明，只有在控制了全网超过51%的记账节点的情况下，才有可能伪造出一条不存在的记录。当加入区块链的节点足够多的时候，这基本上不可能，从而杜绝了造假的可能。<br>4.<strong>智能合约：</strong>基于这些可信的不可篡改的数据，可以自动化的执行一些预先定义好的规则和条款。以保险为例，如果说每个人的信息（包括医疗信息和风险发生的信息）都是真实可信的，那就很容易的在一些标准化的保险产品中，去进行自动化的理赔。在保险公司的日常业务中，虽然交易不像银行和证券行业那样频繁，但是对可信数据的依赖是有增无减。因此，笔者认为利用区块链技术，从数据管理的角度切入，能够有效地帮助保险公司提高风险管理能力。具体来讲主要分投保人风险管理和保险公司的风险监督。</p>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>区块链技术的应用领域</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<h2 id="金融领域"><a href="#金融领域" class="headerlink" title="金融领域"></a>金融领域</h2><p>区块链在<strong>国际汇兑</strong>、<strong>信用证</strong>、<strong>股权登记</strong>和<strong>证券交易所</strong>等金融领域有着潜在的巨大应用价值。将区块链技术应用在金融行业中，能够省去第三方中介环节，实现<strong>点对点</strong>的直接对接，从而在大大降低成本的同时，快速完成交易支付。<br>比如Visa推出基于区块链技术的 Visa B2B Connect，它能为机构提供一种费用更低、更快速和安全的跨境支付方式来处理全球范围的企业对企业的交易。要知道传统的跨境支付需要等3-5天，并为此支付1-3%的交易费用。Visa 还联合 Coinbase 推出了首张比特币借记卡，<strong>花旗银行</strong>则在区块链上测试运行加密货币“<strong>花旗币</strong>”。</p>
+<h2 id="物联网和物流领域"><a href="#物联网和物流领域" class="headerlink" title="物联网和物流领域"></a>物联网和物流领域</h2><p>区块链在物联网和物流领域也可以天然结合。通过区块链可以降低物流成本，追溯物品的生产和运送过程，并且提高供应链管理的效率。该领域被认为是区块链一个很有前景的应用方向。<br>区块链通过结点连接的散状网络分层结构，能够在整个网络中实现信息的全面传递，并能够检验信息的准确程度。这种特性一 定程度上提高了物联网交易的便利性和智能化。<strong>区块链</strong>+<strong>大数据</strong>的解决方案就利用了大数据的自动筛选过滤模式，在区块链中建立信用资源，可双重提高交易的安全性，并提高物联网交易便利程度。为智能物流模式应用节约时间成本。区块链结点具有十分自由的进出能力，可独立的参与或离开区块链体系，不对整个区块链体系有任何干扰。区块链 +大数据解决方案就利用了大数据的整合能力，促使物联网基础用户拓展更具有方向性，便于在智能物流的分散用户之间实现用户拓展。</p>
+<h2 id="公共服务领域"><a href="#公共服务领域" class="headerlink" title="公共服务领域"></a>公共服务领域</h2><p>区块链在公共管理、能源、交通等领域都与民众的生产生活息息相关，但是这些领域的中心化特质也带来了一些问题，可以用区块链来改造。区块链提供的去中心化的完全分布式DNS服务通过网络中各个节点之间的点对点数据传输服务就能实现域名的查询和解析，可用于确保某个重要的基础设施的操作系统和固件没有被篡改，可以监控软件的状态和完整性，发现不良的篡改，并确保使用了物联网技术的系统所传输的数据没用经过篡改。</p>
+<h2 id="数字版权领域"><a href="#数字版权领域" class="headerlink" title="数字版权领域"></a>数字版权领域</h2><p>通过区块链技术，可以对作品进行鉴权，证明文字、视频、音频等作品的存在，保证权属的真实、唯一性。作品在区块链上被确权后，后续交易都会进行实时记录，实现数字版权全生命周期管理，也可作为司法取证中的技术性保障。例如，美国纽约一家创业公司Mine Labs开发了一个基于区块链的元数据协议，这个名为Mediachain的系统利用IPFS文件系统，实现数字作品版权保护，主要是面向数字图片的版权保护应用。</p>
+<h2 id="保险领域"><a href="#保险领域" class="headerlink" title="保险领域"></a>保险领域</h2><p>在保险理赔方面，保险机构负责资金归集、投资、理赔，往往管理和运营成本较高。通过智能合约的应用，既无需投保人申请，也无需保险公司批准，只要触发理赔条件，实现保单自动理赔。一个典型的应用案例就是LenderBot, 是 2016 年由区块链企业 Stratumn、德勤与支付服务商 Lemonway 合作推出，它允许人们通过 Facebook Messenger 的聊天功能，注册定制化的微保险产品， 为个人之间交换的高价值物品进行投保，而区块链在贷款合同中代替了第三方角色 。</p>
+<h2 id="公益领域"><a href="#公益领域" class="headerlink" title="公益领域"></a>公益领域</h2><p>区块链上存储的数据，高可靠且不可篡改，天然适合用在社会公益场景。公益流程中的相关信息，如捐赠项目、募集明细、资金流向、受助人反馈等，均可以存放于区块链上，并且有条件地进行透明公开公示，方便社会监督。</p>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>
@@ -4880,6 +4882,64 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
+    <title>建站系列之---备份本地站点到github上</title>
+    <url>/3220545803/</url>
+    <content><![CDATA[<p>试想一下，就你自己的电脑上配置了hexo，平时写博客，部署都是在自己电脑上，那万一有一天，用的不是自己电脑，又想要写博客，那怎么办呢？此时就要用到git了，将你的站点配置等信息备份到github上，要用的时候，用 git clone到本地。而且好处不仅如此，万一哪天出了问题，有个备份，岂不美哉？</p>
+<a id="more"></a>
+<h2 id="一、本地配置"><a href="#一、本地配置" class="headerlink" title="一、本地配置"></a>一、本地配置</h2><ul>
+<li>由于是在个人电脑上配置的<code>hexo</code>，部署也不方便，如果在另外一台机子上写博客，没有<code>hexo</code>的配置也不行，另一方面出于备份项目的目的，最好的办法是将本地<code>hexo</code>站点备份到<code>Github</code>上。</li>
+</ul>
+<p>1.新建<code>hexo</code>文件夹存放分支工作目录。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir hexo</span><br></pre></td></tr></table></figure>
+
+<p>2.把你的GitHub的远程仓库克隆到<code>hexo</code>文件夹</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/DAQ121/DAQ121.github.io hexo</span><br></pre></td></tr></table></figure>
+
+<p>3.删除除了版本管理的<code>.git</code>之外的所有文件和文件夹</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexo</span><br><span class="line">rm -r *</span><br></pre></td></tr></table></figure>
+
+<p>4.把要备份的文件复制到<code>hexo</code>目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">scaffolds/</span><br><span class="line"><span class="built_in">source</span>/</span><br><span class="line">themes/</span><br><span class="line">.gitignore</span><br><span class="line">_config.yml</span><br><span class="line">package.json</span><br></pre></td></tr></table></figure>
+
+<p>5.如果使用的主题是从Github克隆的，那么使用命令删除它的Git文件（以next主题为例）,否则无法将主题文件<code>push</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rm -R themes/next/.git*</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、github配置"><a href="#二、github配置" class="headerlink" title="二、github配置"></a>二、github配置</h2><p>1.github创建一个<code>hexo</code>分支 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -b hexo</span><br></pre></td></tr></table></figure>
+<p>2.保存所有文件到暂存区</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add --all</span><br></pre></td></tr></table></figure>
+<p>3.提交变更</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">"创建hexo分支"</span></span><br></pre></td></tr></table></figure>
+<p>4.推送到github，并用<code>--set-upstream</code>与<code>origin</code>创建关联，将<code>hexo</code>设置为默认分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push --<span class="built_in">set</span>-upstream origin hexo</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、合并管理"><a href="#三、合并管理" class="headerlink" title="三、合并管理"></a>三、合并管理</h2><ul>
+<li>现在有两个需要管理的文件夹，一个是<code>blog</code>，一个是<code>hexo</code>，但是每次发布文章的时候如果要提交两次就很失效率，</li>
+</ul>
+<p>1.将本地<code>hexo</code>分支中的<code>.git</code>文件夹复制到<code>blog</code>根目录中</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp -a .git ../blog</span><br></pre></td></tr></table></figure>
+<p>2.<code>master</code>分支的文件则由<code>hexo</code>管理，编辑<code>hexo</code>配置文件<code>_config.yml</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">   <span class="built_in">type</span>: git</span><br><span class="line">   repo: https://github.com/DAQ121/DAQ121.github.io</span><br><span class="line">   branch: master</span><br></pre></td></tr></table></figure>
+<h2 id="四、发布文章"><a href="#四、发布文章" class="headerlink" title="四、发布文章"></a>四、发布文章</h2><p>1.新建文章</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<p>2.将相关更改推送到<code>hexo</code>分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"发表文章test"</span></span><br><span class="line">git push origin hexo</span><br></pre></td></tr></table></figure>
+<p>3.将静态文件推送到<code>master</code>分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+<h2 id="五、使用的时候如何迁移"><a href="#五、使用的时候如何迁移" class="headerlink" title="五、使用的时候如何迁移"></a>五、使用的时候如何迁移</h2><p>1.将<code>hexo</code>分支克隆下来</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b hexo http://github.com/DAQ121/DAQ121.github.io</span><br></pre></td></tr></table></figure>
+<p>2.安装<code>hexo</code>依赖</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install</span><br></pre></td></tr></table></figure>
+<p>3.只不过每次发文章的时候，要输入用户名和密码。</p>
+]]></content>
+      <categories>
+        <category>Hexo建站系列</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>建站系列之---部署网站到云服务器</title>
     <url>/3010328778/</url>
     <content><![CDATA[<p>由于这次的疫情，最爱的马云爸爸的阿里云推出了学生在家上机实践的活动，免费领六个月的ECS云服务器，天呐，2核4G啊，六个月之后还可续费六个月，整整一年呐，市场价780软妹币呢，不过投放量少，而且还是每天早上八点领，连续7:55闹钟起早，终于，在第三个早上，马云爸爸眷顾了我，我领到了。领到了就不能让他吃灰吧，于是先部署个博客再说。因为之前博客是托管在github上面的。而github的服务器又在国外，所以访问速度十分感人，但是有了国内的服务器就不一样了，瞬间嗖嗖嗖。。。</p>
@@ -5005,62 +5065,26 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
-    <title>建站系列之---备份本地站点到github上</title>
-    <url>/3220545803/</url>
-    <content><![CDATA[<p>试想一下，就你自己的电脑上配置了hexo，平时写博客，部署都是在自己电脑上，那万一有一天，用的不是自己电脑，又想要写博客，那怎么办呢？此时就要用到git了，将你的站点配置等信息备份到github上，要用的时候，用 git clone到本地。而且好处不仅如此，万一哪天出了问题，有个备份，岂不美哉？</p>
+    <title>&lt;&lt;小狗钱钱&gt;&gt;</title>
+    <url>/read.html/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在B站看了半佛仙人一期关于理财的视频，视频里面也推荐了很多值得一看的书，有《小狗钱钱》，《海龟交易法则》，《经济学原理》，我首先看的是小狗钱钱，写下了这篇读后感。</p>
 <a id="more"></a>
-<h2 id="一、本地配置"><a href="#一、本地配置" class="headerlink" title="一、本地配置"></a>一、本地配置</h2><ul>
-<li>由于是在个人电脑上配置的<code>hexo</code>，部署也不方便，如果在另外一台机子上写博客，没有<code>hexo</code>的配置也不行，另一方面出于备份项目的目的，最好的办法是将本地<code>hexo</code>站点备份到<code>Github</code>上。</li>
-</ul>
-<p>1.新建<code>hexo</code>文件夹存放分支工作目录。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir hexo</span><br></pre></td></tr></table></figure>
-
-<p>2.把你的GitHub的远程仓库克隆到<code>hexo</code>文件夹</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/DAQ121/DAQ121.github.io hexo</span><br></pre></td></tr></table></figure>
-
-<p>3.删除除了版本管理的<code>.git</code>之外的所有文件和文件夹</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexo</span><br><span class="line">rm -r *</span><br></pre></td></tr></table></figure>
-
-<p>4.把要备份的文件复制到<code>hexo</code>目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">scaffolds/</span><br><span class="line"><span class="built_in">source</span>/</span><br><span class="line">themes/</span><br><span class="line">.gitignore</span><br><span class="line">_config.yml</span><br><span class="line">package.json</span><br></pre></td></tr></table></figure>
-
-<p>5.如果使用的主题是从Github克隆的，那么使用命令删除它的Git文件（以next主题为例）,否则无法将主题文件<code>push</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rm -R themes/next/.git*</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、github配置"><a href="#二、github配置" class="headerlink" title="二、github配置"></a>二、github配置</h2><p>1.github创建一个<code>hexo</code>分支 </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -b hexo</span><br></pre></td></tr></table></figure>
-<p>2.保存所有文件到暂存区</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add --all</span><br></pre></td></tr></table></figure>
-<p>3.提交变更</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">"创建hexo分支"</span></span><br></pre></td></tr></table></figure>
-<p>4.推送到github，并用<code>--set-upstream</code>与<code>origin</code>创建关联，将<code>hexo</code>设置为默认分支</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push --<span class="built_in">set</span>-upstream origin hexo</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、合并管理"><a href="#三、合并管理" class="headerlink" title="三、合并管理"></a>三、合并管理</h2><ul>
-<li>现在有两个需要管理的文件夹，一个是<code>blog</code>，一个是<code>hexo</code>，但是每次发布文章的时候如果要提交两次就很失效率，</li>
-</ul>
-<p>1.将本地<code>hexo</code>分支中的<code>.git</code>文件夹复制到<code>blog</code>根目录中</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp -a .git ../blog</span><br></pre></td></tr></table></figure>
-<p>2.<code>master</code>分支的文件则由<code>hexo</code>管理，编辑<code>hexo</code>配置文件<code>_config.yml</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">   <span class="built_in">type</span>: git</span><br><span class="line">   repo: https://github.com/DAQ121/DAQ121.github.io</span><br><span class="line">   branch: master</span><br></pre></td></tr></table></figure>
-<h2 id="四、发布文章"><a href="#四、发布文章" class="headerlink" title="四、发布文章"></a>四、发布文章</h2><p>1.新建文章</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
-<p>2.将相关更改推送到<code>hexo</code>分支</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"发表文章test"</span></span><br><span class="line">git push origin hexo</span><br></pre></td></tr></table></figure>
-<p>3.将静态文件推送到<code>master</code>分支</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-<h2 id="五、使用的时候如何迁移"><a href="#五、使用的时候如何迁移" class="headerlink" title="五、使用的时候如何迁移"></a>五、使用的时候如何迁移</h2><p>1.将<code>hexo</code>分支克隆下来</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b hexo http://github.com/DAQ121/DAQ121.github.io</span><br></pre></td></tr></table></figure>
-<p>2.安装<code>hexo</code>依赖</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install</span><br></pre></td></tr></table></figure>
-<p>3.只不过每次发文章的时候，要输入用户名和密码。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这本书是美国的一版儿童理财读物，虽然说是儿童读物，但在我看来，实际上就是用孩子能够理解的故事，讲述一些大人都未必清楚的一些道理，这些道理可能直白的说出来，成人都懂，可是又有谁能够贯彻到生活中呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大致内容讲的是，小女孩吉娅的爸爸妈妈陷入了财政窘迫的时期，吉娅意外的捡到了一条狗，而这是一条会说话的狗，名字就叫钱钱，机缘巧合，钱钱开始教吉娅理财知识，吉娅一步一步富有了起来，并且也帮助爸爸妈妈摆脱了财政窘境。我看完这本书，并不能说从中学到了什么知识，知识把以前了解到的理财观念加深了，就像那句话：道理咱都懂！！！可他并没有深入你的骨髓，这才是关键。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我将重要的理念罗列以下：</p>
+<h2 id="一-做自己喜欢做的事"><a href="#一-做自己喜欢做的事" class="headerlink" title="(一)做自己喜欢做的事"></a>(一)做自己喜欢做的事</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不要为了挣钱而去挣钱，尤其是在我们这个年纪，通过打工，兼职挣来的钱，如果只是满足自己的消费欲望，那将毫无意义，如果将这些钱用在正道上，比如说买书，买课程，提高自己的修养与知识积累，那暂且还花对了地方，对我们这个年纪的学生，真正的意义是提升自己的能力，然后再去赚钱，换句话说，就是用自己的专业技能变现，如果专业技能达不到要求，那就将赚钱一事先放在一边，提升技能放在第一位，毕竟以后还是要靠本事吃饭，当你的专业技能足够好时，就不愁赚不到钱，这个时候就要找渠道了。</p>
+<h2 id="二-把钱分成日常开销。梦想目标，和账户三部分"><a href="#二-把钱分成日常开销。梦想目标，和账户三部分" class="headerlink" title="(二)把钱分成日常开销。梦想目标，和账户三部分"></a>(二)把钱分成日常开销。梦想目标，和账户三部分</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日常开销是刚需，这个必不可少，但也不要追求过高的消费，如果超出了自己经济承担范围，那么将所剩无几，梦想目标是指，心中有一个或者多个明确的目标，并且用小本本将他们记下来，估计达成这个目标需要多少钱，多少时间。单独为他们开一个账户，当然这里的账户是指形式上的，目的就是为了实现这些目标而去存钱。</p>
+<h2 id="三-进行明智的投资"><a href="#三-进行明智的投资" class="headerlink" title="(三)进行明智的投资"></a>(三)进行明智的投资</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投资是一门高深的学问，我觉得入个门还是很有必要的，毕竟等到以后，人到中年了，还是靠着储蓄过日子，并不是理想的生活，我身边有很多长辈有观念上的错误，他们就是将挣到的钱定期存进银行里，一存就是五到十年，吃定期的利息，然而他们并想不清楚，你吃银行的利息，通货膨胀在吃你的本金，对于他们那一代人，这个观念既然不能扭转，那就从我们这一代人做起吧，培养理财意识，学习投资方式，也是一种赚钱的利器，万年亘古不变的道理：投资有风险！！！明智的投资会帮你入账不少，而一旦看错了眼，亏损也是常有的事，这就需要长期的积累经验，形成意识了，投资—得先从韭菜做起。</p>
+<h2 id="四-关键在于自信程度"><a href="#四-关键在于自信程度" class="headerlink" title="(四) 关键在于自信程度"></a>(四) 关键在于自信程度</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这是一个老生常谈的话题，听过很多道理，喝过很多鸡汤，尝试过很多次，然而至少就我个人而言，我是一个没有自信的人，我顶多算是一个脸皮比较厚的人，自信和自卑是对立的，但是他们同样都是骨子里的东西，我们都活了二十多年了，经历的事也不少了，生活环境等等因素，到底是帮我们养成了自信，还是形成了自卑，只有我们自己清楚，深入骨髓的东西很难完全改变，但未必是坏事，在做任何事情的时候，保持谦逊的同时，也要掌握50%的主动权。</p>
+<h2 id="五-你最好想清楚你喜欢做什么，然后再考虑怎么用它来挣钱"><a href="#五-你最好想清楚你喜欢做什么，然后再考虑怎么用它来挣钱" class="headerlink" title="(五) 你最好想清楚你喜欢做什么，然后再考虑怎么用它来挣钱"></a>(五) 你最好想清楚你喜欢做什么，然后再考虑怎么用它来挣钱</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正如上面所说的，不为挣钱而做一些没有意义的事，年轻人，多提升以下自己。花时间花精力修炼内功，学习，比什么都重要。</p>
+<h2 id="六-欠债的人应该毁掉所有的信用卡"><a href="#六-欠债的人应该毁掉所有的信用卡" class="headerlink" title="(六)欠债的人应该毁掉所有的信用卡"></a>(六)欠债的人应该毁掉所有的信用卡</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里毁掉信用卡，并不是真正意义上的毁掉，就像那些段子：只要你卸载掉支付宝，你就不用还花呗了，对于花呗这个东西，该怎么去形容你最贴切？拿什么跟你作比较才算特别？还是要看用途的，如果是为了缓解经济压力，（这里的经济压力是指，你做了某些有意义的事后，欠下的债），有短期之内不要利息的钱用，何乐而不为呢？但是如果要是为了用这个花呗满足自己的消费欲望，那我觉得还是大可不必了，个人觉得，这种做法，是最low的，买不起我就不买。又不是必需品。还花呗的时候，也要在不收取利息的时候，还最低还款，但是要保证，最终能还清。</p>
+<h2 id="七-真的有必要吗？"><a href="#七-真的有必要吗？" class="headerlink" title="(七)真的有必要吗？"></a>(七)真的有必要吗？</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;花钱买一样东西的时候，事先考虑有没有必要，你是真的需要他吗？买了之后有什么用？能给你带来你预期的效果吗？能用多久？有更好的替代品吗?一般，扪心自问这些问题之后，你就应该知道，该不该买了。得出买不买的结论之后，就要考虑，买什么样的？现在这个信息错综复杂的互联网时代，各种测评，各种推荐，各种大数据分析，最后到你手里的，也许达不到你的预期，什么性价比乱七八糟的，哪儿有什么性价比，都是些商家搞出来唬人的噱头，你真的能看准东西吗？所谓性价比，大部分就是低价配low货，想买的东西，就别去占便宜。你占的便宜最终都会反映在产品上。</p>
+<h2 id="八-当你定下大目标的时候，就意味着你必须付出比别人更多的努力。"><a href="#八-当你定下大目标的时候，就意味着你必须付出比别人更多的努力。" class="headerlink" title="(八)当你定下大目标的时候，就意味着你必须付出比别人更多的努力。"></a>(八)当你定下大目标的时候，就意味着你必须付出比别人更多的努力。</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我以前考四级的时候，考教师资格证，都没过，包括这次四级430分险过，是因为我没有努力吗？不是，我努力了，周围也有人裸考过了的，并且分比我高多了，羨慕吗？不羡慕，因为我努力过，我没过的原因是我的方法不对，也是努力的不够，你努力了不一定会成功，但你不努力，一定不会有结果，当然也有幸存者偏差，对于天生聪明，基础好的人，可能有些时候会听到这样说：没那个必要，这个也没什么实际意义。但是我始终会坚持自己的理念：当我定下大目标的时候，就意味着必须付出比别人更多的努力。幸运其实是充分准备加上努力工作的结果。</p>
+<h2 id="九-克服畏惧心理"><a href="#九-克服畏惧心理" class="headerlink" title="(九)克服畏惧心理"></a>(九)克服畏惧心理</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;恐惧总是在我们设想事情会如何不顺利的时候出现，我们对失败的可能性想得越多，就越害怕，当你朝着积极地目标去思考的时候，就不会心生畏惧，我从小一直到现在，都没有真正意义上上台讲演过，我永远都是那个坐在台下为他人喝彩的观众，感叹她们真有魄力啊，就连在班级里做个自我介绍我都会脸红，我害怕面对很多人，害怕出糗，也不是没有过讲演的机会，因为我的畏惧，我也不知道我什么时候能踏出这一步，但是我会尽力克服自己的恐惧，等下次机会到来的时候，我不会拱手让人的。</p>
+<h2 id="十-72定理"><a href="#十-72定理" class="headerlink" title="(十)72定理"></a>(十)72定理</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;72定理：用72除以投资的年收益率的百分比，得出的数字就是这笔钱翻一倍所需要的年数，用72除以通货膨胀率的百分比，得出的数字就是这笔钱贬值一倍所需要的年数。还补充一点就是挑选基金时注意哪些问题：<br>1.基金至少有十年历史，也就是所谓的老基金<br>2.选择大型的跨国股票基金，以分散投资风险<br>3.了解基金的走势图，合理利用72定理</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其实之前说看完这本书，我并没有学到多少知识，这句话太过于自大，文章写到这里，我才发现，原来小狗钱钱教会我的东西并不少。去合理利用自己的<code>money</code>吧！！！</p>
 ]]></content>
       <categories>
-        <category>Hexo建站系列</category>
+        <category>读后感</category>
       </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
   </entry>
   <entry>
     <title>创建型---工厂方法模式</title>
@@ -5116,28 +5140,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       <tags>
         <tag>设计模式</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>&lt;&lt;小狗钱钱&gt;&gt;</title>
-    <url>/read.html/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在B站看了半佛仙人一期关于理财的视频，视频里面也推荐了很多值得一看的书，有《小狗钱钱》，《海龟交易法则》，《经济学原理》，我首先看的是小狗钱钱，写下了这篇读后感。</p>
-<a id="more"></a>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这本书是美国的一版儿童理财读物，虽然说是儿童读物，但在我看来，实际上就是用孩子能够理解的故事，讲述一些大人都未必清楚的一些道理，这些道理可能直白的说出来，成人都懂，可是又有谁能够贯彻到生活中呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大致内容讲的是，小女孩吉娅的爸爸妈妈陷入了财政窘迫的时期，吉娅意外的捡到了一条狗，而这是一条会说话的狗，名字就叫钱钱，机缘巧合，钱钱开始教吉娅理财知识，吉娅一步一步富有了起来，并且也帮助爸爸妈妈摆脱了财政窘境。我看完这本书，并不能说从中学到了什么知识，知识把以前了解到的理财观念加深了，就像那句话：道理咱都懂！！！可他并没有深入你的骨髓，这才是关键。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我将重要的理念罗列以下：</p>
-<h2 id="一-做自己喜欢做的事"><a href="#一-做自己喜欢做的事" class="headerlink" title="(一)做自己喜欢做的事"></a>(一)做自己喜欢做的事</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不要为了挣钱而去挣钱，尤其是在我们这个年纪，通过打工，兼职挣来的钱，如果只是满足自己的消费欲望，那将毫无意义，如果将这些钱用在正道上，比如说买书，买课程，提高自己的修养与知识积累，那暂且还花对了地方，对我们这个年纪的学生，真正的意义是提升自己的能力，然后再去赚钱，换句话说，就是用自己的专业技能变现，如果专业技能达不到要求，那就将赚钱一事先放在一边，提升技能放在第一位，毕竟以后还是要靠本事吃饭，当你的专业技能足够好时，就不愁赚不到钱，这个时候就要找渠道了。</p>
-<h2 id="二-把钱分成日常开销。梦想目标，和账户三部分"><a href="#二-把钱分成日常开销。梦想目标，和账户三部分" class="headerlink" title="(二)把钱分成日常开销。梦想目标，和账户三部分"></a>(二)把钱分成日常开销。梦想目标，和账户三部分</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日常开销是刚需，这个必不可少，但也不要追求过高的消费，如果超出了自己经济承担范围，那么将所剩无几，梦想目标是指，心中有一个或者多个明确的目标，并且用小本本将他们记下来，估计达成这个目标需要多少钱，多少时间。单独为他们开一个账户，当然这里的账户是指形式上的，目的就是为了实现这些目标而去存钱。</p>
-<h2 id="三-进行明智的投资"><a href="#三-进行明智的投资" class="headerlink" title="(三)进行明智的投资"></a>(三)进行明智的投资</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投资是一门高深的学问，我觉得入个门还是很有必要的，毕竟等到以后，人到中年了，还是靠着储蓄过日子，并不是理想的生活，我身边有很多长辈有观念上的错误，他们就是将挣到的钱定期存进银行里，一存就是五到十年，吃定期的利息，然而他们并想不清楚，你吃银行的利息，通货膨胀在吃你的本金，对于他们那一代人，这个观念既然不能扭转，那就从我们这一代人做起吧，培养理财意识，学习投资方式，也是一种赚钱的利器，万年亘古不变的道理：投资有风险！！！明智的投资会帮你入账不少，而一旦看错了眼，亏损也是常有的事，这就需要长期的积累经验，形成意识了，投资—得先从韭菜做起。</p>
-<h2 id="四-关键在于自信程度"><a href="#四-关键在于自信程度" class="headerlink" title="(四) 关键在于自信程度"></a>(四) 关键在于自信程度</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这是一个老生常谈的话题，听过很多道理，喝过很多鸡汤，尝试过很多次，然而至少就我个人而言，我是一个没有自信的人，我顶多算是一个脸皮比较厚的人，自信和自卑是对立的，但是他们同样都是骨子里的东西，我们都活了二十多年了，经历的事也不少了，生活环境等等因素，到底是帮我们养成了自信，还是形成了自卑，只有我们自己清楚，深入骨髓的东西很难完全改变，但未必是坏事，在做任何事情的时候，保持谦逊的同时，也要掌握50%的主动权。</p>
-<h2 id="五-你最好想清楚你喜欢做什么，然后再考虑怎么用它来挣钱"><a href="#五-你最好想清楚你喜欢做什么，然后再考虑怎么用它来挣钱" class="headerlink" title="(五) 你最好想清楚你喜欢做什么，然后再考虑怎么用它来挣钱"></a>(五) 你最好想清楚你喜欢做什么，然后再考虑怎么用它来挣钱</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正如上面所说的，不为挣钱而做一些没有意义的事，年轻人，多提升以下自己。花时间花精力修炼内功，学习，比什么都重要。</p>
-<h2 id="六-欠债的人应该毁掉所有的信用卡"><a href="#六-欠债的人应该毁掉所有的信用卡" class="headerlink" title="(六)欠债的人应该毁掉所有的信用卡"></a>(六)欠债的人应该毁掉所有的信用卡</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里毁掉信用卡，并不是真正意义上的毁掉，就像那些段子：只要你卸载掉支付宝，你就不用还花呗了，对于花呗这个东西，该怎么去形容你最贴切？拿什么跟你作比较才算特别？还是要看用途的，如果是为了缓解经济压力，（这里的经济压力是指，你做了某些有意义的事后，欠下的债），有短期之内不要利息的钱用，何乐而不为呢？但是如果要是为了用这个花呗满足自己的消费欲望，那我觉得还是大可不必了，个人觉得，这种做法，是最low的，买不起我就不买。又不是必需品。还花呗的时候，也要在不收取利息的时候，还最低还款，但是要保证，最终能还清。</p>
-<h2 id="七-真的有必要吗？"><a href="#七-真的有必要吗？" class="headerlink" title="(七)真的有必要吗？"></a>(七)真的有必要吗？</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;花钱买一样东西的时候，事先考虑有没有必要，你是真的需要他吗？买了之后有什么用？能给你带来你预期的效果吗？能用多久？有更好的替代品吗?一般，扪心自问这些问题之后，你就应该知道，该不该买了。得出买不买的结论之后，就要考虑，买什么样的？现在这个信息错综复杂的互联网时代，各种测评，各种推荐，各种大数据分析，最后到你手里的，也许达不到你的预期，什么性价比乱七八糟的，哪儿有什么性价比，都是些商家搞出来唬人的噱头，你真的能看准东西吗？所谓性价比，大部分就是低价配low货，想买的东西，就别去占便宜。你占的便宜最终都会反映在产品上。</p>
-<h2 id="八-当你定下大目标的时候，就意味着你必须付出比别人更多的努力。"><a href="#八-当你定下大目标的时候，就意味着你必须付出比别人更多的努力。" class="headerlink" title="(八)当你定下大目标的时候，就意味着你必须付出比别人更多的努力。"></a>(八)当你定下大目标的时候，就意味着你必须付出比别人更多的努力。</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我以前考四级的时候，考教师资格证，都没过，包括这次四级430分险过，是因为我没有努力吗？不是，我努力了，周围也有人裸考过了的，并且分比我高多了，羨慕吗？不羡慕，因为我努力过，我没过的原因是我的方法不对，也是努力的不够，你努力了不一定会成功，但你不努力，一定不会有结果，当然也有幸存者偏差，对于天生聪明，基础好的人，可能有些时候会听到这样说：没那个必要，这个也没什么实际意义。但是我始终会坚持自己的理念：当我定下大目标的时候，就意味着必须付出比别人更多的努力。幸运其实是充分准备加上努力工作的结果。</p>
-<h2 id="九-克服畏惧心理"><a href="#九-克服畏惧心理" class="headerlink" title="(九)克服畏惧心理"></a>(九)克服畏惧心理</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;恐惧总是在我们设想事情会如何不顺利的时候出现，我们对失败的可能性想得越多，就越害怕，当你朝着积极地目标去思考的时候，就不会心生畏惧，我从小一直到现在，都没有真正意义上上台讲演过，我永远都是那个坐在台下为他人喝彩的观众，感叹她们真有魄力啊，就连在班级里做个自我介绍我都会脸红，我害怕面对很多人，害怕出糗，也不是没有过讲演的机会，因为我的畏惧，我也不知道我什么时候能踏出这一步，但是我会尽力克服自己的恐惧，等下次机会到来的时候，我不会拱手让人的。</p>
-<h2 id="十-72定理"><a href="#十-72定理" class="headerlink" title="(十)72定理"></a>(十)72定理</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;72定理：用72除以投资的年收益率的百分比，得出的数字就是这笔钱翻一倍所需要的年数，用72除以通货膨胀率的百分比，得出的数字就是这笔钱贬值一倍所需要的年数。还补充一点就是挑选基金时注意哪些问题：<br>1.基金至少有十年历史，也就是所谓的老基金<br>2.选择大型的跨国股票基金，以分散投资风险<br>3.了解基金的走势图，合理利用72定理</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其实之前说看完这本书，我并没有学到多少知识，这句话太过于自大，文章写到这里，我才发现，原来小狗钱钱教会我的东西并不少。去合理利用自己的<code>money</code>吧！！！</p>
-]]></content>
-      <categories>
-        <category>读后感</category>
-      </categories>
   </entry>
   <entry>
     <title>手写链表</title>
@@ -5245,6 +5247,42 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
+    <title>抽象类与接口</title>
+    <url>/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在写代码的时候，我们经常实现一个接口，并实现他的方法，也就是面向接口编程，还有一种就是继承抽象类，我们不仅要会用，还要详细了解他们之间的区别。</p>
+<a id="more"></a>
+
+<h2 id="相同之处："><a href="#相同之处：" class="headerlink" title="相同之处："></a>相同之处：</h2><p>相同点：都不能被实例化,位于继承树的顶端，都包含抽象方法。</p>
+<h2 id="不同之处："><a href="#不同之处：" class="headerlink" title="不同之处："></a>不同之处：</h2><ol>
+<li><strong>实现：</strong> 抽象类的子类使用 extends 来继承；接口（Interface,对外提供规则）必须使用 implements 来实现接口。</li>
+<li><strong>构造函数：</strong> 抽象类可以有构造函数，接口不能有。</li>
+<li><strong>实现数量：</strong> 类可以实现很多个接口，但是只能继承一个抽象类。</li>
+<li><strong>访问修饰符：</strong> 接口中的方法默认使用 public 修饰，抽象类中的方法可以是任意访问修饰符。</li>
+</ol>
+<h3 id="设计目的和使用方法也不同"><a href="#设计目的和使用方法也不同" class="headerlink" title="设计目的和使用方法也不同"></a>设计目的和使用方法也不同</h3><p><strong>1.设计目的：</strong></p>
+<ul>
+<li><p>接口体现的一种规范，类似与整个 <strong><em>系统的总纲</em></strong> ，制订了系统各模块应该遵循的标准，因此接口不应该经常改变，一旦改变对整个系统是辐射性的。</p>
+</li>
+<li><p>抽象类作为多个子类的共同父类，体现的是一种 <strong><em>模板式设计</em></strong> ，可以当作系统实现过程中的中间产品，已经实现了系统部分功能。</p>
+<p><strong>2.使用不同：</strong><br>（1）接口只能包含抽象方法，抽象类可以包含普通方法。<br>（2）接口里不能定义静态方法，抽象类可以。<br>（3）接口只能定义静态常量属性不能定义普通属性，抽象类可以。</p>
+<pre><code> （4）接口不包含构造器，抽象类可以（不是用于创建对象而是让子类完成初始化）。
+（5）接口里不能包含初始化块，抽象类完全可以。
+（6）接口多继承，抽象类但继承（只能有一个直接父类）。</code></pre></li>
+</ul>
+<p><strong>补充：</strong></p>
+<ul>
+<li>接口所有方法全是抽象方法只能 public  abstract修饰 （默认public  abstract修饰 ），属性默认public  static  final修饰。</li>
+<li>抽象类除了包含抽象方法外与普通类无区别。<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2>1.抽象类<strong>被继承</strong>，体现的是 <strong>“is a”</strong> 的关系，抽象类中定义的是该继承体系<strong>共性</strong>功能。<br>2.接口<strong>被实现</strong>，体现的是 <strong>“like a”</strong> 的关系，接口中定义的是该继承体系的<strong>扩展</strong>功能。<br><strong>综上所述：</strong> 共性功能抽取放入抽象类中，接口相当于扩展功能，让某些···去实现。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaSE基础知识</category>
+      </categories>
+      <tags>
+        <tag>JavaSE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>操作系统的结构与功能</title>
     <url>/3546768407/</url>
     <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对操作系统的种类和发展历史有了一个基本了解之后，就正式开始学习操作系统了，首先要明白操作系统是做什么的，它的结构是什么样的，我粗略总结出以下知识点。</p>
@@ -5334,42 +5372,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </categories>
       <tags>
         <tag>OS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>抽象类与接口</title>
-    <url>/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在写代码的时候，我们经常实现一个接口，并实现他的方法，也就是面向接口编程，还有一种就是继承抽象类，我们不仅要会用，还要详细了解他们之间的区别。</p>
-<a id="more"></a>
-
-<h2 id="相同之处："><a href="#相同之处：" class="headerlink" title="相同之处："></a>相同之处：</h2><p>相同点：都不能被实例化,位于继承树的顶端，都包含抽象方法。</p>
-<h2 id="不同之处："><a href="#不同之处：" class="headerlink" title="不同之处："></a>不同之处：</h2><ol>
-<li><strong>实现：</strong> 抽象类的子类使用 extends 来继承；接口（Interface,对外提供规则）必须使用 implements 来实现接口。</li>
-<li><strong>构造函数：</strong> 抽象类可以有构造函数，接口不能有。</li>
-<li><strong>实现数量：</strong> 类可以实现很多个接口，但是只能继承一个抽象类。</li>
-<li><strong>访问修饰符：</strong> 接口中的方法默认使用 public 修饰，抽象类中的方法可以是任意访问修饰符。</li>
-</ol>
-<h3 id="设计目的和使用方法也不同"><a href="#设计目的和使用方法也不同" class="headerlink" title="设计目的和使用方法也不同"></a>设计目的和使用方法也不同</h3><p><strong>1.设计目的：</strong></p>
-<ul>
-<li><p>接口体现的一种规范，类似与整个 <strong><em>系统的总纲</em></strong> ，制订了系统各模块应该遵循的标准，因此接口不应该经常改变，一旦改变对整个系统是辐射性的。</p>
-</li>
-<li><p>抽象类作为多个子类的共同父类，体现的是一种 <strong><em>模板式设计</em></strong> ，可以当作系统实现过程中的中间产品，已经实现了系统部分功能。</p>
-<p><strong>2.使用不同：</strong><br>（1）接口只能包含抽象方法，抽象类可以包含普通方法。<br>（2）接口里不能定义静态方法，抽象类可以。<br>（3）接口只能定义静态常量属性不能定义普通属性，抽象类可以。</p>
-<pre><code> （4）接口不包含构造器，抽象类可以（不是用于创建对象而是让子类完成初始化）。
-（5）接口里不能包含初始化块，抽象类完全可以。
-（6）接口多继承，抽象类但继承（只能有一个直接父类）。</code></pre></li>
-</ul>
-<p><strong>补充：</strong></p>
-<ul>
-<li>接口所有方法全是抽象方法只能 public  abstract修饰 （默认public  abstract修饰 ），属性默认public  static  final修饰。</li>
-<li>抽象类除了包含抽象方法外与普通类无区别。<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2>1.抽象类<strong>被继承</strong>，体现的是 <strong>“is a”</strong> 的关系，抽象类中定义的是该继承体系<strong>共性</strong>功能。<br>2.接口<strong>被实现</strong>，体现的是 <strong>“like a”</strong> 的关系，接口中定义的是该继承体系的<strong>扩展</strong>功能。<br><strong>综上所述：</strong> 共性功能抽取放入抽象类中，接口相当于扩展功能，让某些···去实现。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaSE基础知识</category>
-      </categories>
-      <tags>
-        <tag>JavaSE</tag>
       </tags>
   </entry>
   <entry>
@@ -5756,30 +5758,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
-    <title>比特币的价格是怎么算出来的</title>
-    <url>/2526071924/</url>
-    <content><![CDATA[<p>-</p>
-<a id="more"></a>
-<h2 id="首先了解一下拍卖"><a href="#首先了解一下拍卖" class="headerlink" title="首先了解一下拍卖"></a>首先了解一下拍卖</h2><ul>
-<li><strong>英式拍卖：</strong> 如果拍卖方（卖方）要卖一个商品，那么买方则通过集体竞价的方式进行拍卖，价高者得，最后和卖方成交的一定只有一个买家，而这个买家一定是出价最高的那位。</li>
-<li><strong>荷兰式拍卖：</strong> 假如有一个买家想要买一个商品，但是卖方有很多，那么卖方递减报出新的价位，最终和买方成交的一定是卖价最低的那位。</li>
-</ul>
-<h2 id="实际定价方式"><a href="#实际定价方式" class="headerlink" title="实际定价方式"></a>实际定价方式</h2><p>在交易所看到的一排排红色的数字和一排排绿色的数字其实就是许多的买方和许多的卖方不断报出的<strong>买进价</strong>和<strong>卖出价</strong>，价格随供求变化而不断变动。买者和卖者彼此竞争，<strong>双向拍卖</strong>，买者对想要买进的出价，通过竞争以最低价买入;卖者也互相竞争，试图以最高价格出售，然而最新成交价一定是买卖双方达成一致的那个价格。买卖双方不断成交，最新一笔的成交价就是我们看到的不断变化的价格，这就是为什么价格在一直变化的原因。报价后面的数量，即代表当前的买方或者卖方想要购买或者卖出的币的数量。买卖一旦成交，则不得反悔。在未成交以前，也可以撤单，撤单程序与买卖委托的过程基本相同。</p>
-<h2 id="限价，市价，止盈止损"><a href="#限价，市价，止盈止损" class="headerlink" title="限价，市价，止盈止损"></a>限价，市价，止盈止损</h2><ul>
-<li>限价：是<strong>自己设定</strong>价格进行挂单，需价格波动到设定价格并有对手愿意交易才可以成交。</li>
-<li>市价：市价是以<strong>当前最新</strong>成交价挂单，一般马上成交。</li>
-<li>止盈止损：止盈止损即是<strong>带有预期</strong>的未来买入或者卖出行为，比如当价格跌破某一价位时进行止损（你预期跌破此价格可能还会继续跌），或者当价格突破某一价位时进行买入（你预期价格一旦突破该价位时将会继续上涨）。</li>
-</ul>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>如果你是买方，想要<strong>尽快</strong>购入比特币，当然是设置买入价格与当前最低卖出价格一致，这样双方就可以达成交易了，想要尽快卖出比特币，那就设置卖出价格与当前最高买入价格一致。但是市场上的人并不是都急切的想要卖出或者买入，会带有预期的进行买入卖出报价。</p>
-]]></content>
-      <categories>
-        <category>区块链+比特币</category>
-      </categories>
-      <tags>
-        <tag>区块链，比特币</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>火币网--币币交易图解</title>
     <url>/undefined/</url>
     <content><![CDATA[<p>如何在火币网上执行币币交易</p>
@@ -5807,6 +5785,30 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
 <li><p>图中标有今日最高，和今日最低。严谨理解为：从今日凌晨到目前为止的最高价与最低价。</p>
 <h2 id="均线分析方法："><a href="#均线分析方法：" class="headerlink" title="均线分析方法："></a>均线分析方法：</h2></li>
 </ul>
+]]></content>
+      <categories>
+        <category>区块链+比特币</category>
+      </categories>
+      <tags>
+        <tag>区块链，比特币</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>比特币的价格是怎么算出来的</title>
+    <url>/2526071924/</url>
+    <content><![CDATA[<p>-</p>
+<a id="more"></a>
+<h2 id="首先了解一下拍卖"><a href="#首先了解一下拍卖" class="headerlink" title="首先了解一下拍卖"></a>首先了解一下拍卖</h2><ul>
+<li><strong>英式拍卖：</strong> 如果拍卖方（卖方）要卖一个商品，那么买方则通过集体竞价的方式进行拍卖，价高者得，最后和卖方成交的一定只有一个买家，而这个买家一定是出价最高的那位。</li>
+<li><strong>荷兰式拍卖：</strong> 假如有一个买家想要买一个商品，但是卖方有很多，那么卖方递减报出新的价位，最终和买方成交的一定是卖价最低的那位。</li>
+</ul>
+<h2 id="实际定价方式"><a href="#实际定价方式" class="headerlink" title="实际定价方式"></a>实际定价方式</h2><p>在交易所看到的一排排红色的数字和一排排绿色的数字其实就是许多的买方和许多的卖方不断报出的<strong>买进价</strong>和<strong>卖出价</strong>，价格随供求变化而不断变动。买者和卖者彼此竞争，<strong>双向拍卖</strong>，买者对想要买进的出价，通过竞争以最低价买入;卖者也互相竞争，试图以最高价格出售，然而最新成交价一定是买卖双方达成一致的那个价格。买卖双方不断成交，最新一笔的成交价就是我们看到的不断变化的价格，这就是为什么价格在一直变化的原因。报价后面的数量，即代表当前的买方或者卖方想要购买或者卖出的币的数量。买卖一旦成交，则不得反悔。在未成交以前，也可以撤单，撤单程序与买卖委托的过程基本相同。</p>
+<h2 id="限价，市价，止盈止损"><a href="#限价，市价，止盈止损" class="headerlink" title="限价，市价，止盈止损"></a>限价，市价，止盈止损</h2><ul>
+<li>限价：是<strong>自己设定</strong>价格进行挂单，需价格波动到设定价格并有对手愿意交易才可以成交。</li>
+<li>市价：市价是以<strong>当前最新</strong>成交价挂单，一般马上成交。</li>
+<li>止盈止损：止盈止损即是<strong>带有预期</strong>的未来买入或者卖出行为，比如当价格跌破某一价位时进行止损（你预期跌破此价格可能还会继续跌），或者当价格突破某一价位时进行买入（你预期价格一旦突破该价位时将会继续上涨）。</li>
+</ul>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>如果你是买方，想要<strong>尽快</strong>购入比特币，当然是设置买入价格与当前最低卖出价格一致，这样双方就可以达成交易了，想要尽快卖出比特币，那就设置卖出价格与当前最高买入价格一致。但是市场上的人并不是都急切的想要卖出或者买入，会带有预期的进行买入卖出报价。</p>
 ]]></content>
       <categories>
         <category>区块链+比特币</category>
@@ -6177,6 +6179,44 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
+    <title>操作系统---虚拟内存</title>
+    <url>/1080640073/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是不是经常听到虚拟内存这个名词，尤其是在玩Linux的时候，其实不然，哪个是交换分区，跟虚拟内存还是有差别的。</p>
+<a id="more"></a>
+<ul>
+<li><p>对一个程序来说，他在某一段时间内，只有某一些部分是需要在内存里面的。（局部性原理），虚拟内存管理，属于一个完全黑盒的封装，我们在使用的时候，几乎不需要考虑他的存在。</p>
+</li>
+<li><p>虚拟内存的两种实现方式：请求页，请求段。</p>
+</li>
+<li><p>请求页：如果有一个页面，只有当你真正需要他的时候，才把他加载到内存中来，有很多好处：降低IO操作，</p>
+</li>
+<li><p><strong>虚拟内存也是一种缓存思想</strong>：虚拟内存将主存看成是一个磁盘的高速缓存，主存中只保存活动区域，并根据需要在磁盘和主存之间来回传送数据。</p>
+</li>
+<li><p>从概念上来说，虚拟内存被组织成为一个由存放在磁盘上的 N 个连续的字节大小的单元组成的数组，也就是字节数组。每个字节都有一个唯一的虚拟地址作为数组的索引。虚拟内存的地址和磁盘的地址之间建立影射关系。磁盘上活动的数组内容被缓存在主存中。在存储器层次结构中，磁盘(较低层L5，参见我们上篇文章图4)的数据被分割成块(block)，这些块作为和主存(较高层,L4)之间的传输单元。主存作为虚拟内存(或者说磁盘)的缓存。</p>
+</li>
+<li><p>虚拟内存（VM）系统将虚拟内存分割成称为大小固定的虚拟页（Virtual Page,VP），每个虚拟页的大小为固定字节。同样的，物理内存被分割为物理页（Physical Page,PP）,大小也为固定字节（物理页也称作页帧，page frame）。</p>
+</li>
+<li><p>在任意时刻，虚拟页面都分为三个不相交的部分：<br>①<strong>未分配的(Unallocated)</strong> ：VM 系统还未分配（或者创建）的页，未分配的页没有任何数据和它们关联，因此不占用任何内存/磁盘空间。<br>②<strong>缓存的(Cached)</strong>： 当前已缓存在物理内存中的已分配页。<br>③<strong>未缓存的(UnCached)</strong> ：该页已经映射到磁盘上了，但是还没缓存在物理内存中。</p>
+</li>
+</ul>
+<h2 id="swap分区的作用"><a href="#swap分区的作用" class="headerlink" title="swap分区的作用"></a>swap分区的作用</h2><ul>
+<li><p>linux有一个swap分区。Swap空间的作用可简单描述为：当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间中的信息被临时保存到Swap空间中，等到那些程序要运行时，再从Swap中恢复保存的数据到内存中。系统总是在物理内存不够时，才进行Swap交换。</p>
+</li>
+<li><p>电脑开着一个进程，几天不关机，也一直没关闭这个进程，随着运行的程序越来越多，内存快不够用了，所以操作系统就选择将这个音乐播放器的内存状态(包括堆栈状态等)都写到磁盘上的swap区进行保存。这样就腾出来一部分内存供其他需要运行的程序使用。等你要使用到这个进程了。此时， 系统会从磁盘中的swap区重新读取该进程的相关信息，送回内存接着运行。</p>
+</li>
+</ul>
+<h2 id="补充注意"><a href="#补充注意" class="headerlink" title="补充注意"></a>补充注意</h2><p><strong>在window下也有类作用的硬盘空间，属于对用户不可见的匿名磁盘空间(在C盘)。</strong></p>
+<p>特别注意：按照字面意思，swap交换区也可以称为虚拟内存<br>硬盘上的swap交换区，其实就相当于承担了内存的作用(只是速度很慢罢了)。swap交换区起到了扩大内存的作用。所以从某些意义上来讲，swap区也可以叫做虚拟内存，但是这个虚拟内存是字面意思。和我们本文当中站在计算机系统的角度来解释的虚拟内存不是一个概念。所以特别注意这一点。因为有些人理解的虚拟内存，就是swap交互区。此虚拟内存非彼虚拟内存，所以明白各自的概念和作用。</p>
+<p><strong>linux环境下叫做swap分区，window下这块区域不叫swap分区，就直接按照字面意思叫做”虚拟内存”了。所以两个含义不同的虚拟内存</strong></p>
+]]></content>
+      <categories>
+        <category>计算机操作系统</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>认识web服务器&amp;Eclipse配置部署Tomcat</title>
     <url>/629938038/</url>
     <content><![CDATA[<p>Web服务器一般指网站服务器，是指驻留于因特网上某种类型计算机的程序，可以向浏览器等Web客户端提供文档，也可以放置网站文件，让全世界浏览；可以放置数据文件，让全世界下载。目前最主流的三个Web服务器是Apache、 Nginx 、IIS。</p>
@@ -6235,41 +6275,26 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </tags>
   </entry>
   <entry>
-    <title>操作系统---虚拟内存</title>
-    <url>/1080640073/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是不是经常听到虚拟内存这个名词，尤其是在玩Linux的时候，其实不然，哪个是交换分区，跟虚拟内存还是有差别的。</p>
+    <title>设计模式六大原则</title>
+    <url>/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99/</url>
+    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每一个设计模式都符合某一个或多个面向对象设计原则，面向对象设计原则是用于评价一个设计模式的使用效果的重要指标之一，通过在软件开发中使用这些原则，可以提高软件的可维护性和可复用性，以便设计出兼具良好的软件系统，实现可维护性服用的目标。</p>
 <a id="more"></a>
-<ul>
-<li><p>对一个程序来说，他在某一段时间内，只有某一些部分是需要在内存里面的。（局部性原理），虚拟内存管理，属于一个完全黑盒的封装，我们在使用的时候，几乎不需要考虑他的存在。</p>
-</li>
-<li><p>虚拟内存的两种实现方式：请求页，请求段。</p>
-</li>
-<li><p>请求页：如果有一个页面，只有当你真正需要他的时候，才把他加载到内存中来，有很多好处：降低IO操作，</p>
-</li>
-<li><p><strong>虚拟内存也是一种缓存思想</strong>：虚拟内存将主存看成是一个磁盘的高速缓存，主存中只保存活动区域，并根据需要在磁盘和主存之间来回传送数据。</p>
-</li>
-<li><p>从概念上来说，虚拟内存被组织成为一个由存放在磁盘上的 N 个连续的字节大小的单元组成的数组，也就是字节数组。每个字节都有一个唯一的虚拟地址作为数组的索引。虚拟内存的地址和磁盘的地址之间建立影射关系。磁盘上活动的数组内容被缓存在主存中。在存储器层次结构中，磁盘(较低层L5，参见我们上篇文章图4)的数据被分割成块(block)，这些块作为和主存(较高层,L4)之间的传输单元。主存作为虚拟内存(或者说磁盘)的缓存。</p>
-</li>
-<li><p>虚拟内存（VM）系统将虚拟内存分割成称为大小固定的虚拟页（Virtual Page,VP），每个虚拟页的大小为固定字节。同样的，物理内存被分割为物理页（Physical Page,PP）,大小也为固定字节（物理页也称作页帧，page frame）。</p>
-</li>
-<li><p>在任意时刻，虚拟页面都分为三个不相交的部分：<br>①<strong>未分配的(Unallocated)</strong> ：VM 系统还未分配（或者创建）的页，未分配的页没有任何数据和它们关联，因此不占用任何内存/磁盘空间。<br>②<strong>缓存的(Cached)</strong>： 当前已缓存在物理内存中的已分配页。<br>③<strong>未缓存的(UnCached)</strong> ：该页已经映射到磁盘上了，但是还没缓存在物理内存中。</p>
-</li>
+<h2 id="单一职责原则（SRP）"><a href="#单一职责原则（SRP）" class="headerlink" title="单一职责原则（SRP）"></a>单一职责原则（SRP）</h2><ul>
+<li>单一职责原则是最简单的面向对象设计原则，用于控制类的粒度大小。</li>
+<li><strong>定义：</strong> 一个对象应该只包含单一的职责，并且该职责被完整的封装在一个类中。它是高内聚低耦合的指导方针 。</li>
 </ul>
-<h2 id="swap分区的作用"><a href="#swap分区的作用" class="headerlink" title="swap分区的作用"></a>swap分区的作用</h2><ul>
-<li><p>linux有一个swap分区。Swap空间的作用可简单描述为：当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间中的信息被临时保存到Swap空间中，等到那些程序要运行时，再从Swap中恢复保存的数据到内存中。系统总是在物理内存不够时，才进行Swap交换。</p>
-</li>
-<li><p>电脑开着一个进程，几天不关机，也一直没关闭这个进程，随着运行的程序越来越多，内存快不够用了，所以操作系统就选择将这个音乐播放器的内存状态(包括堆栈状态等)都写到磁盘上的swap区进行保存。这样就腾出来一部分内存供其他需要运行的程序使用。等你要使用到这个进程了。此时， 系统会从磁盘中的swap区重新读取该进程的相关信息，送回内存接着运行。</p>
-</li>
-</ul>
-<h2 id="补充注意"><a href="#补充注意" class="headerlink" title="补充注意"></a>补充注意</h2><p><strong>在window下也有类作用的硬盘空间，属于对用户不可见的匿名磁盘空间(在C盘)。</strong></p>
-<p>特别注意：按照字面意思，swap交换区也可以称为虚拟内存<br>硬盘上的swap交换区，其实就相当于承担了内存的作用(只是速度很慢罢了)。swap交换区起到了扩大内存的作用。所以从某些意义上来讲，swap区也可以叫做虚拟内存，但是这个虚拟内存是字面意思。和我们本文当中站在计算机系统的角度来解释的虚拟内存不是一个概念。所以特别注意这一点。因为有些人理解的虚拟内存，就是swap交互区。此虚拟内存非彼虚拟内存，所以明白各自的概念和作用。</p>
-<p><strong>linux环境下叫做swap分区，window下这块区域不叫swap分区，就直接按照字面意思叫做”虚拟内存”了。所以两个含义不同的虚拟内存</strong></p>
+<h2 id="开闭原则（Open-Close-Principle）"><a href="#开闭原则（Open-Close-Principle）" class="headerlink" title="开闭原则（Open Close Principle）"></a>开闭原则（Open Close Principle）</h2><p><strong>对扩展开放，对修改关闭</strong>。在程序需要进行拓展的时候，不能去修改原有的代码，实现一个热插拔的效果。所以一句话概括就是：为了使程序的扩展性好，易于维护和升级。想要达到这样的效果，我们需要使用接口和抽象类。</p>
+<h2 id="里氏代换原则（Liskov-Substitution-Principle）"><a href="#里氏代换原则（Liskov-Substitution-Principle）" class="headerlink" title="里氏代换原则（Liskov Substitution Principle）"></a>里氏代换原则（Liskov Substitution Principle）</h2><p>任何基类可以出现的地方，子类一定可以出现。 LSP是继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。里氏代换原则是对“开-闭”原则的补充。实现“开-闭”原则的关键步骤就是抽象化。而基类与子类的继承关系就是抽象化的具体实现，所以里氏代换原则是对实现抽象化的具体步骤的规范。</p>
+<h2 id="依赖倒转原则（Dependence-Inversion-Principle）"><a href="#依赖倒转原则（Dependence-Inversion-Principle）" class="headerlink" title="依赖倒转原则（Dependence Inversion Principle）"></a>依赖倒转原则（Dependence Inversion Principle）</h2><p>这个是开闭原则的基础，<strong>针对接口编程，依赖于抽象而不依赖于具体</strong>。</p>
+<h2 id="接口隔离原则（Interface-Segregation-Principle）"><a href="#接口隔离原则（Interface-Segregation-Principle）" class="headerlink" title="接口隔离原则（Interface Segregation Principle）"></a>接口隔离原则（Interface Segregation Principle）</h2><p>使用多个隔离的接口，比使用单个接口要好。旨在降低类之间的耦合度，<strong>由此可以看出，其实设计模式就是一个软件的设计思想，从大型软件架构出发，为了升级和维护方便。需要降低依赖，降低耦合。</strong></p>
+<h2 id="迪米特法则（最少知道原则）（Demeter-Principle）"><a href="#迪米特法则（最少知道原则）（Demeter-Principle）" class="headerlink" title="迪米特法则（最少知道原则）（Demeter Principle）"></a>迪米特法则（最少知道原则）（Demeter Principle）</h2><p>简单来讲：个实体应当尽量少的与其他实体之间发生相互作用，使得系统功能模块相对独立。也是解耦的一部分思想。</p>
+<h2 id="合成复用原则（Composite-Reuse-Principle）"><a href="#合成复用原则（Composite-Reuse-Principle）" class="headerlink" title="合成复用原则（Composite Reuse Principle）"></a>合成复用原则（Composite Reuse Principle）</h2><p>原则是<strong>尽量使用合成/聚合的方式，而不是使用继承。</strong></p>
 ]]></content>
       <categories>
-        <category>计算机操作系统</category>
+        <category>设计模式</category>
       </categories>
       <tags>
-        <tag>OS</tag>
+        <tag>设计模式</tag>
       </tags>
   </entry>
   <entry>
@@ -6362,29 +6387,6 @@ response.addCookie();</code></pre><p>3.Cookie分类</p>
       </categories>
       <tags>
         <tag>OS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>设计模式六大原则</title>
-    <url>/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99/</url>
-    <content><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每一个设计模式都符合某一个或多个面向对象设计原则，面向对象设计原则是用于评价一个设计模式的使用效果的重要指标之一，通过在软件开发中使用这些原则，可以提高软件的可维护性和可复用性，以便设计出兼具良好的软件系统，实现可维护性服用的目标。</p>
-<a id="more"></a>
-<h2 id="单一职责原则（SRP）"><a href="#单一职责原则（SRP）" class="headerlink" title="单一职责原则（SRP）"></a>单一职责原则（SRP）</h2><ul>
-<li>单一职责原则是最简单的面向对象设计原则，用于控制类的粒度大小。</li>
-<li><strong>定义：</strong> 一个对象应该只包含单一的职责，并且该职责被完整的封装在一个类中。它是高内聚低耦合的指导方针 。</li>
-</ul>
-<h2 id="开闭原则（Open-Close-Principle）"><a href="#开闭原则（Open-Close-Principle）" class="headerlink" title="开闭原则（Open Close Principle）"></a>开闭原则（Open Close Principle）</h2><p><strong>对扩展开放，对修改关闭</strong>。在程序需要进行拓展的时候，不能去修改原有的代码，实现一个热插拔的效果。所以一句话概括就是：为了使程序的扩展性好，易于维护和升级。想要达到这样的效果，我们需要使用接口和抽象类。</p>
-<h2 id="里氏代换原则（Liskov-Substitution-Principle）"><a href="#里氏代换原则（Liskov-Substitution-Principle）" class="headerlink" title="里氏代换原则（Liskov Substitution Principle）"></a>里氏代换原则（Liskov Substitution Principle）</h2><p>任何基类可以出现的地方，子类一定可以出现。 LSP是继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。里氏代换原则是对“开-闭”原则的补充。实现“开-闭”原则的关键步骤就是抽象化。而基类与子类的继承关系就是抽象化的具体实现，所以里氏代换原则是对实现抽象化的具体步骤的规范。</p>
-<h2 id="依赖倒转原则（Dependence-Inversion-Principle）"><a href="#依赖倒转原则（Dependence-Inversion-Principle）" class="headerlink" title="依赖倒转原则（Dependence Inversion Principle）"></a>依赖倒转原则（Dependence Inversion Principle）</h2><p>这个是开闭原则的基础，<strong>针对接口编程，依赖于抽象而不依赖于具体</strong>。</p>
-<h2 id="接口隔离原则（Interface-Segregation-Principle）"><a href="#接口隔离原则（Interface-Segregation-Principle）" class="headerlink" title="接口隔离原则（Interface Segregation Principle）"></a>接口隔离原则（Interface Segregation Principle）</h2><p>使用多个隔离的接口，比使用单个接口要好。旨在降低类之间的耦合度，<strong>由此可以看出，其实设计模式就是一个软件的设计思想，从大型软件架构出发，为了升级和维护方便。需要降低依赖，降低耦合。</strong></p>
-<h2 id="迪米特法则（最少知道原则）（Demeter-Principle）"><a href="#迪米特法则（最少知道原则）（Demeter-Principle）" class="headerlink" title="迪米特法则（最少知道原则）（Demeter Principle）"></a>迪米特法则（最少知道原则）（Demeter Principle）</h2><p>简单来讲：个实体应当尽量少的与其他实体之间发生相互作用，使得系统功能模块相对独立。也是解耦的一部分思想。</p>
-<h2 id="合成复用原则（Composite-Reuse-Principle）"><a href="#合成复用原则（Composite-Reuse-Principle）" class="headerlink" title="合成复用原则（Composite Reuse Principle）"></a>合成复用原则（Composite Reuse Principle）</h2><p>原则是<strong>尽量使用合成/聚合的方式，而不是使用继承。</strong></p>
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>设计模式</tag>
       </tags>
   </entry>
   <entry>
