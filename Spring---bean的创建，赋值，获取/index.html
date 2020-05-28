@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<script src="js/clicklove.js"></script>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Spring---bean的创建，赋值，获取 - DAQ&#39;s Blog - 一个简简单单的博客</title>
+
+
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Spring中bean的创建，赋值，以及获取。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring---bean的创建，赋值，获取">
+<meta property="og:url" content="http://daqwt.top/Spring---bean%E7%9A%84%E5%88%9B%E5%BB%BA%EF%BC%8C%E8%B5%8B%E5%80%BC%EF%BC%8C%E8%8E%B7%E5%8F%96/index.html">
+<meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Spring中bean的创建，赋值，以及获取。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://daqwt.top/images/og_image.png">
+<meta property="article:published_time" content="2020-05-01T13:01:19.000Z">
+<meta property="article:modified_time" content="2020-05-28T13:06:50.164Z">
+<meta property="article:author" content="黑心市民">
+<meta property="article:tag" content="Spring">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://daqwt.top/images/og_image.png">
+
+
+
+
+
+<link rel="alternative" href="/rss.xml" title="Spring---bean的创建，赋值，获取" type="application/atom+xml">
+
+
+
+<link rel="icon" href="http://qiniu.daqwt.top/wangzhantubiao-32.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://qiniu.daqwt.top/logoo.png" alt="Spring---bean的创建，赋值，获取" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/photo">相册</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+                <a class="navbar-item"
+                href="/share">分享</a>
+                
+                <a class="navbar-item"
+                href="/friends">友链</a>
+                
+                <a class="navbar-item"
+                href="/games">游戏</a>
+                
+                <a class="navbar-item"
+                href="/books">书单</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="RSS" href="/rss.xml">
+                        
+                        <i class="fas fa-rss"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+       
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
+            
+                Spring---bean的创建，赋值，获取
+            
+        </h1>
+         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-01T13:01:19.000Z">2020-05-01</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Spring%E5%85%A8%E5%AE%B6%E6%A1%B6/">Spring全家桶</a>
+                </div>
+                
+                                                            
+                <span class="level-item has-text-grey">                    
+                    
+                    
+                    15 分钟 读完 (大约 2300 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spring中bean的创建，赋值，以及获取。</p>
+<a id="more"></a>
+
+<h1 id="获取对象和赋值"><a href="#获取对象和赋值" class="headerlink" title="获取对象和赋值"></a>获取对象和赋值</h1><h2 id="（一）通过IOC容器根据id获取对象★"><a href="#（一）通过IOC容器根据id获取对象★" class="headerlink" title="（一）通过IOC容器根据id获取对象★"></a>（一）通过IOC容器根据id获取对象★</h2><p>1.导入<code>.jar</code>包</p>
+<p><img src="https://img-blog.csdnimg.cn/20200413141504525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>2.建bean类，里面提供具体的<code>set/get</code>方法。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200413142010237.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>3.配置<code>.xml</code> 文件，注册组件</p>
+<p><img src="https://img-blog.csdnimg.cn/20200413142116850.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>4.创建IOC对象，并且启动容器。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200413142053621.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>5.使用的时候，就直接从容器中获取bean对象，但前提是，这个对象必须在配置文件中注册过，如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 注册一个person对象，Spring 会自动创建这个对象 --&gt;</span><br><span class="line">	&lt;!-- 一个bean标签可以注册一个组件 --&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"person01"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.daq.bean.Person"</span>&gt;</span><br><span class="line">		&lt;property name="age" value="18"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name="email" value="2829025551@qq.com"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name="gender" value="男"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name="name" value="代澳旗"&gt;&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;bean id=<span class="string">"person02"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.daq.bean.Person"</span>&gt;</span><br><span class="line">		&lt;property name="age" value="20"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name="email" value="2829025551@qq.com"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name="gender" value="女"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name="name" value="梧桐"&gt;&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//容器帮我们创建好了对象</span></span><br><span class="line">Person bean1=(Person) ioc.getBean(<span class="string">"person01"</span>);</span><br><span class="line">Person bean2=(Person) ioc.getBean(<span class="string">"person02"</span>);</span><br><span class="line">		</span><br><span class="line">System.out.println(bean1);</span><br><span class="line">System.out.println(bean2);</span><br></pre></td></tr></table></figure>
+
+<h2 id="（二）根据bean的类型从容器中获取对象★"><a href="#（二）根据bean的类型从容器中获取对象★" class="headerlink" title="（二）根据bean的类型从容器中获取对象★"></a>（二）根据bean的类型从容器中获取对象★</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 方法二---通过对象类型，从容器中获取这个对象]</span></span><br><span class="line"><span class="comment"> * 但是如果ioc容器中这个类型的对象有多个，查找就会失败，报错。</span></span><br><span class="line"><span class="comment"> * 这种类型的对象，只能有一个</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test02</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Person bean = ioc.getBean(Person<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">		System.out.println(bean)</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="（三）调用有参构造器给对象赋值"><a href="#（三）调用有参构造器给对象赋值" class="headerlink" title="（三）调用有参构造器给对象赋值"></a>（三）调用有参构造器给对象赋值</h2><p>1.在bean类中，创建有参构造方法。<br><img src="https://img-blog.csdnimg.cn/20200413151220938.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>2.在配置文件中，使用<code>constructor</code>标签给对象赋值。有几个参数，就用几次标签</p>
+<p><img src="https://img-blog.csdnimg.cn/20200413151312412.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>3.在容器中通过id的方式获取对象。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200413151354704.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="（四）通过P名称空间为bean赋值"><a href="#（四）通过P名称空间为bean赋值" class="headerlink" title="（四）通过P名称空间为bean赋值"></a>（四）通过P名称空间为bean赋值</h2><h2 id="（五）正确的为各种属性赋值"><a href="#（五）正确的为各种属性赋值" class="headerlink" title="（五）正确的为各种属性赋值"></a>（五）正确的为各种属性赋值</h2><p>1.测试使用null值 。<br>2.引用类型赋值（引用其他bean、引用内部bean）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=<span class="string">"person01"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.atguigu.bean.Person"</span>&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!-- lastName=<span class="string">"null"</span> --&gt;</span><br><span class="line">		&lt;property name=<span class="string">"lastName"</span>&gt;</span><br><span class="line">			&lt;!-- 进行复杂的赋值 --&gt;</span><br><span class="line">			&lt;<span class="keyword">null</span> /&gt;</span><br><span class="line">		&lt;/property&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!-- ref：代表引用外面的一个值 ;引用其他bean car = ioc.getBean(<span class="string">"car01"</span>) --&gt;</span><br><span class="line">		&lt;!-- &lt;property name="car" ref="car01"&gt;&lt;/property&gt; --&gt;</span><br><span class="line">		&lt;property name=<span class="string">"car"</span>&gt;</span><br><span class="line">&lt;!--对象我们可以使用bean标签创建 car = <span class="keyword">new</span> Car(); 引用内部bean；不能被获取到，只能内部使用 --&gt;</span><br><span class="line">			&lt;bean <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.atguigu.bean.Car"</span>&gt;</span><br><span class="line">				&lt;property name="carName" value="自行车"&gt;&lt;/property&gt;</span><br><span class="line">			&lt;/bean&gt;</span><br><span class="line">		&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<p>3.集合类型赋值（List、Map、Properties）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=<span class="string">"person02"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.atguigu.bean.Person"</span>&gt;</span><br><span class="line">		&lt;!-- 如何为list类型赋值 --&gt;</span><br><span class="line">		&lt;property name=<span class="string">"books"</span>&gt;</span><br><span class="line">			&lt;!-- books = <span class="keyword">new</span> ArrayList&lt;Book&gt;(); --&gt;</span><br><span class="line">			&lt;list&gt;</span><br><span class="line">				&lt;!-- list标签体中添加每一个元素 --&gt;</span><br><span class="line">				&lt;bean class="com.atguigu.bean.Book" p:bookName="西游记"&gt;&lt;/bean&gt;</span><br><span class="line">				&lt;!-- 引用外部一个元素 --&gt;</span><br><span class="line">				&lt;ref bean=<span class="string">"book01"</span> /&gt;</span><br><span class="line">			&lt;/list&gt;</span><br><span class="line">		&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">		&lt;!-- Map&lt;String, Object&gt; maps; --&gt;</span><br><span class="line">		&lt;property name=<span class="string">"maps"</span>&gt;</span><br><span class="line">			&lt;!-- maps = <span class="keyword">new</span> LinkedHashMap&lt;&gt;(); --&gt;</span><br><span class="line">			&lt;map&gt;</span><br><span class="line">				&lt;!-- 一个entry代表一个键值对 --&gt;</span><br><span class="line">				&lt;entry key="key01" value="张三"&gt;&lt;/entry&gt;</span><br><span class="line">				&lt;entry key="key02" value="18"&gt;&lt;/entry&gt;</span><br><span class="line">				&lt;entry key="key03" value-ref="book01"&gt;&lt;/entry&gt;</span><br><span class="line">				&lt;entry key=<span class="string">"key04"</span>&gt;</span><br><span class="line">					&lt;bean <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.atguigu.bean.Car"</span>&gt;</span><br><span class="line">						&lt;property name="carName" value="宝马"&gt;&lt;/property&gt;</span><br><span class="line">					&lt;/bean&gt;</span><br><span class="line">				&lt;/entry&gt;</span><br><span class="line">				&lt;entry key=<span class="string">"key05"</span>&gt;</span><br><span class="line">					&lt;value&gt;李四&lt;/value&gt;</span><br><span class="line">				&lt;/entry&gt;</span><br><span class="line">				&lt;!-- &lt;entry key="key05"&gt; &lt;map&gt;&lt;/map&gt; &lt;/entry&gt; --&gt;</span><br><span class="line">			&lt;/map&gt;</span><br><span class="line">		&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">		&lt;!-- <span class="keyword">private</span> Properties properties; --&gt;</span><br><span class="line">		&lt;property name=<span class="string">"properties"</span>&gt;</span><br><span class="line">			&lt;!-- properties = <span class="keyword">new</span> Properties();所有的k=v都是string --&gt;</span><br><span class="line">			&lt;props&gt;</span><br><span class="line">				&lt;!-- k=v都是string；值直接写在标签体中 --&gt;</span><br><span class="line">				&lt;prop key="username"&gt;root&lt;/prop&gt;</span><br><span class="line">				&lt;prop key="password"&gt;123456&lt;/prop&gt;</span><br><span class="line">			&lt;/props&gt;</span><br><span class="line">		&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<p>4.util名称空间创建集合类型的bean 级联属性赋值 </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 级联属性赋值：   级联属性:属性的属性--&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"person04"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.atguigu.bean.Person"</span>&gt;</span><br><span class="line">		&lt;!--为car赋值的时候。改变car的价格  --&gt;</span><br><span class="line">		&lt;property name="car" ref="car01"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;!--  --&gt;</span><br><span class="line">		&lt;property name="car.price" value="900000"&gt;&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="工厂方式创建bean"><a href="#工厂方式创建bean" class="headerlink" title="工厂方式创建bean"></a>工厂方式创建bean</h1><h2 id="（六）通过继承实现bean配置信息的重用"><a href="#（六）通过继承实现bean配置信息的重用" class="headerlink" title="（六）通过继承实现bean配置信息的重用"></a>（六）通过继承实现bean配置信息的重用</h2><ul>
+<li>不修改的信息就继承别人的，自己独有的信息，就修改。<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--parent：指定当前bean的配置信息继承于哪个  --&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"person06"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.atguigu.bean.Person"</span> parent=<span class="string">"person05"</span>&gt;</span><br><span class="line">		&lt;property name="lastName" value="李四"&gt;&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="（七）通过abstract属性创建一个模板bean"><a href="#（七）通过abstract属性创建一个模板bean" class="headerlink" title="（七）通过abstract属性创建一个模板bean"></a>（七）通过abstract属性创建一个模板bean</h2><ul>
+<li>抽象Bean只能用来被别人继承。<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- <span class="keyword">abstract</span>=<span class="string">"true"</span>：这个bean的配置是一个抽象的，不能获取他的实例，只能被别人用来继承 --&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"person05"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.atguigu.bean.Person"</span> <span class="keyword">abstract</span>=<span class="string">"true"</span>&gt;</span><br><span class="line">		&lt;property name="lastName" value="张三"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name="age" value="18"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name="gender" value="男"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name="email" value="zhangsan@atguigu.com"&gt;&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="（八）bean的作用域，分别创建单实例和多实例的bean★"><a href="#（八）bean的作用域，分别创建单实例和多实例的bean★" class="headerlink" title="（八）bean的作用域，分别创建单实例和多实例的bean★"></a>（八）bean的作用域，分别创建单实例和多实例的bean★</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 测试bean的作用域，分别创建单实例和多实例的bean</span><br><span class="line">	bean的作用域:指定bean是否单实例，xxx；默认：单实例</span><br><span class="line">	</span><br><span class="line">	prototype:多实例</span><br><span class="line">		<span class="number">1</span>）、容器启动默认不会去创建多实例bean。</span><br><span class="line">		<span class="number">2</span>）、获取的时候创建这个bean。</span><br><span class="line">		<span class="number">3</span>）、每次获取都会创建一个新的对象</span><br><span class="line">	singleton:单实例的；默认情况下是单实例。</span><br><span class="line">		<span class="number">1</span>）、在容器启动完成之前就已经创建好对象，保存在容器中了。</span><br><span class="line">		<span class="number">2</span>）、任何获取都是获取之前创建好的那个对象。</span><br><span class="line">	</span><br><span class="line">	request:在web环境下，同一次请求创建一个Bean实例（没卵用）</span><br><span class="line">	session:在web环境下，同一次会话创建一个Bean实例（没卵用）</span><br><span class="line">	 --&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="（九）静态-实例工厂方法创建bean，FactoryBean★"><a href="#（九）静态-实例工厂方法创建bean，FactoryBean★" class="headerlink" title="（九）静态/实例工厂方法创建bean，FactoryBean★"></a>（九）静态/实例工厂方法创建bean，FactoryBean★</h2><ul>
+<li>有些简单的对象还好，因为属性少，但是有的对象属性很多，总不可能写一个抽象bean，让其他来继承吧，这个时候，就要用到工厂方法来创建了，</li>
+<li>工厂模式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- bean的创建默认就是框架利用反射<span class="keyword">new</span>出来的bean实例 --&gt;</span><br><span class="line">	&lt;!-- 工厂模式：工厂帮我们创建对象，有一个专门帮我们创建对象的类，这个类就是工厂</span><br><span class="line">    	如下面的：AirPlaneFactory </span><br><span class="line">		AirPlane ap = AirPlaneFactory.getAirPlane(String jzName);</span><br><span class="line">		</span><br><span class="line">	静态工厂：工厂本身不用创建对象；通过静态方法调用，对象 = 工厂类.工厂方法名()；</span><br><span class="line">	实例工厂：工厂本身需要创建对象；</span><br><span class="line">			工厂类 工厂对象 = <span class="keyword">new</span> 工厂类();</span><br><span class="line">			工厂对象.getAirPlane(<span class="string">"张三"</span>);</span><br><span class="line">	--&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>静态工厂</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 静态工厂</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lfy</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AirPlaneStaticFactory</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//AirPlaneStaticFactory.getAirPlane()</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> AirPlane <span class="title">getAirPlane</span><span class="params">(String jzName)</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"AirPlaneStaticFactory...正在为你造飞机"</span>);</span><br><span class="line">		AirPlane airPlane = <span class="keyword">new</span> AirPlane();</span><br><span class="line">		airPlane.setFdj(<span class="string">"太行"</span>);</span><br><span class="line">		airPlane.setFjsName(<span class="string">"lfy"</span>);</span><br><span class="line">		airPlane.setJzName(jzName);</span><br><span class="line">		airPlane.setPersonNum(<span class="number">300</span>);</span><br><span class="line">		airPlane.setYc(<span class="string">"198.98m"</span>);</span><br><span class="line">		<span class="keyword">return</span> airPlane;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- <span class="number">1</span>、静态工厂(不需要创建工厂本身)</span><br><span class="line">	<span class="class"><span class="keyword">class</span>：指定静态工厂全类名</span></span><br><span class="line">	factory-method:指定哪个方法是工厂方法</span><br><span class="line">	constructor-arg：可以为方法传参</span><br><span class="line"> --&gt;</span><br><span class="line">&lt;bean id=<span class="string">"airPlane01"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.atguigu.factory.AirPlaneStaticFactory"</span></span><br><span class="line">	factory-method=<span class="string">"getAirPlane"</span>&gt;</span><br><span class="line">	&lt;!-- 可以为方法指定参数 --&gt;</span><br><span class="line">	&lt;constructor-arg value="李四"&gt;&lt;/constructor-arg&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>实例工厂</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实例工厂</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lfy</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AirPlaneInstanceFactory</span> </span>&#123;</span><br><span class="line">	<span class="comment">// new AirPlaneInstanceFactory().getAirPlane();</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span>  AirPlane <span class="title">getAirPlane</span><span class="params">(String jzName)</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"AirPlaneInstanceFactory...正在造飞机"</span>);</span><br><span class="line">		AirPlane airPlane = <span class="keyword">new</span> AirPlane();</span><br><span class="line">		airPlane.setFdj(<span class="string">"太行"</span>);</span><br><span class="line">		airPlane.setFjsName(<span class="string">"lfy"</span>);</span><br><span class="line">		airPlane.setJzName(jzName);</span><br><span class="line">		airPlane.setPersonNum(<span class="number">300</span>);</span><br><span class="line">		airPlane.setYc(<span class="string">"198.98m"</span>);</span><br><span class="line">		<span class="keyword">return</span> airPlane;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--<span class="number">2</span>、实例工厂使用 </span><br><span class="line">		factory-method;指定这个实例工厂中哪个方法是工厂方法；	</span><br><span class="line">	--&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"airPlaneInstanceFactory"</span> </span><br><span class="line">		<span class="class"><span class="keyword">class</span></span>=<span class="string">"com.atguigu.factory.AirPlaneInstanceFactory"</span>&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line">		</span><br><span class="line">	&lt;!-- factory-bean：指定当前对象创建使用哪个工厂</span><br><span class="line">		<span class="number">1</span>、先配置出实例工厂对象</span><br><span class="line">		<span class="number">2</span>、配置我们要创建的AirPlane使用哪个工厂创建</span><br><span class="line">			<span class="number">1</span>）、factory-bean：指定使用哪个工厂实例</span><br><span class="line">			<span class="number">2</span>）、factory-method：使用哪个工厂方法</span><br><span class="line">	 --&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"airPlane02"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.atguigu.bean.AirPlane"</span></span><br><span class="line">		factory-bean=<span class="string">"airPlaneInstanceFactory"</span> </span><br><span class="line">		factory-method=<span class="string">"getAirPlane"</span>&gt;</span><br><span class="line">		&lt;constructor-arg value="王五"&gt;&lt;/constructor-arg&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>FactoryBean</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现了FactoryBean接口的类是Spring可以认识的工厂类；</span></span><br><span class="line"><span class="comment"> * Spring会自动的调用工厂方法创建实例</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lfy</span></span><br><span class="line"><span class="comment"> *1、编写一个FactoryBean的实现类</span></span><br><span class="line"><span class="comment"> *2、在spring配置文件中进行注册</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyFactoryBeanImple</span> <span class="keyword">implements</span> <span class="title">FactoryBean</span>&lt;<span class="title">Book</span>&gt;</span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * getObject：工厂方法；</span></span><br><span class="line"><span class="comment">	 * 		返回创建的对象</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Book <span class="title">getObject</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"MyFactoryBeanImple。。帮你创建对象..."</span>);</span><br><span class="line">		Book book = <span class="keyword">new</span> Book();</span><br><span class="line">		book.setBookName(UUID.randomUUID().toString());</span><br><span class="line">		<span class="keyword">return</span> book;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 返回创建的对象的类型；</span></span><br><span class="line"><span class="comment">	 * Spring会自动调用这个方法来确认创建的对象是什么类型</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> Class&lt;?&gt; getObjectType() &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> Book<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * isSingleton：是单例？</span></span><br><span class="line"><span class="comment">	 * false：不是单例</span></span><br><span class="line"><span class="comment">	 * true：是单例</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- FactoryBean★(是Spring规定的一个接口);</span><br><span class="line">			只要是这个接口的实现类，Spring都认为是一个工厂；</span><br><span class="line">		<span class="number">1</span>、ioc容器启动的时候不会创建实例 </span><br><span class="line">		<span class="number">2</span>、FactoryBean；获取的时候的才创建对象</span><br><span class="line">		--&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"myFactoryBeanImple"</span> </span><br><span class="line">		class="com.atguigu.factory.MyFactoryBeanImple"&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="引用外部属性文件★"><a href="#引用外部属性文件★" class="headerlink" title="引用外部属性文件★"></a>引用外部属性文件★</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- 外部文件：dbconfig.properties</span><br><span class="line"></span><br><span class="line">jdbc.username=root</span><br><span class="line">jdbc.password=***</span><br><span class="line">jdbc.jdbcUrl=jdbc:mysql:<span class="comment">//localhost:3306/user</span></span><br><span class="line">jdbc.driverClass=com.mysql.jdbc.Driver</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--引用外部属性文件★依赖context名称空间  --&gt;</span><br><span class="line">	&lt;!-- 数据库连接池作为单实例是最好的；一个项目就一个连接池，连接池里面管理很多连接。连接是直接从连接池中拿 --&gt;</span><br><span class="line">	&lt;!-- 可以让Spring帮我们创建连接池对象，（管理连接池） --&gt;</span><br><span class="line">	&lt;!-- 加载外部配置文件    固定写法  classpath:，表示引用类路径下的一个资源--&gt;</span><br><span class="line">	&lt;context:property-placeholder location=<span class="string">"classpath:dbconfig.properties"</span>/&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- username是Spring的key中的一个关键字；</span><br><span class="line">	为了防止配置文件中的key和spring自己的关键字冲突。我们可以给配置文件中的key加上一个前缀 --&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"dataSource"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.mchange.v2.c3p0.ComboPooledDataSource"</span>&gt;</span><br><span class="line">		&lt;property name="user" value="$&#123;jdbc.username&#125;"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;!-- $&#123;key&#125;动态取出配置文件中某个key对应的值 --&gt;</span><br><span class="line">		&lt;property name="password" value="$&#123;jdbc.password&#125;"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name="jdbcUrl" value="$&#123;jdbc.jdbcUrl&#125;"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name="driverClass" value="$&#123;jdbc.driverClass&#125;"&gt;&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test02</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>&#123;</span><br><span class="line">		<span class="comment">//1、从容器中拿到连接池</span></span><br><span class="line">		<span class="comment">//DataSource bean = (DataSource) ioc.getBean("dataSource");</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2、按照类型获取组件，可以获取到这个类型下的所有实现类子类等等...</span></span><br><span class="line">		DataSource bean = ioc.getBean(DataSource<span class="class">.<span class="keyword">class</span>)</span>;	</span><br><span class="line">		System.out.println(bean.getConnection());</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        <ul class="post-copyright">
+        <li><strong>本文标题：</strong><a href="http://daqwt.top/Spring---bean%E7%9A%84%E5%88%9B%E5%BB%BA%EF%BC%8C%E8%B5%8B%E5%80%BC%EF%BC%8C%E8%8E%B7%E5%8F%96/">Spring---bean的创建，赋值，获取</a></li>
+        <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
+        <li><strong>本文链接：</strong><a href="http://daqwt.top/Spring---bean%E7%9A%84%E5%88%9B%E5%BB%BA%EF%BC%8C%E8%B5%8B%E5%80%BC%EF%BC%8C%E8%8E%B7%E5%8F%96/">http://daqwt.top/Spring---bean%E7%9A%84%E5%88%9B%E5%BB%BA%EF%BC%8C%E8%B5%8B%E5%80%BC%EF%BC%8C%E8%8E%B7%E5%8F%96/</a></li>
+        <li><strong>发布时间：</strong>2020-05-01</li>
+        <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </li>
+        </ul>
+    
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
+                    <a class="has-link-grey -link" href="/tags/Spring/" rel="tag">Spring</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">乞人不受嗟来之食,哎嘛，真香~</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="http://qiniu.daqwt.top/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="http://qiniu.daqwt.top/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Spring---%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Spring---使用注解自动装配</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/%E4%BA%86%E8%A7%A3Spring/">
+                <span class="level-item">Spring---基础了解</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'AGGG1bgO42sEaVaFqWL1IWdu-gzGzoHsz',
+        app_key: 'IdOMlYlWz8QYnB5YDBSWuTBi',
+        placeholder: '请不要出现虎狼之词...否则我将代表网络正义重拳出击'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="http://qiniu.daqwt.top/touxiang.jpg" alt="彭鱼晏">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        彭鱼晏
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        no pain , no gain
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>武汉 中国</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            90
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            13
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            32
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://blog.csdn.net/weixin_44861399" target="_blank" rel="noopener">
+                别犹豫,关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="Github" href="https://github.com/DAQ121">
+                
+                <i class="iconfont icon-git"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2829025551&amp;site=qq&amp;menu=yes">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="网易云" href="https://music.163.com/#/djradio?id=791862420">
+                
+                <i class="iconfont icon-wangyiyun"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="CSDN" href="https://blog.csdn.net/weixin_44861399">
+                
+                <i class="iconfont icon-csdn"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#获取对象和赋值">
+        <span class="has-mr-6">1</span>
+        <span>获取对象和赋值</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#（一）通过IOC容器根据id获取对象★">
+        <span class="has-mr-6">1.1</span>
+        <span>（一）通过IOC容器根据id获取对象★</span>
+        </a></li><li>
+        <a class="is-flex" href="#（二）根据bean的类型从容器中获取对象★">
+        <span class="has-mr-6">1.2</span>
+        <span>（二）根据bean的类型从容器中获取对象★</span>
+        </a></li><li>
+        <a class="is-flex" href="#（三）调用有参构造器给对象赋值">
+        <span class="has-mr-6">1.3</span>
+        <span>（三）调用有参构造器给对象赋值</span>
+        </a></li><li>
+        <a class="is-flex" href="#（四）通过P名称空间为bean赋值">
+        <span class="has-mr-6">1.4</span>
+        <span>（四）通过P名称空间为bean赋值</span>
+        </a></li><li>
+        <a class="is-flex" href="#（五）正确的为各种属性赋值">
+        <span class="has-mr-6">1.5</span>
+        <span>（五）正确的为各种属性赋值</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#工厂方式创建bean">
+        <span class="has-mr-6">2</span>
+        <span>工厂方式创建bean</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#（六）通过继承实现bean配置信息的重用">
+        <span class="has-mr-6">2.1</span>
+        <span>（六）通过继承实现bean配置信息的重用</span>
+        </a></li><li>
+        <a class="is-flex" href="#（七）通过abstract属性创建一个模板bean">
+        <span class="has-mr-6">2.2</span>
+        <span>（七）通过abstract属性创建一个模板bean</span>
+        </a></li><li>
+        <a class="is-flex" href="#（八）bean的作用域，分别创建单实例和多实例的bean★">
+        <span class="has-mr-6">2.3</span>
+        <span>（八）bean的作用域，分别创建单实例和多实例的bean★</span>
+        </a></li><li>
+        <a class="is-flex" href="#（九）静态-实例工厂方法创建bean，FactoryBean★">
+        <span class="has-mr-6">2.4</span>
+        <span>（九）静态/实例工厂方法创建bean，FactoryBean★</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#引用外部属性文件★">
+        <span class="has-mr-6">3</span>
+        <span>引用外部属性文件★</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile" align="center" style="margin:auto">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://qiniu.daqwt.top/logoo.png" alt="Spring---bean的创建，赋值，获取" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 黑心市民&nbsp;
+                <i class="fas fa-balance-scale"></i>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">鄂ICP备20003594</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">本站访客<span id="busuanzi_value_site_uv"></span>人</span>
+                <span><i class="fas fa-globe-asia"></i></span>
+				<span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("02/14/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+                setInterval("createtime()",250);
+            </script>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://daqwt.top',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
