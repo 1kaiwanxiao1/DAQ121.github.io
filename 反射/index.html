@@ -11,16 +11,16 @@
 <title>JavaSE---反射 - DAQ&#39;s Blog - 一个简简单单的博客</title>
 
 
-    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java是一门静态语言（运行时结构不变），不像JavaScript，python...那些动态语言一样，在运行时可以修改变量的值，但是java也可以称为准动态语言，因为他可以利用反射机制，获得类似动态语言的效果。 反射是什么？反射就像是一面镜子，这面镜子其实就是JVM，他能照出你的类的所有属性和方法，也能调用你所有">
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java是一门静态语言（运行时结构不变），不像JavaScript，python...那些动态语言一样，在运行时可以修改变量的值，但是java也可以称为准动态语言，因为他可以利用反射机制，获得类似动态语言的效果。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaSE---反射">
 <meta property="og:url" content="http://daqwt.top/%E5%8F%8D%E5%B0%84/index.html">
 <meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
-<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java是一门静态语言（运行时结构不变），不像JavaScript，python...那些动态语言一样，在运行时可以修改变量的值，但是java也可以称为准动态语言，因为他可以利用反射机制，获得类似动态语言的效果。 反射是什么？反射就像是一面镜子，这面镜子其实就是JVM，他能照出你的类的所有属性和方法，也能调用你所有">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java是一门静态语言（运行时结构不变），不像JavaScript，python...那些动态语言一样，在运行时可以修改变量的值，但是java也可以称为准动态语言，因为他可以利用反射机制，获得类似动态语言的效果。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://daqwt.top/images/og_image.png">
 <meta property="article:published_time" content="2020-04-18T12:26:21.000Z">
-<meta property="article:modified_time" content="2020-05-17T02:52:36.569Z">
+<meta property="article:modified_time" content="2020-05-28T08:17:16.828Z">
 <meta property="article:author" content="黑心市民">
 <meta property="article:tag" content="JavaSE">
 <meta name="twitter:card" content="summary">
@@ -172,7 +172,7 @@
                 <span class="level-item has-text-grey">                    
                     
                     
-                    13 分钟 读完 (大约 1886 个字)
+                    15 分钟 读完 (大约 2296 个字)
                 </span>
                 
                 
@@ -186,17 +186,17 @@
         
         <div class="content">
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>java</code>是一门静态语言（运行时结构不变），不像<code>JavaScript，python...</code>那些动态语言一样，在运行时可以修改变量的值，但是java也可以称为<code>准动态语言</code>，因为他可以利用反射机制，获得类似动态语言的效果。</p>
-<h1 id="反射是什么？"><a href="#反射是什么？" class="headerlink" title="反射是什么？"></a>反射是什么？</h1><p>反射就像是一面镜子，这面镜子其实就是JVM，他能照出你的类的所有属性和方法，也能调用你所有对象的属性和方法。</p>
-<ul>
+<a id="more"></a>
+
+<p><strong>前言：</strong> 反射就像是一面镜子，这面镜子其实就是JVM，他能照出你的类的所有属性和方法，也能调用你所有对象的属性和方法，<strong>crazy~</strong></p>
+<p><code>java</code>是一门静态语言（运行时结构不变），不像<code>JavaScript，python...</code>那些动态语言一样，在运行时可以修改变量的值，但是java也可以称为<code>准动态语言</code>，因为他可以利用反射机制，获得类似动态语言的效果。</p>
+<h1 id="反射是什么？"><a href="#反射是什么？" class="headerlink" title="反射是什么？"></a>反射是什么？</h1><ul>
 <li>先说<strong>正</strong>是怎么一回事。我要使用某个类，我必须要知道它是什么类，有何作用？用的时候，要先实例化。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实例化一个对象，实例化的过程牵扯太多，不赘述</span></span><br><span class="line">Student stu = <span class="keyword">new</span> Studnt();</span><br><span class="line">Class c1 = stu.getClass();</span><br><span class="line">System.out.println(c1.getName());</span><br></pre></td></tr></table></figure>
 <ul>
 <li>上面这个Student类，JVM在加载的时候这个类的时候，其实会在JAVA堆中创建一个<code>java.lang.class类</code>的对象，就是上面的<code>c1</code>，这个class对象代表类的相关信息。可以使用这个对象的一些方法来获取类的相关信息，这里也体现出了<strong>万物皆对象</strong>的理念，连类都是对象。</li>
-<li>看看class类，这还只是一小部分方法，跟类相关的都可以在Class类中找到。</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/202004181940283.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
+<li>看看class类，这还只是一小部分方法，跟类相关的都可以在Class类中找到。<br><img src="https://img-blog.csdnimg.cn/202004181940283.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
 <li>那说了这么多，反射到底是什么呢？</li>
 </ul>
 <p>我的理解：在运行状态中，可以知道任意一个类的属性和方法，也可以调用任意一个对象的属性和方法，也就是动态获取信息，动态获取对象方法和属性，然而这些底层的实现细节都被屏蔽了，只留下API库给我们使用，也就是<code>java.lang.reflect</code>类库，这些API学习并不难，难在理解反射这个概念，由于实现细节都被屏蔽了，我们也就很少写到反射的代码。</p>
@@ -219,7 +219,9 @@
 <li>Class本身也是一个类。</li>
 <li>Class对象只能由系统建立。我们只能通过反射去得到。</li>
 <li>一个加载的类在JVM中只会有一个Class实例。</li>
-<li>Class类是Reflection的根源，如果你想动态加载，运行的类，只有先获得相应的class对象才可以。<h2 id="Class类常用方法"><a href="#Class类常用方法" class="headerlink" title="Class类常用方法"></a>Class类常用方法</h2><table>
+<li>Class类是Reflection的根源，如果你想动态加载，运行的类，只有先获得相应的class对象才可以。</li>
+</ol>
+<h2 id="Class类常用方法"><a href="#Class类常用方法" class="headerlink" title="Class类常用方法"></a>Class类常用方法</h2><table>
 <thead>
 <tr>
 <th>方法名</th>
@@ -255,8 +257,6 @@
 <td>返回一个包含某些Constructor对象的数组</td>
 </tr>
 </tbody></table>
-</li>
-</ol>
 <h2 id="创建class对象"><a href="#创建class对象" class="headerlink" title="创建class对象"></a>创建class对象</h2><p>创建class对象的三种方式</p>
 <ul>
 <li>通过对象获得</li>
@@ -282,7 +282,12 @@
 <li><code>setAccessible</code>：启动和禁用访问安全检查的开关。默认为false，设置为true之后，可以访问一些私有属性，可以提高反射的效率，如果代码中必须用反射，而该句代码需要频繁的被调用，就设置为true。</li>
 </ul>
 <p><img src="https://img-blog.csdnimg.cn/20200516211315324.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h1 id="获取注解信息"><a href="#获取注解信息" class="headerlink" title="获取注解信息"></a>获取注解信息</h1>
+<h1 id="获取注解信息"><a href="#获取注解信息" class="headerlink" title="获取注解信息"></a>获取注解信息</h1><h1 id="提高反射效率"><a href="#提高反射效率" class="headerlink" title="提高反射效率"></a>提高反射效率</h1><ol>
+<li>反射比new对象慢，是因为Class.forName这个方法比较耗时，它实际上调用了一个本地方法，通过这个方法来要求JVM查找并加载指定的类。所以我们在项目中使用的时候，可以把Class.forName返回的Class对象缓存起来，下一次使用的时候直接从缓存里面获取，这样就极大的提高了获取Class的效率。同理，在我们获取Constructor、Method等对象的时候也可以缓存起来使用，避免每次使用时再来耗费时间创建。</li>
+<li>还有一种更极致的使用反射手法，一个高性能反射工具包ReflectASM。它是通过字节码生成的方式来实现的反射机制</li>
+<li>总结一下，为了更好的使用反射，我们应该在项目启动的时候将反射所需要的相关配置及数据加载进内存中，在运行阶段都从缓存中取这些元数据进行反射操作。如果对性能有极致追求的时候，可以考虑通过三方包，直接对字节码进行操作。</li>
+</ol>
+
         </div>
         
         <ul class="post-copyright">
@@ -434,7 +439,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            69
+                            82
                         </p>
                     </a>
                 </div>
@@ -446,7 +451,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            13
                         </p>
                     </a>
                 </div>
@@ -458,7 +463,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            28
+                            31
                         </p>
                     </a>
                 </div>
@@ -560,6 +565,10 @@
         <a class="is-flex" href="#获取注解信息">
         <span class="has-mr-6">7</span>
         <span>获取注解信息</span>
+        </a></li><li>
+        <a class="is-flex" href="#提高反射效率">
+        <span class="has-mr-6">8</span>
+        <span>提高反射效率</span>
         </a></li></ul>
             </div>
         </div>

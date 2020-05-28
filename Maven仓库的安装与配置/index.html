@@ -8,21 +8,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Github使用学习 - DAQ&#39;s Blog - 一个简简单单的博客</title>
+<title>Maven仓库的安装与配置 - DAQ&#39;s Blog - 一个简简单单的博客</title>
 
 
-    <meta name="description" content="刚开始上手使用github的时候，真是一头雾水，不仅看不懂英文，而且也不懂如何使用，一番研究之后，基本了解了如何使用github的功能。 一、使用Github1.1  目的 借助Github托管项目代码 1.2  基本概念 仓库（Respository） 收藏（Star）  复制克隆项目（Fork） 发起请求（Pull Request）：等待作者查看，如果他觉得不错，他会合并到自己的仓库。 关注（">
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;以前写项目的时候，总是要去找jar包，导入依赖，项目才能正常写下去，但是搭建好本地maven之后，我们可以用maven构建工程，在pom.xml中，引入依赖，就不用千方百计的找jar包了。最终也是通过maven，将项目打成war包，发布到服务器上。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Github使用学习">
-<meta property="og:url" content="http://daqwt.top/1657072496/index.html">
+<meta property="og:title" content="Maven仓库的安装与配置">
+<meta property="og:url" content="http://daqwt.top/Maven%E4%BB%93%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
-<meta property="og:description" content="刚开始上手使用github的时候，真是一头雾水，不仅看不懂英文，而且也不懂如何使用，一番研究之后，基本了解了如何使用github的功能。 一、使用Github1.1  目的 借助Github托管项目代码 1.2  基本概念 仓库（Respository） 收藏（Star）  复制克隆项目（Fork） 发起请求（Pull Request）：等待作者查看，如果他觉得不错，他会合并到自己的仓库。 关注（">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;以前写项目的时候，总是要去找jar包，导入依赖，项目才能正常写下去，但是搭建好本地maven之后，我们可以用maven构建工程，在pom.xml中，引入依赖，就不用千方百计的找jar包了。最终也是通过maven，将项目打成war包，发布到服务器上。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://daqwt.top/images/og_image.png">
-<meta property="article:published_time" content="2020-02-21T08:17:10.000Z">
-<meta property="article:modified_time" content="2020-04-17T03:13:58.992Z">
+<meta property="article:published_time" content="2020-04-28T08:55:01.000Z">
+<meta property="article:modified_time" content="2020-05-28T09:01:56.595Z">
 <meta property="article:author" content="黑心市民">
-<meta property="article:tag" content="github">
+<meta property="article:tag" content="Maven">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://daqwt.top/images/og_image.png">
 
@@ -30,7 +30,7 @@
 
 
 
-<link rel="alternative" href="/rss.xml" title="Github使用学习" type="application/atom+xml">
+<link rel="alternative" href="/rss.xml" title="Maven仓库的安装与配置" type="application/atom+xml">
 
 
 
@@ -84,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="http://qiniu.daqwt.top/logoo.png" alt="Github使用学习" height="28">
+                <img src="http://qiniu.daqwt.top/logoo.png" alt="Maven仓库的安装与配置" height="28">
             
             </a>
         </div>
@@ -157,22 +157,22 @@
        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
             
-                Github使用学习
+                Maven仓库的安装与配置
             
         </h1>
          <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-21T08:17:10.000Z">2020-02-21</time>
+                <time class="level-item has-text-grey" datetime="2020-04-28T08:55:01.000Z">2020-04-28</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/git-github/">git+github</a>
+                <a class="has-link-grey -link" href="/categories/Git-Maven/">Git+Maven</a>
                 </div>
                 
                                                             
                 <span class="level-item has-text-grey">                    
                     
                     
-                    5 分钟 读完 (大约 727 个字)
+                    8 分钟 读完 (大约 1261 个字)
                 </span>
                 
                 
@@ -185,57 +185,102 @@
         </div>
         
         <div class="content">
-            <p>刚开始上手使用github的时候，真是一头雾水，不仅看不懂英文，而且也不懂如何使用，一番研究之后，基本了解了如何使用github的功能。</p>
-<h1 id="一、使用Github"><a href="#一、使用Github" class="headerlink" title="一、使用Github"></a>一、使用Github</h1><h2 id="1-1-目的"><a href="#1-1-目的" class="headerlink" title="1.1  目的"></a>1.1  目的</h2><p> 借助Github托管项目代码</p>
-<h2 id="1-2-基本概念"><a href="#1-2-基本概念" class="headerlink" title="1.2  基本概念"></a>1.2  基本概念</h2><ul>
-<li>仓库（Respository）</li>
-<li>收藏（Star） </li>
-<li>复制克隆项目（Fork）</li>
-<li>发起请求（Pull Request）：等待作者查看，如果他觉得不错，他会合并到自己的仓库。</li>
-<li>关注（Watch）：你关注的人或者项目有新动态，你会收到消息。</li>
-<li>事物卡片（Issue）：向作者发送问题，并且可以一起讨论这个问题。</li>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以前写项目的时候，总是要去找jar包，导入依赖，项目才能正常写下去，但是搭建好本地maven之后，我们可以用maven构建工程，在pom.xml中，引入依赖，就不用千方百计的找jar包了。最终也是通过maven，将项目打成war包，发布到服务器上。</p>
+<a id="more"></a>
+
+
+
+<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><h3 id="何为Maven？"><a href="#何为Maven？" class="headerlink" title="何为Maven？"></a>何为Maven？</h3><ul>
+<li>Maven项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的项目管理工具软件。</li>
 </ul>
-<h2 id="1-3-创建仓库"><a href="#1-3-创建仓库" class="headerlink" title="1.3  创建仓库"></a>1.3  创建仓库</h2><ul>
-<li>创建账号，验证邮箱</li>
-<li>创建一个test仓库</li>
-<li>readMe：详细描述</li>
+<h3 id="maven有什么作用？"><a href="#maven有什么作用？" class="headerlink" title="maven有什么作用？"></a>maven有什么作用？</h3><ul>
+<li>最重要的作用就是：<code>jar</code>包管理<br>①从<code>Maven</code>中央仓库获取标准规范的<code>jar</code>包以及相关依赖的<code>jar</code>包，避免自己手残下载错了包，还能避免一些包冲突。<br>②本地仓库统一管理<code>jar</code>包，使<code>jar</code>包与项目分离，减轻项目体积。</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/20200222123314231.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="1-4-仓库管理"><a href="#1-4-仓库管理" class="headerlink" title="1.4  仓库管理"></a>1.4  仓库管理</h2><ul>
-<li><strong>创建新文件</strong></li>
+<h3 id="有什么好处？"><a href="#有什么好处？" class="headerlink" title="有什么好处？"></a>有什么好处？</h3><ul>
+<li>maven是<code>java</code>语言编写的，所以是跨平台的，可以再<code>windows</code>，<code>linux</code>上使用。</li>
+<li>使项目结构清晰。</li>
+<li>多工程开发，将模块拆分成若干工程，利于团队协作开发。</li>
+<li><strong>一键构建项目：</strong> 使用命令可以对项目一键构建，操作系统中无需安装<code>eclipse</code>和<code>tomcat</code></li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/20200222124459789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200222124645965.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="一、下载maven"><a href="#一、下载maven" class="headerlink" title="一、下载maven"></a>一、下载maven</h2><ul>
+<li>下载网址：<a href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a><br><img src="https://img-blog.csdnimg.cn/20200224154115658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+<h2 id="二、配置maven环境变量"><a href="#二、配置maven环境变量" class="headerlink" title="二、配置maven环境变量"></a>二、配置maven环境变量</h2><ul>
+<li>MAVEN_HOME</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/2020022416291727.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
-<li><strong>修改文件</strong></li>
+<li>path</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/20200222125407532.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/2020022416300398.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
-<li><strong>删除文件</strong></li>
+<li>检查</li>
 </ul>
-<p>删除之后可以进入commits查看被删除的文件。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200224163022731.png" alt="在这里插入图片描述"></p>
+<h2 id="三、配置本地仓库，修改conf"><a href="#三、配置本地仓库，修改conf" class="headerlink" title="三、配置本地仓库，修改conf"></a>三、配置本地仓库，修改conf</h2><ul>
+<li>找到conf文件夹，打开setting.xml文件</li>
+<li>在 settings 标签中，添加 licalRepository 标签，中间填写maven下载jar包到本地计算机的存储目录</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200224154651502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
-<li><strong>上传文件</strong></li>
+<li>找到 mirrors标签，在其中添加如下配置</li>
 </ul>
-<p>点击 upload选择要上传的文件，或者将文件拖动到该区域，一次可以选择上传多个文件。<br>填写标题和描述之后，点击提交，就上传完成</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;mirror&gt;</span><br><span class="line">    &lt;id&gt;nexus-aliyun&lt;/id&gt;</span><br><span class="line">    &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;</span><br><span class="line">    &lt;name&gt;Nexus aliyun&lt;/name&gt;</span><br><span class="line">    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;</span><br><span class="line">&lt;/mirror&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200224155057668.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
-<li><strong>搜索文件</strong></li>
+<li>保存退出</li>
+<li><strong>mvn -help:system</strong></li>
 </ul>
-<p>点击find file，或者按住键盘T。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200224170125502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200224170219558.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <ul>
-<li><strong>下载 / 检出项目</strong></li>
+<li><code>maven</code>工程找<code>jar</code>包的过程：</li>
 </ul>
-<p>点击克隆或者下载。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222131226364.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="1-5-提出问题-Issues"><a href="#1-5-提出问题-Issues" class="headerlink" title="1.5  提出问题 Issues"></a>1.5  提出问题 Issues</h2><p><strong>作用：</strong> 发现代码BUG，但是目前没有成型代码，需要讨论时用，或者使用开源项目，出现问题时用。<br><strong>使用：</strong> 发现别人的项目有bug，提交issue，填写相应的标题和描述，然后提交过去。当作者登录github的时候，可以查看问题并讨论回复，问题解决后，点击close Issue 关闭问题。两方都有关闭Issue的权限。</p>
-<h2 id="1-6-拉取请求（Pull-Request）"><a href="#1-6-拉取请求（Pull-Request）" class="headerlink" title="1.6  拉取请求（Pull Request）"></a>1.6  拉取请求（Pull Request）</h2><p><img src="https://img-blog.csdnimg.cn/2020022213452533.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ol>
+<li>优先查找本地</li>
+<li>本地找不到，则从私服上查找，找到后下载到本地仓库</li>
+<li>私服上找不到，则从中央仓库查找，找到后下载到私服，最后下载到本地仓库</li>
+<li>总结：最终<code>maven</code>都会把<code>jar</code>下载到本地仓库，<code>maven</code>工程再引用本地仓库的<code>jar</code>包。</li>
+</ol>
+<h2 id="四、Eclipse-安装-maven插件"><a href="#四、Eclipse-安装-maven插件" class="headerlink" title="四、Eclipse 安装 maven插件"></a>四、Eclipse 安装 maven插件</h2><ol>
+<li>下载地址：<a href="http://www.pc6.com/softview/SoftView_428621.html">http://www.pc6.com/softview/SoftView_428621.html</a></li>
+</ol>
+<ol start="2">
+<li>将下载的包中的两个文件中的jar包分别放入eclipse安装包下的相同文件名里。</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20200224183159731.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200224183216915.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ol start="6">
+<li>重启eclipse，点击Windows—preference，可以看到，有了maven选项</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20200224183451941.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="五、Eclipse配置maven"><a href="#五、Eclipse配置maven" class="headerlink" title="五、Eclipse配置maven"></a>五、Eclipse配置maven</h2><ul>
+<li>依次点击Windows—Preferences—Maven—User Setting</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200224185019564.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>点击Windows—show view—other—maven</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200224185114475.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>出现的问题</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200224185235371.png" alt="在这里插入图片描述"></p>
+<h2 id="六、STS配置maven"><a href="#六、STS配置maven" class="headerlink" title="六、STS配置maven"></a>六、STS配置maven</h2><ol>
+<li><p>修改STS中默认maven,点击<code>windows--&gt;prefences--&gt;maven--&gt;installation--&gt;add</code>，添加本地安装maven的路径。</p>
+</li>
+<li><p>点击<code>windows--&gt;prefences--&gt;maven--&gt;User Setting</code>，找到<code>setting.xml</code>的路径。填入，并且下面的<code>jar</code>地址他会自动识别。目录就是你创建的本地存放<code>jar</code>包的文件夹。</p>
+</li>
+<li><p>IDEA自带Maven，真香！！！！</p>
+</li>
+</ol>
 
         </div>
         
         <ul class="post-copyright">
-        <li><strong>本文标题：</strong><a href="http://daqwt.top/1657072496/">Github使用学习</a></li>
+        <li><strong>本文标题：</strong><a href="http://daqwt.top/Maven%E4%BB%93%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">Maven仓库的安装与配置</a></li>
         <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
-        <li><strong>本文链接：</strong><a href="http://daqwt.top/1657072496/">http://daqwt.top/1657072496/</a></li>
-        <li><strong>发布时间：</strong>2020-02-21</li>
+        <li><strong>本文链接：</strong><a href="http://daqwt.top/Maven%E4%BB%93%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">http://daqwt.top/Maven%E4%BB%93%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</a></li>
+        <li><strong>发布时间：</strong>2020-04-28</li>
         <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
         </li>
         </ul>
@@ -245,7 +290,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
-                    <a class="has-link-grey -link" href="/tags/github/" rel="tag">github</a>
+                    <a class="has-link-grey -link" href="/tags/Maven/" rel="tag">Maven</a>
                 </div>
             </div>
         </div>
@@ -296,16 +341,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/3770390475/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Maven%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%9E%84%E5%BB%BA%E5%92%8C%E9%83%A8%E7%BD%B2/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">git clone加速&amp;IDEA集成</span>
+                <span class="level-item">Maven项目的构建和部署</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2004179649/">
-                <span class="level-item">linux安装常用环境</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/Mybatis%E5%9F%BA%E7%A1%80%E4%BA%86%E8%A7%A3/">
+                <span class="level-item">Mybatis基础了解</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -380,7 +425,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            69
+                            82
                         </p>
                     </a>
                 </div>
@@ -392,7 +437,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            13
                         </p>
                     </a>
                 </div>
@@ -404,7 +449,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            28
+                            31
                         </p>
                     </a>
                 </div>
@@ -467,34 +512,46 @@
                     目录
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#一、使用Github">
+        <a class="is-flex" href="#前言：">
         <span class="has-mr-6">1</span>
-        <span>一、使用Github</span>
+        <span>前言：</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#1-1-目的">
+        <a class="is-flex" href="#何为Maven？">
         <span class="has-mr-6">1.1</span>
-        <span>1.1  目的</span>
+        <span>何为Maven？</span>
         </a></li><li>
-        <a class="is-flex" href="#1-2-基本概念">
+        <a class="is-flex" href="#maven有什么作用？">
         <span class="has-mr-6">1.2</span>
-        <span>1.2  基本概念</span>
+        <span>maven有什么作用？</span>
         </a></li><li>
-        <a class="is-flex" href="#1-3-创建仓库">
+        <a class="is-flex" href="#有什么好处？">
         <span class="has-mr-6">1.3</span>
-        <span>1.3  创建仓库</span>
+        <span>有什么好处？</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#一、下载maven">
+        <span class="has-mr-6">2</span>
+        <span>一、下载maven</span>
         </a></li><li>
-        <a class="is-flex" href="#1-4-仓库管理">
-        <span class="has-mr-6">1.4</span>
-        <span>1.4  仓库管理</span>
+        <a class="is-flex" href="#二、配置maven环境变量">
+        <span class="has-mr-6">3</span>
+        <span>二、配置maven环境变量</span>
         </a></li><li>
-        <a class="is-flex" href="#1-5-提出问题-Issues">
-        <span class="has-mr-6">1.5</span>
-        <span>1.5  提出问题 Issues</span>
+        <a class="is-flex" href="#三、配置本地仓库，修改conf">
+        <span class="has-mr-6">4</span>
+        <span>三、配置本地仓库，修改conf</span>
         </a></li><li>
-        <a class="is-flex" href="#1-6-拉取请求（Pull-Request）">
-        <span class="has-mr-6">1.6</span>
-        <span>1.6  拉取请求（Pull Request）</span>
-        </a></li></ul></li></ul>
+        <a class="is-flex" href="#四、Eclipse-安装-maven插件">
+        <span class="has-mr-6">5</span>
+        <span>四、Eclipse 安装 maven插件</span>
+        </a></li><li>
+        <a class="is-flex" href="#五、Eclipse配置maven">
+        <span class="has-mr-6">6</span>
+        <span>五、Eclipse配置maven</span>
+        </a></li><li>
+        <a class="is-flex" href="#六、STS配置maven">
+        <span class="has-mr-6">7</span>
+        <span>六、STS配置maven</span>
+        </a></li></ul>
             </div>
         </div>
     </div>
@@ -517,7 +574,7 @@
             <div class="level-start has-text-centered-mobile" align="center" style="margin:auto">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="http://qiniu.daqwt.top/logoo.png" alt="Github使用学习" height="28">
+                    <img src="http://qiniu.daqwt.top/logoo.png" alt="Maven仓库的安装与配置" height="28">
                 
                 </a>
                 <p class="is-size-7">

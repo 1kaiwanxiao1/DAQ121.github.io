@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<script src="js/clicklove.js"></script>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Hibernate环境搭建及使用 - DAQ&#39;s Blog - 一个简简单单的博客</title>
+
+
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本文记录Hibernate的环境搭建及使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hibernate环境搭建及使用">
+<meta property="og:url" content="http://daqwt.top/Hibernate%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本文记录Hibernate的环境搭建及使用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://daqwt.top/images/og_image.png">
+<meta property="article:published_time" content="2020-04-26T08:33:36.000Z">
+<meta property="article:modified_time" content="2020-05-28T08:36:40.199Z">
+<meta property="article:author" content="黑心市民">
+<meta property="article:tag" content="Hibernate">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://daqwt.top/images/og_image.png">
+
+
+
+
+
+<link rel="alternative" href="/rss.xml" title="Hibernate环境搭建及使用" type="application/atom+xml">
+
+
+
+<link rel="icon" href="http://qiniu.daqwt.top/wangzhantubiao-32.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://qiniu.daqwt.top/logoo.png" alt="Hibernate环境搭建及使用" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/photo">相册</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+                <a class="navbar-item"
+                href="/share">分享</a>
+                
+                <a class="navbar-item"
+                href="/friends">友链</a>
+                
+                <a class="navbar-item"
+                href="/games">游戏</a>
+                
+                <a class="navbar-item"
+                href="/books">书单</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="RSS" href="/rss.xml">
+                        
+                        <i class="fas fa-rss"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+       
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
+            
+                Hibernate环境搭建及使用
+            
+        </h1>
+         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-26T08:33:36.000Z">2020-04-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/MyBatis-Hibernate/">MyBatis+Hibernate</a>
+                </div>
+                
+                                                            
+                <span class="level-item has-text-grey">                    
+                    
+                    
+                    10 分钟 读完 (大约 1486 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文记录Hibernate的环境搭建及使用。</p>
+<a id="more"></a>
+
+
+
+<h2 id="导入Hibernate的jar包"><a href="#导入Hibernate的jar包" class="headerlink" title="导入Hibernate的jar包"></a>导入Hibernate的jar包</h2><p><img src="https://img-blog.csdnimg.cn/20200501150613612.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="创建实体类和数据库表"><a href="#创建实体类和数据库表" class="headerlink" title="创建实体类和数据库表"></a>创建实体类和数据库表</h2><ul>
+<li>创建实体类，要求属性唯一，目前手动创建，以后可以逆向工程自动创建实体类。</li>
+<li>根据实体类中的属性，创建数据表。其实在使用hibernate的时候，不需要手动创建表。也会自动创建出来。</li>
+</ul>
+<h2 id="建立映射关系"><a href="#建立映射关系" class="headerlink" title="建立映射关系"></a>建立映射关系</h2><p>使用配置文件，将实体类和数据库表一一对应起来（映射关系）</p>
+<ul>
+<li>创建<code>xml</code>格式的配置文件</li>
+</ul>
+<p>1.映射配置文件名称和位置没有固定要求。<br>2.建议：在实体类所在的包里创建，<code>实体类名称.hbm.xml</code></p>
+<ul>
+<li>配置是<code>xml</code>格式，在配置文件中首先引入<code>xml</code>约束</li>
+</ul>
+<p>3.在<code>hibernate</code>中引入<code>dtd</code>约束</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">插入这行代码在xml文件开头：</span><br><span class="line">&lt;!DOCTYPE hibernate-mapping PUBLIC </span><br><span class="line">    <span class="string">"-//Hibernate/Hibernate Mapping DTD 3.0//EN"</span></span><br><span class="line">    <span class="string">"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>4.配置映射关系</p>
+<p><img src="https://img-blog.csdnimg.cn/20200501154600799.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="引入约束文件，解决提示问题"><a href="#引入约束文件，解决提示问题" class="headerlink" title="引入约束文件，解决提示问题"></a>引入约束文件，解决提示问题</h2><ul>
+<li>可以看出来，在写<code>xml</code>文件的时候，默认是没有补全提示的，因为没有导入约束，所以我们需要倒入约束，才能使用补全提示功能，这样就会避免自己写的过程中出错。也方便敲代码。</li>
+</ul>
+<ol>
+<li>复制这句话</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//www.hibernate.org/dtd/hibernate-mapping-3.0.dtd</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>点开<code>windows--&gt;preference--&gt;XML Catalog--&gt;add</code>，修改<code>Key type</code>为<code>URL</code>，然后将复制的那句粘贴在<code>key</code>中，在<code>location</code>中选中你<code>.dtd</code>问价的位置，导入进来即可。</li>
+</ol>
+<h2 id="创建hibernate的核心配置文件"><a href="#创建hibernate的核心配置文件" class="headerlink" title="创建hibernate的核心配置文件"></a>创建hibernate的核心配置文件</h2><ul>
+<li>核心配置文件的格式：<code>xml</code>，名称和位置固定</li>
+<li>位置：<code>src</code>下面，名称：<code>hibernate.cgf.xml</code></li>
+</ul>
+<ol>
+<li>在<code>src</code>下创建<code>hibernate.cfg.xml</code>，引入约束：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE hibernate-configuration PUBLIC</span><br><span class="line">	<span class="string">"-//Hibernate/Hibernate Configuration DTD 3.0//EN"</span></span><br><span class="line">	<span class="string">"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"</span>&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>hibernate在操作过程中，只会加载核心配置文件，其他配置文件不会加载</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE hibernate-configuration PUBLIC</span><br><span class="line">	<span class="string">"-//Hibernate/Hibernate Configuration DTD 3.0//EN"</span></span><br><span class="line">	<span class="string">"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"</span>&gt;</span><br><span class="line">&lt;hibernate-configuration&gt;</span><br><span class="line">	&lt;session-factory&gt;</span><br><span class="line">	&lt;!-- <span class="number">1</span>.配置数据库信息 必须要有--&gt;</span><br><span class="line">	&lt;property name="hibernate.connection.driver_class"&gt;com.mysql.jdbc.Driver&lt;/property&gt;</span><br><span class="line">	&lt;property name=<span class="string">"hibernate.connection.url"</span>&gt;jdbc:mysql:<span class="comment">///Hibernate01&lt;/property&gt;</span></span><br><span class="line">	&lt;property name="hibernate.connection.username"&gt;root&lt;/property&gt;</span><br><span class="line">	&lt;property name="hibernate.connection.password"&gt;***&lt;/property&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- <span class="number">2</span>.配置hibernate信息 可有可无--&gt;</span><br><span class="line">	&lt;!-- 输出底层sql语句 --&gt;</span><br><span class="line">	&lt;property name="hibernate.show_sql"&gt;true&lt;/property&gt;</span><br><span class="line">	&lt;!-- 输出底层sql语句格式 --&gt;</span><br><span class="line">	&lt;property name="hibernate.format_sql"&gt;true&lt;/property&gt;</span><br><span class="line">	&lt;!-- update:如果已经有表，更新，如果没表，自动创建--&gt;</span><br><span class="line">	&lt;property name="hibernate.hbm2ddl.auto"&gt;update&lt;/property&gt;</span><br><span class="line">	&lt;!-- 配置数据库方言，每个数据库语法有细微不同的差别--&gt;</span><br><span class="line">	&lt;property name="hibernate.dialect"&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- <span class="number">3</span>.把映射文件放到核心配置文件中 必须 --&gt;</span><br><span class="line">	&lt;mapping resource="com/daq/entity/User.hbm.xml"&gt;&lt;/mapping&gt;</span><br><span class="line">	&lt;/session-factory&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/hibernate-configuration&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>环境搭建好了</strong></li>
+</ul>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><ul>
+<li><strong>实际添加操作</strong></li>
+</ul>
+<ol>
+<li>加载核心配置文件</li>
+<li>创建<code>SessionFactory</code>对象</li>
+<li>使用<code>SessionFactory</code>创建<code>session</code>对象</li>
+<li>开启事务</li>
+<li>写具体逻辑<code>CRUD</code>操作</li>
+<li>提交事务</li>
+<li>关闭资源</li>
+</ol>
+<ul>
+<li>代码实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testAdd</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//		1. 加载核心配置文件</span></span><br><span class="line">		<span class="comment">//在hibernate中封装对象</span></span><br><span class="line">		Configuration cfg=<span class="keyword">new</span> Configuration();</span><br><span class="line">		cfg.configure();</span><br><span class="line">		</span><br><span class="line"><span class="comment">//		2. 创建SessionFactory对象</span></span><br><span class="line">		<span class="comment">//读取hibernate配置文件的核心内容，来创建sessionFactory</span></span><br><span class="line">		<span class="comment">//在这个过程中，根据映射关系，在数据库中创建表</span></span><br><span class="line">		SessionFactory sessionFactory = cfg.buildSessionFactory();</span><br><span class="line">		</span><br><span class="line"><span class="comment">//		3. 使用SessionFactory创建session对象</span></span><br><span class="line">		Session session = sessionFactory.openSession();</span><br><span class="line">		</span><br><span class="line"><span class="comment">//		4. 开启事务</span></span><br><span class="line">		Transaction tx = session.beginTransaction();</span><br><span class="line">		</span><br><span class="line"><span class="comment">//		5. 写具体逻辑CRUD操作</span></span><br><span class="line">		<span class="comment">//添加的功能</span></span><br><span class="line">		User user = <span class="keyword">new</span> User();</span><br><span class="line">		user.setUsername(<span class="string">"代澳旗"</span>);</span><br><span class="line">		user.setPassword(<span class="string">"520"</span>);</span><br><span class="line">		user.setAddress(<span class="string">"湖北武汉"</span>);</span><br><span class="line">		<span class="comment">//调用session的方法进行添加</span></span><br><span class="line">		session.save(user);</span><br><span class="line">		</span><br><span class="line"><span class="comment">//		6. 提交事务</span></span><br><span class="line">		tx.commit();</span><br><span class="line">		</span><br><span class="line"><span class="comment">//		7. 关闭资源</span></span><br><span class="line">		session.close();</span><br><span class="line">		sessionFactory.close();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>结果</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200501171257758.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>千万要注意，映射不能写错了，实体类和数据库的映射不要写错！！！</strong></li>
+</ul>
+<h2 id="关键对象"><a href="#关键对象" class="headerlink" title="关键对象"></a>关键对象</h2><h3 id="SessionFactory"><a href="#SessionFactory" class="headerlink" title="SessionFactory"></a>SessionFactory</h3><ul>
+<li>使用<code>configuration</code>对象创建<code>sessionFactory</code>对象</li>
+</ul>
+<ol>
+<li>根据核心配置文件中，有数据库配置，有映射文件部分，到数据库里面根据映射关系把表创建。</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;property name="hibernate.hbm2ddl.auto"&gt;update&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>创建<code>sessionFactory</code>过程中，特别耗资源<br>在<code>hibernate</code>操作中，建议一个项目中一般创建一个<code>sessionFactory</code>对象，类似于<code>servlet</code>中的<code>serverContext</code>，用到单例模式的思想，在<code>静态代码块中创建这个对象</code>（因为静态代码块在类加载的时候执行，并且只执行一次），所以抽取到工具类中</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.daq.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.hibernate.SessionFactory;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.cfg.Configuration;</span><br><span class="line"></span><br><span class="line">	/工具类的抽取，写在静态代码块中，保证只创建一个sessionFactory对象</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HibernateUtils</span> </span>&#123;	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> Configuration cfg = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">static</span> SessionFactory sessionFactory = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 静态代码块实现</span></span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">		<span class="comment">// 加载核心配置文件</span></span><br><span class="line">		cfg = <span class="keyword">new</span> Configuration();</span><br><span class="line">		cfg.configure();</span><br><span class="line">		sessionFactory = cfg.buildSessionFactory();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 提供一个方法返回sessionFactory</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SessionFactory <span class="title">getSesionFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> sessionFactory;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><ul>
+<li><code>session</code>类似于<code>jdbc</code>中的<code>connection</code>。</li>
+<li><code>session</code><strong>是单线程对象</strong>（重点！！！）<code>session</code>对象不能共用，只能自己用</li>
+<li>调用<code>session</code>中的不同方法实现<code>CRUD</code>操作。</li>
+</ul>
+<ol>
+<li>添加<code>save（）</code></li>
+<li>修改<code>update（）</code></li>
+<li>删除<code>delete（）</code></li>
+<li>根据id查询，<code>get（）</code>方法。</li>
+<li>根据主键查询，<code>load（）</code></li>
+<li>条件查询 <code>createCriteria（）</code></li>
+<li>用于数据库操作对象 <code>createQuery（）</code>和<code>creatSQLQuery（）</code></li>
+</ol>
+<h3 id="Transaction"><a href="#Transaction" class="headerlink" title="Transaction"></a>Transaction</h3><ul>
+<li>事务对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span>. 开启事务</span><br><span class="line">	Transaction tx = session.beginTransaction();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>事务提交和回滚</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tx.commit();</span><br><span class="line">tx.rollback();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>事务概念</li>
+</ul>
+<ol start="5">
+<li>原子性（要么成功，要么失败）</li>
+<li>一致性（操作之前之后都一样）</li>
+<li>隔离性（多个事务同时操作，他们之间不会影响）</li>
+<li>持久性（当你提交，数据库里面就生效了）</li>
+</ol>
+
+        </div>
+        
+        <ul class="post-copyright">
+        <li><strong>本文标题：</strong><a href="http://daqwt.top/Hibernate%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/">Hibernate环境搭建及使用</a></li>
+        <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
+        <li><strong>本文链接：</strong><a href="http://daqwt.top/Hibernate%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/">http://daqwt.top/Hibernate%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/</a></li>
+        <li><strong>发布时间：</strong>2020-04-26</li>
+        <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </li>
+        </ul>
+    
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
+                    <a class="has-link-grey -link" href="/tags/Hibernate/" rel="tag">Hibernate</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">乞人不受嗟来之食,哎嘛，真香~</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="http://qiniu.daqwt.top/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="http://qiniu.daqwt.top/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Hibernate%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Hibernate使用规范</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Hibernate%E5%9F%BA%E7%A1%80%E4%BA%86%E8%A7%A3/">
+                <span class="level-item">Hibernate基础了解</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'AGGG1bgO42sEaVaFqWL1IWdu-gzGzoHsz',
+        app_key: 'IdOMlYlWz8QYnB5YDBSWuTBi',
+        placeholder: '请不要出现虎狼之词...否则我将代表网络正义重拳出击'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="http://qiniu.daqwt.top/touxiang.jpg" alt="彭鱼晏">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        彭鱼晏
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        no pain , no gain
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>武汉 中国</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            82
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            13
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            31
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://blog.csdn.net/weixin_44861399" target="_blank" rel="noopener">
+                别犹豫,关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="Github" href="https://github.com/DAQ121">
+                
+                <i class="iconfont icon-git"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2829025551&amp;site=qq&amp;menu=yes">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="网易云" href="https://music.163.com/#/djradio?id=791862420">
+                
+                <i class="iconfont icon-wangyiyun"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="CSDN" href="https://blog.csdn.net/weixin_44861399">
+                
+                <i class="iconfont icon-csdn"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#导入Hibernate的jar包">
+        <span class="has-mr-6">1</span>
+        <span>导入Hibernate的jar包</span>
+        </a></li><li>
+        <a class="is-flex" href="#创建实体类和数据库表">
+        <span class="has-mr-6">2</span>
+        <span>创建实体类和数据库表</span>
+        </a></li><li>
+        <a class="is-flex" href="#建立映射关系">
+        <span class="has-mr-6">3</span>
+        <span>建立映射关系</span>
+        </a></li><li>
+        <a class="is-flex" href="#引入约束文件，解决提示问题">
+        <span class="has-mr-6">4</span>
+        <span>引入约束文件，解决提示问题</span>
+        </a></li><li>
+        <a class="is-flex" href="#创建hibernate的核心配置文件">
+        <span class="has-mr-6">5</span>
+        <span>创建hibernate的核心配置文件</span>
+        </a></li><li>
+        <a class="is-flex" href="#测试">
+        <span class="has-mr-6">6</span>
+        <span>测试</span>
+        </a></li><li>
+        <a class="is-flex" href="#关键对象">
+        <span class="has-mr-6">7</span>
+        <span>关键对象</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#SessionFactory">
+        <span class="has-mr-6">7.1</span>
+        <span>SessionFactory</span>
+        </a></li><li>
+        <a class="is-flex" href="#Session">
+        <span class="has-mr-6">7.2</span>
+        <span>Session</span>
+        </a></li><li>
+        <a class="is-flex" href="#Transaction">
+        <span class="has-mr-6">7.3</span>
+        <span>Transaction</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile" align="center" style="margin:auto">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://qiniu.daqwt.top/logoo.png" alt="Hibernate环境搭建及使用" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 黑心市民&nbsp;
+                <i class="fas fa-balance-scale"></i>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">鄂ICP备20003594</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">本站访客<span id="busuanzi_value_site_uv"></span>人</span>
+                <span><i class="fas fa-globe-asia"></i></span>
+				<span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("02/14/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+                setInterval("createtime()",250);
+            </script>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://daqwt.top',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
