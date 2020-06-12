@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<script src="js/clicklove.js"></script>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>GC常见问题 - DAQ&#39;s Blog - 一个简简单单的博客</title>
+
+
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;关于GC垃圾回收，有这些常见问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GC常见问题">
+<meta property="og:url" content="http://daqwt.top/GC%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;关于GC垃圾回收，有这些常见问题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://daqwt.top/images/og_image.png">
+<meta property="article:published_time" content="2020-06-02T09:07:31.000Z">
+<meta property="article:modified_time" content="2020-06-12T09:09:40.346Z">
+<meta property="article:author" content="黑心市民">
+<meta property="article:tag" content="GC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://daqwt.top/images/og_image.png">
+
+
+
+
+
+<link rel="alternative" href="/rss.xml" title="GC常见问题" type="application/atom+xml">
+
+
+
+<link rel="icon" href="http://qiniu.daqwt.top/wangzhantubiao-32.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://qiniu.daqwt.top/logoo.png" alt="GC常见问题" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/photo">相册</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+                <a class="navbar-item"
+                href="/share">分享</a>
+                
+                <a class="navbar-item"
+                href="/friends">友链</a>
+                
+                <a class="navbar-item"
+                href="/games">游戏</a>
+                
+                <a class="navbar-item"
+                href="/books">书单</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="RSS" href="/rss.xml">
+                        
+                        <i class="fas fa-rss"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+       
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
+            
+                GC常见问题
+            
+        </h1>
+         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-06-02T09:07:31.000Z">2020-06-02</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%92%8CGC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">JVM虚拟机和GC垃圾回收</a>
+                </div>
+                
+                                                            
+                <span class="level-item has-text-grey">                    
+                    
+                    
+                    13 分钟 读完 (大约 1883 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关于GC垃圾回收，有这些常见问题。</p>
+<a id="more"></a>
+
+
+<h2 id="（一）强引用、软引用、弱引用、虚引用"><a href="#（一）强引用、软引用、弱引用、虚引用" class="headerlink" title="（一）强引用、软引用、弱引用、虚引用"></a>（一）强引用、软引用、弱引用、虚引用</h2><ul>
+<li><strong>强引用（Strong Reference）</strong></li>
+</ul>
+<ol>
+<li>最普遍的引用：Object obj = new Object();</li>
+<li>抛出OutOfMemoryError 终止程序也不会回收具有强引用的对象；</li>
+<li>通过将对象设置为null来弱化引用，让它被回收</li>
+</ol>
+<ul>
+<li><strong>软引用（soft reference）</strong></li>
+</ul>
+<ol>
+<li>对象处在有用但非必须的状态</li>
+<li>只有当内存空间不足时，GC会回收该引用的对象的内存</li>
+<li>可实现高速缓存<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="keyword">new</span> String(“abc”);</span><br><span class="line">SoftReference softRef = <span class="keyword">new</span> SoftReference(Str); <span class="comment">//软引用</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li><strong>弱引用WeakReference</strong></li>
+</ul>
+<p>1.非必须对象，比软引用更弱一些<br> 2.GC时会被回收<br> 3.被回收的概率也不大，因为GC线程优先级较低<br> 4.适用于引用偶尔被使用且不影响垃圾收集的对象
+       </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="keyword">new</span> String(“abc”);</span><br><span class="line">WeakReference weakRefer = <span class="keyword">new</span> WeakReference(str);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>虚引用PhantomReference</li>
+</ul>
+<ol>
+<li>不会决定对象的生命周期</li>
+<li>任何时候都可能被垃圾收集器回收</li>
+<li>跟踪对象被垃圾收集器回收的活动，起哨兵作用</li>
+<li>必须和引用队列ReferenceQueue联合使用
+    </li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ReferenceQueue queue = <span class="keyword">new</span> ReferenceQueue();</span><br><span class="line">PhantomReference ref = <span class="keyword">new</span> PhantoReference(“abc”,queue);</span><br></pre></td></tr></table></figure>
+
+<h2 id="（二）GC的算法有哪些？怎么使用"><a href="#（二）GC的算法有哪些？怎么使用" class="headerlink" title="（二）GC的算法有哪些？怎么使用"></a>（二）GC的算法有哪些？怎么使用</h2><ul>
+<li>常见的垃圾回收算法有：复制算法，标记清除算法，标记压缩算法。</li>
+</ul>
+<ol>
+<li>因为新生代中对象存活率低，复制算法主要在新生代，在from区和to区之间的拷贝。因为是将内存划分为两部分，内存回收的时候，将存活下来的对象复制到另一半内存，这样只用一半内存，就会导致内存的浪费。</li>
+<li>标记清除算法：是直接将标记的垃圾清除掉，并没有发生内存位置的移动，也就是没有整理内存，就会导致内存位置不连续，产生很多的内存碎片，利用不起来，就会导致内存利用率低下。</li>
+<li>标记压缩算法：它是把后面存活的区域拷贝到垃圾区和空闲区，没有碎片，但是标记清除的过程中做了一次整理和压缩，导致效率偏低。对于拷贝来说，内存的拷贝是非常快的（就是一个线性地址的拷贝），但是压缩就不是那么容易了，因为任何一块内存在移动的时候，如果是多线程，就要进行线程同步，如果是单线程，那么效率就更低了。</li>
+</ol>
+<ul>
+<li>所以，可以得出结论，没有好的算法，只有合适的算法，于是就有了内存分代模型，针对各个分区的特性，采用分代回收垃圾，现在的jvm采用的算法就是分代收集算法。</li>
+</ul>
+<ol start="4">
+<li>新生代：朝生夕灭的对象（例如：方法的局部变量等）。</li>
+<li>老年代：存活得比较久，但还是要死的对象（例如：缓存对象、单例对象等）。</li>
+<li>永久代：对象生成后几乎不灭的对象（例如：加载过的类信息）。</li>
+</ol>
+<ul>
+<li>分代垃圾回收<br>堆大小=新生代+老年代，新生代与老年代的比例为1：2，新生代细分为一块较大的Eden空间和两块较小的Survivor空间，分别被命名为from和to。（<code>Edan：from：to=8:1:1</code>）</li>
+</ul>
+<h2 id="（三）轻GC和重GC什么时候会发生？"><a href="#（三）轻GC和重GC什么时候会发生？" class="headerlink" title="（三）轻GC和重GC什么时候会发生？"></a>（三）轻GC和重GC什么时候会发生？</h2><ul>
+<li>轻GC（<code>Minor GC</code>）</li>
+</ul>
+<ol>
+<li>Eden 空间占满， 触发 轻GC（<code>minor GC</code>），仍然存活的对象会被复制到 <code>S0 （survivor 0）</code>中去，这样 Eden 就被清空可以分配给新的对象。</li>
+<li>又触发了一次 Minor GC ，S0 和 Eden 中存活的对象被复制到 S1 中，清空S0和 Eden区。默认情况下如果复制发生超过 16.次，JVM 会停止复制并把他们移到老年代中去。</li>
+</ol>
+<ul>
+<li>重GC（<code>Full GC</code>）</li>
+</ul>
+<ol>
+<li>老年代的空间被占满会触发老年代的Full GC。</li>
+<li>Full GC 是一个压缩处理过程， 所以它比 Minor GC 要慢很多。</li>
+<li>有如下原因可能导致Full GC：<br>年老代（Tenured）被写满；<br>持久代（Perm）被写满；<br>System.gc()被显示调用；<br>上一次GC之后Heap的各域分配策略动态变化</li>
+</ol>
+<h2 id="（四）常见的垃圾收集器有哪些？"><a href="#（四）常见的垃圾收集器有哪些？" class="headerlink" title="（四）常见的垃圾收集器有哪些？"></a>（四）常见的垃圾收集器有哪些？</h2><ul>
+<li>新生代收集器</li>
+</ul>
+<p><strong>1. Serial</strong><br><strong>2. ParNew</strong><br><strong>3. Parallel Scavenge</strong></p>
+<ul>
+<li>老年代收集器</li>
+</ul>
+<p><strong>1. Serial Old</strong><br><strong>2. CMS</strong><br><strong>3. Parallel Old</strong></p>
+<ul>
+<li>堆内存垃圾收集器：G1</li>
+</ul>
+<p><strong>CMS(Concurrent Mark Sweep) 收集器</strong></p>
+<ul>
+<li>CMS 收集器是一种以最短回收停顿时间为目标的收集器，以 “ 最短用户线程停顿时间 ” 著称。整个垃圾收集过程分为 4 个步骤：</li>
+</ul>
+<p>① 初始标记：标记一下 GC Roots 能直接关联到的对象，速度较快。<br>② 并发标记：进行 GC Roots Tracing，标记出全部的垃圾对象，耗时较长。<br>③ 重新标记：修正并发标记阶段引用户程序继续运行而导致变化的对象的标记记录，耗时较短。<br>④ 并发清除：用标记-清除算法清除垃圾对象，耗时较长。</p>
+<p>整个过程耗时最长的并发标记和并发清除都是和用户线程一起工作，所以从总体上来说，CMS 收集器垃圾收集可以看做是和用户线程并发执行的。</p>
+<ul>
+<li><strong>CMS 收集器也存在一些缺点：</strong></li>
+</ul>
+<ol>
+<li>对 CPU 资源敏感：默认分配的垃圾收集线程数为（CPU 数+3）/4，随着 CPU 数量下降，占用 CPU 资源越多，吞吐量越小</li>
+<li>无法处理浮动垃圾：在并发清理阶段，由于用户线程还在运行，还会不断产生新的垃圾，CMS 收集器无法在当次收集中清除这部分垃圾。同时由于在垃圾收集阶段用户线程也在并发执行，CMS 收集器不能像其他收集器那样等老年代被填满时再进行收集，需要预留一部分空间提供用户线程运行使用。当 CMS 运行时，预留的内存空间无法满足用户线程的需要，就会出现 “ Concurrent Mode Failure ”的错误，这时将会启动后备预案，临时用 Serial Old 来重新进行老年代的垃圾收集。</li>
+<li>因为 CMS 是基于标记-清除算法，所以垃圾回收后会产生空间碎片，可以通过 -XX:UserCMSCompactAtFullCollection 开启碎片整理（默认开启），在 CMS 进行 Full GC 之前，会进行内存碎片的整理。还可以用 -XX:CMSFullGCsBeforeCompaction 设置执行多少次不压缩（不进行碎片整理）的 Full GC 之后，跟着来一次带压缩（碎片整理）的 Full GC。</li>
+</ol>
+<ul>
+<li>适用场景：重视服务器响应速度，要求系统停顿时间最短。可以使用 -XX:+UserConMarkSweepGC 来选择 CMS 作为老年代收集器。</li>
+</ul>
+
+        </div>
+        
+        <ul class="post-copyright">
+        <li><strong>本文标题：</strong><a href="http://daqwt.top/GC%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">GC常见问题</a></li>
+        <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
+        <li><strong>本文链接：</strong><a href="http://daqwt.top/GC%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">http://daqwt.top/GC%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</a></li>
+        <li><strong>发布时间：</strong>2020-06-02</li>
+        <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </li>
+        </ul>
+    
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
+                    <a class="has-link-grey -link" href="/tags/GC/" rel="tag">GC</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">乞人不受嗟来之食,哎嘛，真香~</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="http://qiniu.daqwt.top/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="http://qiniu.daqwt.top/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BC%95%E6%93%8E/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">数据库引擎</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/GC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">
+                <span class="level-item">GC垃圾回收</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'AGGG1bgO42sEaVaFqWL1IWdu-gzGzoHsz',
+        app_key: 'IdOMlYlWz8QYnB5YDBSWuTBi',
+        placeholder: '请不要出现虎狼之词...否则我将代表网络正义重拳出击'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="http://qiniu.daqwt.top/touxiang.jpg" alt="彭鱼晏">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        彭鱼晏
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        no pain , no gain
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>武汉 中国</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            106
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            37
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://blog.csdn.net/weixin_44861399" target="_blank" rel="noopener">
+                别犹豫,关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="Github" href="https://github.com/DAQ121">
+                
+                <i class="iconfont icon-git"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2829025551&amp;site=qq&amp;menu=yes">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="网易云" href="https://music.163.com/#/djradio?id=791862420">
+                
+                <i class="iconfont icon-wangyiyun"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="CSDN" href="https://blog.csdn.net/weixin_44861399">
+                
+                <i class="iconfont icon-csdn"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#（一）强引用、软引用、弱引用、虚引用">
+        <span class="has-mr-6">1</span>
+        <span>（一）强引用、软引用、弱引用、虚引用</span>
+        </a></li><li>
+        <a class="is-flex" href="#（二）GC的算法有哪些？怎么使用">
+        <span class="has-mr-6">2</span>
+        <span>（二）GC的算法有哪些？怎么使用</span>
+        </a></li><li>
+        <a class="is-flex" href="#（三）轻GC和重GC什么时候会发生？">
+        <span class="has-mr-6">3</span>
+        <span>（三）轻GC和重GC什么时候会发生？</span>
+        </a></li><li>
+        <a class="is-flex" href="#（四）常见的垃圾收集器有哪些？">
+        <span class="has-mr-6">4</span>
+        <span>（四）常见的垃圾收集器有哪些？</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile" align="center" style="margin:auto">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://qiniu.daqwt.top/logoo.png" alt="GC常见问题" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 黑心市民&nbsp;
+                <i class="fas fa-balance-scale"></i>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">鄂ICP备20003594</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">本站访客<span id="busuanzi_value_site_uv"></span>人</span>
+                <span><i class="fas fa-globe-asia"></i></span>
+				<span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("02/14/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+                setInterval("createtime()",250);
+            </script>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://daqwt.top',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

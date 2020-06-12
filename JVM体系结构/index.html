@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<script src="js/clicklove.js"></script>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>JVM---体系结构（一） - DAQ&#39;s Blog - 一个简简单单的博客</title>
+
+
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;JVM是Java Virtual Machine（Java虚拟机）的缩写，JVM是一种用于计算设备的规范，它是一个虚构出来的计算机，是通过在实际的计算机上仿真模拟各种计算机功能来实现的。引入Java语言虚拟机后，Java语言在不同平台上运行时不需要重新编译。Java语言使用Java虚拟机屏蔽了与具体平台相关的信息，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM---体系结构（一）">
+<meta property="og:url" content="http://daqwt.top/JVM%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;JVM是Java Virtual Machine（Java虚拟机）的缩写，JVM是一种用于计算设备的规范，它是一个虚构出来的计算机，是通过在实际的计算机上仿真模拟各种计算机功能来实现的。引入Java语言虚拟机后，Java语言在不同平台上运行时不需要重新编译。Java语言使用Java虚拟机屏蔽了与具体平台相关的信息，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://daqwt.top/images/og_image.png">
+<meta property="article:published_time" content="2020-05-26T08:48:23.000Z">
+<meta property="article:modified_time" content="2020-06-12T08:53:16.462Z">
+<meta property="article:author" content="黑心市民">
+<meta property="article:tag" content="JVM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://daqwt.top/images/og_image.png">
+
+
+
+
+
+<link rel="alternative" href="/rss.xml" title="JVM---体系结构（一）" type="application/atom+xml">
+
+
+
+<link rel="icon" href="http://qiniu.daqwt.top/wangzhantubiao-32.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="http://qiniu.daqwt.top/logoo.png" alt="JVM---体系结构（一）" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/photo">相册</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+                <a class="navbar-item"
+                href="/share">分享</a>
+                
+                <a class="navbar-item"
+                href="/friends">友链</a>
+                
+                <a class="navbar-item"
+                href="/games">游戏</a>
+                
+                <a class="navbar-item"
+                href="/books">书单</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="RSS" href="/rss.xml">
+                        
+                        <i class="fas fa-rss"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+       
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
+            
+                JVM---体系结构（一）
+            
+        </h1>
+         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-26T08:48:23.000Z">2020-05-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%92%8CGC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">JVM虚拟机和GC垃圾回收</a>
+                </div>
+                
+                                                            
+                <span class="level-item has-text-grey">                    
+                    
+                    
+                    16 分钟 读完 (大约 2415 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JVM是Java Virtual Machine（Java虚拟机）的缩写，JVM是一种用于计算设备的规范，它是一个虚构出来的计算机，是通过在实际的计算机上仿真模拟各种计算机功能来实现的。引入Java语言虚拟机后，Java语言在不同平台上运行时不需要重新编译。Java语言使用Java虚拟机屏蔽了与具体平台相关的信息，使得Java语言编译程序只需生成在Java虚拟机上运行的目标代码（字节码），就可以在多种平台上不加修改地运行。这也就是一次编写，到处执行的原因。</p>
+<a id="more"></a>
+
+<h2 id="体系结构概览"><a href="#体系结构概览" class="headerlink" title="体系结构概览"></a>体系结构概览</h2><p><img src="https://img-blog.csdnimg.cn/2020060415501136.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>java源文件通过javac编译成java字节码文件.class</li>
+<li>.class文件打开，他的开头是cafe babe，所以虚拟机才能识别</li>
+<li>通过类加载器ClassLoader加载.class文件，将class文件放入内存中各个区域</li>
+<li>程序计数器、JAVA栈、本地方法栈是线程独有的，不受GC管理。栈中是没有垃圾的因为栈用完自动释放。</li>
+<li>堆里面垃圾最多、方法区中有少量垃圾。受GC管理</li>
+<li>所谓的JVM调优，就是针对堆和方法区。</li>
+<li>方法区里面并不是方法，而是类的模版。</li>
+<li>java8 方法区又称为非堆区，在内存结构中称为“元数据”。</li>
+<li>灰色部分，是线程私有的，占用内存非常少，几乎不存在GC垃圾回收。</li>
+</ul>
+<h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><p><img src="https://img-blog.csdnimg.cn/20200215203005783.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>问：什么是类加载器？</strong></p>
+<ul>
+<li>类加载器是用来加载类（class文件）的</li>
+<li>类加载器也是一个类：ClassLoader</li>
+<li>类加载器可以被加载到内存，也是通过类加载器完成的</li>
+</ul>
+<p><strong>问：类加载器有哪几种？</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 系统自带的有三种：</li>
+<li>启动类（根）加载器（BootStrap） C++写的，java程序获取不到</li>
+<li>扩展类加载器（Extension） Java写的</li>
+<li>应用程序类加载器（AppClassLoader）Java也叫系统类加载器，加载当前应用的classpath的所有类。</li>
+<li><input disabled="" type="checkbox"> 用户自定义加载器：</li>
+<li>Java.lang.ClassLoader的子类，用户可以定制类的加载方式。</li>
+</ul>
+<p><strong>问：什么叫双亲委派机制？</strong></p>
+<ul>
+<li>浅显理解：我爸是李刚，有事儿找我爹，要用到某个类，先去根加载器中找，找的到就用，如果找不到，再去扩展类加载器中找，还是没有，就去应用程序类加载器中找。</li>
+<li>步骤：<ol>
+<li>类加载器收到类加载的请求</li>
+<li>将这个请求向上委托给父类加载器去完成，一直向上委托，知道启动类加载器</li>
+<li>启动加载器检查是否能加载当前这个类，能加载就结束，使用当前的加载器，否则，抛出异常，通知子类进行加载。（ClassNotFound）</li>
+<li>重复步骤3</li>
+</ol>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200604155105326.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p> <strong>问：沙箱安全机制是什么？</strong></p>
+<ul>
+<li>java安全的核心就是沙箱，沙箱就是限程序运行的环境，只能在jvm限定范围内运行，并且严格控制代码对本地系统资源的访问。</li>
+<li>沙箱安全机制是由基于双亲委派机制上 采取的一种JVM的自我保护机制,假设你要写一个java.lang.String 的类,由于双亲委派机制的原理,此请求会先交给Bootstrap试图进行加载,但是Bootstrap在加载类时首先通过包和类名查找rt.jar中有没有该类,有则优先加载rt.jar包中的类,因此就保证了java的运行机制不会被破坏.</li>
+</ul>
+<p><strong>问：为什么有沙箱安全机制？</strong></p>
+<ul>
+<li>防止恶性代码污染源代码</li>
+</ul>
+<h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><p><img src="https://img-blog.csdnimg.cn/20200604194302355.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>进程线程这种概念是<strong>系统级的</strong>，不是语言级的。</li>
+<li>看源码后，只要方法前加上了<strong>native</strong>，说明这是一个跟java无关的<strong>要调底层操作系统或者是第三方C语言函数库的方法</strong>，java搞不定，需要别的系统和语言提供方法来介入，需要求助于外援。</li>
+<li>本地方法栈（Native Method Stack）：装native方法专用的栈，这是一个特殊的栈—（Native栈）</li>
+<li><code>JNI（java native interface）</code>：扩展java的使用，融合不同的编程语言为java所用。</li>
+</ul>
+<p> 问： 为什么源码中会有native方法的声明，却没有实现呢（实现交给了底层的第三方函数库来实现）？</p>
+<ul>
+<li><strong>因为Java诞生初期，1995年10月，那个时候最盛行的语言是C语言，相当于老大，每个语言需要向他交保护费（Java要留出一个接口向C语言妥协），所以有了native。</strong></li>
+</ul>
+<h2 id="PC寄存器"><a href="#PC寄存器" class="headerlink" title="PC寄存器"></a>PC寄存器</h2><p>程序计数器（<code>Program Counter Register</code>）</p>
+<ul>
+<li>简单理解：就是一个指针，一个方法运行完了，指向下一个方法。</li>
+<li>每个线程都有一个程序计数器，是线程私有的，就是一个指针，指向方法区中方法字节码（用来存储指向一条指令的地址，也就是即将要执行的指令代码）,在执行引擎读取下一条指令的时候，是一个非常小的空间，几乎可以忽略不计，</li>
+<li>PC寄存器：里面存的就是下一个将要执行的的方法的指针。<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2></li>
+<li>方法区就是被所有的线程共享，所有字段和方法字节码，以及一些特殊方法，如构造函数，接口代码也在此定义，简单说，所有定义的方法的信息都保存在这个区域，<strong>此区域属于共享空间</strong>。</li>
+<li><strong>静态变量，常量，类信息（构造方法，接口定义），运行时的常量池存在方法区中，但是实例变量存在堆内存中，和方法区无关。</strong></li>
+<li>static ，final，Class，常量池。<ul>
+<li>方法区存储了每一个类的结构信息，就是模板的意思。</li>
+<li>就是一套规范，在不同的虚拟机里头实现是不一样的，最典型的就是永久代（PermGen space）和元空间（Metaspace）</li>
+</ul>
+</li>
+</ul>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><ul>
+<li>栈也叫栈内存，主管java程序的运行，是在线程创建的时候创建，他的生命周期也就是线程的生命周期，线程结束，栈内存释放，对于栈来说，不存在垃圾回收问题，线程一结束，栈就释放了，</li>
+<li><strong>栈中存储的有</strong>：</li>
+</ul>
+<ol>
+<li>本地变量：八种基本类型变量+对象的引用变量。</li>
+<li>栈操作：记录出栈，入栈的操作。</li>
+<li>栈帧数据：包含类文件，方法等。。。</li>
+</ol>
+<p><strong>栈帧结构：</strong></p>
+<ul>
+<li>方法索引</li>
+<li>输入输出参数</li>
+<li>本地变量</li>
+<li>Class File引用</li>
+<li>父帧</li>
+<li>子帧</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/2020021612202191.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>java方法进入虚拟机之后，就成为了<strong>栈帧</strong></li>
+<li>Main方法是一切程序的入口，它永远被压在栈底。</li>
+<li>递归调用：不断地往栈中压自身的方法，由于栈内存有限，会导致栈溢出，出现StackOverflowError，它是Error错误，不是异常。</li>
+</ul>
+<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p><img src="https://img-blog.csdnimg.cn/20200216155647942.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200216155717632.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>注意：</strong></p>
+<ul>
+<li>java 7之前堆内存：新生代，老年代，永久区</li>
+<li>java 8以后堆内存：新生代，老年代，元空间</li>
+<li>一个堆空间物理上分为新生代，老年代两部分，逻辑上分为新生代，老年代，元空间三部分。</li>
+</ul>
+<h2 id="栈-堆-方法区的交互关系"><a href="#栈-堆-方法区的交互关系" class="headerlink" title="栈+堆+方法区的交互关系"></a>栈+堆+方法区的交互关系</h2><p><img src="https://img-blog.csdnimg.cn/20200604203823961.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDg2MTM5OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>HotSpot是使用指针的方式来访问对象，java堆中会存放<code>类元数据</code>的地址，reference存储的就直接是对象的地址。</li>
+</ul>
+
+        </div>
+        
+        <ul class="post-copyright">
+        <li><strong>本文标题：</strong><a href="http://daqwt.top/JVM%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">JVM---体系结构（一）</a></li>
+        <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
+        <li><strong>本文链接：</strong><a href="http://daqwt.top/JVM%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">http://daqwt.top/JVM%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/</a></li>
+        <li><strong>发布时间：</strong>2020-05-26</li>
+        <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </li>
+        </ul>
+    
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
+                    <a class="has-link-grey -link" href="/tags/JVM/" rel="tag">JVM</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">乞人不受嗟来之食,哎嘛，真香~</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="http://qiniu.daqwt.top/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="http://qiniu.daqwt.top/wechatpay.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/JVM%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">JVM---体系结构（二）</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
+                <span class="level-item">多线程常见问题</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'AGGG1bgO42sEaVaFqWL1IWdu-gzGzoHsz',
+        app_key: 'IdOMlYlWz8QYnB5YDBSWuTBi',
+        placeholder: '请不要出现虎狼之词...否则我将代表网络正义重拳出击'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="http://qiniu.daqwt.top/touxiang.jpg" alt="彭鱼晏">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        彭鱼晏
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        no pain , no gain
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>武汉 中国</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            106
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            37
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://blog.csdn.net/weixin_44861399" target="_blank" rel="noopener">
+                别犹豫,关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="Github" href="https://github.com/DAQ121">
+                
+                <i class="iconfont icon-git"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2829025551&amp;site=qq&amp;menu=yes">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="网易云" href="https://music.163.com/#/djradio?id=791862420">
+                
+                <i class="iconfont icon-wangyiyun"></i>
+                
+            </a>
+            
+                <link rel="stylesheet" href="/css/iconfont.css">
+            <a class="level-item button is-white is-marginless" target="_blank" 
+                title="CSDN" href="https://blog.csdn.net/weixin_44861399">
+                
+                <i class="iconfont icon-csdn"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#体系结构概览">
+        <span class="has-mr-6">1</span>
+        <span>体系结构概览</span>
+        </a></li><li>
+        <a class="is-flex" href="#类加载器">
+        <span class="has-mr-6">2</span>
+        <span>类加载器</span>
+        </a></li><li>
+        <a class="is-flex" href="#本地方法栈">
+        <span class="has-mr-6">3</span>
+        <span>本地方法栈</span>
+        </a></li><li>
+        <a class="is-flex" href="#PC寄存器">
+        <span class="has-mr-6">4</span>
+        <span>PC寄存器</span>
+        </a></li><li>
+        <a class="is-flex" href="#方法区">
+        <span class="has-mr-6">5</span>
+        <span>方法区</span>
+        </a></li><li>
+        <a class="is-flex" href="#栈">
+        <span class="has-mr-6">6</span>
+        <span>栈</span>
+        </a></li><li>
+        <a class="is-flex" href="#堆">
+        <span class="has-mr-6">7</span>
+        <span>堆</span>
+        </a></li><li>
+        <a class="is-flex" href="#栈-堆-方法区的交互关系">
+        <span class="has-mr-6">8</span>
+        <span>栈+堆+方法区的交互关系</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile" align="center" style="margin:auto">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="http://qiniu.daqwt.top/logoo.png" alt="JVM---体系结构（一）" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 黑心市民&nbsp;
+                <i class="fas fa-balance-scale"></i>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">鄂ICP备20003594</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">本站访客<span id="busuanzi_value_site_uv"></span>人</span>
+                <span><i class="fas fa-globe-asia"></i></span>
+				<span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("02/14/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+                setInterval("createtime()",250);
+            </script>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://daqwt.top',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
