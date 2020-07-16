@@ -231,7 +231,7 @@
                 <span class="level-item has-text-grey">                    
                     
                     
-                    4 分钟 读完 (大约 617 个字)
+                    4 分钟 读完 (大约 634 个字)
                 </span>
                 
                 
@@ -239,32 +239,18 @@
         </div>
         
         <div class="content">
-            <p>j2ee中，经常提到几种对象(object)，理解他们的含义有助于我们更好的理解面向对象的设计思维。</p>
-<ul>
-<li><strong>POJO(plain old java object)</strong></li>
-</ul>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code>普通的java对象</code>，有别于特殊的java对象(含继承约束等)和EJB。POJO一般只有一系列的属性和相应的get、set方法。</p>
-<ul>
-<li><strong>PO(persistant object)</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>持久化对象</code>，有别于POJO,必须对应数据库中的实体。一个PO对应数据库的一条记录。持久化对象的生命周期与数据库密切相关，只能存在于connection之中，连接关闭后，PO就消失了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PO相对于POJO有诸多不同，比如PO中会有保存数据库entity状态的属性和方法。但是ORM(object-relation mapping)追求的目标是PO和POJO的一致，所以在程序员的日常开发中，都是将POJO作为PO使用，而将POJO转化为PO的功能交给hibernate等框架来实现。</li>
-<li><strong>DTO(data transfer object)</strong></li>
-</ul>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>数据传输对象</code>，以前被称为值对象(VO,value object)，作用仅在于在应用程序的各个子系统间传输数据，在表现层展示。与POJO对应一个数据库实体不同，DTO并不对应一个实体，可能仅存储实体的部分属性或加入符合传输需求的其他的属性。</p>
-<ul>
-<li><strong>DAO(data access object)</strong></li>
-</ul>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>数据访问对象</code>。提供访问数据库的抽象接口，或者持久化机制，而不暴露数据库的内部详细信息。DAO提供从程序调用到持久层的匹配。</p>
-<ul>
-<li>** BO(business object)**</li>
-</ul>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>业务对象</code>。主要是将业务逻辑封装为一个对象，该对象可以包含一个或多个其他对象。如，”Principal”(委托人)，有”Name”,”Age”等属性，同时和”Employee”(雇员)有1对多的关系，这个”Principal”就可以作为一个与业务相关的PO。 </p>
-<ul>
-<li><strong>VO（Value Object）</strong></li>
-</ul>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>值对象</code>，其实和 BO、DTO 、PO差不多，只是更形象化了， VO更简单，没有任何思想，就是一个传输对象。</p>
-
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j2ee中，经常提到几种对象(object)，如：<code>POJO</code>,<code>PO</code>,<code>DTO</code>,<code>DAO</code>,<code>BO</code>,<code>VO</code>。理解他们的含义有助于我们更好的理解面向对象的设计思维。</p>
         </div>
         
         
+        
+        <div class="level is-mobile" style="padding-left: 42%;">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/java%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%91%BD%E5%90%8D%E8%AF%B4%E6%98%8E/#more" >阅读全文</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -317,61 +303,6 @@
             <div class="level-start">
                 <div class="level-item">
                 <a class="button is-size-7 is-light" href="/SpringBoot%E6%95%B4%E5%90%88redis/#more" >阅读全文</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-       
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
-            
-                <a class="has-link-black-ter" href="/SpringBoot%E6%95%B4%E5%90%88MybatisPlus%E5%92%8CDruid%E6%95%B0%E6%8D%AE%E6%BA%90/">SpringBoot配置Druid数据源</a>
-            
-        </h1>
-         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-07-10T02:33:34.000Z">2020-07-10</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Spring%E5%85%A8%E5%AE%B6%E6%A1%B6/">Spring全家桶</a>
-                </div>
-                
-                                                            
-                <span class="level-item has-text-grey">                    
-                    
-                    
-                    5 分钟 读完 (大约 709 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Druid 是阿里巴巴开源平台上一个数据库连接池实现，结合了 C3P0、DBCP 等 DB 池的优点，同时还加入了日志监控。可以很好的监控 DB 池连接和 SQL 的执行情况，天生就是针对监控而生的 DB 连接池。</p>
-        </div>
-        
-        
-        
-        <div class="level is-mobile" style="padding-left: 42%;">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/SpringBoot%E6%95%B4%E5%90%88MybatisPlus%E5%92%8CDruid%E6%95%B0%E6%8D%AE%E6%BA%90/#more" >阅读全文</a>
                 </div>
             </div>
         </div>
@@ -552,6 +483,61 @@
 
 
 
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+       
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal" align="center">
+            
+                <a class="has-link-black-ter" href="/SpringBoot%E5%85%B8%E5%9E%8B%E6%A1%88%E4%BE%8B/">SpringBoot---环境体验</a>
+            
+        </h1>
+         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-13T08:34:16.000Z">2020-05-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Spring%E5%85%A8%E5%AE%B6%E6%A1%B6/">Spring全家桶</a>
+                </div>
+                
+                                                            
+                <span class="level-item has-text-grey">                    
+                    
+                    
+                    4 分钟 读完 (大约 536 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这是一个用springBoot框架搭起来的简单应用，目的在于感受一下SpringBoot的便捷。</p>
+        </div>
+        
+        
+        
+        <div class="level is-mobile" style="padding-left: 42%;">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/SpringBoot%E5%85%B8%E5%9E%8B%E6%A1%88%E4%BE%8B/#more" >阅读全文</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
 
     
 <div class="card card-transparent">
@@ -616,7 +602,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            112
+                            111
                         </p>
                     </a>
                 </div>
@@ -834,7 +820,7 @@
                 <span class="level-item">Spring全家桶</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">18</span>
+                <span class="level-item tag">17</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
