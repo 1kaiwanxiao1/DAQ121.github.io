@@ -11,17 +11,18 @@
 <title>SpringBoot整合MybatisPlus - DAQ&#39;s Blog - 一个简简单单的博客</title>
 
 
-    <meta name="description" content="用来存储学习笔记！">
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;工作中少不了很多重复的工作，好的解决办法就是，将这些重复的代码，写成一个模版，也就是造轮子，然而已经有了mybatis-plus这么好的轮子，就大大节省了我们的工作时间，提升了工作效率。它可以根据表自动生成代码，简单的增删改查语句都不用我们写，只需要配置，以及写一些复杂的语句即可。当然，配合easycode这个插件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot整合MybatisPlus">
-<meta property="og:url" content="http://daqwt.top/643466259/index.html">
+<meta property="og:url" content="http://daqwt.top/SpringBoot%E6%95%B4%E5%90%88MybatisPlus/index.html">
 <meta property="og:site_name" content="DAQ&#39;s Blog - 一个简简单单的博客">
-<meta property="og:description" content="用来存储学习笔记！">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;工作中少不了很多重复的工作，好的解决办法就是，将这些重复的代码，写成一个模版，也就是造轮子，然而已经有了mybatis-plus这么好的轮子，就大大节省了我们的工作时间，提升了工作效率。它可以根据表自动生成代码，简单的增删改查语句都不用我们写，只需要配置，以及写一些复杂的语句即可。当然，配合easycode这个插件">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://daqwt.top/images/og_image.png">
-<meta property="article:published_time" content="2020-07-16T03:59:52.000Z">
-<meta property="article:modified_time" content="2020-07-16T04:24:17.301Z">
+<meta property="article:published_time" content="2020-07-12T03:59:04.000Z">
+<meta property="article:modified_time" content="2020-07-16T15:13:11.435Z">
 <meta property="article:author" content="黑心市民">
+<meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://daqwt.top/images/og_image.png">
 
@@ -161,13 +162,17 @@
         </h1>
          <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-07-16T03:59:52.000Z">2020-07-16</time>
+                <time class="level-item has-text-grey" datetime="2020-07-12T03:59:04.000Z">2020-07-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Spring%E5%85%A8%E5%AE%B6%E6%A1%B6/">Spring全家桶</a>
+                </div>
                 
                                                             
                 <span class="level-item has-text-grey">                    
                     
                     
-                    几秒 读完 (大约 0 个字)
+                    5 分钟 读完 (大约 783 个字)
                 </span>
                 
                 
@@ -180,18 +185,46 @@
         </div>
         
         <div class="content">
-            
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;工作中少不了很多重复的工作，好的解决办法就是，将这些重复的代码，写成一个模版，也就是造轮子，然而已经有了mybatis-plus这么好的轮子，就大大节省了我们的工作时间，提升了工作效率。它可以根据表自动生成代码，简单的增删改查语句都不用我们写，只需要配置，以及写一些复杂的语句即可。当然，配合easycode这个插件，就更加简单便捷了。</p>
+<a id="more"></a>
+
+<h2 id="整合MybatisPlus"><a href="#整合MybatisPlus" class="headerlink" title="整合MybatisPlus"></a>整合MybatisPlus</h2><p>1.导入<code>MybatisPlus</code>依赖和<code>Velocity</code>模版引擎</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--mybatis-plus--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;com.baomidou&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;3.3.1.tmp&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!--Velocity模版引擎--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.apache.velocity&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;velocity-engine-core&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;2.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>2.自定义代码生成模版</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 代码自动生成器</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AutoCode</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 需要构建一个代码自动生成器对象</span></span><br><span class="line">        AutoGenerator mpg = <span class="keyword">new</span> AutoGenerator();</span><br><span class="line">        <span class="comment">// 配置策略</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 1、全局配置</span></span><br><span class="line">        GlobalConfig gc = <span class="keyword">new</span> GlobalConfig();</span><br><span class="line">        String projectPath = System.getProperty(<span class="string">"user.dir"</span>);</span><br><span class="line">        gc.setOutputDir(projectPath + <span class="string">"/src/main/java"</span>);</span><br><span class="line">        gc.setAuthor(<span class="string">"daq"</span>); <span class="comment">//作者名称</span></span><br><span class="line">        gc.setOpen(<span class="keyword">false</span>);</span><br><span class="line">        gc.setFileOverride(<span class="keyword">false</span>); <span class="comment">// 是否覆盖</span></span><br><span class="line">        gc.setServiceName(<span class="string">"%sService"</span>); <span class="comment">// 去Service的I前缀</span></span><br><span class="line">        gc.setIdType(IdType.ID_WORKER);</span><br><span class="line">        gc.setDateType(DateType.ONLY_DATE);</span><br><span class="line">        gc.setSwagger2(<span class="keyword">true</span>);</span><br><span class="line">        mpg.setGlobalConfig(gc);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2、设置数据源</span></span><br><span class="line">        DataSourceConfig dsc = <span class="keyword">new</span> DataSourceConfig();</span><br><span class="line">        dsc.setUrl(<span class="string">"jdbc:mysql://localhost:3306/dbName?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=GMT%2B8"</span>);</span><br><span class="line">        dsc.setDriverName(<span class="string">"com.mysql.cj.jdbc.Driver"</span>);</span><br><span class="line">        dsc.setUsername(<span class="string">"root"</span>);</span><br><span class="line">        dsc.setPassword(<span class="string">"123456"</span>);</span><br><span class="line">        dsc.setDbType(DbType.MYSQL);</span><br><span class="line">        mpg.setDataSource(dsc);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3、包的配置</span></span><br><span class="line">        PackageConfig pc = <span class="keyword">new</span> PackageConfig();</span><br><span class="line">        pc.setModuleName(<span class="string">"demo"</span>); <span class="comment">//你想要生成在哪个包中</span></span><br><span class="line">        pc.setParent(<span class="string">"com.daq"</span>); <span class="comment">//父包</span></span><br><span class="line">        pc.setEntity(<span class="string">"entity"</span>);</span><br><span class="line">        pc.setMapper(<span class="string">"mapper"</span>);</span><br><span class="line">        pc.setService(<span class="string">"service"</span>);</span><br><span class="line">        pc.setController(<span class="string">"controller"</span>);</span><br><span class="line">        mpg.setPackageInfo(pc);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//4、策略配置</span></span><br><span class="line">        StrategyConfig strategy = <span class="keyword">new</span> StrategyConfig();</span><br><span class="line">        strategy.setInclude(<span class="string">"admin"</span>); <span class="comment">// 设置要映射的表名，可以同时写多个表，用逗号隔开。</span></span><br><span class="line">        strategy.setNaming(NamingStrategy.underline_to_camel);</span><br><span class="line">        strategy.setColumnNaming(NamingStrategy.underline_to_camel);</span><br><span class="line">        strategy.setEntityLombokModel(<span class="keyword">true</span>); <span class="comment">// 自动lombok；</span></span><br><span class="line">        strategy.setLogicDeleteFieldName(<span class="string">"deleted"</span>);</span><br><span class="line">        <span class="comment">// 自动填充配置</span></span><br><span class="line">        TableFill gmtCreate = <span class="keyword">new</span> TableFill(<span class="string">"gmt_create"</span>, FieldFill.INSERT);</span><br><span class="line">        TableFill gmtModified = <span class="keyword">new</span> TableFill(<span class="string">"gmt_modified"</span>, FieldFill.INSERT_UPDATE);</span><br><span class="line">        ArrayList&lt;TableFill&gt; tableFills = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        tableFills.add(gmtCreate);</span><br><span class="line">        tableFills.add(gmtModified);</span><br><span class="line">        strategy.setTableFillList(tableFills);</span><br><span class="line">        <span class="comment">// 乐观锁</span></span><br><span class="line">        strategy.setVersionFieldName(<span class="string">"version"</span>);</span><br><span class="line">        strategy.setRestControllerStyle(<span class="keyword">true</span>);</span><br><span class="line">        strategy.setControllerMappingHyphenStyle(<span class="keyword">true</span>);<span class="comment">//localhost:8080/hello_id_2</span></span><br><span class="line">        mpg.setStrategy(strategy);</span><br><span class="line">        mpg.execute(); <span class="comment">//执行</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.根据自己的需要，修改在哪个包下生成代码，填写表名，就可以得到相应的映射，运行这个类，即可生成相应的代码。</p>
+<p>4.配置日志</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mybatis-plus:</span><br><span class="line">  configuration:</span><br><span class="line">    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl</span><br></pre></td></tr></table></figure>
+
+<p>5.在 <code>Spring Boot</code> 启动类中添加 <code>@MapperScan</code> 注解，扫描 <code>Mapper</code> 文件夹：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"com.daq.demo.mapper"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(QuickStartApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>6.在测试类中编写测试方法，可以看到，一句sql都没写，就能正常查询出来，这就是<code>mybatisplus</code>的便利性，当然，一些复杂的查询语句当然还是要我们自己写出来。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpringbootApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> AdminMapper adminMapper;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testSelect</span><span class="params">()</span></span>&#123;</span><br><span class="line">		List&lt;Admin&gt; admins = adminMapper.selectList(<span class="keyword">null</span>);</span><br><span class="line">		admins.forEach(System.out::println);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>7.一些进阶的操作，例如 <strong>主键生成策略，更新操作，自动填充，乐观锁，分页查询，逻辑删除，性能分析插件，条件构造器，</strong> 都可以在<code>mybatisPlus</code>的官方文档中查看<a href="https://mp.baomidou.com/guide/">https://mp.baomidou.com/guide/</a></p>
+
         </div>
         
         <ul class="post-copyright">
-        <li><strong>本文标题：</strong><a href="http://daqwt.top/643466259/">SpringBoot整合MybatisPlus</a></li>
+        <li><strong>本文标题：</strong><a href="http://daqwt.top/SpringBoot%E6%95%B4%E5%90%88MybatisPlus/">SpringBoot整合MybatisPlus</a></li>
         <li><strong>本文作者：</strong><a href="http://daqwt.top">黑心市民</a></li>
-        <li><strong>本文链接：</strong><a href="http://daqwt.top/643466259/">http://daqwt.top/643466259/</a></li>
-        <li><strong>发布时间：</strong>2020-07-16</li>
+        <li><strong>本文链接：</strong><a href="http://daqwt.top/SpringBoot%E6%95%B4%E5%90%88MybatisPlus/">http://daqwt.top/SpringBoot%E6%95%B4%E5%90%88MybatisPlus/</a></li>
+        <li><strong>发布时间：</strong>2020-07-12</li>
         <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
         </li>
         </ul>
     
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
+                    <a class="has-link-grey -link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a>
+                </div>
+            </div>
+        </div>
         
         
         
@@ -238,10 +271,17 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/SpringBoot%E6%95%B4%E5%90%88Shiro/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">SpringBoot整合Shiro</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/SpringBoot%E9%9B%86%E6%88%90Swagger/">
-                <span class="level-item">SpringBoot集成Swagger</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/java%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%91%BD%E5%90%8D%E8%AF%B4%E6%98%8E/">
+                <span class="level-item">java的对象命名说明</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -316,7 +356,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            111
+                            112
                         </p>
                     </a>
                 </div>
@@ -394,6 +434,22 @@
 </div>
     
         
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    <i class="iconfont icon-mulu"></i>
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#整合MybatisPlus">
+        <span class="has-mr-6">1</span>
+        <span>整合MybatisPlus</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
 
     
     
